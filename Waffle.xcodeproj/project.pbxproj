@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
+		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
+		7FA1D801216F3A22E519B5ED /* Pods_Waffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */; };
 		F21972C3284B8B3F0086E56B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinator.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -38,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.release.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		56584A54E1159B7F75006EB4 /* Pods-WaffleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.debug.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		65008EAE910B592BFD3F1DD7 /* Pods-Waffle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle.release.xcconfig"; path = "Target Support Files/Pods-Waffle/Pods-Waffle.release.xcconfig"; sourceTree = "<group>"; };
+		78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Waffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaffleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDAC56E515A0DCE28384B965 /* Pods-WaffleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.release.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F21972C2284B8B3F0086E56B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +63,8 @@
 		F2A412F42849EFD900E04BF5 /* WaffleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaffleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412F82849EFD900E04BF5 /* WaffleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaffleUITests.swift; sourceTree = "<group>"; };
 		F2A412FA2849EFD900E04BF5 /* WaffleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaffleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Waffle_WaffleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC761AD9514C9B3C2A0D338 /* Pods-Waffle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle.debug.xcconfig"; path = "Target Support Files/Pods-Waffle/Pods-Waffle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FA1D801216F3A22E519B5ED /* Pods_Waffle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +88,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07CFBAE34DEF76E1075B37B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */,
+				F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */,
+				BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDA61873935AB7625B636134 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAC761AD9514C9B3C2A0D338 /* Pods-Waffle.debug.xcconfig */,
+				65008EAE910B592BFD3F1DD7 /* Pods-Waffle.release.xcconfig */,
+				3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */,
+				44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */,
+				56584A54E1159B7F75006EB4 /* Pods-WaffleTests.debug.xcconfig */,
+				EDAC56E515A0DCE28384B965 /* Pods-WaffleTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F21972BF284B8AC50086E56B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +190,7 @@
 		F21972C9284B8BC60086E56B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F21972D3284B90490086E56B /* Fonts */,
 				F2A412E02849EFD900E04BF5 /* Assets.xcassets */,
 				F21972CA284B8BF80086E56B /* Colors.xcassets */,
 			);
@@ -207,6 +247,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		F21972D3284B90490086E56B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F2A412CB2849EFD700E04BF5 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +261,8 @@
 				F2A412ED2849EFD900E04BF5 /* WaffleTests */,
 				F2A412F72849EFD900E04BF5 /* WaffleUITests */,
 				F2A412D52849EFD700E04BF5 /* Products */,
+				EDA61873935AB7625B636134 /* Pods */,
+				07CFBAE34DEF76E1075B37B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,9 +317,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2A412FE2849EFD900E04BF5 /* Build configuration list for PBXNativeTarget "Waffle" */;
 			buildPhases = (
+				2989E6AC08B122C274689663 /* [CP] Check Pods Manifest.lock */,
 				F2A412D02849EFD700E04BF5 /* Sources */,
 				F2A412D12849EFD700E04BF5 /* Frameworks */,
 				F2A412D22849EFD700E04BF5 /* Resources */,
+				02E5A11EB8FB3D7A64F13EFA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,6 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2A413012849EFD900E04BF5 /* Build configuration list for PBXNativeTarget "WaffleTests" */;
 			buildPhases = (
+				A0CF89B2CF0EAE69A9B53FC8 /* [CP] Check Pods Manifest.lock */,
 				F2A412E62849EFD900E04BF5 /* Sources */,
 				F2A412E72849EFD900E04BF5 /* Frameworks */,
 				F2A412E82849EFD900E04BF5 /* Resources */,
@@ -303,9 +355,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2A413042849EFD900E04BF5 /* Build configuration list for PBXNativeTarget "WaffleUITests" */;
 			buildPhases = (
+				D0613AD70E644889FF7E08F0 /* [CP] Check Pods Manifest.lock */,
 				F2A412F02849EFD900E04BF5 /* Sources */,
 				F2A412F12849EFD900E04BF5 /* Frameworks */,
 				F2A412F22849EFD900E04BF5 /* Resources */,
+				FC50F52D2FD55B6ADF556775 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -387,6 +441,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02E5A11EB8FB3D7A64F13EFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Waffle/Pods-Waffle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Waffle/Pods-Waffle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Waffle/Pods-Waffle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2989E6AC08B122C274689663 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Waffle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0CF89B2CF0EAE69A9B53FC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WaffleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0613AD70E644889FF7E08F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Waffle-WaffleUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC50F52D2FD55B6ADF556775 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F2A412D02849EFD700E04BF5 /* Sources */ = {
@@ -568,6 +725,7 @@
 		};
 		F2A412FF2849EFD900E04BF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAC761AD9514C9B3C2A0D338 /* Pods-Waffle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -596,6 +754,7 @@
 		};
 		F2A413002849EFD900E04BF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65008EAE910B592BFD3F1DD7 /* Pods-Waffle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -624,6 +783,7 @@
 		};
 		F2A413022849EFD900E04BF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56584A54E1159B7F75006EB4 /* Pods-WaffleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -644,6 +804,7 @@
 		};
 		F2A413032849EFD900E04BF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDAC56E515A0DCE28384B965 /* Pods-WaffleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -664,6 +825,7 @@
 		};
 		F2A413052849EFD900E04BF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -682,6 +844,7 @@
 		};
 		F2A413062849EFD900E04BF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
