@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import Combine
+protocol LoginViewModelInput {
+    
+}
+
+
 
 class LoginViewModel {
     

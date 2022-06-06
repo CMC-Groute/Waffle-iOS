@@ -23,6 +23,14 @@
 		F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D28284E1922008E1185 /* TabBarCoordinatorProtocol.swift */; };
 		F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
 		F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */; };
+		F2125D2F284E2752008E1185 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2E284E2752008E1185 /* Config.swift */; };
+		F2125D35284E5270008E1185 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D34284E5270008E1185 /* LoginUseCase.swift */; };
+		F2125D37284E52A8008E1185 /* LoginUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D36284E52A8008E1185 /* LoginUseCaseProtocol.swift */; };
+		F2125D3B284E5373008E1185 /* LoginRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3A284E5373008E1185 /* LoginRepositoryProtocol.swift */; };
+		F2125D3D284E53AB008E1185 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3C284E53AB008E1185 /* LoginRepository.swift */; };
+		F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */; };
+		F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D43284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift */; };
+		F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D45284E56E8008E1185 /* URLSessionNetworkService.swift */; };
 		F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -74,6 +82,14 @@
 		F2125D28284E1922008E1185 /* TabBarCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F2125D2A284E19AD008E1185 /* TapBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarPage.swift; sourceTree = "<group>"; };
 		F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		F2125D2E284E2752008E1185 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F2125D34284E5270008E1185 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		F2125D36284E52A8008E1185 /* LoginUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseProtocol.swift; sourceTree = "<group>"; };
+		F2125D3A284E5373008E1185 /* LoginRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F2125D3C284E53AB008E1185 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBuilder.swift; sourceTree = "<group>"; };
+		F2125D43284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		F2125D45284E56E8008E1185 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
 		F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +176,7 @@
 				F2125D13284E0E88008E1185 /* UserDefaultKey.swift */,
 				F2125D22284E15CA008E1185 /* CoordinatorType.swift */,
 				F2125D2A284E19AD008E1185 /* TapBarPage.swift */,
+				F2125D2E284E2752008E1185 /* Config.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -228,11 +245,65 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		F2125D30284E4482008E1185 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F2125D31284E4490008E1185 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F2125D32284E449A008E1185 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F2125D38284E534F008E1185 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D36284E52A8008E1185 /* LoginUseCaseProtocol.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		F2125D39284E5358008E1185 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D3A284E5373008E1185 /* LoginRepositoryProtocol.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F2125D3E284E5437008E1185 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D43284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		F2125D40284E550B008E1185 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */,
+				F2125D45284E56E8008E1185 /* URLSessionNetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		F21972BF284B8AC50086E56B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				F2125D24284E160A008E1185 /* MapScene */,
-				F21972D1284B8CCF0086E56B /* ProfileScene */,
+				F21972D1284B8CCF0086E56B /* SettingScene */,
 				F21972D0284B8C980086E56B /* HomeScene */,
 				F21972CF284B8C7E0086E56B /* LoginScene */,
 				F2125D1F284E1239008E1185 /* SignUpScene */,
@@ -273,6 +344,7 @@
 		F21972C5284B8B800086E56B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D34284E5270008E1185 /* LoginUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -287,6 +359,8 @@
 		F21972C7284B8B990086E56B /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D39284E5358008E1185 /* Repositories */,
+				F2125D38284E534F008E1185 /* UseCase */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -294,6 +368,7 @@
 		F21972C8284B8BAF0086E56B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D3E284E5437008E1185 /* Interfaces */,
 				F21972D2284B8F210086E56B /* Network */,
 				F21972CE284B8C730086E56B /* Repositories */,
 			);
@@ -329,6 +404,7 @@
 		F21972CE284B8C730086E56B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D3C284E53AB008E1185 /* LoginRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -351,11 +427,14 @@
 			path = HomeScene;
 			sourceTree = "<group>";
 		};
-		F21972D1284B8CCF0086E56B /* ProfileScene */ = {
+		F21972D1284B8CCF0086E56B /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D32284E449A008E1185 /* Coordinator */,
+				F2125D31284E4490008E1185 /* ViewModel */,
+				F2125D30284E4482008E1185 /* ViewController */,
 			);
-			path = ProfileScene;
+			path = SettingScene;
 			sourceTree = "<group>";
 		};
 		F21972D2284B8F210086E56B /* Network */ = {
@@ -403,6 +482,7 @@
 				F21972C8284B8BAF0086E56B /* Data */,
 				F21972C4284B8B770086E56B /* Domain */,
 				F21972BF284B8AC50086E56B /* Presentation */,
+				F2125D40284E550B008E1185 /* Services */,
 				F2A412DB2849EFD700E04BF5 /* ViewController.swift */,
 				F2A412DD2849EFD700E04BF5 /* Main.storyboard */,
 				F2A412E22849EFD900E04BF5 /* LaunchScreen.storyboard */,
@@ -688,21 +768,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
+				F2125D37284E52A8008E1185 /* LoginUseCaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
+				F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
+				F2125D2F284E2752008E1185 /* Config.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D1E284E10B8008E1185 /* LoginCoordinator.swift in Sources */,
 				F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */,
+				F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */,
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
+				F2125D3B284E5373008E1185 /* LoginRepositoryProtocol.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
+				F2125D3D284E53AB008E1185 /* LoginRepository.swift in Sources */,
+				F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */,
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
+				F2125D35284E5270008E1185 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
