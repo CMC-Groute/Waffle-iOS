@@ -30,7 +30,7 @@ class AppCoordinator: AppCoordinatorProtocol {
         let loginCoordinator = LoginCoordinator(navigationController)
         loginCoordinator.finishDelegate = self
         loginCoordinator.start()
-        childCoordinators.append(loginCoordinator)
+        childCoordinators.append(loginCoordinator) // add dependency
     }
     
     func showTabBarFlow() {
