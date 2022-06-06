@@ -10,6 +10,11 @@
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
 		7FA1D801216F3A22E519B5ED /* Pods_Waffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */; };
+		F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2125D09284DFC25008E1185 /* Login.storyboard */; };
+		F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D0B284DFC67008E1185 /* LoginViewController.swift */; };
+		F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */; };
+		F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D10284E0C3D008E1185 /* Coordinator.swift */; };
+		F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D13284E0E88008E1185 /* UserDefaultKey.swift */; };
 		F21972C3284B8B3F0086E56B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinator.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -48,6 +53,11 @@
 		78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Waffle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaffleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDAC56E515A0DCE28384B965 /* Pods-WaffleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.release.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.release.xcconfig"; sourceTree = "<group>"; };
+		F2125D09284DFC25008E1185 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		F2125D0B284DFC67008E1185 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F2125D10284E0C3D008E1185 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F2125D13284E0E88008E1185 /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		F21972C2284B8B3F0086E56B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +128,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F2125D0F284E0C2C008E1185 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D10284E0C3D008E1185 /* Coordinator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F2125D12284E0E79008E1185 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D13284E0E88008E1185 /* UserDefaultKey.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		F21972BF284B8AC50086E56B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +158,7 @@
 		F21972C0284B8ACF0086E56B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D0F284E0C2C008E1185 /* Protocol */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -199,6 +226,7 @@
 		F21972CC284B8C1B0086E56B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D12284E0E79008E1185 /* Constant */,
 				F21972CD284B8C220086E56B /* Extensions */,
 			);
 			path = Utils;
@@ -221,6 +249,9 @@
 		F21972CF284B8C7E0086E56B /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D09284DFC25008E1185 /* Login.storyboard */,
+				F2125D0B284DFC67008E1185 /* LoginViewController.swift */,
+				F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */,
 			);
 			path = LoginScene;
 			sourceTree = "<group>";
@@ -422,6 +453,7 @@
 				F2A412E42849EFD900E04BF5 /* LaunchScreen.storyboard in Resources */,
 				F2A412E12849EFD900E04BF5 /* Assets.xcassets in Resources */,
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
+				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				F2A412DF2849EFD700E04BF5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,8 +601,12 @@
 			files = (
 				F21972C3284B8B3F0086E56B /* AppCoordinator.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
+				F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
+				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
+				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
+				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

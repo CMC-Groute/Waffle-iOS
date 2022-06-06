@@ -7,6 +7,10 @@
 
 import Foundation
 
-class AppCoordinator {
+class AppCoordinator: Coordinator {
+    func start() {
+        
+    }
+    
     
 }
