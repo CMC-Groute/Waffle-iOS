@@ -12,7 +12,7 @@ import Combine
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    var viewModel: LoginViewModel!
+    var viewModel: LoginViewModel?
     
     
     override func viewDidLoad() {
