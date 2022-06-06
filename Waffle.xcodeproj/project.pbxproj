@@ -115,7 +115,6 @@
 				56584A54E1159B7F75006EB4 /* Pods-WaffleTests.debug.xcconfig */,
 				EDAC56E515A0DCE28384B965 /* Pods-WaffleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -322,6 +321,7 @@
 				F2A412D12849EFD700E04BF5 /* Frameworks */,
 				F2A412D22849EFD700E04BF5 /* Resources */,
 				02E5A11EB8FB3D7A64F13EFA /* [CP] Embed Pods Frameworks */,
+				F2125D08284DF5F3008E1185 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -525,6 +525,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F2125D08284DF5F3008E1185 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		FC50F52D2FD55B6ADF556775 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -744,7 +761,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Develop.Waffle;
+				PRODUCT_BUNDLE_IDENTIFIER = Develop.Waffle.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -773,7 +790,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Develop.Waffle;
+				PRODUCT_BUNDLE_IDENTIFIER = Develop.Waffle.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
