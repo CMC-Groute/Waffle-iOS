@@ -20,6 +20,9 @@
 		F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D20284E1379008E1185 /* AppCoordinator.swift */; };
 		F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D22284E15CA008E1185 /* CoordinatorType.swift */; };
 		F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D25284E16FE008E1185 /* CoordinatorFinishDelegate.swift */; };
+		F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D28284E1922008E1185 /* TabBarCoordinatorProtocol.swift */; };
+		F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
+		F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */; };
 		F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -68,6 +71,9 @@
 		F2125D20284E1379008E1185 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F2125D22284E15CA008E1185 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		F2125D25284E16FE008E1185 /* CoordinatorFinishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishDelegate.swift; sourceTree = "<group>"; };
+		F2125D28284E1922008E1185 /* TabBarCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F2125D2A284E19AD008E1185 /* TapBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarPage.swift; sourceTree = "<group>"; };
+		F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,8 +147,9 @@
 		F2125D0F284E0C2C008E1185 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D10284E0C3D008E1185 /* Coordinator.swift */,
-				F2125D25284E16FE008E1185 /* CoordinatorFinishDelegate.swift */,
+				F2125D27284E1908008E1185 /* Base */,
+				F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */,
+				F2125D28284E1922008E1185 /* TabBarCoordinatorProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -152,6 +159,7 @@
 			children = (
 				F2125D13284E0E88008E1185 /* UserDefaultKey.swift */,
 				F2125D22284E15CA008E1185 /* CoordinatorType.swift */,
+				F2125D2A284E19AD008E1185 /* TapBarPage.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -211,6 +219,15 @@
 			path = MapScene;
 			sourceTree = "<group>";
 		};
+		F2125D27284E1908008E1185 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F2125D25284E16FE008E1185 /* CoordinatorFinishDelegate.swift */,
+				F2125D10284E0C3D008E1185 /* Coordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		F21972BF284B8AC50086E56B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +244,8 @@
 		F21972C0284B8ACF0086E56B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */,
+				F2125D20284E1379008E1185 /* AppCoordinator.swift */,
 				F2125D0F284E0C2C008E1185 /* Protocol */,
 			);
 			path = Common;
@@ -237,8 +256,6 @@
 			children = (
 				F2A412D72849EFD700E04BF5 /* AppDelegate.swift */,
 				F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */,
-				F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */,
-				F2125D20284E1379008E1185 /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -671,11 +688,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
+				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
+				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D1E284E10B8008E1185 /* LoginCoordinator.swift in Sources */,
 				F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */,
+				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,

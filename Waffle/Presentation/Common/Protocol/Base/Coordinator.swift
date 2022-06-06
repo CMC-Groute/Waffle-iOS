@@ -15,6 +15,8 @@ protocol Coordinator: AnyObject {
     func start()
     func finish()
     func findCoordinator(type: CoordinatorType) -> Coordinator?
+    
+    init(_ navigationController: UINavigationController)
 }
 
 extension Coordinator {
