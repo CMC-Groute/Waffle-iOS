@@ -35,6 +35,9 @@
 		F2125D51284E60FD008E1185 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2125D50284E60FD008E1185 /* SignUp.storyboard */; };
 		F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D52284E613B008E1185 /* SignUpViewModel.swift */; };
 		F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D54284E635C008E1185 /*  UINavigationItem.swift */; };
+		F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D56284F40E2008E1185 /* SettingViewController.swift */; };
+		F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D58284F43D2008E1185 /* SettingTableViewCell.swift */; };
+		F2125D5D284F45A4008E1185 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D5C284F45A4008E1185 /* Assets.swift */; };
 		F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -98,6 +101,9 @@
 		F2125D50284E60FD008E1185 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		F2125D52284E613B008E1185 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		F2125D54284E635C008E1185 /*  UINavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " UINavigationItem.swift"; sourceTree = "<group>"; };
+		F2125D56284F40E2008E1185 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		F2125D58284F43D2008E1185 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		F2125D5C284F45A4008E1185 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +266,8 @@
 		F2125D30284E4482008E1185 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D56284F40E2008E1185 /* SettingViewController.swift */,
+				F2125D58284F43D2008E1185 /* SettingTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -448,6 +456,7 @@
 		F21972CD284B8C220086E56B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F2125D5C284F45A4008E1185 /* Assets.swift */,
 				F2125D54284E635C008E1185 /*  UINavigationItem.swift */,
 			);
 			path = Extensions;
@@ -820,10 +829,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2125D5D284F45A4008E1185 /* Assets.swift in Sources */,
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
 				F2125D37284E52A8008E1185 /* LoginUseCaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
+				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
 				F2125D4E284E60E5008E1185 /* SignUpViewController.swift in Sources */,
 				F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
@@ -839,6 +850,7 @@
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
+				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* LoginRepositoryProtocol.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
