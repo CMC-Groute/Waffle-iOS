@@ -16,6 +16,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var findPWButton: UIButton!
     
+    @IBOutlet weak var userInputView: UIView!
+    @IBOutlet weak var emailInvalidText: UILabel!
+    @IBOutlet weak var passwordInvalidText: UILabel!
+    
     var viewModel: LoginViewModel?
     private var cancellables: Set<AnyCancellable> = []
     
