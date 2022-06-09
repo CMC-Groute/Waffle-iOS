@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-protocol LoginRepositoryProtocol {
-    
+protocol UserRepositoryProtocol {
+    func login(email: String, password: String) -> AnyPublisher<Bool, Never>
 }

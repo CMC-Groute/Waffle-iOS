@@ -7,20 +7,24 @@
 
 import UIKit
 
-class LoginCoordinator: LoginCoordinatorProtocol {
+final class LoginCoordinator: LoginCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
-    var navigationController: UINavigationController
-    var childCoordinators: [Coordinator]
-    var type: CoordinatorType
     var loginViewController: LoginViewController
+    var navigationController: UINavigationController
+    var childCoordinators: [Coordinator] = []
+    var type: CoordinatorType = .login
     
-    required init(_ navigationController: UINavigationController) {
+    
+    init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.loginViewController = LoginViewController()
+        self.loginViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.navigationController.setNavigationBarHidden(true, animated: true)
     }
     
     func start() { // DI 의존성 주입 할 것
-        
+        print("LoginCoordinator")
+        self.loginViewController.viewModel = LoginViewModel(loginUseCase: LoginUseCase(repository: UserRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.navigationController.viewControllers = [self.loginViewController]
     }
     
     func showSignUpFlow() {

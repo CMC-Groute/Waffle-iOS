@@ -10,4 +10,6 @@ import Combine
 
 protocol LoginUseCaseProtocol {
     func login(with email: String, password: String)
+    func checkEmailValid(with email: String) -> Bool
+    func checkPasswordValid(with password: String) -> Bool
 }

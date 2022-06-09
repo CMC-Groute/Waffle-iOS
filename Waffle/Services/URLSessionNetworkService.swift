@@ -24,9 +24,7 @@ class URLSessionNetworkService: URLSessionNetworkServiceProtocol {
     private let session: URLSession = .shared
     private let decoder: JSONDecoder = JSONDecoder()
     
-    // MARK: - Initializers
-    
-    private init() {}
+    init() {}
     
     func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<Data, Error> {
         guard let urlRequest = urlRequest.urlRequest else { return Fail(error: NetworkErrors.invalidURL).eraseToAnyPublisher() }
