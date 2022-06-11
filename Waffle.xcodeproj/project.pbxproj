@@ -47,6 +47,7 @@
 		F2125D612850FFD3008E1185 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D602850FFD3008E1185 /* UIViewController.swift */; };
 		F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
+		F232433C2855095600742362 /* SetProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F232433B2855095600742362 /* SetProfileImageViewModel.swift */; };
 		F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE328524A000022D41E /* SignUpCoordinator.swift */; };
 		F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -123,6 +124,7 @@
 		F2125D602850FFD3008E1185 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		F232433B2855095600742362 /* SetProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageViewModel.swift; sourceTree = "<group>"; };
 		F2764BE328524A000022D41E /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				F2125D52284E613B008E1185 /* SignUpViewModel.swift */,
+				F232433B2855095600742362 /* SetProfileImageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F232433C2855095600742362 /* SetProfileImageViewModel.swift in Sources */,
 				F2125D5D284F45A4008E1185 /* Assets.swift in Sources */,
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
 				F2125D37284E52A8008E1185 /* LoginUseCaseProtocol.swift in Sources */,

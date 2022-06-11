@@ -260,7 +260,8 @@ class SignUpViewController: UIViewController {
                 if bool {
                     self.nextButton.setEnabled(color: Asset.Colors.black.name)
                 }else {
-                    self.nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                    self.nextButton.setEnabled(color: Asset.Colors.black.name)
+//                    self.nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
                 }
             }).disposed(by: disposeBag)
                 

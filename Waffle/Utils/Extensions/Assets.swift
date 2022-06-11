@@ -23,12 +23,14 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 internal enum Asset {
   internal enum Assets {
     internal static let accentColor = ColorAsset(name: "AccentColor")
+    internal static let check = ImageAsset(name: "check")
     internal static let joinProcess1 = ImageAsset(name: "join_process_1")
     internal static let joinProcess2 = ImageAsset(name: "join_process_2")
     internal static let joinProcess3 = ImageAsset(name: "join_process_3")
     internal static let joinProcessed3 = ImageAsset(name: "join_processed_3")
     internal static let joinProgressed1 = ImageAsset(name: "join_progressed_1")
     internal static let joinProgressed2 = ImageAsset(name: "join_progressed_2")
+    internal static let unCheck = ImageAsset(name: "unCheck")
     internal static let tabname = ImageAsset(name: "tabname")
     internal static let bar = ImageAsset(name: "bar")
     internal static let btn = ImageAsset(name: "btn")

@@ -40,3 +40,11 @@ extension UIViewController {
     view.endEditing(true)
   }
 }
+
+extension UIView {
+    func round(width: CGFloat, color: String, value: CGFloat) {
+        self.layer.cornerRadius = value
+        self.layer.borderWidth = 3
+        self.layer.borderColor = UIColor(named: color)?.cgColor
+    }
+}
