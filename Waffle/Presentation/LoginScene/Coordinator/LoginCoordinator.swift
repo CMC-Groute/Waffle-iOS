@@ -19,10 +19,14 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
         self.navigationController = navigationController
         self.loginViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.navigationController.setNavigationBarHidden(true, animated: true)
-        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
-        UINavigationBar.appearance().backIndicatorImage = backImage
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+        setNavigationBar()
+    }
+    
+    func setNavigationBar() {
+//        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
+//        UINavigationBar.appearance().backIndicatorImage = backImage
+//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
     }
     
     func start() { // DI 의존성 주입 할 것
@@ -31,7 +35,10 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func showSignUpFlow() {
-        
+        let signUpCoordinator = SignUpCoordinator(self.navigationController)
+        signUpCoordinator.finishDelegate = self
+        self.childCoordinators.append(signUpCoordinator)
+        signUpCoordinator.start()
     }
     
     func showFindPWViewController() {
@@ -55,12 +62,12 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     
 }
 
-//extension LoginCoordinator: CoordinatorFinishDelegate {
-//    func coordinatorDidFinish(childCoordinator: Coordinator) {
-//        print(childCoordinator)
-//        self.childCoordinators = self.childCoordinators
-//            .filter({ $0.type != childCoordinator.type })
-//        print("what child \(childCoordinators)")
-//        childCoordinator.navigationController.popToRootViewController(animated: true)
-//    }
-//}
+extension LoginCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        print(childCoordinator)
+        self.childCoordinators = self.childCoordinators
+            .filter({ $0.type != childCoordinator.type })
+        print("what child \(childCoordinators)")
+        childCoordinator.navigationController.popViewController(animated: true)
+    }
+}

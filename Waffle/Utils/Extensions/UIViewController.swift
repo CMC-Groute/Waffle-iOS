@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
 
 func showToast(message : String) {
-    let font = UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
+    let font = UIFont.fontWithName(type: .semibold, size: 13)
     let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
     toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
     toastLabel.textColor = UIColor.white

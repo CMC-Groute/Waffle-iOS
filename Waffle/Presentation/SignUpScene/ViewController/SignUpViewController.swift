@@ -51,13 +51,16 @@ class SignUpViewController: UIViewController {
     private func configureUI(){
         
         func setProgressNavigationBar() { // TO DO selected state 
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(customView: backButton)
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             spacer.width = 15
             let progressOneButton = self.navigationItem.makeProgressButton(self, level: "one")
             let progressTwoButton = self.navigationItem.makeProgressButton(self, level: "two")
             let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: "three")
-            self.navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: <#T##UIImage?#>, style: <#T##UIBarButtonItem.Style#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+            //self.navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
         }
+        
+        setProgressNavigationBar()
+
     }
 }

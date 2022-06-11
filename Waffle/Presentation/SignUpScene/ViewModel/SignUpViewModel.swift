@@ -6,7 +6,16 @@
 //
 
 import Foundation
-
-class SignUpViewModel {
+import RxSwift
+import RxCocoa
     
+class SignUpViewModel {
+    private var disposable = DisposeBag()
+    private var usecase: UserUseCase
+    private var coordinator: SignUpCoordinator!
+    
+    init(coordinator: SignUpCoordinator, usecase: UserUseCase) {
+        self.coordinator = coordinator
+        self.usecase = usecase
+    }
 }

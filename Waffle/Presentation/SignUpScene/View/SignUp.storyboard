@@ -15,13 +15,53 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLb-zF-7WW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUb-Ph-6Ew">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와플 멤버가 될래요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa6-Aq-hbM">
+                                                <rect key="frame" x="16" y="10" width="374" height="29"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Fa6-Aq-hbM" firstAttribute="top" secondItem="IUb-Ph-6Ew" secondAttribute="top" constant="10" id="KRx-nf-ivN"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fa6-Aq-hbM" secondAttribute="trailing" constant="24" id="oZ4-72-6hc"/>
+                                            <constraint firstItem="Fa6-Aq-hbM" firstAttribute="leading" secondItem="IUb-Ph-6Ew" secondAttribute="leading" constant="16" id="r54-ba-cPd"/>
+                                            <constraint firstAttribute="height" constant="1000" id="sjo-VE-NqD"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="IUb-Ph-6Ew" firstAttribute="bottom" secondItem="jI6-hi-fsD" secondAttribute="bottom" id="3AK-t8-8ht"/>
+                                    <constraint firstItem="IUb-Ph-6Ew" firstAttribute="leading" secondItem="jI6-hi-fsD" secondAttribute="leading" id="61h-yU-AAm"/>
+                                    <constraint firstItem="IUb-Ph-6Ew" firstAttribute="width" secondItem="eOq-sh-2Dt" secondAttribute="width" id="iar-Iu-bwC"/>
+                                    <constraint firstItem="IUb-Ph-6Ew" firstAttribute="trailing" secondItem="jI6-hi-fsD" secondAttribute="trailing" id="wcc-WV-tIQ"/>
+                                    <constraint firstItem="IUb-Ph-6Ew" firstAttribute="top" secondItem="jI6-hi-fsD" secondAttribute="top" id="wyi-sR-KEg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="jI6-hi-fsD"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="eOq-sh-2Dt"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="CLb-zF-7WW" secondAttribute="bottom" id="BWS-Aa-81c"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CLb-zF-7WW" secondAttribute="trailing" id="N4c-P0-OEG"/>
+                            <constraint firstItem="CLb-zF-7WW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="SW5-mV-r3l"/>
+                            <constraint firstItem="CLb-zF-7WW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="skS-QL-zSH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9" y="80"/>
+            <point key="canvasLocation" x="8.6956521739130448" y="79.6875"/>
         </scene>
     </scenes>
     <resources>
