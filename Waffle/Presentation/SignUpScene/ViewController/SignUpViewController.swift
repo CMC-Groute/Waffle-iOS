@@ -188,9 +188,82 @@ class SignUpViewController: UIViewController {
                     }
                 }else {
                     self.emailTextField.errorBorder(bool: true)
+                    self.emailTextField.focusingBorder(color: Asset.Colors.orange.name)
                     self.emailInValidText.isHidden = true
                 }
             }).disposed(by: disposeBag)
+        
+        output?.authenCodeButtonEnabled
+            .subscribe(onNext: { bool in
+                switch bool {
+                case true:
+                    self.codeAuthenButton.setEnabled(color: Asset.Colors.orange.name)
+                case false:
+                    self.codeAuthenButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                }
+            }).disposed(by: disposeBag)
+        
+        output?.isAuthenCodeInValid
+            .subscribe(onNext: { bool in
+                self.authenInValidText.isHidden = bool
+                self.authenTextField.errorBorder(bool: bool)
+                self.codeAuthenButton.setDisabled(with: bool, color: Asset.Colors.orange.name)
+                if bool {
+                    self.authenTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                    self.emailAuthenButton.setDisabled(with: true, color: Asset.Colors.orange.name)
+                    self.codeAuthenButton.setTitle("확인 완료", for: .normal)
+                }else {
+                    self.authenTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                    self.codeAuthenButton.setTitle("확인", for: .normal)
+                }
+            }).disposed(by: disposeBag)
+        
+        output?.ispasswordInvalid
+            .subscribe(onNext: { bool in
+                if let bool = bool {
+                    self.pwInValidText.isHidden = bool
+                    self.pwTextField.errorBorder(bool: bool)
+                    if bool {
+                        self.pwTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                    }else {
+                        
+                        self.pwTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                    }
+                }else {
+                    self.pwInValidText.isHidden = true
+                    self.pwTextField.errorBorder(bool: true)
+                    self.pwTextField.focusingBorder(color: Asset.Colors.orange.name)
+                }
+               
+            }).disposed(by: disposeBag)
+        
+        output?.isRepasswordInvalid
+            .subscribe(onNext: { bool in
+                if let bool = bool {
+                    self.pwReInValidText.isHidden = bool
+                    self.pwReTextField.errorBorder(bool: bool)
+                    if bool {
+                        self.pwReTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                    }else {
+                        self.pwReTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                    }
+                }else {
+                    self.pwReInValidText.isHidden = true
+                    self.pwReTextField.errorBorder(bool: true)
+                    self.pwReTextField.focusingBorder(color: Asset.Colors.orange.name)
+                }
+               
+            }).disposed(by: disposeBag)
+                
+        output?.nextButtonEnabled
+            .subscribe(onNext: { bool in
+                if bool {
+                    self.nextButton.setEnabled(color: Asset.Colors.black.name)
+                }else {
+                    self.nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                }
+            }).disposed(by: disposeBag)
+                
     }
     
     func notFocusingTextFields(with tf: [UITextField]) {

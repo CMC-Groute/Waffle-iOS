@@ -46,8 +46,8 @@ class SignUpViewModel {
         var isEmailInvalid = PublishRelay<EmailValidType>()
         var emailInvalidMessage = PublishRelay<(String?, EmailValidColor?)>()
         var isAuthenCodeInValid = PublishRelay<Bool>()
-        var ispasswordInvalid = PublishRelay<Bool>()
-        var isRepasswordInvalid = PublishRelay<Bool>()
+        var ispasswordInvalid = PublishRelay<Bool?>()
+        var isRepasswordInvalid = PublishRelay<Bool?>()
     }
     
     private var disposable = DisposeBag()
@@ -61,9 +61,9 @@ class SignUpViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        
+        //nextButton 활성화
         Observable.combineLatest(output.isEmailInvalid, output.isAuthenCodeInValid, output.ispasswordInvalid, output.isRepasswordInvalid)
-            .map{ $0.0 == .valid && $0.1 && $0.2 && $0.3 } //유효 메세지 없다면
+            .map{ $0.0 == .checkEmail && $0.1 == true && $0.2 == true && $0.3 == true } //유효 메세지 없다면
             .bind(to: output.nextButtonEnabled)
             .disposed(by: disposeBag)
         
@@ -126,6 +126,60 @@ class SignUpViewModel {
                             output.isEmailInvalid.accept(.checkEmail)
                         }
                     }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
+        
+        
+        
+        
+        // MARK - authenTextField
+        input.authenCodeTextField
+            .subscribe(onNext: { text in
+                
+                if text.count >= 6 {
+                    output.authenCodeButtonEnabled.accept(true)
+                }else {
+                    output.authenCodeButtonEnabled.accept(false)
+                }
+            }).disposed(by: disposeBag)
+        
+        input.authenCodeButton
+            .withLatestFrom(input.authenCodeTextField)
+            .subscribe(onNext: { text in
+                if !(self.usecase.authenCode == text) { // 인증번호 같지 x
+                    output.isAuthenCodeInValid.accept(false)
+                }else {
+                    output.isAuthenCodeInValid.accept(true)
+                }
+            }).disposed(by: disposeBag)
+        
+        // MARK - passwordTextField
+        input.passwordTextField
+            .distinctUntilChanged()
+            .subscribe(onNext: { text in
+                if text.count == 0 {
+                    output.ispasswordInvalid.accept(nil)
+                }else {
+                    if !self.usecase.checkPasswordValid(password: text) {
+                        output.ispasswordInvalid.accept(false)
+                    }else {
+                        output.ispasswordInvalid.accept(true)
+                    }
+                }
+                
+            }).disposed(by: disposeBag)
+        
+        input.rePasswordTextField
+            .distinctUntilChanged()
+            .subscribe(onNext: { text in
+                if text.count == 0 {
+                    output.isRepasswordInvalid.accept(nil)
+                }else {
+                    if !self.usecase.checkPasswordValid(password: text) {
+                        output.isRepasswordInvalid.accept(false)
+                    }else {
+                        output.isRepasswordInvalid.accept(true)
+                    }
+                }
             }).disposed(by: disposeBag)
         
         return output

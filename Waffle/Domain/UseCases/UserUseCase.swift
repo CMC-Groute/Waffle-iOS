@@ -10,15 +10,16 @@ import RxSwift
 import RxCocoa
 
 class UserUseCase: UserUseCaseProtocol {
-    
+
     private var repository: UserRepository!
-    var authenCode: Int?
+    var authenCode: String = "111111"
+    
     init(repository: UserRepository) {
         self.repository = repository
     }
     
     func checkEmailValid(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
     }
@@ -46,7 +47,7 @@ class UserUseCase: UserUseCaseProtocol {
     }
     
     func sendAuthenCode() {
-        self.authenCode = 111111
+        self.authenCode = "111111"
     }
     
     

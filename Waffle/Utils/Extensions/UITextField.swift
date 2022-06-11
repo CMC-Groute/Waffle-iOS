@@ -89,6 +89,14 @@ extension UITextField {
         
     }
     
+    func maxInputTextField(maxLength: Int) {
+        guard let text = self.text else { return }
+        if text.count > maxLength {
+            let index = text.index(text.startIndex, offsetBy: maxLength)
+            self.text = String(text[..<index])
+        }
+    }
+    
     
 }
 
