@@ -41,6 +41,8 @@ class SignUpViewController: UIViewController {
         return button
     }()
     
+    var viewModel: SignUpViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()

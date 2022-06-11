@@ -22,16 +22,11 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func start() { // DI 의존성 주입 할 것
-        print("LoginCoordinator")
-        self.loginViewController.viewModel = LoginViewModel(loginUseCase: LoginUseCase(repository: UserRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.loginViewController.viewModel = LoginViewModel(userUseCase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.viewControllers = [self.loginViewController]
     }
     
     func showSignUpFlow() {
-        
-    }
-    
-    func showFindIDViewCoontroller() {
         
     }
     

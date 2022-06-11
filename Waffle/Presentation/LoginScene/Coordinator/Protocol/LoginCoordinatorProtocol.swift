@@ -9,6 +9,5 @@ import Foundation
 
 protocol LoginCoordinatorProtocol: Coordinator {
     func showSignUpFlow()
-    func showFindIDViewCoontroller()
     func showFindPWViewController()
 }

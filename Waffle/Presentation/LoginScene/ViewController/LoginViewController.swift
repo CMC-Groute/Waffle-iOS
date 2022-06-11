@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import Combine
+import RxSwift
+import RxCocoa
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var bottomConstant: NSLayoutConstraint!
@@ -23,6 +25,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var lastButtonView: UIStackView!
     
     var viewModel: LoginViewModel?
+    let disposeBag = DisposeBag()
     private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
@@ -30,6 +33,7 @@ class LoginViewController: UIViewController {
         //keyboardLayout()
         resignForKeyboardNotification()
         bindViewModel()
+        configureUI()
     }
     
     func resignForKeyboardNotification() {
@@ -72,8 +76,14 @@ class LoginViewController: UIViewController {
           )
       }
     
-    private func keyboardLayout() {
-        self.view.keyboardLayoutGuide.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 20).isActive = true
+    func configureUI() {
+        UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
+        loginButton.round(corner: 15)
+        
+        emailTextField.round(corner: 10)
+        emailTextField.padding(value: 9, direction: .left)
+        passwordTextField.round(corner: 10)
+        passwordTextField.padding(value: 9, direction: .left)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -81,21 +91,58 @@ class LoginViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        let input = LoginViewModel.Input(emailTextField: self.emailTextField.rx.text.orEmpty.asObservable(), passwordTextField: self.passwordTextField.rx.text.orEmpty.asObservable(), emailTextFieldDidTapEvent: self.emailTextField.rx.controlEvent(.editingDidBegin), passwordTextFieldDidTapEvent: self.passwordTextField.rx.controlEvent(.editingDidBegin), emailTextFieldDidEndEvent: self.emailTextField.rx.controlEvent(.editingDidEnd), passwordTextFieldDidEndEvent: self.passwordTextField.rx.controlEvent(.editingDidEnd), loginButton: self.loginButton.rx.tap.asObservable(), signInButton: self.signUpButton.rx.tap.asObservable(), findPWButton: self.findPWButton.rx.tap.asObservable())
         
-        self.findPWButton.publisher
-            .sink { [weak self] _ in
+        let output = self.viewModel?.transform(from: input, disposeBag: self.disposeBag)
+        output?.emailInvalidMessage
+            .subscribe(onNext: { [weak self] bool in
                 guard let self = self else { return }
-               
-            }.store(in: &self.cancellables)
+                self.emailInvalidText.isHidden = bool
+                self.emailTextField.errorBorder(bool: bool)
+            }).disposed(by: disposeBag)
         
-        self.signUpButton.publisher
-            .sink { [weak self] _ in
+        
+        output?.passwordInvalidMessage
+            .subscribe(onNext: { [weak self] bool in
                 guard let self = self else { return }
-               
-            }.store(in: &self.cancellables)
+                self.passwordInvalidText.isHidden = bool
+                self.passwordTextField.errorBorder(bool: bool)
+            }).disposed(by: disposeBag)
+        
+        input.emailTextFieldDidTapEvent
+            .subscribe(onNext: {
+                self.emailTextField.focusingBorder(color: Asset.Colors.orange.name)
+                self.passwordTextField.focusingBorder(color: nil)
+            })
+            .disposed(by: self.disposeBag)
+        
+        input.passwordTextFieldDidTapEvent
+            .subscribe(onNext: {
+                self.passwordTextField.focusingBorder(color: Asset.Colors.orange.name)
+                self.emailTextField.focusingBorder(color: nil)
+            })
+            .disposed(by: self.disposeBag)
+        
+        input.emailTextFieldDidEndEvent
+            .subscribe(onNext: {
+                self.emailTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+                
+        input.passwordTextFieldDidEndEvent
+            .subscribe(onNext: {
+                self.passwordTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        output?.loginButtonEnabled
+            .subscribe(onNext: { bool in
+
+                switch bool {
+                case true:
+                    self.loginButton.setEnabled(color: Asset.Colors.black.name)
+                case false:
+                    self.loginButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                }
+            }).disposed(by: disposeBag)
     }
     
-    private func configureUI(){
-        
-    }
 }
