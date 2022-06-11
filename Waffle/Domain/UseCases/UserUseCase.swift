@@ -12,7 +12,7 @@ import RxCocoa
 class UserUseCase: UserUseCaseProtocol {
     
     private var repository: UserRepository!
-    
+    var authenCode: Int?
     init(repository: UserRepository) {
         self.repository = repository
     }
@@ -40,6 +40,16 @@ class UserUseCase: UserUseCaseProtocol {
     func getTempPassword(email: String) {
         
     }
+    
+    func checkEmailValidation(email: String) -> Observable<Bool> {
+        return Observable.of(false)
+    }
+    
+    func sendAuthenCode() {
+        self.authenCode = 111111
+    }
+    
+    
     
     
 }

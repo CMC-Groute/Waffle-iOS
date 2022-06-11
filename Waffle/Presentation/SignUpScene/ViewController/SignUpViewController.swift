@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class SignUpViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -28,21 +29,27 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
     var viewModel: SignUpViewModel?
+    let disposeBag = DisposeBag()
+    var textFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textFields = [self.emailTextField, self.authenTextField, self.pwTextField, self.pwReTextField]
         configureUI()
         resignForKeyboardNotification()
+        bindViewModel()
+        
     }
     
     private func configureUI(){
-        emailTextField.round(corner: 10)
         emailAuthenButton.round(corner: 10)
-        authenTextField.round(corner: 10)
         codeAuthenButton.round(corner: 10)
-        pwTextField.round(corner: 10)
-        pwReTextField.round(corner: 10)
         nextButton.round(corner: 25)
+        textFields.forEach {
+            $0.round(corner: 10)
+            $0.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+        }
+
         
         func setProgressNavigationBar() { // TO DO selected state 
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -58,6 +65,7 @@ class SignUpViewController: UIViewController {
     }
     
     func resignForKeyboardNotification() {
+        hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -94,5 +102,100 @@ class SignUpViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    private func bindViewModel() {
+        let input = SignUpViewModel.Input(emailTextField: self.emailTextField.rx.text.orEmpty.asObservable(), authenCodeTextField: self.authenTextField.rx.text.orEmpty.asObservable(), passwordTextField: self.pwTextField.rx.text.orEmpty.asObservable(), rePasswordTextField: self.pwReTextField.rx.text.orEmpty.asObservable(), emailTextFieldDidTapEvent: self.emailTextField.rx.controlEvent(.editingDidBegin), authenCodeTextFieldDidTapEvent: self.authenTextField.rx.controlEvent(.editingDidBegin), passwordTextFieldDidTapEvent: self.pwTextField.rx.controlEvent(.editingDidBegin), rePasswordTextFieldDidTapEvent: self.pwReTextField.rx.controlEvent(.editingDidBegin), emailTextFieldDidEndEvent: self.emailTextField.rx.controlEvent(.editingDidEnd), authenCodeTextFieldEndTapEvent: self.authenTextField.rx.controlEvent(.editingDidEnd), passwordTextFieldDidEndEvent: self.pwTextField.rx.controlEvent(.editingDidEnd), rePasswordTextFieldEndTapEvent: self.pwReTextField.rx.controlEvent(.editingDidEnd), emailAuthenButton: self.emailAuthenButton.rx.tap.asObservable(), authenCodeButton: self.codeAuthenButton.rx.tap.asObservable(), nextButton: self.nextButton.rx.tap.asObservable())
+        
+        let output = self.viewModel?.transform(from: input, disposeBag: self.disposeBag)
+        
+        input.emailTextFieldDidTapEvent
+            .subscribe(onNext: {
+                self.emailTextField.focusingBorder(color: Asset.Colors.orange.name)
+                let tfs = self.textFields.filter { $0 != self.emailTextField }
+                self.notFocusingTextFields(with: tfs)
+            }).disposed(by: self.disposeBag)
+        
+        input.authenCodeTextFieldDidTapEvent
+            .subscribe(onNext: {
+                self.authenTextField.focusingBorder(color: Asset.Colors.orange.name)
+                let tfs = self.textFields.filter { $0 != self.authenTextField }
+                self.notFocusingTextFields(with: tfs)
+            }).disposed(by: self.disposeBag)
+        
+        input.passwordTextFieldDidTapEvent
+            .subscribe(onNext: {
+                self.pwTextField.focusingBorder(color: Asset.Colors.orange.name)
+                let tfs = self.textFields.filter { $0 != self.pwTextField }
+                self.notFocusingTextFields(with: tfs)
+            }).disposed(by: self.disposeBag)
+        
+        input.rePasswordTextFieldDidTapEvent
+            .subscribe(onNext: {
+                self.pwReTextField.focusingBorder(color: Asset.Colors.orange.name)
+                let tfs = self.textFields.filter { $0 != self.pwReTextField }
+                self.notFocusingTextFields(with: tfs)
+            }).disposed(by: self.disposeBag)
+        
+        input.emailTextFieldDidEndEvent
+            .subscribe(onNext: {
+                self.emailTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.authenCodeTextFieldEndTapEvent
+            .subscribe(onNext: {
+                self.authenTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.passwordTextFieldDidEndEvent
+            .subscribe(onNext: {
+                self.pwTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.rePasswordTextFieldEndTapEvent
+            .subscribe(onNext: {
+                self.pwReTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        
+        
+        // MARK - while editing
+        output?.authenEmailButtonEnabled
+            .subscribe(onNext: { bool in
+                switch bool {
+                case true:
+                    self.emailAuthenButton.setEnabled(color: Asset.Colors.orange.name)
+                case false:
+                    self.emailAuthenButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                }
+            }).disposed(by: disposeBag)
+        
+        output?.emailInvalidMessage
+            .subscribe(onNext: { type in
+                if let message = type.0, let color = type.1 {
+                    self.emailInValidText.isHidden = false
+                    self.emailInValidText.text = message
+                    self.emailInValidText.textColor = UIColor(named: color.rawValue)
+                    switch color {
+                    case .green:
+                        self.emailTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.authenTextField.becomeFirstResponder()
+                    case .red:
+                        self.emailTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.emailTextField.errorBorder(bool: false)
+                    default:
+                        self.emailTextField.errorBorder(bool: true)
+                    }
+                }else {
+                    self.emailTextField.errorBorder(bool: true)
+                    self.emailInValidText.isHidden = true
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func notFocusingTextFields(with tf: [UITextField]) {
+        tf.forEach {
+            $0.focusingBorder(color: nil)
+        }
     }
 }

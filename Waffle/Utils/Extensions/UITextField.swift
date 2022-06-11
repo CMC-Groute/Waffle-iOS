@@ -60,8 +60,10 @@ extension UITextField {
         switch direction {
         case .left:
             self.rightView = iconView
+            self.rightViewMode = .always
         case .right:
             self.leftView = iconView
+            self.leftViewMode = .always
         }
     }
     

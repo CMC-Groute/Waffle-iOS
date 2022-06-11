@@ -16,4 +16,7 @@ protocol UserUseCaseProtocol {
     func signUp(email: String, password: String, profile: Int, nickName: String)
     
     func getTempPassword(email: String)
+    
+    func checkEmailValidation(email: String) -> Observable<Bool>
+    func sendAuthenCode()
 }
