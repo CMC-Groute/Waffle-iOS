@@ -23,10 +23,10 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func setNavigationBar() {
-//        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
-//        UINavigationBar.appearance().backIndicatorImage = backImage
-//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
+        UINavigationBar.appearance().backIndicatorImage = backImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
     }
     
     func start() { // DI 의존성 주입 할 것

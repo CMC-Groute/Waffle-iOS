@@ -52,6 +52,19 @@ extension UITextField {
         }
     }
     
+    func changeIcon(value: CGFloat, direction: DirectionType, icon: String) {
+        let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 34, height: self.frame.height))
+        let imageView = UIImageView(image: UIImage(named: icon))
+        imageView.frame = CGRect(x: 0, y: 10, width: 24, height: 24)
+        iconView.addSubview(imageView)
+        switch direction {
+        case .left:
+            self.rightView = iconView
+        case .right:
+            self.leftView = iconView
+        }
+    }
+    
     func padding(value: CGFloat, direction: DirectionType, icon: String) {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: value, height: self.frame.height))
         

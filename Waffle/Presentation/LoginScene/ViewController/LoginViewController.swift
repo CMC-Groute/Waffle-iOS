@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var bottomConstant: NSLayoutConstraint!
+    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -57,8 +57,7 @@ class LoginViewController: UIViewController {
                   }
               )
         }
-        
-       
+
       }
       
       @objc func keyboardWillHide(notification: NSNotification) {

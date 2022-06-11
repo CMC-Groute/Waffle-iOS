@@ -10,8 +10,8 @@ import UIKit
 
 extension UINavigationItem {
     func makeProgressButton(_ target: Any?, level: String) -> UIBarButtonItem {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: level), for: .normal)
+        let button = UIButton()
+        button.setImage(UIImage(named: level), for: .normal)
             
         let barButtonItem = UIBarButtonItem(customView: button)
         barButtonItem.customView?.translatesAutoresizingMaskIntoConstraints = false

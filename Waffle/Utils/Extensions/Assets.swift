@@ -26,7 +26,7 @@ internal enum Asset {
     internal static let joinProcess1 = ImageAsset(name: "join_process_1")
     internal static let joinProcess2 = ImageAsset(name: "join_process_2")
     internal static let joinProcess3 = ImageAsset(name: "join_process_3")
-    internal static let joinProcessed2 = ImageAsset(name: "join_processed_2")
+    internal static let joinProcessed3 = ImageAsset(name: "join_processed_3")
     internal static let joinProgressed1 = ImageAsset(name: "join_progressed_1")
     internal static let joinProgressed2 = ImageAsset(name: "join_progressed_2")
     internal static let tabname = ImageAsset(name: "tabname")

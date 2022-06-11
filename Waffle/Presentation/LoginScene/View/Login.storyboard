@@ -165,7 +165,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="utx-C7-bId"/>
                     <connections>
-                        <outlet property="bottomConstant" destination="Cf8-2D-ua7" id="WeJ-PG-Lg2"/>
+                        <outlet property="bottonConstraint" destination="Cf8-2D-ua7" id="WeJ-PG-Lg2"/>
                         <outlet property="emailInvalidText" destination="SqD-hZ-ApE" id="GDK-rp-JbG"/>
                         <outlet property="emailTextField" destination="ptD-8W-MMd" id="Tmw-5o-CZX"/>
                         <outlet property="findPWButton" destination="H9N-rP-kxn" id="b1l-ku-oxv"/>

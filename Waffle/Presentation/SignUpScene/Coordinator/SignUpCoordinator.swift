@@ -21,24 +21,6 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
         self.navigationController = navigationController
         self.navigationController.setNavigationBarHidden(false, animated: true)
         self.signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-        setNavigationBar()
-    }
-    
-    func setNavigationBar() {
-//        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
-//        UINavigationBar.appearance().backIndicatorImage = backImage
-//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
-        let rightBarButton = UIBarButtonItem(image: UIImage(named: Asset.Assets.btn.name), style: .plain, target: self, action: nil)
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        view.backgroundColor = .red
-        let segmentBarItem = UIBarButtonItem(customView: view)
-        
-        self.navigationController.navigationBar.topItem!.setRightBarButtonItems([UIBarButtonItem(systemItem: .bookmarks)], animated: true)
-        print("right")
-        print(self.navigationController.navigationBar.topItem?.rightBarButtonItem)
-        self.navigationController.navigationBar.topItem?.backButtonTitle = "he"
-        self.navigationController.navigationBar.topItem!.rightBarButtonItem = rightBarButton
     }
             
     func start() {
