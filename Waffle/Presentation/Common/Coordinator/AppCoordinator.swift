@@ -46,6 +46,7 @@ class AppCoordinator: AppCoordinatorProtocol {
 extension AppCoordinator: CoordinatorFinishDelegate { // 잘 모르겠다.
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators.filter({ $0.type != childCoordinator.type })
+        print("childCoordinators \(childCoordinators)")
         self.navigationController.viewControllers.removeAll()
         
         switch childCoordinator.type {
@@ -53,6 +54,7 @@ extension AppCoordinator: CoordinatorFinishDelegate { // 잘 모르겠다.
             self.showLoginFlow()
         case .login:
             self.showTabBarFlow()
+        
         default:
             break
         }

@@ -11,6 +11,7 @@
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
 		7FA1D801216F3A22E519B5ED /* Pods_Waffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */; };
 		F205519D285458F80051E94D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519C285458F80051E94D /* UIButton.swift */; };
+		F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519E28546AD30051E94D /* FindPWViewModel.swift */; };
 		F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2125D09284DFC25008E1185 /* Login.storyboard */; };
 		F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D0B284DFC67008E1185 /* LoginViewController.swift */; };
 		F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */; };
@@ -83,6 +84,7 @@
 		BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaffleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDAC56E515A0DCE28384B965 /* Pods-WaffleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.release.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.release.xcconfig"; sourceTree = "<group>"; };
 		F205519C285458F80051E94D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		F205519E28546AD30051E94D /* FindPWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWViewModel.swift; sourceTree = "<group>"; };
 		F2125D09284DFC25008E1185 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F2125D0B284DFC67008E1185 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */,
+				F205519E28546AD30051E94D /* FindPWViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* UserRepositoryProtocol.swift in Sources */,
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,
+				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,

@@ -26,11 +26,9 @@ class LoginViewController: UIViewController {
     
     var viewModel: LoginViewModel?
     let disposeBag = DisposeBag()
-    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //keyboardLayout()
         resignForKeyboardNotification()
         bindViewModel()
         configureUI()
@@ -52,10 +50,6 @@ class LoginViewController: UIViewController {
           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
               let keyboardReactangle = keyboardFrame.cgRectValue
               let keyboardHeight = keyboardReactangle.height
-//              print("bottom")
-//              bottomConstant.constant = -keyboardHeight + self.view.safeAreaInsets.bottom
-//            self.view.layoutIfNeeded()
-              
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
@@ -78,12 +72,12 @@ class LoginViewController: UIViewController {
     
     func configureUI() {
         UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
-        loginButton.round(corner: 15)
+        loginButton.round(corner: 25)
         
         emailTextField.round(corner: 10)
-        emailTextField.padding(value: 9, direction: .left)
+        emailTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
         passwordTextField.round(corner: 10)
-        passwordTextField.padding(value: 9, direction: .left)
+        passwordTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

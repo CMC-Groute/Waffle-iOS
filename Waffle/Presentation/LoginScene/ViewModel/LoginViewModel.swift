@@ -48,22 +48,26 @@ class LoginViewModel {
         
         input.loginButton
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.passwordTextField))
-            .bind( onNext: { email, password in
+            .bind(onNext: { email, password in
                 if !self.usecase.checkEmailValid(email:  email) { // 이메일 유효성 x
-                    print("emailInvalidMessage true")
                     output.emailInvalidMessage.accept(false)
                 }else {
                     output.emailInvalidMessage.accept(true)
                 }
                 
                 if !self.usecase.checkPasswordValid(password: password) { //패스워드 유효성 x
-                    print("passwordInvalidMessage true")
                     output.passwordInvalidMessage.accept(false)
                 }else {
                     output.passwordInvalidMessage.accept(true)
                 }
-                self.usecase.login(email: email, password: password)
-                    
+                
+                Observable.combineLatest(output.emailInvalidMessage, output.passwordInvalidMessage)
+                    .map { $0.0 && $0.1 }
+                    .filter { $0 == true }
+                    .subscribe(onNext: { _ in
+                        self.usecase.login(email: email, password: password)
+                    }).disposed(by: disposeBag)
+
             }).disposed(by: disposeBag)
            
         

@@ -37,5 +37,9 @@ class UserUseCase: UserUseCaseProtocol {
         
     }
     
+    func getTempPassword(email: String) {
+        
+    }
+    
     
 }

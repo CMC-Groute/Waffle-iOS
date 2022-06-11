@@ -14,4 +14,6 @@ protocol UserUseCaseProtocol {
     func checkEmailValid(email: String) -> Bool
     func checkPasswordValid(password: String) -> Bool
     func signUp(email: String, password: String, profile: Int, nickName: String)
+    
+    func getTempPassword(email: String)
 }

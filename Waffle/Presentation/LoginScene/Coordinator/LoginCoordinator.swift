@@ -19,6 +19,10 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
         self.navigationController = navigationController
         self.loginViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.navigationController.setNavigationBarHidden(true, animated: true)
+        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
+        UINavigationBar.appearance().backIndicatorImage = backImage
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
     }
     
     func start() { // DI 의존성 주입 할 것
@@ -31,7 +35,32 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func showFindPWViewController() {
-        
+        let findPWViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "FindPWViewController") as! FindPWViewController
+        findPWViewController.viewModel = FindPWViewModel(usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.navigationController.setNavigationBarHidden(false, animated: true)
+        self.navigationController.pushViewController(findPWViewController, animated: true)
+    }
+    
+    func popToRootViewController(with toastMessage: String?) {
+        self.navigationController.popViewController(animated: true)
+        if let toastMessage = toastMessage {
+            self.navigationController.topViewController?.showToast(message: toastMessage)
+        }
+    }
+    
+    func finish() {
+        print("finish method")
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     
 }
+
+//extension LoginCoordinator: CoordinatorFinishDelegate {
+//    func coordinatorDidFinish(childCoordinator: Coordinator) {
+//        print(childCoordinator)
+//        self.childCoordinators = self.childCoordinators
+//            .filter({ $0.type != childCoordinator.type })
+//        print("what child \(childCoordinators)")
+//        childCoordinator.navigationController.popToRootViewController(animated: true)
+//    }
+//}
