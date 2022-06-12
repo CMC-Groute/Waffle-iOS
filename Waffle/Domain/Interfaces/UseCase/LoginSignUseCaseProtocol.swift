@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol UserUseCaseProtocol {
+protocol LoginSignUseCaseProtocol {
     func login(email: String, password: String) -> Observable<String>
     func checkEmailValid(email: String) -> Bool
     func checkPasswordValid(password: String) -> Bool

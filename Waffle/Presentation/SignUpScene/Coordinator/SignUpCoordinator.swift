@@ -24,7 +24,7 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
     }
             
     func start() {
-        self.signUpViewController.viewModel = SignUpViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        self.signUpViewController.viewModel = SignUpViewModel(coordinator: self, usecase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(signUpViewController, animated: true)
     }
     
@@ -36,7 +36,7 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
     
     func setProfileImage() {
         let setProfileImageViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SetProfileImageViewController") as! SetProfileImageViewController
-        setProfileImageViewController.viewModel = SetProfileImageViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        setProfileImageViewController.viewModel = SetProfileImageViewModel(coordinator: self, usecase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(setProfileImageViewController, animated: true)
     }
     

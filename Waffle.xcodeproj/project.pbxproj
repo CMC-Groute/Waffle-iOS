@@ -29,10 +29,10 @@
 		F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
 		F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */; };
 		F2125D2F284E2752008E1185 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2E284E2752008E1185 /* Config.swift */; };
-		F2125D35284E5270008E1185 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D34284E5270008E1185 /* UserUseCase.swift */; };
-		F2125D37284E52A8008E1185 /* LoginUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D36284E52A8008E1185 /* LoginUseCaseProtocol.swift */; };
-		F2125D3B284E5373008E1185 /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3A284E5373008E1185 /* UserRepositoryProtocol.swift */; };
-		F2125D3D284E53AB008E1185 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3C284E53AB008E1185 /* UserRepository.swift */; };
+		F2125D35284E5270008E1185 /* LoginSignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D34284E5270008E1185 /* LoginSignUseCase.swift */; };
+		F2125D37284E52A8008E1185 /* LoginSignUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */; };
+		F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */; };
+		F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */; };
 		F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */; };
 		F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D43284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift */; };
 		F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D45284E56E8008E1185 /* URLSessionNetworkService.swift */; };
@@ -73,6 +73,10 @@
 		F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */; };
 		F29ED3202855E840002371FD /* EditSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31F2855E840002371FD /* EditSettingViewController.swift */; };
 		F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3212855E84A002371FD /* ChangePWViewController.swift */; };
+		F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3232855EE0D002371FD /* UserUseCase.swift */; };
+		F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */; };
+		F29ED3282855EF97002371FD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3272855EF97002371FD /* UserRepository.swift */; };
+		F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -129,10 +133,10 @@
 		F2125D2A284E19AD008E1185 /* TapBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarPage.swift; sourceTree = "<group>"; };
 		F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		F2125D2E284E2752008E1185 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		F2125D34284E5270008E1185 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
-		F2125D36284E52A8008E1185 /* LoginUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseProtocol.swift; sourceTree = "<group>"; };
-		F2125D3A284E5373008E1185 /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
-		F2125D3C284E53AB008E1185 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		F2125D34284E5270008E1185 /* LoginSignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUseCase.swift; sourceTree = "<group>"; };
+		F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUseCaseProtocol.swift; sourceTree = "<group>"; };
+		F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignRepository.swift; sourceTree = "<group>"; };
 		F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBuilder.swift; sourceTree = "<group>"; };
 		F2125D43284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		F2125D45284E56E8008E1185 /* URLSessionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkService.swift; sourceTree = "<group>"; };
@@ -173,6 +177,10 @@
 		F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
 		F29ED31F2855E840002371FD /* EditSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingViewController.swift; sourceTree = "<group>"; };
 		F29ED3212855E84A002371FD /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
+		F29ED3232855EE0D002371FD /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseProtocol.swift; sourceTree = "<group>"; };
+		F29ED3272855EF97002371FD /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -368,7 +376,8 @@
 		F2125D38284E534F008E1185 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D36284E52A8008E1185 /* LoginUseCaseProtocol.swift */,
+				F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */,
+				F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -376,7 +385,8 @@
 		F2125D39284E5358008E1185 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D3A284E5373008E1185 /* UserRepositoryProtocol.swift */,
+				F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */,
+				F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -489,7 +499,8 @@
 		F21972C5284B8B800086E56B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D34284E5270008E1185 /* UserUseCase.swift */,
+				F2125D34284E5270008E1185 /* LoginSignUseCase.swift */,
+				F29ED3232855EE0D002371FD /* UserUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -556,7 +567,8 @@
 		F21972CE284B8C730086E56B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D3C284E53AB008E1185 /* UserRepository.swift */,
+				F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */,
+				F29ED3272855EF97002371FD /* UserRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1090,7 +1102,7 @@
 				F232433C2855095600742362 /* SetProfileImageViewModel.swift in Sources */,
 				F2125D5D284F45A4008E1185 /* Assets.swift in Sources */,
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
-				F2125D37284E52A8008E1185 /* LoginUseCaseProtocol.swift in Sources */,
+				F2125D37284E52A8008E1185 /* LoginSignUseCaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
@@ -1118,31 +1130,35 @@
 				F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */,
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
+				F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
+				F29ED3282855EF97002371FD /* UserRepository.swift in Sources */,
+				F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */,
+				F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
-				F2125D3B284E5373008E1185 /* UserRepositoryProtocol.swift in Sources */,
+				F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */,
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,
 				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
 				F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,
-				F2125D3D284E53AB008E1185 /* UserRepository.swift in Sources */,
+				F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */,
 				F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */,
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
-				F2125D35284E5270008E1185 /* UserUseCase.swift in Sources */,
+				F2125D35284E5270008E1185 /* LoginSignUseCase.swift in Sources */,
 				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
 				F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */,

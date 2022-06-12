@@ -30,7 +30,7 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func start() { // DI 의존성 주입 할 것
-        self.loginViewController.viewModel = LoginViewModel(userUseCase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.loginViewController.viewModel = LoginViewModel(userUseCase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.viewControllers = [self.loginViewController]
     }
     
@@ -43,7 +43,7 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     
     func showFindPWViewController() {
         let findPWViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "FindPWViewController") as! FindPWViewController
-        findPWViewController.viewModel = FindPWViewModel(usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        findPWViewController.viewModel = FindPWViewModel(usecase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.setNavigationBarHidden(false, animated: true)
         self.navigationController.pushViewController(findPWViewController, animated: true)
     }

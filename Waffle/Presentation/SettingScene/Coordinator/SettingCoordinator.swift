@@ -26,7 +26,7 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     }
   
     func start() {
-        
+        self.settingViewController.viewModel = SettingViewModel(coordinator: self, usecase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(settingViewController, animated: true)
     }
     

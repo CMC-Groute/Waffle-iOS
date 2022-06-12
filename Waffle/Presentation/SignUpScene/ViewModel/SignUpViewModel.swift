@@ -51,10 +51,10 @@ class SignUpViewModel {
     }
     
     private var disposable = DisposeBag()
-    private var usecase: UserUseCase
+    private var usecase: LoginSignUseCase
     private var coordinator: SignUpCoordinator!
     
-    init(coordinator: SignUpCoordinator, usecase: UserUseCase) {
+    init(coordinator: SignUpCoordinator, usecase: LoginSignUseCase) {
         self.coordinator = coordinator
         self.usecase = usecase
     }

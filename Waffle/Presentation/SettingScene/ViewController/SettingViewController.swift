@@ -18,7 +18,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var changePWButton: UIButton!
     @IBOutlet weak var quitButton: UIButton!
-    
+    var viewModel: SettingViewModel?
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
