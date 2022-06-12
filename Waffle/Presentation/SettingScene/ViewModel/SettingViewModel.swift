@@ -51,6 +51,19 @@ class SettingViewModel {
                 self.coordinator.changePassword()
             }).disposed(by: disposeBag)
         
+        input.quitButton
+            .subscribe(onNext: {
+                print("click")
+                self.coordinator.quit()
+            }).disposed(by: disposeBag)
+        
+        input.itemSelected
+            .subscribe(onNext: { line in
+                if line.row == 5 { //logout
+                    self.coordinator.logout()
+                }
+            }).disposed(by: disposeBag)
+        
         return output
     }
         

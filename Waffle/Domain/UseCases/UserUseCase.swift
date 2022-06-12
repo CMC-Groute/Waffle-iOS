@@ -45,5 +45,12 @@ class UserUseCase: UserUseCaseProtocol {
         return nickNameTest.evaluate(with: nickName)
     }
     
+    func quit() {
+        
+    }
+    
+    func logout() {
+        
+    }
     
 }

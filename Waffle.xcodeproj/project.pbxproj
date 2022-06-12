@@ -79,6 +79,8 @@
 		F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */; };
 		F29ED32C2855F1D5002371FD /* EditSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32B2855F1D5002371FD /* EditSettingViewModel.swift */; };
 		F29ED32E2855F245002371FD /* ChangePWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32D2855F245002371FD /* ChangePWViewModel.swift */; };
+		F29ED3302856088D002371FD /* LogoutPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32F2856088D002371FD /* LogoutPopUpViewController.swift */; };
+		F29ED3322856089B002371FD /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3312856089B002371FD /* QuitPopUpViewController.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -185,6 +187,8 @@
 		F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F29ED32B2855F1D5002371FD /* EditSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingViewModel.swift; sourceTree = "<group>"; };
 		F29ED32D2855F245002371FD /* ChangePWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewModel.swift; sourceTree = "<group>"; };
+		F29ED32F2856088D002371FD /* LogoutPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutPopUpViewController.swift; sourceTree = "<group>"; };
+		F29ED3312856089B002371FD /* QuitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitPopUpViewController.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 				F2125D58284F43D2008E1185 /* SettingTableViewCell.swift */,
 				F29ED31F2855E840002371FD /* EditSettingViewController.swift */,
 				F29ED3212855E84A002371FD /* ChangePWViewController.swift */,
+				F29ED32F2856088D002371FD /* LogoutPopUpViewController.swift */,
+				F29ED3312856089B002371FD /* QuitPopUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1107,6 +1113,7 @@
 			files = (
 				F232433C2855095600742362 /* SetProfileImageViewModel.swift in Sources */,
 				F2125D5D284F45A4008E1185 /* Assets.swift in Sources */,
+				F29ED3322856089B002371FD /* QuitPopUpViewController.swift in Sources */,
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
 				F2125D37284E52A8008E1185 /* LoginSignUseCaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
@@ -1147,6 +1154,7 @@
 				F29ED3282855EF97002371FD /* UserRepository.swift in Sources */,
 				F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */,
 				F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */,
+				F29ED3302856088D002371FD /* LogoutPopUpViewController.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,

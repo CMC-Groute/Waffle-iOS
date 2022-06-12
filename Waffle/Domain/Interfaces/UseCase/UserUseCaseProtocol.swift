@@ -20,4 +20,7 @@ protocol UserUseCaseProtocol {
     func setAlarm(state: Bool)
     func checkPasswordValid(password: String) -> Bool
     func checkNickNameValid(nickName: String) -> Bool
+    
+    func quit()
+    func logout()
 }

@@ -28,7 +28,7 @@ class SettingViewController: UIViewController {
         tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-        tableView.isScrollEnabled = false
+        //tableView.isScrollEnabled = false
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -101,20 +101,21 @@ class SettingViewController: UIViewController {
         editButton.round(corner: 20)
         self.view.addSubview(self.tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(profileView.snp_bottomMargin).offset(9)
+            make.top.equalTo(profileView.snp.bottom).offset(9)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(quitButton).offset(9)
+            make.bottom.equalTo(quitButton.snp.top).offset(-9)
         }
     }
     
     private func bindViewModel() {
         let alertCell = settingOptions[0].cell
-        
         let input = SettingViewModel.Input(viewWillAppearEvent: self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in } , editButton: self.editButton.rx.tap.asObservable(), chagePWButton: self.changePWButton.rx.tap.asObservable(), setAlarmState: alertCell.switchControl.rx.controlEvent(.valueChanged), itemSelected: self.tableView.rx.itemSelected.asObservable(), quitButton: self.quitButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
+        
     }
+
     
     
 }

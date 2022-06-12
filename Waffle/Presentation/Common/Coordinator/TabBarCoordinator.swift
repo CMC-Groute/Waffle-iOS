@@ -75,7 +75,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     }
     
     func startTabCoordinator(of page: TabBarPage, to navigationVewController: UINavigationController) {
-        print("startTabCoordinator \(page)")
         switch page {
         case .map:
             let mapCoordinator = MapCoordinator(navigationVewController)

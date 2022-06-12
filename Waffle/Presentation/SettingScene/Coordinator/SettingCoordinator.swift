@@ -45,11 +45,17 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     }
     
     func logout() {
-        
+        let logoutPopUpView = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "LogoutPopUpViewController") as! LogoutPopUpViewController
+        logoutPopUpView.coordinator = self
+        logoutPopUpView.usecase = UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService()))
+        self.navigationController.pushViewController(logoutPopUpView, animated: true)
     }
     
     func quit() {
-        
+        let quitPopUpView = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "QuitPopUpViewController") as! QuitPopUpViewController
+        quitPopUpView.coordinator = self
+        quitPopUpView.usecase = UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService()))
+        self.navigationController.pushViewController(quitPopUpView, animated: true)
     }
     
     func popToRootViewController(with toastMessage: String?) {
@@ -58,8 +64,4 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
             self.navigationController.topViewController?.showToast(message: toastMessage)
         }
     }
-    
-   
-    
-    
 }
