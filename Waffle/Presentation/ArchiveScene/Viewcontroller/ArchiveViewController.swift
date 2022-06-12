@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class ArchiveViewController: UIViewController {
+
+    var disposBag = DisposeBag()
+    var viewModel: ArchiveViewModel?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -18,5 +22,7 @@ class ArchiveViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    
 
 }

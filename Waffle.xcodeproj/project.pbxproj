@@ -83,6 +83,12 @@
 		F29ED3322856089B002371FD /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3312856089B002371FD /* QuitPopUpViewController.swift */; };
 		F29ED33428561D2A002371FD /* AddArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33328561D2A002371FD /* AddArchiveViewController.swift */; };
 		F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33528561DC0002371FD /* AddLocationViewController.swift */; };
+		F29ED33828562074002371FD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33728562074002371FD /* Date.swift */; };
+		F29ED33A285628F2002371FD /* AddArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED339285628F2002371FD /* AddArchiveModel.swift */; };
+		F29ED33C2856290E002371FD /* ArchiveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33B2856290E002371FD /* ArchiveUseCase.swift */; };
+		F29ED33E2856291A002371FD /* ArchiveUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */; };
+		F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */; };
+		F29ED342285629DB002371FD /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED341285629DB002371FD /* ArchiveRepository.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -193,6 +199,12 @@
 		F29ED3312856089B002371FD /* QuitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitPopUpViewController.swift; sourceTree = "<group>"; };
 		F29ED33328561D2A002371FD /* AddArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveViewController.swift; sourceTree = "<group>"; };
 		F29ED33528561DC0002371FD /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		F29ED33728562074002371FD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		F29ED339285628F2002371FD /* AddArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveModel.swift; sourceTree = "<group>"; };
+		F29ED33B2856290E002371FD /* ArchiveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUseCase.swift; sourceTree = "<group>"; };
+		F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUseCaseProtocol.swift; sourceTree = "<group>"; };
+		F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F29ED341285629DB002371FD /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -394,6 +406,7 @@
 			children = (
 				F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */,
 				F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */,
+				F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -403,6 +416,7 @@
 			children = (
 				F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */,
 				F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */,
+				F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -517,6 +531,7 @@
 			children = (
 				F2125D34284E5270008E1185 /* LoginSignUseCase.swift */,
 				F29ED3232855EE0D002371FD /* UserUseCase.swift */,
+				F29ED33B2856290E002371FD /* ArchiveUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -576,6 +591,7 @@
 				F205519C285458F80051E94D /* UIButton.swift */,
 				F20551A028549D310051E94D /* UIFont.swift */,
 				F232433D2855B64E00742362 /* UIImageView.swift */,
+				F29ED33728562074002371FD /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -585,6 +601,7 @@
 			children = (
 				F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */,
 				F29ED3272855EF97002371FD /* UserRepository.swift */,
+				F29ED341285629DB002371FD /* ArchiveRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -792,6 +809,7 @@
 			isa = PBXGroup;
 			children = (
 				F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */,
+				F29ED339285628F2002371FD /* AddArchiveModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1157,13 +1175,16 @@
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */,
+				F29ED342285629DB002371FD /* ArchiveRepository.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				F29ED3282855EF97002371FD /* UserRepository.swift in Sources */,
+				F29ED33828562074002371FD /* Date.swift in Sources */,
 				F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */,
 				F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */,
 				F29ED3302856088D002371FD /* LogoutPopUpViewController.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
+				F29ED33E2856291A002371FD /* ArchiveUseCaseProtocol.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
@@ -1176,9 +1197,11 @@
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,
 				F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */,
 				F29ED32E2855F245002371FD /* ChangePWViewModel.swift in Sources */,
+				F29ED33A285628F2002371FD /* AddArchiveModel.swift in Sources */,
 				F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */,
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
+				F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
 				F2125D35284E5270008E1185 /* LoginSignUseCase.swift in Sources */,
@@ -1187,6 +1210,7 @@
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
 				F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */,
 				F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */,
+				F29ED33C2856290E002371FD /* ArchiveUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
