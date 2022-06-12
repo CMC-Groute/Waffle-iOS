@@ -18,4 +18,6 @@ struct ProfileInfo {
 protocol UserUseCaseProtocol {
     func getProfileInfo() -> Observable<ProfileInfo>
     func setAlarm(state: Bool)
+    func checkPasswordValid(password: String) -> Bool
+    func checkNickNameValid(nickName: String) -> Bool
 }

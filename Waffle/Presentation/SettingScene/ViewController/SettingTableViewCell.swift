@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import SnapKit
 import Combine
+import RxSwift
+import RxCocoa
 
 class SettingTableViewCell: UITableViewCell {
     enum Style {

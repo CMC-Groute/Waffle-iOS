@@ -10,7 +10,6 @@ import UIKit
 
 final class SettingCoordinator: SettingCoordinatorProtocol {
 
-    
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
@@ -22,20 +21,27 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.settingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
-        self.navigationController.setNavigationBarHidden(true, animated: true)
+        
     }
   
     func start() {
-        self.settingViewController.viewModel = SettingViewModel(coordinator: self, usecase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())))
-        self.navigationController.pushViewController(settingViewController, animated: true)
+        self.settingViewController.viewModel = SettingViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        self.navigationController.setNavigationBarHidden(true, animated: true)
+        self.navigationController.viewControllers = [self.settingViewController]
     }
     
     func editProfile() {
-        
+        self.navigationController.setNavigationBarHidden(false, animated: true)
+        let editSettingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "EditSettingViewController") as! EditSettingViewController
+        editSettingViewController.viewModel = EditSettingViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        self.navigationController.pushViewController(editSettingViewController, animated: true)
     }
     
     func changePassword() {
-        
+        self.navigationController.setNavigationBarHidden(false, animated: true)
+        let changePWViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "ChangePWViewController") as! ChangePWViewController
+        changePWViewController.viewModel = ChangePWViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        self.navigationController.pushViewController(changePWViewController, animated: true)
     }
     
     func logout() {
@@ -44,6 +50,13 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     
     func quit() {
         
+    }
+    
+    func popToRootViewController(with toastMessage: String?) {
+        self.navigationController.popViewController(animated: true)
+        if let toastMessage = toastMessage {
+            self.navigationController.topViewController?.showToast(message: toastMessage)
+        }
     }
     
    

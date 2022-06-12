@@ -19,8 +19,7 @@ class SetProfileImageViewController: UIViewController {
     
     var viewModel: SetProfileImageViewModel?
     var disposeBag = DisposeBag()
-    var defaultCellClick = false
-    private var selectedIndexPath: IndexPath? = nil
+
     let imageList = ["heart.fill", "heart", "heart.fill", "heart", "heart.fill"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +86,6 @@ class SetProfileImageViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
     
     func collectionviewSetUp() {
         collectionView.delegate = self

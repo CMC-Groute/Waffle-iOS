@@ -1,20 +1,19 @@
 //
-//  SetProfileImageViewModel.swift
+//  EditProfileViewModel.swift
 //  Waffle
 //
 //  Created by 조소정 on 2022/06/12.
 //
 
 import Foundation
-import RxRelay
-import RxSwift
 import RxCocoa
+import RxSwift
 
-class SetProfileImageViewModel {
-//    var profileImage: UIImage
+class EditSettingViewModel {
+    
     struct Input {
         var nickNameTextField: Observable<String>
-        var startButton: Observable<Void>
+        var doneButton: Observable<Void>
         var nickNameTextFieldDidTapEvent: ControlEvent<Void>
         var nickNameTextFieldDidEndEvent: ControlEvent<Void>
         var selectedCell: Observable<IndexPath>
@@ -23,14 +22,13 @@ class SetProfileImageViewModel {
     struct Output {
         var nickNameInvalidMessage = PublishRelay<Bool>()
         var startButtonEnabled = BehaviorRelay<Bool>(value: false)
-        //var profileImage = BehaviorRelay<UIImage?>(value: UIImage(named: "") ?? nil)
     }
     
     private var disposable = DisposeBag()
-    private var usecase: LoginSignUseCase
-    private var coordinator: SignUpCoordinator!
+    private var usecase: UserUseCase
+    private var coordinator: SettingCoordinator!
     
-    init(coordinator: SignUpCoordinator, usecase: LoginSignUseCase) {
+    init(coordinator: SettingCoordinator, usecase: UserUseCase) {
         self.coordinator = coordinator
         self.usecase = usecase
     }
@@ -38,9 +36,9 @@ class SetProfileImageViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
-        input.startButton
+        input.doneButton
             .subscribe(onNext: {
-                self.coordinator.finish()
+                self.coordinator.popToRootViewController(with: nil)
             }).disposed(by: disposeBag)
         
         input.nickNameTextField
@@ -60,7 +58,7 @@ class SetProfileImageViewModel {
                 }
             }).disposed(by: disposeBag)
         
-        
         return output
     }
+    
 }

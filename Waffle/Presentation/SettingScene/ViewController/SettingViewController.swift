@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import Combine
+import RxSwift
+import RxCocoa
 
 class SettingViewController: UIViewController {
     
@@ -19,6 +21,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var changePWButton: UIButton!
     @IBOutlet weak var quitButton: UIButton!
     var viewModel: SettingViewModel?
+    let disposeBag = DisposeBag()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -77,6 +80,11 @@ class SettingViewController: UIViewController {
         return options
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -85,12 +93,12 @@ class SettingViewController: UIViewController {
     
     private func configureUI() {
         profileImage.makeCircleShape()
-        changePWButton.round(corner: 25)
+        changePWButton.round(corner: 20)
         changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         changePWButton.layer.borderWidth = 1
         editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         editButton.layer.borderWidth = 1
-        editButton.round(corner: 25)
+        editButton.round(corner: 20)
         self.view.addSubview(self.tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp_bottomMargin).offset(9)
@@ -100,6 +108,11 @@ class SettingViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        let alertCell = settingOptions[0].cell
+        
+        let input = SettingViewModel.Input(viewWillAppearEvent: self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in } , editButton: self.editButton.rx.tap.asObservable(), chagePWButton: self.changePWButton.rx.tap.asObservable(), setAlarmState: alertCell.switchControl.rx.controlEvent(.valueChanged), itemSelected: self.tableView.rx.itemSelected.asObservable(), quitButton: self.quitButton.rx.tap.asObservable())
+        
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
     }
     

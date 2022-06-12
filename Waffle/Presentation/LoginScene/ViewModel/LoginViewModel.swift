@@ -33,8 +33,8 @@ class LoginViewModel {
         var passwordInvalidMessage = PublishRelay<Bool>()
     }
     
-    init(userUseCase: LoginSignUseCase, coordinator: LoginCoordinator) {
-        self.usecase = userUseCase
+    init(loginSignUseCase: LoginSignUseCase, coordinator: LoginCoordinator) {
+        self.usecase = loginSignUseCase
         self.coordinator = coordinator
     }
     

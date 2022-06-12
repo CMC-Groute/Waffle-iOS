@@ -141,7 +141,7 @@
         <!--Edit Setting View Controller-->
         <scene sceneID="9yZ-6V-sMf">
             <objects>
-                <viewController storyboardIdentifier="EditSettingViewController" id="V28-w6-Lok" customClass="EditSettingViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditSettingViewController" hidesBottomBarWhenPushed="YES" id="V28-w6-Lok" customClass="EditSettingViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HJ4-2H-TGM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,10 +251,10 @@
                     <connections>
                         <outlet property="bottonConstraint" destination="AEK-Vd-NHg" id="9D0-GP-uEV"/>
                         <outlet property="collectionView" destination="6DB-8F-jA1" id="5ml-jA-1dm"/>
+                        <outlet property="doneButton" destination="QAQ-5Z-EYG" id="aCW-bX-BY6"/>
                         <outlet property="nickNameInValidText" destination="W00-Dz-gvG" id="QBn-s3-fgW"/>
                         <outlet property="nickNameTextField" destination="Sv2-Pd-tGg" id="XFe-28-26e"/>
                         <outlet property="profileImage" destination="Uxd-cW-keE" id="8Ic-sP-4yZ"/>
-                        <outlet property="startButton" destination="QAQ-5Z-EYG" id="aCW-bX-BY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVe-Mz-dfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -264,7 +264,7 @@
         <!--ChangePW View Controller-->
         <scene sceneID="sbP-E6-5Er">
             <objects>
-                <viewController storyboardIdentifier="ChangePWViewController" id="6u5-w5-LBk" customClass="ChangePWViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePWViewController" hidesBottomBarWhenPushed="YES" id="6u5-w5-LBk" customClass="ChangePWViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VOw-Qt-0Xr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

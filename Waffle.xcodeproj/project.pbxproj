@@ -77,6 +77,8 @@
 		F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */; };
 		F29ED3282855EF97002371FD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3272855EF97002371FD /* UserRepository.swift */; };
 		F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */; };
+		F29ED32C2855F1D5002371FD /* EditSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32B2855F1D5002371FD /* EditSettingViewModel.swift */; };
+		F29ED32E2855F245002371FD /* ChangePWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32D2855F245002371FD /* ChangePWViewModel.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -181,6 +183,8 @@
 		F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseProtocol.swift; sourceTree = "<group>"; };
 		F29ED3272855EF97002371FD /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F29ED32B2855F1D5002371FD /* EditSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingViewModel.swift; sourceTree = "<group>"; };
+		F29ED32D2855F245002371FD /* ChangePWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewModel.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				F29ED3072855DB8C002371FD /* SettingViewModel.swift */,
+				F29ED32B2855F1D5002371FD /* EditSettingViewModel.swift */,
+				F29ED32D2855F245002371FD /* ChangePWViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1126,6 +1132,7 @@
 				F20551A32854A74E0051E94D /* TermsViewController.swift in Sources */,
 				F2125D612850FFD3008E1185 /* UIViewController.swift in Sources */,
 				F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */,
+				F29ED32C2855F1D5002371FD /* EditSettingViewModel.swift in Sources */,
 				F29ED2E82855D75B002371FD /* HomeCoordinator.swift in Sources */,
 				F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */,
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
@@ -1153,6 +1160,7 @@
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,
 				F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */,
+				F29ED32E2855F245002371FD /* ChangePWViewModel.swift in Sources */,
 				F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */,
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,

@@ -6,13 +6,21 @@
 //
 
 import UIKit
+import Foundation
+import RxCocoa
+import RxSwift
 
 class ChangePWViewController: UIViewController {
 
+    var viewModel: ChangePWViewModel?
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindViewModel()
     }
+
 
     private func configureUI() {
         func setNavigationBar() {
@@ -22,6 +30,10 @@ class ChangePWViewController: UIViewController {
             UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
             UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
         }
+    }
+    
+    private func bindViewModel(){
+        
     }
 
 }

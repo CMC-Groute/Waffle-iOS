@@ -30,7 +30,7 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func start() { // DI 의존성 주입 할 것
-        self.loginViewController.viewModel = LoginViewModel(userUseCase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.loginViewController.viewModel = LoginViewModel(loginSignUseCase: LoginSignUseCase(repository: LoginSignRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.viewControllers = [self.loginViewController]
     }
     

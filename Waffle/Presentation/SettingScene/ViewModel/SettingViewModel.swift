@@ -11,7 +11,12 @@ import RxSwift
 
 class SettingViewModel {
     struct Input {
-        let viewWillAppearEvent: Observable<Void> // self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in }
+        let viewWillAppearEvent: Observable<Void> 
+        let editButton: Observable<Void>
+        let chagePWButton: Observable<Void>
+        let setAlarmState: ControlEvent<Void>
+        let itemSelected: Observable<IndexPath>
+        let quitButton: Observable<Void>
         
     }
     
@@ -20,16 +25,32 @@ class SettingViewModel {
     }
     
     private var disposable = DisposeBag()
-    private var usecase: LoginSignUseCase
+    private var usecase: UserUseCase
     private var coordinator: SettingCoordinator!
     
-    init(coordinator: SettingCoordinator, usecase: LoginSignUseCase) {
+    init(coordinator: SettingCoordinator, usecase: UserUseCase) {
         self.coordinator = coordinator
         self.usecase = usecase
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        input.viewWillAppearEvent
+            .subscribe(onNext: { [weak self] _ in
+                self?.usecase.getProfileInfo()
+            })
+            .disposed(by: disposeBag)
+        
+        input.editButton
+            .subscribe(onNext: {
+                self.coordinator.editProfile()
+            }).disposed(by: disposeBag)
+        
+        input.chagePWButton
+            .subscribe(onNext: {
+                self.coordinator.changePassword()
+            }).disposed(by: disposeBag)
+        
         return output
     }
         
