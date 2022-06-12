@@ -254,6 +254,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yIB-1r-g8g"/>
+                    <connections>
+                        <outlet property="addArchiveButton" destination="gTA-UJ-V3g" id="Yic-OC-CpW"/>
+                        <outlet property="archiveDateTextField" destination="Mpg-K8-tGB" id="zM6-aR-dXq"/>
+                        <outlet property="archiveLocationLaterButton" destination="bcV-SH-XY2" id="edC-se-D3d"/>
+                        <outlet property="archiveLocationTextField" destination="w2R-HZ-kgK" id="mJp-jY-sRV"/>
+                        <outlet property="archiveMemoTextView" destination="6BD-co-o3d" id="zps-wC-ArN"/>
+                        <outlet property="archiveNameTextField" destination="1ZF-3G-70P" id="QBM-56-lL8"/>
+                        <outlet property="archiveTimeDateLaterButton" destination="rIL-p4-z6O" id="JEI-EN-Zqc"/>
+                        <outlet property="archiveTimeTextField" destination="Nob-Hw-FzW" id="Hdn-uA-L8f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZ8-s6-oS5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

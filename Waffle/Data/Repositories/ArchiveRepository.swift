@@ -11,7 +11,6 @@ import RxCocoa
 
 class ArchiveRepository: ArchiveRepositoryProtocol {
     let urlSessionNetworkService: URLSessionNetworkServiceProtocol
-    private var cancellables = Set<AnyCancellable>()
     var disposBag = DisposeBag()
     
     init(networkService: URLSessionNetworkServiceProtocol) {

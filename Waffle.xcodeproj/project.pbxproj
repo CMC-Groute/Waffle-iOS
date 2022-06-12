@@ -89,6 +89,7 @@
 		F29ED33E2856291A002371FD /* ArchiveUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */; };
 		F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */; };
 		F29ED342285629DB002371FD /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED341285629DB002371FD /* ArchiveRepository.swift */; };
+		F29ED34428562D7E002371FD /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED34328562D7E002371FD /* UITextView.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -205,6 +206,7 @@
 		F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUseCaseProtocol.swift; sourceTree = "<group>"; };
 		F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F29ED341285629DB002371FD /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
+		F29ED34328562D7E002371FD /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -565,7 +567,6 @@
 		F21972C9284B8BC60086E56B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F21972D3284B90490086E56B /* Fonts */,
 				F2A412E02849EFD900E04BF5 /* Assets.xcassets */,
 				F21972CA284B8BF80086E56B /* Colors.xcassets */,
 			);
@@ -592,6 +593,7 @@
 				F20551A028549D310051E94D /* UIFont.swift */,
 				F232433D2855B64E00742362 /* UIImageView.swift */,
 				F29ED33728562074002371FD /* Date.swift */,
+				F29ED34328562D7E002371FD /* UITextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -644,13 +646,6 @@
 			children = (
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		F21972D3284B90490086E56B /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		F2764BE2285249EB0022D41E /* Protocol */ = {
@@ -1149,6 +1144,7 @@
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
 				F2125D2F284E2752008E1185 /* Config.swift in Sources */,
 				F29ED3002855DB5B002371FD /* HomeViewController.swift in Sources */,
+				F29ED34428562D7E002371FD /* UITextView.swift in Sources */,
 				F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
