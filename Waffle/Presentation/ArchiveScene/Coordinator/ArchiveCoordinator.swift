@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
+    
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
@@ -24,7 +25,17 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
     }
     
     func start() {
-        self.navigationController.pushViewController(archiveViewController, animated: true)
+        self.navigationController.viewControllers = [archiveViewController]
+    }
+    
+    func addArchive() {
+        let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "addArchiveViewController") as! AddArchiveViewController
+        self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
+    }
+    
+    func addLocation() {
+        let addLocationViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as! AddLocationViewController
+        self.navigationController.pushViewController(addLocationViewController, animated: true)
     }
     
     

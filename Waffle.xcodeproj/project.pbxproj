@@ -81,6 +81,8 @@
 		F29ED32E2855F245002371FD /* ChangePWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32D2855F245002371FD /* ChangePWViewModel.swift */; };
 		F29ED3302856088D002371FD /* LogoutPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED32F2856088D002371FD /* LogoutPopUpViewController.swift */; };
 		F29ED3322856089B002371FD /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3312856089B002371FD /* QuitPopUpViewController.swift */; };
+		F29ED33428561D2A002371FD /* AddArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33328561D2A002371FD /* AddArchiveViewController.swift */; };
+		F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33528561DC0002371FD /* AddLocationViewController.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -189,6 +191,8 @@
 		F29ED32D2855F245002371FD /* ChangePWViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewModel.swift; sourceTree = "<group>"; };
 		F29ED32F2856088D002371FD /* LogoutPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutPopUpViewController.swift; sourceTree = "<group>"; };
 		F29ED3312856089B002371FD /* QuitPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitPopUpViewController.swift; sourceTree = "<group>"; };
+		F29ED33328561D2A002371FD /* AddArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveViewController.swift; sourceTree = "<group>"; };
+		F29ED33528561DC0002371FD /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -770,6 +774,8 @@
 			isa = PBXGroup;
 			children = (
 				F29ED3172855DBF1002371FD /* ArchiveViewController.swift */,
+				F29ED33328561D2A002371FD /* AddArchiveViewController.swift */,
+				F29ED33528561DC0002371FD /* AddLocationViewController.swift */,
 			);
 			path = Viewcontroller;
 			sourceTree = "<group>";
@@ -1128,6 +1134,7 @@
 				F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
+				F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
 				F2125D1E284E10B8008E1185 /* LoginCoordinator.swift in Sources */,
@@ -1176,6 +1183,7 @@
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
 				F2125D35284E5270008E1185 /* LoginSignUseCase.swift in Sources */,
 				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
+				F29ED33428561D2A002371FD /* AddArchiveViewController.swift in Sources */,
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
 				F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */,
 				F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */,

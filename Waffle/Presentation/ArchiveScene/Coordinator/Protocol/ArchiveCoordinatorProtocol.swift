@@ -8,5 +8,6 @@
 import Foundation
 
 protocol ArchiveCoordinatorProtocol: Coordinator {
-    
+    func addArchive()
+    func addLocation()
 }
