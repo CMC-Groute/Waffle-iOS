@@ -13,6 +13,7 @@ protocol UserUseCaseProtocol {
     func login(email: String, password: String) -> Observable<String>
     func checkEmailValid(email: String) -> Bool
     func checkPasswordValid(password: String) -> Bool
+    func checkNickNameValid(nickName: String) -> Bool
 
     func signUp(email: String, password: String, profile: Int, nickName: String)
     

@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -448,30 +449,119 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hw6-jw-UVz">
-                                <rect key="frame" x="16" y="785" width="382" height="52"/>
-                                <color key="backgroundColor" name="Gray4"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fh8-IY-dDa">
+                                <rect key="frame" x="157" y="110" width="100" height="100"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="6CP-s4-CBQ"/>
+                                    <constraint firstAttribute="width" constant="100" id="FKE-Ep-8Nn"/>
+                                    <constraint firstAttribute="height" constant="100" id="i6O-zY-Tyd"/>
                                 </constraints>
-                                <color key="tintColor" name="White"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="시작하기">
-                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                </buttonConfiguration>
-                            </button>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-ba-i4I">
+                                <rect key="frame" x="30" y="225" width="354" height="55"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="7eI-lk-d0i"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yEI-Xy-ccQ">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zi5-5p-3ti">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Q15-gB-Abg">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlP-wK-Lsa">
+                                <rect key="frame" x="25" y="316" width="373" height="17"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
+                                <color key="textColor" name="Gray5"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임 형식이 올바르지 않아요.  *특수문자 제외 6자 이하" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dub-kG-AOf">
+                                <rect key="frame" x="25" y="391" width="373" height="14.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
+                                <color key="textColor" name="red"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="특수문자 제외 6자 이하" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RLF-R3-XGM">
+                                <rect key="frame" x="25" y="339" width="373" height="44"/>
+                                <color key="backgroundColor" name="Gray2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zxQ-Hz-0qa"/>
+                                </constraints>
+                                <color key="textColor" name="Black"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ON-dv-DNK" userLabel="ButtonView">
+                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsb-Tk-hLn">
+                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <color key="backgroundColor" name="Gray4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="ZXq-kh-MlG"/>
+                                        </constraints>
+                                        <color key="tintColor" name="White"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="시작하기">
+                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="1wW-VP-Kac"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gsb-Tk-hLn" secondAttribute="trailing" constant="16" id="DvM-M7-pdv"/>
+                                    <constraint firstItem="Gsb-Tk-hLn" firstAttribute="leading" secondItem="8ON-dv-DNK" secondAttribute="leading" constant="16" id="HeC-yq-EDC"/>
+                                    <constraint firstItem="Gsb-Tk-hLn" firstAttribute="top" secondItem="8ON-dv-DNK" secondAttribute="top" constant="10" id="LPX-GZ-4TV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gsb-Tk-hLn" secondAttribute="bottom" constant="10" id="eTr-f2-ziI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bcW-nj-zpS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bcW-nj-zpS" firstAttribute="bottom" secondItem="Hw6-jw-UVz" secondAttribute="bottom" constant="25" id="01q-gZ-6rl"/>
+                            <constraint firstItem="Yzj-ba-i4I" firstAttribute="top" secondItem="fh8-IY-dDa" secondAttribute="bottom" constant="15" id="0lb-ZG-VdL"/>
+                            <constraint firstAttribute="trailing" secondItem="Dub-kG-AOf" secondAttribute="trailing" constant="16" id="3F7-k0-RFw"/>
                             <constraint firstItem="bcW-nj-zpS" firstAttribute="trailing" secondItem="szU-W8-UAU" secondAttribute="trailing" constant="24" id="8so-bZ-v1b"/>
-                            <constraint firstItem="bcW-nj-zpS" firstAttribute="trailing" secondItem="Hw6-jw-UVz" secondAttribute="trailing" constant="16" id="K8P-uW-Mj2"/>
+                            <constraint firstItem="Yzj-ba-i4I" firstAttribute="leading" secondItem="bcW-nj-zpS" secondAttribute="leading" constant="30" id="9ca-Uu-gJe"/>
+                            <constraint firstItem="RLF-R3-XGM" firstAttribute="top" secondItem="mlP-wK-Lsa" secondAttribute="bottom" constant="6" id="BzT-M6-upR"/>
+                            <constraint firstItem="mlP-wK-Lsa" firstAttribute="top" secondItem="Yzj-ba-i4I" secondAttribute="bottom" constant="36" id="Fjh-KR-03b"/>
+                            <constraint firstItem="Dub-kG-AOf" firstAttribute="leading" secondItem="bcW-nj-zpS" secondAttribute="leading" constant="25" id="KZ5-WE-JUG"/>
+                            <constraint firstItem="fh8-IY-dDa" firstAttribute="centerX" secondItem="0hv-BP-vMf" secondAttribute="centerX" id="NFR-kj-Z6v"/>
                             <constraint firstItem="szU-W8-UAU" firstAttribute="leading" secondItem="0hv-BP-vMf" secondAttribute="leading" constant="16" id="QeQ-2I-T4O"/>
-                            <constraint firstItem="Hw6-jw-UVz" firstAttribute="leading" secondItem="bcW-nj-zpS" secondAttribute="leading" constant="16" id="Vh7-3G-twK"/>
+                            <constraint firstItem="8ON-dv-DNK" firstAttribute="leading" secondItem="bcW-nj-zpS" secondAttribute="leading" id="Vk8-2F-rxa"/>
                             <constraint firstItem="szU-W8-UAU" firstAttribute="top" secondItem="bcW-nj-zpS" secondAttribute="top" constant="10" id="c2H-N4-CfZ"/>
+                            <constraint firstAttribute="trailing" secondItem="RLF-R3-XGM" secondAttribute="trailing" constant="16" id="dSV-82-5Lh"/>
+                            <constraint firstItem="RLF-R3-XGM" firstAttribute="leading" secondItem="bcW-nj-zpS" secondAttribute="leading" constant="25" id="dUI-ID-iQI"/>
+                            <constraint firstItem="bcW-nj-zpS" firstAttribute="trailing" secondItem="Yzj-ba-i4I" secondAttribute="trailing" constant="30" id="gzW-KA-QNn"/>
+                            <constraint firstItem="Dub-kG-AOf" firstAttribute="top" secondItem="RLF-R3-XGM" secondAttribute="bottom" constant="8" id="hKc-cZ-i2a"/>
+                            <constraint firstItem="mlP-wK-Lsa" firstAttribute="leading" secondItem="bcW-nj-zpS" secondAttribute="leading" constant="25" id="jGA-PH-tbO"/>
+                            <constraint firstItem="8ON-dv-DNK" firstAttribute="bottom" secondItem="bcW-nj-zpS" secondAttribute="bottom" id="mN6-O0-f1l"/>
+                            <constraint firstItem="8ON-dv-DNK" firstAttribute="trailing" secondItem="bcW-nj-zpS" secondAttribute="trailing" id="swK-uR-eZj"/>
+                            <constraint firstAttribute="trailing" secondItem="mlP-wK-Lsa" secondAttribute="trailing" constant="16" id="xwa-fs-pzc"/>
+                            <constraint firstItem="fh8-IY-dDa" firstAttribute="top" secondItem="szU-W8-UAU" secondAttribute="bottom" constant="27" id="zoP-rJ-2Lp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottonConstraint" destination="mN6-O0-f1l" id="hYz-KT-Zxs"/>
+                        <outlet property="collectionView" destination="Yzj-ba-i4I" id="FkD-Uz-Ywn"/>
+                        <outlet property="nickNameInValidText" destination="Dub-kG-AOf" id="9fj-7j-l5U"/>
+                        <outlet property="nickNameTextField" destination="RLF-R3-XGM" id="8Mb-Lf-KKe"/>
+                        <outlet property="profileImage" destination="fh8-IY-dDa" id="mLE-4v-p2C"/>
+                        <outlet property="startButton" destination="Gsb-Tk-hLn" id="cak-pd-U4M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ynd-HS-0JE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -480,6 +570,9 @@
     </scenes>
     <resources>
         <image name="unCheck" width="30" height="30"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

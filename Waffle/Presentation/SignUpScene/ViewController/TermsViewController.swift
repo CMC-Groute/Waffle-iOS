@@ -20,8 +20,10 @@ class TermsViewController: UIViewController {
     @IBOutlet weak var privacyCollectAgreeButton: UIButton!
     @IBOutlet weak var useForMaketingAgreeButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    var coordinator: SignUpCoordinator!
     
     let disposeBag = DisposeBag()
+    
     var buttons: [UIButton] = []
     struct Terms: Identifiable {
         var id = UUID()
@@ -37,6 +39,13 @@ class TermsViewController: UIViewController {
                 Terms(title: "마케팅 활용 동의(선택)", isMandatory: .none)
             ]
         ]
+    
+    convenience init(coordinator: SignUpCoordinator){
+        self.init()
+        self.coordinator = coordinator
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +107,11 @@ class TermsViewController: UIViewController {
                 self.check()
             }).disposed(by: disposeBag)
 
+        nextButton.rx.tap
+            .subscribe(onNext: {  _ in
+                self.coordinator.setProfileImage()
+            }).disposed(by: disposeBag)
+            
  
         
     }

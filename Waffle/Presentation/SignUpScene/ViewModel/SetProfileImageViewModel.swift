@@ -8,13 +8,19 @@
 import Foundation
 import RxRelay
 import RxSwift
+import RxCocoa
 
 class SetProfileImageViewModel {
     struct Input {
-        
+        var nickNameTextField: Observable<String>
+        var startButton: Observable<Void>
+        var nickNameTextFieldDidTapEvent: ControlEvent<Void>
+        var nickNameTextFieldDidEndEvent: ControlEvent<Void>
     }
     
     struct Output {
+        var nickNameInvalidMessage = PublishRelay<Bool>()
+        var startButtonEnabled = BehaviorRelay<Bool>(value: false)
         var profileImage = BehaviorRelay<UIImage?>(value: UIImage(named: "") ?? nil)
     }
     
@@ -23,12 +29,35 @@ class SetProfileImageViewModel {
     private var coordinator: SignUpCoordinator!
     
     init(coordinator: SignUpCoordinator, usecase: UserUseCase) {
+        print("SetProfileImageViewModel load")
         self.coordinator = coordinator
         self.usecase = usecase
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        
+        input.startButton
+            .subscribe(onNext: {
+                self.coordinator.finish()
+            }).disposed(by: disposeBag)
+        
+        input.nickNameTextField
+            .distinctUntilChanged()
+            .skip(1)
+            .subscribe(onNext: { text in
+                print("nickNameTextField")
+                if text.count == 0 {  output.startButtonEnabled.accept(false) }
+                else {
+                    if !self.usecase.checkNickNameValid(nickName: text) {
+                        output.nickNameInvalidMessage.accept(false)
+                        output.startButtonEnabled.accept(false)
+                    }else {
+                        output.nickNameInvalidMessage.accept(true)
+                        output.startButtonEnabled.accept(true)
+                    }
+                }
+            }).disposed(by: disposeBag)
         return output
     }
 }

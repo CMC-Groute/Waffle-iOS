@@ -134,7 +134,6 @@ class SignUpViewModel {
         // MARK - authenTextField
         input.authenCodeTextField
             .subscribe(onNext: { text in
-                
                 if text.count >= 6 {
                     output.authenCodeButtonEnabled.accept(true)
                 }else {

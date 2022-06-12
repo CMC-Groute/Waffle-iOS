@@ -30,11 +30,13 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
     
     func termsStep() {
         let termsViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        termsViewController.coordinator = self
         self.navigationController.pushViewController(termsViewController, animated: true)
     }
     
     func setProfileImage() {
         let setProfileImageViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SetProfileImageViewController") as! SetProfileImageViewController
+        setProfileImageViewController.viewModel = SetProfileImageViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(setProfileImageViewController, animated: true)
     }
     

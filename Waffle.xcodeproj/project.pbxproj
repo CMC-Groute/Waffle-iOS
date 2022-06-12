@@ -48,6 +48,8 @@
 		F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */; };
 		F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F21972CA284B8BF80086E56B /* Colors.xcassets */; };
 		F232433C2855095600742362 /* SetProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F232433B2855095600742362 /* SetProfileImageViewModel.swift */; };
+		F232433E2855B64E00742362 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F232433D2855B64E00742362 /* UIImageView.swift */; };
+		F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */; };
 		F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE328524A000022D41E /* SignUpCoordinator.swift */; };
 		F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -125,6 +127,8 @@
 		F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F21972CA284B8BF80086E56B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		F232433B2855095600742362 /* SetProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileImageViewModel.swift; sourceTree = "<group>"; };
+		F232433D2855B64E00742362 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F2764BE328524A000022D41E /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +362,7 @@
 				F2125D4D284E60E5008E1185 /* SignUpViewController.swift */,
 				F20551A22854A74E0051E94D /* TermsViewController.swift */,
 				F20551A42854A75A0051E94D /* SetProfileImageViewController.swift */,
+				F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				F2D1C54D2852371100D88347 /* UITextField.swift */,
 				F205519C285458F80051E94D /* UIButton.swift */,
 				F20551A028549D310051E94D /* UIFont.swift */,
+				F232433D2855B64E00742362 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -886,6 +892,7 @@
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
 				F2125D1E284E10B8008E1185 /* LoginCoordinator.swift in Sources */,
+				F232433E2855B64E00742362 /* UIImageView.swift in Sources */,
 				F2D1C54E2852371100D88347 /* UITextField.swift in Sources */,
 				F20551A32854A74E0051E94D /* TermsViewController.swift in Sources */,
 				F2125D612850FFD3008E1185 /* UIViewController.swift in Sources */,
@@ -896,6 +903,7 @@
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
+				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* UserRepositoryProtocol.swift in Sources */,
