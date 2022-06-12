@@ -22,6 +22,7 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal enum Assets {
+    internal static let _24pxBtn = ImageAsset(name: "24px_btn")
     internal static let accentColor = ColorAsset(name: "AccentColor")
     internal static let check = ImageAsset(name: "check")
     internal static let joinProcess1 = ImageAsset(name: "join_process_1")
@@ -31,7 +32,16 @@ internal enum Asset {
     internal static let joinProgressed1 = ImageAsset(name: "join_progressed_1")
     internal static let joinProgressed2 = ImageAsset(name: "join_progressed_2")
     internal static let unCheck = ImageAsset(name: "unCheck")
-    internal static let tabname = ImageAsset(name: "tabname")
+    internal static let archiveSelected = ImageAsset(name: "archive-selected")
+    internal static let archive = ImageAsset(name: "archive")
+    internal static let homeSelected = ImageAsset(name: "home-selected")
+    internal static let home = ImageAsset(name: "home")
+    internal static let mapSelected = ImageAsset(name: "map-selected")
+    internal static let map = ImageAsset(name: "map")
+    internal static let settingSelected = ImageAsset(name: "setting-selected")
+    internal static let setting = ImageAsset(name: "setting")
+    internal static let mypage = ImageAsset(name: "mypage")
+    internal static let wapple = ImageAsset(name: "wapple")
     internal static let bar = ImageAsset(name: "bar")
     internal static let btn = ImageAsset(name: "btn")
     internal static let checkCircle = ImageAsset(name: "check_circle")

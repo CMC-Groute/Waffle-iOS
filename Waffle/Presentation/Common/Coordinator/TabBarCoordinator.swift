@@ -58,16 +58,20 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
 //        let settingTabItem = UITabBarItem(title: "setting", image: nil, selectedImage: nil)
 //        let archiveTabItem = UITabBarItem(title: "archive", image: nil, selectedImage: nil)
         return UITabBarItem(
-            title: "here",
-            image: UIImage(named: page.tabIconName()),
-            tag: page.pageOrderNumber()
-        )
+            title: nil,
+            image: UIImage(named: page.tabIconName()), selectedImage: UIImage(named: "\(page.tabIconName())-selected"))
+        
     }
     
     private func configureTabBarController(with tabViewControllers: [UIViewController]) {
         self.tabBarController.setViewControllers(tabViewControllers, animated: true)
         self.tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
         self.navigationController.pushViewController(tabBarController, animated: true)
+        
+        self.tabBarController.view.backgroundColor = .none
+        self.tabBarController.tabBar.backgroundColor = .none
+        self.tabBarController.tabBar.tintColor = .black
+        
     }
     
     func startTabCoordinator(of page: TabBarPage, to navigationVewController: UINavigationController) {

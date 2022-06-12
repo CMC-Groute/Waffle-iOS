@@ -84,11 +84,18 @@ class SettingViewController: UIViewController {
     }
     
     private func configureUI() {
+        profileImage.makeCircleShape()
+        changePWButton.round(corner: 25)
+        changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
+        changePWButton.layer.borderWidth = 1
+        editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
+        editButton.layer.borderWidth = 1
+        editButton.round(corner: 25)
         self.view.addSubview(self.tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(profileView).offset(16)
+            make.top.equalTo(profileView.snp_bottomMargin).offset(9)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(quitButton).offset(16)
+            make.bottom.equalTo(quitButton).offset(9)
         }
     }
     
@@ -107,6 +114,10 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let handler = settingOptions[indexPath.row].handler else { return }
         handler()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(48)
     }
 }
 

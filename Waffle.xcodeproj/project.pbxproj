@@ -71,6 +71,8 @@
 		F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3172855DBF1002371FD /* ArchiveViewController.swift */; };
 		F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED31A2855DBFA002371FD /* Archive.storyboard */; };
 		F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */; };
+		F29ED3202855E840002371FD /* EditSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31F2855E840002371FD /* EditSettingViewController.swift */; };
+		F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3212855E84A002371FD /* ChangePWViewController.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -169,6 +171,8 @@
 		F29ED3172855DBF1002371FD /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
 		F29ED31A2855DBFA002371FD /* Archive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Archive.storyboard; sourceTree = "<group>"; };
 		F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
+		F29ED31F2855E840002371FD /* EditSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingViewController.swift; sourceTree = "<group>"; };
+		F29ED3212855E84A002371FD /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 			children = (
 				F2125D56284F40E2008E1185 /* SettingViewController.swift */,
 				F2125D58284F43D2008E1185 /* SettingTableViewCell.swift */,
+				F29ED31F2855E840002371FD /* EditSettingViewController.swift */,
+				F29ED3212855E84A002371FD /* ChangePWViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1104,6 +1110,7 @@
 				F232433E2855B64E00742362 /* UIImageView.swift in Sources */,
 				F2D1C54E2852371100D88347 /* UITextField.swift in Sources */,
 				F29ED2EB2855D76B002371FD /* MapCoordinator.swift in Sources */,
+				F29ED3202855E840002371FD /* EditSettingViewController.swift in Sources */,
 				F20551A32854A74E0051E94D /* TermsViewController.swift in Sources */,
 				F2125D612850FFD3008E1185 /* UIViewController.swift in Sources */,
 				F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */,
@@ -1115,6 +1122,7 @@
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
+				F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,

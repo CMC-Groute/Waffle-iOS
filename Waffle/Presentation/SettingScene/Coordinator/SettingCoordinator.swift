@@ -22,9 +22,11 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.settingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
+        self.navigationController.setNavigationBarHidden(true, animated: true)
     }
   
     func start() {
+        
         self.navigationController.pushViewController(settingViewController, animated: true)
     }
     
