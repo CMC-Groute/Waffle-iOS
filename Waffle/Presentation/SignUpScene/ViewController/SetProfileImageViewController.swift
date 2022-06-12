@@ -21,7 +21,7 @@ class SetProfileImageViewController: UIViewController {
     var disposeBag = DisposeBag()
     var defaultCellClick = false
     private var selectedIndexPath: IndexPath? = nil
-    
+    let imageList = ["heart.fill", "heart", "heart.fill", "heart", "heart.fill"]
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -97,7 +97,7 @@ class SetProfileImageViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = SetProfileImageViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), startButton: self.startButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd))
+        let input = SetProfileImageViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), startButton: self.startButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd), selectedCell: self.collectionView.rx.itemSelected.asObservable())
         
         
         
@@ -110,8 +110,13 @@ class SetProfileImageViewController: UIViewController {
             .subscribe(onNext: {
                 self.nickNameTextField.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
-        
+      
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        
+        input.selectedCell
+            .subscribe(onNext: { indexpath in
+                print("selectedCell \(indexpath)")
+            }).disposed(by: disposeBag)
         
         output?.nickNameInvalidMessage
             .subscribe(onNext: { bool in
@@ -145,10 +150,10 @@ extension SetProfileImageViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.identifier, for: indexPath) as! ProfileImageCollectionViewCell
         cell.makeCircleShape()
+        cell.imageview.image = UIImage(systemName: imageList[indexPath.row])
         if indexPath.row == 0 {
             cell.selected(isSelected: true)
-            cell.selectedIndex = indexPath
-            print("default \(cell.selectedIndex)")
+            self.profileImage.image = UIImage(systemName: imageList[indexPath.row])
         }
         
         return cell
@@ -168,6 +173,7 @@ extension SetProfileImageViewController: UICollectionViewDataSource, UICollectio
 
         //새로 선택 셀 선택
         cell.selected(isSelected: true)
+        self.profileImage.image = UIImage(systemName: imageList[indexPath.row])
     }
 }
 

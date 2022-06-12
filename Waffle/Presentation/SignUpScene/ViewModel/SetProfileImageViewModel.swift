@@ -11,17 +11,19 @@ import RxSwift
 import RxCocoa
 
 class SetProfileImageViewModel {
+//    var profileImage: UIImage
     struct Input {
         var nickNameTextField: Observable<String>
         var startButton: Observable<Void>
         var nickNameTextFieldDidTapEvent: ControlEvent<Void>
         var nickNameTextFieldDidEndEvent: ControlEvent<Void>
+        var selectedCell: Observable<IndexPath>
     }
     
     struct Output {
         var nickNameInvalidMessage = PublishRelay<Bool>()
         var startButtonEnabled = BehaviorRelay<Bool>(value: false)
-        var profileImage = BehaviorRelay<UIImage?>(value: UIImage(named: "") ?? nil)
+        //var profileImage = BehaviorRelay<UIImage?>(value: UIImage(named: "") ?? nil)
     }
     
     private var disposable = DisposeBag()
@@ -58,6 +60,8 @@ class SetProfileImageViewModel {
                     }
                 }
             }).disposed(by: disposeBag)
+        
+        
         return output
     }
 }

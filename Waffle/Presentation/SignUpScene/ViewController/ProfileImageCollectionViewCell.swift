@@ -11,7 +11,7 @@ import SnapKit
 class ProfileImageCollectionViewCell: UICollectionViewCell {
     static let identifier = "ProfileImageCollectionViewCell"
 
-    private lazy var imageview: UIImageView = {
+    lazy var imageview: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .red
         //image.image = UIImage(named: Asset.Assets.joinProcessed3.name)
