@@ -43,7 +43,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     
 }
 
-extension AppCoordinator: CoordinatorFinishDelegate { // 잘 모르겠다.
+extension AppCoordinator: CoordinatorFinishDelegate { // 로그인 coordinator 끝나고 다른 coordinator로 이동
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators.filter({ $0.type != childCoordinator.type })
         print("childCoordinators \(childCoordinators)")
@@ -53,6 +53,7 @@ extension AppCoordinator: CoordinatorFinishDelegate { // 잘 모르겠다.
         case .tab:
             self.showLoginFlow()
         case .login:
+            print("showTabBarFlow")
             self.showTabBarFlow()
         
         default:

@@ -66,6 +66,7 @@ class LoginViewModel {
                     .filter { $0 == true }
                     .subscribe(onNext: { _ in
                         self.usecase.login(email: email, password: password)
+                        self.coordinator.finish()
                     }).disposed(by: disposeBag)
 
             }).disposed(by: disposeBag)

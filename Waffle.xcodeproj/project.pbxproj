@@ -52,6 +52,14 @@
 		F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */; };
 		F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE328524A000022D41E /* SignUpCoordinator.swift */; };
 		F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */; };
+		F29ED2E82855D75B002371FD /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2E72855D75B002371FD /* HomeCoordinator.swift */; };
+		F29ED2EB2855D76B002371FD /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2EA2855D76B002371FD /* MapCoordinator.swift */; };
+		F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2EE2855D79F002371FD /* MapCoordinatorProtocol.swift */; };
+		F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2F02855D7F3002371FD /* SettingCoordinator.swift */; };
+		F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2F32855D800002371FD /* SettingCoordinatorProtocol.swift */; };
+		F29ED2F62855D863002371FD /* HomeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2F52855D863002371FD /* HomeCoordinatorProtocol.swift */; };
+		F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2F92855D945002371FD /* ArchiveCoordinator.swift */; };
+		F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2FC2855D954002371FD /* ArchiveCoordinatorProtocol.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -131,6 +139,14 @@
 		F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F2764BE328524A000022D41E /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F29ED2E72855D75B002371FD /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		F29ED2EA2855D76B002371FD /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		F29ED2EE2855D79F002371FD /* MapCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F29ED2F02855D7F3002371FD /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		F29ED2F32855D800002371FD /* SettingCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F29ED2F52855D863002371FD /* HomeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F29ED2F92855D945002371FD /* ArchiveCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCoordinator.swift; sourceTree = "<group>"; };
+		F29ED2FC2855D954002371FD /* ArchiveCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +294,7 @@
 		F2125D24284E160A008E1185 /* MapScene */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED2E62855D749002371FD /* Coordinator */,
 			);
 			path = MapScene;
 			sourceTree = "<group>";
@@ -310,6 +327,8 @@
 		F2125D32284E449A008E1185 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED2F22855D7F7002371FD /* Protocol */,
+				F29ED2F02855D7F3002371FD /* SettingCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -396,6 +415,7 @@
 		F21972BF284B8AC50086E56B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED2F72855D8DC002371FD /* ArchiveScene */,
 				F2125D24284E160A008E1185 /* MapScene */,
 				F21972D1284B8CCF0086E56B /* SettingScene */,
 				F21972D0284B8C980086E56B /* HomeScene */,
@@ -523,6 +543,7 @@
 		F21972D0284B8C980086E56B /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED2E92855D75F002371FD /* Coordinator */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -555,6 +576,73 @@
 			isa = PBXGroup;
 			children = (
 				F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F29ED2E62855D749002371FD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2ED2855D78F002371FD /* Protocol */,
+				F29ED2EA2855D76B002371FD /* MapCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F29ED2E92855D75F002371FD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2EC2855D789002371FD /* Protocol */,
+				F29ED2E72855D75B002371FD /* HomeCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F29ED2EC2855D789002371FD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2F52855D863002371FD /* HomeCoordinatorProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F29ED2ED2855D78F002371FD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2EE2855D79F002371FD /* MapCoordinatorProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F29ED2F22855D7F7002371FD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2F32855D800002371FD /* SettingCoordinatorProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F29ED2F72855D8DC002371FD /* ArchiveScene */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2F82855D934002371FD /* Coordinator */,
+			);
+			path = ArchiveScene;
+			sourceTree = "<group>";
+		};
+		F29ED2F82855D934002371FD /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2FB2855D948002371FD /* Protocol */,
+				F29ED2F92855D945002371FD /* ArchiveCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		F29ED2FB2855D948002371FD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2FC2855D954002371FD /* ArchiveCoordinatorProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -892,23 +980,30 @@
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
 				F2125D1E284E10B8008E1185 /* LoginCoordinator.swift in Sources */,
+				F29ED2F62855D863002371FD /* HomeCoordinatorProtocol.swift in Sources */,
 				F232433E2855B64E00742362 /* UIImageView.swift in Sources */,
 				F2D1C54E2852371100D88347 /* UITextField.swift in Sources */,
+				F29ED2EB2855D76B002371FD /* MapCoordinator.swift in Sources */,
 				F20551A32854A74E0051E94D /* TermsViewController.swift in Sources */,
 				F2125D612850FFD3008E1185 /* UIViewController.swift in Sources */,
 				F2125D0E284DFDD5008E1185 /* LoginViewModel.swift in Sources */,
+				F29ED2E82855D75B002371FD /* HomeCoordinator.swift in Sources */,
 				F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */,
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
+				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
+				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
+				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* UserRepositoryProtocol.swift in Sources */,
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,
 				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
+				F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,
@@ -918,6 +1013,7 @@
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				F2125D35284E5270008E1185 /* UserUseCase.swift in Sources */,
+				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,7 @@
 import UIKit
 
 class TabBarCoordinator: TabBarCoordinatorProtocol {
+    
     var tabBarController: UITabBarController
     var navigationController: UINavigationController
 
@@ -65,13 +66,37 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     }
     
     func startTabCoordinator(of page: TabBarPage, to navigationVewController: UINavigationController) {
-//        switch page {
-//        case .map:
-//        case .home:
-//        case .setting
-//        }
+        switch page {
+        case .map:
+            let mapCoordinator = MapCoordinator(navigationVewController)
+            mapCoordinator.finishDelegate = self
+            self.childCoordinators.append(mapCoordinator)
+            mapCoordinator.start()
+        case .home:
+            let homeCoordinator = HomeCoordinator(navigationVewController)
+            homeCoordinator.finishDelegate = self
+            self.childCoordinators.append(homeCoordinator)
+            homeCoordinator.start()
+        case .setting:
+            let settingCoordinator = SettingCoordinator(navigationVewController)
+            settingCoordinator.finishDelegate = self
+            self.childCoordinators.append(settingCoordinator)
+            settingCoordinator.start()
+        case .archive:
+            let archiveCoordinator = ArchiveCoordinator(navigationVewController)
+            archiveCoordinator.finishDelegate = self
+            self.childCoordinators.append(archiveCoordinator)
+            archiveCoordinator.start()
+        
+       }
         
         
     }
     
+}
+
+extension TabBarCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        
+    }
 }
