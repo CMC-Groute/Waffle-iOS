@@ -53,7 +53,6 @@ extension AppCoordinator: CoordinatorFinishDelegate { // 로그인 coordinator �
         case .tab:
             self.showLoginFlow()
         case .login:
-            print("showTabBarFlow")
             self.showTabBarFlow()
         
         default:

@@ -60,6 +60,17 @@
 		F29ED2F62855D863002371FD /* HomeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2F52855D863002371FD /* HomeCoordinatorProtocol.swift */; };
 		F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2F92855D945002371FD /* ArchiveCoordinator.swift */; };
 		F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2FC2855D954002371FD /* ArchiveCoordinatorProtocol.swift */; };
+		F29ED3002855DB5B002371FD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2FF2855DB5B002371FD /* HomeViewController.swift */; };
+		F29ED3032855DB71002371FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3022855DB71002371FD /* MapViewController.swift */; };
+		F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3052855DB7F002371FD /* MapViewModel.swift */; };
+		F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3072855DB8C002371FD /* SettingViewModel.swift */; };
+		F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3092855DB99002371FD /* HomeViewModel.swift */; };
+		F29ED30E2855DBB2002371FD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED30D2855DBB2002371FD /* Home.storyboard */; };
+		F29ED3112855DBC3002371FD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
+		F29ED3142855DBCE002371FD /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3132855DBCE002371FD /* Map.storyboard */; };
+		F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3172855DBF1002371FD /* ArchiveViewController.swift */; };
+		F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED31A2855DBFA002371FD /* Archive.storyboard */; };
+		F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */; };
 		F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
 		F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */; };
 		F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412DB2849EFD700E04BF5 /* ViewController.swift */; };
@@ -147,6 +158,17 @@
 		F29ED2F52855D863002371FD /* HomeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		F29ED2F92855D945002371FD /* ArchiveCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCoordinator.swift; sourceTree = "<group>"; };
 		F29ED2FC2855D954002371FD /* ArchiveCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F29ED2FF2855DB5B002371FD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F29ED3022855DB71002371FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F29ED3052855DB7F002371FD /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		F29ED3072855DB8C002371FD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		F29ED3092855DB99002371FD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F29ED30D2855DBB2002371FD /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		F29ED3102855DBC3002371FD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		F29ED3132855DBCE002371FD /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		F29ED3172855DBF1002371FD /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		F29ED31A2855DBFA002371FD /* Archive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Archive.storyboard; sourceTree = "<group>"; };
+		F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
 		F2A412D42849EFD700E04BF5 /* Waffle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Waffle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A412D72849EFD700E04BF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2A412D92849EFD700E04BF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +316,9 @@
 		F2125D24284E160A008E1185 /* MapScene */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED3122855DBC6002371FD /* View */,
+				F29ED3042855DB74002371FD /* ViewModel */,
+				F29ED3012855DB66002371FD /* ViewController */,
 				F29ED2E62855D749002371FD /* Coordinator */,
 			);
 			path = MapScene;
@@ -320,6 +345,7 @@
 		F2125D31284E4490008E1185 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED3072855DB8C002371FD /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -543,6 +569,9 @@
 		F21972D0284B8C980086E56B /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED30C2855DBAA002371FD /* View */,
+				F29ED30B2855DB9D002371FD /* ViewModel */,
+				F29ED2FE2855DB49002371FD /* ViewController */,
 				F29ED2E92855D75F002371FD /* Coordinator */,
 			);
 			path = HomeScene;
@@ -551,6 +580,7 @@
 		F21972D1284B8CCF0086E56B /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED30F2855DBBB002371FD /* View */,
 				F2125D32284E449A008E1185 /* Coordinator */,
 				F2125D31284E4490008E1185 /* ViewModel */,
 				F2125D30284E4482008E1185 /* ViewController */,
@@ -625,6 +655,9 @@
 		F29ED2F72855D8DC002371FD /* ArchiveScene */ = {
 			isa = PBXGroup;
 			children = (
+				F29ED31C2855DBFD002371FD /* ViewModel */,
+				F29ED3192855DBF3002371FD /* View */,
+				F29ED3152855DBD3002371FD /* Viewcontroller */,
 				F29ED2F82855D934002371FD /* Coordinator */,
 			);
 			path = ArchiveScene;
@@ -645,6 +678,86 @@
 				F29ED2FC2855D954002371FD /* ArchiveCoordinatorProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F29ED2FE2855DB49002371FD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F29ED3012855DB66002371FD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED3022855DB71002371FD /* MapViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F29ED3042855DB74002371FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED3052855DB7F002371FD /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F29ED30B2855DB9D002371FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED3092855DB99002371FD /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F29ED30C2855DBAA002371FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED30D2855DBB2002371FD /* Home.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F29ED30F2855DBBB002371FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED3102855DBC3002371FD /* Setting.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F29ED3122855DBC6002371FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED3132855DBCE002371FD /* Map.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F29ED3152855DBD3002371FD /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED3172855DBF1002371FD /* ArchiveViewController.swift */,
+			);
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		F29ED3192855DBF3002371FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED31A2855DBFA002371FD /* Archive.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F29ED31C2855DBFD002371FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		F2A412CB2849EFD700E04BF5 = {
@@ -814,12 +927,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F29ED30E2855DBB2002371FD /* Home.storyboard in Resources */,
 				F2A412E42849EFD900E04BF5 /* LaunchScreen.storyboard in Resources */,
+				F29ED3142855DBCE002371FD /* Map.storyboard in Resources */,
 				F2A412E12849EFD900E04BF5 /* Assets.xcassets in Resources */,
 				F2125D51284E60FD008E1185 /* SignUp.storyboard in Resources */,
+				F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */,
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				F2A412DF2849EFD700E04BF5 /* Main.storyboard in Resources */,
+				F29ED3112855DBC3002371FD /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,8 +1090,11 @@
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
 				F2125D4E284E60E5008E1185 /* SignUpViewController.swift in Sources */,
 				F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */,
+				F29ED3032855DB71002371FD /* MapViewController.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
 				F2125D2F284E2752008E1185 /* Config.swift in Sources */,
+				F29ED3002855DB5B002371FD /* HomeViewController.swift in Sources */,
+				F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
@@ -992,6 +1112,7 @@
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
+				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
@@ -1012,9 +1133,12 @@
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
+				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
 				F2125D35284E5270008E1185 /* UserUseCase.swift in Sources */,
 				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
+				F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */,
+				F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
