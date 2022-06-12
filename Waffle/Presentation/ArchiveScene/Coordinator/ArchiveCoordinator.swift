@@ -12,17 +12,19 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
-    
+    var archiveViewController: ArchiveViewController
     var childCoordinators: [Coordinator] = []
     
     var type: CoordinatorType = .archive
     
-    func start() {
+    init(_ navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        archiveViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "ArchiveViewController") as! ArchiveViewController
         
     }
     
-    init(_ navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    func start() {
+        self.navigationController.pushViewController(archiveViewController, animated: true)
     }
     
     

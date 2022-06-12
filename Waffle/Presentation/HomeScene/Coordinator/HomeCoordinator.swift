@@ -12,16 +12,18 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
-    
+    var homeViewController: HomeViewController
     var childCoordinators: [Coordinator] = []
     
     var type: CoordinatorType = .home
-    func start() {
-        
-    }
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.homeViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+    }
+    
+    func start() {
+        self.navigationController.pushViewController(self.homeViewController, animated: true)
     }
     
     

@@ -12,16 +12,18 @@ final class MapCoordinator: MapCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
+    var mapViewController: MapViewController
     var childCoordinators: [Coordinator] = []
     
     var type: CoordinatorType = .map
     
-    func start() {
-        
-    }
-    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.mapViewController = UIStoryboard(name: "Map", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+    }
+    
+    func start() {
+        self.navigationController.pushViewController(mapViewController, animated: true)
     }
     
     

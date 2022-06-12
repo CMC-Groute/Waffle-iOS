@@ -14,16 +14,18 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
-    
+    var settingViewController: SettingViewController
     var childCoordinators: [Coordinator] = []
     
     var type: CoordinatorType = .setting
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.settingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "SettingViewController") as! SettingViewController
     }
+  
     func start() {
-        
+        self.navigationController.pushViewController(settingViewController, animated: true)
     }
     
     func editProfile() {
