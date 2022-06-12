@@ -100,9 +100,6 @@ class SignUpViewController: UIViewController {
           )
       }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
     
     private func bindViewModel() {
         let input = SignUpViewModel.Input(emailTextField: self.emailTextField.rx.text.orEmpty.asObservable(), authenCodeTextField: self.authenTextField.rx.text.orEmpty.asObservable(), passwordTextField: self.pwTextField.rx.text.orEmpty.asObservable(), rePasswordTextField: self.pwReTextField.rx.text.orEmpty.asObservable(), emailTextFieldDidTapEvent: self.emailTextField.rx.controlEvent(.editingDidBegin), authenCodeTextFieldDidTapEvent: self.authenTextField.rx.controlEvent(.editingDidBegin), passwordTextFieldDidTapEvent: self.pwTextField.rx.controlEvent(.editingDidBegin), rePasswordTextFieldDidTapEvent: self.pwReTextField.rx.controlEvent(.editingDidBegin), emailTextFieldDidEndEvent: self.emailTextField.rx.controlEvent(.editingDidEnd), authenCodeTextFieldEndTapEvent: self.authenTextField.rx.controlEvent(.editingDidEnd), passwordTextFieldDidEndEvent: self.pwTextField.rx.controlEvent(.editingDidEnd), rePasswordTextFieldEndTapEvent: self.pwReTextField.rx.controlEvent(.editingDidEnd), emailAuthenButton: self.emailAuthenButton.rx.tap.asObservable(), authenCodeButton: self.codeAuthenButton.rx.tap.asObservable(), nextButton: self.nextButton.rx.tap.asObservable())

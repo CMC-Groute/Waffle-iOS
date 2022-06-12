@@ -13,9 +13,11 @@ class UserUseCase: UserUseCaseProtocol {
     private var repository: UserRepository!
     var nickName: String?
     var email: String?
+    var password: String?
     
     init(repository: UserRepository) {
         self.repository = repository
+        password = "spqjf12345"
     }
     
     func getProfileInfo() -> Observable<ProfileInfo> {
@@ -30,6 +32,11 @@ class UserUseCase: UserUseCaseProtocol {
         let passwordReg =  ("(?=.*[A-Za-z])(?=.*[0-9]).{8,100}")
         let passwordtesting = NSPredicate(format: "SELF MATCHES %@", passwordReg)
         return passwordtesting.evaluate(with: password)
+    }
+    
+    func checkPassword(password: String) -> Bool {
+        if self.password != password { return false }
+        return true
     }
     
     func checkNickNameValid(nickName: String) -> Bool { //특수문자 제외 6글자 이하

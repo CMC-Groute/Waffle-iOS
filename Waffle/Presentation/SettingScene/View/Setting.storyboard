@@ -425,12 +425,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PWTextField" destination="vwO-jJ-rlZ" id="rsP-ba-Ncw"/>
+                        <outlet property="PWTextInValidText" destination="0tt-Zd-alS" id="Syu-IU-dze"/>
                         <outlet property="bottonConstraint" destination="q5o-ld-Hif" id="Huq-eV-QS8"/>
-                        <outlet property="nextButton" destination="kd7-8f-xDf" id="bOI-w0-Y2s"/>
-                        <outlet property="pwInValidText" destination="0tt-Zd-alS" id="jRH-2G-Jyj"/>
-                        <outlet property="pwReInValidText" destination="Yxs-qA-mhd" id="gly-Ig-GHK"/>
-                        <outlet property="pwReTextField" destination="Xpa-5M-ZNQ" id="DcD-xb-FqK"/>
-                        <outlet property="pwTextField" destination="vwO-jJ-rlZ" id="il3-Xc-uHD"/>
+                        <outlet property="doneButton" destination="kd7-8f-xDf" id="rHd-jp-VUd"/>
+                        <outlet property="newPWTextField" destination="Xpa-5M-ZNQ" id="lpq-bx-WLt"/>
+                        <outlet property="newPWTextInValidText" destination="Yxs-qA-mhd" id="YYe-zo-TfO"/>
+                        <outlet property="newRePWTextField" destination="aPB-qQ-xiZ" id="Hqf-si-ezb"/>
+                        <outlet property="newRePWTextInValidText" destination="cek-ug-etm" id="9PD-Rj-Z3f"/>
                         <outlet property="scrollView" destination="UKZ-IG-trH" id="S9d-yc-A1q"/>
                     </connections>
                 </viewController>
