@@ -26,6 +26,7 @@ class AddArchiveViewController: UIViewController {
     
     let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
+        datePicker.minimumDate = Date()
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.locale = Locale(identifier: "ko-KR")
         datePicker.datePickerMode = .date
@@ -63,6 +64,8 @@ class AddArchiveViewController: UIViewController {
         archiveTimeTextField.padding(value: 9, direction: .left, icon: "")
         archiveLocationTextField.padding(value: 9, direction: .left, icon: "")
         archiveMemoTextView.round(width: 2, color: Asset.Colors.gray2.name, value: 10)
+        archiveMemoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
+        archiveMemoTextView.attributedText = archiveMemoTextView.text.setLineHeight(24)
         addArchiveButton.round(corner: 25)
         
         func setToolbar() {
@@ -102,9 +105,19 @@ class AddArchiveViewController: UIViewController {
             archiveTimeTextField.placeholder = currentTime
         }
         
+        func setButtonState() {
+            archiveTimeDateLaterButton.setTitleColor(UIColor(named: Asset.Colors.black.name), for: .selected)
+            archiveTimeDateLaterButton.setTitleColor(UIColor(named: Asset.Colors.gray5.name), for: .normal)
+            archiveTimeDateLaterButton.setImage(UIImage(named: Asset.Assets.unCheck.name), for: .normal)
+            archiveTimeDateLaterButton.setImage(UIImage(named: Asset.Assets.check.name), for: .selected)
+                                                     
+            
+        }
+        
         setNavigationBar()
         placeHolderText()
         setToolbar()
+        setButtonState()
 
     }
 
@@ -130,11 +143,28 @@ class AddArchiveViewController: UIViewController {
                 self.archiveNameTextField.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
+        input.memoTextViewDidTapEvent
+            .subscribe(onNext: { _ in
+                print("memoTextViewDidTapEvent")
+                self.archiveMemoTextView.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.memoTextViewDidEndEvent
+            .subscribe(onNext: { _ in
+                print("memoTextViewDidEndEvent")
+                self.archiveMemoTextView.focusingBorder(color: Asset.Colors.gray2.name)
+            }).disposed(by: disposeBag)
+        
         input.locationTextFieldTapEvent // 키보드 내리기
             .subscribe(onNext: {
                 self.archiveLocationTextField.resignFirstResponder()
             }).disposed(by: disposeBag)
-            
+           
+        input.dateTimeLaterButton
+            .subscribe(onNext: {
+                self.archiveTimeDateLaterButton.isSelected = self.archiveTimeDateLaterButton.isSelected ? false : true
+            }).disposed(by: disposeBag)
+        
         }
     
     @objc func dDonePressed(_ sender: UIDatePicker) {

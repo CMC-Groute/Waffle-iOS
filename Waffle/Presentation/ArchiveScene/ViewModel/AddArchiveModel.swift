@@ -40,7 +40,7 @@ class AddArchiveModel {
     
     struct Output {
         let dateTimeTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
-        let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
+        let dateTimeLaterButtonSelected = BehaviorRelay<Bool>(value: false)
         
         let locationTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
     }
@@ -59,7 +59,10 @@ class AddArchiveModel {
             }).disposed(by: disposeBag)
         
         input.dateTimeLaterButton
-            .subscribe(<#T##observer: ObserverType##ObserverType#>)
+            .subscribe(onNext: {
+                
+            }).disposed(by: disposeBag)
+            
         return output
     }
 }

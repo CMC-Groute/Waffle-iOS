@@ -9,8 +9,14 @@ import Foundation
 import UIKit
 
 
-//extension UITextView {
-//    override func round(width: CGFloat, color: String, value: CGFloat) {
-//        <#code#>
-//    }
-//}
+extension UITextView {
+    func focusingBorder(color: String?) {
+        if let color = color {
+            self.layer.borderColor = UIColor(named: color)?.cgColor
+            self.layer.borderWidth = 2
+        }else {
+            self.layer.borderColor = .none
+            self.layer.borderWidth = 0
+        }
+    }
+}

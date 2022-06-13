@@ -121,13 +121,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcV-SH-XY2">
-                                                <rect key="frame" x="234.5" y="369.5" width="163.5" height="44"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="unCheck" imagePlacement="trailing" title="나중에 정할게요" imagePadding="8">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="Gray5"/>
-                                                </buttonConfiguration>
+                                                <rect key="frame" x="266" y="369.5" width="132" height="30"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="tintColor" name="White"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                <state key="normal" title="나중에 정할게요" image="unCheck">
+                                                    <color key="titleColor" name="Gray5"/>
+                                                </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 날짜와 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-fr-VWF">
                                                 <rect key="frame" x="18" y="131.5" width="105.5" height="19.5"/>
@@ -145,14 +145,20 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-p4-z6O">
-                                                <rect key="frame" x="234.5" y="222" width="163.5" height="44"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="unCheck" imagePlacement="trailing" title="나중에 정할게요" imagePadding="8">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="Gray5"/>
-                                                </buttonConfiguration>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-p4-z6O">
+                                                <rect key="frame" x="198" y="222" width="200" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="C8U-c7-a2a"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
+                                                <color key="tintColor" name="White"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                <state key="normal" title="나중에 정할게요. " image="unCheck">
+                                                    <color key="titleColor" name="Gray5"/>
+                                                </state>
+                                                <state key="selected" title="나중에 정할게요" image="check">
+                                                    <color key="titleColor" name="Black"/>
+                                                </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속에 대한 메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0X-rH-PXo">
                                                 <rect key="frame" x="18" y="426.5" width="105.5" height="19.5"/>
@@ -286,6 +292,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="check" width="30" height="30"/>
         <image name="required_caption" width="34" height="15"/>
         <image name="unCheck" width="30" height="30"/>
         <namedColor name="Black">

@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 extension UIButton {
     func setEnabled(color: String?) {
@@ -32,4 +34,28 @@ extension UIButton {
         self.isUserInteractionEnabled = !bool
         self.backgroundColor =  bool ? UIColor(named: color)!.withAlphaComponent(0.5) : UIColor(named: color)!
     }
+}
+
+extension Reactive where Base: UIButton {
+    /// Reactive wrapper for `setTitle(_:for:)`
+    public func title(for controlState: UIControl.State = []) -> Binder<String?> {
+        Binder(self.base) { button, title in
+            button.setTitle(title, for: controlState)
+        }
+    }
+
+    /// Reactive wrapper for `setImage(_:for:)`
+    public func image(for controlState: UIControl.State = []) -> Binder<UIImage?> {
+        Binder(self.base) { button, image in
+            button.setImage(image, for: controlState)
+        }
+    }
+
+    /// Reactive wrapper for `setBackgroundImage(_:for:)`
+    public func backgroundImage(for controlState: UIControl.State = []) -> Binder<UIImage?> {
+        Binder(self.base) { button, image in
+            button.setBackgroundImage(image, for: controlState)
+        }
+    }
+    
 }

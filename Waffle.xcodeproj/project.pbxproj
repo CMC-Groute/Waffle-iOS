@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
+		135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7C2857A5C300F9F71E /* UILabel.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
 		7FA1D801216F3A22E519B5ED /* Pods_Waffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */; };
@@ -122,6 +123,7 @@
 
 /* Begin PBXFileReference section */
 		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
+		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.release.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		56584A54E1159B7F75006EB4 /* Pods-WaffleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.debug.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				F232433D2855B64E00742362 /* UIImageView.swift */,
 				F29ED33728562074002371FD /* Date.swift */,
 				F29ED34328562D7E002371FD /* UITextView.swift */,
+				135F6E7C2857A5C300F9F71E /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1170,6 +1173,7 @@
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
 				F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
+				135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
