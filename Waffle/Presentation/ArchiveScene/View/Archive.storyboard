@@ -50,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="801-8s-uxP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="공백 포함 10자 이하" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-3G-70P">
                                                 <rect key="frame" x="16" y="47.5" width="382" height="44"/>
@@ -166,15 +166,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6BD-co-o3d">
-                                                <rect key="frame" x="16" y="458" width="382" height="346"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6BD-co-o3d">
+                                                <rect key="frame" x="16" y="458" width="382" height="180"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="180" id="LC8-jp-Bg0"/>
+                                                </constraints>
                                                 <color key="textColor" name="Gray4"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgJ-xp-fhJ" userLabel="ButtonView">
-                                                <rect key="frame" x="0.0" y="828" width="414" height="72"/>
+                                                <rect key="frame" x="0.0" y="662" width="414" height="72"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTA-UJ-V3g">
                                                         <rect key="frame" x="16" y="10" width="382" height="52"/>
@@ -225,7 +228,6 @@
                                             <constraint firstItem="Xfh-xL-f0t" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="dAn-W2-6u2"/>
                                             <constraint firstItem="67A-p1-llJ" firstAttribute="top" secondItem="6uW-fr-VWF" secondAttribute="bottom" constant="12" id="eBE-Qr-AvW"/>
                                             <constraint firstItem="1ZF-3G-70P" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="hdh-7H-CUq"/>
-                                            <constraint firstAttribute="height" constant="900" id="j8C-fc-E10"/>
                                             <constraint firstItem="3A4-1d-Mur" firstAttribute="centerY" secondItem="Xfh-xL-f0t" secondAttribute="centerY" id="jMg-EV-F1Z"/>
                                             <constraint firstItem="QHX-5Z-mbt" firstAttribute="centerY" secondItem="6uW-fr-VWF" secondAttribute="centerY" id="lW7-Di-mPo"/>
                                             <constraint firstItem="J0X-rH-PXo" firstAttribute="top" secondItem="w2R-HZ-kgK" secondAttribute="bottom" constant="72" id="mn9-9O-CZB"/>
@@ -269,6 +271,7 @@
                         <outlet property="archiveNameTextField" destination="1ZF-3G-70P" id="QBM-56-lL8"/>
                         <outlet property="archiveTimeDateLaterButton" destination="rIL-p4-z6O" id="JEI-EN-Zqc"/>
                         <outlet property="archiveTimeTextField" destination="Nob-Hw-FzW" id="Hdn-uA-L8f"/>
+                        <outlet property="bottonConstraint" destination="HeI-Pk-C9K" id="t99-lu-eva"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZ8-s6-oS5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
