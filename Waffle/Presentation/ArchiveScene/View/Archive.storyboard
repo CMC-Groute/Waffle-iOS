@@ -22,7 +22,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <segue destination="7KZ-nB-chR" kind="show" id="fHb-Zy-NOb"/>
+                                    <action selector="text:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Np9-3T-rQb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,11 +43,11 @@
             <objects>
                 <viewController storyboardIdentifier="AddArchiveViewController" hidesBottomBarWhenPushed="YES" id="7KZ-nB-chR" customClass="AddArchiveViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VNL-G3-aLu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-aK-Kot">
-                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="801-8s-uxP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>

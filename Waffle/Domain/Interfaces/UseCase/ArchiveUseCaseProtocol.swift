@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ArchiveUseCaseProtocol {
-    
+    func maximumTextLength(length: Int, s: String) -> String
 }

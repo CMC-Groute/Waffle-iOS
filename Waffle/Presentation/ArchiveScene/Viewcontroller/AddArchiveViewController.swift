@@ -110,9 +110,15 @@ class AddArchiveViewController: UIViewController {
 
     
     private func bindViewModel() {
-        let input = AddArchiveModel.Input(nameTextField: self.archiveNameTextField.rx.text.orEmpty.asObservable(), memoTextView: self.archiveMemoTextView.rx.text.orEmpty.asObservable(), nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, dateTextFieldTapEvent: self.archiveDateTextField.rx.controlEvent(.editingDidBegin), timeTextFieldTapEvent: self.archiveTimeTextField.rx.controlEvent(.touchUpInside), dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.touchUpInside), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), addArchiveButton: self.addArchiveButton.rx.tap.asObservable())
+        let input = AddArchiveModel.Input(nameTextField: self.archiveNameTextField.rx.text.orEmpty.asObservable(), memoTextView: self.archiveMemoTextView.rx.text.orEmpty.asObservable(), nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), addArchiveButton: self.addArchiveButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        
+        input.nameTextField
+            .subscribe(onNext: { text in
+                let restrictedStr = self.viewModel?.maxInputRestricted(length: 10, s: text)
+                self.archiveNameTextField.text = restrictedStr
+            }).disposed(by: disposeBag)
         
         input.nameTextFieldDidTapEvent
             .subscribe(onNext: { _ in
@@ -124,15 +130,9 @@ class AddArchiveViewController: UIViewController {
                 self.archiveNameTextField.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
-        input.dateTextFieldTapEvent
+        input.locationTextFieldTapEvent // 키보드 내리기
             .subscribe(onNext: {
-//                var datePickerView  : UIDatePicker = UIDatePicker()
-//                datePickerView.datePickerMode = .date
-//                self.archiveDateTextField.inputView = datePickerView
-//                datePickerView.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)
-//                //
-//
-                
+                self.archiveLocationTextField.resignFirstResponder()
             }).disposed(by: disposeBag)
             
         }

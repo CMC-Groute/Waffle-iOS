@@ -30,9 +30,6 @@ class AddArchiveModel {
         var nameTextFieldDidEndEvent: ControlEvent<Void>
         var memoTextViewDidEndEvent: ControlEvent<Void>
         
-        var dateTextFieldTapEvent: ControlEvent<Void>
-        var timeTextFieldTapEvent: ControlEvent<Void>
-        
         var dateTimeLaterButton: Observable<Void>
         
         var locationTextFieldTapEvent: ControlEvent<Void>
@@ -42,11 +39,27 @@ class AddArchiveModel {
     }
     
     struct Output {
+        let dateTimeTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
+        let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
         
+        let locationTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
+    }
+    
+    func maxInputRestricted(length: Int, s: String) -> String {
+        print(s)
+        return self.usecase.maximumTextLength(length: length, s: s)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+
+        input.locationTextFieldTapEvent
+            .subscribe(onNext: {
+                self.coordinator.addLocation()
+            }).disposed(by: disposeBag)
+        
+        input.dateTimeLaterButton
+            .subscribe(<#T##observer: ObserverType##ObserverType#>)
         return output
     }
 }
