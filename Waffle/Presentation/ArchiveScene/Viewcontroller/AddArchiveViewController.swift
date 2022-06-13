@@ -22,7 +22,23 @@ class AddArchiveViewController: UIViewController {
     @IBOutlet weak var addArchiveButton: UIButton!
     
     var viewModel: AddArchiveModel?
-    var disposBag = DisposeBag()
+    var disposeBag = DisposeBag()
+    
+    let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.locale = Locale(identifier: "ko-KR")
+        datePicker.datePickerMode = .date
+        return datePicker
+    }()
+    
+    let timePicker: UIDatePicker = {
+        let timePicker = UIDatePicker()
+        timePicker.preferredDatePickerStyle = .wheels
+        timePicker.locale = Locale(identifier: "ko-KR")
+        timePicker.datePickerMode = .time
+        return timePicker
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -46,10 +62,31 @@ class AddArchiveViewController: UIViewController {
         archiveDateTextField.padding(value: 9, direction: .left, icon: "")
         archiveTimeTextField.padding(value: 9, direction: .left, icon: "")
         archiveLocationTextField.padding(value: 9, direction: .left, icon: "")
-        
         archiveMemoTextView.round(width: 2, color: Asset.Colors.gray2.name, value: 10)
         addArchiveButton.round(corner: 25)
         
+        func setToolbar() {
+            let dToolBar = UIToolbar()
+            let tToolBar = UIToolbar()
+            dToolBar.sizeToFit()
+            tToolBar.sizeToFit()
+
+            let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let dCancelButton = UIBarButtonItem(title: "취소", style: .plain, target: nil, action: #selector(cancelPressed(_:)))
+            let dDoneButton = UIBarButtonItem(title: "선택", style: .done, target: nil, action: #selector(dDonePressed(_:)))
+            
+            let tCancelButton = UIBarButtonItem(title: "취소", style: .plain, target: nil, action: #selector(cancelPressed(_:)))
+            let tDoneButton = UIBarButtonItem(title: "선택", style: .done, target: nil, action: #selector(tDonePressed(_:)))
+            dToolBar.setItems([spacer, dCancelButton, dDoneButton], animated: true)
+            tToolBar.setItems([spacer, tCancelButton, tDoneButton], animated: true)
+            archiveDateTextField.inputView = datePicker
+            archiveDateTextField.inputAccessoryView = dToolBar
+            
+            archiveTimeTextField.inputView = timePicker
+            archiveTimeTextField.inputAccessoryView = tToolBar
+            
+        }
+
         func setNavigationBar() {
             self.navigationItem.title = "약속 만들기" // TO DO 텍스트 폰트 적용
             let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
@@ -67,12 +104,50 @@ class AddArchiveViewController: UIViewController {
         
         setNavigationBar()
         placeHolderText()
-        
-        
+        setToolbar()
+
     }
 
     
-    private func bindViewModel(){
+    private func bindViewModel() {
+        let input = AddArchiveModel.Input(nameTextField: self.archiveNameTextField.rx.text.orEmpty.asObservable(), memoTextView: self.archiveMemoTextView.rx.text.orEmpty.asObservable(), nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, dateTextFieldTapEvent: self.archiveDateTextField.rx.controlEvent(.editingDidBegin), timeTextFieldTapEvent: self.archiveTimeTextField.rx.controlEvent(.touchUpInside), dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.touchUpInside), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), addArchiveButton: self.addArchiveButton.rx.tap.asObservable())
         
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        
+        input.nameTextFieldDidTapEvent
+            .subscribe(onNext: { _ in
+                self.archiveNameTextField.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.nameTextFieldDidEndEvent
+            .subscribe(onNext: { _ in
+                self.archiveNameTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.dateTextFieldTapEvent
+            .subscribe(onNext: {
+//                var datePickerView  : UIDatePicker = UIDatePicker()
+//                datePickerView.datePickerMode = .date
+//                self.archiveDateTextField.inputView = datePickerView
+//                datePickerView.addTarget(self, action: #selector(self.handleDatePicker(_:)), for: .valueChanged)
+//                //
+//
+                
+            }).disposed(by: disposeBag)
+            
+        }
+    
+    @objc func dDonePressed(_ sender: UIDatePicker) {
+        self.archiveDateTextField.text = datePicker.date.addArchiveDateToString()
+        self.view.endEditing(true)
+    }
+    
+    @objc func tDonePressed(_ sender: UIDatePicker) {
+        self.archiveTimeTextField.text = timePicker.date.addArhiveTimeToString()
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelPressed(_ sender: UIDatePicker) {
+        self.view.endEditing(true)
     }
 }

@@ -21,7 +21,24 @@ class AddArchiveModel {
     }
     
     struct Input {
+        var nameTextField: Observable<String>
+        var memoTextView: Observable<String>
         
+        var nameTextFieldDidTapEvent: ControlEvent<Void>
+        var memoTextViewDidTapEvent: ControlEvent<Void>
+        
+        var nameTextFieldDidEndEvent: ControlEvent<Void>
+        var memoTextViewDidEndEvent: ControlEvent<Void>
+        
+        var dateTextFieldTapEvent: ControlEvent<Void>
+        var timeTextFieldTapEvent: ControlEvent<Void>
+        
+        var dateTimeLaterButton: Observable<Void>
+        
+        var locationTextFieldTapEvent: ControlEvent<Void>
+        var locationLaterButton: Observable<Void>
+        
+        var addArchiveButton: Observable<Void>
     }
     
     struct Output {

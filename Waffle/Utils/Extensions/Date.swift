@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum WeekDayString: Int {
+    case 일 = 1, 월, 화, 수, 목, 금, 토
+}
+
 extension Date {
     
     func addArchiveDateToString() -> String {
@@ -22,5 +26,11 @@ extension Date {
         timeFormatter.amSymbol = "오전"
         timeFormatter.pmSymbol = "오후"
         return timeFormatter.string(from: self)
+    }
+    
+    func getWeekDay() -> String {
+//        let calendar = Calendar(identifier: .gregorian)
+//        return WeekDayString(rawValue: calendar.dateComponents([.weekday], from: self).weekday ?? 0)! + "요일"
+        return ""
     }
 }

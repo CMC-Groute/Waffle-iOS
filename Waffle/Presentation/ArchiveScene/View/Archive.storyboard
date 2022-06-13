@@ -41,7 +41,7 @@
         <!--Add Archive View Controller-->
         <scene sceneID="NrT-kg-TMr">
             <objects>
-                <viewController storyboardIdentifier="AddArchiveViewController" id="7KZ-nB-chR" customClass="AddArchiveViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddArchiveViewController" hidesBottomBarWhenPushed="YES" id="7KZ-nB-chR" customClass="AddArchiveViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VNL-G3-aLu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,7 +272,7 @@
         <!--Add Location View Controller-->
         <scene sceneID="Vwc-mF-xBM">
             <objects>
-                <viewController storyboardIdentifier="AddLocationViewController" id="Nhd-5A-eZQ" customClass="AddLocationViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddLocationViewController" hidesBottomBarWhenPushed="YES" id="Nhd-5A-eZQ" customClass="AddLocationViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Xf-do-Dea">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

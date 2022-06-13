@@ -20,7 +20,7 @@ class ArchiveViewModel {
     }
     
     struct Input {
-        
+       
     }
     
     struct Output {
