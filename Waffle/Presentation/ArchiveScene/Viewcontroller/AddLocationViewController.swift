@@ -8,7 +8,9 @@
 import UIKit
 
 class AddLocationViewController: UIViewController {
-
+    @IBOutlet weak var leftTablewView: UITableView!
+    @IBOutlet weak var rightTablewView: UITableView!
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,6 +22,7 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        tableViewSetup()
 
     }
     
@@ -38,6 +41,15 @@ class AddLocationViewController: UIViewController {
             
         }
         setNavigationBar()
+    }
+    
+    func tableViewSetup() {
+        leftTablewView.delegate = self
+        leftTablewView.dataSource = self
+        rightTablewView.delegate = self
+        rightTablewView.dataSource = self
+        
+        leftTablewView.register(LocationLeftTableViewCell, forCellReuseIdentifier: <#T##String#>)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -61,3 +73,23 @@ extension AddLocationViewController: UISearchBarDelegate {
     
     
 }
+
+extension AddLocationViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == leftTablewView {
+            return location.count
+        }else {
+            return location[0].count // 첫번째 지역으로 기본 셋팅
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == leftTablewView {
+            let cell =
+        }else {
+            
+        }
+    }
+}
+
+

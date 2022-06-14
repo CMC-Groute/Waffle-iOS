@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		135B60572858504C0035AE4B /* ButtonAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */; };
 		135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B60582858507A0035AE4B /* TableAddLocationViewController.swift */; };
+		135B605B285898FF0035AE4B /* LocationLeftTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */; };
+		135B605D285899250035AE4B /* LocationRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605C285899250035AE4B /* LocationRightTableViewCell.swift */; };
 		135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
 		135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7C2857A5C300F9F71E /* UILabel.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
@@ -126,6 +128,8 @@
 /* Begin PBXFileReference section */
 		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
+		135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLeftTableviewCell.swift; sourceTree = "<group>"; };
+		135B605C285899250035AE4B /* LocationRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRightTableViewCell.swift; sourceTree = "<group>"; };
 		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 			children = (
 				135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */,
 				135B60582858507A0035AE4B /* TableAddLocationViewController.swift */,
+				135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */,
+				135B605C285899250035AE4B /* LocationRightTableViewCell.swift */,
 			);
 			path = LocationContainterViewController;
 			sourceTree = "<group>";
@@ -1159,6 +1165,7 @@
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
 				F2125D4E284E60E5008E1185 /* SignUpViewController.swift in Sources */,
+				135B605B285898FF0035AE4B /* LocationLeftTableviewCell.swift in Sources */,
 				F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */,
 				F29ED3032855DB71002371FD /* MapViewController.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
@@ -1221,6 +1228,7 @@
 				F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */,
 				F2A412DA2849EFD700E04BF5 /* SceneDelegate.swift in Sources */,
 				F2125D11284E0C3D008E1185 /* Coordinator.swift in Sources */,
+				135B605D285899250035AE4B /* LocationRightTableViewCell.swift in Sources */,
 				F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
