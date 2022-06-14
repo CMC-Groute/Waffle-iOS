@@ -34,13 +34,15 @@ extension ButtonAddLocationViewController: UITableViewDelegate, UITableViewDataS
         if tableView == leftTablewView {
             return location.count
         }else {
-            return location[0].count // 첫번째 지역으로 기본 셋팅
+            return location["서울"]!.count // 첫번째 지역으로 기본 셋팅
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == leftTablewView {
-            let cell =
+            let cell = tableView.dequeueReusableCell(withIdentifier: LocationLeftTableviewCell.identifier) as! LocationLeftTableviewCell
+            cell.label.text = location
+            return cell
         }else {
             
         }

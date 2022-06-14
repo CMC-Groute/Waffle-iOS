@@ -37,6 +37,7 @@ class LocationRightTableViewCell: UITableViewCell {
     }
     
     func configureUI() {
+        self.contentView.addSubview(label)
         label.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(23)
