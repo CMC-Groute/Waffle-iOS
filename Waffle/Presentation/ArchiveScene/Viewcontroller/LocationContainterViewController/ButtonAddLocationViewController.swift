@@ -8,22 +8,41 @@
 import UIKit
 
 class ButtonAddLocationViewController: UIViewController {
+    @IBOutlet weak var leftTablewView: UITableView!
+    @IBOutlet weak var rightTablewView: UITableView!
+    let location = Location.locationDictionary
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
-        // Do any additional setup after loading the view.
+        tableViewSetup()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableViewSetup() {
+        leftTablewView.delegate = self
+        leftTablewView.dataSource = self
+        rightTablewView.delegate = self
+        rightTablewView.dataSource = self
+        
+        leftTablewView.register(LocationLeftTableviewCell.self, forCellReuseIdentifier: LocationLeftTableviewCell.identifier)
+        rightTablewView.register(LocationRightTableViewCell.self, forCellReuseIdentifier: LocationRightTableViewCell.identifier)
     }
-    */
+}
 
+extension ButtonAddLocationViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == leftTablewView {
+            return location.count
+        }else {
+            return location[0].count // 첫번째 지역으로 기본 셋팅
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == leftTablewView {
+            let cell =
+        }else {
+            
+        }
+    }
 }

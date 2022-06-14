@@ -16,6 +16,7 @@ class ArchiveViewController: UIViewController {
     @IBAction func text(_ sender: Any) {
         self.viewModel?.coordinator.addArchive()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: true)

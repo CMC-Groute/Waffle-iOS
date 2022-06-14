@@ -280,8 +280,6 @@
 			children = (
 				135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */,
 				135B60582858507A0035AE4B /* TableAddLocationViewController.swift */,
-				135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */,
-				135B605C285899250035AE4B /* LocationRightTableViewCell.swift */,
 			);
 			path = LocationContainterViewController;
 			sourceTree = "<group>";
@@ -821,6 +819,8 @@
 		F29ED3192855DBF3002371FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */,
+				135B605C285899250035AE4B /* LocationRightTableViewCell.swift */,
 				F29ED31A2855DBFA002371FD /* Archive.storyboard */,
 			);
 			path = View;

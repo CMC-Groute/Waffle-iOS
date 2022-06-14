@@ -391,6 +391,10 @@
                             <constraint firstAttribute="trailing" secondItem="ZDd-Ou-biE" secondAttribute="trailing" id="zS3-ng-ohP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="leftTablewView" destination="MSH-xm-2XW" id="B9B-nU-OeY"/>
+                        <outlet property="rightTablewView" destination="ZDd-Ou-biE" id="yGk-cJ-FSZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7u-zD-niO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
