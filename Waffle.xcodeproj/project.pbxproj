@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		135B60572858504C0035AE4B /* ButtonAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */; };
+		135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B60582858507A0035AE4B /* TableAddLocationViewController.swift */; };
 		135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
 		135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7C2857A5C300F9F71E /* UILabel.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
@@ -122,6 +124,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
+		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
 		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +269,15 @@
 				BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		135B60552858501E0035AE4B /* LocationContainterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */,
+				135B60582858507A0035AE4B /* TableAddLocationViewController.swift */,
+			);
+			path = LocationContainterViewController;
 			sourceTree = "<group>";
 		};
 		135F6E7B28577CEB00F9F71E /* Network */ = {
@@ -791,6 +804,7 @@
 		F29ED3152855DBD3002371FD /* Viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				135B60552858501E0035AE4B /* LocationContainterViewController */,
 				F29ED3172855DBF1002371FD /* ArchiveViewController.swift */,
 				F29ED33328561D2A002371FD /* AddArchiveViewController.swift */,
 				F29ED33528561DC0002371FD /* AddLocationViewController.swift */,
@@ -1174,6 +1188,7 @@
 				F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */,
+				135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
@@ -1197,6 +1212,7 @@
 				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
 				F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
+				135B60572858504C0035AE4B /* ButtonAddLocationViewController.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,
 				F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */,

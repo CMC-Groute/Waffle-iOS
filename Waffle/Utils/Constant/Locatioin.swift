@@ -7,8 +7,8 @@
 
 import Foundation
 
-class Location {
-    var locationDictionary: [[String: [String]]] =
+struct Location {
+    static var locationDictionary: [[String: [String]]] =
         [
             ["서울" : ["강남구", "강동구","강북구", "강서구",
                  "관악구", "광진구", "구로구", "금천구", "노원구",
