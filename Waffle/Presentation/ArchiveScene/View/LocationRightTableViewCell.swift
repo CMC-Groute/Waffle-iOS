@@ -11,6 +11,12 @@ import SnapKit
 class LocationRightTableViewCell: UITableViewCell {
     static var identifier = "LocationRightTableViewCell"
     
+    override var isSelected: Bool {
+       willSet {
+           self.setSelected(newValue)
+       }
+   }
+    
     lazy var flagImge: UIImageView = { // for selected
         let image = UIImage(named: "flag")
         let imageView = UIImageView(image: image)
@@ -27,7 +33,6 @@ class LocationRightTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureUI()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,6 +48,14 @@ class LocationRightTableViewCell: UITableViewCell {
             $0.leading.equalToSuperview().offset(23)
             $0.trailing.equalToSuperview().offset(-24)
             $0.bottom.equalToSuperview().offset(-10)
+        }
+    }
+    
+    private func setSelected(_ selected: Bool) {
+        if selected {
+            self.backgroundColor = Asset.Colors.white.color
+        } else {
+            self.backgroundColor = Asset.Colors.gray2.color
         }
     }
 

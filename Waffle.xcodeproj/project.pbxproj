@@ -484,7 +484,6 @@
 				F2125D4D284E60E5008E1185 /* SignUpViewController.swift */,
 				F20551A22854A74E0051E94D /* TermsViewController.swift */,
 				F20551A42854A75A0051E94D /* SetProfileImageViewController.swift */,
-				F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -510,6 +509,7 @@
 		F2125D4F284E60F0008E1185 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */,
 				F2125D50284E60FD008E1185 /* SignUp.storyboard */,
 			);
 			path = View;

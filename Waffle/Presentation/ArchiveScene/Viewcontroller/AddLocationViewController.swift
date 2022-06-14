@@ -8,8 +8,10 @@
 import UIKit
 
 class AddLocationViewController: UIViewController {
-    
+    @IBOutlet weak var doneButton: UIButton!
     let searchController = UISearchController(searchResultsController: nil)
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var tableView: UIView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -19,10 +21,13 @@ class AddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        self.tableView.isHidden = true
+        self.buttonView.isHidden = false
 
     }
     
     private func configureUI() {
+        self.doneButton.round(corner: 25)
         func setNavigationBar() {
             var bounds = UIScreen.main.bounds
             var width = bounds.size.width //화면 너비
@@ -37,6 +42,7 @@ class AddLocationViewController: UIViewController {
             
         }
         setNavigationBar()
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,13 +55,19 @@ class AddLocationViewController: UIViewController {
 
 extension AddLocationViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print(searchBar.text)
-        
-        //tableView Loading
+        let childTableViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "TableAddLocationViewController") as! TableAddLocationViewController
+        addChild(childTableViewController)
+        tableView.addSubview(childTableViewController.view)
+        childTableViewController.view.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalTo(tableView)
+        }
+        self.buttonView.isHidden = true
+        self.tableView.isHidden = false
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        
+        
     }
     
     
