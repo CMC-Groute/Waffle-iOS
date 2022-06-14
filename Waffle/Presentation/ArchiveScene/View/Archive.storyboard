@@ -46,11 +46,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-aK-Kot">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zt2-aK-Kot">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="801-8s-uxP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="904"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="공백 포함 10자 이하" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-3G-70P">
                                                 <rect key="frame" x="16" y="47.5" width="382" height="44"/>
@@ -167,17 +167,17 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6BD-co-o3d">
-                                                <rect key="frame" x="16" y="458" width="382" height="180"/>
+                                                <rect key="frame" x="16" y="458" width="382" height="360"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="LC8-jp-Bg0"/>
+                                                    <constraint firstAttribute="height" constant="360" id="LC8-jp-Bg0"/>
                                                 </constraints>
                                                 <color key="textColor" name="Gray4"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgJ-xp-fhJ" userLabel="ButtonView">
-                                                <rect key="frame" x="0.0" y="662" width="414" height="72"/>
+                                                <rect key="frame" x="0.0" y="832" width="414" height="72"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTA-UJ-V3g">
                                                         <rect key="frame" x="16" y="10" width="382" height="52"/>
@@ -205,6 +205,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6BD-co-o3d" secondAttribute="trailing" constant="16" id="0GI-Nd-2C8"/>
+                                            <constraint firstItem="GgJ-xp-fhJ" firstAttribute="top" secondItem="6BD-co-o3d" secondAttribute="bottom" constant="14" id="1DA-BU-Trj"/>
                                             <constraint firstItem="gbl-BO-72n" firstAttribute="centerY" secondItem="tKn-Zp-Blj" secondAttribute="centerY" id="2gT-6i-kzZ"/>
                                             <constraint firstItem="6BD-co-o3d" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="4Re-0B-O8X"/>
                                             <constraint firstItem="J0X-rH-PXo" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="4xh-K6-4Uw"/>
@@ -237,7 +238,6 @@
                                             <constraint firstAttribute="trailing" secondItem="67A-p1-llJ" secondAttribute="trailing" constant="16" id="r8w-zu-aDc"/>
                                             <constraint firstAttribute="trailing" secondItem="bcV-SH-XY2" secondAttribute="trailing" constant="16" id="vUP-L5-qOy"/>
                                             <constraint firstItem="1ZF-3G-70P" firstAttribute="top" secondItem="tKn-Zp-Blj" secondAttribute="bottom" constant="12" id="vr3-XY-gWX"/>
-                                            <constraint firstItem="GgJ-xp-fhJ" firstAttribute="top" secondItem="6BD-co-o3d" secondAttribute="bottom" constant="24" id="zRY-Vn-1P2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -377,6 +377,7 @@
                                 <color key="sectionIndexBackgroundColor" name="White"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ORi-t7-qc4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OQB-47-J5h" firstAttribute="top" secondItem="ekW-I2-7hR" secondAttribute="top" id="4f4-no-yAb"/>
@@ -413,6 +414,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="GBM-vt-tvl"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
                             <constraint firstItem="6co-8A-o99" firstAttribute="top" secondItem="nGJ-PH-1sS" secondAttribute="top" id="GXY-vS-L1R"/>

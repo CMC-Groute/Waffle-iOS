@@ -214,7 +214,7 @@ class AddArchiveViewController: UIViewController {
                 self.archiveMemoTextView.constraints.forEach { (constraint) in
                         
                   /// 180 이하일때는 더 이상 줄어들지 않게하기
-                    if estimatedSize.height <= 180 {
+                    if estimatedSize.height <= 360 {
                     
                     }
                     else {
