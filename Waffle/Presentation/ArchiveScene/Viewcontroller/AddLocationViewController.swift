@@ -9,10 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-//protocol AddLocationViewProtocol {
-//    func buttonClicke()
-//    func tableViewClick()
-//}
 
 class AddLocationViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
@@ -106,7 +102,17 @@ extension AddLocationViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.delegate?.searchText(text: searchText)
         
+        guard let tableListVC = tableLocationVC else { return }
+        tableListVC.locationDataSetUp()
+        
+        tableListVC.locationList = tableListVC.locationList.filter { $0.contains(searchText) }
+        print(tableListVC.locationList)
+        if searchText == "" {
+            tableListVC.locationList = tableListVC.originList
+        }
+        self.tableLocationVC?.tableView.reloadData()
         
     }
     

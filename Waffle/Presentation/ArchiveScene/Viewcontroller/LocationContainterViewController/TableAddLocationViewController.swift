@@ -11,6 +11,8 @@ class TableAddLocationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let location = Location.locationDictionary
     var locationList: [String] = []
+    var originList: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewSetup()
@@ -32,6 +34,7 @@ class TableAddLocationViewController: UIViewController {
                 self.locationList.append("\(sido) \(sigungu)")
             }
         }
+        originList = locationList
     }
 
 }
