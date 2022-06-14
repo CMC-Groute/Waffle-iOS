@@ -9,12 +9,12 @@ import UIKit
 
 class TableAddLocationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+    let location = Location.locationDictionary
+    var locationList: [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TableAddLocationViewController view did load")
         tableViewSetup()
-        // Do any additional setup after loading the view.
+        locationDataSetUp()
     }
     
     
@@ -23,23 +23,40 @@ class TableAddLocationViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func locationDataSetUp(){
+        for i in location {
+            let sido = i.0
+            for j in i.1 {
+                let sigungu = j
+                self.locationList.append("\(sido) \(sigungu)")
+            }
+        }
+    }
 
 }
 
 extension TableAddLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return locationList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         var content = cell.defaultContentConfiguration()
-        content.text = "WWDC"
+        content.text = locationList[indexPath.row]
         cell.contentConfiguration = content
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(45)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let addLocationVC = self.parent as? AddLocationViewController {
+            addLocationVC.doneButton.setEnabled(color: Asset.Colors.black.name)
+            addLocationVC.selectedText = locationList[indexPath.row]
+        }
     }
 }

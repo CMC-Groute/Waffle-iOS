@@ -6,12 +6,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+//protocol AddLocationViewProtocol {
+//    func buttonClicke()
+//    func tableViewClick()
+//}
 
 class AddLocationViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var tableView: UIView!
+    
+    var buttonLocationVC: ButtonAddLocationViewController?
+    var tableLocationVC: TableAddLocationViewController?
+    var disposeBag = DisposeBag()
+    var selectedText: String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -23,11 +35,25 @@ class AddLocationViewController: UIViewController {
         configureUI()
         self.tableView.isHidden = true
         self.buttonView.isHidden = false
+        print(self.children)
+        
+        bindUI()
+        
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue : \(segue.destination)")
+        if segue.identifier == "ButtonAddLocationViewController" {
+            buttonLocationVC = segue.destination as? ButtonAddLocationViewController
+        }else {
+            tableLocationVC = segue.destination as? TableAddLocationViewController
+        }
     }
     
     private func configureUI() {
         self.doneButton.round(corner: 25)
+        self.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         func setNavigationBar() {
             var bounds = UIScreen.main.bounds
             var width = bounds.size.width //화면 너비
@@ -45,6 +71,19 @@ class AddLocationViewController: UIViewController {
         
     }
     
+    
+    func bindUI() {
+        self.doneButton
+            .rx.tap.subscribe(onNext: {
+                self.navigationController?.popViewController(animated: true)
+                if let vc = self.navigationController?.topViewController as? AddArchiveViewController {
+                    print("selectedText")
+                    print(self.selectedText)
+                    vc.viewModel?.locationTextField.accept(self.selectedText)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
@@ -55,12 +94,13 @@ class AddLocationViewController: UIViewController {
 
 extension AddLocationViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let childTableViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "TableAddLocationViewController") as! TableAddLocationViewController
-        addChild(childTableViewController)
-        tableView.addSubview(childTableViewController.view)
-        childTableViewController.view.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalTo(tableView)
-        }
+//        let childTableViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "TableAddLocationViewController") as! TableAddLocationViewController
+//        addChild(childTableViewController)
+//        tableView.addSubview(childTableViewController.view)
+//        childTableViewController.view.snp.makeConstraints {
+//            $0.top.leading.trailing.bottom.equalTo(tableView)
+//        }
+        self.selectedText = "" //초기화
         self.buttonView.isHidden = true
         self.tableView.isHidden = false
     }

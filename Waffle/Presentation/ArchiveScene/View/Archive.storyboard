@@ -289,10 +289,10 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2x-tA-Nkf" userLabel="ButtonView">
                                 <rect key="frame" x="0.0" y="50" width="414" height="740"/>
                                 <connections>
-                                    <segue destination="WNe-JU-JrP" kind="embed" id="G06-fG-EbJ"/>
+                                    <segue destination="WNe-JU-JrP" kind="embed" identifier="ButtonAddLocationViewController" id="G06-fG-EbJ"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD8-Y3-zPw" userLabel="ButtonView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD8-Y3-zPw" userLabel="ButtomView">
                                 <rect key="frame" x="0.0" y="790" width="414" height="72"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hB-SC-tyo">
@@ -317,20 +317,22 @@
                                     <constraint firstAttribute="trailing" secondItem="6hB-SC-tyo" secondAttribute="trailing" constant="16" id="jVK-Hs-P2D"/>
                                 </constraints>
                             </view>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I29-RL-kbe" userLabel="TableView">
-                                <rect key="frame" x="0.0" y="50" width="414" height="740"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" name="green"/>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I29-RL-kbe" userLabel="TableView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="746"/>
                                 <connections>
-                                    <segue destination="hme-nD-ZXO" kind="embed" id="Jp5-Tk-7hO"/>
+                                    <segue destination="hme-nD-ZXO" kind="embed" identifier="TableAddLocationViewController" id="Jp5-Tk-7hO"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fSf-9s-dlU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="MD8-Y3-zPw" firstAttribute="top" secondItem="I29-RL-kbe" secondAttribute="bottom" id="3SH-Mx-k3j"/>
+                            <constraint firstItem="I29-RL-kbe" firstAttribute="trailing" secondItem="fSf-9s-dlU" secondAttribute="trailing" id="7uX-W9-B4w"/>
                             <constraint firstItem="x2x-tA-Nkf" firstAttribute="top" secondItem="fSf-9s-dlU" secondAttribute="top" constant="6" id="8MK-7z-gOl"/>
                             <constraint firstItem="MD8-Y3-zPw" firstAttribute="leading" secondItem="fSf-9s-dlU" secondAttribute="leading" id="ASb-gC-5Gk"/>
+                            <constraint firstItem="I29-RL-kbe" firstAttribute="top" secondItem="fSf-9s-dlU" secondAttribute="top" id="Tvh-sT-Vq6"/>
+                            <constraint firstItem="I29-RL-kbe" firstAttribute="leading" secondItem="fSf-9s-dlU" secondAttribute="leading" id="UbZ-Fn-e1E"/>
                             <constraint firstItem="fSf-9s-dlU" firstAttribute="trailing" secondItem="x2x-tA-Nkf" secondAttribute="trailing" id="aeJ-kg-t8J"/>
                             <constraint firstItem="MD8-Y3-zPw" firstAttribute="top" secondItem="x2x-tA-Nkf" secondAttribute="bottom" id="nMx-T5-lG7"/>
                             <constraint firstAttribute="trailing" secondItem="MD8-Y3-zPw" secondAttribute="trailing" id="rjW-SW-pOo"/>
@@ -362,7 +364,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4or-Kb-vWc"/>
                                 </constraints>
-                                <color key="sectionIndexBackgroundColor" name="Gray2"/>
+                                <color key="sectionIndexBackgroundColor" name="White"/>
                                 <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="MSH-xm-2XW">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="896"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -403,11 +405,11 @@
             <objects>
                 <viewController storyboardIdentifier="TableAddLocationViewController" id="hme-nD-ZXO" customClass="TableAddLocationViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nGJ-PH-1sS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="740"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6co-8A-o99">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="740"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -446,9 +448,6 @@
         </namedColor>
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="green">
-            <color red="0.57647058823529407" green="0.87450980392156863" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

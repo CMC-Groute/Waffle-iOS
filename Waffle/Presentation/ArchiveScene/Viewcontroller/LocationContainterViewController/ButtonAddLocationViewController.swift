@@ -11,7 +11,8 @@ class ButtonAddLocationViewController: UIViewController {
     @IBOutlet weak var leftTablewView: UITableView!
     @IBOutlet weak var rightTablewView: UITableView!
     let location = Location.locationDictionary
-    var selectedLeftIndex:Int? = nil
+    var selectedLeftIndex:Int = 0 // default setting
+    var selectedLocation: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,7 @@ extension ButtonAddLocationViewController: UITableViewDelegate, UITableViewDataS
         if tableView == leftTablewView {
             return location.count
         }else {
-            guard let index = selectedLeftIndex else {
-                return location[0].1.count // 첫번째 지역으로 기본 셋팅
-            }
-        
-            return location[index].1.count
+            return location[selectedLeftIndex].1.count
         }
     }
     
@@ -52,15 +49,13 @@ extension ButtonAddLocationViewController: UITableViewDelegate, UITableViewDataS
 //            cell.selectedBackgroundView = leftSelectedView
             return cell
         }else {
-            let rightSelectedView = UIView()
-            rightSelectedView.backgroundColor = Asset.Colors.orange.color
+//            let rightSelectedView = UIView()
+//            rightSelectedView.backgroundColor = Asset.Colors.orange.color
             let cell = tableView.dequeueReusableCell(withIdentifier: LocationRightTableViewCell.identifier) as! LocationRightTableViewCell
-            cell.selectedBackgroundView = rightSelectedView
-            guard let index = selectedLeftIndex else {
-                cell.label.text = location[0].1[indexPath.row]
-                return cell
-            }
-            cell.label.text = location[index].1[indexPath.row]
+//            cell.backgroundView = rightSelectedView
+//            cell.selectedBackgroundView = rightSelectedView
+
+            cell.label.text = location[selectedLeftIndex].1[indexPath.row]
             return cell
         }
     }
@@ -83,8 +78,12 @@ extension ButtonAddLocationViewController: UITableViewDelegate, UITableViewDataS
 //                let deselectedCell = tableView.cellForRow(at: deselected) as! LocationLeftTableviewCell
 //                deselectedCell.selected(isSelected: false)
 //            }
-        }else {
-        
+        }else { // rightView
+            if let addLocationVC = self.parent as? AddLocationViewController {
+                addLocationVC.doneButton.setEnabled(color: Asset.Colors.black.name)
+                addLocationVC.selectedText = "\(location[selectedLeftIndex].0) \(location[selectedLeftIndex].1[indexPath.row])"
+            }
+
         }
        
 

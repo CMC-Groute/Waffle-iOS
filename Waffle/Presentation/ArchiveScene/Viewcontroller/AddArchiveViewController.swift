@@ -236,6 +236,11 @@ class AddArchiveViewController: UIViewController {
                 self.archiveTimeDateLaterButton.isSelected = self.archiveTimeDateLaterButton.isSelected ? false : true
             }).disposed(by: disposeBag)
         
+        viewModel?.locationTextField
+            .subscribe(onNext: { str in
+                self.archiveLocationTextField.text = str
+            }).disposed(by: disposeBag)
+        
         }
     
     private func textViewScrollToBottom() {

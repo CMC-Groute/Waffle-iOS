@@ -29,7 +29,7 @@ class LocationLeftTableviewCell: UITableViewCell {
     
     func configureUI() {
         self.contentView.addSubview(label)
-        self.contentView.backgroundColor = Asset.Colors.gray2.color
+//        self.contentView.backgroundColor = Asset.Colors.gray2.color
         label.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(23)
@@ -39,7 +39,7 @@ class LocationLeftTableviewCell: UITableViewCell {
     }
     
     func selected(isSelected: Bool){
-        self.contentView.backgroundColor = isSelected ? Asset.Colors.gray2.color : Asset.Colors.white.color
+        self.contentView.backgroundColor = isSelected ? Asset.Colors.gray2.color : Asset.Colors.yellow.color
     }
 
 }

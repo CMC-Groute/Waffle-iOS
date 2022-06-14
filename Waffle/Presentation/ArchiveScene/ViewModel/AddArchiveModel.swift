@@ -20,6 +20,8 @@ class AddArchiveModel {
         self.coordinator = coordinator
     }
     
+    let locationTextField = PublishRelay<String>() //외부에서 받아오는 데이터
+    
     struct Input {
         var nameTextField: Observable<String>
         var memoTextView: Observable<String>
@@ -42,7 +44,6 @@ class AddArchiveModel {
     struct Output {
         let dateTimeTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
         let dateTimeLaterButtonSelected = BehaviorRelay<Bool>(value: false)
-        
         let locationTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
     }
     
@@ -66,4 +67,6 @@ class AddArchiveModel {
             
         return output
     }
+    
+    
 }
