@@ -13,10 +13,31 @@ class TableAddLocationViewController: UIViewController {
     var locationList: [String] = []
     var originList: [String] = []
     
+    var frameView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    var noInfoLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Asset.Colors.black.color
+        label.text = "검색 결과가 없습니다."
+        label.font = UIFont.topPageTitleFont()
+        return label
+    }()
+    
+    var searchImageView: UIImageView = {
+        let searchImage = UIImage(named: "searchEtc")
+        let imageView = UIImageView(image: searchImage)
+        return imageView
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewSetup()
         locationDataSetUp()
+        configureUI()
     }
     
     
@@ -36,11 +57,37 @@ class TableAddLocationViewController: UIViewController {
         }
         originList = locationList
     }
-
+    
+    func configureUI() {
+        self.frameView.addSubview(searchImageView)
+        self.frameView.addSubview(noInfoLabel)
+        noInfoLabel.snp.makeConstraints {
+            $0.centerX.equalTo(frameView)
+            $0.top.equalTo(searchImageView.snp.bottom).offset(10)
+        }
+        searchImageView.snp.makeConstraints {
+            $0.top.equalTo(170)
+            $0.centerX.equalTo(frameView)
+            $0.width.height.equalTo(50)
+        }
+        
+        frameView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
+        
+    }
 }
 
 extension TableAddLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if locationList.count > 0 {
+           tableView.separatorStyle = .singleLine
+           tableView.backgroundView = nil
+       }else {
+          
+           
+           tableView.backgroundView  = frameView
+           tableView.separatorStyle  = .none
+        }
+        
         return locationList.count
     }
     

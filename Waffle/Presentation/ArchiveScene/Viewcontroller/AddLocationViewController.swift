@@ -73,8 +73,6 @@ class AddLocationViewController: UIViewController {
             .rx.tap.subscribe(onNext: {
                 self.navigationController?.popViewController(animated: true)
                 if let vc = self.navigationController?.topViewController as? AddArchiveViewController {
-                    print("selectedText")
-                    print(self.selectedText)
                     vc.viewModel?.locationTextField.accept(self.selectedText)
                 }
             }).disposed(by: disposeBag)
@@ -96,17 +94,18 @@ extension AddLocationViewController: UISearchBarDelegate {
 //        childTableViewController.view.snp.makeConstraints {
 //            $0.top.leading.trailing.bottom.equalTo(tableView)
 //        }
+        guard let tableListVC = tableLocationVC else { return }
         self.selectedText = "" //초기화
+        print("searchBarTextDidBeginEditing")
+
         self.buttonView.isHidden = true
         self.tableView.isHidden = false
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.delegate?.searchText(text: searchText)
-        
         guard let tableListVC = tableLocationVC else { return }
         tableListVC.locationDataSetUp()
-        
+        print("textDidChange")
         tableListVC.locationList = tableListVC.locationList.filter { $0.contains(searchText) }
         print(tableListVC.locationList)
         if searchText == "" {
