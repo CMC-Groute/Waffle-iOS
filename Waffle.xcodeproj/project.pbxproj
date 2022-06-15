@@ -13,6 +13,8 @@
 		135B605D285899250035AE4B /* LocationRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605C285899250035AE4B /* LocationRightTableViewCell.swift */; };
 		135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
 		135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7C2857A5C300F9F71E /* UILabel.swift */; };
+		136CEFA42859D82C002ADDA9 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136CEFA32859D82C002ADDA9 /* HomeCardView.swift */; };
+		136CEFA6285A0A49002ADDA9 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136CEFA5285A0A49002ADDA9 /* SnapCarousel.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
 		7FA1D801216F3A22E519B5ED /* Pods_Waffle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DF3A9DF91B1DC517C009B1 /* Pods_Waffle.framework */; };
@@ -132,6 +134,8 @@
 		135B605C285899250035AE4B /* LocationRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRightTableViewCell.swift; sourceTree = "<group>"; };
 		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		136CEFA32859D82C002ADDA9 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
+		136CEFA5285A0A49002ADDA9 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.release.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		56584A54E1159B7F75006EB4 /* Pods-WaffleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.debug.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -785,6 +789,8 @@
 			isa = PBXGroup;
 			children = (
 				F29ED30D2855DBB2002371FD /* Home.storyboard */,
+				136CEFA32859D82C002ADDA9 /* HomeCardView.swift */,
+				136CEFA5285A0A49002ADDA9 /* SnapCarousel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1175,6 +1181,7 @@
 				F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
+				136CEFA6285A0A49002ADDA9 /* SnapCarousel.swift in Sources */,
 				F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
@@ -1191,6 +1198,7 @@
 				F29ED2E82855D75B002371FD /* HomeCoordinator.swift in Sources */,
 				F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */,
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
+				136CEFA42859D82C002ADDA9 /* HomeCardView.swift in Sources */,
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
 				F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
