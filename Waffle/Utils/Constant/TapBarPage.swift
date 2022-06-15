@@ -12,8 +12,8 @@ enum TabBarPage: String, CaseIterable {
     
     init?(index: Int) {
         switch index {
-        case 0: self = .map
-        case 1: self = .home
+        case 0: self = .home
+        case 1: self = .map
         case 2: self = .setting
         case 3: self = .archive
         default: return nil
@@ -22,8 +22,8 @@ enum TabBarPage: String, CaseIterable {
     
     func pageOrderNumber() -> Int {
         switch self {
-        case .map: return 0
-        case .home: return 1
+        case .home: return 0
+        case .map: return 1
         case .setting: return 2
         case .archive: return 3
         }

@@ -40,7 +40,8 @@ class EditSettingViewController: UIViewController {
         nickNameTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
         
         func setNavigationBar() {
-            self.navigationItem.title = "프로필 편집" // TO DO 텍스트 폰트 적용
+            self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
+            self.navigationItem.title = "프로필 편집"
             let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
             UINavigationBar.appearance().backIndicatorImage = backImage
             UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage

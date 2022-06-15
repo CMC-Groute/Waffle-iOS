@@ -46,7 +46,8 @@ class ChangePWViewController: UIViewController {
         doneButton.round(corner: 25)
         
         func setNavigationBar() {
-            self.navigationItem.title = "비밀번호 변경" // TO DO 텍스트 폰트 적용
+            self.navigationController?.navigationBar.titleTextAttributes = Common.navigationBarTitle()
+            self.navigationItem.title = "비밀번호 변경"
             let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
             UINavigationBar.appearance().backIndicatorImage = backImage
             UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage

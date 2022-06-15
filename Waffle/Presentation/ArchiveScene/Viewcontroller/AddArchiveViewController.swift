@@ -94,7 +94,8 @@ class AddArchiveViewController: UIViewController {
         }
 
         func setNavigationBar() {
-            self.navigationItem.title = "약속 만들기" // TO DO 텍스트 폰트 적용
+            self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
+            self.navigationItem.title = "약속 만들기"
             let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
             UINavigationBar.appearance().backIndicatorImage = backImage
             UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
