@@ -120,15 +120,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcV-SH-XY2">
-                                                <rect key="frame" x="266" y="369.5" width="132" height="30"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="tintColor" name="White"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
-                                                <state key="normal" title="나중에 정할게요" image="unCheck">
-                                                    <color key="titleColor" name="Gray5"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 날짜와 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-fr-VWF">
                                                 <rect key="frame" x="18" y="131.5" width="105.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
@@ -145,21 +136,6 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIL-p4-z6O">
-                                                <rect key="frame" x="198" y="222" width="200" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="C8U-c7-a2a"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="tintColor" name="White"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
-                                                <state key="normal" title="나중에 정할게요. " image="unCheck">
-                                                    <color key="titleColor" name="Gray5"/>
-                                                </state>
-                                                <state key="selected" title="나중에 정할게요" image="check">
-                                                    <color key="titleColor" name="Black"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속에 대한 메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0X-rH-PXo">
                                                 <rect key="frame" x="18" y="426.5" width="105.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
@@ -201,12 +177,39 @@
                                                     <constraint firstAttribute="trailing" secondItem="gTA-UJ-V3g" secondAttribute="trailing" constant="16" id="x2d-hK-XVx"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLu-Jt-Ml4">
+                                                <rect key="frame" x="249" y="222" width="149" height="44"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="나중에 정할게요" image="unCheck">
+                                                    <color key="titleColor" name="Gray5"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" image="unCheck" title="나중에 정할게요">
+                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                    <color key="baseForegroundColor" name="Gray5"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YX-76-TMZ">
+                                                <rect key="frame" x="249" y="369.5" width="149" height="44"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="나중에 정할게요" image="unCheck">
+                                                    <color key="titleColor" name="Gray5"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" image="unCheck" title="나중에 정할게요">
+                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                    <color key="baseForegroundColor" name="Gray5"/>
+                                                </buttonConfiguration>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6BD-co-o3d" secondAttribute="trailing" constant="16" id="0GI-Nd-2C8"/>
                                             <constraint firstItem="GgJ-xp-fhJ" firstAttribute="top" secondItem="6BD-co-o3d" secondAttribute="bottom" constant="14" id="1DA-BU-Trj"/>
                                             <constraint firstItem="gbl-BO-72n" firstAttribute="centerY" secondItem="tKn-Zp-Blj" secondAttribute="centerY" id="2gT-6i-kzZ"/>
+                                            <constraint firstItem="2YX-76-TMZ" firstAttribute="top" secondItem="w2R-HZ-kgK" secondAttribute="bottom" constant="15" id="3Uc-OG-MdS"/>
                                             <constraint firstItem="6BD-co-o3d" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="4Re-0B-O8X"/>
                                             <constraint firstItem="J0X-rH-PXo" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="4xh-K6-4Uw"/>
                                             <constraint firstItem="gbl-BO-72n" firstAttribute="leading" secondItem="tKn-Zp-Blj" secondAttribute="trailing" constant="5" id="8Rd-Ye-klc"/>
@@ -218,25 +221,24 @@
                                             <constraint firstItem="6BD-co-o3d" firstAttribute="top" secondItem="J0X-rH-PXo" secondAttribute="bottom" constant="12" id="N65-qD-YwG"/>
                                             <constraint firstAttribute="trailing" secondItem="w2R-HZ-kgK" secondAttribute="trailing" constant="16" id="Oy0-sV-JMX"/>
                                             <constraint firstItem="tKn-Zp-Blj" firstAttribute="top" secondItem="801-8s-uxP" secondAttribute="top" constant="16" id="Qda-U2-vVQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="rIL-p4-z6O" secondAttribute="trailing" constant="16" id="Teg-ZO-Ftm"/>
                                             <constraint firstItem="QHX-5Z-mbt" firstAttribute="leading" secondItem="6uW-fr-VWF" secondAttribute="trailing" constant="5" id="USe-Jg-oQs"/>
                                             <constraint firstAttribute="bottom" secondItem="GgJ-xp-fhJ" secondAttribute="bottom" id="Wzt-i5-YEl"/>
-                                            <constraint firstItem="bcV-SH-XY2" firstAttribute="top" secondItem="w2R-HZ-kgK" secondAttribute="bottom" constant="15" id="YJ3-9d-zfS"/>
                                             <constraint firstItem="67A-p1-llJ" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="YM2-x8-dmD"/>
                                             <constraint firstItem="Xfh-xL-f0t" firstAttribute="top" secondItem="67A-p1-llJ" secondAttribute="bottom" constant="72" id="aIk-Kq-1nN"/>
                                             <constraint firstItem="tKn-Zp-Blj" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="bKr-9v-zpP"/>
+                                            <constraint firstItem="yLu-Jt-Ml4" firstAttribute="top" secondItem="67A-p1-llJ" secondAttribute="bottom" constant="15" id="ch6-hq-u0o"/>
                                             <constraint firstItem="w2R-HZ-kgK" firstAttribute="top" secondItem="Xfh-xL-f0t" secondAttribute="bottom" constant="12" id="d5L-in-pCP"/>
                                             <constraint firstItem="Xfh-xL-f0t" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="dAn-W2-6u2"/>
                                             <constraint firstItem="67A-p1-llJ" firstAttribute="top" secondItem="6uW-fr-VWF" secondAttribute="bottom" constant="12" id="eBE-Qr-AvW"/>
+                                            <constraint firstAttribute="trailing" secondItem="yLu-Jt-Ml4" secondAttribute="trailing" constant="16" id="eMg-wm-WKk"/>
+                                            <constraint firstAttribute="trailing" secondItem="2YX-76-TMZ" secondAttribute="trailing" constant="16" id="exI-yx-tK8"/>
                                             <constraint firstItem="1ZF-3G-70P" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="hdh-7H-CUq"/>
                                             <constraint firstItem="3A4-1d-Mur" firstAttribute="centerY" secondItem="Xfh-xL-f0t" secondAttribute="centerY" id="jMg-EV-F1Z"/>
                                             <constraint firstItem="QHX-5Z-mbt" firstAttribute="centerY" secondItem="6uW-fr-VWF" secondAttribute="centerY" id="lW7-Di-mPo"/>
                                             <constraint firstItem="J0X-rH-PXo" firstAttribute="top" secondItem="w2R-HZ-kgK" secondAttribute="bottom" constant="72" id="mn9-9O-CZB"/>
                                             <constraint firstAttribute="trailing" secondItem="1ZF-3G-70P" secondAttribute="trailing" constant="16" id="nLy-5z-ztE"/>
                                             <constraint firstItem="w2R-HZ-kgK" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="ovz-8t-Yu3"/>
-                                            <constraint firstItem="rIL-p4-z6O" firstAttribute="top" secondItem="67A-p1-llJ" secondAttribute="bottom" constant="15" id="pu2-gu-Jck"/>
                                             <constraint firstAttribute="trailing" secondItem="67A-p1-llJ" secondAttribute="trailing" constant="16" id="r8w-zu-aDc"/>
-                                            <constraint firstAttribute="trailing" secondItem="bcV-SH-XY2" secondAttribute="trailing" constant="16" id="vUP-L5-qOy"/>
                                             <constraint firstItem="1ZF-3G-70P" firstAttribute="top" secondItem="tKn-Zp-Blj" secondAttribute="bottom" constant="12" id="vr3-XY-gWX"/>
                                         </constraints>
                                     </view>
@@ -265,11 +267,11 @@
                     <connections>
                         <outlet property="addArchiveButton" destination="gTA-UJ-V3g" id="Yic-OC-CpW"/>
                         <outlet property="archiveDateTextField" destination="Mpg-K8-tGB" id="zM6-aR-dXq"/>
-                        <outlet property="archiveLocationLaterButton" destination="bcV-SH-XY2" id="edC-se-D3d"/>
+                        <outlet property="archiveLocationLaterButton" destination="2YX-76-TMZ" id="S6s-6k-wul"/>
                         <outlet property="archiveLocationTextField" destination="w2R-HZ-kgK" id="mJp-jY-sRV"/>
                         <outlet property="archiveMemoTextView" destination="6BD-co-o3d" id="zps-wC-ArN"/>
                         <outlet property="archiveNameTextField" destination="1ZF-3G-70P" id="QBM-56-lL8"/>
-                        <outlet property="archiveTimeDateLaterButton" destination="rIL-p4-z6O" id="JEI-EN-Zqc"/>
+                        <outlet property="archiveTimeDateLaterButton" destination="yLu-Jt-Ml4" id="sfe-Ha-RGr"/>
                         <outlet property="archiveTimeTextField" destination="Nob-Hw-FzW" id="Hdn-uA-L8f"/>
                         <outlet property="bottonConstraint" destination="HeI-Pk-C9K" id="t99-lu-eva"/>
                     </connections>
@@ -433,7 +435,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="check" width="30" height="30"/>
         <image name="required_caption" width="34" height="15"/>
         <image name="unCheck" width="30" height="30"/>
         <namedColor name="Black">

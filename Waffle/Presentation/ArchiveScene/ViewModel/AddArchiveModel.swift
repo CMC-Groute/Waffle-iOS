@@ -24,6 +24,10 @@ class AddArchiveModel {
     
     struct Input {
         var nameTextField: Observable<String>
+        
+        var dateTextField: Observable<String>
+        var timeTextField: Observable<String>
+        var locationTextField: Observable<String>
         var memoTextView: Observable<String>
         
         var nameTextFieldDidTapEvent: ControlEvent<Void>
@@ -42,29 +46,36 @@ class AddArchiveModel {
     }
     
     struct Output {
-        let dateTimeTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
-        let dateTimeLaterButtonSelected = BehaviorRelay<Bool>(value: false)
-        let locationTextFieldUnEabled = BehaviorRelay<Bool>(value: false)
+        let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
+        let locationLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
+        let doneButtonEnabled = BehaviorRelay<Bool>(value: false)
     }
     
     func maxInputRestricted(length: Int, s: String) -> String {
-        print(s)
         return self.usecase.maximumTextLength(length: length, s: s)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-
+        
+        input.addArchiveButton
+            .subscribe(onNext: {
+                //TO DO
+                //약속 추가 서버
+                self.coordinator.popTonavigaionController()
+            }).disposed(by: disposeBag)
+        
+        //done button 활성화
+        Observable.combineLatest(input.nameTextField, input.dateTextField, input.timeTextField, output.dateTimeLaterButtonEnabled, input.locationTextField, output.locationLaterButtonEnabled)
+            .map{ !$0.0.isEmpty && ((!$0.1.isEmpty && !$0.2.isEmpty) || $0.3 == false) && (!$0.4.isEmpty || $0.5 == false) } //false = 토핑이 원하는 위치로
+            .bind(to: output.doneButtonEnabled)
+            .disposed(by: disposeBag)
+        
         input.locationTextFieldTapEvent
             .subscribe(onNext: {
                 self.coordinator.addLocation()
             }).disposed(by: disposeBag)
         
-        input.dateTimeLaterButton
-            .subscribe(onNext: {
-                
-            }).disposed(by: disposeBag)
-            
         return output
     }
     

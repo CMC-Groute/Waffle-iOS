@@ -40,5 +40,9 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
         self.navigationController.pushViewController(addLocationViewController, animated: true)
     }
     
+    func popTonavigaionController() {
+        self.navigationController.popViewController(animated: true)
+    }
+    
     
 }

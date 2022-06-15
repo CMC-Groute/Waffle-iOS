@@ -34,28 +34,24 @@ extension UIButton {
         self.isUserInteractionEnabled = !bool
         self.backgroundColor =  bool ? UIColor(named: color)!.withAlphaComponent(0.5) : UIColor(named: color)!
     }
-}
-
-extension Reactive where Base: UIButton {
-    /// Reactive wrapper for `setTitle(_:for:)`
-    public func title(for controlState: UIControl.State = []) -> Binder<String?> {
-        Binder(self.base) { button, title in
-            button.setTitle(title, for: controlState)
-        }
-    }
-
-    /// Reactive wrapper for `setImage(_:for:)`
-    public func image(for controlState: UIControl.State = []) -> Binder<UIImage?> {
-        Binder(self.base) { button, image in
-            button.setImage(image, for: controlState)
-        }
-    }
-
-    /// Reactive wrapper for `setBackgroundImage(_:for:)`
-    public func backgroundImage(for controlState: UIControl.State = []) -> Binder<UIImage?> {
-        Binder(self.base) { button, image in
-            button.setBackgroundImage(image, for: controlState)
-        }
-    }
     
+    func alignTextBelow(spacing: CGFloat = 10.0) {
+        guard let image = self.imageView?.image else {
+            return
+        }
+        guard let titleLabel = self.titleLabel else {
+            return
+        }
+
+        guard let titleText = titleLabel.text else {
+            return
+        }
+        let titleSize = titleText.size(withAttributes: [
+            NSAttributedString.Key.font: titleLabel.font as Any
+        ])
+
+        self.titleEdgeInsets = UIEdgeInsets(top: spacing, left: -image.size.width, bottom: -image.size.height, right: 0)
+        self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0, bottom: 0, right: -titleSize.width)
+    }
 }
+
