@@ -9,21 +9,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    enum DirectionType {
-        case left, right
-    }
-//
-//    let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.height)) // 왼쪽 아이콘 넣어주는 코드
-//            let image = icon
-//            let imageView = UIImageView(image: image)
-//            imageView.frame = CGRect(x: 12, y: 12, width: 20, height: 20)
-//            iconView.addSubview(imageView)
-//            self.leftView = iconView
-//            self.leftViewMode = .always
-//
-//            self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: self.frame.height)) //오른쪽 공백 넣어주는 코드
-//            self.rightViewMode = .always
-    
+
     func round(corner: CGFloat) {
         self.layer.cornerRadius = corner
         self.layer.masksToBounds = true
@@ -52,41 +38,46 @@ extension UITextField {
         }
     }
     
-    func changeIcon(value: CGFloat, direction: DirectionType, icon: String) {
+    func changeIcon(value: CGFloat, icon: String) {
         let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 34, height: self.frame.height))
         let imageView = UIImageView(image: UIImage(named: icon))
         imageView.frame = CGRect(x: 0, y: 10, width: 24, height: 24)
         iconView.addSubview(imageView)
-        switch direction {
-        case .left:
-            self.rightView = iconView
-            self.rightViewMode = .always
-        case .right:
-            self.leftView = iconView
-            self.leftViewMode = .always
-        }
+
+        self.rightView = iconView
+        self.rightViewMode = .always
+
     }
     
-    func padding(value: CGFloat, direction: DirectionType, icon: String) {
+    func padding(value: CGFloat, icon: String) {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: value, height: self.frame.height))
         
         let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 34, height: self.frame.height))
         let imageView = UIImageView(image: UIImage(named: icon))
         imageView.frame = CGRect(x: 0, y: 10, width: 24, height: 24)
         iconView.addSubview(imageView)
+
+        self.leftView = view
+        self.rightView = iconView
         
-        switch direction {
-        case .left:
-            self.leftView = view
-            self.rightView = iconView
-            
-            self.leftViewMode = .always
-            self.rightViewMode = .never
-        case .right:
-            self.rightView = view
-            self.rightViewMode = .always
-        }
-        
+        self.leftViewMode = .always
+        self.rightViewMode = .never
+    }
+    
+    func padding(value: CGFloat){
+
+        let editingIconView = UIView(frame: CGRect(x: 0, y: 0, width: value, height: self.frame.height))
+        self.leftView = editingIconView
+        self.leftViewMode = .always
+    }
+    
+    func addIconLeft(value: CGFloat, icon: UIImage, width: CGFloat, height: CGFloat) {
+        let editingIconView = UIView(frame: CGRect(x: 0, y: 0, width: value + width + 5, height: self.frame.height))
+        let iconImageView = UIImageView(image: icon)
+        iconImageView.frame = CGRect(x: value, y: 12, width: width, height: height)
+        editingIconView.addSubview(iconImageView)
+        self.leftView = editingIconView
+        self.leftViewMode = .always
     }
     
     func maxInputTextField(maxLength: Int) {

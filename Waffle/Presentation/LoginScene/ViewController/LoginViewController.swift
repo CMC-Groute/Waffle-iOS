@@ -74,9 +74,9 @@ class LoginViewController: UIViewController {
         loginButton.round(corner: 25)
         
         emailTextField.round(corner: 10)
-        emailTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+        emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         passwordTextField.round(corner: 10)
-        passwordTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+        passwordTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

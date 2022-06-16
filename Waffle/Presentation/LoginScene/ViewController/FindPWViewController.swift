@@ -30,7 +30,7 @@ class FindPWViewController: UIViewController {
     private func configureUI() {
         self.getTempPWButton.round(corner: 25)
         emailTextField.round(corner: 10)
-        emailTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+        emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
     }
     
     func resignForKeyboardNotification() {

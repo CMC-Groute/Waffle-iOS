@@ -41,7 +41,7 @@ class ChangePWViewController: UIViewController {
         textFields = [PWTextField, newPWTextField, newRePWTextField]
         textFields.forEach {
             $0.round(corner: 10)
-            $0.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+            $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
         doneButton.round(corner: 25)
         
@@ -149,10 +149,10 @@ class ChangePWViewController: UIViewController {
                     self.PWTextInValidText.isHidden = bool
                     self.PWTextField.errorBorder(bool: bool)
                     if bool {
-                        self.PWTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.PWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
                         
-                        self.PWTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.PWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.PWTextInValidText.isHidden = true
@@ -168,10 +168,10 @@ class ChangePWViewController: UIViewController {
                     self.newPWTextInValidText.isHidden = bool
                     self.newPWTextField.errorBorder(bool: bool)
                     if bool {
-                        self.newPWTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.newPWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
                         
-                        self.newPWTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.newPWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.newPWTextInValidText.isHidden = true
@@ -187,10 +187,10 @@ class ChangePWViewController: UIViewController {
                     self.newRePWTextInValidText.isHidden = bool
                     self.newRePWTextField.errorBorder(bool: bool)
                     if bool {
-                        self.newRePWTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.newRePWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
                         
-                        self.newRePWTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.newRePWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.newRePWTextInValidText.isHidden = true

@@ -47,7 +47,7 @@ class SignUpViewController: UIViewController {
         nextButton.round(corner: 25)
         textFields.forEach {
             $0.round(corner: 10)
-            $0.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+            $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
 
         
@@ -175,10 +175,10 @@ class SignUpViewController: UIViewController {
                     self.emailInValidText.textColor = UIColor(named: color.rawValue)
                     switch color {
                     case .green:
-                        self.emailTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.emailTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                         self.authenTextField.becomeFirstResponder()
                     case .red:
-                        self.emailTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.emailTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                         self.emailTextField.errorBorder(bool: false)
                     default:
                         self.emailTextField.errorBorder(bool: true)
@@ -206,11 +206,11 @@ class SignUpViewController: UIViewController {
                 self.authenTextField.errorBorder(bool: bool)
                 self.codeAuthenButton.setDisabled(with: bool, color: Asset.Colors.orange.name)
                 if bool {
-                    self.authenTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                    self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     self.emailAuthenButton.setDisabled(with: true, color: Asset.Colors.orange.name)
                     self.codeAuthenButton.setTitle("확인 완료", for: .normal)
                 }else {
-                    self.authenTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                    self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     self.codeAuthenButton.setTitle("확인", for: .normal)
                 }
             }).disposed(by: disposeBag)
@@ -221,10 +221,10 @@ class SignUpViewController: UIViewController {
                     self.pwInValidText.isHidden = bool
                     self.pwTextField.errorBorder(bool: bool)
                     if bool {
-                        self.pwTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.pwTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
                         
-                        self.pwTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.pwTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.pwInValidText.isHidden = true
@@ -240,9 +240,9 @@ class SignUpViewController: UIViewController {
                     self.pwReInValidText.isHidden = bool
                     self.pwReTextField.errorBorder(bool: bool)
                     if bool {
-                        self.pwReTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                        self.pwReTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
-                        self.pwReTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                        self.pwReTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.pwReInValidText.isHidden = true

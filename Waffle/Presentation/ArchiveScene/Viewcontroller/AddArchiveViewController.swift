@@ -61,10 +61,10 @@ class AddArchiveViewController: UIViewController {
         archiveTimeTextField.round(corner: 10)
         archiveLocationTextField.round(corner: 10)
         
-        archiveNameTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
-        archiveDateTextField.padding(value: 9, direction: .left, icon: "")
-        archiveTimeTextField.padding(value: 9, direction: .left, icon: "")
-        archiveLocationTextField.padding(value: 9, direction: .left, icon: "")
+        archiveNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+        archiveDateTextField.padding(value: 9, icon: "")
+        archiveTimeTextField.padding(value: 9, icon: "")
+        archiveLocationTextField.padding(value: 9)
         archiveMemoTextView.round(width: 2, color: Asset.Colors.gray2.name, value: 10)
         archiveMemoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         archiveMemoTextView.attributedText = archiveMemoTextView.text.setLineHeight(24)
@@ -290,6 +290,7 @@ class AddArchiveViewController: UIViewController {
         
         viewModel?.locationTextField
             .subscribe(onNext: { str in
+                self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
                 self.archiveLocationTextField.text = str
             }).disposed(by: disposeBag)
         

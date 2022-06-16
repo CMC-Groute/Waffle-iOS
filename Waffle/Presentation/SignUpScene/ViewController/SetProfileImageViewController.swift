@@ -34,7 +34,7 @@ class SetProfileImageViewController: UIViewController {
         startButton.round(corner: 25)
         startButton.setUnEnabled(color: Asset.Colors.gray4.name)
         nickNameTextField.round(corner: 10)
-        nickNameTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+        nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         
         func setProgressNavigationBar() { // TO DO selected state
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -121,9 +121,9 @@ class SetProfileImageViewController: UIViewController {
                 self.nickNameTextField.errorBorder(bool: bool)
                 self.nickNameInValidText.isHidden = bool
                 if bool {
-                    self.nickNameTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                 }else {
-                    self.nickNameTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 }
             }).disposed(by: disposeBag)
         

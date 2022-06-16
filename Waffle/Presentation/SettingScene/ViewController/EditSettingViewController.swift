@@ -37,7 +37,7 @@ class EditSettingViewController: UIViewController {
         doneButton.round(corner: 25)
         doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         nickNameTextField.round(corner: 10)
-        nickNameTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+        nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
@@ -121,9 +121,9 @@ class EditSettingViewController: UIViewController {
                 self.nickNameTextField.errorBorder(bool: bool)
                 self.nickNameInValidText.isHidden = bool
                 if bool {
-                    self.nickNameTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.checkCircle.name)
+                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                 }else {
-                    self.nickNameTextField.changeIcon(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
+                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 }
             }).disposed(by: disposeBag)
         
