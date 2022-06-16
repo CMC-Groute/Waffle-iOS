@@ -14,6 +14,7 @@ class FindPWViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var getTempPWButton: UIButton!
     @IBOutlet weak var emailInvalidText: UILabel!
+    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
     let disposeBag = DisposeBag()
     var viewModel: FindPWViewModel?
@@ -21,8 +22,8 @@ class FindPWViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
-        keyboardLayout()
         configureUI()
+        resignForKeyboardNotification()
 
     }
     
@@ -32,9 +33,41 @@ class FindPWViewController: UIViewController {
         emailTextField.padding(value: 9, direction: .left, icon: Asset.Assets.errorCircleRounded.name)
     }
     
-    private func keyboardLayout() {
-        self.view.keyboardLayoutGuide.topAnchor.constraint(equalTo: self.getTempPWButton.bottomAnchor).isActive = true
+    func resignForKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+        
+    //notification delete
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+          if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+              let keyboardReactangle = keyboardFrame.cgRectValue
+              let keyboardHeight = keyboardReactangle.height
+              UIView.animate(
+                  withDuration: 0.3
+                  , animations: {
+                      self.bottonConstraint.constant = -keyboardHeight //+ //self.view.safeAreaInsets.bottom
+                      print(self.bottonConstraint.constant)
+                  }
+              )
+        }
+
+      }
+      
+      @objc func keyboardWillHide(notification: NSNotification) {
+          UIView.animate(
+              withDuration: 0.3
+              , animations: {
+                  self.bottonConstraint.constant = 0
+              }
+          )
+      }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

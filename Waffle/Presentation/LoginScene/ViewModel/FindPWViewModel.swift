@@ -33,13 +33,20 @@ class FindPWViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        
-        input.emailTextField
-            .map { $0.count > 0 }
-            .bind(to: output.getTempPWButtonEnabled)
-            .disposed(by: disposeBag)
-        
 
+        input.emailTextField
+            .distinctUntilChanged()
+            .skip(1)
+            .subscribe(onNext: { [weak self] email in
+                guard let self = self else { return }
+                if !self.usecase.checkEmailValid(email: email) { // 유효 x
+                    output.emailInvalidMessage.accept(false)
+                }else {
+                    output.emailInvalidMessage.accept(true)
+  
+                }
+            }).disposed(by: disposeBag)
+        
         input.getTempPWButton
             .withLatestFrom(input.emailTextField)
             .bind(onNext: { [weak self] email in
@@ -53,6 +60,13 @@ class FindPWViewModel {
                 }
             }).disposed(by: disposeBag)
             
+        output.emailInvalidMessage
+            .subscribe(onNext: { bool in
+                if bool {
+                    output.getTempPWButtonEnabled.accept(true)
+                }
+            }).disposed(by: disposeBag)
+        
         return output
     }
     
