@@ -8,7 +8,7 @@
 import Foundation
 
 enum TabBarPage: String, CaseIterable {
-    case map, home, setting, archive
+    case home, map, setting, archive
     
     init?(index: Int) {
         switch index {

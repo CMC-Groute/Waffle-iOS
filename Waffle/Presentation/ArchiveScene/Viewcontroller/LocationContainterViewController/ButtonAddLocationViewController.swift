@@ -28,6 +28,8 @@ class ButtonAddLocationViewController: UIViewController {
         
         leftTablewView.register(LocationLeftTableviewCell.self, forCellReuseIdentifier: LocationLeftTableviewCell.identifier)
         rightTablewView.register(LocationRightTableViewCell.self, forCellReuseIdentifier: LocationRightTableViewCell.identifier)
+        rightTablewView.separatorStyle = .none
+        leftTablewView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 

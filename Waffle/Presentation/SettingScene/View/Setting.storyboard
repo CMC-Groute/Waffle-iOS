@@ -434,7 +434,7 @@
         <!--Logout Pop Up View Controller-->
         <scene sceneID="7zn-QF-XTF">
             <objects>
-                <viewController storyboardIdentifier="LogoutPopUpViewController" id="PdS-zz-KWO" customClass="LogoutPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogoutPopUpViewController" hidesBottomBarWhenPushed="YES" id="PdS-zz-KWO" customClass="LogoutPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GI8-It-czO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -524,7 +524,7 @@
         <!--Quit Pop Up View Controller-->
         <scene sceneID="Yez-gB-uty">
             <objects>
-                <viewController storyboardIdentifier="QuitPopUpViewController" id="8PZ-EQ-ueY" customClass="QuitPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuitPopUpViewController" hidesBottomBarWhenPushed="YES" id="8PZ-EQ-ueY" customClass="QuitPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jMN-eS-cg4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -25,8 +25,14 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
     }
     
     func start() {
-        archiveViewController.viewModel = ArchiveViewModel(usecase: ArchiveUseCase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.viewControllers = [archiveViewController]
+    }
+    
+    func inputArchive() {
+        let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveViewController") as! InputArchiveCodeViewController
+        inputArchiveCodeViewController.viewModel = InputArchiveViewModel(usecase: ArchiveUseCase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
+        
     }
     
     func addArchive() {

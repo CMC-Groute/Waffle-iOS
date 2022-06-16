@@ -53,13 +53,9 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     }
     
     private func configureTabBarItem(of page: TabBarPage) -> UITabBarItem {
-//        let mapTabItem = UITabBarItem(title: "map", image: nil, selectedImage: nil)
-//        let homeTabItem = UITabBarItem(title: "home", image: nil, selectedImage: nil)
-//        let settingTabItem = UITabBarItem(title: "setting", image: nil, selectedImage: nil)
-//        let archiveTabItem = UITabBarItem(title: "archive", image: nil, selectedImage: nil)
         return UITabBarItem(
             title: nil,
-            image: UIImage(named: page.tabIconName()), selectedImage: UIImage(named: "\(page.tabIconName())-selected"))
+            image: UIImage(named: page.tabIconName())?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "\(page.tabIconName())-selected")?.withRenderingMode(.alwaysOriginal))
         
     }
     
