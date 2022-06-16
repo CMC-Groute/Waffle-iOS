@@ -82,8 +82,6 @@ extension TableAddLocationViewController: UITableViewDelegate, UITableViewDataSo
            tableView.separatorStyle = .singleLine
            tableView.backgroundView = nil
        }else {
-          
-           
            tableView.backgroundView  = frameView
            tableView.separatorStyle  = .none
         }

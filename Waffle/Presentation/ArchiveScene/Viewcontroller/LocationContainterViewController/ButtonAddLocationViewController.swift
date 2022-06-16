@@ -68,27 +68,21 @@ extension ButtonAddLocationViewController: UITableViewDelegate, UITableViewDataS
 
         if tableView == leftTablewView {
             self.selectedLeftIndex = indexPath.row
+
+            if let addLocationVC = self.parent as? AddLocationViewController {
+                addLocationVC.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+            }
             self.rightTablewView.reloadData()
-//            print("click cell \(indexPath)")
-//            for i in 0..<location.count {
-//                print(location.count)
-//                if indexPath.row == i { continue }
-//                let deselected: IndexPath = [0, i]
-//                print("de selected row \(deselected)")
-//                let deselectedCell = tableView.cellForRow(at: deselected) as! LocationLeftTableviewCell
-//                deselectedCell.selected(isSelected: false)
-//            }
         }else { // rightView
             if let addLocationVC = self.parent as? AddLocationViewController {
                 addLocationVC.doneButton.setEnabled(color: Asset.Colors.black.name)
                 addLocationVC.selectedText = "\(location[selectedLeftIndex].0) \(location[selectedLeftIndex].1[indexPath.row])"
+                
+                
             }
 
         }
-       
 
-        //새로 선택 셀 선택
-        //cell.selected(isSelected: true)
     }
     
     
