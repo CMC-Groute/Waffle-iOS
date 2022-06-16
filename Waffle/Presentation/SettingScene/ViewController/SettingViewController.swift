@@ -99,6 +99,7 @@ class SettingViewController: UIViewController {
         editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         editButton.layer.borderWidth = 1
         editButton.round(corner: 20)
+        quitButton.titleLabel?.attributedText = "탈퇴하기".underBarLine()
         self.view.addSubview(self.tableView)
 
         tableView.snp.makeConstraints { make in

@@ -427,8 +427,11 @@
                         <outlet property="boxView" destination="ipq-1k-ypJ" id="qgM-Il-rDP"/>
                         <outlet property="nextButton" destination="op7-LA-Ysa" id="pHQ-DP-gHO"/>
                         <outlet property="privacyCollectAgreeButton" destination="oPr-Bl-7S2" id="cNg-Y0-XrG"/>
+                        <outlet property="privacyCollectText" destination="lhF-LJ-vY5" id="qbw-dl-BSv"/>
                         <outlet property="serviceAgreeButton" destination="zz6-dO-D61" id="cFw-Zo-zFh"/>
+                        <outlet property="serviceAgreeText" destination="tgd-2b-BHd" id="0ZZ-1P-kpG"/>
                         <outlet property="useForMaketingAgreeButton" destination="61Z-W3-iy7" id="dy1-zb-OfU"/>
+                        <outlet property="useForMaketingAgreeText" destination="2P6-3z-iuU" id="PkS-GJ-I2N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a0N-ta-Dck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

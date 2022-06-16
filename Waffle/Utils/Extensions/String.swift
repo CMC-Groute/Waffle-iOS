@@ -15,9 +15,29 @@ extension String {
         style.minimumLineHeight = lineHeight
         let myAttribute = [ NSAttributedString.Key.foregroundColor: Asset.Colors.gray4.color, NSAttributedString.Key.paragraphStyle:  style, NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15)]
         let myAttrString = NSAttributedString(string: self, attributes: myAttribute)
-        
-//        attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, attributeString.length))
         return myAttrString
+    }
+    
+    func underBarLine() -> NSAttributedString {
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: Asset.Colors.black.color, NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 13)] as [NSAttributedString.Key : Any]
+        let underlineAttributedString = NSAttributedString(string: self, attributes: underlineAttribute)
+        return underlineAttributedString
+    }
+    
+    func underBarLine(length: Int) -> NSAttributedString {
+        
+        let textRange = NSRange(location: 0, length: length)
+        let attributedText = NSMutableAttributedString(string: self)
+        attributedText.addAttribute(.underlineStyle,
+                                           value: NSUnderlineStyle.single.rawValue,
+                                           range: textRange)
+        attributedText.addAttribute(.foregroundColor,
+                                           value: Asset.Colors.black.color,
+                                           range: textRange)
+        attributedText.addAttribute(.font,
+                                           value: UIFont.fontWithName(type: .regular, size: 13),
+                                           range: textRange)
+        return attributedText
     }
 }
 

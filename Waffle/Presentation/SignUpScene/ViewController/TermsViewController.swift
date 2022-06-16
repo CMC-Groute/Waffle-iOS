@@ -19,6 +19,11 @@ class TermsViewController: UIViewController {
     @IBOutlet weak var serviceAgreeButton: UIButton!
     @IBOutlet weak var privacyCollectAgreeButton: UIButton!
     @IBOutlet weak var useForMaketingAgreeButton: UIButton!
+    
+    @IBOutlet weak var serviceAgreeText: UILabel!
+    @IBOutlet weak var privacyCollectText: UILabel!
+    @IBOutlet weak var useForMaketingAgreeText: UILabel!
+    
     @IBOutlet weak var nextButton: UIButton!
     var coordinator: SignUpCoordinator!
     
@@ -57,7 +62,14 @@ class TermsViewController: UIViewController {
         nextButton.round(corner: 25)
         nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
         boxView.round(width: 3, color: Asset.Colors.gray4.name, value: 10)
-        func setProgressNavigationBar() { // TO DO selected state
+        let saText = "서비스 이용약관 동의(필수)"
+        let pcText = "개인정보 수집 및 이용 동의(필수)"
+        let umText = "마케팅 활용 동의(선택)"
+        serviceAgreeText.attributedText = saText.underBarLine(length: pcText.count - 4)
+        privacyCollectText.attributedText = pcText.underBarLine(length: pcText.count - 4)
+        useForMaketingAgreeText.attributedText = umText.underBarLine(length: umText.count - 4)
+        
+        func setProgressNavigationBar() {
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
             let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed2.name)
