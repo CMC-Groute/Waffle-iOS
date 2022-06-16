@@ -95,8 +95,8 @@
                                     <constraint firstAttribute="trailing" secondItem="TNb-8n-CX3" secondAttribute="trailing" constant="23" id="ybv-sL-l3v"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLK-v3-g4V">
-                                <rect key="frame" x="24" y="810" width="69" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLK-v3-g4V">
+                                <rect key="frame" x="12" y="822" width="69" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="탈퇴하기">
                                     <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
@@ -108,8 +108,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nRn-K0-FGE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="MmC-dJ-MPI"/>
-                            <constraint firstItem="mLK-v3-g4V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="WaG-cZ-GZ0"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="mLK-v3-g4V" secondAttribute="bottom" constant="22" id="f1h-Tp-UCc"/>
+                            <constraint firstItem="mLK-v3-g4V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="12" id="WaG-cZ-GZ0"/>
                             <constraint firstItem="nRn-K0-FGE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="pw9-4G-nWN"/>
                             <constraint firstItem="GXO-2g-8Kx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="quf-0i-r46"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GXO-2g-8Kx" secondAttribute="trailing" constant="16" id="ufe-Qf-3sY"/>

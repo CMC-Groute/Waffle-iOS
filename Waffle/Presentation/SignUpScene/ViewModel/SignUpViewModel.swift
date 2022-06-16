@@ -107,7 +107,7 @@ class SignUpViewModel {
                     message = "이메일에서 인증번호를 확인해 주세요."
                     color = .green
                 default:
-                    print(message)
+                    break
                     
                 }
                 output.emailInvalidMessage.accept((message ?? nil, color ?? nil))

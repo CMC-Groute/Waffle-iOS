@@ -20,6 +20,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var changePWButton: UIButton!
     @IBOutlet weak var quitButton: UIButton!
+    
     var viewModel: SettingViewModel?
     let disposeBag = DisposeBag()
 
@@ -28,7 +29,6 @@ class SettingViewController: UIViewController {
         tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-        //tableView.isScrollEnabled = false
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -100,10 +100,12 @@ class SettingViewController: UIViewController {
         editButton.layer.borderWidth = 1
         editButton.round(corner: 20)
         self.view.addSubview(self.tableView)
+
         tableView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom).offset(9)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(quitButton.snp.top).offset(-9)
+            make.bottom.equalTo(quitButton.snp.top).offset(-18)
+            make.height.equalTo(290)
         }
     }
     

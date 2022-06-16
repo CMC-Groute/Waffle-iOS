@@ -209,7 +209,6 @@ class AddArchiveViewController: UIViewController {
             .subscribe(onNext: { _ in
                 let size = CGSize(width: self.view.frame.width, height: .infinity)
                 let estimatedSize = self.archiveMemoTextView.sizeThatFits(size)
-                print(estimatedSize.height)
                 self.archiveMemoTextView.translatesAutoresizingMaskIntoConstraints = false
                 self.archiveMemoTextView.constraints.forEach { (constraint) in
                         

@@ -161,7 +161,6 @@ extension SetProfileImageViewController: UICollectionViewDataSource, UICollectio
 
         let cell = collectionView.cellForItem(at: indexPath) as! ProfileImageCollectionViewCell
 
-        print("click cell \(indexPath)")
         for i in 0..<5 {
             if indexPath.row == i { continue }
             let deselected: IndexPath = [0, i]

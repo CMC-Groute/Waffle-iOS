@@ -53,7 +53,6 @@ class SettingViewModel {
         
         input.quitButton
             .subscribe(onNext: {
-                print("click")
                 self.coordinator.quit()
             }).disposed(by: disposeBag)
         

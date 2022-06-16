@@ -31,7 +31,6 @@ class AddLocationViewController: UIViewController {
         configureUI()
         self.tableView.isHidden = true
         self.buttonView.isHidden = false
-        print(self.children)
         
         bindUI()
         
@@ -39,7 +38,6 @@ class AddLocationViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("segue : \(segue.destination)")
         if segue.identifier == "ButtonAddLocationViewController" {
             buttonLocationVC = segue.destination as? ButtonAddLocationViewController
         }else {
@@ -96,7 +94,6 @@ extension AddLocationViewController: UISearchBarDelegate {
 //        }
         guard let tableListVC = tableLocationVC else { return }
         self.selectedText = "" //초기화
-        print("searchBarTextDidBeginEditing")
 
         self.buttonView.isHidden = true
         self.tableView.isHidden = false
@@ -105,9 +102,7 @@ extension AddLocationViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let tableListVC = tableLocationVC else { return }
         tableListVC.locationDataSetUp()
-        print("textDidChange")
         tableListVC.locationList = tableListVC.locationList.filter { $0.contains(searchText) }
-        print(tableListVC.locationList)
         if searchText == "" {
             tableListVC.locationList = tableListVC.originList
         }

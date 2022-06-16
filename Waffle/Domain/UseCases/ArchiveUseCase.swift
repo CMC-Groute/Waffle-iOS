@@ -18,7 +18,6 @@ class ArchiveUseCase: ArchiveUseCaseProtocol {
     }
     
     func maximumTextLength(length: Int, s: String) -> String {
-        print(s)
         if s.count > length {
             let index = s.index(s.startIndex, offsetBy: length)
             return String(s[..<index])

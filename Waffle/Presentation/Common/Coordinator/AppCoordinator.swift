@@ -46,7 +46,6 @@ class AppCoordinator: AppCoordinatorProtocol {
 extension AppCoordinator: CoordinatorFinishDelegate { // 로그인 coordinator 끝나고 다른 coordinator로 이동
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators.filter({ $0.type != childCoordinator.type })
-        print("childCoordinators \(childCoordinators)")
         self.navigationController.viewControllers.removeAll()
         
         switch childCoordinator.type {

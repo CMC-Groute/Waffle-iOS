@@ -18,7 +18,6 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     }
     
     func login(email: String, password: String) -> AnyPublisher<Bool, Never> {
-        print("UserRepository login method")
         let subject = PassthroughSubject<Bool, Never>()
         subject.send(true)
         return subject.eraseToAnyPublisher()
