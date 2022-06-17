@@ -11,7 +11,7 @@ import RxSwift
 class ArchiveViewController: UIViewController {
 
     var disposBag = DisposeBag()
-    var viewModel: InputArchiveViewModel?
+    var viewModel: ArchiveViewModel?
     
     @IBAction func text(_ sender: Any) {
         self.viewModel?.coordinator.addArchive()

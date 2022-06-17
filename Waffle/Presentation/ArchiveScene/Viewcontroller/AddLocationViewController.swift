@@ -94,7 +94,7 @@ extension AddLocationViewController: UISearchBarDelegate {
 //        }
         guard let tableListVC = tableLocationVC else { return }
         self.selectedText = "" //초기화
-
+        self.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         self.buttonView.isHidden = true
         self.tableView.isHidden = false
     }
