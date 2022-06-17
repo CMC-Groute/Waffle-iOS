@@ -48,20 +48,30 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
         let logoutPopUpView = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "LogoutPopUpViewController") as! LogoutPopUpViewController
         logoutPopUpView.coordinator = self
         logoutPopUpView.usecase = UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService()))
-        self.navigationController.pushViewController(logoutPopUpView, animated: true)
+        logoutPopUpView.modalPresentationStyle = .overFullScreen
+        logoutPopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(logoutPopUpView, animated: false)
     }
     
     func quit() {
         let quitPopUpView = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "QuitPopUpViewController") as! QuitPopUpViewController
         quitPopUpView.coordinator = self
         quitPopUpView.usecase = UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService()))
-        self.navigationController.pushViewController(quitPopUpView, animated: true)
+        quitPopUpView.modalPresentationStyle = .overFullScreen
+        quitPopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(quitPopUpView, animated: false)
     }
     
     func popToRootViewController(with toastMessage: String?) {
-        self.navigationController.popViewController(animated: true)
+        self.navigationController.dismiss(animated: true)
         if let toastMessage = toastMessage {
             self.navigationController.topViewController?.showToast(message: toastMessage)
         }
+    }
+    
+    func finish() {
+        self.navigationController.modalTransitionStyle = .flipHorizontal
+        self.navigationController.dismiss(animated: true)
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
 }

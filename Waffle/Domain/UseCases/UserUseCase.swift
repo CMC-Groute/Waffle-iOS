@@ -11,6 +11,7 @@ import RxSwift
 class UserUseCase: UserUseCaseProtocol {
     
     private var repository: UserRepository!
+    
     var nickName: String?
     var email: String?
     var password: String?

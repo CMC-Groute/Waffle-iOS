@@ -102,6 +102,15 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
 
 extension TabBarCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators.filter({ $0.type != childCoordinator.type })
+        self.navigationController.viewControllers.removeAll()
         
+        switch childCoordinator.type {
+        case .setting: // setting 끝나면 로그인으로 감
+            self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+
+        default:
+            break
+        }
     }
 }
