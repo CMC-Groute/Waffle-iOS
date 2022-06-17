@@ -56,7 +56,6 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     }
     
     func finish() {
-        print("finish method")
         self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     

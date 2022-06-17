@@ -86,14 +86,10 @@ class AddLocationViewController: UIViewController {
 
 extension AddLocationViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        let childTableViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "TableAddLocationViewController") as! TableAddLocationViewController
-//        addChild(childTableViewController)
-//        tableView.addSubview(childTableViewController.view)
-//        childTableViewController.view.snp.makeConstraints {
-//            $0.top.leading.trailing.bottom.equalTo(tableView)
-//        }
         guard let tableListVC = tableLocationVC else { return }
         self.selectedText = "" //초기화
+        tableListVC.locationList = []
+        tableListVC.isSearching = false
         self.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         self.buttonView.isHidden = true
         self.tableView.isHidden = false
@@ -102,9 +98,11 @@ extension AddLocationViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let tableListVC = tableLocationVC else { return }
         tableListVC.locationDataSetUp()
+        tableListVC.isSearching = true
         tableListVC.locationList = tableListVC.locationList.filter { $0.contains(searchText) }
         if searchText == "" {
-            tableListVC.locationList = tableListVC.originList
+            tableListVC.locationList = []
+            tableListVC.isSearching = false
         }
         self.tableLocationVC?.tableView.reloadData()
         

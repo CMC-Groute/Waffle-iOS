@@ -12,6 +12,7 @@ class TableAddLocationViewController: UIViewController {
     let location = Location.locationDictionary
     var locationList: [String] = []
     var originList: [String] = []
+    var isSearching: Bool = false
     
     var frameView: UIView = {
         let view = UIView()
@@ -36,7 +37,6 @@ class TableAddLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewSetup()
-        locationDataSetUp()
         configureUI()
     }
     
@@ -48,7 +48,7 @@ class TableAddLocationViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func locationDataSetUp(){
+    public func locationDataSetUp(){
         for i in location {
             let sido = i.0
             for j in i.1 {
@@ -79,12 +79,12 @@ class TableAddLocationViewController: UIViewController {
 
 extension TableAddLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if locationList.count > 0 {
+        if isSearching == true && locationList.count == 0 { // 검색 중인데 데이터가 없을때
+            tableView.backgroundView  = frameView
+            tableView.separatorStyle  = .none
+       }else {
            tableView.separatorStyle = .singleLine
            tableView.backgroundView = nil
-       }else {
-           tableView.backgroundView  = frameView
-           tableView.separatorStyle  = .none
         }
         
         return locationList.count
