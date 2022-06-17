@@ -429,7 +429,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-IE-Nhy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haveToppingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-IE-Nhy">
                                 <rect key="frame" x="0.0" y="97" width="414" height="202"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vnc-IE-Nhy" secondAttribute="height" multiplier="375:183" id="bVo-n1-5RP"/>
@@ -547,6 +547,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="haveToppingPicture" width="392.5" height="232"/>
         <image name="required_caption" width="34" height="15"/>
         <image name="unCheck" width="30" height="30"/>
         <namedColor name="Black">
