@@ -59,7 +59,7 @@ class TermsViewController: UIViewController {
     }
     
     func configureUI() {
-        nextButton.round(corner: 25)
+        nextButton.round(corner: 26)
         nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
         boxView.round(width: 3, color: Asset.Colors.gray4.name, value: 10)
         let saText = "서비스 이용약관 동의(필수)"

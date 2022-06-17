@@ -34,7 +34,7 @@ class EditSettingViewController: UIViewController {
     
     private func configureUI() {
         profileImage.makeCircleShape()
-        doneButton.round(corner: 25)
+        doneButton.round(corner: 26)
         doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         nickNameTextField.round(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
@@ -69,7 +69,7 @@ class EditSettingViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
-                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom
+                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom - 4
                   }
               )
         }

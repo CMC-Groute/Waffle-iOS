@@ -199,10 +199,10 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="eOq-sh-2Dt"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpc-qC-AFm" userLabel="ButtonView">
-                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgA-yG-8Ce">
-                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
                                         <color key="backgroundColor" name="Gray4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="SM0-Y9-ix4"/>
@@ -217,10 +217,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="JgA-yG-8Ce" firstAttribute="leading" secondItem="tpc-qC-AFm" secondAttribute="leading" constant="16" id="Fqf-wz-qt3"/>
-                                    <constraint firstAttribute="height" constant="72" id="Pw6-D1-qnw"/>
                                     <constraint firstAttribute="trailing" secondItem="JgA-yG-8Ce" secondAttribute="trailing" constant="16" id="W3X-ad-6WN"/>
-                                    <constraint firstAttribute="bottom" secondItem="JgA-yG-8Ce" secondAttribute="bottom" constant="10" id="mnk-Un-MIS"/>
-                                    <constraint firstItem="JgA-yG-8Ce" firstAttribute="top" secondItem="tpc-qC-AFm" secondAttribute="top" constant="10" id="z2f-nd-74f"/>
+                                    <constraint firstAttribute="bottom" secondItem="JgA-yG-8Ce" secondAttribute="bottom" constant="6" id="mnk-Un-MIS"/>
+                                    <constraint firstItem="JgA-yG-8Ce" firstAttribute="top" secondItem="tpc-qC-AFm" secondAttribute="top" constant="6" id="z2f-nd-74f"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -383,10 +382,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nww-1x-P29" userLabel="ButtonView">
-                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="op7-LA-Ysa">
-                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
                                         <color key="backgroundColor" name="Gray4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="W7m-Jb-rpt"/>
@@ -401,9 +400,8 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="op7-LA-Ysa" firstAttribute="leading" secondItem="Nww-1x-P29" secondAttribute="leading" constant="16" id="F8m-GO-BDr"/>
-                                    <constraint firstAttribute="height" constant="72" id="GUp-5q-qqF"/>
-                                    <constraint firstItem="op7-LA-Ysa" firstAttribute="top" secondItem="Nww-1x-P29" secondAttribute="top" constant="10" id="cdb-dh-GdR"/>
-                                    <constraint firstAttribute="bottom" secondItem="op7-LA-Ysa" secondAttribute="bottom" constant="10" id="guX-XY-T4R"/>
+                                    <constraint firstItem="op7-LA-Ysa" firstAttribute="top" secondItem="Nww-1x-P29" secondAttribute="top" constant="6" id="cdb-dh-GdR"/>
+                                    <constraint firstAttribute="bottom" secondItem="op7-LA-Ysa" secondAttribute="bottom" constant="6" id="guX-XY-T4R"/>
                                     <constraint firstAttribute="trailing" secondItem="op7-LA-Ysa" secondAttribute="trailing" constant="16" id="ncn-LL-z8f"/>
                                 </constraints>
                             </view>
@@ -507,10 +505,10 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ON-dv-DNK" userLabel="ButtonView">
-                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gsb-Tk-hLn">
-                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
                                         <color key="backgroundColor" name="Gray4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="ZXq-kh-MlG"/>
@@ -524,11 +522,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="1wW-VP-Kac"/>
                                     <constraint firstAttribute="trailing" secondItem="Gsb-Tk-hLn" secondAttribute="trailing" constant="16" id="DvM-M7-pdv"/>
                                     <constraint firstItem="Gsb-Tk-hLn" firstAttribute="leading" secondItem="8ON-dv-DNK" secondAttribute="leading" constant="16" id="HeC-yq-EDC"/>
-                                    <constraint firstItem="Gsb-Tk-hLn" firstAttribute="top" secondItem="8ON-dv-DNK" secondAttribute="top" constant="10" id="LPX-GZ-4TV"/>
-                                    <constraint firstAttribute="bottom" secondItem="Gsb-Tk-hLn" secondAttribute="bottom" constant="10" id="eTr-f2-ziI"/>
+                                    <constraint firstItem="Gsb-Tk-hLn" firstAttribute="top" secondItem="8ON-dv-DNK" secondAttribute="top" constant="6" id="LPX-GZ-4TV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gsb-Tk-hLn" secondAttribute="bottom" constant="6" id="eTr-f2-ziI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -592,7 +589,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
-            <color red="1" green="0.52941176470588236" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.44313725490196076" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController {
     private func configureUI(){
         emailAuthenButton.round(corner: 10)
         codeAuthenButton.round(corner: 10)
-        nextButton.round(corner: 25)
+        nextButton.round(corner: 26)
         textFields.forEach {
             $0.round(corner: 10)
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
-                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom
+                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom - 4
                   }
               )
         }

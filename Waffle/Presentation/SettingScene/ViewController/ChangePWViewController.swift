@@ -43,7 +43,7 @@ class ChangePWViewController: UIViewController {
             $0.round(corner: 10)
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
-        doneButton.round(corner: 25)
+        doneButton.round(corner: 26)
         
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes = Common.navigationBarTitle()
@@ -76,7 +76,7 @@ class ChangePWViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
-                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom
+                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom - 4 //keyboardHeight 부호 따라가기
                   }
               )
         }

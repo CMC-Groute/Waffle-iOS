@@ -96,10 +96,11 @@ class SettingViewController: UIViewController {
         changePWButton.round(corner: 20)
         changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         changePWButton.layer.borderWidth = 1
+        editButton.round(corner: 20)
         editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         editButton.layer.borderWidth = 1
-        editButton.round(corner: 20)
         self.view.addSubview(self.tableView)
+        
         quitButton.setAttributedTitle("탈퇴하기".underBarLine(), for: .normal)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(profileView.snp.bottom).offset(9)

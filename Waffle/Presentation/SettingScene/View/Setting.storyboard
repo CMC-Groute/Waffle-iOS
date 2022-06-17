@@ -192,10 +192,10 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3N-GS-cSI" userLabel="ButtonView">
-                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QAQ-5Z-EYG">
-                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
                                         <color key="backgroundColor" name="Gray4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="5Hg-Bs-z5q"/>
@@ -209,11 +209,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="QAQ-5Z-EYG" secondAttribute="bottom" constant="10" id="0gY-c8-LHy"/>
+                                    <constraint firstAttribute="bottom" secondItem="QAQ-5Z-EYG" secondAttribute="bottom" constant="6" id="0gY-c8-LHy"/>
                                     <constraint firstItem="QAQ-5Z-EYG" firstAttribute="leading" secondItem="H3N-GS-cSI" secondAttribute="leading" constant="16" id="1Q8-c4-f6D"/>
                                     <constraint firstAttribute="trailing" secondItem="QAQ-5Z-EYG" secondAttribute="trailing" constant="16" id="cC8-NZ-6va"/>
-                                    <constraint firstItem="QAQ-5Z-EYG" firstAttribute="top" secondItem="H3N-GS-cSI" secondAttribute="top" constant="10" id="fVu-3Q-gtP"/>
-                                    <constraint firstAttribute="height" constant="72" id="mKu-Xx-tDf"/>
+                                    <constraint firstItem="QAQ-5Z-EYG" firstAttribute="top" secondItem="H3N-GS-cSI" secondAttribute="top" constant="6" id="fVu-3Q-gtP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -378,10 +377,10 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Gh7-uk-Bay"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PV4-bO-YPd" userLabel="ButtonView">
-                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kd7-8f-xDf">
-                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
                                         <color key="backgroundColor" name="Gray4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="cgI-fA-WJb"/>
@@ -395,10 +394,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="kd7-8f-xDf" firstAttribute="top" secondItem="PV4-bO-YPd" secondAttribute="top" constant="10" id="0kW-Ie-MZw"/>
-                                    <constraint firstAttribute="bottom" secondItem="kd7-8f-xDf" secondAttribute="bottom" constant="10" id="9Gy-RS-I8N"/>
+                                    <constraint firstItem="kd7-8f-xDf" firstAttribute="top" secondItem="PV4-bO-YPd" secondAttribute="top" constant="6" id="0kW-Ie-MZw"/>
+                                    <constraint firstAttribute="bottom" secondItem="kd7-8f-xDf" secondAttribute="bottom" constant="6" id="9Gy-RS-I8N"/>
                                     <constraint firstItem="kd7-8f-xDf" firstAttribute="leading" secondItem="PV4-bO-YPd" secondAttribute="leading" constant="16" id="jvW-9Y-Y08"/>
-                                    <constraint firstAttribute="height" constant="72" id="qFr-kX-kDS"/>
                                     <constraint firstAttribute="trailing" secondItem="kd7-8f-xDf" secondAttribute="trailing" constant="16" id="tfF-Wk-gRC"/>
                                 </constraints>
                             </view>

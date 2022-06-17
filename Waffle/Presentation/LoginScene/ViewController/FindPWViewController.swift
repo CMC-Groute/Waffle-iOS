@@ -28,9 +28,10 @@ class FindPWViewController: UIViewController {
     }
     
     private func configureUI() {
-        self.getTempPWButton.round(corner: 25)
+        self.getTempPWButton.round(corner: 26)
         emailTextField.round(corner: 10)
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+        emailTextField.becomeFirstResponder()
     }
     
     func resignForKeyboardNotification() {
@@ -38,7 +39,6 @@ class FindPWViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
-    //notification delete
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -52,8 +52,7 @@ class FindPWViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
-                      self.bottonConstraint.constant = -keyboardHeight //+ //self.view.safeAreaInsets.bottom
-                      print(self.bottonConstraint.constant)
+                      self.bottonConstraint.constant = keyboardHeight - self.view.safeAreaInsets.bottom + 4
                   }
               )
         }

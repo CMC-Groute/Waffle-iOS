@@ -31,7 +31,7 @@ class SetProfileImageViewController: UIViewController {
     
     func configureUI() {
         profileImage.makeCircleShape()
-        startButton.round(corner: 25)
+        startButton.round(corner: 26)
         startButton.setUnEnabled(color: Asset.Colors.gray4.name)
         nickNameTextField.round(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
@@ -67,7 +67,7 @@ class SetProfileImageViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
-                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom
+                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom - 4
                   }
               )
         }

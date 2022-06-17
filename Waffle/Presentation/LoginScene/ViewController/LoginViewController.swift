@@ -52,9 +52,10 @@ class LoginViewController: UIViewController {
               let keyboardHeight = keyboardReactangle.height
               UIView.animate(
                   withDuration: 0.3
-                  , animations: {
-                      self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight)
+                  , animations: { //6, 20
+                      self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight + self.view.safeAreaInsets.bottom)
                   }
+                  
               )
         }
 
@@ -71,7 +72,7 @@ class LoginViewController: UIViewController {
     
     func configureUI() {
         UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
-        loginButton.round(corner: 25)
+        loginButton.round(corner: 26)
         
         emailTextField.round(corner: 10)
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)

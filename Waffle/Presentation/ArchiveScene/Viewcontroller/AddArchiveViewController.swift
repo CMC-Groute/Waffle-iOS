@@ -68,7 +68,7 @@ class AddArchiveViewController: UIViewController {
         archiveMemoTextView.round(width: 2, color: Asset.Colors.gray2.name, value: 10)
         archiveMemoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         archiveMemoTextView.attributedText = archiveMemoTextView.text.setLineHeight(24)
-        addArchiveButton.round(corner: 25)
+        addArchiveButton.round(corner: 26)
         
 
         func setToolbar() {
@@ -129,7 +129,6 @@ class AddArchiveViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
-    //notification delete
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -143,7 +142,7 @@ class AddArchiveViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
-                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom
+                      self.bottonConstraint.constant = -keyboardHeight + self.view.safeAreaInsets.bottom + 4
                   }
               )
         }

@@ -15,6 +15,7 @@ class AddLocationViewController: UIViewController {
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var tableView: UIView!
+    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
     var buttonLocationVC: ButtonAddLocationViewController?
     var tableLocationVC: TableAddLocationViewController?
@@ -31,11 +32,44 @@ class AddLocationViewController: UIViewController {
         configureUI()
         self.tableView.isHidden = true
         self.buttonView.isHidden = false
-        
         bindUI()
-        
+        resignForKeyboardNotification()
 
     }
+    
+    func resignForKeyboardNotification() {
+        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+        
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+          if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+              let keyboardReactangle = keyboardFrame.cgRectValue
+              let keyboardHeight = keyboardReactangle.height
+              UIView.animate(
+                  withDuration: 0.3
+                  , animations: {
+                      self.bottonConstraint.constant = keyboardHeight - self.view.safeAreaInsets.bottom + 4
+                  }
+              )
+        }
+      }
+      
+      @objc func keyboardWillHide(notification: NSNotification) {
+          UIView.animate(
+              withDuration: 0.3
+              , animations: {
+                  self.bottonConstraint.constant = 0
+              }
+          )
+      }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ButtonAddLocationViewController" {
@@ -46,7 +80,7 @@ class AddLocationViewController: UIViewController {
     }
     
     private func configureUI() {
-        self.doneButton.round(corner: 25)
+        self.doneButton.round(corner: 26)
         self.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         func setNavigationBar() {
             var bounds = UIScreen.main.bounds
@@ -56,9 +90,6 @@ class AddLocationViewController: UIViewController {
             searchBar.placeholder = "지역 검색"
             searchBar.delegate = self
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-//            let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//            backButton.setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000, vertical: -1000), for: .default)
-//            navigationItem.backBarButtonItem = backButton
             
         }
         setNavigationBar()
