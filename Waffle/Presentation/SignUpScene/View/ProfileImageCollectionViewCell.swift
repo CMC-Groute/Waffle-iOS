@@ -9,13 +9,26 @@ import UIKit
 import SnapKit
 
 class ProfileImageCollectionViewCell: UICollectionViewCell {
+    
     static let identifier = "ProfileImageCollectionViewCell"
-
+    
+    override var isSelected: Bool {
+        didSet {
+            self.frameView.isHidden = isSelected ? false : true
+        }
+    }
+    
     lazy var imageview: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .red
-        //image.image = UIImage(named: Asset.Assets.joinProcessed3.name)
         return image
+    }()
+    
+    var frameView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Asset.Colors.black.color
+        view.layer.opacity = 0.7
+        return view
     }()
     
     var selectedButton: UIButton = {
@@ -37,10 +50,15 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     private func configureUI() {
         self.addSubview(self.imageview)
-        imageview.addSubview(selectedButton)
-        selectedButton.isHidden = true
+        imageview.addSubview(frameView)
+        frameView.addSubview(selectedButton)
+        frameView.isHidden = true
         
         self.imageview.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.frameView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -49,8 +67,8 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func selected(isSelected: Bool){
-        self.selectedButton.isHidden = isSelected ? false : true
-    }
-    
+//    func selected(isSelected: Bool){
+//        self.selectedButton.isHidden = isSelected ? false : true
+//    }
+//
 }

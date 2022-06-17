@@ -139,19 +139,18 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uxd-cW-keE">
                                 <rect key="frame" x="157" y="68" width="100" height="100"/>
-                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="YUt-Ce-xi5"/>
                                     <constraint firstAttribute="width" constant="100" id="dyg-aZ-bPF"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6DB-8F-jA1">
-                                <rect key="frame" x="30" y="183" width="354" height="55"/>
+                                <rect key="frame" x="15" y="183" width="384" height="55"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="ORj-Bg-f3Y"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7gF-0r-eYc">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7gF-0r-eYc">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -165,7 +164,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" name="AccentColor"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -229,9 +227,9 @@
                             <constraint firstItem="W00-Dz-gvG" firstAttribute="top" secondItem="Sv2-Pd-tGg" secondAttribute="bottom" constant="8" id="JHM-w4-o1s"/>
                             <constraint firstItem="Uxd-cW-keE" firstAttribute="centerX" secondItem="HJ4-2H-TGM" secondAttribute="centerX" id="LOj-h5-gRm"/>
                             <constraint firstItem="Sv2-Pd-tGg" firstAttribute="top" secondItem="E1S-4d-lBD" secondAttribute="bottom" constant="6" id="Lql-fc-enk"/>
-                            <constraint firstItem="6DB-8F-jA1" firstAttribute="leading" secondItem="HCe-zU-ln7" secondAttribute="leading" constant="30" id="Srl-ZI-0LR"/>
+                            <constraint firstItem="6DB-8F-jA1" firstAttribute="leading" secondItem="HCe-zU-ln7" secondAttribute="leading" constant="15" id="Srl-ZI-0LR"/>
                             <constraint firstItem="6DB-8F-jA1" firstAttribute="top" secondItem="Uxd-cW-keE" secondAttribute="bottom" constant="15" id="SsC-BK-RUN"/>
-                            <constraint firstItem="HCe-zU-ln7" firstAttribute="trailing" secondItem="6DB-8F-jA1" secondAttribute="trailing" constant="30" id="ZGR-L4-9Aq"/>
+                            <constraint firstItem="HCe-zU-ln7" firstAttribute="trailing" secondItem="6DB-8F-jA1" secondAttribute="trailing" constant="15" id="ZGR-L4-9Aq"/>
                             <constraint firstItem="Sv2-Pd-tGg" firstAttribute="leading" secondItem="HCe-zU-ln7" secondAttribute="leading" constant="25" id="ZJV-aU-odR"/>
                             <constraint firstAttribute="trailing" secondItem="W00-Dz-gvG" secondAttribute="trailing" constant="16" id="eNG-qd-514"/>
                             <constraint firstItem="E1S-4d-lBD" firstAttribute="leading" secondItem="HCe-zU-ln7" secondAttribute="leading" constant="25" id="ey0-QD-BVE"/>
@@ -622,9 +620,6 @@
     <resources>
         <image name="etc" width="30" height="30"/>
         <image name="mypage" width="102.5" height="23.5"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -30,6 +30,7 @@ class SetProfileImageViewController: UIViewController {
     }
     
     func configureUI() {
+        profileImage.layer.borderWidth = 0
         profileImage.makeCircleShape()
         startButton.round(corner: 26)
         startButton.setUnEnabled(color: Asset.Colors.gray4.name)
@@ -129,7 +130,6 @@ class SetProfileImageViewController: UIViewController {
         
         output?.startButtonEnabled
             .subscribe(onNext: { bool in
-                print("startButtonEnabled \(bool)")
                 if bool {
                     self.startButton.setEnabled(color: Asset.Colors.black.name)
                 }else {
@@ -142,46 +142,33 @@ class SetProfileImageViewController: UIViewController {
 
 extension SetProfileImageViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.identifier, for: indexPath) as! ProfileImageCollectionViewCell
         cell.makeCircleShape()
-        cell.imageview.image = UIImage(systemName: imageList[indexPath.row])
+        cell.imageview.image = UIImage(named: "waffle-\(indexPath.row+1)")
         if indexPath.row == 0 {
-            cell.selected(isSelected: true)
-            self.profileImage.image = UIImage(systemName: imageList[indexPath.row])
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            
+            self.profileImage.image = UIImage(named: "waffle-\(indexPath.row+1)")
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        let cell = collectionView.cellForItem(at: indexPath) as! ProfileImageCollectionViewCell
-
-        for i in 0..<5 {
-            if indexPath.row == i { continue }
-            let deselected: IndexPath = [0, i]
-            let deselectedCell = collectionView.cellForItem(at: deselected) as! ProfileImageCollectionViewCell
-            deselectedCell.selected(isSelected: false)
-        }
-
-        //새로 선택 셀 선택
-        cell.selected(isSelected: true)
-        self.profileImage.image = UIImage(systemName: imageList[indexPath.row])
+        self.profileImage.image = UIImage(named: "waffle-\(indexPath.row+1)")
     }
 }
 
 extension SetProfileImageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 53, height: 53)
+        return CGSize(width: 47, height: 47)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//           return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-//        }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
@@ -189,8 +176,8 @@ extension SetProfileImageViewController: UICollectionViewDelegateFlowLayout {
 
         let numberOfCells = floor(view.frame.size.width / cellWidth)
         let edgeInsets = (view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
-
-        return UIEdgeInsets(top: 0, left: edgeInsets, bottom: 0, right: edgeInsets)
+        
+        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
     
     

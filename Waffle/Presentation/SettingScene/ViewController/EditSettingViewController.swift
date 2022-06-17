@@ -143,42 +143,31 @@ class EditSettingViewController: UIViewController {
 
 extension EditSettingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.identifier, for: indexPath) as! ProfileImageCollectionViewCell
         cell.makeCircleShape()
-        cell.imageview.image = UIImage(systemName: imageList[indexPath.row])
+        cell.imageview.image = UIImage(named: "waffle-\(indexPath.row+1)")
         if indexPath.row == 0 {
-            cell.selected(isSelected: true)
-            self.profileImage.image = UIImage(systemName: imageList[indexPath.row])
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            
+            self.profileImage.image = UIImage(named: "waffle-\(indexPath.row+1)")
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        let cell = collectionView.cellForItem(at: indexPath) as! ProfileImageCollectionViewCell
-
-        print("click cell \(indexPath)")
-        for i in 0..<5 {
-            if indexPath.row == i { continue }
-            let deselected: IndexPath = [0, i]
-            let deselectedCell = collectionView.cellForItem(at: deselected) as! ProfileImageCollectionViewCell
-            deselectedCell.selected(isSelected: false)
-        }
-
-        //새로 선택 셀 선택
-        cell.selected(isSelected: true)
-        self.profileImage.image = UIImage(systemName: imageList[indexPath.row])
+        self.profileImage.image = UIImage(named: "waffle-\(indexPath.row+1)")
     }
 }
 
 extension EditSettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 53, height: 53)
+        return CGSize(width: 47, height: 47)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -188,7 +177,7 @@ extension EditSettingViewController: UICollectionViewDelegateFlowLayout {
         let numberOfCells = floor(view.frame.size.width / cellWidth)
         let edgeInsets = (view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
 
-        return UIEdgeInsets(top: 0, left: edgeInsets, bottom: 0, right: edgeInsets)
+        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
     
     
