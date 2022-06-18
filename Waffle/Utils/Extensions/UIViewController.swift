@@ -42,10 +42,15 @@ extension UIViewController {
 }
 
 extension UIView {
-    func round(width: CGFloat, color: String, value: CGFloat) {
+    func round(width: CGFloat?, color: String?, value: CGFloat) {
+        if let width = width {
+            self.layer.borderWidth = width
+        }
+        if let color = color {
+            self.layer.borderColor = UIColor(named: color)?.cgColor
+        }
         self.layer.cornerRadius = value
-        self.layer.borderWidth = 3
-        self.layer.borderColor = UIColor(named: color)?.cgColor
+        
     }
     
     func makeCircleShape(){

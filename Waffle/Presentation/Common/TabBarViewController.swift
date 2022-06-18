@@ -10,7 +10,7 @@ import UIKit
 class TabBarViewController: UITabBarController {
     let archiveButton = UIButton(frame: CGRect.zero)
     var coordinator: TabBarCoordinator!
-    var popUpView = UIView()
+    var popUpView = ArchivePopUpView()
     
    override func viewDidLoad() {
        super.viewDidLoad()
@@ -22,15 +22,6 @@ class TabBarViewController: UITabBarController {
         - archiveButton.frame.height - self.view.safeAreaInsets.bottom - 3
         print(archiveButton.frame.origin.y)
     }
-    
-//    private func configureTabBarItem(of page: TabBarPage) -> UITabBarItem {
-//        let tabBar = UITabBarItem(
-//            title: nil,
-//            image: UIImage(named: page.tabIconName())?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "\(page.tabIconName())-selected")?.withRenderingMode(.alwaysOriginal))
-//        tabBar.tag = page.pageOrderNumber()
-//        return tabBar
-//
-//    }
     
    func setupLeftButton() {
        let numberOfItems = CGFloat(self.tabBar.items!.count)
@@ -49,8 +40,7 @@ class TabBarViewController: UITabBarController {
        self.view.layoutIfNeeded()
        
        
-       self.popUpView.backgroundColor = .red
-       self.popUpView.layer.opacity = 0.7
+
        self.popUpView.isHidden = true
        self.view.addSubview(self.popUpView)
        self.popUpView.snp.makeConstraints {
