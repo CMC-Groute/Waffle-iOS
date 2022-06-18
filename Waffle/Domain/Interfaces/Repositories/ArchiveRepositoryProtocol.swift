@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 protocol ArchiveRepositoryProtocol {
-    //func addArchive
+    func checkCodeValid(code: String) -> Bool
 }

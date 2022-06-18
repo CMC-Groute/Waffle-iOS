@@ -16,4 +16,10 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
     init(networkService: URLSessionNetworkServiceProtocol) {
         self.urlSessionNetworkService = networkService
     }
+    
+    func checkCodeValid(code: String) -> Bool {
+        //self.urlSessionNetworkService.request(<#T##urlRequest: NetworkRequestBuilder##NetworkRequestBuilder#>)
+        return false
+    }
+    
 }

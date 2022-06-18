@@ -67,7 +67,7 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
     }
     
     func didTapInputArchiveView() {
-        self.coordinator.inputArchive()
+        self.coordinator.inputCodeArchive()
         archiveButton.isSelected = false
         popUpView.isHidden = true
     }

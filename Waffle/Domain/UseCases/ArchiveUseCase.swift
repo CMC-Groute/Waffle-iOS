@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class ArchiveUseCase: ArchiveUseCaseProtocol {
-    
+   
     var repository: ArchiveRepository!
     
     init(repository: ArchiveRepository){
@@ -23,6 +23,11 @@ class ArchiveUseCase: ArchiveUseCaseProtocol {
             return String(s[..<index])
         }
         return s
+    }
+    
+    func checkCodeValid(code: String) -> Bool {
+        return repository.checkCodeValid(code: code)
+            
     }
     
 }

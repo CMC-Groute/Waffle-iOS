@@ -506,6 +506,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottonConstraint" destination="A4Y-Zi-yZQ" id="xdg-Qb-fsJ"/>
                         <outlet property="codeTextField" destination="P5x-UU-eaS" id="PmL-hW-Eq5"/>
                         <outlet property="inValidCodeMessageText" destination="dCE-6w-YEp" id="LxH-6H-ACo"/>
                         <outlet property="joinButton" destination="rAj-QV-s9P" id="9hi-3L-tfT"/>
