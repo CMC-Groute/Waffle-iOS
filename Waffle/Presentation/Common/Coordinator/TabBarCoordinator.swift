@@ -28,7 +28,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
         self.navigationController = navigationController
         self.navigationController.setNavigationBarHidden(true, animated: true)
         self.tabBarController = TabBarViewController()
-        self.tabBarController.coordinator = self
     }
     
     func start() {
@@ -101,16 +100,40 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()
         case .archiv:
-            let archiveCoordinator = ArchiveCoordinator(navigationVewController)
-            archiveCoordinator.finishDelegate = self
-            self.childCoordinators.append(archiveCoordinator)
+            self.tabBarController.coordinator = self
+//            let archiveCoordinator = ArchiveCoordinator(navigationVewController)
+//            archiveCoordinator.finishDelegate = self
+//            self.childCoordinators.append(archiveCoordinator)
             //archiveCoordinator.start()
         
        }
-        
+    }
+    
+}
+
+extension TabBarCoordinator {
+    func inputArchive() {
+        let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveCodeViewController") as! InputArchiveCodeViewController
+        inputArchiveCodeViewController.viewModel = InputArchiveViewModel(usecase: ArchiveUseCase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
         
     }
     
+    func addArchive() {
+        let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddArchiveViewController") as! AddArchiveViewController
+        addArchiveViewcontroller.viewModel = AddArchiveModel(usecase: ArchiveUseCase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
+    }
+    
+    func popTonavigaionController() {
+        self.navigationController.popViewController(animated: true)
+    }
+    
+    func addLocation() {
+        let addLocationViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as! AddLocationViewController
+        self.navigationController.pushViewController(addLocationViewController, animated: true)
+    }
+
 }
 
 extension TabBarCoordinator: CoordinatorFinishDelegate {

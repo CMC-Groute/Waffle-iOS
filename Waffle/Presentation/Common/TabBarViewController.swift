@@ -12,15 +12,15 @@ class TabBarViewController: UITabBarController {
     var coordinator: TabBarCoordinator!
     var popUpView = ArchivePopUpView()
     
-   override func viewDidLoad() {
-       super.viewDidLoad()
-   }
-    
     override func viewDidLayoutSubviews() {
        super.viewDidLayoutSubviews()
        archiveButton.frame.origin.y = self.view.bounds.height
         - archiveButton.frame.height - self.view.safeAreaInsets.bottom - 3
-        print(archiveButton.frame.origin.y)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        popUpView.delegate = self
     }
     
    func setupLeftButton() {
@@ -30,26 +30,22 @@ class TabBarViewController: UITabBarController {
        archiveButton.setImage(Asset.Assets.archiveSelected.image, for: .selected)
        archiveButton.frame = CGRect(x: 0, y: 0, width: tabBarItemSize.width, height: tabBar.frame.size.height)
        var menuButtonFrame = archiveButton.frame
-       //menuButtonFrame.origin.y = self.view.bounds.height  //menuButtonFrame.height //- self.view.safeAreaInsets.bottom
        menuButtonFrame.origin.x = (self.view.bounds.width/4) * 3
-       //- menuButtonFrame.size.width/2
 
        self.archiveButton.frame = menuButtonFrame
-       self.archiveButton.addTarget(self, action: #selector(didTapMenuButton), for: .touchUpInside)
+       self.archiveButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
        self.view.addSubview(archiveButton)
        self.view.layoutIfNeeded()
        
-       
-
        self.popUpView.isHidden = true
        self.view.addSubview(self.popUpView)
        self.popUpView.snp.makeConstraints {
            $0.bottom.equalTo(self.tabBar.snp.top)
-           $0.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+           $0.top.leading.trailing.equalTo(self.view)
        }
    }
     
-    @objc func didTapMenuButton() {
+    @objc func didTapLeftButton() {
         if archiveButton.isSelected {
             archiveButton.isSelected = false
             popUpView.isHidden = true
@@ -61,5 +57,21 @@ class TabBarViewController: UITabBarController {
     }
 
 
+}
+
+extension TabBarViewController: ArchivePopUpViewDelegate {
+    func didTapAddArchiveView() {
+        self.coordinator.addArchive()
+        archiveButton.isSelected = false
+        popUpView.isHidden = true // 팝업뷰 닫기
+    }
+    
+    func didTapInputArchiveView() {
+        self.coordinator.inputArchive()
+        archiveButton.isSelected = false
+        popUpView.isHidden = true
+    }
+    
+    
 }
 

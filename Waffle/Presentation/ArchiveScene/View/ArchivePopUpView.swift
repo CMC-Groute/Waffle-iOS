@@ -8,10 +8,15 @@
 import Foundation
 import UIKit
 
+protocol ArchivePopUpViewDelegate {
+    func didTapAddArchiveView()
+    func didTapInputArchiveView()
+}
+
 class ArchivePopUpView: UIView {
     @IBOutlet private weak var addArhiveView: UIView!
     @IBOutlet private weak var inputArhiveView: UIView!
-    let coordinator: ArchiveCoordinator!
+    var delegate: ArchivePopUpViewDelegate?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -45,9 +50,9 @@ class ArchivePopUpView: UIView {
     @objc func didTapView(gesture: UITapGestureRecognizer) {
         switch gesture.view {
         case addArhiveView:
-            
+            delegate?.didTapAddArchiveView()
         case inputArhiveView:
-            print("click inputArhiveView")
+            delegate?.didTapInputArchiveView()
         default:
             break
         }

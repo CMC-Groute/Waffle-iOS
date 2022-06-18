@@ -89,7 +89,6 @@ class ChangePWViewModel {
         // new, re 같은지 확인
         Observable.combineLatest(input.newPasswordTextField, input.newRePasswordTextField)
             .bind(onNext: { pw, rePw in
-                print(pw, rePw)
                 if rePw.count == 0 {
                     output.newRePasswordInValid.accept(nil)
                 }else {

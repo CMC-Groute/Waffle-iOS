@@ -63,10 +63,8 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
 
 extension LoginCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        print(childCoordinator)
         self.childCoordinators = self.childCoordinators
             .filter({ $0.type != childCoordinator.type })
-        print("what child \(childCoordinators)")
         childCoordinator.navigationController.popViewController(animated: true)
     }
 }

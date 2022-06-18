@@ -11,11 +11,11 @@ import RxCocoa
 
 class AddArchiveModel {
     var usecase: ArchiveUseCase!
-    var coordinator: ArchiveCoordinator!
+    var coordinator: TabBarCoordinator!
     
     var disposeBag = DisposeBag()
     
-    init(usecase: ArchiveUseCase, coordinator: ArchiveCoordinator){
+    init(usecase: ArchiveUseCase, coordinator: TabBarCoordinator){
         self.usecase = usecase
         self.coordinator = coordinator
     }

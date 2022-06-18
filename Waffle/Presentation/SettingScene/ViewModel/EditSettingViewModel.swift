@@ -45,7 +45,6 @@ class EditSettingViewModel {
             .distinctUntilChanged()
             .skip(1)
             .subscribe(onNext: { text in
-                print("nickNameTextField")
                 if text.count == 0 {  output.startButtonEnabled.accept(false) }
                 else {
                     if !self.usecase.checkNickNameValid(nickName: text) {
