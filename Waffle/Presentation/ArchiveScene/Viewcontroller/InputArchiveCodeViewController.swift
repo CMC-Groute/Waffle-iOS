@@ -14,7 +14,7 @@ class InputArchiveCodeViewController: UIViewController {
     @IBOutlet weak var inValidCodeMessageText: UILabel!
     @IBOutlet weak var joinButton: UIButton!
     
-    var viewModel: InputArchiveViewModel?
+    var viewModel: InputArchiveCodeViewModel?
     var disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class InputArchiveCodeViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = InputArchiveViewModel.Input(codeTextField: self.codeTextField.rx.text.orEmpty.asObservable(), codeTextFieldDidTapEvent: self.codeTextField.rx.controlEvent(.editingDidBegin), codeTextFieldDidEndEvent: self.codeTextField.rx.controlEvent(.editingDidEnd), joinButton: self.joinButton.rx.tap.asObservable())
+        let input = InputArchiveCodeViewModel.Input(codeTextField: self.codeTextField.rx.text.orEmpty.asObservable(), codeTextFieldDidTapEvent: self.codeTextField.rx.controlEvent(.editingDidBegin), codeTextFieldDidEndEvent: self.codeTextField.rx.controlEvent(.editingDidEnd), joinButton: self.joinButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         

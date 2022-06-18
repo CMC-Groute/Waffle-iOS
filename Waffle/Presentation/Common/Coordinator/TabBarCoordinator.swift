@@ -114,7 +114,7 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
 extension TabBarCoordinator {
     func inputArchive() {
         let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveCodeViewController") as! InputArchiveCodeViewController
-        inputArchiveCodeViewController.viewModel = InputArchiveViewModel(usecase: ArchiveUseCase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        inputArchiveCodeViewController.viewModel = InputArchiveCodeViewModel(usecase: ArchiveUseCase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
         
     }

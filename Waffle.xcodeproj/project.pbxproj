@@ -16,7 +16,7 @@
 		136CEFA42859D82C002ADDA9 /* HomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136CEFA32859D82C002ADDA9 /* HomeCardView.swift */; };
 		136CEFA6285A0A49002ADDA9 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136CEFA5285A0A49002ADDA9 /* SnapCarousel.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
-		13E2A05C285B75BB0015499E /* InputArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveViewModel.swift */; };
+		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
 		13E2A074285DE49F0015499E /* ArchivePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A073285DE49F0015499E /* ArchivePopUpView.swift */; };
@@ -82,9 +82,7 @@
 		F29ED30E2855DBB2002371FD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED30D2855DBB2002371FD /* Home.storyboard */; };
 		F29ED3112855DBC3002371FD /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
 		F29ED3142855DBCE002371FD /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3132855DBCE002371FD /* Map.storyboard */; };
-		F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3172855DBF1002371FD /* ArchiveViewController.swift */; };
 		F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED31A2855DBFA002371FD /* Archive.storyboard */; };
-		F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */; };
 		F29ED3202855E840002371FD /* EditSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31F2855E840002371FD /* EditSettingViewController.swift */; };
 		F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3212855E84A002371FD /* ChangePWViewController.swift */; };
 		F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3232855EE0D002371FD /* UserUseCase.swift */; };
@@ -143,7 +141,7 @@
 		136CEFA32859D82C002ADDA9 /* HomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCardView.swift; sourceTree = "<group>"; };
 		136CEFA5285A0A49002ADDA9 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
-		13E2A05B285B75BB0015499E /* InputArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveViewModel.swift; sourceTree = "<group>"; };
+		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		13E2A071285DE4560015499E /* ArchivePopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivePopUpView.xib; sourceTree = "<group>"; };
 		13E2A073285DE49F0015499E /* ArchivePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePopUpView.swift; sourceTree = "<group>"; };
@@ -213,9 +211,7 @@
 		F29ED30D2855DBB2002371FD /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		F29ED3102855DBC3002371FD /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		F29ED3132855DBCE002371FD /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
-		F29ED3172855DBF1002371FD /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
 		F29ED31A2855DBFA002371FD /* Archive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Archive.storyboard; sourceTree = "<group>"; };
-		F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewModel.swift; sourceTree = "<group>"; };
 		F29ED31F2855E840002371FD /* EditSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingViewController.swift; sourceTree = "<group>"; };
 		F29ED3212855E84A002371FD /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
 		F29ED3232855EE0D002371FD /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
@@ -829,7 +825,6 @@
 			isa = PBXGroup;
 			children = (
 				135B60552858501E0035AE4B /* LocationContainterViewController */,
-				F29ED3172855DBF1002371FD /* ArchiveViewController.swift */,
 				F29ED33328561D2A002371FD /* AddArchiveViewController.swift */,
 				F29ED33528561DC0002371FD /* AddLocationViewController.swift */,
 				13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */,
@@ -852,9 +847,8 @@
 		F29ED31C2855DBFD002371FD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F29ED31D2855DC07002371FD /* ArchiveViewModel.swift */,
 				F29ED339285628F2002371FD /* AddArchiveModel.swift */,
-				13E2A05B285B75BB0015499E /* InputArchiveViewModel.swift */,
+				13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1198,7 +1192,6 @@
 				F2125D2F284E2752008E1185 /* Config.swift in Sources */,
 				F29ED3002855DB5B002371FD /* HomeViewController.swift in Sources */,
 				F29ED34428562D7E002371FD /* UITextView.swift in Sources */,
-				F29ED31E2855DC07002371FD /* ArchiveViewModel.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
 				136CEFA6285A0A49002ADDA9 /* SnapCarousel.swift in Sources */,
@@ -1227,7 +1220,7 @@
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */,
 				135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */,
-				13E2A05C285B75BB0015499E /* InputArchiveViewModel.swift in Sources */,
+				13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
@@ -1268,7 +1261,6 @@
 				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
 				F29ED33428561D2A002371FD /* AddArchiveViewController.swift in Sources */,
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
-				F29ED3182855DBF1002371FD /* ArchiveViewController.swift in Sources */,
 				F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */,
 				F29ED33C2856290E002371FD /* ArchiveUseCase.swift in Sources */,
 			);

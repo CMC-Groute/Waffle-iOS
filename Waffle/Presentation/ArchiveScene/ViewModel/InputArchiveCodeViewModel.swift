@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class InputArchiveViewModel {
+class InputArchiveCodeViewModel {
     var usecase: ArchiveUseCase!
     var coordinator: TabBarCoordinator!
     
