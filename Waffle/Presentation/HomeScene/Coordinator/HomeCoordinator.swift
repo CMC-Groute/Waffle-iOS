@@ -19,6 +19,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController.setNavigationBarHidden(false, animated: true)
         self.homeViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
     }
     

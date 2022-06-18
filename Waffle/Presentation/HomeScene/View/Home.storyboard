@@ -17,50 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WN-ty-eQz" userLabel="topView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="48"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wapple" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-DG-Rj9">
-                                        <rect key="frame" x="16" y="16" width="96.5" height="24.5"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wo-WJ-ijm">
-                                        <rect key="frame" x="322" y="2" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="8HW-Tn-Quv"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="calendar"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t98-ZH-09s">
-                                        <rect key="frame" x="368" y="2" width="44" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="uJY-wE-FnR"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="bell"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="t98-ZH-09s" secondAttribute="bottom" constant="2" id="AYZ-1f-wLd"/>
-                                    <constraint firstItem="oxy-DG-Rj9" firstAttribute="leading" secondItem="2WN-ty-eQz" secondAttribute="leading" constant="16" id="Gp3-Ef-cs4"/>
-                                    <constraint firstAttribute="bottom" secondItem="oxy-DG-Rj9" secondAttribute="bottom" constant="7.5" id="MQs-dn-kKe"/>
-                                    <constraint firstItem="t98-ZH-09s" firstAttribute="leading" secondItem="7wo-WJ-ijm" secondAttribute="trailing" constant="2" id="NMD-S6-0dx"/>
-                                    <constraint firstAttribute="bottom" secondItem="7wo-WJ-ijm" secondAttribute="bottom" constant="2" id="Ni4-qz-F5z"/>
-                                    <constraint firstItem="7wo-WJ-ijm" firstAttribute="top" secondItem="2WN-ty-eQz" secondAttribute="top" constant="2" id="X40-nR-gWm"/>
-                                    <constraint firstItem="oxy-DG-Rj9" firstAttribute="top" secondItem="2WN-ty-eQz" secondAttribute="top" constant="16" id="Y8b-zm-etB"/>
-                                    <constraint firstAttribute="height" constant="48" id="q1X-H0-i4U"/>
-                                    <constraint firstAttribute="trailing" secondItem="t98-ZH-09s" secondAttribute="trailing" constant="2" id="uYZ-C2-ofz"/>
-                                    <constraint firstItem="t98-ZH-09s" firstAttribute="top" secondItem="2WN-ty-eQz" secondAttribute="top" constant="2" id="zc3-xI-WeY"/>
-                                </constraints>
-                            </view>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-LH-w6N" userLabel="CardView">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-LH-w6N" userLabel="CardView">
                                 <rect key="frame" x="0.0" y="124" width="414" height="674"/>
                                 <connections>
                                     <segue destination="39f-ZT-fFp" kind="embed" destinationCreationSelector="embedCardView:" id="OnT-8J-q9k"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTO-sv-WOb" userLabel="noCardView">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTO-sv-WOb" userLabel="noCardView">
                                 <rect key="frame" x="0.0" y="124" width="414" height="674"/>
                                 <connections>
                                     <segue destination="32f-X1-Rr8" kind="embed" id="7ia-Ou-zDp"/>
@@ -76,11 +39,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2WN-ty-eQz" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="1sv-Ig-SpO"/>
-                            <constraint firstItem="iTO-sv-WOb" firstAttribute="top" secondItem="2WN-ty-eQz" secondAttribute="bottom" constant="32" id="3aL-8z-Jhf"/>
                             <constraint firstItem="T4g-LH-w6N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6Vb-40-oKV"/>
-                            <constraint firstItem="2WN-ty-eQz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ErJ-1a-L3T"/>
-                            <constraint firstAttribute="trailing" secondItem="2WN-ty-eQz" secondAttribute="trailing" id="Ndk-Aw-oVt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="day-f8-IqU" secondAttribute="trailing" constant="156" id="Oyb-mH-9oY"/>
                             <constraint firstItem="iTO-sv-WOb" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Pt6-4H-ASv"/>
                             <constraint firstItem="day-f8-IqU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="156" id="Qmy-Gr-HCg"/>
@@ -89,7 +48,6 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="iTO-sv-WOb" secondAttribute="bottom" constant="64" id="ibE-F0-5Lr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="day-f8-IqU" secondAttribute="bottom" constant="16" id="oVy-1O-6TJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="T4g-LH-w6N" secondAttribute="bottom" constant="64" id="sGu-mt-9R9"/>
-                            <constraint firstItem="T4g-LH-w6N" firstAttribute="top" secondItem="2WN-ty-eQz" secondAttribute="bottom" constant="32" id="vcE-TV-Cpr"/>
                             <constraint firstItem="day-f8-IqU" firstAttribute="top" secondItem="T4g-LH-w6N" secondAttribute="bottom" constant="16" id="yyM-KR-Ps3"/>
                         </constraints>
                     </view>
@@ -137,6 +95,7 @@
                                 </buttonConfiguration>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Iyu-4Z-dns"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="P38-D0-YMA" firstAttribute="leading" secondItem="R7O-J5-iWe" secondAttribute="leadingMargin" constant="113" id="2dk-kR-v4m"/>
@@ -158,10 +117,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bell" width="24" height="24"/>
-        <image name="calendar" width="24" height="24"/>
         <image name="noArchivePicture" width="375" height="375"/>
-        <image name="wapple" width="96.5" height="25.5"/>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

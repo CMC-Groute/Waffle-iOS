@@ -8,4 +8,11 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
 }

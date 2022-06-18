@@ -9,20 +9,31 @@ import UIKit
 
 class TabBarCoordinator: TabBarCoordinatorProtocol {
     
-    var tabBarController: UITabBarController
+    var tabBarController: TabBarViewController
     var navigationController: UINavigationController
 
     var finishDelegate: CoordinatorFinishDelegate?
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType { .tab }
     
+    private var archibeButton: UIButton {
+        let button = UIButton()
+        button.backgroundColor = .red
+        button.setImage(Asset.Assets.archiveSelected.image, for: .selected)
+        button.setImage(Asset.Assets.archive.image, for: .normal)
+        return button
+    }
+    
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.tabBarController = UITabBarController()
+        self.navigationController.setNavigationBarHidden(true, animated: true)
+        self.tabBarController = TabBarViewController()
+        self.tabBarController.coordinator = self
     }
     
     func start() {
         let pages: [TabBarPage] = TabBarPage.allCases
+        
         let controllers: [UINavigationController] = pages.map({
             self.createTabNavigationController(of: $0)
         })
@@ -45,17 +56,18 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     
     private func createTabNavigationController(of page: TabBarPage) -> UINavigationController {
         let tabNavigationController = UINavigationController()
-        
-        tabNavigationController.setNavigationBarHidden(false, animated: false)
+        tabNavigationController.setNavigationBarHidden(true, animated: false)
         tabNavigationController.tabBarItem = self.configureTabBarItem(of: page)
         self.startTabCoordinator(of: page, to: tabNavigationController)
         return tabNavigationController
     }
     
     private func configureTabBarItem(of page: TabBarPage) -> UITabBarItem {
-        return UITabBarItem(
+        let tabBar = UITabBarItem(
             title: nil,
             image: UIImage(named: page.tabIconName())?.withRenderingMode(.alwaysOriginal), selectedImage: UIImage(named: "\(page.tabIconName())-selected")?.withRenderingMode(.alwaysOriginal))
+        tabBar.tag = page.pageOrderNumber()
+        return tabBar
         
     }
     
@@ -63,11 +75,12 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
         self.tabBarController.setViewControllers(tabViewControllers, animated: true)
         self.tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
         self.navigationController.pushViewController(tabBarController, animated: true)
-        
+
         self.tabBarController.view.backgroundColor = .none
         self.tabBarController.tabBar.backgroundColor = .none
         self.tabBarController.tabBar.tintColor = .black
-        
+        self.tabBarController.setupLeftButton()
+
     }
     
     func startTabCoordinator(of page: TabBarPage, to navigationVewController: UINavigationController) {
@@ -87,11 +100,11 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             settingCoordinator.finishDelegate = self
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()
-        case .archive:
+        case .archiv:
             let archiveCoordinator = ArchiveCoordinator(navigationVewController)
             archiveCoordinator.finishDelegate = self
             self.childCoordinators.append(archiveCoordinator)
-            archiveCoordinator.start()
+            //archiveCoordinator.start()
         
        }
         
