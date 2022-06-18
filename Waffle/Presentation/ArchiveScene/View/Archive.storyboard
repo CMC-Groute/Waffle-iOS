@@ -75,24 +75,21 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="required_caption" translatesAutoresizingMaskIntoConstraints="NO" id="3A4-1d-Mur">
-                                                <rect key="frame" x="142.5" y="281.5" width="34" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="Gv5-4i-5Kf"/>
-                                                    <constraint firstAttribute="height" constant="15" id="daP-Nr-HIO"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="required_caption" translatesAutoresizingMaskIntoConstraints="NO" id="QHX-5Z-mbt">
-                                                <rect key="frame" x="128.5" y="134" width="34" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="CgE-Cd-V6F"/>
-                                                    <constraint firstAttribute="width" constant="34" id="Ngk-v0-jjb"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKn-Zp-Blj">
-                                                <rect key="frame" x="18" y="16" width="42" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKn-Zp-Blj">
+                                                <rect key="frame" x="18" y="16" width="47.5" height="19.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="약속명">
+                                                        <attributes>
+                                                            <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="0.63921568627450975" blue="0.46666666666666667" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="67A-p1-llJ">
@@ -120,23 +117,38 @@
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="required_caption" translatesAutoresizingMaskIntoConstraints="NO" id="gbl-BO-72n">
-                                                <rect key="frame" x="65" y="18.5" width="34" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="34" id="YI4-Et-kPM"/>
-                                                    <constraint firstAttribute="height" constant="15" id="htn-PQ-frV"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대략적인 약속 위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfh-xL-f0t">
-                                                <rect key="frame" x="18" y="279" width="119.5" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfh-xL-f0t">
+                                                <rect key="frame" x="18" y="279" width="125" height="19.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="대략적인 약속 위치">
+                                                        <attributes>
+                                                            <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="0.63921568627450975" blue="0.46666666666666667" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 날짜와 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-fr-VWF">
-                                                <rect key="frame" x="18" y="131.5" width="105.5" height="19.5"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uW-fr-VWF">
+                                                <rect key="frame" x="18" y="131.5" width="111.5" height="19.5"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="약속 날짜와 시간">
+                                                        <attributes>
+                                                            <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="*">
+                                                        <attributes>
+                                                            <color key="NSColor" red="1" green="0.63921568627450975" blue="0.46666666666666667" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="클릭하면 지역을 선택할 수 있어요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2R-HZ-kgK">
@@ -220,20 +232,16 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6BD-co-o3d" secondAttribute="trailing" constant="16" id="0GI-Nd-2C8"/>
                                             <constraint firstItem="GgJ-xp-fhJ" firstAttribute="top" secondItem="6BD-co-o3d" secondAttribute="bottom" constant="14" id="1DA-BU-Trj"/>
-                                            <constraint firstItem="gbl-BO-72n" firstAttribute="centerY" secondItem="tKn-Zp-Blj" secondAttribute="centerY" id="2gT-6i-kzZ"/>
                                             <constraint firstItem="2YX-76-TMZ" firstAttribute="top" secondItem="w2R-HZ-kgK" secondAttribute="bottom" constant="15" id="3Uc-OG-MdS"/>
                                             <constraint firstItem="6BD-co-o3d" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="4Re-0B-O8X"/>
                                             <constraint firstItem="J0X-rH-PXo" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="4xh-K6-4Uw"/>
-                                            <constraint firstItem="gbl-BO-72n" firstAttribute="leading" secondItem="tKn-Zp-Blj" secondAttribute="trailing" constant="5" id="8Rd-Ye-klc"/>
                                             <constraint firstItem="GgJ-xp-fhJ" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" id="BuH-U2-4Gy"/>
-                                            <constraint firstItem="3A4-1d-Mur" firstAttribute="leading" secondItem="Xfh-xL-f0t" secondAttribute="trailing" constant="5" id="CA2-QQ-7gE"/>
                                             <constraint firstAttribute="trailing" secondItem="GgJ-xp-fhJ" secondAttribute="trailing" id="EoT-To-9LU"/>
                                             <constraint firstItem="6uW-fr-VWF" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="18" id="Glu-zM-cKp"/>
                                             <constraint firstItem="6uW-fr-VWF" firstAttribute="top" secondItem="1ZF-3G-70P" secondAttribute="bottom" constant="40" id="KBz-Fk-d6C"/>
                                             <constraint firstItem="6BD-co-o3d" firstAttribute="top" secondItem="J0X-rH-PXo" secondAttribute="bottom" constant="12" id="N65-qD-YwG"/>
                                             <constraint firstAttribute="trailing" secondItem="w2R-HZ-kgK" secondAttribute="trailing" constant="16" id="Oy0-sV-JMX"/>
                                             <constraint firstItem="tKn-Zp-Blj" firstAttribute="top" secondItem="801-8s-uxP" secondAttribute="top" constant="16" id="Qda-U2-vVQ"/>
-                                            <constraint firstItem="QHX-5Z-mbt" firstAttribute="leading" secondItem="6uW-fr-VWF" secondAttribute="trailing" constant="5" id="USe-Jg-oQs"/>
                                             <constraint firstAttribute="bottom" secondItem="GgJ-xp-fhJ" secondAttribute="bottom" id="Wzt-i5-YEl"/>
                                             <constraint firstItem="67A-p1-llJ" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="YM2-x8-dmD"/>
                                             <constraint firstItem="Xfh-xL-f0t" firstAttribute="top" secondItem="67A-p1-llJ" secondAttribute="bottom" constant="72" id="aIk-Kq-1nN"/>
@@ -245,8 +253,6 @@
                                             <constraint firstAttribute="trailing" secondItem="yLu-Jt-Ml4" secondAttribute="trailing" constant="16" id="eMg-wm-WKk"/>
                                             <constraint firstAttribute="trailing" secondItem="2YX-76-TMZ" secondAttribute="trailing" constant="16" id="exI-yx-tK8"/>
                                             <constraint firstItem="1ZF-3G-70P" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="hdh-7H-CUq"/>
-                                            <constraint firstItem="3A4-1d-Mur" firstAttribute="centerY" secondItem="Xfh-xL-f0t" secondAttribute="centerY" id="jMg-EV-F1Z"/>
-                                            <constraint firstItem="QHX-5Z-mbt" firstAttribute="centerY" secondItem="6uW-fr-VWF" secondAttribute="centerY" id="lW7-Di-mPo"/>
                                             <constraint firstItem="J0X-rH-PXo" firstAttribute="top" secondItem="w2R-HZ-kgK" secondAttribute="bottom" constant="72" id="mn9-9O-CZB"/>
                                             <constraint firstAttribute="trailing" secondItem="1ZF-3G-70P" secondAttribute="trailing" constant="16" id="nLy-5z-ztE"/>
                                             <constraint firstItem="w2R-HZ-kgK" firstAttribute="leading" secondItem="801-8s-uxP" secondAttribute="leading" constant="16" id="ovz-8t-Yu3"/>
@@ -549,7 +555,6 @@
     </scenes>
     <resources>
         <image name="haveToppingPicture" width="392.5" height="232"/>
-        <image name="required_caption" width="34" height="15"/>
         <image name="unCheck" width="30" height="30"/>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
