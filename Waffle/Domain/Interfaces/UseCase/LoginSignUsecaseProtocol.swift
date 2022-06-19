@@ -1,5 +1,5 @@
 //
-//  UserUseCaseProtocol.swift
+//  UserUsecaseProtocol.swift
 //  Waffle
 //
 //  Created by 조소정 on 2022/06/07.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol LoginSignUseCaseProtocol {
+protocol LoginSignUsecaseProtocol {
     func login(email: String, password: String) -> Observable<String>
     func checkEmailValid(email: String) -> Bool
     func checkPasswordValid(password: String) -> Bool

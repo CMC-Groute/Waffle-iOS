@@ -37,10 +37,10 @@ class ChangePWViewModel {
     }
     
     private var disposable = DisposeBag()
-    private var usecase: UserUseCase
+    private var usecase: UserUsecase
     private var coordinator: SettingCoordinator!
     
-    init(coordinator: SettingCoordinator, usecase: UserUseCase) {
+    init(coordinator: SettingCoordinator, usecase: UserUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
     }

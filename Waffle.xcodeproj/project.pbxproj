@@ -23,6 +23,7 @@
 		13E2A078285EF2030015499E /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A077285EF2020015499E /* Archive.swift */; };
 		13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A079285EFAC90015499E /* EmptyCardView.xib */; };
 		13E2A07C285EFB2D0015499E /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A07B285EFB2D0015499E /* EmptyCardView.swift */; };
+		13E2A07E285F00C80015499E /* HomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A07D285F00C80015499E /* HomeUsecase.swift */; };
 		13E9B0BE285A2F0800723CAA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E9B0BD285A2F0800723CAA /* String.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
@@ -46,8 +47,8 @@
 		F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
 		F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */; };
 		F2125D2F284E2752008E1185 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2E284E2752008E1185 /* Config.swift */; };
-		F2125D35284E5270008E1185 /* LoginSignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D34284E5270008E1185 /* LoginSignUseCase.swift */; };
-		F2125D37284E52A8008E1185 /* LoginSignUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */; };
+		F2125D35284E5270008E1185 /* LoginSignUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D34284E5270008E1185 /* LoginSignUsecase.swift */; };
+		F2125D37284E52A8008E1185 /* LoginSignUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D36284E52A8008E1185 /* LoginSignUsecaseProtocol.swift */; };
 		F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */; };
 		F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */; };
 		F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */; };
@@ -88,7 +89,7 @@
 		F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED31A2855DBFA002371FD /* Archive.storyboard */; };
 		F29ED3202855E840002371FD /* EditSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED31F2855E840002371FD /* EditSettingViewController.swift */; };
 		F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3212855E84A002371FD /* ChangePWViewController.swift */; };
-		F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3232855EE0D002371FD /* UserUseCase.swift */; };
+		F29ED3242855EE0D002371FD /* UserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3232855EE0D002371FD /* UserUsecase.swift */; };
 		F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */; };
 		F29ED3282855EF97002371FD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3272855EF97002371FD /* UserRepository.swift */; };
 		F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */; };
@@ -100,8 +101,8 @@
 		F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33528561DC0002371FD /* AddLocationViewController.swift */; };
 		F29ED33828562074002371FD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33728562074002371FD /* Date.swift */; };
 		F29ED33A285628F2002371FD /* AddArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED339285628F2002371FD /* AddArchiveModel.swift */; };
-		F29ED33C2856290E002371FD /* ArchiveUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33B2856290E002371FD /* ArchiveUseCase.swift */; };
-		F29ED33E2856291A002371FD /* ArchiveUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */; };
+		F29ED33C2856290E002371FD /* ArchiveUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33B2856290E002371FD /* ArchiveUsecase.swift */; };
+		F29ED33E2856291A002371FD /* ArchiveUsecaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33D2856291A002371FD /* ArchiveUsecaseProtocol.swift */; };
 		F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */; };
 		F29ED342285629DB002371FD /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED341285629DB002371FD /* ArchiveRepository.swift */; };
 		F29ED34428562D7E002371FD /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED34328562D7E002371FD /* UITextView.swift */; };
@@ -151,6 +152,7 @@
 		13E2A077285EF2020015499E /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		13E2A079285EFAC90015499E /* EmptyCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCardView.xib; sourceTree = "<group>"; };
 		13E2A07B285EFB2D0015499E /* EmptyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
+		13E2A07D285F00C80015499E /* HomeUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUsecase.swift; sourceTree = "<group>"; };
 		13E9B0BD285A2F0800723CAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.release.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,8 +180,8 @@
 		F2125D2A284E19AD008E1185 /* TapBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarPage.swift; sourceTree = "<group>"; };
 		F2125D2C284E1D62008E1185 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		F2125D2E284E2752008E1185 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		F2125D34284E5270008E1185 /* LoginSignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUseCase.swift; sourceTree = "<group>"; };
-		F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUseCaseProtocol.swift; sourceTree = "<group>"; };
+		F2125D34284E5270008E1185 /* LoginSignUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUsecase.swift; sourceTree = "<group>"; };
+		F2125D36284E52A8008E1185 /* LoginSignUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUsecaseProtocol.swift; sourceTree = "<group>"; };
 		F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignRepository.swift; sourceTree = "<group>"; };
 		F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestBuilder.swift; sourceTree = "<group>"; };
@@ -220,7 +222,7 @@
 		F29ED31A2855DBFA002371FD /* Archive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Archive.storyboard; sourceTree = "<group>"; };
 		F29ED31F2855E840002371FD /* EditSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingViewController.swift; sourceTree = "<group>"; };
 		F29ED3212855E84A002371FD /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
-		F29ED3232855EE0D002371FD /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		F29ED3232855EE0D002371FD /* UserUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUsecase.swift; sourceTree = "<group>"; };
 		F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseProtocol.swift; sourceTree = "<group>"; };
 		F29ED3272855EF97002371FD /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -232,8 +234,8 @@
 		F29ED33528561DC0002371FD /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F29ED33728562074002371FD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F29ED339285628F2002371FD /* AddArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveModel.swift; sourceTree = "<group>"; };
-		F29ED33B2856290E002371FD /* ArchiveUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUseCase.swift; sourceTree = "<group>"; };
-		F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUseCaseProtocol.swift; sourceTree = "<group>"; };
+		F29ED33B2856290E002371FD /* ArchiveUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUsecase.swift; sourceTree = "<group>"; };
+		F29ED33D2856291A002371FD /* ArchiveUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUsecaseProtocol.swift; sourceTree = "<group>"; };
 		F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F29ED341285629DB002371FD /* ArchiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepository.swift; sourceTree = "<group>"; };
 		F29ED34328562D7E002371FD /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
@@ -469,9 +471,9 @@
 		F2125D38284E534F008E1185 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D36284E52A8008E1185 /* LoginSignUseCaseProtocol.swift */,
+				F2125D36284E52A8008E1185 /* LoginSignUsecaseProtocol.swift */,
 				F29ED3252855EE1E002371FD /* UserUseCaseProtocol.swift */,
-				F29ED33D2856291A002371FD /* ArchiveUseCaseProtocol.swift */,
+				F29ED33D2856291A002371FD /* ArchiveUsecaseProtocol.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -595,9 +597,10 @@
 		F21972C5284B8B800086E56B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D34284E5270008E1185 /* LoginSignUseCase.swift */,
-				F29ED3232855EE0D002371FD /* UserUseCase.swift */,
-				F29ED33B2856290E002371FD /* ArchiveUseCase.swift */,
+				F2125D34284E5270008E1185 /* LoginSignUsecase.swift */,
+				F29ED3232855EE0D002371FD /* UserUsecase.swift */,
+				F29ED33B2856290E002371FD /* ArchiveUsecase.swift */,
+				13E2A07D285F00C80015499E /* HomeUsecase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1198,7 +1201,7 @@
 				13E9B0BE285A2F0800723CAA /* String.swift in Sources */,
 				F29ED3322856089B002371FD /* QuitPopUpViewController.swift in Sources */,
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
-				F2125D37284E52A8008E1185 /* LoginSignUseCaseProtocol.swift in Sources */,
+				F2125D37284E52A8008E1185 /* LoginSignUsecaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
 				13E2A078285EF2030015499E /* Archive.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
@@ -1250,13 +1253,14 @@
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				F29ED3282855EF97002371FD /* UserRepository.swift in Sources */,
 				F29ED33828562074002371FD /* Date.swift in Sources */,
-				F29ED3242855EE0D002371FD /* UserUseCase.swift in Sources */,
+				F29ED3242855EE0D002371FD /* UserUsecase.swift in Sources */,
 				F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */,
 				F29ED3302856088D002371FD /* LogoutPopUpViewController.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
-				F29ED33E2856291A002371FD /* ArchiveUseCaseProtocol.swift in Sources */,
+				F29ED33E2856291A002371FD /* ArchiveUsecaseProtocol.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
+				13E2A07E285F00C80015499E /* HomeUsecase.swift in Sources */,
 				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */,
@@ -1277,12 +1281,12 @@
 				F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
-				F2125D35284E5270008E1185 /* LoginSignUseCase.swift in Sources */,
+				F2125D35284E5270008E1185 /* LoginSignUsecase.swift in Sources */,
 				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
 				F29ED33428561D2A002371FD /* AddArchiveViewController.swift in Sources */,
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
 				F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */,
-				F29ED33C2856290E002371FD /* ArchiveUseCase.swift in Sources */,
+				F29ED33C2856290E002371FD /* ArchiveUsecase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

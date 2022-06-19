@@ -14,7 +14,7 @@ class LogoutPopUpViewController: UIViewController {
     @IBOutlet weak var OKButton: UIButton!
     
     var coordinator: SettingCoordinator!
-    var usecase: UserUseCase!
+    var usecase: UserUsecase!
     var disposBag = DisposeBag()
     
     convenience init(coordinator: SettingCoordinator){

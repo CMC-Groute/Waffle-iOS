@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-class UserUseCase: UserUseCaseProtocol {
+class UserUsecase: UserUseCaseProtocol {
     
     private var repository: UserRepository!
     

@@ -12,7 +12,7 @@ import RxCocoa
 class LoginViewModel {
     
     private var disposable = DisposeBag()
-    private var usecase: LoginSignUseCase
+    private var usecase: LoginSignUsecase
     private var coordinator: LoginCoordinator!
     
     struct Input {
@@ -33,7 +33,7 @@ class LoginViewModel {
         var passwordInvalidMessage = PublishRelay<Bool>()
     }
     
-    init(loginSignUseCase: LoginSignUseCase, coordinator: LoginCoordinator) {
+    init(loginSignUseCase: LoginSignUsecase, coordinator: LoginCoordinator) {
         self.usecase = loginSignUseCase
         self.coordinator = coordinator
     }

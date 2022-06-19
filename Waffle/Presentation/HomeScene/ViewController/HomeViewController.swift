@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
     }
     
     func bindViewModel() {
-        let input = HomeViewModel.Input(makeArchiveButton: emptyView.makeArchiveButton.rx.tap.asObservable())
+        let input = HomeViewModel.Input(viewDidLoadEvent: Observable<Void>.just(()).asObservable(), makeArchiveButton: emptyView.makeArchiveButton.rx.tap.asObservable())
 
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         

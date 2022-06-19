@@ -10,12 +10,12 @@ import RxSwift
 import RxCocoa
 
 class AddArchiveModel {
-    var usecase: ArchiveUseCase!
+    var usecase: ArchiveUsecase!
     var coordinator: ArchiveCoordinator!
     
     var disposeBag = DisposeBag()
     
-    init(usecase: ArchiveUseCase, coordinator: ArchiveCoordinator){
+    init(usecase: ArchiveUsecase, coordinator: ArchiveCoordinator){
         self.usecase = usecase
         self.coordinator = coordinator
     }

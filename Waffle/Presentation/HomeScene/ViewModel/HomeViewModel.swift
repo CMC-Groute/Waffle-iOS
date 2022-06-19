@@ -16,6 +16,7 @@ class HomeViewModel: ObservableObject {
         self.coordinator = coordinator
     }
     struct Input {
+        let viewDidLoadEvent: Observable<Void>
         var makeArchiveButton: Observable<Void>
     }
     
@@ -30,6 +31,12 @@ class HomeViewModel: ObservableObject {
                 print("makeArchiveButton")
                 self.coordinator.archiveFlow()
             }).disposed(by: disposeBag)
+        
+        input.viewDidLoadEvent
+            .subscribe(
+                onNext: { [weak self] _ in
+                })
+            .disposed(by: disposeBag)
         
         return output
     }

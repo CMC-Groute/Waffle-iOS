@@ -25,7 +25,7 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     }
   
     func start() {
-        self.settingViewController.viewModel = SettingViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        self.settingViewController.viewModel = SettingViewModel(coordinator: self, usecase: UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService())))
         self.navigationController.setNavigationBarHidden(true, animated: true)
         self.navigationController.viewControllers = [self.settingViewController]
     }
@@ -33,21 +33,21 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     func editProfile() {
         self.navigationController.setNavigationBarHidden(false, animated: true)
         let editSettingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "EditSettingViewController") as! EditSettingViewController
-        editSettingViewController.viewModel = EditSettingViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        editSettingViewController.viewModel = EditSettingViewModel(coordinator: self, usecase: UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(editSettingViewController, animated: true)
     }
     
     func changePassword() {
         self.navigationController.setNavigationBarHidden(false, animated: true)
         let changePWViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "ChangePWViewController") as! ChangePWViewController
-        changePWViewController.viewModel = ChangePWViewModel(coordinator: self, usecase: UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        changePWViewController.viewModel = ChangePWViewModel(coordinator: self, usecase: UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(changePWViewController, animated: true)
     }
     
     func logout() {
         let logoutPopUpView = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "LogoutPopUpViewController") as! LogoutPopUpViewController
         logoutPopUpView.coordinator = self
-        logoutPopUpView.usecase = UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService()))
+        logoutPopUpView.usecase = UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService()))
         logoutPopUpView.modalPresentationStyle = .overFullScreen
         logoutPopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(logoutPopUpView, animated: false)
@@ -56,7 +56,7 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     func quit() {
         let quitPopUpView = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "QuitPopUpViewController") as! QuitPopUpViewController
         quitPopUpView.coordinator = self
-        quitPopUpView.usecase = UserUseCase(repository: UserRepository(networkService: URLSessionNetworkService()))
+        quitPopUpView.usecase = UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService()))
         quitPopUpView.modalPresentationStyle = .overFullScreen
         quitPopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(quitPopUpView, animated: false)

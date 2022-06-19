@@ -1,5 +1,5 @@
 //
-//  LoginUseCase.swift
+//  LoginUsecase.swift
 //  Waffle
 //
 //  Created by 조소정 on 2022/06/07.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class LoginSignUseCase: LoginSignUseCaseProtocol {
+class LoginSignUsecase: LoginSignUsecaseProtocol {
 
     private var repository: LoginSignRepository!
     var authenCode: String = "111111"

@@ -23,10 +23,10 @@ class FindPWViewModel {
         var emailInvalidMessage = PublishRelay<Bool>()
     }
     
-    var usecase: LoginSignUseCase
+    var usecase: LoginSignUsecase
     var coordinator: LoginCoordinator
     
-    init(usecase: LoginSignUseCase, coordinator: LoginCoordinator) {
+    init(usecase: LoginSignUsecase, coordinator: LoginCoordinator) {
         self.usecase = usecase
         self.coordinator = coordinator
     }
