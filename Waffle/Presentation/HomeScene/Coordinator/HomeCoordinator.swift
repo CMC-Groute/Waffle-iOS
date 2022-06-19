@@ -24,12 +24,29 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func start() {
+        homeViewController.viewModel = HomeViewModel(coordinator: self)
         self.navigationController.pushViewController(self.homeViewController, animated: true)
     }
     
-    func addArchive() {
-        
+    func archiveFlow() {
+        let archiveCoordinator = ArchiveCoordinator(self.navigationController)
+        self.childCoordinators.append(archiveCoordinator)
+        archiveCoordinator.finishDelegate = self
+        archiveCoordinator.addArchive()
     }
     
+    func finish() {
+        self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
+    
+}
+
+extension HomeCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators
+            .filter({ $0.type != childCoordinator.type })
+        childCoordinator.navigationController.popViewController(animated: true)
+    }
     
 }

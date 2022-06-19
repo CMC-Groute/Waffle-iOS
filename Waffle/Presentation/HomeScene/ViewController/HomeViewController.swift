@@ -7,16 +7,24 @@
 
 import UIKit
 import SwiftUI
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var makeArchiveButton: UIButton!
+    @IBOutlet weak var cardCountLabel: UILabel!
+    @IBOutlet weak var emptyView: EmptyCardView!
+    
     @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
         return UIHostingController(coder: coder, rootView: SnapCarousel().environmentObject(UIStateModel()))
     }
     
+    var viewModel: HomeViewModel?
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindViewModel()
     }
     
     func configureUI() {
@@ -31,6 +39,13 @@ class HomeViewController: UIViewController {
             self.navigationController?.navigationBar.topItem?.rightBarButtonItems = [bellButton, spacer, calendarButton]
         }
         setNavigationBar()
+    }
+    
+    func bindViewModel() {
+        let input = HomeViewModel.Input(makeArchiveButton: emptyView.makeArchiveButton.rx.tap.asObservable())
+
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        
     }
     
     

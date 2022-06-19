@@ -21,6 +21,8 @@
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
 		13E2A074285DE49F0015499E /* ArchivePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A073285DE49F0015499E /* ArchivePopUpView.swift */; };
 		13E2A078285EF2030015499E /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A077285EF2020015499E /* Archive.swift */; };
+		13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A079285EFAC90015499E /* EmptyCardView.xib */; };
+		13E2A07C285EFB2D0015499E /* EmptyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A07B285EFB2D0015499E /* EmptyCardView.swift */; };
 		13E9B0BE285A2F0800723CAA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E9B0BD285A2F0800723CAA /* String.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
@@ -147,6 +149,8 @@
 		13E2A071285DE4560015499E /* ArchivePopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivePopUpView.xib; sourceTree = "<group>"; };
 		13E2A073285DE49F0015499E /* ArchivePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePopUpView.swift; sourceTree = "<group>"; };
 		13E2A077285EF2020015499E /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		13E2A079285EFAC90015499E /* EmptyCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCardView.xib; sourceTree = "<group>"; };
+		13E2A07B285EFB2D0015499E /* EmptyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCardView.swift; sourceTree = "<group>"; };
 		13E9B0BD285A2F0800723CAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.release.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -812,6 +816,8 @@
 				F29ED30D2855DBB2002371FD /* Home.storyboard */,
 				136CEFA32859D82C002ADDA9 /* HomeCardView.swift */,
 				136CEFA5285A0A49002ADDA9 /* SnapCarousel.swift */,
+				13E2A079285EFAC90015499E /* EmptyCardView.xib */,
+				13E2A07B285EFB2D0015499E /* EmptyCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1037,6 +1043,7 @@
 				F2A412E12849EFD900E04BF5 /* Assets.xcassets in Resources */,
 				F2125D51284E60FD008E1185 /* SignUp.storyboard in Resources */,
 				F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */,
+				13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */,
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */,
@@ -1206,6 +1213,7 @@
 				F29ED34428562D7E002371FD /* UITextView.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
+				13E2A07C285EFB2D0015499E /* EmptyCardView.swift in Sources */,
 				136CEFA6285A0A49002ADDA9 /* SnapCarousel.swift in Sources */,
 				F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
