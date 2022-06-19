@@ -6,13 +6,19 @@
 //
 
 import Foundation
+import RxSwift
 
 class HomeViewModel: ObservableObject {
     struct Input {
-        
+        var makeArchiveButton: Observable<Void>
     }
     
     struct Output {
         
+    }
+    
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        return output
     }
 }

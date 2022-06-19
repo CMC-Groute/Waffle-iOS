@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-LH-w6N" userLabel="CardView">
-                                <rect key="frame" x="0.0" y="124" width="414" height="674"/>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-LH-w6N" userLabel="CardView">
+                                <rect key="frame" x="0.0" y="76" width="414" height="722"/>
                                 <connections>
                                     <segue destination="39f-ZT-fFp" kind="embed" destinationCreationSelector="embedCardView:" id="OnT-8J-q9k"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTO-sv-WOb" userLabel="noCardView">
-                                <rect key="frame" x="0.0" y="124" width="414" height="674"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTO-sv-WOb" userLabel="noCardView">
+                                <rect key="frame" x="0.0" y="76" width="414" height="722"/>
                                 <connections>
                                     <segue destination="32f-X1-Rr8" kind="embed" id="7ia-Ou-zDp"/>
                                 </connections>
@@ -39,7 +39,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="T4g-LH-w6N" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="4u8-tK-87X"/>
                             <constraint firstItem="T4g-LH-w6N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6Vb-40-oKV"/>
+                            <constraint firstItem="iTO-sv-WOb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="HZN-aH-PdV"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="day-f8-IqU" secondAttribute="trailing" constant="156" id="Oyb-mH-9oY"/>
                             <constraint firstItem="iTO-sv-WOb" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Pt6-4H-ASv"/>
                             <constraint firstItem="day-f8-IqU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="156" id="Qmy-Gr-HCg"/>
@@ -69,7 +71,7 @@
             <objects>
                 <viewController id="32f-X1-Rr8" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R7O-J5-iWe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="674"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noArchivePicture" translatesAutoresizingMaskIntoConstraints="NO" id="EJe-UB-fsk">
@@ -85,12 +87,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P38-D0-YMA">
-                                <rect key="frame" x="133" y="592" width="148" height="40"/>
+                                <rect key="frame" x="154" y="640" width="106.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DqA-TD-YQh"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="약속 만들어보기">
+                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
                                     <color key="baseForegroundColor" name="orange"/>
                                 </buttonConfiguration>
                             </button>
@@ -98,7 +101,6 @@
                         <viewLayoutGuide key="safeArea" id="Iyu-4Z-dns"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="P38-D0-YMA" firstAttribute="leading" secondItem="R7O-J5-iWe" secondAttribute="leadingMargin" constant="113" id="2dk-kR-v4m"/>
                             <constraint firstAttribute="trailing" secondItem="EJe-UB-fsk" secondAttribute="trailing" id="3aa-ny-9Zr"/>
                             <constraint firstItem="EJe-UB-fsk" firstAttribute="top" secondItem="R7O-J5-iWe" secondAttribute="top" constant="17" id="DBH-21-3d0"/>
                             <constraint firstItem="P38-D0-YMA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PIa-G9-KBW" secondAttribute="bottom" constant="20" id="Lqf-oF-AfF"/>

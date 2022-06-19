@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 
 class HomeViewController: UIViewController {
-    
+    @IBOutlet weak var makeArchiveButton: UIButton!
     @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
         return UIHostingController(coder: coder, rootView: SnapCarousel().environmentObject(UIStateModel()))
     }

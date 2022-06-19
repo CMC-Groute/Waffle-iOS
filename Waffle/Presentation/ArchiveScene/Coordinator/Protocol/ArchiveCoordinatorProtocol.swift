@@ -7,7 +7,8 @@
 
 import Foundation
 
-//protocol ArchiveCoordinatorProtocol: Coordinator {
-//    func addArchive()
-//    func addLocation()
-//}
+protocol ArchiveCoordinatorProtocol: Coordinator {
+    func addArchive()
+    func inputCodeArchive()
+    func addLocation()
+}

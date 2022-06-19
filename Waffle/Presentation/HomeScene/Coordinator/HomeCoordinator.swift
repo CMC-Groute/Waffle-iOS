@@ -27,5 +27,9 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(self.homeViewController, animated: true)
     }
     
+    func addArchive() {
+        
+    }
+    
     
 }

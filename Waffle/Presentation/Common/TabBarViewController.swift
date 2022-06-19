@@ -9,7 +9,7 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     let archiveButton = UIButton(frame: CGRect.zero)
-    var coordinator: TabBarCoordinator!
+    var coordinator: ArchiveCoordinator!
     var popUpView = ArchivePopUpView()
     
     override func viewDidLayoutSubviews() {

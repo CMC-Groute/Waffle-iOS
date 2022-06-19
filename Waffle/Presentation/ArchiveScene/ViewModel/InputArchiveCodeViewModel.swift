@@ -11,11 +11,11 @@ import RxCocoa
 
 class InputArchiveCodeViewModel {
     var usecase: ArchiveUseCase!
-    var coordinator: TabBarCoordinator!
+    var coordinator: ArchiveCoordinator!
     
     var disposeBag = DisposeBag()
     
-    init(usecase: ArchiveUseCase, coordinator: TabBarCoordinator){
+    init(usecase: ArchiveUseCase, coordinator: ArchiveCoordinator){
         self.usecase = usecase
         self.coordinator = coordinator
     }

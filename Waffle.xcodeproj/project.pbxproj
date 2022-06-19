@@ -20,6 +20,7 @@
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
 		13E2A074285DE49F0015499E /* ArchivePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A073285DE49F0015499E /* ArchivePopUpView.swift */; };
+		13E2A078285EF2030015499E /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A077285EF2020015499E /* Archive.swift */; };
 		13E9B0BE285A2F0800723CAA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E9B0BD285A2F0800723CAA /* String.swift */; };
 		57A89CA88024C2A03C5AC44A /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71E0353C016D52FC2CAE901 /* Pods_Waffle_WaffleUITests.framework */; };
 		63054AD9F45707A8D8DE29DD /* Pods_WaffleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142431BB853F5F4E00B33E /* Pods_WaffleTests.framework */; };
@@ -145,6 +146,7 @@
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		13E2A071285DE4560015499E /* ArchivePopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivePopUpView.xib; sourceTree = "<group>"; };
 		13E2A073285DE49F0015499E /* ArchivePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePopUpView.swift; sourceTree = "<group>"; };
+		13E2A077285EF2020015499E /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
 		13E9B0BD285A2F0800723CAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3137181A0A244FBFB41258C3 /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		44462EB903AB7B8128E5EEF4 /* Pods-Waffle-WaffleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.release.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -301,6 +303,22 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		13E2A075285EF1E50015499E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				13E2A076285EF1F00015499E /* Archive */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		13E2A076285EF1F00015499E /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				13E2A077285EF2020015499E /* Archive.swift */,
+			);
+			path = Archive;
 			sourceTree = "<group>";
 		};
 		EDA61873935AB7625B636134 /* Pods */ = {
@@ -563,8 +581,8 @@
 		F21972C4284B8B770086E56B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				13E2A075285EF1E50015499E /* Entities */,
 				F21972C7284B8B990086E56B /* Interfaces */,
-				F21972C6284B8B900086E56B /* Entities */,
 				F21972C5284B8B800086E56B /* UseCases */,
 			);
 			path = Domain;
@@ -578,13 +596,6 @@
 				F29ED33B2856290E002371FD /* ArchiveUseCase.swift */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		F21972C6284B8B900086E56B /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		F21972C7284B8B990086E56B /* Interfaces */ = {
@@ -1182,6 +1193,7 @@
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
 				F2125D37284E52A8008E1185 /* LoginSignUseCaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
+				13E2A078285EF2030015499E /* Archive.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
 				F2125D4E284E60E5008E1185 /* SignUpViewController.swift in Sources */,
