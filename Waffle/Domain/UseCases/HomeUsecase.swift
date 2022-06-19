@@ -6,5 +6,25 @@
 //
 
 import Foundation
+import RxSwift
 
+class HomeUsecase: HomeUsecaseProtocol {
+
+    var repository: HomeRepository!
+    @Published var cardInfo: [CardInfo] = []
+    var disposeBag = DisposeBag()
+    
+    init(repository: HomeRepository){
+        self.repository = repository
+    }
+    
+    func getCardInfo() {
+        repository.getCardInfo()
+            .subscribe(onNext: { [weak self] cardInfo in
+                guard let self = self else { return }
+                self.cardInfo = cardInfo
+            }).disposed(by: disposeBag)
+    }
+
+}
 

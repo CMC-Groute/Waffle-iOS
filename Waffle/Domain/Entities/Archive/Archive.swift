@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetArchive {
+struct CardInfo: Hashable, Identifiable, Codable {
     var title: String
     var date: String
     var place: String
@@ -15,4 +15,5 @@ struct GetArchive {
     var waffle: String
     var topping: [String]
     var color: Int
+    var id = UUID()
 }

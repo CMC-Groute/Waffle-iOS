@@ -13,13 +13,13 @@ import RxCocoa
 class HomeViewController: UIViewController {
     @IBOutlet weak var cardCountLabel: UILabel!
     @IBOutlet weak var emptyView: EmptyCardView!
-    
-    @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: SnapCarousel().environmentObject(UIStateModel()))
-    }
-    
     var viewModel: HomeViewModel?
     var disposeBag = DisposeBag()
+    
+    @IBOutlet weak var cardView: UIView!
+    @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: CardView(UIState: UIStateModel()).environmentObject(viewModel!))
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,31 @@ class HomeViewController: UIViewController {
 
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
+        output?.isHiddenView
+            .subscribe(onNext: { [weak self] bool in
+                print(bool)
+                guard let self = self else { return }
+                print(bool)
+                if bool {
+                    self.hideCardView()
+                }else {
+                    self.hideEmptyView()
+                }
+                print(bool)
+            }).disposed(by: disposeBag)
+        
+    }
+    
+    func hideCardView() {
+        emptyView.isHidden = false
+        
+        cardView.isHidden = true
+    }
+    
+    func hideEmptyView() {
+        emptyView.isHidden = true
+        
+        cardView.isHidden = false
     }
     
     

@@ -24,7 +24,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func start() {
-        homeViewController.viewModel = HomeViewModel(coordinator: self)
+        homeViewController.viewModel = HomeViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(self.homeViewController, animated: true)
     }
     

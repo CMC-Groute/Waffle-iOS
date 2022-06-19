@@ -52,6 +52,7 @@
                     </view>
                     <connections>
                         <outlet property="cardCountLabel" destination="day-f8-IqU" id="Tn4-f2-tMg"/>
+                        <outlet property="cardView" destination="T4g-LH-w6N" id="C8s-Ro-l9B"/>
                         <outlet property="emptyView" destination="cG0-qU-Nh4" id="xyv-Ib-SIe"/>
                     </connections>
                 </viewController>

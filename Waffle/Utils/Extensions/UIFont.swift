@@ -85,6 +85,22 @@ extension UIFont {
         return self.fontWithName(type: .regular, size: 14)
     }
     
+    static func cardTitleFont() -> UIFont {
+        return self.fontWithName(type: .bold, size: 32)
+    }
+    
+    static func cardDateLocationFont() -> UIFont {
+        return self.fontWithName(type: .regular, size: 17)
+    }
+    
+    static func cardMessageFont() -> UIFont {
+        return self.fontWithName(type: .regular, size: 15)
+    }
+    
+    static func cardNameFont() -> UIFont {
+        return self.fontWithName(type: .regular, size: 14)
+    }
+    
     
 
 }

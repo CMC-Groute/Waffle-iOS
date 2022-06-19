@@ -7,13 +7,17 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class HomeViewModel: ObservableObject {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
-   // var useCase: HomeUseCase!
-    init(coordinator: HomeCoordinator) {
+    var usecase: HomeUsecase!
+    //@Published var cardInfo: [CardInfo] = []
+    
+    init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
+        self.usecase = usecase
     }
     struct Input {
         let viewDidLoadEvent: Observable<Void>
@@ -21,24 +25,32 @@ class HomeViewModel: ObservableObject {
     }
     
     struct Output {
-        
+        let isHiddenView = BehaviorRelay<Bool>(value: false)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         input.makeArchiveButton
             .subscribe(onNext: {
-                print("makeArchiveButton")
                 self.coordinator.archiveFlow()
             }).disposed(by: disposeBag)
         
         input.viewDidLoadEvent
             .subscribe(
                 onNext: { [weak self] _ in
-                })
-            .disposed(by: disposeBag)
+                    self?.usecase.getCardInfo()
+                    hideView()
+                }).disposed(by: disposeBag)
+        
+        
+        func hideView() {
+            if self.usecase.cardInfo.isEmpty {
+                output.isHiddenView.accept(true)
+            }else {
+                output.isHiddenView.accept(false)
+            }
+        }
         
         return output
     }
-    
 }
