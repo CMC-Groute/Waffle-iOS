@@ -43,22 +43,6 @@ class TabBarViewController: UITabBarController {
     }
     
     
-   func setupLeftButton() {
-       let numberOfItems = CGFloat(self.tabBar.items!.count)
-       let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems, height: tabBar.frame.height)
-       archiveButton.setImage(Asset.Assets.archive.image, for: .normal)
-       archiveButton.setImage(Asset.Assets.archiveSelected.image, for: .selected)
-       archiveButton.frame = CGRect(x: 0, y: 0, width: tabBarItemSize.width, height: tabBar.frame.size.height)
-       var menuButtonFrame = archiveButton.frame
-       menuButtonFrame.origin.x = (self.view.bounds.width/4) * 3
-
-       self.archiveButton.frame = menuButtonFrame
-       self.archiveButton.addTarget(self, action: #selector(didTapLeftButton), for: .touchUpInside)
-       self.view.addSubview(archiveButton)
-       self.view.layoutIfNeeded()
-       
-       
-   }
     
     @objc func didTapLeftButton() {
         if archiveButton.isSelected {
@@ -95,6 +79,13 @@ extension TabBarViewController: UITabBarControllerDelegate {
         //print("didSelect item \(item)")
         if item.tag == 3 {
             popUpView.isHidden.toggle()
+            if self.tabBar.items![item.tag].image == Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal) {
+                self.tabBar.items![item.tag].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
+            }else {
+                self.tabBar.items![item.tag].image =  Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal)
+            }
+            
+                
             self.didTapLastItem = true
         } else {
             self.didTapLastItem = false
