@@ -12,9 +12,19 @@ class TabBarViewController: UITabBarController {
     var coordinator: ArchiveCoordinator!
     var popUpView = ArchivePopUpView()
     
+    var didTapLastItem: Bool = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("here")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.popUpView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(self.tabBar.frame.height)
+            $0.top.leading.trailing.equalTo(self.view)
+        }
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -26,11 +36,12 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
+        self.delegate = self
+        
+        self.popUpView.isHidden = true
+        self.view.addSubview(self.popUpView)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("here here")
-    }
     
    func setupLeftButton() {
        let numberOfItems = CGFloat(self.tabBar.items!.count)
@@ -46,12 +57,7 @@ class TabBarViewController: UITabBarController {
        self.view.addSubview(archiveButton)
        self.view.layoutIfNeeded()
        
-       self.popUpView.isHidden = true
-       self.view.addSubview(self.popUpView)
-       self.popUpView.snp.makeConstraints {
-           $0.bottom.equalTo(self.tabBar.snp.top)
-           $0.top.leading.trailing.equalTo(self.view)
-       }
+       
    }
     
     @objc func didTapLeftButton() {
@@ -84,3 +90,18 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
     
 }
 
+extension TabBarViewController: UITabBarControllerDelegate {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        //print("didSelect item \(item)")
+        if item.tag == 3 {
+            popUpView.isHidden.toggle()
+            self.didTapLastItem = true
+        } else {
+            self.didTapLastItem = false
+        }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return !didTapLastItem
+    }
+}

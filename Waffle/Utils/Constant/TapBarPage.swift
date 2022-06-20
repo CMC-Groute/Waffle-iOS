@@ -8,14 +8,14 @@
 import Foundation
 
 enum TabBarPage: String, CaseIterable {
-    case home, map, setting , archiv
+    case home, map, setting , archive
     
     init?(index: Int) {
         switch index {
         case 0: self = .home
         case 1: self = .map
         case 2: self = .setting
-        case 3: self = .archiv
+        case 3: self = .archive
         default: return nil
         }
     }
@@ -25,7 +25,7 @@ enum TabBarPage: String, CaseIterable {
         case .home: return 0
         case .map: return 1
         case .setting: return 2
-        case .archiv: return 3
+        case .archive: return 3
         }
     }
     

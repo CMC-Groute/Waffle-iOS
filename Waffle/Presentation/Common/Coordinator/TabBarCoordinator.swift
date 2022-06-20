@@ -47,8 +47,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
         self.tabBarController.view.backgroundColor = .none
         self.tabBarController.tabBar.backgroundColor = .none
         self.tabBarController.tabBar.tintColor = .black
-        self.tabBarController.setupLeftButton()
-
     }
     
     
@@ -99,7 +97,7 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             settingCoordinator.finishDelegate = self
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()
-        case .archiv:
+        case .archive:
             self.tabBarController.coordinator = ArchiveCoordinator(self.navigationController)
         
        }

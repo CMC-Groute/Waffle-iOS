@@ -31,9 +31,6 @@ class EditSettingViewController: UIViewController {
         resignForKeyboardNotification()
     }
     
-    
-
-    
     private func configureUI() {
         profileImage.makeCircleShape()
         doneButton.round(corner: 26)
@@ -60,9 +57,6 @@ class EditSettingViewController: UIViewController {
         
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        guard let tabBar = self.navigationController?.navigationController?.topViewController as? TabBarViewController else { return }
-        tabBar.archiveButton.isHidden = false
-        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
