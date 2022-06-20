@@ -31,6 +31,9 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
     }
     
     func editProfile() {
+        guard let tabBar = self.navigationController.navigationController?.topViewController as? TabBarViewController else { return }
+        tabBar.archiveButton.isHidden = true
+
         self.navigationController.setNavigationBarHidden(false, animated: true)
         let editSettingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "EditSettingViewController") as! EditSettingViewController
         editSettingViewController.viewModel = EditSettingViewModel(coordinator: self, usecase: UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService())))

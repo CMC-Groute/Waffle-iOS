@@ -39,6 +39,18 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
         self.configureTabBarController(with: controllers)
     }
     
+    private func configureTabBarController(with tabViewControllers: [UIViewController]) {
+        self.tabBarController.setViewControllers(tabViewControllers, animated: true)
+        self.tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
+        self.navigationController.pushViewController(tabBarController, animated: true)
+
+        self.tabBarController.view.backgroundColor = .none
+        self.tabBarController.tabBar.backgroundColor = .none
+        self.tabBarController.tabBar.tintColor = .black
+        self.tabBarController.setupLeftButton()
+
+    }
+    
     
     func currentPage() -> TabBarPage? {
         TabBarPage(index: self.tabBarController.selectedIndex)
@@ -68,18 +80,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
         tabBar.tag = page.pageOrderNumber()
         return tabBar
         
-    }
-    
-    private func configureTabBarController(with tabViewControllers: [UIViewController]) {
-        self.tabBarController.setViewControllers(tabViewControllers, animated: true)
-        self.tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
-        self.navigationController.pushViewController(tabBarController, animated: true)
-
-        self.tabBarController.view.backgroundColor = .none
-        self.tabBarController.tabBar.backgroundColor = .none
-        self.tabBarController.tabBar.tintColor = .black
-        self.tabBarController.setupLeftButton()
-
     }
     
     func startTabCoordinator(of page: TabBarPage, to navigationVewController: UINavigationController) {

@@ -14,17 +14,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var cardCountLabel: UILabel!
     @IBOutlet weak var emptyView: EmptyCardView!
     var viewModel: HomeViewModel?
+    @IBOutlet weak var collectionView: UICollectionView!
     var disposeBag = DisposeBag()
     
-    @IBOutlet weak var cardView: UIView!
-    @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
-        return UIHostingController(coder: coder, rootView: CardView(UIState: UIStateModel()).environmentObject(viewModel!))
-    }
+//    @IBOutlet weak var cardView: UIView!
+//    @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
+//        return UIHostingController(coder: coder, rootView: CardView(UIState: UIStateModel()).environmentObject(viewModel!))
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         bindViewModel()
+        collectionViewSetUp()
     }
     
     func configureUI() {
@@ -39,6 +41,15 @@ class HomeViewController: UIViewController {
             self.navigationController?.navigationBar.topItem?.rightBarButtonItems = [bellButton, spacer, calendarButton]
         }
         setNavigationBar()
+    }
+    
+    func collectionViewSetUp() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.backgroundColor = .red
+        collectionView.isScrollEnabled = true
     }
     
     func bindViewModel() {
@@ -64,14 +75,37 @@ class HomeViewController: UIViewController {
     func hideCardView() {
         emptyView.isHidden = false
         
-        cardView.isHidden = true
+        //cardView.isHidden = true
     }
     
     func hideEmptyView() {
         emptyView.isHidden = true
         
-        cardView.isHidden = false
+        //cardView.isHidden = false
     }
     
     
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = .blue
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel!.usecase.cardInfo.count
+    }
+    
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 311, height: 536)
+    }
 }

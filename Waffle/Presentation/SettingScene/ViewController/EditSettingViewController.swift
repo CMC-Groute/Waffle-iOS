@@ -30,6 +30,8 @@ class EditSettingViewController: UIViewController {
         collectionviewSetUp()
         resignForKeyboardNotification()
     }
+    
+    
 
     
     private func configureUI() {
@@ -46,6 +48,7 @@ class EditSettingViewController: UIViewController {
             UINavigationBar.appearance().backIndicatorImage = backImage
             UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
             UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+            
         }
         setNavigationBar()
     }
@@ -55,9 +58,11 @@ class EditSettingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
-    //notification delete
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        guard let tabBar = self.navigationController?.navigationController?.topViewController as? TabBarViewController else { return }
+        tabBar.archiveButton.isHidden = false
+        
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }

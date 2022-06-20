@@ -12,6 +12,11 @@ class TabBarViewController: UITabBarController {
     var coordinator: ArchiveCoordinator!
     var popUpView = ArchivePopUpView()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("here")
+    }
+    
     override func viewDidLayoutSubviews() {
        super.viewDidLayoutSubviews()
        archiveButton.frame.origin.y = self.view.bounds.height
@@ -21,6 +26,10 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("here here")
     }
     
    func setupLeftButton() {

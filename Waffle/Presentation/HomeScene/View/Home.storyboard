@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,18 +17,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4g-LH-w6N" userLabel="CardView">
-                                <rect key="frame" x="0.0" y="76" width="414" height="722"/>
-                                <connections>
-                                    <segue destination="39f-ZT-fFp" kind="embed" destinationCreationSelector="embedCardView:" id="OnT-8J-q9k"/>
-                                </connections>
-                            </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="day-f8-IqU" userLabel="countLabel">
-                                <rect key="frame" x="156" y="814" width="102" height="32"/>
+                                <rect key="frame" x="156" y="825.5" width="102" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-Ne-rmh">
+                                <rect key="frame" x="0.0" y="76" width="414" height="685.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ycw-YB-vus">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="x15-Fc-DRR">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dAT-eG-Y2f">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG0-qU-Nh4" userLabel="emptyView" customClass="EmptyCardView" customModule="Waffle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="76" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -36,23 +51,22 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="T4g-LH-w6N" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="4u8-tK-87X"/>
-                            <constraint firstItem="T4g-LH-w6N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6Vb-40-oKV"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7HS-i1-QBg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XQ4-Ne-rmh" secondAttribute="trailing" id="E3c-WP-HhH"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="GGW-QG-B5l"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="day-f8-IqU" secondAttribute="trailing" constant="156" id="Oyb-mH-9oY"/>
                             <constraint firstItem="day-f8-IqU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="156" id="Qmy-Gr-HCg"/>
-                            <constraint firstItem="T4g-LH-w6N" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="SiR-p4-ffa"/>
+                            <constraint firstItem="day-f8-IqU" firstAttribute="top" secondItem="XQ4-Ne-rmh" secondAttribute="bottom" constant="64" id="Ye7-n9-Le1"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="jW5-qX-6lw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="day-f8-IqU" secondAttribute="bottom" constant="16" id="oVy-1O-6TJ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="T4g-LH-w6N" secondAttribute="bottom" constant="64" id="sGu-mt-9R9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cG0-qU-Nh4" secondAttribute="bottom" constant="64" id="u6H-kf-CEJ"/>
-                            <constraint firstItem="day-f8-IqU" firstAttribute="top" secondItem="T4g-LH-w6N" secondAttribute="bottom" constant="16" id="yyM-KR-Ps3"/>
+                            <constraint firstItem="XQ4-Ne-rmh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="ue6-eI-WSw"/>
+                            <constraint firstItem="XQ4-Ne-rmh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="waS-90-K8Z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cardCountLabel" destination="day-f8-IqU" id="Tn4-f2-tMg"/>
-                        <outlet property="cardView" destination="T4g-LH-w6N" id="C8s-Ro-l9B"/>
+                        <outlet property="collectionView" destination="XQ4-Ne-rmh" id="nwA-82-7Z1"/>
                         <outlet property="emptyView" destination="cG0-qU-Nh4" id="xyv-Ib-SIe"/>
                     </connections>
                 </viewController>
