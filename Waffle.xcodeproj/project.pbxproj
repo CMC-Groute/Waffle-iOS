@@ -72,6 +72,8 @@
 		F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */; };
 		F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE328524A000022D41E /* SignUpCoordinator.swift */; };
 		F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */; };
+		F2896CDF28632A2F0091DD7C /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2896CDD28632A2F0091DD7C /* CardCollectionViewCell.swift */; };
+		F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2896CDE28632A2F0091DD7C /* CardCollectionViewCell.xib */; };
 		F29ED2E82855D75B002371FD /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2E72855D75B002371FD /* HomeCoordinator.swift */; };
 		F29ED2EB2855D76B002371FD /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2EA2855D76B002371FD /* MapCoordinator.swift */; };
 		F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2EE2855D79F002371FD /* MapCoordinatorProtocol.swift */; };
@@ -207,6 +209,8 @@
 		F232433F2855B73300742362 /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F2764BE328524A000022D41E /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		F2764BE528524A0E0022D41E /* SignUpCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		F2896CDD28632A2F0091DD7C /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		F2896CDE28632A2F0091DD7C /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		F29ED2E72855D75B002371FD /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		F29ED2EA2855D76B002371FD /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		F29ED2EE2855D79F002371FD /* MapCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 		13E2A085285F0DA10015499E /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				F2896CD1286325430091DD7C /* Cell */,
 				136CEFA5285A0A49002ADDA9 /* CardView.swift */,
 			);
 			path = CardView;
@@ -727,6 +732,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		F2896CD1286325430091DD7C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F2896CDD28632A2F0091DD7C /* CardCollectionViewCell.swift */,
+				F2896CDE28632A2F0091DD7C /* CardCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		F29ED2E62855D749002371FD /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1065,6 +1079,7 @@
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */,
 				F2A412DF2849EFD700E04BF5 /* Main.storyboard in Resources */,
+				F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */,
 				F29ED3112855DBC3002371FD /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1282,6 +1297,7 @@
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,
 				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
 				F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */,
+				F2896CDF28632A2F0091DD7C /* CardCollectionViewCell.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
 				135B60572858504C0035AE4B /* ButtonAddLocationViewController.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,

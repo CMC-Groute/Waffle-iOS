@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import RxSwift
 import RxCocoa
+import CollectionViewPagingLayout
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var cardCountLabel: UILabel!
@@ -16,11 +17,6 @@ class HomeViewController: UIViewController {
     var viewModel: HomeViewModel?
     @IBOutlet weak var collectionView: UICollectionView!
     var disposeBag = DisposeBag()
-    
-//    @IBOutlet weak var cardView: UIView!
-//    @IBSegueAction func embedCardView(_ coder: NSCoder) -> UIViewController? {
-//        return UIHostingController(coder: coder, rootView: CardView(UIState: UIStateModel()).environmentObject(viewModel!))
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +43,12 @@ class HomeViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CardCollectionViewCell.nib(), forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
         collectionView.backgroundColor = .red
         collectionView.isScrollEnabled = true
+        let layout = CollectionViewPagingLayout()
+        collectionView.collectionViewLayout = layout
+        layout.numberOfVisibleItems = nil
     }
     
     func bindViewModel() {
@@ -89,8 +88,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath)
         return cell
     }
     
