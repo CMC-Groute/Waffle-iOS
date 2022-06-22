@@ -17,20 +17,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19e-93-Wrw" customClass="CardView" customModule="Waffle" customModuleProvider="target">
-                        <rect key="frame" x="20" y="20" width="581" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="621" height="874"/>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="19e-93-Wrw" secondAttribute="trailing" constant="20" id="BGv-Ga-2ca"/>
-                <constraint firstItem="19e-93-Wrw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="NXJ-iE-kVw"/>
-                <constraint firstItem="19e-93-Wrw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="ghu-w8-e3D"/>
-                <constraint firstAttribute="bottom" secondItem="19e-93-Wrw" secondAttribute="bottom" constant="20" id="mGe-oW-AkJ"/>
+                <constraint firstAttribute="trailing" secondItem="19e-93-Wrw" secondAttribute="trailing" id="BGv-Ga-2ca"/>
+                <constraint firstItem="19e-93-Wrw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NXJ-iE-kVw"/>
+                <constraint firstItem="19e-93-Wrw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ghu-w8-e3D"/>
+                <constraint firstAttribute="bottom" secondItem="19e-93-Wrw" secondAttribute="bottom" id="mGe-oW-AkJ"/>
             </constraints>
             <size key="customSize" width="621" height="874"/>
             <connections>
-                <outlet property="cardView" destination="19e-93-Wrw" id="Smf-Zk-01l"/>
+                <outlet property="cardView" destination="19e-93-Wrw" id="OEr-bW-WAl"/>
             </connections>
             <point key="canvasLocation" x="551.44927536231887" y="318.75"/>
         </collectionViewCell>

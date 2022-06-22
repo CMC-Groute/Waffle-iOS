@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import RxSwift
 import RxCocoa
-import CollectionViewPagingLayout
+import MSPeekCollectionViewDelegateImplementation
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var cardCountButton: UIButton!
@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     var viewModel: HomeViewModel?
     @IBOutlet weak var collectionView: UICollectionView!
     var disposeBag = DisposeBag()
-    let layout = CollectionViewPagingLayout()
+    var behavior = MSCollectionViewPeekingBehavior(cellSpacing: 16)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,17 +45,13 @@ class HomeViewController: UIViewController {
     }
     
     func collectionViewSetUp() {
+        
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
+        //collectionView.isPagingEnabled = true
+        //collectionView.isScrollEnabled = true
         collectionView.register(CardCollectionViewCell.nib(), forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
-        collectionView.backgroundColor = .red
-        collectionView.isScrollEnabled = true
-        collectionView.collectionViewLayout = layout
-        layout.numberOfVisibleItems = nil
-        collectionView.clipsToBounds = false
-        collectionView.backgroundColor = .clear
-        
+        collectionView.configureForPeekingBehavior(behavior: behavior)
     }
     
     func bindViewModel() {
@@ -80,20 +76,22 @@ class HomeViewController: UIViewController {
     
     func hideCardView() {
         emptyView.isHidden = false
-        
-        //cardView.isHidden = true
+        collectionView.isHidden = true
     }
     
     func hideEmptyView() {
         emptyView.isHidden = true
-        
-        //cardView.isHidden = false
+        collectionView.isHidden = false
     }
     
     
 }
 
 extension HomeViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
         cell.configureCell(item: viewModel!.usecase.cardInfo[indexPath.row])
@@ -104,24 +102,18 @@ extension HomeViewController: UICollectionViewDataSource {
         return viewModel!.usecase.cardInfo.count
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-            for cell in collectionView.visibleCells {
-                guard let indexPath = collectionView.indexPath(for: cell) else { return }
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.cardCountButton.setTitle("\(self.layout.currentPage + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
-                }
-            }
-        }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        DispatchQueue.main.async { [weak self] in
+           guard let self = self else { return }
+            self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
+       }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     
-}
-
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 300)
-    }
 }

@@ -26,6 +26,7 @@ final class CardView: UIView {
             return self.rawValue
         }
     }
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var titleLabel: UILabel!

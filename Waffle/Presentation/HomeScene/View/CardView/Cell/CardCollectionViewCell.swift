@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import CollectionViewPagingLayout
 
-class CardCollectionViewCell: UICollectionViewCell, ScaleTransformView {
+class CardCollectionViewCell: UICollectionViewCell {
     static var identifier = "CardCollectionViewCell"
     @IBOutlet private var cardView: CardView!
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -23,11 +21,7 @@ class CardCollectionViewCell: UICollectionViewCell, ScaleTransformView {
     static func nib() -> UINib {
         return UINib(nibName: "CardCollectionViewCell", bundle: nil)
     }
-    
-    var scaleOptions: ScaleTransformViewOptions {
-       .layout(.linear)
-    }
-    
+
     func configureCell(item: CardInfo) {
         cardView.bindUI(item: item)
     }

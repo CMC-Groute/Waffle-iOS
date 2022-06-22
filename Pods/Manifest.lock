@@ -1,5 +1,5 @@
 PODS:
-  - CollectionViewPagingLayout (1.1.0)
+  - MSPeekCollectionViewDelegateImplementation (3.2.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -10,7 +10,7 @@ PODS:
   - SwiftGen (6.5.1)
 
 DEPENDENCIES:
-  - CollectionViewPagingLayout
+  - MSPeekCollectionViewDelegateImplementation
   - RxCocoa (~> 6.5.0)
   - RxSwift (~> 6.5.0)
   - SnapKit (~> 5.6.0)
@@ -18,7 +18,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - CollectionViewPagingLayout
+    - MSPeekCollectionViewDelegateImplementation
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -26,13 +26,13 @@ SPEC REPOS:
     - SwiftGen
 
 SPEC CHECKSUMS:
-  CollectionViewPagingLayout: 2f8d50683bae57ca88f47fa4ab0195c9079582cf
+  MSPeekCollectionViewDelegateImplementation: be35a217bd302976a9e4476151be992c1f150127
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: bdc405706e675c833554f62b191954268fbf2b0a
+PODFILE CHECKSUM: 4ca9c0f7d09f50588784111520b3ba7465d2b924
 
 COCOAPODS: 1.11.3
