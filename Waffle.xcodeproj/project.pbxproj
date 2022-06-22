@@ -13,7 +13,8 @@
 		135B605D285899250035AE4B /* LocationRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605C285899250035AE4B /* LocationRightTableViewCell.swift */; };
 		135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
 		135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7C2857A5C300F9F71E /* UILabel.swift */; };
-		136CEFA6285A0A49002ADDA9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136CEFA5285A0A49002ADDA9 /* CardView.swift */; };
+		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
+		1390EC362863362900E5520C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC352863362900E5520C /* CardView.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -146,7 +147,8 @@
 		135B605C285899250035AE4B /* LocationRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRightTableViewCell.swift; sourceTree = "<group>"; };
 		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		136CEFA5285A0A49002ADDA9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		1390EC33286335E200E5520C /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		1390EC352863362900E5520C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -331,8 +333,9 @@
 		13E2A085285F0DA10015499E /* CardView */ = {
 			isa = PBXGroup;
 			children = (
+				1390EC352863362900E5520C /* CardView.swift */,
+				1390EC33286335E200E5520C /* CardView.xib */,
 				F2896CD1286325430091DD7C /* Cell */,
-				136CEFA5285A0A49002ADDA9 /* CardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -1078,6 +1081,7 @@
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */,
+				1390EC34286335E200E5520C /* CardView.xib in Resources */,
 				F2A412DF2849EFD700E04BF5 /* Main.storyboard in Resources */,
 				F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */,
 				F29ED3112855DBC3002371FD /* Setting.storyboard in Resources */,
@@ -1248,7 +1252,6 @@
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
 				13E2A07C285EFB2D0015499E /* EmptyCardView.swift in Sources */,
-				136CEFA6285A0A49002ADDA9 /* CardView.swift in Sources */,
 				F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
@@ -1288,6 +1291,7 @@
 				F29ED3302856088D002371FD /* LogoutPopUpViewController.swift in Sources */,
 				F23243402855B73300742362 /* ProfileImageCollectionViewCell.swift in Sources */,
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
+				1390EC362863362900E5520C /* CardView.swift in Sources */,
 				F29ED33E2856291A002371FD /* ArchiveUsecaseProtocol.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				13E2A07E285F00C80015499E /* HomeUsecase.swift in Sources */,

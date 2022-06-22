@@ -55,3 +55,11 @@ extension UIButton {
     }
 }
 
+extension UIView {
+    func roundCorners(value: CGFloat, maskedCorners: CACornerMask) {
+        clipsToBounds = true
+        layer.cornerRadius = value
+        layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+}
+

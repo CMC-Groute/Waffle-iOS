@@ -49,6 +49,9 @@ class HomeViewController: UIViewController {
         let layout = CollectionViewPagingLayout()
         collectionView.collectionViewLayout = layout
         layout.numberOfVisibleItems = nil
+        collectionView.clipsToBounds = false
+        collectionView.backgroundColor = .clear
+        
     }
     
     func bindViewModel() {
@@ -88,7 +91,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
+        cell.configureCell(item: viewModel!.usecase.cardInfo[indexPath.row])
         return cell
     }
     
@@ -104,6 +108,6 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 311, height: 536)
+        return CGSize(width: 200, height: 300)
     }
 }

@@ -10,7 +10,7 @@ import CollectionViewPagingLayout
 
 class CardCollectionViewCell: UICollectionViewCell, ScaleTransformView {
     static var identifier = "CardCollectionViewCell"
-    @IBOutlet private var cardView: UIView!
+    @IBOutlet private var cardView: CardView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,23 +24,13 @@ class CardCollectionViewCell: UICollectionViewCell, ScaleTransformView {
         return UINib(nibName: "CardCollectionViewCell", bundle: nil)
     }
     
-    private func setup() {
-        cardView.backgroundColor = .red
+    var scaleOptions: ScaleTransformViewOptions {
+       .layout(.linear)
     }
     
-    var scaleOptions = ScaleTransformViewOptions(
-        minScale: 0.6,
-        scaleRatio: 0.4,
-        translationRatio: CGPoint(x: 0.66, y: 0.2),
-        maxTranslationRatio: CGPoint(x: 2, y: 0)
-    )
-    
-}
-
-
-extension CardCollectionViewCell: TransformableView {
-    func transform(progress: CGFloat) {
-        let alpha = 1 - abs(progress)
-        contentView.alpha = alpha
+    func configureCell(item: CardInfo) {
+        self.contentView.round(width: nil, color: nil, value: 20)
+        cardView.bindUI(item: item)
     }
+    
 }
