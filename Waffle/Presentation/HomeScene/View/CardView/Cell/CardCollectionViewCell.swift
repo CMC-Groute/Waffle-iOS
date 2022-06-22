@@ -29,7 +29,6 @@ class CardCollectionViewCell: UICollectionViewCell, ScaleTransformView {
     }
     
     func configureCell(item: CardInfo) {
-        self.contentView.round(width: nil, color: nil, value: 20)
         cardView.bindUI(item: item)
     }
     

@@ -17,14 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="day-f8-IqU" userLabel="countLabel">
-                                <rect key="frame" x="156" y="825.5" width="102" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XQ4-Ne-rmh">
-                                <rect key="frame" x="0.0" y="76" width="414" height="685.5"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="672"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ycw-YB-vus">
                                     <size key="itemSize" width="128" height="128"/>
@@ -44,28 +38,32 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG0-qU-Nh4" userLabel="emptyView" customClass="EmptyCardView" customModule="Waffle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="76" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="672"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1C-ck-AzA">
+                                <rect key="frame" x="184" y="812" width="46" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="F1C-ck-AzA" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-20" id="5zI-HL-otP"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7HS-i1-QBg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XQ4-Ne-rmh" secondAttribute="trailing" id="E3c-WP-HhH"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="GGW-QG-B5l"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="day-f8-IqU" secondAttribute="trailing" constant="156" id="Oyb-mH-9oY"/>
-                            <constraint firstItem="day-f8-IqU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="156" id="Qmy-Gr-HCg"/>
-                            <constraint firstItem="day-f8-IqU" firstAttribute="top" secondItem="XQ4-Ne-rmh" secondAttribute="bottom" constant="64" id="Ye7-n9-Le1"/>
+                            <constraint firstItem="F1C-ck-AzA" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ILZ-T5-7ns"/>
+                            <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="XQ4-Ne-rmh" secondAttribute="bottom" constant="64" id="W6O-jC-Y2t"/>
+                            <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="cG0-qU-Nh4" secondAttribute="bottom" constant="64" id="aUM-Zu-j18"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="jW5-qX-6lw"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="day-f8-IqU" secondAttribute="bottom" constant="16" id="oVy-1O-6TJ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cG0-qU-Nh4" secondAttribute="bottom" constant="64" id="u6H-kf-CEJ"/>
                             <constraint firstItem="XQ4-Ne-rmh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="ue6-eI-WSw"/>
                             <constraint firstItem="XQ4-Ne-rmh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="waS-90-K8Z"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cardCountLabel" destination="day-f8-IqU" id="Tn4-f2-tMg"/>
+                        <outlet property="cardCountButton" destination="F1C-ck-AzA" id="ycF-Wd-TEh"/>
                         <outlet property="collectionView" destination="XQ4-Ne-rmh" id="nwA-82-7Z1"/>
                         <outlet property="emptyView" destination="cG0-qU-Nh4" id="xyv-Ib-SIe"/>
                     </connections>

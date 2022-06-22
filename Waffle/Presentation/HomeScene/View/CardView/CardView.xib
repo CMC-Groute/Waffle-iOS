@@ -121,7 +121,7 @@
                     <rect key="frame" x="0.0" y="120" width="454" height="375"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="EZ2-J6-q6n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3DF-o5-xFc"/>
                 <constraint firstItem="9gQ-Ve-M31" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="4DV-Xs-fgY"/>

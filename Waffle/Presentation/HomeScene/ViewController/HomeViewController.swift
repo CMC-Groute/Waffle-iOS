@@ -12,11 +12,12 @@ import RxCocoa
 import CollectionViewPagingLayout
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var cardCountLabel: UILabel!
+    @IBOutlet weak var cardCountButton: UIButton!
     @IBOutlet weak var emptyView: EmptyCardView!
     var viewModel: HomeViewModel?
     @IBOutlet weak var collectionView: UICollectionView!
     var disposeBag = DisposeBag()
+    let layout = CollectionViewPagingLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,10 @@ class HomeViewController: UIViewController {
             
             self.navigationController?.navigationBar.topItem?.rightBarButtonItems = [bellButton, spacer, calendarButton]
         }
+        cardCountButton.round(width: 1, color: Asset.Colors.gray3.name, value: 16)
+        cardCountButton.setTitle("1/\(viewModel!.usecase.cardInfo.count)", for: .normal)
+        self.cardCountButton.setTitleColor(Asset.Colors.gray4.color, for: .normal)
+        
         setNavigationBar()
     }
     
@@ -46,7 +51,6 @@ class HomeViewController: UIViewController {
         collectionView.register(CardCollectionViewCell.nib(), forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
         collectionView.backgroundColor = .red
         collectionView.isScrollEnabled = true
-        let layout = CollectionViewPagingLayout()
         collectionView.collectionViewLayout = layout
         layout.numberOfVisibleItems = nil
         collectionView.clipsToBounds = false
@@ -99,6 +103,16 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel!.usecase.cardInfo.count
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            for cell in collectionView.visibleCells {
+                guard let indexPath = collectionView.indexPath(for: cell) else { return }
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.cardCountButton.setTitle("\(self.layout.currentPage + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
+                }
+            }
+        }
     
 }
 

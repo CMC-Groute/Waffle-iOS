@@ -9,16 +9,16 @@ import UIKit
 
 final class CardView: UIView {
     enum CardViewInfoType: String, CaseIterable {
-        case purple, pink, melon, mint, yellow
+        case lightPurple, lightPink, lightMelon, lightMint, yellow
         
         init(index: Int) {
             switch index {
-            case 0: self = .purple
-            case 1: self = .pink
-            case 2: self = .melon
-            case 3: self = .mint
+            case 0: self = .lightPurple
+            case 1: self = .lightPink
+            case 2: self = .lightMelon
+            case 3: self = .lightMint
             case 4: self = .yellow
-            default: self = .purple
+            default: self = .lightPurple
             }
         }
         
@@ -26,7 +26,6 @@ final class CardView: UIView {
             return self.rawValue
         }
     }
-    @IBOutlet weak var frameView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var titleLabel: UILabel!

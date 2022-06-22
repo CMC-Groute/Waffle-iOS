@@ -8,7 +8,6 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-    let archiveButton = UIButton(frame: CGRect.zero)
     var coordinator: ArchiveCoordinator!
     var popUpView = ArchivePopUpView()
     
@@ -27,12 +26,6 @@ class TabBarViewController: UITabBarController {
 
     }
     
-    override func viewDidLayoutSubviews() {
-       super.viewDidLayoutSubviews()
-       archiveButton.frame.origin.y = self.view.bounds.height
-        - archiveButton.frame.height - self.view.safeAreaInsets.bottom - 3
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
@@ -41,33 +34,19 @@ class TabBarViewController: UITabBarController {
         self.popUpView.isHidden = true
         self.view.addSubview(self.popUpView)
     }
-    
-    
-    
-    @objc func didTapLeftButton() {
-        if archiveButton.isSelected {
-            archiveButton.isSelected = false
-            popUpView.isHidden = true
-        }else {
-            archiveButton.isSelected = true
-            popUpView.isHidden = false
-        }
-        
-    }
-
 
 }
 
 extension TabBarViewController: ArchivePopUpViewDelegate {
     func didTapAddArchiveView() {
+        self.tabBar.items![3].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
         self.coordinator.addArchive()
-        archiveButton.isSelected = false
         popUpView.isHidden = true // 팝업뷰 닫기
     }
     
     func didTapInputArchiveView() {
+        self.tabBar.items![3].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
         self.coordinator.inputCodeArchive()
-        archiveButton.isSelected = false
         popUpView.isHidden = true
     }
     
@@ -76,7 +55,6 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
 
 extension TabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        //print("didSelect item \(item)")
         if item.tag == 3 {
             popUpView.isHidden.toggle()
             if self.tabBar.items![item.tag].image == Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal) {
@@ -84,8 +62,7 @@ extension TabBarViewController: UITabBarControllerDelegate {
             }else {
                 self.tabBar.items![item.tag].image =  Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal)
             }
-            
-                
+
             self.didTapLastItem = true
         } else {
             self.didTapLastItem = false
