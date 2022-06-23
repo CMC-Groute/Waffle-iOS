@@ -19,6 +19,7 @@ class CategoryDeletePopUpViewController: UIViewController {
     var disposBag = DisposeBag()
     var selectedCategoryId: Int = 0
     var selectedCategoryName: String = ""
+    
     convenience init(coordinator: HomeCoordinator){
         self.init()
         self.coordinator = coordinator

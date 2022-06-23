@@ -20,6 +20,11 @@
 		1390EC5D28647AB500E5520C /* CategoryDeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */; };
 		1390EC5F28647AC800E5520C /* DeleteArhiveViewPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */; };
 		1390EC6128647AE000E5520C /* LikeSendPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */; };
+		1390EC6428647D1100E5520C /* DetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */; };
+		1390EC6628647D3900E5520C /* DetailArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */; };
+		1390EC682864823600E5520C /* InvitationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC672864823600E5520C /* InvitationPopUpViewController.swift */; };
+		1390EC6A2864826A00E5520C /* AddPlaceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */; };
+		1390EC6D2864834400E5520C /* ArchiveDetailPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -159,6 +164,11 @@
 		1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeletePopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteArhiveViewPopUpController.swift; sourceTree = "<group>"; };
 		1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeSendPopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveViewController.swift; sourceTree = "<group>"; };
+		1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveViewModel.swift; sourceTree = "<group>"; };
+		1390EC672864823600E5520C /* InvitationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationPopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceCategoryViewController.swift; sourceTree = "<group>"; };
+		1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDetailPopUpViewController.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -327,11 +337,31 @@
 		1390EC5B28647AA600E5520C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				1390EC6B2864830D00E5520C /* BottomSheet */,
 				1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */,
 				1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */,
 				1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */,
+				1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */,
 			);
 			path = PopUp;
+			sourceTree = "<group>";
+		};
+		1390EC6228647CB800E5520C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */,
+				135B605C285899250035AE4B /* LocationRightTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1390EC6B2864830D00E5520C /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC672864823600E5520C /* InvitationPopUpViewController.swift */,
+				1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */,
+			);
+			path = BottomSheet;
 			sourceTree = "<group>";
 		};
 		13E2A075285EF1E50015499E /* Entities */ = {
@@ -841,6 +871,7 @@
 			children = (
 				1390EC5B28647AA600E5520C /* PopUp */,
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
+				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -865,6 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				F29ED3092855DB99002371FD /* HomeViewModel.swift */,
+				1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -909,8 +941,7 @@
 		F29ED3192855DBF3002371FD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */,
-				135B605C285899250035AE4B /* LocationRightTableViewCell.swift */,
+				1390EC6228647CB800E5520C /* Cell */,
 				F29ED31A2855DBFA002371FD /* Archive.storyboard */,
 				13E2A071285DE4560015499E /* ArchivePopUpView.xib */,
 				13E2A073285DE49F0015499E /* ArchivePopUpView.swift */,
@@ -1264,10 +1295,12 @@
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
 				F2125D4E284E60E5008E1185 /* SignUpViewController.swift in Sources */,
+				1390EC6428647D1100E5520C /* DetailArchiveViewController.swift in Sources */,
 				13E2A084285F025E0015499E /* HomeRepository.swift in Sources */,
 				135B605B285898FF0035AE4B /* LocationLeftTableviewCell.swift in Sources */,
 				F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */,
 				1390EC5A2864577C00E5520C /* ImageFielManager.swift in Sources */,
+				1390EC6D2864834400E5520C /* ArchiveDetailPopUpViewController.swift in Sources */,
 				F29ED3032855DB71002371FD /* MapViewController.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
 				F2125D2F284E2752008E1185 /* Config.swift in Sources */,
@@ -1310,6 +1343,7 @@
 				F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */,
 				F29ED342285629DB002371FD /* ArchiveRepository.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
+				1390EC6628647D3900E5520C /* DetailArchiveViewModel.swift in Sources */,
 				F29ED3282855EF97002371FD /* UserRepository.swift in Sources */,
 				F29ED33828562074002371FD /* Date.swift in Sources */,
 				F29ED3242855EE0D002371FD /* UserUsecase.swift in Sources */,
@@ -1325,6 +1359,7 @@
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */,
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,
+				1390EC682864823600E5520C /* InvitationPopUpViewController.swift in Sources */,
 				1390EC382863573800E5520C /* UIView.swift in Sources */,
 				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
 				F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */,
@@ -1345,6 +1380,7 @@
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				13E2A082285F022A0015499E /* HomeRepositoryProtocol.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
+				1390EC6A2864826A00E5520C /* AddPlaceCategoryViewController.swift in Sources */,
 				F2125D35284E5270008E1185 /* LoginSignUsecase.swift in Sources */,
 				F29ED2F42855D800002371FD /* SettingCoordinatorProtocol.swift in Sources */,
 				F29ED33428561D2A002371FD /* AddArchiveViewController.swift in Sources */,

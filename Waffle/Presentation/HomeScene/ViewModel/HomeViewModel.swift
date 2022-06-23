@@ -13,12 +13,12 @@ class HomeViewModel: ObservableObject {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    //@Published var cardInfo: [CardInfo] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
     }
+    
     struct Input {
         let viewDidLoadEvent: Observable<Void>
         var makeArchiveButton: Observable<Void>
