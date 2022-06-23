@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8.6956521739130448" y="33.482142857142854"/>
+            <point key="canvasLocation" x="203" y="7"/>
         </scene>
         <!--Hosting Controller-->
         <scene sceneID="bMi-ck-YtC">
@@ -370,6 +370,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0w-ZI-EBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3019" y="7"/>
+        </scene>
+        <!--Detail Archive View Controller-->
+        <scene sceneID="5Ff-Lg-GEY">
+            <objects>
+                <viewController storyboardIdentifier="DetailArchiveViewController" id="IEd-nh-lnd" customClass="DetailArchiveViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eXU-q4-eKu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eFu-a2-6Wc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WiE-SM-Yzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3754" y="32"/>
         </scene>
     </scenes>
     <resources>

@@ -14,6 +14,7 @@ class DetailArchiveViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
+    var detailArchive: CardInfo?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -21,7 +22,9 @@ class DetailArchiveViewModel {
     }
     
     struct Input {
-        
+        var loadMemoButton: Observable<Void>
+        var invitationButton: Observable<Void>
+        var addPlaceButton: Observable<Void>
     }
     
     struct Output {
@@ -30,7 +33,25 @@ class DetailArchiveViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        
+        input.addPlaceButton
+            .subscribe(onNext: {
+                self.coordinator.archiveFlow()
+            }).disposed(by: disposeBag)
+        
         return output
+    }
+    
+    func setArchive(archive: CardInfo) {
+        self.usecase.currentArchive.onNext(archive)
+    }
+    
+    func detailArhive() { // bottomSheet popUp
+        self.coordinator.detailArchivePopUp()
+    }
+    
+    func invitationArhive() {
+        self.coordinator.invitationPopUp()
     }
 
     

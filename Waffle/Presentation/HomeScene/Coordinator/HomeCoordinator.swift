@@ -35,8 +35,13 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         archiveCoordinator.addArchive(isEditing: false)
     }
     
-    func detailArchive() {
+    func detailArchive(selectedArchive: CardInfo) {
+        let detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
+        detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         
+        //데이터 전달
+        detailArchiveViewController.viewModel?.detailArchive = selectedArchive
+        self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     
     func deleteCategory() {
@@ -86,6 +91,50 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     
+}
+
+extension HomeCoordinator {
+    func detailArchiveBottomSheet() {
+        let detailArchiveBottomSheetView  = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ArchiveDetailPopUpViewController") as! ArchiveDetailPopUpViewController
+        detailArchiveBottomSheetView.coordinator = self
+        detailArchiveBottomSheetView.modalPresentationStyle = .overFullScreen
+        detailArchiveBottomSheetView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(detailArchiveBottomSheetView, animated: false)
+    }
+    
+    func invitationBottomSheet() {
+        let invitationBottomSheetView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "InvitationPopUpViewController") as! InvitationBottomSheetViewController
+        invitationBottomSheetView.coordinator = self
+        invitationBottomSheetView.modalPresentationStyle = .overFullScreen
+        invitationBottomSheetView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(invitationBottomSheetView, animated: false)
+    }
+}
+
+extension HomeCoordinator {
+    func category() {
+        let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "InvitationPopUpViewController") as! HomeCategoryPopUpViewController
+        homeCategoryPopUpView.coordinator = self
+        homeCategoryPopUpView.modalPresentationStyle = .overFullScreen
+        homeCategoryPopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(homeCategoryPopUpView, animated: false)
+    }
+    
+    func loadMemo() {
+        let memoPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MemoPopUpViewController") as! MemoPopUpViewController
+        memoPopUpView.coordinator = self
+        memoPopUpView.modalPresentationStyle = .overFullScreen
+        memoPopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(memoPopUpView, animated: false)
+    }
+    
+    func participants() {
+        let particiPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ParticiPopUpViewController") as! ParticiPopUpViewController
+        particiPopUpView.coordinator = self
+        particiPopUpView.modalPresentationStyle = .overFullScreen
+        particiPopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(particiPopUpView, animated: false)
+    }
 }
 
 extension HomeCoordinator: CoordinatorFinishDelegate {

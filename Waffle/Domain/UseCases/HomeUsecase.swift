@@ -10,7 +10,8 @@ import RxSwift
 
 class HomeUsecase: HomeUsecaseProtocol {
     let categoryList = ["맛집", "카페", "아침", "점심", "저녁", "소품샵", "할거리", "볼거리", "기타"]
-    var selectedCategoryList: [String]()
+    var selectedCategoryList = [String]()
+    var currentArchive = PublishSubject<CardInfo>()
     
     var repository: HomeRepository!
     @Published var cardInfo: [CardInfo] = []

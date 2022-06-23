@@ -22,10 +22,13 @@
 		1390EC6128647AE000E5520C /* LikeSendPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */; };
 		1390EC6428647D1100E5520C /* DetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */; };
 		1390EC6628647D3900E5520C /* DetailArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */; };
-		1390EC682864823600E5520C /* InvitationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC672864823600E5520C /* InvitationPopUpViewController.swift */; };
+		1390EC682864823600E5520C /* InvitationBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC672864823600E5520C /* InvitationBottomSheetViewController.swift */; };
 		1390EC6A2864826A00E5520C /* AddPlaceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */; };
 		1390EC6D2864834400E5520C /* ArchiveDetailPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */; };
 		1390EC722864861400E5520C /* DetailPlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC712864861400E5520C /* DetailPlaceTableViewCell.swift */; };
+		1390EC742864927900E5520C /* HomeCategoryPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC732864927900E5520C /* HomeCategoryPopUpViewController.swift */; };
+		1390EC762864929100E5520C /* MemoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC752864929100E5520C /* MemoPopUpViewController.swift */; };
+		1390EC78286492B200E5520C /* ParticiPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC77286492B200E5520C /* ParticiPopUpViewController.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -167,10 +170,13 @@
 		1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeSendPopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveViewController.swift; sourceTree = "<group>"; };
 		1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveViewModel.swift; sourceTree = "<group>"; };
-		1390EC672864823600E5520C /* InvitationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationPopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC672864823600E5520C /* InvitationBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationBottomSheetViewController.swift; sourceTree = "<group>"; };
 		1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceCategoryViewController.swift; sourceTree = "<group>"; };
 		1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDetailPopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC712864861400E5520C /* DetailPlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlaceTableViewCell.swift; sourceTree = "<group>"; };
+		1390EC732864927900E5520C /* HomeCategoryPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryPopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC752864929100E5520C /* MemoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoPopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC77286492B200E5520C /* ParticiPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticiPopUpViewController.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -344,6 +350,9 @@
 				1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */,
 				1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */,
 				1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */,
+				1390EC732864927900E5520C /* HomeCategoryPopUpViewController.swift */,
+				1390EC752864929100E5520C /* MemoPopUpViewController.swift */,
+				1390EC77286492B200E5520C /* ParticiPopUpViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -360,7 +369,7 @@
 		1390EC6B2864830D00E5520C /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
-				1390EC672864823600E5520C /* InvitationPopUpViewController.swift */,
+				1390EC672864823600E5520C /* InvitationBottomSheetViewController.swift */,
 				1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */,
 			);
 			path = BottomSheet;
@@ -879,7 +888,6 @@
 		F29ED2FE2855DB49002371FD /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1390EC6E286485DD00E5520C /* Cell */,
 				1390EC5B28647AA600E5520C /* PopUp */,
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
 				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
@@ -915,6 +923,7 @@
 		F29ED30C2855DBAA002371FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1390EC6E286485DD00E5520C /* Cell */,
 				13E2A086285F0DB40015499E /* EmptyCardView */,
 				13E2A085285F0DA10015499E /* CardView */,
 				F29ED30D2855DBB2002371FD /* Home.storyboard */,
@@ -1328,6 +1337,7 @@
 				F29ED2F62855D863002371FD /* HomeCoordinatorProtocol.swift in Sources */,
 				F232433E2855B64E00742362 /* UIImageView.swift in Sources */,
 				F2D1C54E2852371100D88347 /* UITextField.swift in Sources */,
+				1390EC762864929100E5520C /* MemoPopUpViewController.swift in Sources */,
 				F29ED2EB2855D76B002371FD /* MapCoordinator.swift in Sources */,
 				13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */,
 				1390EC6128647AE000E5520C /* LikeSendPopUpViewController.swift in Sources */,
@@ -1365,17 +1375,19 @@
 				F29ED2F12855D7F3002371FD /* SettingCoordinator.swift in Sources */,
 				1390EC362863362900E5520C /* CardView.swift in Sources */,
 				F29ED33E2856291A002371FD /* ArchiveUsecaseProtocol.swift in Sources */,
+				1390EC78286492B200E5520C /* ParticiPopUpViewController.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				13E2A07E285F00C80015499E /* HomeUsecase.swift in Sources */,
 				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */,
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,
-				1390EC682864823600E5520C /* InvitationPopUpViewController.swift in Sources */,
+				1390EC682864823600E5520C /* InvitationBottomSheetViewController.swift in Sources */,
 				1390EC382863573800E5520C /* UIView.swift in Sources */,
 				F205519F28546AD30051E94D /* FindPWViewModel.swift in Sources */,
 				F29ED2EF2855D79F002371FD /* MapCoordinatorProtocol.swift in Sources */,
 				F2896CDF28632A2F0091DD7C /* CardCollectionViewCell.swift in Sources */,
+				1390EC742864927900E5520C /* HomeCategoryPopUpViewController.swift in Sources */,
 				F2125D55284E635C008E1185 /*  UINavigationItem.swift in Sources */,
 				135B60572858504C0035AE4B /* ButtonAddLocationViewController.swift in Sources */,
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,

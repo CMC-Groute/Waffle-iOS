@@ -53,4 +53,8 @@ class HomeViewModel: ObservableObject {
         
         return output
     }
+    
+    func detailArchive(selectedArchive: CardInfo) {
+        self.coordinator.detailArchive(selectedArchive: selectedArchive)
+    }
 }

@@ -7,18 +7,24 @@
 
 import UIKit
 
+protocol DetailPlaceTableViewCellDelegate {
+    func didTapLikeButton()
+}
+
 class DetailPlaceTableViewCell: UITableViewCell {
     static var identifier = "DetailPlaceTableViewCell"
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var placeLabel: UILabel!
+    @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet private weak var detailButton: UIButton!
+    @IBOutlet private weak var likeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

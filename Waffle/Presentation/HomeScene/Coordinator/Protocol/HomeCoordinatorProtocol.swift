@@ -10,10 +10,21 @@ import Foundation
 protocol HomeCoordinatorProtocol: Coordinator {
     func archiveFlow()
     func editArchive()
-    func detailArchive()
+    func detailArchive(selectedArchive: CardInfo)
     
-    //MARK: POPUP View
+    //MARK: load BottomSheet View
+    func detailArchiveBottomSheet()
+    func invitationBottomSheet()
+    
+    //MARK: Button Click
+    func category()
+    func loadMemo()
+    func participants()
+    
+    //MARK: POPUP View click
     func deleteCategory()
     func arhiveDelete()
     func likeSend()
+    
+    
 }

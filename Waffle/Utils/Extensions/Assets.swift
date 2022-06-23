@@ -45,7 +45,7 @@ internal enum Asset {
     internal static let bell = ImageAsset(name: "bell")
     internal static let btn = ImageAsset(name: "btn")
     internal static let calendar = ImageAsset(name: "calendar")
-    internal static let nav = ImageAsset(name: "nav")
+    internal static let more = ImageAsset(name: "more")
     internal static let waffle1 = ImageAsset(name: "waffle-1")
     internal static let waffle2 = ImageAsset(name: "waffle-2")
     internal static let waffle3 = ImageAsset(name: "waffle-3")

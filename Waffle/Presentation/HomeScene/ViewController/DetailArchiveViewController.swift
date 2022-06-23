@@ -9,6 +9,45 @@ import UIKit
 import RxSwift
 
 class DetailArchiveViewController: UIViewController {
+    var viewModel: DetailArchiveViewModel?
+    var disposeBag = DisposeBag()
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var loadMemoButton: UIButton!
+    @IBOutlet weak var invitationButton: UIButton!
+    @IBOutlet weak var addPlaceButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        bindViewModel()
+        
+    }
+    
+    private func configureUI() {
+        addPlaceButton.round(corner: 26)
+        func setNavigationBar() {
+            self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
+            self.navigationItem.title = viewModel?.detailArchive?.title
+            self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name), style: .plain, target: self, action: #selector(didTapMoreButton))
+            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
+            UINavigationBar.appearance().backIndicatorImage = backImage
+            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
+            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+        }
+        
+        setNavigationBar()
+        
+    }
+    
+    @objc
+    func didTapMoreButton() {
+        self.viewModel?.detailArhive()
+    }
+    
+    private func bindViewModel() {
+        let input = DetailArchiveViewModel.Input(loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
+        
+        
+    }
 }
 
