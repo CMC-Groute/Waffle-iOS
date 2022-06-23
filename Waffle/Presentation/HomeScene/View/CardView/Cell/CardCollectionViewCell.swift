@@ -10,6 +10,7 @@ import UIKit
 class CardCollectionViewCell: UICollectionViewCell {
     static var identifier = "CardCollectionViewCell"
     @IBOutlet private var cardView: CardView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

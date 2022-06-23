@@ -80,8 +80,24 @@
                     <view key="view" contentMode="scaleToFill" id="wjM-50-EaQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgH-TG-ZZg">
+                                <rect key="frame" x="24" y="328" width="366" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="2yu-YW-bpa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ERN-fd-0ll"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kgH-TG-ZZg" firstAttribute="centerY" secondItem="wjM-50-EaQ" secondAttribute="centerY" id="Jb6-XZ-G0b"/>
+                            <constraint firstItem="ERN-fd-0ll" firstAttribute="trailing" secondItem="kgH-TG-ZZg" secondAttribute="trailing" constant="24" id="KJT-pa-QX6"/>
+                            <constraint firstItem="kgH-TG-ZZg" firstAttribute="centerX" secondItem="wjM-50-EaQ" secondAttribute="centerX" id="M4D-LD-odc"/>
+                            <constraint firstItem="kgH-TG-ZZg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ERN-fd-0ll" secondAttribute="top" constant="100" id="cyl-3i-l5g"/>
+                            <constraint firstItem="kgH-TG-ZZg" firstAttribute="leading" secondItem="ERN-fd-0ll" secondAttribute="leading" constant="24" id="m81-ae-xMk"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INA-sB-ceD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -96,7 +112,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="qbl-y6-PnM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAI-6w-bhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -111,7 +127,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="1eE-Hp-cTZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mec-uH-iza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -126,7 +142,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Ecf-nR-RPv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZ8-52-OxJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

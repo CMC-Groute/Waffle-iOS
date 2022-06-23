@@ -101,6 +101,10 @@ extension UIFont {
         return self.fontWithName(type: .regular, size: 14)
     }
     
+    static func homeCategoryTitle() -> UIFont {
+        return self.fontWithName(type: .medium, size: 15)
+    }
+    
     
 
 }
