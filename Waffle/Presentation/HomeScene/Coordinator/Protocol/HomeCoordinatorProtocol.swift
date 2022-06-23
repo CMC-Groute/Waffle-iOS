@@ -9,4 +9,11 @@ import Foundation
 
 protocol HomeCoordinatorProtocol: Coordinator {
     func archiveFlow()
+    func editArchive()
+    func detailArchive()
+    
+    //MARK: POPUP View
+    func deleteCategory()
+    func arhiveDelete()
+    func likeSend()
 }

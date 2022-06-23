@@ -47,8 +47,6 @@ class HomeViewController: UIViewController {
     func collectionViewSetUp() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        //collectionView.isPagingEnabled = true
-        //collectionView.isScrollEnabled = true
         collectionView.register(CardCollectionViewCell.nib(), forCellWithReuseIdentifier: CardCollectionViewCell.identifier)
         collectionView.configureForPeekingBehavior(behavior: behavior)
     }

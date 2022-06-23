@@ -14,6 +14,7 @@ class AddArchiveModel {
     var coordinator: ArchiveCoordinator!
     
     var disposeBag = DisposeBag()
+    var isEditing: Bool = false
     
     init(usecase: ArchiveUsecase, coordinator: ArchiveCoordinator){
         self.usecase = usecase

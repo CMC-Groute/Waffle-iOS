@@ -23,9 +23,10 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
     
     func start() {}
     
-    func addArchive() {
+    func addArchive(isEditing: Bool) {
         let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddArchiveViewController") as! AddArchiveViewController
         addArchiveViewcontroller.viewModel = AddArchiveModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        addArchiveViewcontroller.viewModel?.isEditing = isEditing
         self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
     }
     

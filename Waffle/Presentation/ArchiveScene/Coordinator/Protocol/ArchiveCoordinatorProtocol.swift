@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArchiveCoordinatorProtocol: Coordinator {
-    func addArchive()
+    func addArchive(isEditing: Bool)
     func inputCodeArchive()
     func addLocation()
 }

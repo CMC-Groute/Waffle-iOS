@@ -17,6 +17,9 @@
 		1390EC362863362900E5520C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC352863362900E5520C /* CardView.swift */; };
 		1390EC382863573800E5520C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC372863573800E5520C /* UIView.swift */; };
 		1390EC5A2864577C00E5520C /* ImageFielManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC592864577C00E5520C /* ImageFielManager.swift */; };
+		1390EC5D28647AB500E5520C /* CategoryDeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */; };
+		1390EC5F28647AC800E5520C /* DeleteArhiveViewPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */; };
+		1390EC6128647AE000E5520C /* LikeSendPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -153,6 +156,9 @@
 		1390EC352863362900E5520C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1390EC372863573800E5520C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		1390EC592864577C00E5520C /* ImageFielManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFielManager.swift; sourceTree = "<group>"; };
+		1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeletePopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteArhiveViewPopUpController.swift; sourceTree = "<group>"; };
+		1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeSendPopUpViewController.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +322,16 @@
 				135B60582858507A0035AE4B /* TableAddLocationViewController.swift */,
 			);
 			path = LocationContainterViewController;
+			sourceTree = "<group>";
+		};
+		1390EC5B28647AA600E5520C /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */,
+				1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */,
+				1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */,
+			);
+			path = PopUp;
 			sourceTree = "<group>";
 		};
 		13E2A075285EF1E50015499E /* Entities */ = {
@@ -823,6 +839,7 @@
 		F29ED2FE2855DB49002371FD /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1390EC5B28647AA600E5520C /* PopUp */,
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
 			);
 			path = ViewController;
@@ -1268,6 +1285,7 @@
 				F2D1C54E2852371100D88347 /* UITextField.swift in Sources */,
 				F29ED2EB2855D76B002371FD /* MapCoordinator.swift in Sources */,
 				13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */,
+				1390EC6128647AE000E5520C /* LikeSendPopUpViewController.swift in Sources */,
 				F29ED3202855E840002371FD /* EditSettingViewController.swift in Sources */,
 				F20551A32854A74E0051E94D /* TermsViewController.swift in Sources */,
 				F2125D612850FFD3008E1185 /* UIViewController.swift in Sources */,
@@ -1280,6 +1298,7 @@
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
 				F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */,
 				13E2A074285DE49F0015499E /* ArchivePopUpView.swift in Sources */,
+				1390EC5F28647AC800E5520C /* DeleteArhiveViewPopUpController.swift in Sources */,
 				F2A412D82849EFD700E04BF5 /* AppDelegate.swift in Sources */,
 				135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */,
 				135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */,
@@ -1315,6 +1334,7 @@
 				F2125D1C284E1046008E1185 /* LoginCoordinatorProtocol.swift in Sources */,
 				F2764BE628524A0E0022D41E /* SignUpCoordinatorProtocol.swift in Sources */,
 				F2125D3D284E53AB008E1185 /* LoginSignRepository.swift in Sources */,
+				1390EC5D28647AB500E5520C /* CategoryDeletePopUpViewController.swift in Sources */,
 				F29ED32E2855F245002371FD /* ChangePWViewModel.swift in Sources */,
 				F29ED33A285628F2002371FD /* AddArchiveModel.swift in Sources */,
 				F2125D42284E5560008E1185 /* NetworkRequestBuilder.swift in Sources */,

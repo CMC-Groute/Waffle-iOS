@@ -25,6 +25,19 @@ class HomeUsecase: HomeUsecaseProtocol {
                 self.cardInfo = cardInfo
             }).disposed(by: disposeBag)
     }
+    
+    func deleteCategory(categoryId: Int) { // cardId, categoryId
+       //currentCardId
+    }
+    
+    func deleteArchive() { //약속 나가기
+        
+    }
+    
+    func likeSend() { // 좋아요 조르기
+        
+    }
+
 
 }
 
