@@ -73,6 +73,66 @@
             </objects>
             <point key="canvasLocation" x="203" y="7"/>
         </scene>
+        <!--Home Category Pop Up View Controller-->
+        <scene sceneID="18u-8W-osd">
+            <objects>
+                <viewController storyboardIdentifier="HomeCategoryPopUpViewController" id="JOe-W5-Mhg" customClass="HomeCategoryPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wjM-50-EaQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ERN-fd-0ll"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="INA-sB-ceD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="684"/>
+        </scene>
+        <!--Detail Place Pop Up View Controller-->
+        <scene sceneID="B2D-MF-wzm">
+            <objects>
+                <viewController storyboardIdentifier="DetailPlacePopUpViewController" id="4JS-R8-FWp" customClass="DetailPlacePopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wGc-JD-qqY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qbl-y6-PnM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAI-6w-bhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="869" y="691"/>
+        </scene>
+        <!--Memo Pop Up View Controller-->
+        <scene sceneID="V9P-BN-cnH">
+            <objects>
+                <viewController storyboardIdentifier="MemoPopUpViewController" id="VBV-sp-JAX" customClass="MemoPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MCw-EX-Lcr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1eE-Hp-cTZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mec-uH-iza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577" y="688"/>
+        </scene>
+        <!--Partici Pop Up View Controller-->
+        <scene sceneID="se5-z1-z4I">
+            <objects>
+                <viewController storyboardIdentifier="ParticiPopUpViewController" id="80B-kI-Jau" customClass="ParticiPopUpViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q8G-Qc-AuJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ecf-nR-RPv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kZ8-52-OxJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2249" y="686"/>
+        </scene>
         <!--Hosting Controller-->
         <scene sceneID="bMi-ck-YtC">
             <objects>
@@ -378,13 +438,42 @@
                     <view key="view" contentMode="scaleToFill" id="eXU-q4-eKu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekQ-wh-0K4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-kx-w7k">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1200" id="eYW-Bv-xnH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="x1Z-kx-w7k" firstAttribute="width" secondItem="JFe-Mq-peN" secondAttribute="width" id="Nbp-XT-JWM"/>
+                                    <constraint firstItem="x1Z-kx-w7k" firstAttribute="top" secondItem="ekQ-wh-0K4" secondAttribute="top" id="fbZ-Ah-CrT"/>
+                                    <constraint firstAttribute="bottom" secondItem="x1Z-kx-w7k" secondAttribute="bottom" id="kiD-nr-z6d"/>
+                                    <constraint firstAttribute="trailing" secondItem="x1Z-kx-w7k" secondAttribute="trailing" id="pJG-aB-zn0"/>
+                                    <constraint firstItem="x1Z-kx-w7k" firstAttribute="leading" secondItem="ekQ-wh-0K4" secondAttribute="leading" id="pR1-0s-m18"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="jFj-sI-7Cs"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="JFe-Mq-peN"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="eFu-a2-6Wc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ekQ-wh-0K4" firstAttribute="top" secondItem="eFu-a2-6Wc" secondAttribute="top" id="5zA-1o-BSq"/>
+                            <constraint firstItem="ekQ-wh-0K4" firstAttribute="leading" secondItem="eFu-a2-6Wc" secondAttribute="leading" id="6Hb-DT-ixA"/>
+                            <constraint firstItem="eFu-a2-6Wc" firstAttribute="trailing" secondItem="ekQ-wh-0K4" secondAttribute="trailing" id="Axa-mG-Oot"/>
+                            <constraint firstItem="eFu-a2-6Wc" firstAttribute="bottom" secondItem="ekQ-wh-0K4" secondAttribute="bottom" id="BXf-Ut-U6O"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiE-SM-Yzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3754" y="32"/>
+            <point key="canvasLocation" x="3753.6231884057975" y="31.473214285714285"/>
         </scene>
     </scenes>
     <resources>

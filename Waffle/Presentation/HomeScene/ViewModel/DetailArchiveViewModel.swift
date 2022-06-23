@@ -39,6 +39,16 @@ class DetailArchiveViewModel {
                 self.coordinator.archiveFlow()
             }).disposed(by: disposeBag)
         
+        input.loadMemoButton
+            .subscribe(onNext: {
+                self.coordinator.loadMemo()
+            }).disposed(by: disposeBag)
+        
+        input.invitationButton
+            .subscribe(onNext: {
+                self.coordinator.participants()
+            }).disposed(by: disposeBag)
+        
         return output
     }
     
@@ -53,6 +63,8 @@ class DetailArchiveViewModel {
     func invitationArhive() {
         self.coordinator.invitationPopUp()
     }
+    
+    
 
     
     

@@ -135,6 +135,14 @@ extension HomeCoordinator {
         particiPopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(particiPopUpView, animated: false)
     }
+    
+    func detailPlace() {
+        let detailPlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ParticiPopUpViewController") as! DetailPlacePopUpViewController
+        detailPlacePopUpView.coordinator = self
+        detailPlacePopUpView.modalPresentationStyle = .overFullScreen
+        detailPlacePopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(detailPlacePopUpView, animated: false)
+    }
 }
 
 extension HomeCoordinator: CoordinatorFinishDelegate {
