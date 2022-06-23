@@ -16,6 +16,7 @@
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
 		1390EC362863362900E5520C /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC352863362900E5520C /* CardView.swift */; };
 		1390EC382863573800E5520C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC372863573800E5520C /* UIView.swift */; };
+		1390EC5A2864577C00E5520C /* ImageFielManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC592864577C00E5520C /* ImageFielManager.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -151,6 +152,7 @@
 		1390EC33286335E200E5520C /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		1390EC352863362900E5520C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1390EC372863573800E5520C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		1390EC592864577C00E5520C /* ImageFielManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFielManager.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 			children = (
 				F2125D41284E5560008E1185 /* NetworkRequestBuilder.swift */,
 				F2125D45284E56E8008E1185 /* URLSessionNetworkService.swift */,
+				1390EC592864577C00E5520C /* ImageFielManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1247,6 +1250,7 @@
 				13E2A084285F025E0015499E /* HomeRepository.swift in Sources */,
 				135B605B285898FF0035AE4B /* LocationLeftTableviewCell.swift in Sources */,
 				F2125D44284E5686008E1185 /* URLSessionNetworkServiceProtocol.swift in Sources */,
+				1390EC5A2864577C00E5520C /* ImageFielManager.swift in Sources */,
 				F29ED3032855DB71002371FD /* MapViewController.swift in Sources */,
 				F21972C3284B8B3F0086E56B /* AppCoordinatorProtocol.swift in Sources */,
 				F2125D2F284E2752008E1185 /* Config.swift in Sources */,

@@ -45,7 +45,6 @@ class HomeViewController: UIViewController {
     }
     
     func collectionViewSetUp() {
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         //collectionView.isPagingEnabled = true
@@ -87,7 +86,7 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -112,8 +111,10 @@ extension HomeViewController: UICollectionViewDataSource {
             self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
        }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //viewModel과 바인딩
+    }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
-    
-}
+
