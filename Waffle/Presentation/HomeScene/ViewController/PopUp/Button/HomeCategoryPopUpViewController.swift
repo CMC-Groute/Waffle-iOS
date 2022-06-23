@@ -21,6 +21,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     var delegate: HomeCategoryPopUpDelegate?
     

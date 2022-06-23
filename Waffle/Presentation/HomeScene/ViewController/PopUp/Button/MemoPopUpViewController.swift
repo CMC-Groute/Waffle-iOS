@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class MemoPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!

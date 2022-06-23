@@ -57,11 +57,11 @@ class DetailArchiveViewModel {
     }
     
     func detailArhive() { // bottomSheet popUp
-        self.coordinator.detailArchivePopUp()
+        self.coordinator.detailArchiveBottomSheet()
     }
     
     func invitationArhive() {
-        self.coordinator.invitationPopUp()
+        self.coordinator.invitationBottomSheet()
     }
     
     
