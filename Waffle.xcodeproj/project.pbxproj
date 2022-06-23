@@ -25,6 +25,7 @@
 		1390EC682864823600E5520C /* InvitationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC672864823600E5520C /* InvitationPopUpViewController.swift */; };
 		1390EC6A2864826A00E5520C /* AddPlaceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */; };
 		1390EC6D2864834400E5520C /* ArchiveDetailPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */; };
+		1390EC722864861400E5520C /* DetailPlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC712864861400E5520C /* DetailPlaceTableViewCell.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -169,6 +170,7 @@
 		1390EC672864823600E5520C /* InvitationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationPopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceCategoryViewController.swift; sourceTree = "<group>"; };
 		1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDetailPopUpViewController.swift; sourceTree = "<group>"; };
+		1390EC712864861400E5520C /* DetailPlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlaceTableViewCell.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -362,6 +364,14 @@
 				1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */,
 			);
 			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		1390EC6E286485DD00E5520C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC712864861400E5520C /* DetailPlaceTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		13E2A075285EF1E50015499E /* Entities */ = {
@@ -869,6 +879,7 @@
 		F29ED2FE2855DB49002371FD /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1390EC6E286485DD00E5520C /* Cell */,
 				1390EC5B28647AA600E5520C /* PopUp */,
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
 				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
@@ -1309,6 +1320,7 @@
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				F2125D23284E15CA008E1185 /* CoordinatorType.swift in Sources */,
 				13E2A07C285EFB2D0015499E /* EmptyCardView.swift in Sources */,
+				1390EC722864861400E5520C /* DetailPlaceTableViewCell.swift in Sources */,
 				F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */,
 				F2A412DC2849EFD700E04BF5 /* ViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
