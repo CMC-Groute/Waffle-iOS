@@ -19,6 +19,15 @@ class DetailPlacePopUpViewController: UIViewController {
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     @IBOutlet private weak var draggingView: UIView!
     
+    @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var placeLabel: UILabel!
+    @IBOutlet private weak var linkLabel: UILabel!
+    @IBOutlet private weak var memoTextView: UITextView!
+    @IBOutlet private weak var likeCountButton: UIButton!
+    @IBOutlet private weak var confirmButton: UIButton!
+    
     var bottomSheetPanMinTopConstant: CGFloat = 34
     var defaultHeight:CGFloat = 395
     private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
@@ -38,6 +47,7 @@ class DetailPlacePopUpViewController: UIViewController {
     }
     
     private func configureUI() {
+        confirmButton.round(corner: 26)
         draggingView.round(width: nil, color: nil, value: 3)
         bottomSheetView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         configureGesture()
