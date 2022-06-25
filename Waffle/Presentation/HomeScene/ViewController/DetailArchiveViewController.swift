@@ -104,7 +104,7 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = DetailArchiveViewModel.Input(loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
+        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(), loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
@@ -127,6 +127,9 @@ extension DetailArchiveViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailPlaceTableViewCell.identifier, for: indexPath) as! DetailPlaceTableViewCell
+        cell.selectionStyle = .none
+        cell.delegate = self
+        cell.configureCell(placeInfo: viewModel!.placeInfo[indexPath.row])
         return cell
     }
 }
@@ -136,6 +139,22 @@ extension DetailArchiveViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(182)
     }
+}
+
+extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
+    func didTapLikeButton() {
+        print("didTapLikeButton")
+    }
+    
+    func didTapConfirmButton() {
+        print("didTapConfirmButton")
+    }
+    
+    func didTapDetailButton() {
+        self.viewModel?.detailArhive()
+    }
+    
+    
 }
 
 extension DetailArchiveViewController: UIScrollViewDelegate {

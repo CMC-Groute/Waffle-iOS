@@ -23,6 +23,7 @@ class DetailArchiveViewModel {
     }
     
     struct Input {
+        var viewDidLoad: Observable<Void>
         var loadMemoButton: Observable<Void>
         var invitationButton: Observable<Void>
         var addPlaceButton: Observable<Void>
@@ -34,6 +35,12 @@ class DetailArchiveViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        
+        input.viewDidLoad
+            .subscribe(onNext: { [weak self] in
+                //get place data
+                self?.placeInfo = PlaceInfo.dummyPlace
+            }).disposed(by: disposeBag)
         
         input.addPlaceButton
             .subscribe(onNext: {

@@ -10,16 +10,19 @@ import Foundation
 struct PlaceInfo: Codable {
     var title: String
     var place: String
-    var isDesive: Bool
+    var isConfirm: Bool
     var category: Category
     var likeCount: Int
+    var memo: String
+    
+    static let dummyPlace = [PlaceInfo(title: "이성당", place: "대구 수성구", isConfirm: true, category: Category(name: "카페", index: 1), likeCount: 4, memo: "이성당 빵집 가서 꼭 야채빵 사기")]
 }
 
 struct Category: Codable {
     var name: String
     var index: Int
     var selected: Bool = false
-    
+    static var defaultList = Category(name: "확정", index: -1)
     static var categoryList = [Category(name: "맛집", index: 0),
                                Category(name: "카페", index: 1),
                                Category(name: "아침", index: 2),
