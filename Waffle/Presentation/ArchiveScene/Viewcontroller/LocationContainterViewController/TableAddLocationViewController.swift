@@ -28,7 +28,7 @@ class TableAddLocationViewController: UIViewController {
     }()
     
     var searchImageView: UIImageView = {
-        let searchImage = UIImage(named: "searchEtc")
+        let searchImage = Asset.Assets.searchEtc.image
         let imageView = UIImageView(image: searchImage)
         return imageView
     }()

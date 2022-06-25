@@ -15,6 +15,7 @@ class DetailArchiveViewModel {
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
     var detailArchive: CardInfo?
+    var placeInfo: [PlaceInfo] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator

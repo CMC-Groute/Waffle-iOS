@@ -21,6 +21,26 @@ class DetailArchiveViewController: UIViewController {
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
+    var noPlaceView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    var noPlaceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Asset.Colors.gray7.color
+        label.text = "아직 확정된 장소가 없어요"
+        label.font = UIFont.fontWithName(type: .semibold, size: 15)
+        return label
+    }()
+    
+    var noPlaceImageView: UIImageView = {
+        let noPlaceImage = Asset.Assets.noPlace.image
+        let imageView = UIImageView(image: noPlaceImage)
+        return imageView
+    }()
+    
+    
     var viewModel: DetailArchiveViewModel?
     var disposeBag = DisposeBag()
     
@@ -33,7 +53,9 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func configureUI() {
+        configureNoPlaceView()
         addPlaceButton.round(corner: 26)
+       
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = viewModel?.detailArchive?.title
@@ -46,6 +68,24 @@ class DetailArchiveViewController: UIViewController {
         
         setNavigationBar()
         
+    }
+    
+    private func configureNoPlaceView() {
+        self.noPlaceView.addSubview(noPlaceImageView)
+        self.noPlaceView.addSubview(noPlaceLabel)
+        
+        noPlaceImageView.snp.makeConstraints {
+            $0.top.equalTo(78)
+            $0.centerX.equalTo(noPlaceView)
+            $0.width.height.equalTo(64)
+        }
+        
+        noPlaceLabel.snp.makeConstraints {
+            $0.centerX.equalTo(noPlaceView)
+            $0.top.equalTo(noPlaceImageView.snp.bottom).offset(16)
+        }
+
+        noPlaceView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
     }
     
     private func bindUI() {
@@ -75,7 +115,14 @@ class DetailArchiveViewController: UIViewController {
 extension DetailArchiveViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let viewModel = viewModel else { return 0}
+        if viewModel.placeInfo.isEmpty {
+            tableView.backgroundView  = noPlaceView
+            return 0
+        }
+        tableView.backgroundView = nil
+        return 1
+        //return viewModel.placeInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
