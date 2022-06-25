@@ -649,9 +649,8 @@
                                                     <constraint firstAttribute="height" constant="57" id="msT-Vp-otw"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-FH-Eep">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-FH-Eep">
                                                 <rect key="frame" x="0.0" y="295" width="414" height="799"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="sectionIndexBackgroundColor" name="blue"/>
                                             </tableView>
                                         </subviews>
@@ -723,6 +722,7 @@
                     </view>
                     <connections>
                         <outlet property="addPlaceButton" destination="usp-Fo-BFe" id="72O-ZS-QeN"/>
+                        <outlet property="categoryTopAnchor" destination="pvy-WX-TWv" id="71x-F8-awz"/>
                         <outlet property="categoryView" destination="p4G-lT-jqI" id="SYy-cn-TXy"/>
                         <outlet property="invitationButton" destination="mOz-Vq-zar" id="Wt4-gg-b9G"/>
                         <outlet property="loadMemoButton" destination="usp-Fo-BFe" id="e9O-Yt-WhK"/>

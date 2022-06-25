@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-struct Category {
+struct Category: Codable {
     var name: String
     var index: Int
     var selected: Bool = false
