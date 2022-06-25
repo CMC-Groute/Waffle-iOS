@@ -21,10 +21,23 @@ class DetailPlaceTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setUp()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 16.0, left: 16, bottom: 16, right: 16))
+    }
+    
+    func setUp() {
+        contentView.round(width: nil, color: nil, value: 20)
+        self.backgroundColor = Asset.Colors.gray1.color
+        contentView.backgroundColor = Asset.Colors.white.color
     }
     
     func configureCell(placeInfo: PlaceInfo) {

@@ -55,7 +55,6 @@ class DetailArchiveViewController: UIViewController {
         tableView.dataSource = self
         print("height \(UITableView.automaticDimension)")
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     @objc
@@ -76,7 +75,7 @@ class DetailArchiveViewController: UIViewController {
 extension DetailArchiveViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,24 +85,16 @@ extension DetailArchiveViewController: UITableViewDataSource {
 }
 
 extension DetailArchiveViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(150)
-    }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(16)
-    }
-
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return CGFloat(16)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(182)
     }
 }
 
 extension DetailArchiveViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollView.adjustedContentInset.top \(scrollView.adjustedContentInset.top)")
-        if scrollView.contentOffset.y < -scrollView.adjustedContentInset.top {
-            categoryTopAnchor.constant = scrollView.contentOffset.y
-        }
+//        if scrollView.contentOffset.y < -scrollView.adjustedContentInset.top {
+//            categoryTopAnchor.constant = scrollView.contentOffset.y
+//        }
     }
 }
