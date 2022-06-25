@@ -151,7 +151,7 @@ extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
     }
     
     func didTapDetailButton() {
-        self.viewModel?.detailArhive()
+        self.viewModel?.detailPlace()
     }
     
     

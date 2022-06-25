@@ -72,6 +72,10 @@ class DetailArchiveViewModel {
         self.coordinator.invitationBottomSheet()
     }
     
+    func detailPlace() {
+        self.coordinator.detailPlace()
+    }
+    
     
 
     
