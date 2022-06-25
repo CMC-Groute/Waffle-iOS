@@ -207,11 +207,36 @@
                                             <constraint firstAttribute="height" constant="5" id="AqN-9T-1K5"/>
                                         </constraints>
                                     </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQh-0a-hzF">
+                                        <rect key="frame" x="18" y="31" width="378" height="451"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjP-Bz-H1c">
+                                                <rect key="frame" x="0.0" y="0.0" width="378" height="900"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="900" id="lcq-l3-cCp"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="WjP-Bz-H1c" firstAttribute="bottom" secondItem="ji4-dI-WLo" secondAttribute="bottom" id="I4X-Ga-ZM7"/>
+                                            <constraint firstItem="WjP-Bz-H1c" firstAttribute="leading" secondItem="ji4-dI-WLo" secondAttribute="leading" id="csK-WB-z7B"/>
+                                            <constraint firstItem="WjP-Bz-H1c" firstAttribute="top" secondItem="ji4-dI-WLo" secondAttribute="top" id="dPW-F2-uNZ"/>
+                                            <constraint firstItem="WjP-Bz-H1c" firstAttribute="trailing" secondItem="ji4-dI-WLo" secondAttribute="trailing" id="jTY-yS-vnV"/>
+                                            <constraint firstItem="WjP-Bz-H1c" firstAttribute="width" secondItem="9JC-U5-tKg" secondAttribute="width" id="vCn-yr-CNP"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="ji4-dI-WLo"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="9JC-U5-tKg"/>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstItem="3cG-FO-y61" firstAttribute="centerX" secondItem="hVe-gy-58L" secondAttribute="centerX" id="HYw-nK-cBj"/>
+                                    <constraint firstAttribute="trailing" secondItem="YQh-0a-hzF" secondAttribute="trailing" constant="18" id="NPo-Yz-yIF"/>
+                                    <constraint firstItem="YQh-0a-hzF" firstAttribute="leading" secondItem="hVe-gy-58L" secondAttribute="leading" constant="18" id="bXj-pp-yC5"/>
+                                    <constraint firstAttribute="bottom" secondItem="YQh-0a-hzF" secondAttribute="bottom" id="gR5-0m-0Lb"/>
                                     <constraint firstItem="3cG-FO-y61" firstAttribute="top" secondItem="hVe-gy-58L" secondAttribute="top" constant="8" id="tTM-oZ-gnx"/>
+                                    <constraint firstItem="YQh-0a-hzF" firstAttribute="top" secondItem="3cG-FO-y61" secondAttribute="bottom" constant="18" id="w5b-rn-cdH"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -227,6 +252,7 @@
                     <connections>
                         <outlet property="bottomSheetView" destination="hVe-gy-58L" id="Dte-ff-CVS"/>
                         <outlet property="draggingView" destination="3cG-FO-y61" id="btW-7J-DPB"/>
+                        <outlet property="scrollView" destination="YQh-0a-hzF" id="plX-sa-e4J"/>
                         <outlet property="topConstraint" destination="9ka-fS-KZs" id="Dnh-m7-TLp"/>
                     </connections>
                 </viewController>
@@ -807,6 +833,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
