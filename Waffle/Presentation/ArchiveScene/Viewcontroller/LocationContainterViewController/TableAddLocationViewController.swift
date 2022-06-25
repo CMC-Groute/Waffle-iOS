@@ -14,7 +14,7 @@ class TableAddLocationViewController: UIViewController {
     var originList: [String] = []
     var isSearching: Bool = false
     
-    var frameView: UIView = {
+    var noSearchResultView: UIView = {
         let view = UIView()
         return view
     }()
@@ -60,19 +60,19 @@ class TableAddLocationViewController: UIViewController {
     }
     
     func configureUI() {
-        self.frameView.addSubview(searchImageView)
-        self.frameView.addSubview(noInfoLabel)
+        self.noSearchResultView.addSubview(searchImageView)
+        self.noSearchResultView.addSubview(noInfoLabel)
         noInfoLabel.snp.makeConstraints {
-            $0.centerX.equalTo(frameView)
+            $0.centerX.equalTo(noSearchResultView)
             $0.top.equalTo(searchImageView.snp.bottom).offset(10)
         }
         searchImageView.snp.makeConstraints {
             $0.top.equalTo(170)
-            $0.centerX.equalTo(frameView)
+            $0.centerX.equalTo(noSearchResultView)
             $0.width.height.equalTo(50)
         }
         
-        frameView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
+        noSearchResultView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
         
     }
 }
@@ -80,7 +80,7 @@ class TableAddLocationViewController: UIViewController {
 extension TableAddLocationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching == true && locationList.count == 0 { // 검색 중인데 데이터가 없을때
-            tableView.backgroundView  = frameView
+            tableView.backgroundView  = noSearchResultView
             tableView.separatorStyle  = .none
        }else {
            tableView.separatorStyle = .singleLine
