@@ -9,17 +9,24 @@ import UIKit
 import RxSwift
 
 class DetailArchiveViewController: UIViewController {
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var whenLabel: UILabel!
-    @IBOutlet weak var whereLabel: UILabel!
-    @IBOutlet weak var toppingImageView: UIImageView!
-    @IBOutlet weak var loadMemoButton: UIButton!
-    @IBOutlet weak var participantsButton: UIButton!
-    @IBOutlet weak var invitationButton: UIButton!
-    @IBOutlet weak var addPlaceButton: UIButton!
-    @IBOutlet weak var categoryTopAnchor: NSLayoutConstraint!
-    @IBOutlet weak var categoryView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var whenLabel: UILabel!
+    @IBOutlet private weak var whereLabel: UILabel!
+    @IBOutlet private weak var toppingImageView: UIImageView!
+    @IBOutlet private weak var loadMemoButton: UIButton!
+    @IBOutlet private weak var participantsButton: UIButton!
+    @IBOutlet private weak var invitationButton: UIButton!
+    @IBOutlet private weak var addPlaceButton: UIButton!
+    @IBOutlet private weak var categoryTopAnchor: NSLayoutConstraint!
+    @IBOutlet private weak var topView: UIView!
+    @IBOutlet private weak var middleView: UIView!
+    @IBOutlet private weak var categoryView: UIView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableViewHeightConstant: NSLayoutConstraint!
+    var scrollViewContentHeight = 1200 as CGFloat
+    private var screenHeight: Double = UIScreen.main.bounds.height
+    private var categoryHeaderOffset: Double = 0
+    private var isTableView: Bool = false
     
     var noPlaceView: UIView = {
         let view = UIView()
@@ -49,13 +56,23 @@ class DetailArchiveViewController: UIViewController {
         configureUI()
         bindViewModel()
         bindUI()
-        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        //tableViewHeightConstant.constant = tableView.contentSize.height
+//        print("tableViewHeightConstant \(tableViewHeightConstant.constant)")
+//        print(tableView.contentSize.height + categoryView.frame.height + topView.frame.height + middleView.frame.height)
+//        scrollViewContentHeight = tableView.contentSize.height + categoryView.frame.height + topView.frame.height + middleView.frame.height
+//        print(scrollView.contentSize.height)
     }
     
     private func configureUI() {
         configureNoPlaceView()
         addPlaceButton.round(corner: 26)
-       
+        scrollView.bounces = false
+//        tableView.bounces = false
+        tableView.isScrollEnabled = false
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = viewModel?.detailArchive?.title
@@ -93,7 +110,6 @@ class DetailArchiveViewController: UIViewController {
         tableView.register(UINib(nibName: "DetailPlaceTableViewCell", bundle: nil), forCellReuseIdentifier: DetailPlaceTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        print("height \(UITableView.automaticDimension)")
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
@@ -121,7 +137,7 @@ extension DetailArchiveViewController: UITableViewDataSource {
             return 0
         }
         tableView.backgroundView = nil
-        return 1
+        return 10
         //return viewModel.placeInfo.count
     }
     
@@ -129,7 +145,7 @@ extension DetailArchiveViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailPlaceTableViewCell.identifier, for: indexPath) as! DetailPlaceTableViewCell
         cell.selectionStyle = .none
         cell.delegate = self
-        cell.configureCell(placeInfo: viewModel!.placeInfo[indexPath.row])
+        //cell.configureCell(placeInfo: viewModel!.placeInfo[indexPath.row])
         return cell
     }
 }
@@ -159,8 +175,37 @@ extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
 
 extension DetailArchiveViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.contentOffset.y < -scrollView.adjustedContentInset.top {
-//            categoryTopAnchor.constant = scrollView.contentOffset.y
-//        }
+        if categoryHeaderOffset == 0 {
+            categoryHeaderOffset = categoryView.frame.minY // 238
+            //print("update \(categoryHeaderOffset)")
+        }
+        
+        if isTableView == false {
+            if scrollView.contentOffset.y >= categoryHeaderOffset && scrollView == self.scrollView {
+                //print("tableview")
+                categoryTopAnchor.constant = scrollView.contentOffset.y - categoryHeaderOffset
+                self.scrollView.isScrollEnabled = false
+                self.tableView.isScrollEnabled = true
+                isTableView = true
+            }
+            else {
+                //print("scrollview")
+                categoryTopAnchor.constant = 0
+                self.scrollView.isScrollEnabled = true
+                self.tableView.isScrollEnabled = false
+            }
+        }
+        
+        if scrollView == self.tableView && scrollView.contentOffset.y <= 0 {
+            //처음 지점으로 돌아온다면
+            //print("처음 지점")
+            categoryTopAnchor.constant = 0
+            self.scrollView.isScrollEnabled = true
+            self.tableView.isScrollEnabled = false
+            isTableView = false
+        }
+
+        //print("offset \(scrollView.contentOffset.y)")
+      
     }
 }

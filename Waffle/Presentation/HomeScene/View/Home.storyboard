@@ -733,7 +733,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-kx-w7k">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="995"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlC-Yb-M76">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="197"/>
@@ -813,10 +813,11 @@
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOz-Vq-zar">
-                                                        <rect key="frame" x="270" y="0.0" width="128" height="40"/>
+                                                        <rect key="frame" x="255" y="0.0" width="143" height="40"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
-                                                        <inset key="imageEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                        <inset key="titleEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
                                                         <state key="normal" title="함께할 토핑 초대" image="inviteButton">
                                                             <color key="titleColor" name="Gray6"/>
                                                         </state>
@@ -841,8 +842,11 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-FH-Eep">
-                                                <rect key="frame" x="0.0" y="295" width="414" height="799"/>
+                                                <rect key="frame" x="0.0" y="295" width="414" height="600"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="600" id="EeL-C4-6mm"/>
+                                                </constraints>
                                                 <color key="sectionIndexBackgroundColor" name="blue"/>
                                             </tableView>
                                         </subviews>
@@ -851,15 +855,14 @@
                                             <constraint firstItem="tlC-Yb-M76" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="4cM-li-Uj5"/>
                                             <constraint firstAttribute="trailing" secondItem="8Hv-lk-wU2" secondAttribute="trailing" id="6sb-Yb-081"/>
                                             <constraint firstItem="8Hv-lk-wU2" firstAttribute="top" secondItem="tlC-Yb-M76" secondAttribute="bottom" id="7o8-iU-eGX"/>
+                                            <constraint firstAttribute="bottom" secondItem="1QN-FH-Eep" secondAttribute="bottom" constant="100" id="BLB-dw-IxO"/>
                                             <constraint firstItem="1QN-FH-Eep" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="EEX-5r-SvY"/>
                                             <constraint firstItem="1QN-FH-Eep" firstAttribute="top" secondItem="p4G-lT-jqI" secondAttribute="bottom" id="Lmg-M7-V7d"/>
                                             <constraint firstItem="p4G-lT-jqI" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="ZlM-75-E1f"/>
                                             <constraint firstAttribute="trailing" secondItem="1QN-FH-Eep" secondAttribute="trailing" id="alY-Eh-cmO"/>
-                                            <constraint firstAttribute="height" constant="1200" id="eYW-Bv-xnH"/>
                                             <constraint firstAttribute="trailing" secondItem="p4G-lT-jqI" secondAttribute="trailing" id="k1m-fV-Nr1"/>
                                             <constraint firstItem="tlC-Yb-M76" firstAttribute="top" secondItem="x1Z-kx-w7k" secondAttribute="top" id="nb4-jO-W1D"/>
                                             <constraint firstItem="8Hv-lk-wU2" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="nf2-tJ-jjf"/>
-                                            <constraint firstAttribute="bottom" secondItem="1QN-FH-Eep" secondAttribute="bottom" constant="106" id="oJp-7Z-NPK"/>
                                             <constraint firstAttribute="trailing" secondItem="tlC-Yb-M76" secondAttribute="trailing" id="oin-Ik-qkB"/>
                                             <constraint firstItem="p4G-lT-jqI" firstAttribute="top" secondItem="8Hv-lk-wU2" secondAttribute="bottom" id="pvy-WX-TWv"/>
                                         </constraints>
@@ -919,9 +922,12 @@
                         <outlet property="categoryView" destination="p4G-lT-jqI" id="SYy-cn-TXy"/>
                         <outlet property="invitationButton" destination="mOz-Vq-zar" id="Wt4-gg-b9G"/>
                         <outlet property="loadMemoButton" destination="usp-Fo-BFe" id="e9O-Yt-WhK"/>
+                        <outlet property="middleView" destination="8Hv-lk-wU2" id="VOl-L5-pTA"/>
                         <outlet property="participantsButton" destination="cjf-vr-ZL1" id="jlt-MZ-x3g"/>
                         <outlet property="scrollView" destination="ekQ-wh-0K4" id="Nmb-Yq-4RU"/>
                         <outlet property="tableView" destination="1QN-FH-Eep" id="P6o-YM-ZD0"/>
+                        <outlet property="tableViewHeightConstant" destination="EeL-C4-6mm" id="3jv-TL-6Lz"/>
+                        <outlet property="topView" destination="tlC-Yb-M76" id="1H7-Xa-kGv"/>
                         <outlet property="toppingImageView" destination="tDG-7k-1f9" id="eci-pm-oRi"/>
                         <outlet property="whenLabel" destination="Um3-F8-x90" id="ALq-GI-zBb"/>
                         <outlet property="whereLabel" destination="ubY-27-tGi" id="f4m-qd-tzP"/>

@@ -92,9 +92,14 @@ extension TableAddLocationViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        var content = cell.defaultContentConfiguration()
-        content.text = locationList[indexPath.row]
-        cell.contentConfiguration = content
+        if #available(iOS 14.0, *) {
+            var content = cell.defaultContentConfiguration()
+            content.text = locationList[indexPath.row]
+            cell.contentConfiguration = content
+        } else {
+            // Fallback on earlier versions
+        }
+
         return cell
     }
     
