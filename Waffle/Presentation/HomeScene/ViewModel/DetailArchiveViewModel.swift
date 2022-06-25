@@ -39,7 +39,7 @@ class DetailArchiveViewModel {
         input.viewDidLoad
             .subscribe(onNext: { [weak self] in
                 //get place data
-                self?.placeInfo = PlaceInfo.dummyPlace
+                self?.placeInfo = [PlaceInfo.dummyPlace, PlaceInfo.dummyPlace, PlaceInfo.dummyPlace]
             }).disposed(by: disposeBag)
         
         input.addPlaceButton

@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 
 protocol DetailPlaceTableViewCellDelegate {
-    func didTapLikeButton()
-    func didTapConfirmButton()
+    func didTapLikeButton(cell: DetailPlaceTableViewCell)
+    func didTapConfirmButton(cell: DetailPlaceTableViewCell)
     func didTapDetailButton()
 }
 
@@ -19,10 +19,11 @@ class DetailPlaceTableViewCell: UITableViewCell {
     static var identifier = "DetailPlaceTableViewCell"
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var placeLabel: UILabel!
-    @IBOutlet private weak var confirmButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet private weak var detailButton: UIButton!
-    @IBOutlet private weak var likeButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet private weak var canEditingButton: UIButton!
+    var placeId: Int = 0
     let disposeBag = DisposeBag()
     var delegate: DetailPlaceTableViewCellDelegate?
     
@@ -43,6 +44,12 @@ class DetailPlaceTableViewCell: UITableViewCell {
         self.backgroundColor = Asset.Colors.gray1.color
         contentView.backgroundColor = Asset.Colors.white.color
         canEditingButton.isHidden = true
+        likeButton.setImage(Asset.Assets.heartSelected.image, for: .selected)
+        confirmButton.setImage(Asset.Assets.placeCheckSelected.image, for: .selected)
+    }
+    
+    func setPlaceId(index: Int) {
+        self.placeId = index
     }
     
     func configureCell(placeInfo: PlaceInfo) {
@@ -53,12 +60,16 @@ class DetailPlaceTableViewCell: UITableViewCell {
         titleLabel.text = placeInfo.title
         placeLabel.text = placeInfo.place
         if placeInfo.isConfirm {
-            //selected Button
             confirmButton.setImage(Asset.Assets.placeCheckSelected.image, for: .normal)
         }else {
             confirmButton.setImage(Asset.Assets.placeCheck.image, for: .normal)
         }
         
+        if placeInfo.likeSelected {
+            likeButton.isSelected = true
+        }else {
+            likeButton.isSelected = false
+        }
         // TO DO : 유저가 좋아요 한 장소인지에 따라 버튼 이미지 바꾸기
         likeButton.setTitle("좋아요 \(placeInfo.likeCount)", for: .normal)
     }
@@ -73,13 +84,15 @@ class DetailPlaceTableViewCell: UITableViewCell {
         confirmButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.didTapConfirmButton()
+                self.confirmButton.isSelected.toggle()
+                self.delegate?.didTapConfirmButton(cell: self)
             }).disposed(by: disposeBag)
         
         likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.didTapLikeButton()
+                self.likeButton.isSelected.toggle()
+                self.delegate?.didTapLikeButton(cell: self)
             }).disposed(by: disposeBag)
     }
 

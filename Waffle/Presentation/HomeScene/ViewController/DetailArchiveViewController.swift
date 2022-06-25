@@ -137,15 +137,15 @@ extension DetailArchiveViewController: UITableViewDataSource {
             return 0
         }
         tableView.backgroundView = nil
-        return 10
-        //return viewModel.placeInfo.count
+        return viewModel.placeInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailPlaceTableViewCell.identifier, for: indexPath) as! DetailPlaceTableViewCell
         cell.selectionStyle = .none
         cell.delegate = self
-        //cell.configureCell(placeInfo: viewModel!.placeInfo[indexPath.row])
+        cell.setPlaceId(index: indexPath.row)
+        cell.configureCell(placeInfo: viewModel!.placeInfo[indexPath.row])
         return cell
     }
 }
@@ -158,12 +158,23 @@ extension DetailArchiveViewController: UITableViewDelegate {
 }
 
 extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
-    func didTapLikeButton() {
+    func didTapLikeButton(cell: DetailPlaceTableViewCell) {
         print("didTapLikeButton")
+//        print(cell.likeButton.isSelected)
+//        print(cell.placeId)
+        if cell.likeButton.isSelected {
+            viewModel?.placeInfo[cell.placeId].likeCount += 1
+        }else {
+            viewModel?.placeInfo[cell.placeId].likeCount -= 1
+        }
+        viewModel?.placeInfo[cell.placeId].likeSelected = cell.likeButton.isSelected
+        tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
     }
     
-    func didTapConfirmButton() {
+    func didTapConfirmButton(cell: DetailPlaceTableViewCell) {
         print("didTapConfirmButton")
+//        print(cell.confirmButton.isSelected)
+//        print(cell.placeId)
     }
     
     func didTapDetailButton() {
