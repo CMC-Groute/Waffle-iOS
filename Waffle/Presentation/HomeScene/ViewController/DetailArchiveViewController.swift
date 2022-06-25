@@ -33,7 +33,7 @@ class DetailArchiveViewController: UIViewController {
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = viewModel?.detailArchive?.title
-            self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name), style: .plain, target: self, action: #selector(didTapMoreButton))
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapMoreButton))
             let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
             UINavigationBar.appearance().backIndicatorImage = backImage
             UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
@@ -46,7 +46,8 @@ class DetailArchiveViewController: UIViewController {
     
     @objc
     func didTapMoreButton() {
-        self.viewModel?.detailArhive()
+        print("didTapMoreButton")
+        //self.viewModel?.detailArhive()
     }
     
     private func bindViewModel() {
