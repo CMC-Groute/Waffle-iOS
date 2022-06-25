@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -31,32 +32,33 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aw5-a4-USf">
                             <rect key="frame" x="30" y="41" width="420" height="38.5"/>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="32"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="32"/>
                             <color key="textColor" name="Gray7"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sme-bN-31G">
-                            <rect key="frame" x="30" y="104.5" width="350" height="20.5"/>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <rect key="frame" x="30" y="104.5" width="400" height="20.5"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                             <color key="textColor" name="Gray7"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bca-2z-yad">
-                            <rect key="frame" x="30" y="136" width="38" height="20.5"/>
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <rect key="frame" x="30" y="136" width="400" height="20.5"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                             <color key="textColor" name="Gray7"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="sme-bN-31G" secondAttribute="trailing" constant="100" id="3nO-Bq-NM6"/>
+                        <constraint firstAttribute="trailing" secondItem="sme-bN-31G" secondAttribute="trailing" constant="50" id="3nO-Bq-NM6"/>
                         <constraint firstItem="sme-bN-31G" firstAttribute="top" secondItem="Aw5-a4-USf" secondAttribute="bottom" constant="25" id="4IB-O0-j0J"/>
                         <constraint firstItem="bca-2z-yad" firstAttribute="top" secondItem="sme-bN-31G" secondAttribute="bottom" constant="11" id="EQx-Jz-aUj"/>
                         <constraint firstItem="Aw5-a4-USf" firstAttribute="top" secondItem="EZ2-J6-q6n" secondAttribute="top" constant="41" id="Wth-yy-NfB"/>
                         <constraint firstItem="Aw5-a4-USf" firstAttribute="leading" secondItem="EZ2-J6-q6n" secondAttribute="leading" constant="30" id="Z6j-Ug-yiL"/>
                         <constraint firstItem="sme-bN-31G" firstAttribute="leading" secondItem="EZ2-J6-q6n" secondAttribute="leading" constant="30" id="c71-pV-0jQ"/>
                         <constraint firstAttribute="height" constant="378" id="ipm-jS-7m8"/>
+                        <constraint firstAttribute="trailing" secondItem="bca-2z-yad" secondAttribute="trailing" constant="50" id="klU-YY-2j3"/>
                         <constraint firstItem="bca-2z-yad" firstAttribute="leading" secondItem="EZ2-J6-q6n" secondAttribute="leading" constant="30" id="rnm-qW-QIK"/>
                         <constraint firstAttribute="trailing" secondItem="Aw5-a4-USf" secondAttribute="trailing" constant="30" id="uLv-Yc-Wgq"/>
                     </constraints>

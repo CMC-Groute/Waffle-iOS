@@ -91,11 +91,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="z43-11-TBl"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <color key="tintColor" name="White"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="추가하기">
-                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="추가하기">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소 카테고리 추가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6H-Pa-XQX">
                                         <rect key="frame" x="95" y="32" width="176" height="22"/>
@@ -212,8 +213,18 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WjP-Bz-H1c">
                                                 <rect key="frame" x="0.0" y="0.0" width="378" height="900"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#소품샵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mt4-us-UCY">
+                                                        <rect key="frame" x="6" y="17" width="43.5" height="17"/>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                        <color key="textColor" name="orange"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                 <constraints>
+                                                    <constraint firstItem="mt4-us-UCY" firstAttribute="leading" secondItem="WjP-Bz-H1c" secondAttribute="leading" constant="6" id="45E-hY-hk3"/>
+                                                    <constraint firstItem="mt4-us-UCY" firstAttribute="top" secondItem="WjP-Bz-H1c" secondAttribute="top" constant="17" id="Byg-XG-wfr"/>
                                                     <constraint firstAttribute="height" constant="900" id="lcq-l3-cCp"/>
                                                 </constraints>
                                             </view>
@@ -239,6 +250,31 @@
                                     <constraint firstItem="YQh-0a-hzF" firstAttribute="top" secondItem="3cG-FO-y61" secondAttribute="bottom" constant="18" id="w5b-rn-cdH"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVL-Oq-I6w" userLabel="ButtonView">
+                                <rect key="frame" x="0.0" y="794" width="414" height="102"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TxR-8v-D7u">
+                                        <rect key="frame" x="16" y="10" width="382" height="52"/>
+                                        <color key="backgroundColor" name="green"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="kgC-Yi-6gJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <color key="tintColor" name="White"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="확정이 완료되었어요">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="TxR-8v-D7u" firstAttribute="leading" secondItem="BVL-Oq-I6w" secondAttribute="leading" constant="16" id="GWT-zo-DQw"/>
+                                    <constraint firstItem="TxR-8v-D7u" firstAttribute="top" secondItem="BVL-Oq-I6w" secondAttribute="top" constant="10" id="RZb-ZN-sKW"/>
+                                    <constraint firstAttribute="trailing" secondItem="TxR-8v-D7u" secondAttribute="trailing" constant="16" id="c0W-1k-Wx5"/>
+                                    <constraint firstAttribute="bottom" secondItem="TxR-8v-D7u" secondAttribute="bottom" constant="40" id="eEo-V6-aLF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qbl-y6-PnM"/>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -246,7 +282,10 @@
                             <constraint firstItem="hVe-gy-58L" firstAttribute="top" secondItem="qbl-y6-PnM" secondAttribute="top" constant="370" id="9ka-fS-KZs"/>
                             <constraint firstItem="hVe-gy-58L" firstAttribute="leading" secondItem="qbl-y6-PnM" secondAttribute="leading" id="NHi-25-R04"/>
                             <constraint firstItem="qbl-y6-PnM" firstAttribute="trailing" secondItem="hVe-gy-58L" secondAttribute="trailing" id="OeU-Mc-K7b"/>
+                            <constraint firstItem="BVL-Oq-I6w" firstAttribute="leading" secondItem="qbl-y6-PnM" secondAttribute="leading" id="PIA-hT-m29"/>
                             <constraint firstAttribute="bottom" secondItem="hVe-gy-58L" secondAttribute="bottom" id="bGY-1d-rBH"/>
+                            <constraint firstAttribute="trailing" secondItem="BVL-Oq-I6w" secondAttribute="trailing" id="c02-Lj-F77"/>
+                            <constraint firstAttribute="bottom" secondItem="BVL-Oq-I6w" secondAttribute="bottom" id="w1i-2b-y2F"/>
                         </constraints>
                     </view>
                     <connections>
@@ -322,7 +361,7 @@
                                             <constraint firstAttribute="width" constant="30" id="uMg-vJ-SPc"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="W41-Qh-ptE">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="W41-Qh-ptE">
                                         <rect key="frame" x="15" y="123" width="336" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3Y-QW-0it">
@@ -331,12 +370,12 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="mJe-T7-HjI"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <inset key="titleEdgeInsets" minX="57" minY="0.0" maxX="57" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="White"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" name="White"/>
+                                                </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLC-Lu-JoA">
                                                 <rect key="frame" x="174.5" y="0.0" width="161.5" height="48"/>
@@ -344,12 +383,12 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="cW4-Um-Jfe"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <inset key="titleEdgeInsets" minX="43" minY="0.0" maxX="43" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="삭제하기">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="White"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="삭제하기">
+                                                    <color key="titleColor" name="White"/>
+                                                </state>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -421,7 +460,7 @@
                                             <constraint firstAttribute="width" constant="30" id="cr9-71-9Ma"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="cwX-H4-dWY">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="cwX-H4-dWY">
                                         <rect key="frame" x="15" y="123" width="336" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3n-VE-FWZ">
@@ -430,12 +469,12 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="uPQ-QU-WOF"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <inset key="titleEdgeInsets" minX="57" minY="0.0" maxX="57" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="White"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" name="White"/>
+                                                </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBV-MR-5wE">
                                                 <rect key="frame" x="174.5" y="0.0" width="161.5" height="48"/>
@@ -443,12 +482,12 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="yYG-Iq-nVf"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <inset key="titleEdgeInsets" minX="43" minY="0.0" maxX="43" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="나가기">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="White"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="나가기">
+                                                    <color key="titleColor" name="White"/>
+                                                </state>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -522,7 +561,7 @@
                                             <constraint firstAttribute="width" constant="30" id="MsW-zd-xET"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="qua-Qg-S2N">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="qua-Qg-S2N">
                                         <rect key="frame" x="15" y="108.5" width="336" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsK-OE-gYk">
@@ -531,12 +570,12 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="kSz-jF-dLY"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <inset key="titleEdgeInsets" minX="57" minY="0.0" maxX="57" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="취소">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="White"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="취소">
+                                                    <color key="titleColor" name="White"/>
+                                                </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xav-Uc-1jZ">
                                                 <rect key="frame" x="174.5" y="0.0" width="161.5" height="48"/>
@@ -544,12 +583,12 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="K2r-vD-cYF"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                 <inset key="titleEdgeInsets" minX="43" minY="0.0" maxX="43" maxY="0.0"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="알림 보내기">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                    <color key="baseForegroundColor" name="White"/>
-                                                </buttonConfiguration>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="알림 보내기">
+                                                    <color key="titleColor" name="White"/>
+                                                </state>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -751,11 +790,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="gPv-ux-RSG"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <color key="tintColor" name="White"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="장소 추가하기">
-                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="장소 추가하기">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -830,6 +870,9 @@
         </namedColor>
         <namedColor name="green">
             <color red="0.54509803921568623" green="0.87058823529411766" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="orange">
+            <color red="1" green="0.63921568627450975" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

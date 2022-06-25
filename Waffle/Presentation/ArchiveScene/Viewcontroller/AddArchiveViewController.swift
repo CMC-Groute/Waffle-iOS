@@ -262,13 +262,13 @@ class AddArchiveViewController: UIViewController {
         input.locationLaterButton
             .subscribe(onNext: { _ in
                 if self.archiveLocationLaterButton.image(for: .normal) == Asset.Assets.check.image { // selected
-                    self.archiveLocationLaterButton.setImage(Asset.Assets.unCheck.image, for: .normal)
+                    self.archiveLocationLaterButton.setImage(Asset.Assets.unCheck.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     self.archiveLocationLaterButton.setAttributedTitle(unSelectedString, for: .normal)
                     self.archiveLocationTextField.placeholder = "클릭하면 지역을 선택할 수 있어요"
                     self.archiveLocationTextField.isEnabled = true
                     output!.locationLaterButtonEnabled.accept(true)
                 }else {
-                    self.archiveLocationLaterButton.setImage(Asset.Assets.check.image, for: .normal)
+                    self.archiveLocationLaterButton.setImage(Asset.Assets.check.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     self.archiveLocationLaterButton.setAttributedTitle(selectedString, for: .normal)
                     self.archiveLocationTextField.text?.removeAll()
                     self.archiveLocationTextField.placeholder = "토핑이 원하는 위치로"

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,48 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Archive View Controller-->
-        <scene sceneID="s0d-6b-0kx">
-            <objects>
-                <viewController storyboardIdentifier="ArchiveViewController" id="Y6W-OH-hqX" customClass="ArchiveViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdO-99-HV1">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPE-tf-094">
-                                        <rect key="frame" x="10" y="777" width="394" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        <connections>
-                                            <action selector="text:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7eE-KU-ZX6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="dPE-tf-094" secondAttribute="trailing" constant="10" id="107-Gy-VZi"/>
-                                    <constraint firstAttribute="bottom" secondItem="dPE-tf-094" secondAttribute="bottom" constant="10" id="nOj-cf-URa"/>
-                                    <constraint firstItem="dPE-tf-094" firstAttribute="leading" secondItem="xdO-99-HV1" secondAttribute="leading" constant="10" id="sTU-Tg-VF3"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="xdO-99-HV1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="279-yQ-kfe"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xdO-99-HV1" secondAttribute="trailing" id="NEq-6L-d0p"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xdO-99-HV1" secondAttribute="bottom" id="pQo-mF-9De"/>
-                            <constraint firstItem="xdO-99-HV1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sik-uD-DXl"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="8.6956521739130448" y="33.482142857142854"/>
-        </scene>
         <!--Add Archive View Controller-->
         <scene sceneID="NrT-kg-TMr">
             <objects>
@@ -186,11 +145,12 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="Pv7-4E-hwG"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                         <color key="tintColor" name="White"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="약속장소 정하기">
-                                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                        </buttonConfiguration>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="약속장소 정하기">
+                                                            <color key="titleColor" name="White"/>
+                                                        </state>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -202,30 +162,22 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLu-Jt-Ml4">
-                                                <rect key="frame" x="249" y="222" width="149" height="44"/>
+                                                <rect key="frame" x="263" y="222" width="135" height="30"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="나중에 정할게요" image="unCheck">
                                                     <color key="titleColor" name="Gray5"/>
                                                 </state>
-                                                <buttonConfiguration key="configuration" style="plain" image="unCheck" title="나중에 정할게요">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                    <color key="baseForegroundColor" name="Gray5"/>
-                                                </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YX-76-TMZ">
-                                                <rect key="frame" x="249" y="369.5" width="149" height="44"/>
+                                                <rect key="frame" x="263" y="369.5" width="135" height="30"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="나중에 정할게요" image="unCheck">
                                                     <color key="titleColor" name="Gray5"/>
                                                 </state>
-                                                <buttonConfiguration key="configuration" style="plain" image="unCheck" title="나중에 정할게요">
-                                                    <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                    <color key="baseForegroundColor" name="Gray5"/>
-                                                </buttonConfiguration>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -321,11 +273,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="zee-G2-0OX"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <color key="tintColor" name="White"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="선택 완료">
-                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="선택 완료">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -472,11 +425,12 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="iRm-bm-VxM"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                         <color key="tintColor" name="White"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="약속 참여하기">
-                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="약속 참여하기">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
