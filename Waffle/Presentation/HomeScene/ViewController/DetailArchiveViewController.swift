@@ -120,10 +120,14 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(), loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
+        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
+        whenLabel.text = viewModel?.detailArchive?.date ?? ""
+        whereLabel.text = viewModel?.detailArchive?.place ?? ""
+        let count = viewModel?.detailArchive?.topping.count ?? 0 + 1
+        participantsButton.setTitle("\(count)명", for: .normal)
         
     }
 }
@@ -165,7 +169,9 @@ extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
         if cell.likeButton.isSelected {
             viewModel?.placeInfo[cell.placeId].likeCount += 1
         }else {
-            viewModel?.placeInfo[cell.placeId].likeCount -= 1
+            if (viewModel?.placeInfo[cell.placeId].likeCount)! > 0 {
+                viewModel?.placeInfo[cell.placeId].likeCount -= 1
+            }
         }
         viewModel?.placeInfo[cell.placeId].likeSelected = cell.likeButton.isSelected
         tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
@@ -177,8 +183,10 @@ extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
 //        print(cell.placeId)
     }
     
-    func didTapDetailButton() {
-        self.viewModel?.detailPlace()
+    func didTapDetailButton(cell: DetailPlaceTableViewCell) {
+        guard let placeInfo = viewModel?.placeInfo[cell.placeId] else { return }
+        guard let category = viewModel?.category else { return }
+        self.viewModel!.detailPlace(place: placeInfo, category: category)
     }
     
     

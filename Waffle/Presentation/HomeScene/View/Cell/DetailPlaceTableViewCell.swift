@@ -12,7 +12,7 @@ import RxCocoa
 protocol DetailPlaceTableViewCellDelegate {
     func didTapLikeButton(cell: DetailPlaceTableViewCell)
     func didTapConfirmButton(cell: DetailPlaceTableViewCell)
-    func didTapDetailButton()
+    func didTapDetailButton(cell: DetailPlaceTableViewCell)
 }
 
 class DetailPlaceTableViewCell: UITableViewCell {
@@ -78,7 +78,7 @@ class DetailPlaceTableViewCell: UITableViewCell {
         detailButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.didTapDetailButton()
+                self.delegate?.didTapDetailButton(cell: self)
             }).disposed(by: disposeBag)
         
         confirmButton.rx.tap

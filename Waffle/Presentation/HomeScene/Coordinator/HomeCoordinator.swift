@@ -137,9 +137,11 @@ extension HomeCoordinator {
         self.navigationController.present(particiPopUpView, animated: false)
     }
     
-    func detailPlace() {
+    func detailPlace(detailInfo: PlaceInfo, category: Category) {
         let detailPlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPlacePopUpViewController") as! DetailPlacePopUpViewController
         detailPlacePopUpView.coordinator = self
+        detailPlacePopUpView.detailInfo = detailInfo
+        detailPlacePopUpView.category = category
         detailPlacePopUpView.modalPresentationStyle = .overFullScreen
         detailPlacePopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(detailPlacePopUpView, animated: false)

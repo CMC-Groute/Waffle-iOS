@@ -15,6 +15,7 @@ class DetailArchiveViewModel {
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
     var detailArchive: CardInfo?
+    var category: Category = Category.defaultList
     var placeInfo: [PlaceInfo] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
@@ -30,7 +31,10 @@ class DetailArchiveViewModel {
     }
     
     struct Output {
-        
+//        var whenLabel = PublishSubject<String>()
+//        var whereLabel = PublishSubject<String>()
+//        var memoLabel = PublishSubject<String>()
+//        var participantsCount = PublishSubject<String>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -72,8 +76,13 @@ class DetailArchiveViewModel {
         self.coordinator.invitationBottomSheet()
     }
     
-    func detailPlace() {
-        self.coordinator.detailPlace()
+    func detailPlace(place: PlaceInfo, category: Category) {
+        self.coordinator.detailPlace(detailInfo: place, category: category)
+    }
+    
+    func setCategory(category: Category) {
+        //카테고리 클릭시마다 update해줌
+        self.category = category
     }
     
     

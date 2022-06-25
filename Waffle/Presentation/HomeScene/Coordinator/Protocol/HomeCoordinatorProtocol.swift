@@ -20,7 +20,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func category()
     func loadMemo()
     func participants()
-    func detailPlace()
+    func detailPlace(detailInfo: PlaceInfo, category: Category)
     
     //MARK: POPUP View click
     func deleteCategory()

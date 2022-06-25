@@ -36,6 +36,9 @@ class DetailPlacePopUpViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
+    var detailInfo: PlaceInfo?
+    var category: Category!
+    
     convenience init(coordinator: HomeCoordinator){
         self.init()
         self.coordinator = coordinator
@@ -44,14 +47,68 @@ class DetailPlacePopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindUI()
     }
     
     private func configureUI() {
         confirmButton.round(corner: 26)
         draggingView.round(width: nil, color: nil, value: 3)
         bottomSheetView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        likeCountButton.setImage(Asset.Assets.heartSelected.image, for: .selected)
         configureGesture()
     }
+    
+    private func bindUI() {
+        guard var detailInfo = detailInfo else {
+            return
+        }
+
+        self.titleLabel.text = detailInfo.title
+        self.categoryLabel.text = "#\(category.name)"
+        self.placeLabel.text = detailInfo.place
+        if detailInfo.likeSelected {
+            likeCountButton.isSelected = true
+        }
+        
+        updateConfirm(isConfirm: detailInfo.isConfirm)
+        self.likeCountButton.setTitle("\(detailInfo.likeCount)", for: .normal)
+        
+        self.likeCountButton
+            .rx.tap.subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.likeCountButton.isSelected.toggle()
+                updateLikeCount()
+            }).disposed(by: disposBag)
+        
+        func updateLikeCount() {
+            if likeCountButton.isSelected {
+                self.likeCountButton.setTitle("\(detailInfo.likeCount + 1)", for: .normal)
+            }else {
+                if detailInfo.likeCount > 0 {
+                    self.likeCountButton.setTitle("\(detailInfo.likeCount)", for: .normal)
+                }
+            }
+        }
+        
+        func updateConfirm(isConfirm: Bool) {
+            if isConfirm {
+                self.confirmButton.backgroundColor = Asset.Colors.green.color
+                self.confirmButton.setTitle("확정이 완료되었어요", for: .normal)
+            }else {
+                self.confirmButton.backgroundColor = Asset.Colors.gray4.color
+                self.confirmButton.setTitle("확정할래요", for: .normal)
+            }
+           
+        }
+        
+        confirmButton.rx.tap
+            .subscribe(onNext: {
+                detailInfo.isConfirm.toggle()
+                updateConfirm(isConfirm: detailInfo.isConfirm)
+            }).disposed(by: disposBag)
+    }
+    
+
     
     private func configureGesture() {
         let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
