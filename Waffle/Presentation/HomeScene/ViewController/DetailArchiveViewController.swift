@@ -12,10 +12,15 @@ class DetailArchiveViewController: UIViewController {
     var viewModel: DetailArchiveViewModel?
     var disposeBag = DisposeBag()
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var whenLabel: UILabel!
+    @IBOutlet weak var whereLabel: UILabel!
+    @IBOutlet weak var toppingImageView: UIImageView!
     @IBOutlet weak var loadMemoButton: UIButton!
+    @IBOutlet weak var participantsButton: UIButton!
     @IBOutlet weak var invitationButton: UIButton!
     @IBOutlet weak var addPlaceButton: UIButton!
-    
+    @IBOutlet weak var categoryView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()

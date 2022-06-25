@@ -37,6 +37,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     func detailArchive(selectedArchive: CardInfo) {
         let detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
+        detailArchiveViewController.viewModel?.setArchive(archive: selectedArchive)
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         
         //데이터 전달

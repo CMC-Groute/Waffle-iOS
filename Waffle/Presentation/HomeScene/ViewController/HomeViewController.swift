@@ -113,6 +113,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //viewModel과 바인딩
         guard let selectedArchive = self.viewModel?.usecase.cardInfo[indexPath.row] else { return }
+        print("selected \(selectedArchive)")
         self.viewModel?.detailArchive(selectedArchive: selectedArchive)
     }
 }
