@@ -5,32 +5,32 @@
 //  Created by 조소정 on 2022/06/09.
 //
 
-import Foundation
 import UIKit
+import SnapKit
 
 extension UIViewController {
-    func showToast(message : String, width: Int) {
-        let font = UIFont.fontWithName(type: .semibold, size: 13)
-        var height = 34
-        if width > 200 {
-            print("here")
-            height = 55
-        }
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: CGFloat(width), height: 34))
-        toastLabel.backgroundColor = Asset.Colors.gray6.color
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
+
+    func showToast(message : String, width: CGFloat, height: CGFloat, heightOffset: CGFloat = 100) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-heightOffset, width: width, height: height))
+        toastLabel.numberOfLines = 0
+        toastLabel.backgroundColor = Asset.Colors.gray5.color
+        toastLabel.textColor = Asset.Colors.white.color
+        toastLabel.font = UIFont.fontWithName(type: .semibold, size: 13)
         toastLabel.textAlignment = .center
         toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 17
+        toastLabel.center.x = self.view.frame.size.width/2
+        toastLabel.layer.cornerRadius = 28
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
-             toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            UIView.animate(withDuration: 1, delay: 0.0, options: .curveLinear, animations: {
+                 toastLabel.alpha = 0.0
+            }, completion: {(isCompleted) in
+                toastLabel.removeFromSuperview()
+            })
+        }
+        
     }
 }
 
