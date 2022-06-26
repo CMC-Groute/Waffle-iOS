@@ -51,7 +51,7 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     func popToRootViewController(with toastMessage: String?) {
         self.navigationController.popViewController(animated: true)
         if let toastMessage = toastMessage {
-            self.navigationController.topViewController?.showToast(message: toastMessage, width: 100)
+            self.navigationController.topViewController?.showToast(message: toastMessage, width: 110, height: 55)
         }
     }
     

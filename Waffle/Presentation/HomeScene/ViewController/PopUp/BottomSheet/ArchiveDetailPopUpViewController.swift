@@ -39,23 +39,27 @@ class ArchiveDetailPopUpViewController: UIViewController {
     private func bindUI() {
         editArchiveButton.rx.tap
             .subscribe(onNext: {
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
                 self.coordinator.editArchive()
-            }).dispose()
+            }).disposed(by: disposeBag)
         
         deleteArchiveButton.rx.tap
             .subscribe(onNext: {
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
                 self.coordinator.arhiveDelete()
-            }).dispose()
+            }).disposed(by: disposeBag)
         
         likeArchiceButton.rx.tap
             .subscribe(onNext: {
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
                 self.coordinator.likeSend()
-            }).dispose()
+            }).disposed(by: disposeBag)
         
         
     }
     
     private func bindViewModel() {
+        
         cancelButton.rx.tap
             .subscribe(onNext: {
                 self.dismiss(animated: true)

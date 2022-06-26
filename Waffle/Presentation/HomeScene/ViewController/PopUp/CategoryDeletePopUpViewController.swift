@@ -43,7 +43,7 @@ class CategoryDeletePopUpViewController: UIViewController {
     private func bindUI(){
         cancelButton.rx.tap
             .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: nil)
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
         
         OKButton.rx.tap

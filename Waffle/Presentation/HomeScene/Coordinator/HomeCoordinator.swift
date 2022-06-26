@@ -55,7 +55,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func arhiveDelete() {
-        let deleteArchivePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeleteArhivePopUpViewController") as! DeleteArhiveViewPopUpController
+        let deleteArchivePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeleteArhiveViewPopUpController") as! DeleteArhiveViewPopUpController
         deleteArchivePopUpView.coordinator = self
         deleteArchivePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
         deleteArchivePopUpView.modalPresentationStyle = .overFullScreen
@@ -80,10 +80,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         archiveCoordinator.addArchive(isEditing: true)
     }
     
-    func popToRootViewController(with toastMessage: String?) {
+    func popToRootViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
         self.navigationController.dismiss(animated: true)
-        if let toastMessage = toastMessage {
-            self.navigationController.topViewController?.showToast(message: toastMessage, width: 216)
+        if let toastMessage = toastMessage, let width = width, let height = height {
+            self.navigationController.topViewController?.showToast(message: toastMessage, width: width, height: height)
         }
     }
     

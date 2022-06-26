@@ -36,6 +36,12 @@ class InvitationBottomSheetViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        copyCodeButton.rx.tap
+            .subscribe(onNext: {
+                // TO DO
+                self.coordinator.popToRootViewController(with: "약속코드가 복사되었어요\n함께할 토핑들에게 공유해봐요", width: 184, height: 56)
+            }).disposed(by: disposeBag)
+        
         cancelButton.rx.tap
             .subscribe(onNext: {
                 self.dismiss(animated: true)

@@ -65,7 +65,7 @@ class HomeCategoryPopUpViewController: UIViewController {
             }
             
             self.delegate?.selectedCategory(category: items)
-            self.coordinator.popToRootViewController(with: nil)
+            self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
         }).disposed(by: disposeBag)
     }
     
