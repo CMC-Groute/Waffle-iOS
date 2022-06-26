@@ -32,7 +32,7 @@ class HomeViewModel: ObservableObject {
         let output = Output()
         input.makeArchiveButton
             .subscribe(onNext: {
-                self.coordinator.archiveFlow()
+                self.coordinator.archiveFlow(cardInfo: nil)
             }).disposed(by: disposeBag)
         
         input.viewDidLoadEvent

@@ -57,7 +57,9 @@ class AddArchiveViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        if !viewModel!.isEditing {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -102,11 +104,12 @@ class AddArchiveViewController: UIViewController {
 
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
-            self.navigationItem.title = "약속 만들기"
-            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
-            UINavigationBar.appearance().backIndicatorImage = backImage
-            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(image: Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapBackButton))
+//            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
+//            UINavigationBar.appearance().backIndicatorImage = backImage
+//            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
+//            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
         }
         
         setNavigationBar()
@@ -114,6 +117,10 @@ class AddArchiveViewController: UIViewController {
         setToolbar()
         placeHolderText()
 
+    }
+    
+    @objc func didTapBackButton() {
+        viewModel?.back()
     }
     
     func placeHolderText(defaultValue: Bool = true) {
@@ -231,6 +238,13 @@ class AddArchiveViewController: UIViewController {
                 self.archiveLocationTextField.resignFirstResponder()
             }).disposed(by: disposeBag)
         
+        output?.navigationTitle
+            .subscribe(onNext: { [weak self] title in
+                guard let self = self else { return }
+                self.navigationItem.title = title
+            }).disposed(by: disposeBag)
+        
+
         let style = NSMutableParagraphStyle()
         let unSelectedAttributes = [ NSAttributedString.Key.foregroundColor: Asset.Colors.gray5.color, NSAttributedString.Key.paragraphStyle:  style, NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15)]
         let unSelectedString = NSAttributedString(string: "나중에 정할게요", attributes: unSelectedAttributes)
@@ -279,10 +293,14 @@ class AddArchiveViewController: UIViewController {
         
         output?.doneButtonEnabled
             .subscribe(onNext: { bool in
-                if bool {
-                    self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
+                if !self.viewModel!.isEditing {
+                    if bool {
+                        self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
+                    }else {
+                        self.addArchiveButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                    }
                 }else {
-                    self.addArchiveButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                    self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
                 }
             }).disposed(by: disposeBag)
         
@@ -294,6 +312,22 @@ class AddArchiveViewController: UIViewController {
                 self.archiveLocationTextField.text = str
             }).disposed(by: disposeBag)
         
+        output?.editModeEnabled
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
+                if bool {
+                    self.archiveDateTextField.text = self.viewModel?.cardInfo?.date
+                    self.archiveTimeTextField.text = self.viewModel?.cardInfo?.date
+                    self.archiveMemoTextView.text = self.viewModel?.cardInfo?.memo
+                    self.archiveMemoTextView.textColor = Asset.Colors.black.color
+                    self.archiveNameTextField.text = self.viewModel?.cardInfo?.title
+                    self.archiveLocationTextField.text = self.viewModel?.cardInfo?.place
+                    self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
+                    self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
+                    self.addArchiveButton.setTitle("편집 완료", for: .normal)
+                }
+            }).disposed(by: disposeBag)
+
         }
     
     private func textViewScrollToBottom() {

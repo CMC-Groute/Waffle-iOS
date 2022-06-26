@@ -15,6 +15,7 @@ class AddArchiveModel {
     
     var disposeBag = DisposeBag()
     var isEditing: Bool = false
+    var cardInfo: CardInfo?
     
     init(usecase: ArchiveUsecase, coordinator: ArchiveCoordinator){
         self.usecase = usecase
@@ -47,6 +48,8 @@ class AddArchiveModel {
     }
     
     struct Output {
+        var navigationTitle = BehaviorRelay<String>(value: "약속 만들기")
+        var editModeEnabled = BehaviorRelay<Bool>(value: false)
         let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
         let locationLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
         let doneButtonEnabled = BehaviorRelay<Bool>(value: false)
@@ -58,6 +61,12 @@ class AddArchiveModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        if isEditing {
+            output.navigationTitle
+                .accept("약속 편집하기")
+        }else {
+            output.navigationTitle.accept("약속 만들기")
+        }
         
         input.addArchiveButton
             .subscribe(onNext: {
@@ -77,8 +86,15 @@ class AddArchiveModel {
                 self.coordinator.addLocation()
             }).disposed(by: disposeBag)
         
+        if let cardInfo = cardInfo {
+            output.editModeEnabled.accept(true)
+            output.doneButtonEnabled.accept(true)
+        }
         return output
     }
     
+    func back() {
+        
+    }
     
 }

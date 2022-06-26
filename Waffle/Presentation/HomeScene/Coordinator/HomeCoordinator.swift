@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class HomeCoordinator: HomeCoordinatorProtocol {
+    
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
@@ -28,11 +29,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(self.homeViewController, animated: true)
     }
     
-    func archiveFlow() {
+    func archiveFlow(cardInfo: CardInfo?) {
         let archiveCoordinator = ArchiveCoordinator(self.navigationController)
         self.childCoordinators.append(archiveCoordinator)
         archiveCoordinator.finishDelegate = self
-        archiveCoordinator.addArchive(isEditing: false)
+        archiveCoordinator.addArchive(isEditing: true, cardInfo: cardInfo)
     }
     
     func detailArchive(selectedArchive: CardInfo) {
@@ -73,11 +74,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.present(likeSendPopUpView, animated: false)
     }
     
-    func editArchive() {
+    func editArchive(cardInfo: CardInfo?) {
         let archiveCoordinator = ArchiveCoordinator(self.navigationController)
         self.childCoordinators.append(archiveCoordinator)
         archiveCoordinator.finishDelegate = self
-        archiveCoordinator.addArchive(isEditing: true)
+        archiveCoordinator.addArchive(isEditing: true, cardInfo: cardInfo)
     }
     
     func popToRootViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
@@ -95,9 +96,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
 }
 
 extension HomeCoordinator {
-    func detailArchiveBottomSheet() {
+    func detailArchiveBottomSheet(cardInfo: CardInfo?) {
         let detailArchiveBottomSheetView  = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ArchiveDetailPopUpViewController") as! ArchiveDetailPopUpViewController
         detailArchiveBottomSheetView.coordinator = self
+        detailArchiveBottomSheetView.cardInfo = cardInfo
         detailArchiveBottomSheetView.modalPresentationStyle = .overFullScreen
         detailArchiveBottomSheetView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(detailArchiveBottomSheetView, animated: false)

@@ -48,7 +48,7 @@ class DetailArchiveViewModel {
         
         input.addPlaceButton
             .subscribe(onNext: {
-                self.coordinator.archiveFlow()
+                // 장소 추가
             }).disposed(by: disposeBag)
         
         input.loadMemoButton
@@ -69,7 +69,7 @@ class DetailArchiveViewModel {
     }
     
     func detailArhive() { // bottomSheet popUp
-        self.coordinator.detailArchiveBottomSheet()
+        self.coordinator.detailArchiveBottomSheet(cardInfo: detailArchive)
     }
     
     func invitationArhive() {

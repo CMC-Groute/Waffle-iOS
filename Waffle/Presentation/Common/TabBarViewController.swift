@@ -40,7 +40,7 @@ class TabBarViewController: UITabBarController {
 extension TabBarViewController: ArchivePopUpViewDelegate {
     func didTapAddArchiveView() {
         self.tabBar.items![3].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
-        self.coordinator.addArchive(isEditing: false)
+        self.coordinator.addArchive(isEditing: false, cardInfo: nil)
         popUpView.isHidden = true // 팝업뷰 닫기
     }
     

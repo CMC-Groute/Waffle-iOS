@@ -8,12 +8,12 @@
 import Foundation
 
 protocol HomeCoordinatorProtocol: Coordinator {
-    func archiveFlow()
-    func editArchive()
+    func archiveFlow(cardInfo: CardInfo?)
+    func editArchive(cardInfo: CardInfo?)
     func detailArchive(selectedArchive: CardInfo)
     
     //MARK: load BottomSheet View
-    func detailArchiveBottomSheet()
+    func detailArchiveBottomSheet(cardInfo: CardInfo?)
     func invitationBottomSheet()
     
     //MARK: Button Click
