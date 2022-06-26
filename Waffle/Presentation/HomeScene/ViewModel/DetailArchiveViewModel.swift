@@ -58,7 +58,7 @@ class DetailArchiveViewModel {
         
         input.invitationButton
             .subscribe(onNext: {
-                self.coordinator.participants()
+                self.coordinator.invitationBottomSheet()
             }).disposed(by: disposeBag)
         
         return output

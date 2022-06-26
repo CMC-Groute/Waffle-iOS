@@ -20,7 +20,7 @@ class DetailArchiveViewController: UIViewController {
     @IBOutlet private weak var categoryTopAnchor: NSLayoutConstraint!
     @IBOutlet private weak var topView: UIView!
     @IBOutlet private weak var middleView: UIView!
-    @IBOutlet private weak var categoryView: UIView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var tableViewHeightConstant: NSLayoutConstraint!
     var scrollViewContentHeight = 1200 as CGFloat
@@ -116,7 +116,7 @@ class DetailArchiveViewController: UIViewController {
     @objc
     func didTapMoreButton() {
         print("didTapMoreButton")
-        //self.viewModel?.detailArhive()
+        self.viewModel?.detailArhive()
     }
     
     private func bindViewModel() {
@@ -195,7 +195,7 @@ extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
 extension DetailArchiveViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if categoryHeaderOffset == 0 {
-            categoryHeaderOffset = categoryView.frame.minY // 238
+            categoryHeaderOffset = collectionView.frame.minY // 238
             //print("update \(categoryHeaderOffset)")
         }
         

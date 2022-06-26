@@ -104,7 +104,7 @@ extension HomeCoordinator {
     }
     
     func invitationBottomSheet() {
-        let invitationBottomSheetView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "InvitationPopUpViewController") as! InvitationBottomSheetViewController
+        let invitationBottomSheetView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "InvitationBottomSheetViewController") as! InvitationBottomSheetViewController
         invitationBottomSheetView.coordinator = self
         invitationBottomSheetView.modalPresentationStyle = .overFullScreen
         invitationBottomSheetView.modalTransitionStyle = .crossDissolve
@@ -114,7 +114,7 @@ extension HomeCoordinator {
 
 extension HomeCoordinator {
     func category() {
-        let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "InvitationPopUpViewController") as! HomeCategoryPopUpViewController
+        let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeCategoryPopUpViewController") as! HomeCategoryPopUpViewController
         homeCategoryPopUpView.coordinator = self
         homeCategoryPopUpView.modalPresentationStyle = .overFullScreen
         homeCategoryPopUpView.modalTransitionStyle = .crossDissolve

@@ -834,13 +834,6 @@
                                                     <constraint firstItem="cjf-vr-ZL1" firstAttribute="leading" secondItem="8Hv-lk-wU2" secondAttribute="leading" constant="16" id="DfQ-0S-eFQ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-lT-jqI">
-                                                <rect key="frame" x="0.0" y="238" width="414" height="57"/>
-                                                <color key="backgroundColor" name="AccentColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="57" id="msT-Vp-otw"/>
-                                                </constraints>
-                                            </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1QN-FH-Eep">
                                                 <rect key="frame" x="0.0" y="295" width="414" height="600"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -849,6 +842,29 @@
                                                 </constraints>
                                                 <color key="sectionIndexBackgroundColor" name="blue"/>
                                             </tableView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-bZ-J4b">
+                                                <rect key="frame" x="0.0" y="238" width="414" height="57"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="57" id="tbs-Q4-bwl"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulO-Ti-3gr">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nqO-hj-Ata">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="g1T-VZ-Kuk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </collectionViewCellContentView>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -857,14 +873,14 @@
                                             <constraint firstItem="8Hv-lk-wU2" firstAttribute="top" secondItem="tlC-Yb-M76" secondAttribute="bottom" id="7o8-iU-eGX"/>
                                             <constraint firstAttribute="bottom" secondItem="1QN-FH-Eep" secondAttribute="bottom" constant="100" id="BLB-dw-IxO"/>
                                             <constraint firstItem="1QN-FH-Eep" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="EEX-5r-SvY"/>
-                                            <constraint firstItem="1QN-FH-Eep" firstAttribute="top" secondItem="p4G-lT-jqI" secondAttribute="bottom" id="Lmg-M7-V7d"/>
-                                            <constraint firstItem="p4G-lT-jqI" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="ZlM-75-E1f"/>
+                                            <constraint firstAttribute="trailing" secondItem="JGa-bZ-J4b" secondAttribute="trailing" id="NfJ-3t-mZ1"/>
+                                            <constraint firstItem="1QN-FH-Eep" firstAttribute="top" secondItem="JGa-bZ-J4b" secondAttribute="bottom" id="TGb-O6-Mga"/>
+                                            <constraint firstItem="JGa-bZ-J4b" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="UZv-Ro-VFw"/>
                                             <constraint firstAttribute="trailing" secondItem="1QN-FH-Eep" secondAttribute="trailing" id="alY-Eh-cmO"/>
-                                            <constraint firstAttribute="trailing" secondItem="p4G-lT-jqI" secondAttribute="trailing" id="k1m-fV-Nr1"/>
                                             <constraint firstItem="tlC-Yb-M76" firstAttribute="top" secondItem="x1Z-kx-w7k" secondAttribute="top" id="nb4-jO-W1D"/>
                                             <constraint firstItem="8Hv-lk-wU2" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="nf2-tJ-jjf"/>
                                             <constraint firstAttribute="trailing" secondItem="tlC-Yb-M76" secondAttribute="trailing" id="oin-Ik-qkB"/>
-                                            <constraint firstItem="p4G-lT-jqI" firstAttribute="top" secondItem="8Hv-lk-wU2" secondAttribute="bottom" id="pvy-WX-TWv"/>
+                                            <constraint firstItem="JGa-bZ-J4b" firstAttribute="top" secondItem="8Hv-lk-wU2" secondAttribute="bottom" id="vPo-VP-bBN"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -918,8 +934,8 @@
                     </view>
                     <connections>
                         <outlet property="addPlaceButton" destination="usp-Fo-BFe" id="72O-ZS-QeN"/>
-                        <outlet property="categoryTopAnchor" destination="pvy-WX-TWv" id="71x-F8-awz"/>
-                        <outlet property="categoryView" destination="p4G-lT-jqI" id="SYy-cn-TXy"/>
+                        <outlet property="categoryTopAnchor" destination="vPo-VP-bBN" id="zVi-UZ-oBm"/>
+                        <outlet property="collectionView" destination="JGa-bZ-J4b" id="2wN-nk-BeP"/>
                         <outlet property="invitationButton" destination="mOz-Vq-zar" id="Wt4-gg-b9G"/>
                         <outlet property="loadMemoButton" destination="usp-Fo-BFe" id="e9O-Yt-WhK"/>
                         <outlet property="middleView" destination="8Hv-lk-wU2" id="VOl-L5-pTA"/>
@@ -935,7 +951,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiE-SM-Yzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3665" y="50"/>
+            <point key="canvasLocation" x="3657" y="7"/>
         </scene>
         <!--Invitation Bottom Sheet View Controller-->
         <scene sceneID="yfg-KM-2WB">
@@ -957,18 +973,22 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z98-s6-GK1">
                                         <rect key="frame" x="32" y="87" width="350" height="84"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카카오톡 공유하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6M-je-pdL">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWn-Zu-SPn">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="37"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="textColor" name="Black"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 코드 복사하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-72-nFz">
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="카카오톡 공유하기">
+                                                    <color key="titleColor" name="Black"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="210-V1-xX2">
                                                 <rect key="frame" x="0.0" y="47" width="350" height="37"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="textColor" name="Black"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="약속 코드 복사하기">
+                                                    <color key="titleColor" name="Black"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="84" id="Rlk-DL-EuR"/>
@@ -1004,13 +1024,19 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zcw-PD-26Z"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AVO-hJ-Gyb" firstAttribute="leading" secondItem="zcw-PD-26Z" secondAttribute="leading" id="VTV-pW-4co"/>
                             <constraint firstAttribute="bottom" secondItem="AVO-hJ-Gyb" secondAttribute="bottom" id="ZtF-Lb-na2"/>
                             <constraint firstItem="zcw-PD-26Z" firstAttribute="trailing" secondItem="AVO-hJ-Gyb" secondAttribute="trailing" id="aCn-4p-af8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="eng-R6-gXw" id="zIh-s3-yUE"/>
+                        <outlet property="copyCodeButton" destination="210-V1-xX2" id="hC7-Q6-Egp"/>
+                        <outlet property="frameView" destination="AVO-hJ-Gyb" id="0a7-X4-yzR"/>
+                        <outlet property="shareWithKakaoTalkButton" destination="GWn-Zu-SPn" id="JdX-gd-82N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKl-Xw-HpN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1036,24 +1062,30 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6ug-LQ-ACr">
                                         <rect key="frame" x="32" y="97" width="350" height="126"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 편집하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBa-WV-Pdw">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4z-SL-BQT">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="textColor" name="Black"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 나가기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jE-V4-aZJ">
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="약속 편집하기">
+                                                    <color key="titleColor" name="Black"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4RM-PI-oc5">
                                                 <rect key="frame" x="0.0" y="45.5" width="350" height="35"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="textColor" name="Black"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="좋아요 조르기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GId-lp-83h">
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="약속 나가기">
+                                                    <color key="titleColor" name="Black"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T07-Ej-ZYy">
                                                 <rect key="frame" x="0.0" y="90.5" width="350" height="35.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                <color key="textColor" name="Black"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="좋아요 조르기">
+                                                    <color key="titleColor" name="Black"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="126" id="4jp-oa-TO0"/>
@@ -1089,13 +1121,20 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KEz-ed-vep"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KFG-fz-jZP" firstAttribute="leading" secondItem="KEz-ed-vep" secondAttribute="leading" id="9EW-UG-txS"/>
                             <constraint firstItem="KEz-ed-vep" firstAttribute="trailing" secondItem="KFG-fz-jZP" secondAttribute="trailing" id="Uy1-YO-3V4"/>
                             <constraint firstAttribute="bottom" secondItem="KFG-fz-jZP" secondAttribute="bottom" id="dun-SR-sVh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="7bY-Ja-m3o" id="vEa-Pm-Zdd"/>
+                        <outlet property="deleteArchiveButton" destination="4RM-PI-oc5" id="EJE-he-dRT"/>
+                        <outlet property="editArchiveButton" destination="h4z-SL-BQT" id="oWC-pW-2oa"/>
+                        <outlet property="frameView" destination="KFG-fz-jZP" id="IQ3-eD-cD4"/>
+                        <outlet property="likeArchiceButton" destination="T07-Ej-ZYy" id="X85-xy-DjC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODE-NZ-CmB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1115,9 +1154,6 @@
         <image name="topping-etc" width="20" height="20"/>
         <image name="when-caption" width="40" height="24"/>
         <image name="where-caption" width="40" height="24"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
