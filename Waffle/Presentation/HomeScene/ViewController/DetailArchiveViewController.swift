@@ -22,6 +22,10 @@ class DetailArchiveViewController: UIViewController {
     @IBOutlet private weak var middleView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
+    
+    @IBOutlet weak var memoView: UIView!
+    @IBOutlet weak var memoLabel: UILabel!
+    
     @IBOutlet private weak var tableViewHeightConstant: NSLayoutConstraint!
     var scrollViewContentHeight = 1200 as CGFloat
     private var screenHeight: Double = UIScreen.main.bounds.height
@@ -70,9 +74,12 @@ class DetailArchiveViewController: UIViewController {
     private func configureUI() {
         configureNoPlaceView()
         addPlaceButton.round(corner: 26)
+        memoView.round(width: nil, color: nil, value: 20)
+        //memoLabel.addTrailing(with: "...", moreText: "더보기", moreTextFont: UIFont.fontWithName(type: .regular, size: 14), moreTextColor: Asset.Colors.gray5.color)
         scrollView.bounces = false
 //        tableView.bounces = false
         tableView.isScrollEnabled = false
+        
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = viewModel?.detailArchive?.title
@@ -85,7 +92,17 @@ class DetailArchiveViewController: UIViewController {
         }
         
         setNavigationBar()
+        configureGesture()
         
+    }
+    
+    func configureGesture() {
+        memoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo)))
+    }
+    
+    @objc func didTapLoadMemo() {
+        print("memo button")
+        //self.viewModel?.loadMemo()
     }
     
     private func configureNoPlaceView() {

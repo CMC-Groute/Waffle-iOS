@@ -14,7 +14,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     
     //MARK: load BottomSheet View
     func detailArchiveBottomSheet(cardInfo: CardInfo?)
-    func invitationBottomSheet()
+    func invitationBottomSheet(copyCode: String)
     
     //MARK: Button Click
     func category()

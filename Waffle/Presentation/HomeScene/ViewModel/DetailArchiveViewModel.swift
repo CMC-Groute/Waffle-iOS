@@ -18,6 +18,7 @@ class DetailArchiveViewModel {
     var category: [Category] = [Category.defaultList]
     var selectedCategory: Category = Category.defaultList
     var placeInfo: [PlaceInfo] = []
+    var code: String?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -59,8 +60,9 @@ class DetailArchiveViewModel {
             }).disposed(by: disposeBag)
         
         input.invitationButton
-            .subscribe(onNext: {
-                self.coordinator.invitationBottomSheet()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.coordinator.invitationBottomSheet(copyCode: self.code ?? "")
             }).disposed(by: disposeBag)
         
         return output
@@ -72,10 +74,6 @@ class DetailArchiveViewModel {
     
     func detailArhive() { // bottomSheet popUp
         self.coordinator.detailArchiveBottomSheet(cardInfo: detailArchive)
-    }
-    
-    func invitationArhive() {
-        self.coordinator.invitationBottomSheet()
     }
     
     func detailPlace(place: PlaceInfo, category: Category) {
@@ -93,6 +91,10 @@ class DetailArchiveViewModel {
     
     func deleteCategory() {
         self.coordinator.deleteCategory()
+    }
+    
+    func loadMemo() {
+        self.coordinator.loadMemo()
     }
 
 }

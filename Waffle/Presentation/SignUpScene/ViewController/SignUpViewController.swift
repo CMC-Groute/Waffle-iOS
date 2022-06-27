@@ -51,7 +51,7 @@ class SignUpViewController: UIViewController {
         }
 
         
-        func setProgressNavigationBar() { // TO DO selected state 
+        func setProgressNavigationBar() { 
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
             let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess2.name)

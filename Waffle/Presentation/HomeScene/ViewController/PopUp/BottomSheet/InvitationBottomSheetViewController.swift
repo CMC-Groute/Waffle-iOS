@@ -18,6 +18,7 @@ class InvitationBottomSheetViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
+    var archiveCode: String?
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -27,7 +28,7 @@ class InvitationBottomSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        bindViewModel()
+        bindUI()
     }
     
     private func configureUI() {
@@ -35,10 +36,11 @@ class InvitationBottomSheetViewController: UIViewController {
         cancelButton.round(width: 1, color: Asset.Colors.gray5.name, value: 26)
     }
     
-    private func bindViewModel() {
+    private func bindUI() {
         copyCodeButton.rx.tap
-            .subscribe(onNext: {
-                // TO DO
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                UIPasteboard.general.string = self.archiveCode
                 self.coordinator.popToRootViewController(with: "약속코드가 복사되었어요\n함께할 토핑들에게 공유해봐요", width: 184, height: 56)
             }).disposed(by: disposeBag)
         
