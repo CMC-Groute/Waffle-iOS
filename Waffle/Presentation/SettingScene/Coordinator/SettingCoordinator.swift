@@ -62,10 +62,17 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
         self.navigationController.present(quitPopUpView, animated: false)
     }
     
-    func popToRootViewController(with toastMessage: String?) {
+    func popToRootViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
+        self.navigationController.popToRootViewController(animated: true)
+        if let toastMessage = toastMessage, let width = width, let height = height {
+            self.navigationController.topViewController?.showToast(message: toastMessage, width: width, height: height, corner: 17)
+        }
+    }
+    
+    func dismissViewController(with toastMessage: String?) {
         self.navigationController.dismiss(animated: true)
         if let toastMessage = toastMessage {
-            self.navigationController.topViewController?.showToast(message: toastMessage, width: 100, height: 55)
+            self.navigationController.topViewController?.showToast(message: toastMessage, width: 110, height: 55)
         }
     }
     

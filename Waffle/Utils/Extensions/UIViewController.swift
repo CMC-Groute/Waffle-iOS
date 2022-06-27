@@ -10,7 +10,7 @@ import SnapKit
 
 extension UIViewController {
 
-    func showToast(message : String, width: CGFloat, height: CGFloat, heightOffset: CGFloat = 100) {
+    func showToast(message : String, width: CGFloat, height: CGFloat, heightOffset: CGFloat = 100, corner: CGFloat = 28) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-heightOffset, width: width, height: height))
         toastLabel.numberOfLines = 0
         toastLabel.backgroundColor = Asset.Colors.gray5.color
@@ -19,7 +19,7 @@ extension UIViewController {
         toastLabel.textAlignment = .center
         toastLabel.text = message
         toastLabel.center.x = self.view.frame.size.width/2
-        toastLabel.layer.cornerRadius = 28
+        toastLabel.layer.cornerRadius = corner
         toastLabel.clipsToBounds  =  true
         self.view.addSubview(toastLabel)
         

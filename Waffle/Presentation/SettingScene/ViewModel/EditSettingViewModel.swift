@@ -38,7 +38,7 @@ class EditSettingViewModel {
         
         input.doneButton
             .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: nil)
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposeBag)
         
         input.nickNameTextField

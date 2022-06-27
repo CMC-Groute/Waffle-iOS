@@ -38,7 +38,7 @@ class LogoutPopUpViewController: UIViewController {
     private func bindUI(){
         cancelButton.rx.tap
             .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: nil)
+                self.coordinator.dismissViewController(with: nil)
             }).disposed(by: disposBag)
         
         OKButton.rx.tap

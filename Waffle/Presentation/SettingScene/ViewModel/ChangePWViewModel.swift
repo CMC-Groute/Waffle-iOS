@@ -55,7 +55,7 @@ class ChangePWViewModel {
         
         input.doneButton
             .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: "새 비밀번호로 변경되었어요")
+                self.coordinator.popToRootViewController(with: "새 비밀번호로 변경되었어요", width: 172, height: 34)
             }).disposed(by: disposeBag)
         
         input.passwordTextField
