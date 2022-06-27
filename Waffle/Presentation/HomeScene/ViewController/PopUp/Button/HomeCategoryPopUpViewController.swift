@@ -55,6 +55,7 @@ class HomeCategoryPopUpViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
+        filterEnabledCategory()
     }
     
     private func bindUI() {
@@ -70,7 +71,7 @@ class HomeCategoryPopUpViewController: UIViewController {
             for i in self.collectionView.indexPathsForSelectedItems! {
                 items.append(self.enableCategoryList[i.row])
             }
-            
+            print("selected item \(items)")
             self.delegate?.selectedCategory(category: items)
             self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
         }).disposed(by: disposeBag)
@@ -81,7 +82,7 @@ class HomeCategoryPopUpViewController: UIViewController {
         if !items.isEmpty {
             addButton.setEnabled(color: Asset.Colors.black.name)
         }else {
-            addButton.setEnabled(color: Asset.Colors.black.name)
+            addButton.setUnEnabled(color: Asset.Colors.gray4.name)
         }
     }
 }
@@ -95,22 +96,23 @@ extension HomeCategoryPopUpViewController: UICollectionViewDelegate {
 extension HomeCategoryPopUpViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
+        print(enableCategoryList)
         cell.configureCell(category: enableCategoryList[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { // 선택
-        checkItem()
         let cell = collectionView.cellForItem(at: indexPath) as! HomeCategoryCollectionViewCell
         cell.selectedUI()
-        collectionView.reloadItems(at: [indexPath])
+        checkItem()
+        //collectionView.reloadItems(at: [indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) { // 선택 해제
-        checkItem()
         let cell = collectionView.cellForItem(at: indexPath) as! HomeCategoryCollectionViewCell
         cell.unSelectedUI()
-        collectionView.reloadItems(at: [indexPath])
+        checkItem()
+        //collectionView.reloadItems(at: [indexPath])
     }
     
     

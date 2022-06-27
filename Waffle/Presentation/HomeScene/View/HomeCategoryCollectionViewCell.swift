@@ -49,13 +49,11 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
         if value == true { // 선택 되어 있는 셀 비활성화, 클릭 x
             self.isUserInteractionEnabled = false
             //UI
-            self.titleButton.isUserInteractionEnabled = false
             self.selectedUI()
-            self.titleButton.layer.opacity = 0.7
+            self.titleButton.layer.opacity = 0.3
         }else {
-            self.isUserInteractionEnabled = true
-            self.titleButton.isUserInteractionEnabled = true
             //UI
+            self.titleButton.layer.opacity = 1.0
             self.unSelectedUI()
         }
     }
