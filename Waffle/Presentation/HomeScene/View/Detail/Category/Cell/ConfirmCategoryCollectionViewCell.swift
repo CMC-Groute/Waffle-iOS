@@ -1,15 +1,14 @@
 //
-//  CategoryCollectionViewCell.swift
+//  ConfirmCategoryCollectionViewCell.swift
 //  Waffle
 //
 //  Created by 조한빛 on 2022/06/27.
 //
 
 import UIKit
-import SnapKit
 
-class CategoryCollectionViewCell: UICollectionViewCell {
-    static var identifier = "CategoryCollectionViewCell"
+class ConfirmCategoryCollectionViewCell: UICollectionViewCell {
+    static var identifier = "ConfirmCategoryCollectionViewCell"
     
     lazy var categoryButton: UIButton = {
         let button = UIButton()
@@ -47,19 +46,12 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(60)
             $0.height.equalTo(33)
         }
-    }
-    
-    func configureCell(name: String){
-        if name == "확정" {
-            self.categoryButton.setTitle("\(name)", for: .normal)
-        }else {
-            self.categoryButton.setTitle("#\(name)", for: .normal)
-        }
+        self.categoryButton.setTitle("확정", for: .normal)
     }
     
     func selectedUI() {
         categoryButton.titleLabel?.font = UIFont.fontWithName(type: .semibold, size: 15)
-        categoryButton.backgroundColor = Asset.Colors.gray7.color
+        categoryButton.backgroundColor = Asset.Colors.green.color
         categoryButton.setTitleColor(Asset.Colors.white.color, for: .normal)
         categoryButton.layer.borderColor = .none
         categoryButton.layer.borderWidth = 0
@@ -72,5 +64,4 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         categoryButton.layer.borderColor = Asset.Colors.gray4.color.cgColor
         categoryButton.layer.borderWidth = 1
     }
-
 }

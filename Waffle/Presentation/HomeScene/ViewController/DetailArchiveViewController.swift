@@ -116,6 +116,8 @@ class DetailArchiveViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsSelection = true
+        
+        collectionView.register(ConfirmCategoryCollectionViewCell.self, forCellWithReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier)
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.register(AddCategoryCollectionViewCell.self, forCellWithReuseIdentifier: AddCategoryCollectionViewCell.identifier)
     }
@@ -240,11 +242,18 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         return viewModel!.category.count + 1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
+            return cell
+        }
+        
         if indexPath.row == viewModel!.category.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCategoryCollectionViewCell.identifier, for: indexPath) as! AddCategoryCollectionViewCell
             return cell
         }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+        
         cell.configureCell(name: viewModel!.category[indexPath.row].name)
         return cell
        
@@ -255,9 +264,12 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
 
 extension DetailArchiveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
+        guard let selectedCategory = viewModel?.category[indexPath.row] else { return }
+        viewModel?.setCategory(category: selectedCategory)
         if indexPath.row == viewModel!.category.count { //마지막 셀 클릭 시
             viewModel?.addCategory()
+        }else {
+            
         }
     }
 }
