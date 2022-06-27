@@ -18,8 +18,13 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
     }
     
     func checkCodeValid(code: String) -> Bool {
-        //self.urlSessionNetworkService.request(<#T##urlRequest: NetworkRequestBuilder##NetworkRequestBuilder#>)
+        //self.urlSessionNetworkService.request()
         return false
     }
+    
+    func joinArchiveCode(invitationCode: String) {
+        //약속 참여하기
+    }
+    
     
 }

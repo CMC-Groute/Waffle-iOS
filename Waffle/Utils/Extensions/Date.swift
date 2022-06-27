@@ -33,4 +33,19 @@ extension Date {
 //        return WeekDayString(rawValue: calendar.dateComponents([.weekday], from: self).weekday ?? 0)! + "요일"
         return ""
     }
+    
+    func getDate(dateString: String) -> [String] {
+        let dateComponent = dateString.components(separatedBy: "T")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "hh:mm:ss"
+        
+        let date = dateFormatter.date(from: dateComponent[0])
+        let time = timeFormatter.date(from: dateComponent[1])
+        
+        return [date!.addArchiveDateToString(), time!.addArhiveTimeToString()]
+    }
+
 }

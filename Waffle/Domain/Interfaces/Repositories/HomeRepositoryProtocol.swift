@@ -10,5 +10,7 @@ import RxCocoa
 import RxSwift
 
 protocol HomeRepositoryProtocol {
-    func getCardInfo() -> Observable<[CardInfo]>
+    func getCardInfo() -> Observable<[CardInfo]> //메인 페이지 약속
+    func getDetailArchiveInfo(id: Int) -> Observable<[DetailArhive]>
+    func addCategory(id: Int, category: AddCategory) -> Observable<[GetCategory]>
 }

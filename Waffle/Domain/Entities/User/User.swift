@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct EditProfile {
+struct EditProfile: Codable {
     var nickName: String
     var progileImage: Data
 }
 
-struct Password {
+struct Password: Codable {
     var nowPassword: String
     var newPassword: String
     var newPasswordCheck: String

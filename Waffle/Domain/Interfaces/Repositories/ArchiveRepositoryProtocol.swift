@@ -10,5 +10,6 @@ import RxCocoa
 import RxSwift
 
 protocol ArchiveRepositoryProtocol {
+    func joinArchiveCode(invitationCode: String)
     func checkCodeValid(code: String) -> Bool
 }
