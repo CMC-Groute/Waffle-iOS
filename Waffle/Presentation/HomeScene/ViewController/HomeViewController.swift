@@ -38,9 +38,7 @@ class HomeViewController: UIViewController {
             self.navigationController?.navigationBar.topItem?.rightBarButtonItems = [bellButton, spacer, calendarButton]
         }
         cardCountButton.round(width: 1, color: Asset.Colors.gray3.name, value: 16)
-        cardCountButton.setTitle("1/\(viewModel!.usecase.cardInfo.count)", for: .normal)
-        self.cardCountButton.setTitleColor(Asset.Colors.gray4.color, for: .normal)
-        
+        cardCountButton.setTitleColor(Asset.Colors.gray4.color, for: .normal)
         setNavigationBar()
     }
     
@@ -79,6 +77,7 @@ class HomeViewController: UIViewController {
     func hideEmptyView() {
         emptyView.isHidden = true
         collectionView.isHidden = false
+        cardCountButton.setTitle("1/\(viewModel!.usecase.cardInfo.count)", for: .normal)
     }
     
     
@@ -101,19 +100,14 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+        self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        DispatchQueue.main.async { [weak self] in
-           guard let self = self else { return }
-            self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
-       }
-    }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //viewModel과 바인딩
         guard let selectedArchive = self.viewModel?.usecase.cardInfo[indexPath.row] else { return }
-        print("selected \(selectedArchive)")
         self.viewModel?.detailArchive(selectedArchive: selectedArchive)
     }
 }

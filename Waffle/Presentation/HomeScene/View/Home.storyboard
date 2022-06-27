@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7VB-Rp-5vH">
-                                <rect key="frame" x="0.0" y="76" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cAF-af-oie">
                                     <size key="itemSize" width="128" height="128"/>
@@ -40,11 +40,15 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG0-qU-Nh4" userLabel="emptyView" customClass="EmptyCardView" customModule="Waffle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="76" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1C-ck-AzA">
-                                <rect key="frame" x="184" y="812" width="46" height="30"/>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1C-ck-AzA">
+                                <rect key="frame" x="174.5" y="814" width="65" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Sfq-sU-TAQ"/>
+                                    <constraint firstAttribute="width" constant="65" id="qdF-k0-ETp"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                             </button>
@@ -58,7 +62,7 @@
                             <constraint firstItem="F1C-ck-AzA" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ILZ-T5-7ns"/>
                             <constraint firstItem="7VB-Rp-5vH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="NBo-cQ-BKQ"/>
                             <constraint firstItem="7VB-Rp-5vH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QVZ-z2-1fR"/>
-                            <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="7VB-Rp-5vH" secondAttribute="bottom" constant="64" id="Yqx-yI-Nk0"/>
+                            <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="7VB-Rp-5vH" secondAttribute="bottom" constant="16" id="Yqx-yI-Nk0"/>
                             <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="cG0-qU-Nh4" secondAttribute="bottom" constant="64" id="aUM-Zu-j18"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="jW5-qX-6lw"/>
                             <constraint firstItem="7VB-Rp-5vH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="mra-Fu-g40"/>
