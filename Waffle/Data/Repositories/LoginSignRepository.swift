@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class LoginSignRepository: LoginSignRepositoryProtocol {
-    
     let urlSessionNetworkService: URLSessionNetworkServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     
@@ -22,4 +21,21 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
         subject.send(true)
         return subject.eraseToAnyPublisher()
     }
+    
+    func singUp(signUpInfo: SignUp) {
+        
+    }
+    
+    func sendEmail(email: String) {
+        
+    }
+    
+    func checkEmailCode(email: String, code: String) {
+        
+    }
+    
+    func findPW(email: String) {
+        
+    }
+    
 }

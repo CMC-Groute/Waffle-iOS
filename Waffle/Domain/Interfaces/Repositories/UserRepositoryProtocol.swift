@@ -10,6 +10,10 @@ import RxSwift
 import RxCocoa
 
 protocol UserRepositoryProtocol {
+    //MARK: FROM
+    func editProfile(profile: EditProfile)
+    func changePassword(password: Password)
+    
     func getProfileInfo() -> Observable<ProfileInfo>
     func setAlarm(state: Bool)
                                                         

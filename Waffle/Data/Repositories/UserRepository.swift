@@ -10,6 +10,7 @@ import Combine
 import RxSwift
 
 class UserRepository: UserRepositoryProtocol {
+    
     let urlSessionNetworkService: URLSessionNetworkServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     var disposBag = DisposeBag()
@@ -23,6 +24,14 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     func setAlarm(state: Bool) {
+        
+    }
+    
+    func editProfile(profile: EditProfile) {
+        
+    }
+    
+    func changePassword(password: Password) {
         
     }
     

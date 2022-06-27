@@ -33,6 +33,8 @@
 		1390EC7F2864952600E5520C /* DetailPlacePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC7E2864952600E5520C /* DetailPlacePopUpViewController.swift */; };
 		1390EC8128649A6200E5520C /* HomeCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC8028649A6200E5520C /* HomeCategoryCollectionViewCell.swift */; };
 		1390EC842866DE1000E5520C /* PlaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC832866DE0F00E5520C /* PlaceInfo.swift */; };
+		1390EC8A2869397F00E5520C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC892869397F00E5520C /* SignUp.swift */; };
+		1390EC8C28693B6000E5520C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC8B28693B6000E5520C /* User.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -185,6 +187,8 @@
 		1390EC7E2864952600E5520C /* DetailPlacePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlacePopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC8028649A6200E5520C /* HomeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCategoryCollectionViewCell.swift; path = Waffle/Presentation/HomeScene/View/HomeCategoryCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		1390EC832866DE0F00E5520C /* PlaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfo.swift; sourceTree = "<group>"; };
+		1390EC892869397F00E5520C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		1390EC8B28693B6000E5520C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -410,9 +414,19 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		1390EC882869396B00E5520C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC892869397F00E5520C /* SignUp.swift */,
+				1390EC8B28693B6000E5520C /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		13E2A075285EF1E50015499E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				1390EC882869396B00E5520C /* User */,
 				1390EC822866DE0000E5520C /* Home */,
 				13E2A076285EF1F00015499E /* Archive */,
 			);
@@ -1406,9 +1420,11 @@
 				1390EC362863362900E5520C /* CardView.swift in Sources */,
 				F29ED33E2856291A002371FD /* ArchiveUsecaseProtocol.swift in Sources */,
 				1390EC78286492B200E5520C /* ParticiPopUpViewController.swift in Sources */,
+				1390EC8C28693B6000E5520C /* User.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				13E2A07E285F00C80015499E /* HomeUsecase.swift in Sources */,
 				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,
+				1390EC8A2869397F00E5520C /* SignUp.swift in Sources */,
 				F2125D57284F40E2008E1185 /* SettingViewController.swift in Sources */,
 				F2125D3B284E5373008E1185 /* LoginSignRepositoryProtocol.swift in Sources */,
 				F2764BE428524A000022D41E /* SignUpCoordinator.swift in Sources */,

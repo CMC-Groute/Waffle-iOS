@@ -9,5 +9,13 @@ import Foundation
 import Combine
 
 protocol LoginSignRepositoryProtocol {
+    //MARK: FROM
+    func singUp(signUpInfo: SignUp)
+    func sendEmail(email: String)
+    func checkEmailCode(email: String, code: String)
+    func findPW(email: String)
     func login(email: String, password: String) -> AnyPublisher<Bool, Never>
+    
+    
+    
 }
