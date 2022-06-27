@@ -20,6 +20,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     
     var disposeBag = DisposeBag()
     
+    @IBOutlet weak var frameView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
@@ -38,6 +39,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     }
     
     private func configureUI() {
+        frameView.round(width: nil, color: nil, value: 20)
         addButton.round(corner: 24)
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
     }
@@ -49,13 +51,18 @@ class HomeCategoryPopUpViewController: UIViewController {
     }
     
     private func collectionViewSetup() {
-        collectionView.register(HomeCategoryCollectionViewCell.nib(), forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
+        collectionView.register(HomeCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
     }
     
     private func bindUI() {
+        closeButton.rx.tap
+            .subscribe(onNext: {
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+            }).disposed(by: disposeBag)
+        
         addButton.rx.tap
         .subscribe(onNext: { [weak self] in
             guard let self = self else { return }
@@ -110,5 +117,19 @@ extension HomeCategoryPopUpViewController: UICollectionViewDataSource {
 }
 
 extension HomeCategoryPopUpViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 93, height: 40)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    }
 }

@@ -256,7 +256,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
 extension DetailArchiveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
-        if indexPath.row == 1 { //마지막 셀 클릭 시
+        if indexPath.row == viewModel!.category.count { //마지막 셀 클릭 시
             viewModel?.addCategory()
         }
     }

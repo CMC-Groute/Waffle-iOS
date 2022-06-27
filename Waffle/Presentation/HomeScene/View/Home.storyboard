@@ -114,11 +114,13 @@
                                             <constraint firstAttribute="width" constant="40" id="MOg-IL-5mV"/>
                                             <constraint firstAttribute="height" constant="40" id="uvK-dc-1SD"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="close-etc"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="close-etc">
+                                            <color key="titleColor" name="Black"/>
+                                        </state>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-TQ-3mF">
-                                        <rect key="frame" x="0.0" y="87" width="366" height="173"/>
+                                        <rect key="frame" x="0.0" y="92" width="366" height="154"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Zy-J0-cxN">
                                             <size key="itemSize" width="128" height="128"/>
@@ -157,12 +159,12 @@
                                     <constraint firstItem="o6H-Pa-XQX" firstAttribute="top" secondItem="kgH-TG-ZZg" secondAttribute="top" constant="32" id="3I7-xF-TXh"/>
                                     <constraint firstAttribute="trailing" secondItem="o6H-Pa-XQX" secondAttribute="trailing" constant="95" id="5Rd-sG-bNT"/>
                                     <constraint firstAttribute="trailing" secondItem="MOV-TQ-3mF" secondAttribute="trailing" id="CTh-iI-hMh"/>
-                                    <constraint firstItem="9VA-DP-L7J" firstAttribute="top" secondItem="MOV-TQ-3mF" secondAttribute="bottom" constant="10" id="Chk-1F-Pwt"/>
+                                    <constraint firstItem="9VA-DP-L7J" firstAttribute="top" secondItem="MOV-TQ-3mF" secondAttribute="bottom" constant="24" id="Chk-1F-Pwt"/>
                                     <constraint firstItem="MOV-TQ-3mF" firstAttribute="leading" secondItem="kgH-TG-ZZg" secondAttribute="leading" id="Cwc-xb-rH0"/>
                                     <constraint firstAttribute="trailing" secondItem="aXH-TJ-V8o" secondAttribute="trailing" constant="10" id="Gn0-Mc-ycs"/>
                                     <constraint firstItem="vgB-s6-BHl" firstAttribute="leading" secondItem="4LN-hY-GQT" secondAttribute="trailing" constant="6" id="SUW-uo-ofs"/>
                                     <constraint firstAttribute="bottom" secondItem="9VA-DP-L7J" secondAttribute="bottom" constant="15" id="T6g-nI-cK5"/>
-                                    <constraint firstItem="MOV-TQ-3mF" firstAttribute="top" secondItem="vgB-s6-BHl" secondAttribute="bottom" constant="10" id="TPF-DF-rwa"/>
+                                    <constraint firstItem="MOV-TQ-3mF" firstAttribute="top" secondItem="vgB-s6-BHl" secondAttribute="bottom" constant="15" id="TPF-DF-rwa"/>
                                     <constraint firstItem="vgB-s6-BHl" firstAttribute="centerX" secondItem="kgH-TG-ZZg" secondAttribute="centerX" id="UmJ-J2-RP6"/>
                                     <constraint firstItem="9VA-DP-L7J" firstAttribute="leading" secondItem="kgH-TG-ZZg" secondAttribute="leading" constant="15" id="VcW-H7-ufy"/>
                                     <constraint firstItem="vgB-s6-BHl" firstAttribute="top" secondItem="o6H-Pa-XQX" secondAttribute="bottom" constant="6" id="iTf-48-pfr"/>
@@ -187,6 +189,7 @@
                         <outlet property="addButton" destination="9VA-DP-L7J" id="txb-5t-zzS"/>
                         <outlet property="closeButton" destination="aXH-TJ-V8o" id="RtV-7e-2J3"/>
                         <outlet property="collectionView" destination="MOV-TQ-3mF" id="Emw-8v-KJU"/>
+                        <outlet property="frameView" destination="kgH-TG-ZZg" id="6sh-E6-zJu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INA-sB-ceD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

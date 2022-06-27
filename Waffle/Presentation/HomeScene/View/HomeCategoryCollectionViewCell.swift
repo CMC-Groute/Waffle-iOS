@@ -14,6 +14,7 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
     lazy var titleButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(Asset.Colors.gray7.color, for: .normal)
+        button.isUserInteractionEnabled = false
         button.backgroundColor = Asset.Colors.gray2.color
         button.titleLabel?.font = UIFont.homeCategoryTitle()
         return button
@@ -28,16 +29,14 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
         setUp()
     }
-    
-    static func nib() -> UINib {
-        return UINib(nibName: "HomeCategoryCollectionViewCell", bundle: nil)
-    }
 
     func setUp() {
         titleButton.round(corner: 20)
         self.addSubview(titleButton)
         titleButton.snp.makeConstraints {
-            $0.edges.equalTo(self)
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(93)
+            $0.height.equalTo(40)
         }
     }
     
