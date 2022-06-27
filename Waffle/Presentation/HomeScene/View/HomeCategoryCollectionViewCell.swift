@@ -35,9 +35,9 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
 
     func setUp() {
         titleButton.round(corner: 20)
-        self.contentView.addSubview(titleButton)
+        self.addSubview(titleButton)
         titleButton.snp.makeConstraints {
-            $0.top.bottom.leading.trailing.equalToSuperview()
+            $0.edges.equalTo(self)
         }
     }
     

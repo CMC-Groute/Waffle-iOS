@@ -847,13 +847,13 @@
                                                 </constraints>
                                                 <color key="sectionIndexBackgroundColor" name="blue"/>
                                             </tableView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-bZ-J4b">
-                                                <rect key="frame" x="0.0" y="238" width="414" height="57"/>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-bZ-J4b">
+                                                <rect key="frame" x="6" y="238" width="402" height="57"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="tbs-Q4-bwl"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulO-Ti-3gr">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulO-Ti-3gr">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -861,7 +861,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nqO-hj-Ata">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <rect key="frame" x="0.0" y="-35.5" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="g1T-VZ-Kuk">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -878,9 +878,9 @@
                                             <constraint firstItem="8Hv-lk-wU2" firstAttribute="top" secondItem="tlC-Yb-M76" secondAttribute="bottom" id="7o8-iU-eGX"/>
                                             <constraint firstAttribute="bottom" secondItem="1QN-FH-Eep" secondAttribute="bottom" constant="100" id="BLB-dw-IxO"/>
                                             <constraint firstItem="1QN-FH-Eep" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="EEX-5r-SvY"/>
-                                            <constraint firstAttribute="trailing" secondItem="JGa-bZ-J4b" secondAttribute="trailing" id="NfJ-3t-mZ1"/>
+                                            <constraint firstAttribute="trailing" secondItem="JGa-bZ-J4b" secondAttribute="trailing" constant="6" id="NfJ-3t-mZ1"/>
                                             <constraint firstItem="1QN-FH-Eep" firstAttribute="top" secondItem="JGa-bZ-J4b" secondAttribute="bottom" id="TGb-O6-Mga"/>
-                                            <constraint firstItem="JGa-bZ-J4b" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="UZv-Ro-VFw"/>
+                                            <constraint firstItem="JGa-bZ-J4b" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" constant="6" id="UZv-Ro-VFw"/>
                                             <constraint firstAttribute="trailing" secondItem="1QN-FH-Eep" secondAttribute="trailing" id="alY-Eh-cmO"/>
                                             <constraint firstItem="tlC-Yb-M76" firstAttribute="top" secondItem="x1Z-kx-w7k" secondAttribute="top" id="nb4-jO-W1D"/>
                                             <constraint firstItem="8Hv-lk-wU2" firstAttribute="leading" secondItem="x1Z-kx-w7k" secondAttribute="leading" id="nf2-tJ-jjf"/>

@@ -112,11 +112,16 @@ class DetailArchiveViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.allowsSelection = true
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        collectionView.register(AddCategoryCollectionViewCell.self, forCellWithReuseIdentifier: AddCategoryCollectionViewCell.identifier)
     }
     
     @objc
     func didTapMoreButton() {
-        print("didTapMoreButton")
         self.viewModel?.detailArhive()
     }
     
@@ -187,7 +192,7 @@ extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
     func didTapDetailButton(cell: DetailPlaceTableViewCell) {
         guard let placeInfo = viewModel?.placeInfo[cell.placeId] else { return }
         guard let category = viewModel?.category else { return }
-        self.viewModel!.detailPlace(place: placeInfo, category: category)
+        self.viewModel!.detailPlace(place: placeInfo, category: category[cell.placeId])
     }
     
     
@@ -227,5 +232,51 @@ extension DetailArchiveViewController: UIScrollViewDelegate {
 
         //print("offset \(scrollView.contentOffset.y)")
       
+    }
+}
+
+extension DetailArchiveViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel!.category.count + 1
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == viewModel!.category.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCategoryCollectionViewCell.identifier, for: indexPath) as! AddCategoryCollectionViewCell
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+        cell.configureCell(name: viewModel!.category[indexPath.row].name)
+        return cell
+       
+    }
+    
+    
+}
+
+extension DetailArchiveViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+        if indexPath.row == 1 { //마지막 셀 클릭 시
+            viewModel?.addCategory()
+        }
+    }
+}
+
+extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: 60, height: 33)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return .zero
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
 }

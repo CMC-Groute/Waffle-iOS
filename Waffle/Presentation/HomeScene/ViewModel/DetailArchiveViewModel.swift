@@ -15,7 +15,8 @@ class DetailArchiveViewModel {
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
     var detailArchive: CardInfo?
-    var category: Category = Category.defaultList
+    var category: [Category] = [Category.defaultList]
+    var selectedCategory: Category = Category.defaultList
     var placeInfo: [PlaceInfo] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
@@ -44,6 +45,7 @@ class DetailArchiveViewModel {
             .subscribe(onNext: { [weak self] in
                 //get place data
                 self?.placeInfo = [PlaceInfo.dummyPlace, PlaceInfo.dummyPlace, PlaceInfo.dummyPlace]
+                self?.category += Category.categoryList
             }).disposed(by: disposeBag)
         
         input.addPlaceButton
@@ -82,11 +84,15 @@ class DetailArchiveViewModel {
     
     func setCategory(category: Category) {
         //카테고리 클릭시마다 update해줌
-        self.category = category
+        selectedCategory = category
     }
     
+    func addCategory() {
+        self.coordinator.category()
+    }
     
+    func deleteCategory() {
+        self.coordinator.deleteCategory()
+    }
 
-    
-    
 }
