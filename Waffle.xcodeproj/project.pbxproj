@@ -35,6 +35,8 @@
 		1390EC842866DE1000E5520C /* PlaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC832866DE0F00E5520C /* PlaceInfo.swift */; };
 		1390EC8A2869397F00E5520C /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC892869397F00E5520C /* SignUp.swift */; };
 		1390EC8C28693B6000E5520C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC8B28693B6000E5520C /* User.swift */; };
+		1390EC9428698E9B00E5520C /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9228698E9B00E5520C /* CategoryCollectionViewCell.swift */; };
+		1390EC9728698EAF00E5520C /* AddCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9628698EAF00E5520C /* AddCategoryCollectionViewCell.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -189,6 +191,8 @@
 		1390EC832866DE0F00E5520C /* PlaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfo.swift; sourceTree = "<group>"; };
 		1390EC892869397F00E5520C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		1390EC8B28693B6000E5520C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1390EC9228698E9B00E5520C /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		1390EC9628698EAF00E5520C /* AddCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -421,6 +425,41 @@
 				1390EC8B28693B6000E5520C /* User.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		1390EC8D28698E4C00E5520C /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				13E2A086285F0DB40015499E /* EmptyCardView */,
+				13E2A085285F0DA10015499E /* CardView */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		1390EC8E28698E5B00E5520C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC9028698E7A00E5520C /* Category */,
+				1390EC6E286485DD00E5520C /* Cell */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		1390EC9028698E7A00E5520C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC9128698E8200E5520C /* Cell */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		1390EC9128698E8200E5520C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1390EC9228698E9B00E5520C /* CategoryCollectionViewCell.swift */,
+				1390EC9628698EAF00E5520C /* AddCategoryCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		13E2A075285EF1E50015499E /* Entities */ = {
@@ -965,9 +1004,8 @@
 		F29ED30C2855DBAA002371FD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1390EC6E286485DD00E5520C /* Cell */,
-				13E2A086285F0DB40015499E /* EmptyCardView */,
-				13E2A085285F0DA10015499E /* CardView */,
+				1390EC8E28698E5B00E5520C /* Detail */,
+				1390EC8D28698E4C00E5520C /* Card */,
 				F29ED30D2855DBB2002371FD /* Home.storyboard */,
 			);
 			path = View;
@@ -1356,6 +1394,7 @@
 				13E2A078285EF2030015499E /* Archive.swift in Sources */,
 				13E2A080285F01F00015499E /* HomeUsecaseProtocol.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
+				1390EC9428698E9B00E5520C /* CategoryCollectionViewCell.swift in Sources */,
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,
 				F2125D4E284E60E5008E1185 /* SignUpViewController.swift in Sources */,
 				1390EC6428647D1100E5520C /* DetailArchiveViewController.swift in Sources */,
@@ -1449,6 +1488,7 @@
 				135B605D285899250035AE4B /* LocationRightTableViewCell.swift in Sources */,
 				1390EC842866DE1000E5520C /* PlaceInfo.swift in Sources */,
 				F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */,
+				1390EC9728698EAF00E5520C /* AddCategoryCollectionViewCell.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				13E2A082285F022A0015499E /* HomeRepositoryProtocol.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,
