@@ -24,14 +24,14 @@ struct Category: Codable {
     var name: String
     var index: Int
     var selected: Bool = false
-    static var defaultList = Category(name: "확정", index: -1)
-    static var categoryList = [Category(name: "맛집", index: 0),
-                               Category(name: "카페", index: 1),
-                               Category(name: "아침", index: 2),
-                               Category(name: "점심", index: 3),
-                               Category(name: "저녁", index: 4),
-                               Category(name: "소품샵", index: 5),
-                               Category(name: "할거리", index: 6),
-                               Category(name: "볼거리", index: 7),
-                               Category(name: "기타", index: 8)]
+    static var defaultList = Category(name: "확정", index: 0)
+    static var categoryList = [Category(name: "맛집", index: 1),
+                               Category(name: "카페", index: 2),
+                               Category(name: "아침", index: 3),
+                               Category(name: "점심", index: 4),
+                               Category(name: "저녁", index: 5),
+                               Category(name: "소품샵", index: 6),
+                               Category(name: "할거리", index: 7),
+                               Category(name: "볼거리", index: 8),
+                               Category(name: "기타", index: 9)]
 }

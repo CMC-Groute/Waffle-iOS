@@ -987,10 +987,10 @@
             </objects>
             <point key="canvasLocation" x="3640.579710144928" y="6.6964285714285712"/>
         </scene>
-        <!--Detail Place View Controller-->
+        <!--Add Detail Place View Controller-->
         <scene sceneID="2VR-Ni-Qim">
             <objects>
-                <viewController storyboardIdentifier="DetailPlaceViewController" id="ORX-rk-t1t" customClass="DetailPlaceViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddDetailPlaceViewController" id="ORX-rk-t1t" customClass="AddDetailPlaceViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="txw-M6-OUN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

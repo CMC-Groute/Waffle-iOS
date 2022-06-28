@@ -174,13 +174,13 @@ class DetailArchiveViewController: UIViewController {
 extension DetailArchiveViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let viewModel = viewModel else { return 0}
-        if viewModel.placeInfo.isEmpty {
+        guard let viewModel = viewModel else { return 0 }
+        if viewModel.placeInfoByCategory().isEmpty {
             tableView.backgroundView  = noPlaceView
             return 0
         }
         tableView.backgroundView = nil
-        return viewModel.placeInfo.count
+        return viewModel.placeInfoByCategory().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -188,7 +188,9 @@ extension DetailArchiveViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.delegate = self
         cell.setPlaceId(index: indexPath.row)
-        cell.configureCell(placeInfo: viewModel!.placeInfo[indexPath.row])
+        guard let place = viewModel?.placeInfoByCategory() else { return cell }
+        print("get place")
+        cell.configureCell(placeInfo: place[indexPath.row])
         return cell
     }
 }
@@ -315,6 +317,7 @@ extension DetailArchiveViewController: UICollectionViewDelegate {
         }else {
             guard let selectedCategory = viewModel?.category[indexPath.row] else { return }
             viewModel?.setCategory(category: selectedCategory)
+            tableView.reloadData()
         }
     }
 }

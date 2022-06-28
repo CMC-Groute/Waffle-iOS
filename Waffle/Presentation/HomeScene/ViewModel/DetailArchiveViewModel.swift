@@ -33,10 +33,6 @@ class DetailArchiveViewModel {
     }
     
     struct Output {
-//        var whenLabel = PublishSubject<String>()
-//        var whereLabel = PublishSubject<String>()
-//        var memoLabel = PublishSubject<String>()
-//        var participantsCount = PublishSubject<String>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -73,6 +69,10 @@ class DetailArchiveViewModel {
     
     func setArchive(archive: CardInfo) {
         self.usecase.currentArchive.onNext(archive)
+    }
+    
+    func placeInfoByCategory() -> [PlaceInfo]{
+        return placeInfo.filter { $0.category.index == selectedCategory.index }
     }
     
     func detailArhive() { // bottomSheet popUp
