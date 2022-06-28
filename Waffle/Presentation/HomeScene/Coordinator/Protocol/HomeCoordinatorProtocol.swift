@@ -23,7 +23,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func detailPlace(detailInfo: PlaceInfo, category: Category)
     
     //MARK: POPUP View click
-    func deleteCategory()
+    func deleteCategory(category: Category)
     func arhiveDelete()
     func likeSend()
     

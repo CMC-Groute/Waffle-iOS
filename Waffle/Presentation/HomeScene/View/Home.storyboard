@@ -531,6 +531,7 @@
                         <outlet property="OKButton" destination="gLC-Lu-JoA" id="fkk-gr-7Xw"/>
                         <outlet property="cancelButton" destination="g3Y-QW-0it" id="cpx-lr-ZxP"/>
                         <outlet property="framwView" destination="C98-EL-fc0" id="qrb-KS-GhM"/>
+                        <outlet property="titleText" destination="ORG-PX-GXr" id="6uj-of-GMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xG5-Wi-Ie6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

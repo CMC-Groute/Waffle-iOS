@@ -46,10 +46,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     
-    func deleteCategory() {
+    func deleteCategory(category: Category) {
         let categoryDeletePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "CategoryDeletePopUpViewController") as! CategoryDeletePopUpViewController
         categoryDeletePopUpView.coordinator = self
         categoryDeletePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
+        categoryDeletePopUpView.selectedCategory = category
         categoryDeletePopUpView.modalPresentationStyle = .overFullScreen
         categoryDeletePopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(categoryDeletePopUpView, animated: false)

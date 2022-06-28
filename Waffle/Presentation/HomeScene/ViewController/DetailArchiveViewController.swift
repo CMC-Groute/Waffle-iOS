@@ -286,7 +286,8 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        
+        cell.delegate = self
+        cell.indexPath = indexPath
         cell.configureCell(name: viewModel!.category[indexPath.row].name, isEditing: isCategoryEditing)
         return cell
        
@@ -348,6 +349,10 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension DetailArchiveViewController: UIGestureRecognizerDelegate {
-    
+extension DetailArchiveViewController: CategoryCollectionViewCellDelegate {
+    func didTapDeleteButton(cell: CategoryCollectionViewCell) {
+        guard let viewModel = viewModel else { return }
+        let currentCategory = viewModel.category[cell.indexPath!.row]
+        viewModel.deleteCategory(category: currentCategory)
+    }
 }

@@ -17,8 +17,7 @@ class CategoryDeletePopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
     var disposBag = DisposeBag()
-    var selectedCategoryId: Int = 0
-    var selectedCategoryName: String = ""
+    var selectedCategory: Category?
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -32,7 +31,7 @@ class CategoryDeletePopUpViewController: UIViewController {
     }
     
     private func configureUI(){
-        self.titleText.text = "\(selectedCategoryName) 카테고리를 정말로 삭제할까요?"
+        self.titleText.text = "\(selectedCategory?.name) 카테고리를 정말로 삭제할까요?"
         self.titleText.font = UIFont.titleFont()
         self.framwView.round(width: 0, color: "", value: 20)
         self.cancelButton.round(corner: 24)
@@ -42,13 +41,15 @@ class CategoryDeletePopUpViewController: UIViewController {
 
     private func bindUI(){
         cancelButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
         
         OKButton.rx.tap
-            .subscribe(onNext: {
-                self.usecase.deleteCategory(categoryId: self.selectedCategoryId)
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.usecase.deleteCategory(categoryId: self.selectedCategory?.index ?? 0)
             }).disposed(by: disposBag)
     }
 }

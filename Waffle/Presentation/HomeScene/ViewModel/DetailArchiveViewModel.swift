@@ -89,8 +89,8 @@ class DetailArchiveViewModel {
         self.coordinator.category()
     }
     
-    func deleteCategory() {
-        self.coordinator.deleteCategory()
+    func deleteCategory(category: Category) {
+        self.coordinator.deleteCategory(category: category)
     }
     
     func loadMemo() {

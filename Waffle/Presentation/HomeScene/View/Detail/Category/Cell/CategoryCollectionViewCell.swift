@@ -9,9 +9,15 @@ import UIKit
 import SnapKit
 import RxSwift
 
+protocol CategoryCollectionViewCellDelegate {
+    func didTapDeleteButton(cell: CategoryCollectionViewCell)
+}
+
 class CategoryCollectionViewCell: UICollectionViewCell {
     static var identifier = "CategoryCollectionViewCell"
     var disposeBag = DisposeBag()
+    var delegate: CategoryCollectionViewCellDelegate?
+    var indexPath: IndexPath?
     
     var categoryLabel: UILabel = {
         let label = UILabel()
@@ -108,8 +114,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 
     func bindUI() {
         self.deleteButton.rx
-            .tap.subscribe(onNext: {
-                print("deleteButton tap")
+            .tap.subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.didTapDeleteButton(cell: self)
             }).disposed(by: disposeBag)
     }
 }
