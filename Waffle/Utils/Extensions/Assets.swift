@@ -49,6 +49,8 @@ internal enum Asset {
     internal static let detailWapple5 = ImageAsset(name: "detailWapple-5")
     internal static let addCategory = ImageAsset(name: "addCategory")
     internal static let canEditingButton = ImageAsset(name: "canEditingButton")
+    internal static let deleteButton = ImageAsset(name: "deleteButton")
+    internal static let deleteSelectedButton = ImageAsset(name: "deleteSelectedButton")
     internal static let heartSelected = ImageAsset(name: "heart-selected")
     internal static let heart = ImageAsset(name: "heart")
     internal static let placeCheckSelected = ImageAsset(name: "placeCheck-selected")

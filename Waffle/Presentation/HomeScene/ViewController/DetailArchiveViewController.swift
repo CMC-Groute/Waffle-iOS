@@ -31,6 +31,7 @@ class DetailArchiveViewController: UIViewController {
     private var screenHeight: Double = UIScreen.main.bounds.height
     private var categoryHeaderOffset: Double = 0
     private var isTableView: Bool = false
+    var isCategoryEditing: Bool = false
     
     var noPlaceView: UIView = {
         let view = UIView()
@@ -98,11 +99,23 @@ class DetailArchiveViewController: UIViewController {
     
     func configureGesture() {
         memoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo)))
+        let editGesture = UILongPressGestureRecognizer(target: self, action: #selector(didTapEditingMode))
+        editGesture.minimumPressDuration = 2
+        //editGesture.delegate = self
+        editGesture.delaysTouchesBegan = true
+        collectionView.addGestureRecognizer(editGesture)
     }
     
     @objc func didTapLoadMemo() {
         print("memo button")
         //self.viewModel?.loadMemo()
+    }
+    
+    @objc func didTapEditingMode() {
+        //편집 모드로 전환
+//        NotificationCenter.default.post(name: NSNotification.Name.userEditMode, object: nil, userInfo: nil)
+        isCategoryEditing = true
+        collectionView.reloadData()
     }
     
     private func configureNoPlaceView() {
@@ -133,7 +146,8 @@ class DetailArchiveViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsSelection = true
-        
+//        let flowLayout = UICollectionViewFlowLayout()
+//        collectionView.setCollectionViewLayout(flowLayout, animated: true)
         collectionView.register(ConfirmCategoryCollectionViewCell.self, forCellWithReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier)
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.register(AddCategoryCollectionViewCell.self, forCellWithReuseIdentifier: AddCategoryCollectionViewCell.identifier)
@@ -271,7 +285,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
         
-        cell.configureCell(name: viewModel!.category[indexPath.row].name)
+        cell.configureCell(name: viewModel!.category[indexPath.row].name, isEditing: isCategoryEditing)
         return cell
        
     }
@@ -292,9 +306,24 @@ extension DetailArchiveViewController: UICollectionViewDelegate {
 
 extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width: 60, height: 33)
+        if indexPath.row == viewModel!.category.count || indexPath.row == 0 {
+            return CGSize(width: 60, height: 33)
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+        cell.categoryLabel.text = viewModel!.category[indexPath.row].name
+        cell.categoryLabel.sizeToFit()
+        print("cell \(cell.categoryLabel.text)")
+        var cellWidth = cell.categoryLabel.frame.width + 34
+        print("widthh \(cell.categoryLabel.frame.width)")
+        if isCategoryEditing {
+            print("버튼 나옴 \(cell.categoryLabel.text)")
+            cellWidth += 12 // 버튼만큼의 너비
+        }
+        print("width is \(cellWidth)")
+        return CGSize(width: cellWidth, height: 33)
     }
+
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 4
@@ -307,4 +336,8 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
+}
+
+extension DetailArchiveViewController: UIGestureRecognizerDelegate {
+    
 }

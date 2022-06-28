@@ -37,7 +37,7 @@ class SetProfileImageViewController: UIViewController {
         nickNameTextField.round(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         
-        func setProgressNavigationBar() { // TO DO selected state
+        func setProgressNavigationBar() {
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
             let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed2.name)

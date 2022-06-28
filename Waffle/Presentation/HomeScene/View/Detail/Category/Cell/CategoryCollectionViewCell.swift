@@ -11,14 +11,18 @@ import SnapKit
 class CategoryCollectionViewCell: UICollectionViewCell {
     static var identifier = "CategoryCollectionViewCell"
     
-    lazy var categoryButton: UIButton = {
+    var categoryLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Asset.Colors.gray7.color
+        label.font = UIFont.fontWithName(type: .regular, size: 15)
+        label.isUserInteractionEnabled = false
+        label.textAlignment = .center
+        return label
+    }()
+    
+    var deleteButton: UIButton = {
         let button = UIButton()
-        button.round(corner: 20)
-        button.setTitleColor(Asset.Colors.gray7.color, for: .normal)
-        button.titleLabel?.font = UIFont.fontWithName(type: .regular, size: 15)
-        button.isUserInteractionEnabled = false
-        button.layer.borderColor = Asset.Colors.gray4.color.cgColor
-        button.layer.borderWidth = 1
+        button.setImage(Asset.Assets.deleteButton.image, for: .normal)
         return button
     }()
     
@@ -39,38 +43,79 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     func setUp() {
-        contentView.addSubview(categoryButton)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(deleteButton)
         contentView.round(width: nil, color: nil, value: 17)
-        categoryButton.round(corner: 17)
-        categoryButton.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(60)
-            $0.height.equalTo(33)
+        contentView.layer.borderColor = Asset.Colors.gray4.color.cgColor
+        contentView.layer.borderWidth = 1
+//        categoryLabel.backgroundColor = .green
+//        deleteButton.backgroundColor = .blue
+        defaultLayout()
+        addObserver()
+    }
+    
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(editMode(_:)), name: Notification.Name.userEditMode, object: nil)
+    }
+    
+    @objc func editMode(_ notification: Notification) {
+        print("edit mode")
+    }
+    
+    func configureCell(name: String, isEditing: Bool){
+        categoryLabel.text = "#\(name)"
+        if isEditing {
+            editLayout()
+        }else {
+            defaultLayout()
         }
     }
     
-    func configureCell(name: String){
-        if name == "확정" {
-            self.categoryButton.setTitle("\(name)", for: .normal)
-        }else {
-            self.categoryButton.setTitle("#\(name)", for: .normal)
+    func defaultLayout() {
+        deleteButton.isHidden = true
+        categoryLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.bottom.equalToSuperview().offset(-8)
+            $0.leading.equalToSuperview().offset(12)
+            $0.trailing.equalToSuperview().offset(-12)
+        }
+    }
+    
+    func editLayout() {
+        deleteButton.isHidden = false
+        categoryLabel.snp.removeConstraints()
+        categoryLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
+            $0.leading.equalToSuperview().offset(12)
+            $0.bottom.equalToSuperview().offset(-8)
+        }
+        deleteButton.snp.removeConstraints()
+        deleteButton.snp.makeConstraints {
+            $0.leading.equalTo(categoryLabel.snp.trailing).offset(4)
+            $0.top.equalToSuperview().offset(8)
+            $0.width.equalTo(10)
+            $0.height.equalTo(16)
+            $0.trailing.equalToSuperview().offset(-12)
+            $0.bottom.equalToSuperview().offset(-8)
         }
     }
     
     func selectedUI() {
-        categoryButton.titleLabel?.font = UIFont.fontWithName(type: .semibold, size: 15)
-        categoryButton.backgroundColor = Asset.Colors.gray7.color
-        categoryButton.setTitleColor(Asset.Colors.white.color, for: .normal)
-        categoryButton.layer.borderColor = .none
-        categoryButton.layer.borderWidth = 0
+        categoryLabel.font = UIFont.fontWithName(type: .semibold, size: 15)
+        contentView.backgroundColor = Asset.Colors.gray7.color
+        categoryLabel.textColor = Asset.Colors.white.color
+        contentView.layer.borderColor = .none
+        contentView.layer.borderWidth = 0
+        deleteButton.setImage(Asset.Assets.deleteSelectedButton.image, for: .normal)
     }
     
     func deseletedUI() {
-        categoryButton.titleLabel?.font = UIFont.fontWithName(type: .regular, size: 15)
-        categoryButton.backgroundColor = Asset.Colors.white.color
-        categoryButton.setTitleColor(Asset.Colors.gray7.color, for: .normal)
-        categoryButton.layer.borderColor = Asset.Colors.gray4.color.cgColor
-        categoryButton.layer.borderWidth = 1
+        categoryLabel.font = UIFont.fontWithName(type: .regular, size: 15)
+        contentView.backgroundColor = Asset.Colors.white.color
+        categoryLabel.textColor = Asset.Colors.gray7.color
+        contentView.layer.borderColor = Asset.Colors.gray4.color.cgColor
+        contentView.layer.borderWidth = 1
+        deleteButton.setImage(Asset.Assets.deleteButton.image, for: .normal)
     }
 
 }
