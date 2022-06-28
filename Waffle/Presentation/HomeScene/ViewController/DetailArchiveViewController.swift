@@ -100,8 +100,7 @@ class DetailArchiveViewController: UIViewController {
     func configureGesture() {
         memoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo)))
         let editGesture = UILongPressGestureRecognizer(target: self, action: #selector(didTapEditingMode))
-        editGesture.minimumPressDuration = 2
-        //editGesture.delegate = self
+        editGesture.minimumPressDuration = 1
         editGesture.delaysTouchesBegan = true
         collectionView.addGestureRecognizer(editGesture)
     }
@@ -202,6 +201,11 @@ extension DetailArchiveViewController: UITableViewDelegate {
 }
 
 extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
+    func canEditingButton(cell: DetailPlaceTableViewCell) {
+        //TO DO
+        //tableView drag and drop
+    }
+    
     func didTapLikeButton(cell: DetailPlaceTableViewCell) {
         print("didTapLikeButton")
 //        print(cell.likeButton.isSelected)

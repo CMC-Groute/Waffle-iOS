@@ -13,6 +13,7 @@ protocol DetailPlaceTableViewCellDelegate {
     func didTapLikeButton(cell: DetailPlaceTableViewCell)
     func didTapConfirmButton(cell: DetailPlaceTableViewCell)
     func didTapDetailButton(cell: DetailPlaceTableViewCell)
+    func canEditingButton(cell: DetailPlaceTableViewCell)
 }
 
 class DetailPlaceTableViewCell: UITableViewCell {
@@ -43,9 +44,21 @@ class DetailPlaceTableViewCell: UITableViewCell {
         contentView.round(width: nil, color: nil, value: 20)
         self.backgroundColor = Asset.Colors.gray1.color
         contentView.backgroundColor = Asset.Colors.white.color
-        canEditingButton.isHidden = true
+        canEditingButton.isHidden = false
         likeButton.setImage(Asset.Assets.heartSelected.image, for: .selected)
         confirmButton.setImage(Asset.Assets.placeCheckSelected.image, for: .selected)
+        configureGesture()
+    }
+    
+    //MARK: Drag and Drop
+    private func configureGesture() {
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
+        longGesture.minimumPressDuration = 1
+        canEditingButton.addGestureRecognizer(longGesture)
+    }
+    
+    @objc func longGesture() {
+        delegate?.canEditingButton(cell: self)
     }
     
     func setPlaceId(index: Int) {

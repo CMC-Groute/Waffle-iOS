@@ -39,6 +39,8 @@
 		1390EC9728698EAF00E5520C /* AddCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9628698EAF00E5520C /* AddCategoryCollectionViewCell.swift */; };
 		1390EC992869E60700E5520C /* ConfirmCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC982869E60700E5520C /* ConfirmCategoryCollectionViewCell.swift */; };
 		1390EC9B286A0E2900E5520C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9A286A0E2800E5520C /* Notification.swift */; };
+		1390EC9D286B3F0500E5520C /* AddDetailPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */; };
+		1390EC9F286B3F8400E5520C /* AddDetailPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -197,6 +199,8 @@
 		1390EC9628698EAF00E5520C /* AddCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		1390EC982869E60700E5520C /* ConfirmCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		1390EC9A286A0E2800E5520C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewController.swift; sourceTree = "<group>"; };
+		1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewModel.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -978,6 +982,7 @@
 				1390EC5B28647AA600E5520C /* PopUp */,
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
 				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
+				1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1003,6 +1008,7 @@
 			children = (
 				F29ED3092855DB99002371FD /* HomeViewModel.swift */,
 				1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */,
+				1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1395,10 +1401,12 @@
 				13E9B0BE285A2F0800723CAA /* String.swift in Sources */,
 				F29ED3322856089B002371FD /* QuitPopUpViewController.swift in Sources */,
 				F2125D21284E1379008E1185 /* AppCoordinator.swift in Sources */,
+				1390EC9D286B3F0500E5520C /* AddDetailPlaceViewController.swift in Sources */,
 				F2125D37284E52A8008E1185 /* LoginSignUsecaseProtocol.swift in Sources */,
 				F2125D2B284E19AD008E1185 /* TapBarPage.swift in Sources */,
 				13E2A078285EF2030015499E /* Archive.swift in Sources */,
 				13E2A080285F01F00015499E /* HomeUsecaseProtocol.swift in Sources */,
+				1390EC9F286B3F8400E5520C /* AddDetailPlaceViewModel.swift in Sources */,
 				F2125D2D284E1D62008E1185 /* TabBarCoordinator.swift in Sources */,
 				1390EC9428698E9B00E5520C /* CategoryCollectionViewCell.swift in Sources */,
 				F2125D59284F43D2008E1185 /* SettingTableViewCell.swift in Sources */,

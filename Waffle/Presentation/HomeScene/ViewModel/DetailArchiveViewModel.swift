@@ -44,18 +44,21 @@ class DetailArchiveViewModel {
         
         input.viewDidLoad
             .subscribe(onNext: { [weak self] in
-                //get place data
-                self?.placeInfo = [PlaceInfo.dummyPlace, PlaceInfo.dummyPlace, PlaceInfo.dummyPlace]
-                self?.category += Category.categoryList
+                //TO DO get place data 
+                guard let self = self else { return }
+                self.placeInfo = PlaceInfo.dummyPlace
+                self.category += Category.categoryList
             }).disposed(by: disposeBag)
         
         input.addPlaceButton
-            .subscribe(onNext: {
-                // 장소 추가
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.coordinator.addDetailPlace()
             }).disposed(by: disposeBag)
         
         input.loadMemoButton
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.coordinator.loadMemo()
             }).disposed(by: disposeBag)
         

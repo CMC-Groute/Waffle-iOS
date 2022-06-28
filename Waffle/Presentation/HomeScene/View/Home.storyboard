@@ -762,13 +762,13 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um3-F8-x90">
-                                                        <rect key="frame" x="72" y="25" width="222" height="25"/>
+                                                        <rect key="frame" x="72" y="25" width="292" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" name="Black"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubY-27-tGi">
-                                                        <rect key="frame" x="72" y="63" width="222" height="19"/>
+                                                        <rect key="frame" x="72" y="63" width="242" height="19"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <color key="textColor" name="Black"/>
                                                         <nil key="highlightedColor"/>
@@ -809,7 +809,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="green"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="ubY-27-tGi" secondAttribute="trailing" constant="120" id="49s-Km-Wat"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ubY-27-tGi" secondAttribute="trailing" constant="100" id="49s-Km-Wat"/>
                                                     <constraint firstItem="VUV-SI-cm6" firstAttribute="top" secondItem="r7N-c6-BVN" secondAttribute="bottom" constant="10" id="4ku-vg-WBA"/>
                                                     <constraint firstItem="T3P-mS-6Ff" firstAttribute="leading" secondItem="tlC-Yb-M76" secondAttribute="leading" constant="16" id="9F2-a0-qsb"/>
                                                     <constraint firstItem="tDG-7k-1f9" firstAttribute="top" secondItem="tlC-Yb-M76" secondAttribute="top" id="FHD-28-2A9"/>
@@ -821,7 +821,7 @@
                                                     <constraint firstAttribute="height" constant="206" id="ZSe-Ic-Iej"/>
                                                     <constraint firstItem="ubY-27-tGi" firstAttribute="leading" secondItem="VUV-SI-cm6" secondAttribute="trailing" constant="8" id="dYV-Ca-b0n"/>
                                                     <constraint firstItem="Um3-F8-x90" firstAttribute="leading" secondItem="r7N-c6-BVN" secondAttribute="trailing" constant="8" id="daS-n2-nyU"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Um3-F8-x90" secondAttribute="trailing" constant="120" id="fvV-Xt-zA7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Um3-F8-x90" secondAttribute="trailing" constant="50" id="fvV-Xt-zA7"/>
                                                     <constraint firstItem="VUV-SI-cm6" firstAttribute="leading" secondItem="tlC-Yb-M76" secondAttribute="leading" constant="24" id="lsc-cD-suI"/>
                                                     <constraint firstItem="r7N-c6-BVN" firstAttribute="top" secondItem="tlC-Yb-M76" secondAttribute="top" constant="25" id="oRz-4e-3BP"/>
                                                     <constraint firstItem="ubY-27-tGi" firstAttribute="centerY" secondItem="VUV-SI-cm6" secondAttribute="centerY" id="uDf-4R-BDG"/>
@@ -986,6 +986,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiE-SM-Yzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3640.579710144928" y="6.6964285714285712"/>
+        </scene>
+        <!--Detail Place View Controller-->
+        <scene sceneID="2VR-Ni-Qim">
+            <objects>
+                <viewController storyboardIdentifier="DetailPlaceViewController" id="ORX-rk-t1t" customClass="DetailPlaceViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="txw-M6-OUN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="uHq-Ed-0bH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ku8-Xh-jPy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4330" y="7"/>
         </scene>
         <!--Invitation Bottom Sheet View Controller-->
         <scene sceneID="yfg-KM-2WB">
