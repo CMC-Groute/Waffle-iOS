@@ -17,7 +17,7 @@ struct PlaceInfo: Codable {
     var likeSelected: Bool
     var memo: String
     
-    static let dummyPlace = PlaceInfo(placeId: 0, title: "이성당", place: "대구 수성구", isConfirm: true, category: Category(name: "카페", index: 1), likeCount: 4, likeSelected: false, memo: "이성당 빵집 가서 꼭 야채빵 사기")
+    static let dummyPlace = [PlaceInfo(placeId: 0, title: "이성당0", place: "대구 수성구", isConfirm: true, category: Category(name: "카페", index: 0), likeCount: 4, likeSelected: false, memo: "이성당 빵집 가서 꼭 야채빵 사기"), PlaceInfo(placeId: 0, title: "이성당1", place: "대구 수성구", isConfirm: true, category: Category(name: "카페", index: 1), likeCount: 4, likeSelected: false, memo: "이성당 빵집 가서 꼭 야채빵 사기"), PlaceInfo(placeId: 0, title: "이성당2", place: "대구 수성구", isConfirm: true, category: Category(name: "카페", index: 2), likeCount: 2, likeSelected: true, memo: "이성당 빵집 가서 꼭 야채빵 사기")]
 }
 
 struct Category: Codable {
