@@ -42,4 +42,24 @@ class AddCategoryCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    func configureCell(isEditing: Bool) {
+        isEditing ? editingUI() : defaultUI()
+    }
+    
+    func defaultUI() {
+        addButton.setImage(Asset.Assets.addCategory.image, for: .normal)
+        addButton.setTitle(.none, for: .normal)
+        addButton.layer.borderColor = Asset.Colors.gray4.color.cgColor
+        addButton.layer.borderWidth = 1.5
+    }
+    
+    func editingUI() {
+        addButton.setImage(.none, for: .normal)
+        addButton.setTitle("완료", for: .normal)
+        addButton.titleLabel?.font = UIFont.fontWithName(type: .regular, size: 15)
+        addButton.setTitleColor(Asset.Colors.orange.color, for: .normal)
+        addButton.layer.borderColor = Asset.Colors.orange.color.cgColor
+        addButton.layer.borderWidth = 1
+    }
+    
 }

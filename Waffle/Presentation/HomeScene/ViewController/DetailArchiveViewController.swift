@@ -112,10 +112,11 @@ class DetailArchiveViewController: UIViewController {
     }
     
     @objc func didTapEditingMode() {
-        //편집 모드로 전환
-//        NotificationCenter.default.post(name: NSNotification.Name.userEditMode, object: nil, userInfo: nil)
         isCategoryEditing = true
-        collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
     }
     
     private func configureNoPlaceView() {
@@ -280,6 +281,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         
         if indexPath.row == viewModel!.category.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCategoryCollectionViewCell.identifier, for: indexPath) as! AddCategoryCollectionViewCell
+            cell.configureCell(isEditing: isCategoryEditing)
             return cell
         }
         
@@ -296,7 +298,15 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
 extension DetailArchiveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel!.category.count { //마지막 셀 클릭 시
-            viewModel?.addCategory()
+            if isCategoryEditing {
+                isCategoryEditing = false
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    self.collectionView.reloadData()
+                }
+            }else {
+                viewModel?.addCategory()
+            }
         }else {
             guard let selectedCategory = viewModel?.category[indexPath.row] else { return }
             viewModel?.setCategory(category: selectedCategory)

@@ -7,9 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     static var identifier = "CategoryCollectionViewCell"
+    var disposeBag = DisposeBag()
     
     var categoryLabel: UILabel = {
         let label = UILabel()
@@ -48,27 +50,13 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         contentView.round(width: nil, color: nil, value: 17)
         contentView.layer.borderColor = Asset.Colors.gray4.color.cgColor
         contentView.layer.borderWidth = 1
-//        categoryLabel.backgroundColor = .green
-//        deleteButton.backgroundColor = .blue
         defaultLayout()
-        addObserver()
-    }
-    
-    func addObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(editMode(_:)), name: Notification.Name.userEditMode, object: nil)
-    }
-    
-    @objc func editMode(_ notification: Notification) {
-        print("edit mode")
+        bindUI()
     }
     
     func configureCell(name: String, isEditing: Bool){
         categoryLabel.text = "#\(name)"
-        if isEditing {
-            editLayout()
-        }else {
-            defaultLayout()
-        }
+        isEditing ? editLayout() : defaultLayout()
     }
     
     func defaultLayout() {
@@ -118,4 +106,10 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         deleteButton.setImage(Asset.Assets.deleteButton.image, for: .normal)
     }
 
+    func bindUI() {
+        self.deleteButton.rx
+            .tap.subscribe(onNext: {
+                print("deleteButton tap")
+            }).disposed(by: disposeBag)
+    }
 }
