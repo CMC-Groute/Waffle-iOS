@@ -16,7 +16,7 @@ class DetailArchiveViewModel {
     var usecase: HomeUsecase!
     var detailArchive: CardInfo?
     var category: [Category] = [Category.defaultList]
-    var selectedCategory: Category = Category.defaultList
+    var selectedCategory: Category = Category.defaultList // 확정 카테고리
     var placeInfo: [PlaceInfo] = []
     var code: String?
     
@@ -43,7 +43,7 @@ class DetailArchiveViewModel {
                 //TO DO get place data 
                 guard let self = self else { return }
                 self.placeInfo = PlaceInfo.dummyPlace
-                self.category += Category.categoryList
+                self.category += Category.dummyList
             }).disposed(by: disposeBag)
         
         input.addPlaceButton
@@ -88,8 +88,10 @@ class DetailArchiveViewModel {
         selectedCategory = category
     }
     
-    func addCategory() {
-        self.coordinator.category()
+    func addCategory(without category: [Category]) {
+        //확정 카테고리 빼고 줌
+        let sendCategory = category.filter { $0.index != -1 }
+        self.coordinator.addCategory(category: sendCategory)
     }
     
     func deleteCategory(category: Category) {

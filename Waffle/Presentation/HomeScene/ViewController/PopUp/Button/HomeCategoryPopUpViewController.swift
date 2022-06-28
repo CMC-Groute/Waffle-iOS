@@ -15,7 +15,7 @@ protocol HomeCategoryPopUpDelegate {
 class HomeCategoryPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     
-    var selectedCategoryList: [Category] = [Category(name: "맛집", index: 0), Category(name: "소품샵", index: 5)]
+    var selectedCategoryList: [Category] = []
     var enableCategoryList = Category.categoryList
     
     var disposeBag = DisposeBag()
@@ -45,17 +45,18 @@ class HomeCategoryPopUpViewController: UIViewController {
     }
     
     private func filterEnabledCategory() {
+        print("get selectedCategoryList \(selectedCategoryList)")
         for i in selectedCategoryList {
             enableCategoryList[i.index].selected = true
         }
     }
     
     private func collectionViewSetup() {
+        filterEnabledCategory()
         collectionView.register(HomeCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
-        filterEnabledCategory()
     }
     
     private func bindUI() {

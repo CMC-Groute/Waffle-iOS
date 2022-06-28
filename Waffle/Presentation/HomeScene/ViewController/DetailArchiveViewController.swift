@@ -146,8 +146,6 @@ class DetailArchiveViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsSelection = true
-//        let flowLayout = UICollectionViewFlowLayout()
-//        collectionView.setCollectionViewLayout(flowLayout, animated: true)
         collectionView.register(ConfirmCategoryCollectionViewCell.self, forCellWithReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier)
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.register(AddCategoryCollectionViewCell.self, forCellWithReuseIdentifier: AddCategoryCollectionViewCell.identifier)
@@ -189,7 +187,6 @@ extension DetailArchiveViewController: UITableViewDataSource {
         cell.delegate = self
         cell.setPlaceId(index: indexPath.row)
         guard let place = viewModel?.placeInfoByCategory() else { return cell }
-        print("get place")
         cell.configureCell(placeInfo: place[indexPath.row])
         return cell
     }
@@ -279,9 +276,14 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel!.category.count + 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
+            if viewModel?.selectedCategory.index == -1 {
+                cell.isSelected = true
+                collectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .init())
+            }
             return cell
         }
         
@@ -292,6 +294,10 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+        if 0...8 ~= viewModel!.selectedCategory.index {
+            cell.isSelected = true
+            collectionView.selectItem(at: [0, viewModel!.selectedCategory.index], animated: true, scrollPosition: .init())
+        }
         cell.delegate = self
         cell.indexPath = indexPath
         cell.configureCell(name: viewModel!.category[indexPath.row].name, isEditing: isCategoryEditing)
@@ -304,7 +310,8 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
 
 extension DetailArchiveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel!.category.count { //마지막 셀 클릭 시
+        guard let viewModel = viewModel else { return }
+        if indexPath.row == viewModel.category.count { //마지막 셀 클릭 시
             if isCategoryEditing {
                 isCategoryEditing = false
                 DispatchQueue.main.async { [weak self] in
@@ -312,11 +319,11 @@ extension DetailArchiveViewController: UICollectionViewDelegate {
                     self.collectionView.reloadData()
                 }
             }else {
-                viewModel?.addCategory()
+                viewModel.addCategory(without: viewModel.category)
             }
         }else {
-            guard let selectedCategory = viewModel?.category[indexPath.row] else { return }
-            viewModel?.setCategory(category: selectedCategory)
+            let selectedCategory = viewModel.category[indexPath.row]
+            viewModel.setCategory(category: selectedCategory)
             tableView.reloadData()
         }
     }

@@ -18,7 +18,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func invitationBottomSheet(copyCode: String)
     
     //MARK: Button Click
-    func category()
+    func addCategory(category: [Category])
     func loadMemo()
     func participants()
     func detailPlace(detailInfo: PlaceInfo, category: Category)
