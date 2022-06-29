@@ -322,7 +322,7 @@ class AddArchiveViewController: UIViewController {
                     self.archiveMemoTextView.textColor = Asset.Colors.black.color
                     self.archiveNameTextField.text = self.viewModel?.cardInfo?.title
                     self.archiveLocationTextField.text = self.viewModel?.cardInfo?.place
-                    self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
+                    self.archiveLocationTextField.addIconLeft(value: 9, icon: Asset.Assets.flagOrange.image, width: 15, height: 17)
                     self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
                     self.addArchiveButton.setTitle("편집 완료", for: .normal)
                 }

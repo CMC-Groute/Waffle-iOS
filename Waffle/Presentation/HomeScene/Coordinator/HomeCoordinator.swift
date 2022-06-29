@@ -134,8 +134,10 @@ extension HomeCoordinator {
         self.navigationController.present(homeCategoryPopUpView, animated: false)
     }
     
-    func loadMemo() {
+    func loadMemo(memo: String, wapple: String) {
         let memoPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MemoPopUpViewController") as! MemoPopUpViewController
+        memoPopUpView.memoText = memo
+        memoPopUpView.wappleName = wapple
         memoPopUpView.coordinator = self
         memoPopUpView.modalPresentationStyle = .overFullScreen
         memoPopUpView.modalTransitionStyle = .crossDissolve

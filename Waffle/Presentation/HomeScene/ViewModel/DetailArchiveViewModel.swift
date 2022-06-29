@@ -75,12 +75,6 @@ class DetailArchiveViewModel {
                 self.coordinator.addDetailPlace()
             }).disposed(by: disposeBag)
         
-        input.loadMemoButton
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.coordinator.loadMemo()
-            }).disposed(by: disposeBag)
-        
         input.invitationButton
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -126,7 +120,9 @@ class DetailArchiveViewModel {
     }
     
     func loadMemo() {
-        self.coordinator.loadMemo()
+        guard let detailArchive = detailArchive else { return }
+        guard let memo = detailArchive.memo else { return }
+        self.coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(detailArchive.color + 1)")
     }
 
 }

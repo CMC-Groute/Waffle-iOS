@@ -19,7 +19,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     
     //MARK: Button Click
     func addCategory(category: [Category])
-    func loadMemo()
+    func loadMemo(memo: String, wapple: String)
     func participants()
     func detailPlace(detailInfo: PlaceInfo, category: Category)
     

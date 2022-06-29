@@ -106,7 +106,7 @@ class DetailArchiveViewController: UIViewController {
     }
     
     @objc func didTapLoadMemo() {
-        //self.viewModel?.loadMemo()
+        viewModel?.loadMemo()
     }
     
     @objc func didTapEditingMode() {
@@ -118,8 +118,8 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func configureNoPlaceView() {
-        self.noPlaceView.addSubview(noPlaceImageView)
-        self.noPlaceView.addSubview(noPlaceLabel)
+        noPlaceView.addSubview(noPlaceImageView)
+        noPlaceView.addSubview(noPlaceLabel)
         
         noPlaceImageView.snp.makeConstraints {
             $0.top.equalTo(78)
@@ -156,7 +156,6 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        print("bindViewModel")
         let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
@@ -175,7 +174,6 @@ class DetailArchiveViewController: UIViewController {
         
         output?.frameViewColor
             .subscribe(onNext: { colorName in
-                print("colorName \(colorName)")
                 self.topView.backgroundColor = UIColor(named: colorName)
             }).disposed(by: disposeBag)
         
@@ -219,7 +217,7 @@ extension DetailArchiveViewController: UITableViewDataSource {
     // Move Row Instance Method
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         var place = viewModel!.placeInfoByCategory()
-        print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
+        //print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
         let moveCell = place[sourceIndexPath.row]
         place.remove(at: sourceIndexPath.row)
         place.insert(moveCell, at: destinationIndexPath.row)
