@@ -9,6 +9,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum DefaultDetailCardInfo: String {
+    case when = "토핑이 원하는 날짜와 시간"
+    case `where` = "토핑이 원하는 위치"
+    case memo = "약속에 대한 메모를 입력하지 않았어요"
+}
+
 class DetailArchiveViewModel {
     
     var coordinator: HomeCoordinator!
@@ -33,6 +39,10 @@ class DetailArchiveViewModel {
     }
     
     struct Output {
+        var whenTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.when.rawValue)
+        var whereTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.where.rawValue)
+        var frameViewColor = BehaviorRelay<String>(value: "")
+        var frameImageView = BehaviorRelay<UIImage>(value: UIImage(named: Asset.Assets.detailWapple1.name)!)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -43,6 +53,16 @@ class DetailArchiveViewModel {
                 //TO DO get place data 
                 guard let self = self else { return }
                 self.placeInfo = PlaceInfo.dummyPlace
+                guard let detailArchive = self.detailArchive else {
+                   return
+               }
+               if let date = detailArchive.date {
+                   let dateString = Date.getDate(dateString: date)
+                   output.whenTextLabel.accept("\(dateString.joined(separator: " "))")
+               }
+               output.whereTextLabel.accept(detailArchive.place ?? DefaultDetailCardInfo.where.rawValue)
+               output.frameImageView.accept(UIImage(named: "detailWapple-\(detailArchive.color + 1)")!)
+               output.frameViewColor.accept(CardViewInfoType(index: detailArchive.color).colorName())
                 self.category += Category.dummyList
             }).disposed(by: disposeBag)
         
@@ -88,7 +108,11 @@ class DetailArchiveViewModel {
         selectedCategory = category
     }
     
-    func addCategory(without category: [Category]) {
+    func addCategory(category: [Category]) {
+        self.category += category
+    }
+    
+    func addHomeCategory(without category: [Category]) {
         //확정 카테고리 빼고 줌
         let sendCategory = category.filter { $0.index != -1 }
         self.coordinator.addCategory(category: sendCategory)

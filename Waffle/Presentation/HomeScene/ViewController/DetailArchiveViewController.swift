@@ -157,12 +157,30 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        print("bindViewModel")
         let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
-        whenLabel.text = viewModel?.detailArchive?.date ?? ""
-        whereLabel.text = viewModel?.detailArchive?.place ?? ""
+        output?.whenTextLabel
+            .bind(to: self.whenLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.whereTextLabel
+            .bind(to: self.whereLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.frameViewColor
+            .subscribe(onNext: { colorName in
+                print("colorName \(colorName)")
+                self.topView.backgroundColor = UIColor(named: colorName)
+            }).disposed(by: disposeBag)
+        
+        output?.frameImageView
+            .subscribe(onNext: { wapple in
+                self.toppingImageView.image = wapple
+            }).disposed(by: disposeBag)
+        
         let count = viewModel?.detailArchive?.topping.count ?? 0 + 1
         participantsButton.setTitle("\(count)명", for: .normal)
         
@@ -319,7 +337,7 @@ extension DetailArchiveViewController: UICollectionViewDelegate {
                     self.collectionView.reloadData()
                 }
             }else {
-                viewModel.addCategory(without: viewModel.category)
+                viewModel.addHomeCategory(without: viewModel.category)
             }
         }else {
             let selectedCategory = viewModel.category[indexPath.row]
@@ -338,14 +356,10 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
         cell.categoryLabel.text = viewModel!.category[indexPath.row].name
         cell.categoryLabel.sizeToFit()
-        print("cell \(cell.categoryLabel.text)")
         var cellWidth = cell.categoryLabel.frame.width + 34
-        print("widthh \(cell.categoryLabel.frame.width)")
         if isCategoryEditing {
-            print("버튼 나옴 \(cell.categoryLabel.text)")
             cellWidth += 12 // 버튼만큼의 너비
         }
-        print("width is \(cellWidth)")
         return CGSize(width: cellWidth, height: 33)
     }
 
@@ -368,5 +382,17 @@ extension DetailArchiveViewController: CategoryCollectionViewCellDelegate {
         guard let viewModel = viewModel else { return }
         let currentCategory = viewModel.category[cell.indexPath!.row]
         viewModel.deleteCategory(category: currentCategory)
+    }
+}
+
+//MARK: Home Category에서 받아온 카테고리 업데이트
+extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
+    func selectedCategory(category: [Category]) {
+        viewModel?.addCategory(category: category)
+        DispatchQueue.main.async { [weak self] in
+            print("selectedCategory \(category)")
+            guard let self = self else { return }
+            self.collectionView.reloadData()
+        }
     }
 }

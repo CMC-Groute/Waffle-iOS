@@ -34,13 +34,13 @@ extension Date {
         return ""
     }
     
-    func getDate(dateString: String) -> [String] {
+    static func getDate(dateString: String) -> [String] {
         let dateComponent = dateString.components(separatedBy: "T")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "hh:mm:ss"
+        timeFormatter.dateFormat = "HH:mm:ss"
         
         let date = dateFormatter.date(from: dateComponent[0])
         let time = timeFormatter.date(from: dateComponent[1])

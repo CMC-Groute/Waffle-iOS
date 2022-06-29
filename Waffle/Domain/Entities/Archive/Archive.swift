@@ -33,7 +33,7 @@ struct Participants: Codable {
 
 struct CardInfo: Hashable, Identifiable, Codable {
     var title: String
-    var date: String
+    var date: String?
     var place: String?
     var memo: String?
     var waffle: String
