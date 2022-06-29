@@ -73,8 +73,8 @@ class HomeCategoryPopUpViewController: UIViewController {
                 items.append(self.enableCategoryList[i.row])
             }
             print("selected item \(items)")
-            self.delegate?.selectedCategory(category: items)
             self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+            self.delegate?.selectedCategory(category: items)
         }).disposed(by: disposeBag)
     }
     

@@ -17,6 +17,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     
     var type: CoordinatorType = .home
+    var detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -37,7 +38,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func detailArchive(selectedArchive: CardInfo) {
-        let detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
+        detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
         detailArchiveViewController.viewModel?.setArchive(archive: selectedArchive)
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         
@@ -126,6 +127,7 @@ extension HomeCoordinator {
     func addCategory(category: [Category]) {
         let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeCategoryPopUpViewController") as! HomeCategoryPopUpViewController
         homeCategoryPopUpView.coordinator = self
+        homeCategoryPopUpView.delegate = detailArchiveViewController
         homeCategoryPopUpView.selectedCategoryList = category
         homeCategoryPopUpView.modalPresentationStyle = .overFullScreen
         homeCategoryPopUpView.modalTransitionStyle = .crossDissolve
