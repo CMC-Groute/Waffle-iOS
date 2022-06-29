@@ -77,6 +77,8 @@ class DetailPlaceTableViewCell: UITableViewCell {
     func configureCell(placeInfo: PlaceInfo) {
         if placeInfo.category.index == -1 {
             canEditingButton.isHidden = false
+        }else {
+            canEditingButton.isHidden = true
         }
         
         titleLabel.text = placeInfo.title

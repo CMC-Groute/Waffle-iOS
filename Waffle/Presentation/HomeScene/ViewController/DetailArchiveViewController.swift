@@ -211,6 +211,20 @@ extension DetailArchiveViewController: UITableViewDataSource {
         cell.configureCell(placeInfo: place[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+       return true
+    }
+    
+    // Move Row Instance Method
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var place = viewModel!.placeInfoByCategory()
+        print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
+        let moveCell = place[sourceIndexPath.row]
+        place.remove(at: sourceIndexPath.row)
+        place.insert(moveCell, at: destinationIndexPath.row)
+        tableView.dragInteractionEnabled = false
+    }
 }
 
 extension DetailArchiveViewController: UITableViewDelegate {
@@ -220,10 +234,31 @@ extension DetailArchiveViewController: UITableViewDelegate {
     }
 }
 
+//MARK: Drag And Drop
+extension DetailArchiveViewController: UITableViewDragDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+            return [UIDragItem(itemProvider: NSItemProvider())]
+        }
+}
+
+extension DetailArchiveViewController: UITableViewDropDelegate {
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if session.localDragSession != nil {
+            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+        }
+        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+    }
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+    }
+}
+
 extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
     func canEditingButton(cell: DetailPlaceTableViewCell) {
         //TO DO
         //tableView drag and drop
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
     }
     
     func didTapLikeButton(cell: DetailPlaceTableViewCell) {
