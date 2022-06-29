@@ -36,7 +36,7 @@ struct CardInfo: Hashable, Identifiable, Codable {
     var date: String?
     var place: String?
     var memo: String?
-    var waffle: String
+    var wapple: String
     var topping: [String]
     var color: Int
     var id = UUID()

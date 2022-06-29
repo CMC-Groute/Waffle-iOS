@@ -81,7 +81,7 @@ final class CardView: UIView {
             memoLabel.text = DefaultDetailCardInfo.memo.rawValue
         }
 
-        wappleLabel.text = item.waffle
+        wappleLabel.text = item.wapple
         if item.topping.isEmpty {
             toppingLabel.text = DefaultDetailCardInfo.topping.rawValue
         }else {
