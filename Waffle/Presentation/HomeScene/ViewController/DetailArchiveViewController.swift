@@ -106,7 +106,6 @@ class DetailArchiveViewController: UIViewController {
     }
     
     @objc func didTapLoadMemo() {
-        print("memo button")
         //self.viewModel?.loadMemo()
     }
     
@@ -168,6 +167,10 @@ class DetailArchiveViewController: UIViewController {
         
         output?.whereTextLabel
             .bind(to: self.whereLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.memoTextLabel
+            .bind(to: self.memoLabel.rx.text)
             .disposed(by: disposeBag)
         
         output?.frameViewColor

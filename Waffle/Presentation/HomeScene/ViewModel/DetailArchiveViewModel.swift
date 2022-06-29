@@ -13,6 +13,7 @@ enum DefaultDetailCardInfo: String {
     case when = "토핑이 원하는 날짜와 시간"
     case `where` = "토핑이 원하는 위치"
     case memo = "약속에 대한 메모를 입력하지 않았어요"
+    case topping = "초대한 토핑이 없어요"
 }
 
 class DetailArchiveViewModel {
@@ -41,6 +42,7 @@ class DetailArchiveViewModel {
     struct Output {
         var whenTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.when.rawValue)
         var whereTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.where.rawValue)
+        var memoTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.memo.rawValue)
         var frameViewColor = BehaviorRelay<String>(value: "")
         var frameImageView = BehaviorRelay<UIImage>(value: UIImage(named: Asset.Assets.detailWapple1.name)!)
     }
@@ -63,6 +65,7 @@ class DetailArchiveViewModel {
                output.whereTextLabel.accept(detailArchive.place ?? DefaultDetailCardInfo.where.rawValue)
                output.frameImageView.accept(UIImage(named: "detailWapple-\(detailArchive.color + 1)")!)
                output.frameViewColor.accept(CardViewInfoType(index: detailArchive.color).colorName())
+                output.memoTextLabel.accept(detailArchive.memo ?? DefaultDetailCardInfo.memo.rawValue)
                 self.category += Category.dummyList
             }).disposed(by: disposeBag)
         

@@ -64,15 +64,29 @@ final class CardView: UIView {
     }
     
     func bindUI(item: CardInfo) {
+        topView.backgroundColor = UIColor(named: CardViewInfoType(index: item.color).colorName())
+        cardImageView.image = UIImage(named: "card\(item.color + 1)")
+        titleLabel.text = item.title
+        placeLabel.text = item.place ?? DefaultDetailCardInfo.where.rawValue
+        if let date = item.date {
+            let dateArray = Date.getDate(dateString: date)
+            timeLabel.text = "\(dateArray[0]) \(dateArray[1])"
+        }else {
+            timeLabel.text = DefaultDetailCardInfo.when.rawValue
+        }
         
-        self.topView.backgroundColor = UIColor(named: CardViewInfoType(index: item.color).colorName())
-        self.cardImageView.image = UIImage(named: "card\(item.color + 1)")
-        self.titleLabel.text = item.title
-        self.placeLabel.text = item.place
-        self.timeLabel.text = item.date
-        self.memoLabel.text = item.memo
-        self.wappleLabel.text = item.waffle
-        self.toppingLabel.text = item.topping.joined(separator: ", ")
+        if let memo = item.memo {
+            memoLabel.text = memo
+        }else {
+            memoLabel.text = DefaultDetailCardInfo.memo.rawValue
+        }
+
+        wappleLabel.text = item.waffle
+        if item.topping.isEmpty {
+            toppingLabel.text = DefaultDetailCardInfo.topping.rawValue
+        }else {
+            toppingLabel.text = item.topping.joined(separator: ", ")
+        }
     }
 }
 
