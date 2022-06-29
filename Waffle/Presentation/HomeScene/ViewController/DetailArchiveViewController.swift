@@ -74,7 +74,7 @@ class DetailArchiveViewController: UIViewController {
     
     private func configureUI() {
         configureNoPlaceView()
-        addPlaceButton.round(corner: 26)
+        addPlaceButton.makeRounded(corner: 26)
         memoView.round(width: nil, color: nil, value: 20)
         //memoLabel.addTrailing(with: "...", moreText: "더보기", moreTextFont: UIFont.fontWithName(type: .regular, size: 14), moreTextColor: Asset.Colors.gray5.color)
         scrollView.bounces = false

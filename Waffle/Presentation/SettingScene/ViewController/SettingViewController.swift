@@ -93,10 +93,10 @@ class SettingViewController: UIViewController {
     
     private func configureUI() {
         profileImage.makeCircleShape()
-        changePWButton.round(corner: 20)
+        changePWButton.makeRounded(corner: 20)
         changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         changePWButton.layer.borderWidth = 1
-        editButton.round(corner: 20)
+        editButton.makeRounded(corner: 20)
         editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         editButton.layer.borderWidth = 1
         self.view.addSubview(self.tableView)

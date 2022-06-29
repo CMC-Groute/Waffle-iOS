@@ -12,7 +12,7 @@ class ConfirmCategoryCollectionViewCell: UICollectionViewCell {
     
     lazy var categoryButton: UIButton = {
         let button = UIButton()
-        button.round(corner: 20)
+        button.makeRounded(corner: 20)
         button.setTitleColor(Asset.Colors.gray7.color, for: .normal)
         button.titleLabel?.font = UIFont.fontWithName(type: .regular, size: 15)
         button.isUserInteractionEnabled = false
@@ -40,7 +40,7 @@ class ConfirmCategoryCollectionViewCell: UICollectionViewCell {
     func setUp() {
         contentView.addSubview(categoryButton)
         contentView.round(width: nil, color: nil, value: 17)
-        categoryButton.round(corner: 17)
+        categoryButton.makeRounded(corner: 17)
         categoryButton.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
             $0.width.equalTo(60)

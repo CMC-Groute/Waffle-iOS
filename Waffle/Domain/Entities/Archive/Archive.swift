@@ -42,7 +42,7 @@ struct CardInfo: Hashable, Identifiable, Codable {
     var id = UUID()
     
     enum CodingKeys: String, CodingKey {
-        case title, date, waffle, topping, color, id
+        case title, date, wapple, topping, color, id
         case memo = "comment"
         case place = "invitationPlace"
     }

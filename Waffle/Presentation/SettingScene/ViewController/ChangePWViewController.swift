@@ -40,10 +40,10 @@ class ChangePWViewController: UIViewController {
     private func configureUI() {
         textFields = [PWTextField, newPWTextField, newRePWTextField]
         textFields.forEach {
-            $0.round(corner: 10)
+            $0.makeRounded(corner: 10)
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
-        doneButton.round(corner: 26)
+        doneButton.makeRounded(corner: 26)
         
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes = Common.navigationBarTitle()

@@ -65,10 +65,10 @@ class AddArchiveViewController: UIViewController {
     }
     
     private func configureUI() {
-        archiveNameTextField.round(corner: 10)
-        archiveDateTextField.round(corner: 10)
-        archiveTimeTextField.round(corner: 10)
-        archiveLocationTextField.round(corner: 10)
+        archiveNameTextField.makeRounded(corner: 10)
+        archiveDateTextField.makeRounded(corner: 10)
+        archiveTimeTextField.makeRounded(corner: 10)
+        archiveLocationTextField.makeRounded(corner: 10)
         
         archiveNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         archiveDateTextField.padding(value: 9, icon: "")
@@ -77,7 +77,7 @@ class AddArchiveViewController: UIViewController {
         archiveMemoTextView.round(width: 2, color: Asset.Colors.gray2.name, value: 10)
         archiveMemoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         archiveMemoTextView.attributedText = archiveMemoTextView.text.setLineHeight(24)
-        addArchiveButton.round(corner: 26)
+        addArchiveButton.makeRounded(corner: 26)
         
 
         func setToolbar() {

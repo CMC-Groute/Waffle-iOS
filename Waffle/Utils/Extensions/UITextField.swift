@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextField {
 
-    func round(corner: CGFloat) {
+    func makeRounded(corner: CGFloat) {
         self.layer.cornerRadius = corner
         self.layer.masksToBounds = true
     }
@@ -92,12 +92,12 @@ extension UITextField {
 }
 
 extension UIButton {
-    func round(corner: CGFloat) {
+    func makeRounded(corner: CGFloat) {
         self.layer.cornerRadius = corner
         self.layer.masksToBounds = true
     }
     
-    func circle(corner: CGFloat) {
+    func makeCircle(corner: CGFloat) {
         self.layer.cornerRadius = self.frame.size.width / 2
         self.layer.masksToBounds = true
     }

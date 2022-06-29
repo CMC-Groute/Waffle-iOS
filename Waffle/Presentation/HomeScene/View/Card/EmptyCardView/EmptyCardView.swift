@@ -31,7 +31,7 @@ class EmptyCardView: UIView {
     }
     
     func configure() {
-        makeArchiveButton.round(corner: 20)
+        makeArchiveButton.makeRounded(corner: 20)
         makeArchiveButton.layer.borderColor = Asset.Colors.orange.color.cgColor
         makeArchiveButton.layer.borderWidth = 1
     }

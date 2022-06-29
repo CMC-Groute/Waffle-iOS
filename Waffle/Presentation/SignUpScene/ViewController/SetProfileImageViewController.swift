@@ -32,9 +32,9 @@ class SetProfileImageViewController: UIViewController {
     func configureUI() {
         profileImage.layer.borderWidth = 0
         profileImage.makeCircleShape()
-        startButton.round(corner: 26)
+        startButton.makeRounded(corner: 26)
         startButton.setUnEnabled(color: Asset.Colors.gray4.name)
-        nickNameTextField.round(corner: 10)
+        nickNameTextField.makeRounded(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         
         func setProgressNavigationBar() {

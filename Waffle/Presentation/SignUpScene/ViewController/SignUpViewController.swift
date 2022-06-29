@@ -42,11 +42,11 @@ class SignUpViewController: UIViewController {
     }
     
     private func configureUI(){
-        emailAuthenButton.round(corner: 10)
-        codeAuthenButton.round(corner: 10)
-        nextButton.round(corner: 26)
+        emailAuthenButton.makeRounded(corner: 10)
+        codeAuthenButton.makeRounded(corner: 10)
+        nextButton.makeRounded(corner: 26)
         textFields.forEach {
-            $0.round(corner: 10)
+            $0.makeRounded(corner: 10)
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
 

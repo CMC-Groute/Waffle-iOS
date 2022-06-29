@@ -76,11 +76,11 @@ class LoginViewController: UIViewController {
     
     func configureUI() {
         UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
-        loginButton.round(corner: 26)
+        loginButton.makeRounded(corner: 26)
         
-        emailTextField.round(corner: 10)
+        emailTextField.makeRounded(corner: 10)
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
-        passwordTextField.round(corner: 10)
+        passwordTextField.makeRounded(corner: 10)
         passwordTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
     }
     

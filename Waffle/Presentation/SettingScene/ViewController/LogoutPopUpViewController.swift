@@ -30,8 +30,8 @@ class LogoutPopUpViewController: UIViewController {
     
     private func configureUI(){
         self.framwView.round(width: 0, color: "", value: 20)
-        self.cancelButton.round(corner: 24)
-        self.OKButton.round(corner: 24)
+        self.cancelButton.makeRounded(corner: 24)
+        self.OKButton.makeRounded(corner: 24)
     }
     
 

@@ -14,7 +14,7 @@ class AddCategoryCollectionViewCell: UICollectionViewCell {
     lazy var addButton: UIButton = {
         let button = UIButton()
         button.setImage(Asset.Assets.addCategory.image, for: .normal)
-        button.round(corner: 20)
+        button.makeRounded(corner: 20)
         button.layer.borderColor = Asset.Colors.gray4.color.cgColor
         button.isUserInteractionEnabled = false
         button.layer.borderWidth = 1.5
@@ -34,7 +34,7 @@ class AddCategoryCollectionViewCell: UICollectionViewCell {
     func setUp() {
         contentView.addSubview(addButton)
         contentView.round(width: nil, color: nil, value: 17)
-        addButton.round(corner: 17)
+        addButton.makeRounded(corner: 17)
         addButton.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
             $0.width.equalTo(60)

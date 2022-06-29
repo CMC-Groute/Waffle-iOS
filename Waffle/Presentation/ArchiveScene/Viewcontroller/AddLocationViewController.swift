@@ -80,7 +80,7 @@ class AddLocationViewController: UIViewController {
     }
     
     private func configureUI() {
-        self.doneButton.round(corner: 26)
+        self.doneButton.makeRounded(corner: 26)
         self.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         func setNavigationBar() {
             var bounds = UIScreen.main.bounds

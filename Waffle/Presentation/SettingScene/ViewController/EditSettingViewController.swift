@@ -33,9 +33,9 @@ class EditSettingViewController: UIViewController {
     
     private func configureUI() {
         profileImage.makeCircleShape()
-        doneButton.round(corner: 26)
+        doneButton.makeRounded(corner: 26)
         doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
-        nickNameTextField.round(corner: 10)
+        nickNameTextField.makeRounded(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         
         func setNavigationBar() {

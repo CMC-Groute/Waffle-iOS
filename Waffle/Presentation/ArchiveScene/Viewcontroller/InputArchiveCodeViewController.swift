@@ -68,10 +68,10 @@ class InputArchiveCodeViewController: UIViewController {
       }
     
     func configureUI() {
-        codeTextField.round(corner: 10)
+        codeTextField.makeRounded(corner: 10)
         codeTextField.becomeFirstResponder()
         codeTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
-        joinButton.round(corner: 26)
+        joinButton.makeRounded(corner: 26)
         
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
