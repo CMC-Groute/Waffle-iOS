@@ -8,5 +8,5 @@
 import Foundation
 
 struct Config {
-    static var baseURL = ""
+    static var baseURL = "http://3.39.177.96/"
 }
