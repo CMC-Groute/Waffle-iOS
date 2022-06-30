@@ -36,6 +36,7 @@ class DetailArchiveViewModel {
         var viewDidLoad: Observable<Void>
         var loadMemoButton: Observable<Void>
         var invitationButton: Observable<Void>
+        var participantsButton: Observable<Void>
         var addPlaceButton: Observable<Void>
     }
     
@@ -74,7 +75,11 @@ class DetailArchiveViewModel {
                 guard let self = self else { return }
                 self.coordinator.addDetailPlace()
             }).disposed(by: disposeBag)
-        
+        input.participantsButton
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.coordinator.participants(cardInfo: self.detailArchive)
+            }).disposed(by: disposeBag)
         input.invitationButton
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }

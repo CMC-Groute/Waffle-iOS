@@ -144,9 +144,10 @@ extension HomeCoordinator {
         self.navigationController.present(memoPopUpView, animated: false)
     }
     
-    func participants() {
+    func participants(cardInfo: CardInfo?) {
         let particiPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ParticiPopUpViewController") as! ParticiPopUpViewController
         particiPopUpView.coordinator = self
+        particiPopUpView.cardInfo = cardInfo
         particiPopUpView.modalPresentationStyle = .overFullScreen
         particiPopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(particiPopUpView, animated: false)

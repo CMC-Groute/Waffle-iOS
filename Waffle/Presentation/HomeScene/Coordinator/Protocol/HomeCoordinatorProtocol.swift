@@ -20,7 +20,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     //MARK: Button Click
     func addCategory(category: [Category])
     func loadMemo(memo: String, wapple: String)
-    func participants()
+    func participants(cardInfo: CardInfo?)
     func detailPlace(detailInfo: PlaceInfo, category: Category)
     
     //MARK: POPUP View click

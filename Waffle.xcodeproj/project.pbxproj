@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		132731CC286D3B3100BAE8ED /* PaticipantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132731CA286D3B3100BAE8ED /* PaticipantsTableViewCell.swift */; };
-		132731CD286D3B3100BAE8ED /* PaticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* PaticipantsTableViewCell.xib */; };
+		132731CC286D3B3100BAE8ED /* ParticipantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */; };
+		132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */; };
 		135B60572858504C0035AE4B /* ButtonAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */; };
 		135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B60582858507A0035AE4B /* TableAddLocationViewController.swift */; };
 		135B605B285898FF0035AE4B /* LocationLeftTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */; };
@@ -169,8 +169,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		132731CA286D3B3100BAE8ED /* PaticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaticipantsTableViewCell.swift; sourceTree = "<group>"; };
-		132731CB286D3B3100BAE8ED /* PaticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaticipantsTableViewCell.xib; sourceTree = "<group>"; };
+		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
+		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
 		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLeftTableviewCell.swift; sourceTree = "<group>"; };
@@ -407,8 +407,8 @@
 				1390EC79286494B100E5520C /* DetailPlaceTableViewCell.swift */,
 				1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */,
 				1390EC8028649A6200E5520C /* HomeCategoryCollectionViewCell.swift */,
-				132731CA286D3B3100BAE8ED /* PaticipantsTableViewCell.swift */,
-				132731CB286D3B3100BAE8ED /* PaticipantsTableViewCell.xib */,
+				132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */,
+				132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1243,7 +1243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				132731CD286D3B3100BAE8ED /* PaticipantsTableViewCell.xib in Resources */,
+				132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */,
 				F29ED30E2855DBB2002371FD /* Home.storyboard in Resources */,
 				F2A412E42849EFD900E04BF5 /* LaunchScreen.storyboard in Resources */,
 				F29ED3142855DBCE002371FD /* Map.storyboard in Resources */,
@@ -1455,7 +1455,7 @@
 				F29ED2E82855D75B002371FD /* HomeCoordinator.swift in Sources */,
 				F2125D46284E56E8008E1185 /* URLSessionNetworkService.swift in Sources */,
 				F2125D29284E1922008E1185 /* TabBarCoordinatorProtocol.swift in Sources */,
-				132731CC286D3B3100BAE8ED /* PaticipantsTableViewCell.swift in Sources */,
+				132731CC286D3B3100BAE8ED /* ParticipantsTableViewCell.swift in Sources */,
 				13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */,
 				F2125D53284E613B008E1185 /* SignUpViewModel.swift in Sources */,
 				F29ED3262855EE1E002371FD /* UserUseCaseProtocol.swift in Sources */,

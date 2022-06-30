@@ -156,7 +156,7 @@ class DetailArchiveViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
+        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), participantsButton: participantsButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         

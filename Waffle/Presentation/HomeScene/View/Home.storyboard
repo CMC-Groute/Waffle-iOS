@@ -527,7 +527,7 @@
                                             <constraint firstItem="knP-ho-hhV" firstAttribute="centerY" secondItem="4IE-jD-qod" secondAttribute="centerY" id="wlm-Mu-MjQ"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D1P-pm-DwO">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D1P-pm-DwO">
                                         <rect key="frame" x="15" y="71" width="350" height="55"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
@@ -543,7 +543,7 @@
                                     <constraint firstAttribute="trailing" secondItem="FxZ-T4-ey1" secondAttribute="trailing" constant="9" id="hke-ZT-ajm"/>
                                     <constraint firstAttribute="trailing" secondItem="D1P-pm-DwO" secondAttribute="trailing" constant="15" id="iXM-nw-Ksi"/>
                                     <constraint firstAttribute="bottom" secondItem="D1P-pm-DwO" secondAttribute="bottom" constant="33" id="pJy-5B-sMG"/>
-                                    <constraint firstItem="FxZ-T4-ey1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VZL-Ln-Aqu" secondAttribute="trailing" constant="50" id="qxB-vF-yjb"/>
+                                    <constraint firstItem="FxZ-T4-ey1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VZL-Ln-Aqu" secondAttribute="trailing" constant="30" id="qxB-vF-yjb"/>
                                     <constraint firstItem="VZL-Ln-Aqu" firstAttribute="leading" secondItem="dEP-3c-XQD" secondAttribute="leading" constant="138" id="vvh-sN-TKa"/>
                                 </constraints>
                             </view>
@@ -559,6 +559,13 @@
                             <constraint firstItem="Ecf-nR-RPv" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dEP-3c-XQD" secondAttribute="bottom" constant="75" id="plP-IJ-w7e"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="FxZ-T4-ey1" id="Uf1-tR-sYl"/>
+                        <outlet property="countLabel" destination="knP-ho-hhV" id="irO-1i-oyB"/>
+                        <outlet property="frameView" destination="dEP-3c-XQD" id="pTy-gu-2Ws"/>
+                        <outlet property="heightConstraint" destination="0Li-Ey-xbV" id="0wp-Rg-nGh"/>
+                        <outlet property="tableView" destination="D1P-pm-DwO" id="yjG-wU-4KG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZ8-52-OxJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

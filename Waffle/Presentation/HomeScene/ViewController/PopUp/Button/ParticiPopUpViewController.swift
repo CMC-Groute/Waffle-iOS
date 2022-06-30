@@ -11,11 +11,20 @@ import RxSwift
 class ParticiPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
+    var cardInfo: CardInfo?
     
     @IBOutlet private weak var frameView: UIView!
-    @IBOutlet private weak var countLabel: UIView!
-    @IBOutlet private weak var tableVuew: UITableView!
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var heightConstraint: NSLayoutConstraint!
+    private var maximumHeight: CGFloat = 486
+    
+    lazy var transparentView: UIImageView = {
+        let image = Asset.Assets.transparentEtc.image
+        let imageView = UIImageView(image: image)
+        return imageView
+    }()
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -25,24 +34,77 @@ class ParticiPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindUI()
     }
     
     private func configureUI() {
-        tableVuew.delegate = self
-        tableVuew.dataSource = self
+        countLabel.text = "\((cardInfo?.topping.count ?? 0) + 1)명"
+        frameView.round(width: nil, color: nil, value: 20)
+        tableView.separatorColor = Asset.Colors.gray1.color
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.delegate = self
+        tableView.register(UINib(nibName: ParticipantsTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ParticipantsTableViewCell.identifier)
+        configureHeight()
+    }
+    
+    private func configureHeight() {
+        let tableViewlineHeight: CGFloat = 52
+        let count: CGFloat = CGFloat(cardInfo?.topping.count ?? 0)
+        if count > 1 {
+            if tableViewlineHeight * (count + 1) > maximumHeight {
+                tableView.isScrollEnabled = true
+                addTransparentView()
+            }
+            heightConstraint.constant += tableViewlineHeight * count
+        }
+    }
+    
+    private func addTransparentView() {
+        view.addSubview(transparentView)
+        transparentView.snp.makeConstraints {
+            $0.leading.equalTo(tableView.snp.leading)
+            $0.trailing.equalTo(tableView.snp.trailing)
+            $0.bottom.equalTo(tableView.snp.bottom)
+            $0.width.equalTo(tableView.snp.width)
+            $0.height.equalTo(52)
+        }
+    }
+    
+    private func bindUI() {
+        closeButton.rx.tap
+            .subscribe(onNext: {
+                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+            }).disposed(by: disposBag)
     }
 
-}
-
-
-extension ParticiPopUpViewController: UITableViewDelegate {
-    
 }
 
 extension ParticiPopUpViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let topping = cardInfo?.topping else { return 1 }
+        return topping.count + 1
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ParticipantsTableViewCell.identifier, for: indexPath) as! ParticipantsTableViewCell
+        let dummy = Asset.Assets.wapple1.name
+        if indexPath.row == 0 {
+            guard let wappleNickName = cardInfo?.wapple else { return cell }
+            cell.configureCell(image: dummy, nickName: wappleNickName, type: .wapple)
+        }else {
+            guard let toppingNickName = cardInfo?.topping else { return cell }
+            cell.configureCell(image: dummy, nickName: toppingNickName[indexPath.row - 1], type: .topping)
+        }
+        return cell
+    }
     
 }
+
+extension ParticiPopUpViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(52)
+    }
+}
+
