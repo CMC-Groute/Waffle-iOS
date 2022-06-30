@@ -250,15 +250,15 @@ class AddArchiveViewController: UIViewController {
         
         input.dateTimeLaterButton
             .subscribe(onNext: { _ in
-                if self.archiveTimeDateLaterButton.image(for: .normal) == Asset.Assets.check.image { // selected
-                    self.archiveTimeDateLaterButton.setImage(Asset.Assets.unCheck.image, for: .normal)
+                if self.archiveTimeDateLaterButton.image(for: .normal) == Asset.Assets.check.image.withRenderingMode(.alwaysOriginal) { // selected
+                    self.archiveTimeDateLaterButton.setImage(Asset.Assets.unCheck.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     self.archiveTimeDateLaterButton.setAttributedTitle(unSelectedString, for: .normal)
                     self.placeHolderText(defaultValue: true)
                     self.archiveTimeTextField.isEnabled = true
                     self.archiveDateTextField.isEnabled = true
                     output!.dateTimeLaterButtonEnabled.accept(true)
                 }else {
-                    self.archiveTimeDateLaterButton.setImage(Asset.Assets.check.image, for: .normal)
+                    self.archiveTimeDateLaterButton.setImage(Asset.Assets.check.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     self.archiveTimeDateLaterButton.setAttributedTitle(selectedString, for: .normal)
                     self.placeHolderText(defaultValue: false)
                     self.archiveTimeTextField.text?.removeAll()
@@ -271,7 +271,7 @@ class AddArchiveViewController: UIViewController {
         
         input.locationLaterButton
             .subscribe(onNext: { _ in
-                if self.archiveLocationLaterButton.image(for: .normal) == Asset.Assets.check.image { // selected
+                if self.archiveLocationLaterButton.image(for: .normal) == Asset.Assets.check.image.withRenderingMode(.alwaysOriginal) { // selected
                     self.archiveLocationLaterButton.setImage(Asset.Assets.unCheck.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     self.archiveLocationLaterButton.setAttributedTitle(unSelectedString, for: .normal)
                     self.archiveLocationTextField.placeholder = "클릭하면 지역을 선택할 수 있어요"
