@@ -20,8 +20,6 @@ class EditSettingViewController: UIViewController {
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var nickNameInValidText: UILabel!
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
-    
-    let imageList = ["heart.fill", "heart", "heart.fill", "heart", "heart.fill"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,15 +37,19 @@ class EditSettingViewController: UIViewController {
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         
         func setNavigationBar() {
+            let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+            navigationItem.leftBarButtonItem = backButton
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = "프로필 편집"
-//            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
-//            UINavigationBar.appearance().backIndicatorImage = backImage
-//            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+
             
         }
         setNavigationBar()
+    }
+    
+    @objc func didTapBackButton() {
+        viewModel?.back()
     }
     
     func resignForKeyboardNotification() {

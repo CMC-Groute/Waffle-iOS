@@ -75,7 +75,7 @@ class ParticiPopUpViewController: UIViewController {
     private func bindUI() {
         closeButton.rx.tap
             .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
     }
 

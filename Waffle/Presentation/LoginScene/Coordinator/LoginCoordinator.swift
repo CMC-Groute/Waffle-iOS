@@ -14,7 +14,6 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType = .login
     
-    
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.loginViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
@@ -40,11 +39,15 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
         self.navigationController.pushViewController(findPWViewController, animated: true)
     }
     
-    func popToRootViewController(with toastMessage: String?, width: CGFloat, height: CGFloat, corner: CGFloat) {
+    func popToViewController(with toastMessage: String?, width: CGFloat, height: CGFloat, corner: CGFloat) {
         self.navigationController.popViewController(animated: true)
         if let toastMessage = toastMessage {
             self.navigationController.topViewController?.showToast(message: toastMessage, width: width, height: height, corner: corner)
         }
+    }
+    
+    func popToRootViewController() {
+        self.navigationController.popToRootViewController(animated: true)
     }
     
     func finish() {

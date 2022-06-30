@@ -62,7 +62,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     private func bindUI() {
         closeButton.rx.tap
             .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposeBag)
         
         addButton.rx.tap
@@ -73,7 +73,7 @@ class HomeCategoryPopUpViewController: UIViewController {
                 items.append(self.enableCategoryList[i.row])
             }
             print("selected item \(items)")
-            self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+            self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             self.delegate?.selectedCategory(category: items)
         }).disposed(by: disposeBag)
     }

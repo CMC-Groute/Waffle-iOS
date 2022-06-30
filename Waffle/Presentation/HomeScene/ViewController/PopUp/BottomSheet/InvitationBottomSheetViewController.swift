@@ -41,7 +41,7 @@ class InvitationBottomSheetViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 UIPasteboard.general.string = self.archiveCode
-                self.coordinator.popToRootViewController(with: "약속코드가 복사되었어요\n함께할 토핑들에게 공유해봐요", width: 184, height: 56)
+                self.coordinator.popToViewController(with: "약속코드가 복사되었어요\n함께할 토핑들에게 공유해봐요", width: 184, height: 56)
             }).disposed(by: disposeBag)
         
         cancelButton.rx.tap

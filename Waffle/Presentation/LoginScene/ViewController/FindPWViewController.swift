@@ -32,6 +32,17 @@ class FindPWViewController: UIViewController {
         emailTextField.makeRounded(corner: 10)
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         emailTextField.becomeFirstResponder()
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        let backImage = Asset.Assets.btn.image.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc func didTapBackButton() {
+        viewModel?.back()
     }
     
     func resignForKeyboardNotification() {

@@ -56,7 +56,7 @@ class FindPWViewModel {
                 }else {
                     output.emailInvalidMessage.accept(true)
                     self.usecase.getTempPassword(email: email)
-                    self.coordinator.popToRootViewController(with: "임시 비밀번호가 발급되었어요.\n로그인 후 비밀번호를 변경해 주세요.", width: 216, height: 55, corner: 17)
+                    self.coordinator.popToViewController(with: "임시 비밀번호가 발급되었어요.\n로그인 후 비밀번호를 변경해 주세요.", width: 216, height: 55, corner: 17)
                 }
             }).disposed(by: disposeBag)
             
@@ -68,6 +68,10 @@ class FindPWViewModel {
             }).disposed(by: disposeBag)
         
         return output
+    }
+    
+    func back() {
+        self.coordinator.popToRootViewController()
     }
     
 }

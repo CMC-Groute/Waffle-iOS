@@ -76,12 +76,15 @@ class InputArchiveCodeViewController: UIViewController {
         func setNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = "약속 추가하기"
-//            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
-//            UINavigationBar.appearance().backIndicatorImage = backImage
-//            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+//            let backImage = Asset.Assets.btn.image.withRenderingMode(.alwaysOriginal)
+//            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+//            navigationItem.leftBarButtonItem = backButton
         }
     }
+    
+//    @objc func didTapBackButton() {
+//        viewModel?.back()
+//    }
     
     private func bindViewModel() {
         let input = InputArchiveCodeViewModel.Input(codeTextField: self.codeTextField.rx.text.orEmpty.asObservable(), codeTextFieldDidTapEvent: self.codeTextField.rx.controlEvent(.editingDidBegin), codeTextFieldDidEndEvent: self.codeTextField.rx.controlEvent(.editingDidEnd), joinButton: self.joinButton.rx.tap.asObservable())

@@ -83,17 +83,22 @@ class AddLocationViewController: UIViewController {
         self.doneButton.makeRounded(corner: 26)
         self.doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         func setNavigationBar() {
-            var bounds = UIScreen.main.bounds
-            var width = bounds.size.width //화면 너비
-            //searchController.searchBar.frame = CGRect(x: 0, y: 0, width: width - 28, height: 0)
-            let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 28, height: 0))
+            let bounds = UIScreen.main.bounds
+            let width = bounds.size.width //화면 너비
+            let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 40, height: 0))
             searchBar.placeholder = "지역 검색"
             searchBar.delegate = self
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-            
+            navigationItem.titleView = searchBar
+            let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+            navigationItem.leftBarButtonItem = backButton
         }
         setNavigationBar()
         
+    }
+    
+    @objc func didTapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     

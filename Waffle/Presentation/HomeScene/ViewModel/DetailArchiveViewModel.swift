@@ -75,11 +75,13 @@ class DetailArchiveViewModel {
                 guard let self = self else { return }
                 self.coordinator.addDetailPlace()
             }).disposed(by: disposeBag)
+        
         input.participantsButton
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.coordinator.participants(cardInfo: self.detailArchive)
             }).disposed(by: disposeBag)
+        
         input.invitationButton
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -90,7 +92,7 @@ class DetailArchiveViewModel {
     }
     
     func setArchive(archive: CardInfo) {
-        self.usecase.currentArchive.onNext(archive)
+        usecase.currentArchive.onNext(archive)
     }
     
     func placeInfoByCategory() -> [PlaceInfo]{
@@ -98,11 +100,11 @@ class DetailArchiveViewModel {
     }
     
     func detailArhive() { // bottomSheet popUp
-        self.coordinator.detailArchiveBottomSheet(cardInfo: detailArchive)
+        coordinator.detailArchiveBottomSheet(cardInfo: detailArchive)
     }
     
     func detailPlace(place: PlaceInfo, category: Category) {
-        self.coordinator.detailPlace(detailInfo: place, category: category)
+        coordinator.detailPlace(detailInfo: place, category: category)
     }
     
     func setCategory(category: Category) {
@@ -117,17 +119,21 @@ class DetailArchiveViewModel {
     func addHomeCategory(without category: [Category]) {
         //확정 카테고리 빼고 줌
         let sendCategory = category.filter { $0.index != -1 }
-        self.coordinator.addCategory(category: sendCategory)
+        coordinator.addCategory(category: sendCategory)
     }
     
     func deleteCategory(category: Category) {
-        self.coordinator.deleteCategory(category: category)
+        coordinator.deleteCategory(category: category)
     }
     
     func loadMemo() {
         guard let detailArchive = detailArchive else { return }
         guard let memo = detailArchive.memo else { return }
-        self.coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(detailArchive.color + 1)")
+        coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(detailArchive.color + 1)")
+    }
+    
+    func popViewController() {
+        coordinator.popViewController()
     }
 
 }

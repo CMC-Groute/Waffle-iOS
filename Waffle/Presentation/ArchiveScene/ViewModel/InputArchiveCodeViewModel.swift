@@ -59,4 +59,8 @@ class InputArchiveCodeViewModel {
         
         return output
     }
+    
+    func back() {
+        coordinator.popTonavigaionController()
+    }
 }

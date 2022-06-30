@@ -80,21 +80,25 @@ class DetailArchiveViewController: UIViewController {
         scrollView.bounces = false
 //        tableView.bounces = false
         tableView.isScrollEnabled = false
-        
         func setNavigationBar() {
+            let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+            navigationItem.leftBarButtonItem = backButton
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = viewModel?.detailArchive?.title
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapMoreButton))
-            
-//            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
-//            UINavigationBar.appearance().backIndicatorImage = backImage
-//            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
+            configureGesture()
         }
         
         setNavigationBar()
         configureGesture()
         
+    }
+    
+    
+    
+    @objc func didTapBackButton() {
+        viewModel?.popViewController()
     }
     
     func configureGesture() {

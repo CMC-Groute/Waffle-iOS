@@ -89,11 +89,15 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         archiveCoordinator.addArchive(isEditing: true, cardInfo: cardInfo)
     }
     
-    func popToRootViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
+    func popToViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
         self.navigationController.dismiss(animated: true)
         if let toastMessage = toastMessage, let width = width, let height = height {
             self.navigationController.topViewController?.showToast(message: toastMessage, width: width, height: height)
         }
+    }
+    
+    func popViewController() {
+        self.navigationController.popViewController(animated: true)
     }
     
     func finish() {

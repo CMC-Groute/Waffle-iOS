@@ -79,6 +79,12 @@ class AddArchiveViewController: UIViewController {
         archiveMemoTextView.attributedText = archiveMemoTextView.text.setLineHeight(24)
         addArchiveButton.makeRounded(corner: 26)
         
+        func setNavigationBar() {
+            self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
+            let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
+            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+            navigationItem.leftBarButtonItem = backButton
+        }
 
         func setToolbar() {
             let dToolBar = UIToolbar()
@@ -101,16 +107,6 @@ class AddArchiveViewController: UIViewController {
             archiveTimeTextField.inputAccessoryView = tToolBar
             
         }
-
-        func setNavigationBar() {
-            self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
-
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(image: Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapBackButton))
-//            let backImage = UIImage(named: Asset.Assets._24pxBtn.name)!.withRenderingMode(.alwaysOriginal)
-//            UINavigationBar.appearance().backIndicatorImage = backImage
-//            UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//            UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
-        }
         
         setNavigationBar()
         placeHolderText()
@@ -118,7 +114,7 @@ class AddArchiveViewController: UIViewController {
         placeHolderText()
 
     }
-    
+
     @objc func didTapBackButton() {
         viewModel?.back()
     }

@@ -94,7 +94,7 @@ class AddArchiveModel {
     }
     
     func back() {
-        
+        self.coordinator.popTonavigaionController()
     }
     
 }

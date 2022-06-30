@@ -33,8 +33,8 @@ class TabBarViewController: UITabBarController {
         
         self.popUpView.isHidden = true
         self.view.addSubview(self.popUpView)
+        //configureNavigationBar()
     }
-
 }
 
 extension TabBarViewController: ArchivePopUpViewDelegate {

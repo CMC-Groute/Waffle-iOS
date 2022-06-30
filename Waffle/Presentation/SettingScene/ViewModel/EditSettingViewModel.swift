@@ -60,4 +60,8 @@ class EditSettingViewModel {
         return output
     }
     
+    func back() {
+        self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
+    }
+    
 }
