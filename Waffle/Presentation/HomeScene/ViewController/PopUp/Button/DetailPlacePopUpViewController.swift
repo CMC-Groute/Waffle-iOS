@@ -52,7 +52,7 @@ class DetailPlacePopUpViewController: UIViewController {
     
     private func configureUI() {
         confirmButton.makeRounded(corner: 26)
-        draggingView.round(width: nil, color: nil, value: 3)
+        draggingView.makeRounded(width: nil, color: nil, value: 3)
         bottomSheetView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         likeCountButton.setImage(Asset.Assets.heartSelected.image, for: .selected)
         configureGesture()

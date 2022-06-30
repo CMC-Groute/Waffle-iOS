@@ -39,7 +39,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     }
     
     private func configureUI() {
-        frameView.round(width: nil, color: nil, value: 20)
+        frameView.makeRounded(width: nil, color: nil, value: 20)
         addButton.makeRounded(corner: 24)
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
     }

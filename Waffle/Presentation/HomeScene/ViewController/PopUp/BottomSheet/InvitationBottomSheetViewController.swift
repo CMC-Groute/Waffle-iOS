@@ -33,7 +33,7 @@ class InvitationBottomSheetViewController: UIViewController {
     
     private func configureUI() {
         frameView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
-        cancelButton.round(width: 1, color: Asset.Colors.gray5.name, value: 26)
+        cancelButton.makeRounded(width: 1, color: Asset.Colors.gray5.name, value: 26)
     }
     
     private func bindUI() {

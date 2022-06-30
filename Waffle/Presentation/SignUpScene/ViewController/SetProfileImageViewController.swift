@@ -44,9 +44,9 @@ class SetProfileImageViewController: UIViewController {
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         navigationItem.leftBarButtonItem = backButton
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
-        let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed2.name)
-        let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcessed3.name)
+        let progressOneButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProgressed1.name)
+        let progressTwoButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProgressed2.name)
+        let progreeeThreeButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProcessed3.name)
         
         self.navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
     }

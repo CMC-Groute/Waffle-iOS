@@ -32,12 +32,12 @@ class HomeViewController: UIViewController {
             self.navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             spacer.width = 26
-            let calendarButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.calendar.name)
-            let bellButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.bell.name)
+            let calendarButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.calendar.name)
+            let bellButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.bell.name)
             
             self.navigationController?.navigationBar.topItem?.rightBarButtonItems = [bellButton, spacer, calendarButton]
         }
-        cardCountButton.round(width: 1, color: Asset.Colors.gray3.name, value: 16)
+        cardCountButton.makeRounded(width: 1, color: Asset.Colors.gray3.name, value: 16)
         cardCountButton.setTitleColor(Asset.Colors.gray4.color, for: .normal)
         setNavigationBar()
     }

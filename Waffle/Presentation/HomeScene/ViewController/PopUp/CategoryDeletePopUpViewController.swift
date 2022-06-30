@@ -33,7 +33,7 @@ class CategoryDeletePopUpViewController: UIViewController {
     private func configureUI(){
         self.titleText.text = "\(selectedCategory?.name ?? "") 카테고리를 정말로 삭제할까요?"
         self.titleText.font = UIFont.higlightTextFont()
-        self.framwView.round(width: 0, color: "", value: 20)
+        self.framwView.makeRounded(width: 0, color: "", value: 20)
         self.cancelButton.makeRounded(corner: 24)
         self.OKButton.makeRounded(corner: 24)
     }

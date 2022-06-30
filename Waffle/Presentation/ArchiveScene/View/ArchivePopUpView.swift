@@ -41,8 +41,8 @@ class ArchivePopUpView: UIView {
     func configure() {
         let addGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
         let inputGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        addArhiveView.round(width: nil, color: nil, value: 23.5)
-        inputArhiveView.round(width: nil, color: nil, value: 23.5)
+        addArhiveView.makeRounded(width: nil, color: nil, value: 23.5)
+        inputArhiveView.makeRounded(width: nil, color: nil, value: 23.5)
         addArhiveView.addGestureRecognizer(addGestureRecognizer)
         inputArhiveView.addGestureRecognizer(inputGestureRecognizer)
     }

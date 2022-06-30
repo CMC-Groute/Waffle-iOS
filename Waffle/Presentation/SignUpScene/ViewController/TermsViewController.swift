@@ -63,7 +63,7 @@ class TermsViewController: UIViewController {
     func configureUI() {
         nextButton.makeRounded(corner: 26)
         nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
-        boxView.round(width: 3, color: Asset.Colors.gray4.name, value: 10)
+        boxView.makeRounded(width: 3, color: Asset.Colors.gray4.name, value: 10)
         let saText = "서비스 이용약관 동의(필수)"
         let pcText = "개인정보 수집 및 이용 동의(필수)"
         let umText = "마케팅 활용 동의(선택)"
@@ -78,9 +78,9 @@ class TermsViewController: UIViewController {
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         navigationItem.leftBarButtonItem = backButton
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
-        let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed2.name)
-        let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess3.name)
+        let progressOneButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProgressed1.name)
+        let progressTwoButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProgressed2.name)
+        let progreeeThreeButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProcess3.name)
         
         navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
     }

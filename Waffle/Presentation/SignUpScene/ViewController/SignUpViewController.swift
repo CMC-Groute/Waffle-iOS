@@ -58,9 +58,9 @@ class SignUpViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
 
         let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
-        let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess2.name)
-        let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess3.name)
+        let progressOneButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProgressed1.name)
+        let progressTwoButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProcess2.name)
+        let progreeeThreeButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.joinProcess3.name)
         
         navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
     }

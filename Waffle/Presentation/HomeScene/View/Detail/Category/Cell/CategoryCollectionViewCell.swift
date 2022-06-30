@@ -53,7 +53,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     func setUp() {
         contentView.addSubview(categoryLabel)
         contentView.addSubview(deleteButton)
-        contentView.round(width: nil, color: nil, value: 17)
+        contentView.makeRounded(width: nil, color: nil, value: 17)
         contentView.layer.borderColor = Asset.Colors.gray4.color.cgColor
         contentView.layer.borderWidth = 1
         defaultLayout()
