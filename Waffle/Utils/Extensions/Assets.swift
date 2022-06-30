@@ -67,6 +67,7 @@ internal enum Asset {
     internal static let placeMoreButton = ImageAsset(name: "placeMoreButton")
     internal static let together = ImageAsset(name: "together")
     internal static let toppingCaption = ImageAsset(name: "topping-caption")
+    internal static let transparentEtc = ImageAsset(name: "transparent-etc")
     internal static let wappleCaption = ImageAsset(name: "wapple-caption")
     internal static let whenCaption = ImageAsset(name: "when-caption")
     internal static let whereCaption = ImageAsset(name: "where-caption")
