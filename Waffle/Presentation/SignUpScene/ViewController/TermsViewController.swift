@@ -28,6 +28,8 @@ class TermsViewController: UIViewController {
     var coordinator: SignUpCoordinator!
     
     let disposeBag = DisposeBag()
+    private var selectedImage = Asset.Assets.check.image.withRenderingMode(.alwaysOriginal)
+    private var unSelectedImage = Asset.Assets.unCheck.image.withRenderingMode(.alwaysOriginal)
     
     var buttons: [UIButton] = []
     struct Terms: Identifiable {
@@ -62,12 +64,12 @@ class TermsViewController: UIViewController {
         nextButton.makeRounded(corner: 26)
         nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
         boxView.round(width: 3, color: Asset.Colors.gray4.name, value: 10)
-//        let saText = "서비스 이용약관 동의(필수)"
-//        let pcText = "개인정보 수집 및 이용 동의(필수)"
-//        let umText = "마케팅 활용 동의(선택)"
-//        serviceAgreeText.attributedText = saText.underBarLine(length: pcText.count - 4)
-//        privacyCollectText.attributedText = pcText.underBarLine(length: pcText.count - 4)
-//        useForMaketingAgreeText.attributedText = umText.underBarLine(length: umText.count - 4)
+        let saText = "서비스 이용약관 동의(필수)"
+        let pcText = "개인정보 수집 및 이용 동의(필수)"
+        let umText = "마케팅 활용 동의(선택)"
+        serviceAgreeText.attributedText = saText.underBarLine(length: pcText.count - 4)
+        privacyCollectText.attributedText = pcText.underBarLine(length: pcText.count - 4)
+        useForMaketingAgreeText.attributedText = umText.underBarLine(length: umText.count - 4)
         configureNavigationBar()
     }
     
@@ -88,40 +90,64 @@ class TermsViewController: UIViewController {
     }
     
     func bindUI(){
+        allCheckButton.setTitle(.none, for: .normal)
         self.buttons = [allCheckButton, serviceAgreeButton, privacyCollectAgreeButton, useForMaketingAgreeButton]
-        self.buttons.forEach {
-            $0.setImage(UIImage(named: Asset.Assets.check.name), for: .selected)
-            $0.setImage(UIImage(named: Asset.Assets.unCheck.name), for: .normal)
-        }
+//        self.buttons.forEach {
+//            $0.setImage(UIImage(named: Asset.Assets.check.name), for: .selected)
+//            $0.setImage(UIImage(named: Asset.Assets.unCheck.name), for: .normal)
+//        }
         
         allCheckButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                let state = self.allCheckButton.isSelected ? false : true
-                self.buttons.forEach {
-                    $0.isSelected = state
+                if self.allCheckButton.image(for: .normal) == self.selectedImage {
+                    self.buttons.forEach {
+                        $0.setTitle(.none, for: .normal)
+                        $0.setImage(self.unSelectedImage, for: .normal)
+                    }
+                }else {
+                    self.buttons.forEach {
+                        $0.setTitle(.none, for: .normal)
+                        $0.setImage(self.selectedImage, for: .normal)
+                    }
                 }
+                
                 self.check()
             }).disposed(by: disposeBag)
         
         serviceAgreeButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.serviceAgreeButton.isSelected = !self.serviceAgreeButton.isSelected
+                self.serviceAgreeButton.setTitle(.none, for: .normal)
+                if self.serviceAgreeButton.image(for: .normal) == self.selectedImage {
+                    self.serviceAgreeButton.setImage(self.unSelectedImage, for: .normal)
+                }else {
+                    self.serviceAgreeButton.setImage(self.selectedImage, for: .normal)
+                }
                 self.check()
             }).disposed(by: disposeBag)
         
         privacyCollectAgreeButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.privacyCollectAgreeButton.isSelected = !self.privacyCollectAgreeButton.isSelected
+                self.privacyCollectAgreeButton.setTitle(.none, for: .normal)
+                if self.privacyCollectAgreeButton.image(for: .normal) == self.selectedImage {
+                    self.privacyCollectAgreeButton.setImage(self.unSelectedImage, for: .normal)
+                }else {
+                    self.privacyCollectAgreeButton.setImage(self.selectedImage, for: .normal)
+                }
                 self.check()
             }).disposed(by: disposeBag)
         
         useForMaketingAgreeButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.useForMaketingAgreeButton.isSelected = !self.useForMaketingAgreeButton.isSelected
+                self.useForMaketingAgreeButton.setTitle(.none, for: .normal)
+                if self.useForMaketingAgreeButton.image(for: .normal) == self.selectedImage {
+                    self.useForMaketingAgreeButton.setImage(self.unSelectedImage, for: .normal)
+                }else {
+                    self.useForMaketingAgreeButton.setImage(self.selectedImage, for: .normal)
+                }
                 self.check()
             }).disposed(by: disposeBag)
 
@@ -135,7 +161,7 @@ class TermsViewController: UIViewController {
     }
     
     func check() {
-        if serviceAgreeButton.isSelected && privacyCollectAgreeButton.isSelected {
+        if serviceAgreeButton.currentImage == self.selectedImage && privacyCollectAgreeButton.currentImage == self.selectedImage {
             nextButton.setEnabled(color: Asset.Colors.black.name)
         }else {
             nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
