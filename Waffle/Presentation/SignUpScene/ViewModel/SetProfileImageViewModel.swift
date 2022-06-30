@@ -62,4 +62,8 @@ class SetProfileImageViewModel {
         
         return output
     }
+    
+    func backButton() {
+        coordinator.popViewController()
+    }
 }

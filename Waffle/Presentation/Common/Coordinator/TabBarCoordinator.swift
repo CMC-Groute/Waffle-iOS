@@ -105,31 +105,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     
 }
 
-//extension TabBarCoordinator {
-//    func inputCodeArchive() {
-//        let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveCodeViewController") as! InputArchiveCodeViewController
-//        inputArchiveCodeViewController.viewModel = InputArchiveCodeViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
-//        self.navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
-//
-//    }
-//
-//    func addArchive() {
-//        let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddArchiveViewController") as! AddArchiveViewController
-//        addArchiveViewcontroller.viewModel = AddArchiveModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
-//        self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
-//    }
-//
-//    func popTonavigaionController() {
-//        self.navigationController.popViewController(animated: true)
-//    }
-//
-//    func addLocation() {
-//        let addLocationViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as! AddLocationViewController
-//        self.navigationController.pushViewController(addLocationViewController, animated: true)
-//    }
-//
-//}
-
 extension TabBarCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         self.childCoordinators = self.childCoordinators.filter({ $0.type != childCoordinator.type })

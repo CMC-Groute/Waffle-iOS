@@ -131,7 +131,7 @@ class SignUpViewModel {
         
         
         
-        // MARK - authenTextField
+        //MARK: - authenTextField
         input.authenCodeTextField
             .subscribe(onNext: { text in
                 if text.count >= 6 {
@@ -151,7 +151,7 @@ class SignUpViewModel {
                 }
             }).disposed(by: disposeBag)
         
-        // MARK - passwordTextField
+        //MARK: - passwordTextField
         input.passwordTextField
             .distinctUntilChanged()
             .subscribe(onNext: { text in
@@ -182,6 +182,10 @@ class SignUpViewModel {
             }).disposed(by: disposeBag)
         
         return output
+    }
+    
+    func backButton() {
+        coordinator.popViewController()
     }
     
 }

@@ -49,21 +49,26 @@ class SignUpViewController: UIViewController {
             $0.makeRounded(corner: 10)
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
+        configureNavigationBar()
+    }
 
-        
-        func setProgressNavigationBar() { 
-            let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
-            let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess2.name)
-            let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess3.name)
-            
-            self.navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
-        }
-        
-        setProgressNavigationBar()
+    func configureNavigationBar() {
+        let backImage = Asset.Assets.btn.image.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        navigationItem.leftBarButtonItem = backButton
 
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
+        let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess2.name)
+        let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcess3.name)
+        
+        navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
     }
     
+    @objc func didTapBackButton() {
+        self.viewModel?.backButton()
+    }
+
     func resignForKeyboardNotification() {
         hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

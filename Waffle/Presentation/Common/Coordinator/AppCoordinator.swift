@@ -15,7 +15,6 @@ class AppCoordinator: AppCoordinatorProtocol {
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        navigationController.setToolbarHidden(true, animated: true)
     }
 
     func start() {

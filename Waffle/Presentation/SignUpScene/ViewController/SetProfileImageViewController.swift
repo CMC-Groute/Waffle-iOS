@@ -36,17 +36,23 @@ class SetProfileImageViewController: UIViewController {
         startButton.setUnEnabled(color: Asset.Colors.gray4.name)
         nickNameTextField.makeRounded(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        let backImage = Asset.Assets.btn.image.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        navigationItem.leftBarButtonItem = backButton
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
+        let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed2.name)
+        let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcessed3.name)
         
-        func setProgressNavigationBar() {
-            let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-            let progressOneButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed1.name)
-            let progressTwoButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProgressed2.name)
-            let progreeeThreeButton = self.navigationItem.makeProgressButton(self, level: Asset.Assets.joinProcessed3.name)
-            
-            self.navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
-        }
-        
-        setProgressNavigationBar()
+        self.navigationItem.rightBarButtonItems = [progreeeThreeButton, spacer, progressTwoButton, spacer, progressOneButton]
+    }
+    
+    @objc func didTapBackButton() {
+        self.viewModel?.backButton()
     }
     
     func resignForKeyboardNotification() {
@@ -54,7 +60,6 @@ class SetProfileImageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
-    //notification delete
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)

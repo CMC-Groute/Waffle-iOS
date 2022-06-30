@@ -20,7 +20,7 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.setNavigationBarHidden(false, animated: true)
-        self.signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+        self.signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController        
     }
             
     func start() {
@@ -31,13 +31,17 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
     func termsStep() {
         let termsViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
         termsViewController.coordinator = self
-        self.navigationController.pushViewController(termsViewController, animated: true)
+        navigationController.pushViewController(termsViewController, animated: true)
     }
     
     func setProfileImage() {
         let setProfileImageViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SetProfileImageViewController") as! SetProfileImageViewController
         setProfileImageViewController.viewModel = SetProfileImageViewModel(coordinator: self, usecase: LoginSignUsecase(repository: LoginSignRepository(networkService: URLSessionNetworkService())))
-        self.navigationController.pushViewController(setProfileImageViewController, animated: true)
+        navigationController.pushViewController(setProfileImageViewController, animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
     }
     
 }

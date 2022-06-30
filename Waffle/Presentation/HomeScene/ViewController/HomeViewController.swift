@@ -28,7 +28,8 @@ class HomeViewController: UIViewController {
     
     func configureUI() {
         func setNavigationBar() {
-            var image = Asset.Assets.wapple.image.withRenderingMode(.alwaysOriginal)
+            self.navigationController?.navigationBar.backgroundColor = .red
+            let image = Asset.Assets.wapple.image.withRenderingMode(.alwaysOriginal)
             self.navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
             let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             spacer.width = 26

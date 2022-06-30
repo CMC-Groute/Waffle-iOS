@@ -21,20 +21,13 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
         self.navigationController.setNavigationBarHidden(true, animated: true)
     }
     
-//    func setNavigationBar() {
-//        let backImage = UIImage(named: Asset.Assets.btn.name)!.withRenderingMode(.alwaysOriginal)
-//        UINavigationBar.appearance().backIndicatorImage = backImage
-//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backImage
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -80.0), for: .default)
-//    }
-    
     func start() { 
         self.loginViewController.viewModel = LoginViewModel(loginSignUseCase: LoginSignUsecase(repository: LoginSignRepository(networkService: URLSessionNetworkService())), coordinator: self)
         self.navigationController.viewControllers = [self.loginViewController]
     }
     
     func showSignUpFlow() {
-        let signUpCoordinator = SignUpCoordinator(self.navigationController)
+        let signUpCoordinator = SignUpCoordinator(navigationController)
         signUpCoordinator.finishDelegate = self
         self.childCoordinators.append(signUpCoordinator)
         signUpCoordinator.start()
@@ -62,8 +55,11 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
 
 extension LoginCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        self.childCoordinators = self.childCoordinators
-            .filter({ $0.type != childCoordinator.type })
-        childCoordinator.navigationController.popViewController(animated: true)
+        switch childCoordinator.type {
+        case .signUp:
+            self.navigationController.popToRootViewController(animated: true)
+        default:
+            print(childCoordinator.type)
+        }
     }
 }

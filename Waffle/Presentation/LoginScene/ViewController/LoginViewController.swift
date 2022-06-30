@@ -82,6 +82,12 @@ class LoginViewController: UIViewController {
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         passwordTextField.makeRounded(corner: 10)
         passwordTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+        configureNavigationBar()
+    }
+    
+    private func configureNavigationBar() {
+        let backButtonImage = Asset.Assets.btn.image
+        self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(image: backButtonImage, style: .plain, target: nil, action: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
