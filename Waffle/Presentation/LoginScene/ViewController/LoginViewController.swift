@@ -59,7 +59,6 @@ class LoginViewController: UIViewController {
                   , animations: { //6, 20
                       self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight + self.view.safeAreaInsets.bottom)
                   }
-                  
               )
         }
 

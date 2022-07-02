@@ -7,25 +7,6 @@
 
 import UIKit
 
-enum CardViewInfoType: String, CaseIterable {
-    case lightPurple, lightPink, lightMelon, lightMint, yellow
-    
-    init(index: Int) {
-        switch index {
-        case 0: self = .lightPurple
-        case 1: self = .lightPink
-        case 2: self = .lightMelon
-        case 3: self = .lightMint
-        case 4: self = .yellow
-        default: self = .lightPurple
-        }
-    }
-    
-    func colorName() -> String {
-        return self.rawValue
-    }
-}
-
 final class CardView: UIView {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
