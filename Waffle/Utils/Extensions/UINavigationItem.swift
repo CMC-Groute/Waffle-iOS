@@ -5,11 +5,10 @@
 //  Created by 조소정 on 2022/06/07.
 //
 
-import Foundation
 import UIKit
 
 extension UINavigationItem {
-    func makeProgressButton(_ target: Any?, level: String) -> UIBarButtonItem {
+    func rightBarButton(_ target: Any?, level: String) -> UIBarButtonItem {
         let button = UIButton()
         button.setImage(UIImage(named: level), for: .normal)
             

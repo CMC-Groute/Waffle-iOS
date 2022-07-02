@@ -5,7 +5,6 @@
 //  Created by 조한빛 on 2022/06/14.
 //
 
-import Foundation
 import UIKit
 
 extension UILabel {
@@ -36,7 +35,7 @@ extension UILabel {
     }
 }
 
-extension UILabel{
+extension UILabel {
     
     func addTrailing(with trailingText: String, moreText: String, moreTextFont: UIFont, moreTextColor: UIColor) {
         

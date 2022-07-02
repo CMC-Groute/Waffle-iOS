@@ -5,10 +5,7 @@
 //  Created by 조소정 on 2022/06/11.
 //
 
-import Foundation
 import UIKit
-import RxSwift
-import RxCocoa
 
 extension UIButton {
     func setEnabled(color: String?) {

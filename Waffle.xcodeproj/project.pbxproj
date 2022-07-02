@@ -44,6 +44,8 @@
 		1390EC9F286B3F8400E5520C /* AddDetailPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */; };
 		13CA03DA286DECC70087E79E /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03D9286DECC70087E79E /* Login.swift */; };
 		13CA03DD286DEF230087E79E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DC286DEF230087E79E /* Common.swift */; };
+		13CA03E02870173A0087E79E /* LoginSignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DF2870173A0087E79E /* LoginSignAPI.swift */; };
+		13CA03E228701B920087E79E /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E128701B920087E79E /* Encodable.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -203,6 +205,8 @@
 		1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewModel.swift; sourceTree = "<group>"; };
 		13CA03D9286DECC70087E79E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		13CA03DC286DEF230087E79E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		13CA03DF2870173A0087E79E /* LoginSignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignAPI.swift; sourceTree = "<group>"; };
+		13CA03E128701B920087E79E /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +482,14 @@
 				13E2A06F285DD1CF0015499E /* TabBarViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		13CA03DE2870171E0087E79E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				13CA03DF2870173A0087E79E /* LoginSignAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		13E2A075285EF1E50015499E /* Entities */ = {
@@ -848,6 +860,7 @@
 				135F6E7C2857A5C300F9F71E /* UILabel.swift */,
 				13E9B0BD285A2F0800723CAA /* String.swift */,
 				1390EC372863573800E5520C /* UIView.swift */,
+				13CA03E128701B920087E79E /* Encodable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -855,6 +868,7 @@
 		F21972CE284B8C730086E56B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				13CA03DE2870171E0087E79E /* API */,
 				F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */,
 				F29ED3272855EF97002371FD /* UserRepository.swift */,
 				F29ED341285629DB002371FD /* ArchiveRepository.swift */,
@@ -1461,6 +1475,7 @@
 				135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */,
 				13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
+				13CA03E02870173A0087E79E /* LoginSignAPI.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */,
@@ -1479,6 +1494,7 @@
 				F29ED33E2856291A002371FD /* ArchiveUsecaseProtocol.swift in Sources */,
 				1390EC78286492B200E5520C /* ParticiPopUpViewController.swift in Sources */,
 				1390EC8C28693B6000E5520C /* User.swift in Sources */,
+				13CA03E228701B920087E79E /* Encodable.swift in Sources */,
 				F2125D0C284DFC67008E1185 /* LoginViewController.swift in Sources */,
 				13E2A07E285F00C80015499E /* HomeUsecase.swift in Sources */,
 				F29ED2FD2855D954002371FD /* ArchiveCoordinatorProtocol.swift in Sources */,

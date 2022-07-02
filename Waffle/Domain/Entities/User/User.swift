@@ -15,5 +15,4 @@ struct EditProfile: Codable {
 struct Password: Codable {
     var nowPassword: String
     var newPassword: String
-    var newPasswordCheck: String
 }

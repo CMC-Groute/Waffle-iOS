@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 extension UIViewController {
 
@@ -35,19 +34,19 @@ extension UIViewController {
 }
 
 extension UIViewController {
-  func hideKeyboardWhenTappedAround() {
-    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-    tap.cancelsTouchesInView = false
-    view.addGestureRecognizer(tap)
-  }
-    
-  @objc func dismissKeyboard() {
-    view.endEditing(true)
-  }
+      func hideKeyboardWhenTappedAround() {
+          let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+          tap.cancelsTouchesInView = false
+          view.addGestureRecognizer(tap)
+      }
+        
+      @objc func dismissKeyboard() {
+          view.endEditing(true)
+      }
 }
 
 extension UIView {
-    func round(width: CGFloat?, color: String?, value: CGFloat) {
+    func makeRounded(width: CGFloat?, color: String?, value: CGFloat) {
         if let width = width {
             self.layer.borderWidth = width
         }

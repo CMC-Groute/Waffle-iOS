@@ -23,7 +23,6 @@ protocol NetworkRequestBuilder {
     var method: HttpMethod { get }
     var headers: [String:String]? { get }
     var body: [String: Any]? { get }
-    var binary: Data? { get }
     var urlRequest: URLRequest? { get }
 }
 
@@ -68,10 +67,7 @@ extension NetworkRequestBuilder {
             
             if let httpbody = self.body {
                 urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: httpbody)
-            } else if let binaryData = self.binary {
-                urlRequest.httpBody = binaryData
             }
-
             headers?.forEach { key, value in
                 urlRequest.addValue(value, forHTTPHeaderField: key)
             }
