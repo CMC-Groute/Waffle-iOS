@@ -656,7 +656,7 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLd-0M-gzA" userLabel="ButtonView">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLd-0M-gzA" userLabel="BottomView">
                                                 <rect key="frame" x="0.0" y="763" width="414" height="64"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SUY-6P-JTd">
@@ -776,6 +776,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Df-B2-9Fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1633.3333333333335" y="1364.7321428571429"/>
+        </scene>
+        <!--Search Place View Controller-->
+        <scene sceneID="r3Y-Og-4Jw">
+            <objects>
+                <viewController storyboardIdentifier="SearchPlaceViewController" id="gzd-4h-I8g" customClass="SearchPlaceViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u8d-SO-jSI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wit-R4-4Vb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hc5-K7-6LF" userLabel="BottomView">
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avG-Xo-WCk">
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
+                                        <color key="backgroundColor" name="Gray4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="mjE-DY-ZW2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <color key="tintColor" name="White"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="선택 완료">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="avG-Xo-WCk" secondAttribute="trailing" constant="16" id="3Sa-gw-fSY"/>
+                                    <constraint firstItem="avG-Xo-WCk" firstAttribute="leading" secondItem="Hc5-K7-6LF" secondAttribute="leading" constant="16" id="4WA-er-bYS"/>
+                                    <constraint firstItem="avG-Xo-WCk" firstAttribute="top" secondItem="Hc5-K7-6LF" secondAttribute="top" constant="6" id="AHG-Qw-cbE"/>
+                                    <constraint firstAttribute="bottom" secondItem="avG-Xo-WCk" secondAttribute="bottom" constant="6" id="JVM-s1-l0L"/>
+                                    <constraint firstAttribute="height" constant="64" id="e35-Cm-hp2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BMW-x4-xrl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hc5-K7-6LF" firstAttribute="leading" secondItem="u8d-SO-jSI" secondAttribute="leading" id="2wK-F6-tu7"/>
+                            <constraint firstItem="BMW-x4-xrl" firstAttribute="trailing" secondItem="Hc5-K7-6LF" secondAttribute="trailing" id="OAt-UM-v57"/>
+                            <constraint firstItem="Wit-R4-4Vb" firstAttribute="leading" secondItem="BMW-x4-xrl" secondAttribute="leading" id="OsP-MK-b6x"/>
+                            <constraint firstItem="BMW-x4-xrl" firstAttribute="trailing" secondItem="Wit-R4-4Vb" secondAttribute="trailing" id="Vjm-PW-Hbe"/>
+                            <constraint firstItem="BMW-x4-xrl" firstAttribute="bottom" secondItem="Hc5-K7-6LF" secondAttribute="bottom" id="aHb-Lu-gQo"/>
+                            <constraint firstItem="Wit-R4-4Vb" firstAttribute="top" secondItem="BMW-x4-xrl" secondAttribute="top" id="oJk-HO-wqW"/>
+                            <constraint firstItem="BMW-x4-xrl" firstAttribute="bottom" secondItem="Wit-R4-4Vb" secondAttribute="bottom" id="t9o-6o-494"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="selectButton" destination="avG-Xo-WCk" id="jAy-qB-qjq"/>
+                        <outlet property="tableView" destination="Wit-R4-4Vb" id="KxM-PM-9WH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCr-1B-Hs3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2294" y="1365"/>
         </scene>
         <!--Hosting Controller-->
         <scene sceneID="bMi-ck-YtC">

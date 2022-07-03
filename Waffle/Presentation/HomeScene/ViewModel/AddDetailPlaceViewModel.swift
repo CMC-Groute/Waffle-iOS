@@ -21,8 +21,8 @@ class AddDetailPlaceViewModel {
     }
     
     struct Input {
-        var locationTextFieldTapEvent: ControlEvent<Void>
-        var locationDeleteButton: ControlEvent<Void> // 클릭시 다시 장소 입력 textfield 레이아웃
+        var placeTextFieldTapEvent: ControlEvent<Void>
+        var placeViewDeleteButton: Observable<Void> // 클릭시 다시 장소 입력 textfield 레이아웃
                                         
         var linkTextFieldDidTapEvent: ControlEvent<Void>
         var linkTextFieldDidEndEvent: ControlEvent<Void> // 링킹으로 만들기
@@ -40,9 +40,10 @@ class AddDetailPlaceViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        input.locationTextFieldTapEvent
+        input.placeTextFieldTapEvent
             .subscribe(onNext: {
-                //self.coordinator.addLocation()
+                print("add location")
+                self.coordinator.searchPlace()
             }).disposed(by: disposeBag)
         return output
     }

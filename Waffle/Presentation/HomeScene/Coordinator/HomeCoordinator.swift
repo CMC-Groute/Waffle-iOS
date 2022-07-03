@@ -54,6 +54,12 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(addDetailPlaceViewController, animated: true)
     }
     
+    func searchPlace() {
+        let searchPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "SearchPlaceViewController") as! SearchPlaceViewController
+        searchPlaceViewController.viewModel = SearchPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
+        self.navigationController.pushViewController(searchPlaceViewController, animated: true)
+    }
+    
     func deleteCategory(category: Category) {
         let categoryDeletePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "CategoryDeletePopUpViewController") as! CategoryDeletePopUpViewController
         categoryDeletePopUpView.coordinator = self
@@ -99,6 +105,13 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     func popViewController() {
         self.navigationController.popViewController(animated: true)
+    }
+    
+    func selectPlace(place: String) {
+        self.navigationController.popViewController(animated: true)
+        guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
+        topViewController.placeTextField.text = place
+        
     }
     
     func finish() {

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import TTTAttributedLabel
 
 class AddDetailPlaceViewController: UIViewController {
     var viewModel: AddDetailPlaceViewModel?
@@ -14,6 +16,7 @@ class AddDetailPlaceViewController: UIViewController {
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var addButton: UIButton!
+    let disposeBag = DisposeBag()
     
     lazy var placeFramView: UIView = {
         let view = UIView()
@@ -41,11 +44,13 @@ class AddDetailPlaceViewController: UIViewController {
         button.setImage(image, for: .normal)
         return button
     }()
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        bindViewModel()
+        hideKeyboardWhenTappedAround()
       
     }
     
@@ -54,7 +59,7 @@ class AddDetailPlaceViewController: UIViewController {
         placeTextField.makeRounded(corner: 10)
         linkTextField.makeRounded(corner: 10)
         memoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
-
+        memoTextView.dataDetectorTypes = .link
         linkTextField.padding(value: 9, icon: Asset.Assets.deleteButton.name)
         linkTextField.setClearButton(with: Asset.Assets.delete.image, mode: .whileEditing)
         placeTextField.padding(value: 9)
@@ -81,6 +86,78 @@ class AddDetailPlaceViewController: UIViewController {
     
     @objc func didTapBackButton() {
         viewModel?.back()
+    }
+    
+    private func textViewScrollToBottom() {
+        let bottomRange = NSMakeRange(self.memoTextView.text.count - 1, 1)
+
+        self.memoTextView.scrollRangeToVisible(bottomRange)
+    }
+    
+
+    func bindViewModel() {
+        let input = AddDetailPlaceViewModel.Input(placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: deleteButton.rx.tap.asObservable(), linkTextFieldDidTapEvent: linkTextField.rx.controlEvent(.editingDidBegin), linkTextFieldDidEndEvent: linkTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        
+        input.linkTextFieldDidTapEvent
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.linkTextField.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.linkTextFieldDidEndEvent
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                guard let text = self.linkTextField.text else { return }
+                //TO DO make linking text
+                guard let link = self.linkTextField.text else { return }
+
+                self.linkTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.memoTextViewDidTapEvent
+            .subscribe(onNext: { _ in
+                guard let text = self.memoTextView.text else { return }
+                if text == """
+                장소에 대한 간략한 정보나 가고 싶은 이유, 추천하는 이유 등을 자유롭게 작성하면 좋아요
+                """ {
+                    self.memoTextView.text = nil
+                    self.memoTextView.textColor = Asset.Colors.black.color
+                }
+                
+                self.memoTextView.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.memoTextViewDidEndEvent
+            .subscribe(onNext: { _ in
+                if self.memoTextView.text.isEmpty || self.memoTextView.text == nil {
+                    self.memoTextView.textColor = Asset.Colors.gray4.color
+                    self.memoTextView.text = """
+                장소에 대한 간략한 정보나 가고 싶은 이유, 추천하는 이유 등을 자유롭게 작성하면 좋아요
+                """
+                }
+                self.memoTextView.focusingBorder(color: Asset.Colors.gray2.name)
+            }).disposed(by: disposeBag)
+        
+        input.memoTextViewEditing
+            .subscribe(onNext: { _ in
+                let size = CGSize(width: self.view.frame.width, height: .infinity)
+                let estimatedSize = self.memoTextView.sizeThatFits(size)
+                self.memoTextView.translatesAutoresizingMaskIntoConstraints = false
+                self.memoTextView.constraints.forEach { (constraint) in
+                    if estimatedSize.height > 152 {
+                        if constraint.firstAttribute == .height {
+                            constraint.constant = estimatedSize.height
+                            self.textViewScrollToBottom()
+                        }
+                    }
+                }
+            }).disposed(by: disposeBag)
+        
+        input.placeTextFieldTapEvent // 키보드 내리기
+            .subscribe(onNext: {
+                self.placeTextField.resignFirstResponder()
+            }).disposed(by: disposeBag)
     }
 
 }
@@ -116,7 +193,7 @@ extension AddDetailPlaceViewController: UICollectionViewDelegateFlowLayout {
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

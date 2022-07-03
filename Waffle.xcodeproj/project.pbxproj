@@ -46,6 +46,8 @@
 		13CA03DD286DEF230087E79E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DC286DEF230087E79E /* Common.swift */; };
 		13CA03E02870173A0087E79E /* LoginSignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DF2870173A0087E79E /* LoginSignAPI.swift */; };
 		13CA03E228701B920087E79E /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E128701B920087E79E /* Encodable.swift */; };
+		13CA03E428718C1F0087E79E /* SearchPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */; };
+		13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -207,6 +209,8 @@
 		13CA03DC286DEF230087E79E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		13CA03DF2870173A0087E79E /* LoginSignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignAPI.swift; sourceTree = "<group>"; };
 		13CA03E128701B920087E79E /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewController.swift; sourceTree = "<group>"; };
+		13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewModel.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -1004,6 +1008,7 @@
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
 				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
 				1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */,
+				13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1030,6 +1035,7 @@
 				F29ED3092855DB99002371FD /* HomeViewModel.swift */,
 				1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */,
 				1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */,
+				13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1477,6 +1483,7 @@
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				13CA03E02870173A0087E79E /* LoginSignAPI.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
+				13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */,
 				F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */,
@@ -1535,6 +1542,7 @@
 				F205519D285458F80051E94D /* UIButton.swift in Sources */,
 				F29ED3062855DB7F002371FD /* MapViewModel.swift in Sources */,
 				F29ED33C2856290E002371FD /* ArchiveUsecase.swift in Sources */,
+				13CA03E428718C1F0087E79E /* SearchPlaceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
