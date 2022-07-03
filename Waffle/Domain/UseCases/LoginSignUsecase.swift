@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import Combine
 import RxSwift
 import RxCocoa
 
 class LoginSignUsecase: LoginSignUsecaseProtocol {
-
     private var repository: LoginSignRepository!
-    var authenCode: String = "111111"
+    var cancellables = Set<AnyCancellable>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
+        print("create \(repository)")
     }
     
     func checkEmailValid(email: String) -> Bool {
@@ -36,12 +37,20 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         return nickNameTest.evaluate(with: nickName)
     }
     
-    func login(email: String, password: String) -> Observable<String> {
-        return Observable.of("TO DO")
+    func login(email: String, password: String) {
+        print("LoginSignUsecase")
+        let loginInfo = Login(email: email, password: password)
+        repository.login(loginInfo: loginInfo)
+            .sink(receiveCompletion: { (error) in
+                print("failed: \(String(describing: error))")
+            }, receiveValue: { (result) in
+                print("login \(result)")
+            }).store(in: &cancellables)
     }
     
-    func signUp(email: String, password: String, profile: Int, nickName: String) {
-        
+    func signUp(email: String, password: String, profile: String, nickName: String, isAgreedMarketing: Bool) {
+        let signInfo = SignUp(email: email, password: password, nickname: nickName, isAgreedMarketing: false, profileImage: profile)
+        repository.singUp(signUpInfo: signInfo)
     }
     
     func getTempPassword(email: String) {
@@ -52,8 +61,8 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         return Observable.of(false)
     }
     
-    func sendAuthenCode() {
-        self.authenCode = "111111"
+    func sendAuthenCode(email: String) {
+        repository.sendEmail(email: email)
     }
 
     

@@ -9,25 +9,35 @@ import Foundation
 import Combine
 
 class LoginSignRepository: LoginSignRepositoryProtocol {
-    let urlSessionNetworkService: URLSessionNetworkServiceProtocol
+    let service: URLSessionNetworkService
     private var cancellables = Set<AnyCancellable>()
     
-    init(networkService: URLSessionNetworkServiceProtocol) {
-        self.urlSessionNetworkService = networkService
+    init(networkService: URLSessionNetworkService) {
+        self.service = networkService
     }
     
-    func login(email: String, password: String) -> AnyPublisher<Bool, Never> {
-        let subject = PassthroughSubject<Bool, Never>()
-        subject.send(true)
-        return subject.eraseToAnyPublisher()
+    func login(loginInfo: Login) -> AnyPublisher<LoginResponse, Error> {
+        print("login repository")
+        let api = LoginSignAPI.login(login: loginInfo)
+        return service.request(api, responseType: LoginResponse.self)
     }
     
     func singUp(signUpInfo: SignUp) {
-        
+        print("singUp repository")
+        let api = LoginSignAPI.signUp(signUp: signUpInfo)
+        service.request(api, responseType: SignUp.self)
     }
     
     func sendEmail(email: String) {
-        
+        print("login repository sendEmail")
+        service.defaultRequest(LoginSignAPI.sendEmail(email: email))
+            .eraseToAnyPublisher()
+            .sink(receiveCompletion: { (error) in
+                print("failed: \(String(describing: error))")
+            }, receiveValue: { (result) in
+                print("login \(result)")
+            }).store(in: &cancellables)
+            
     }
     
     func checkEmailCode(email: String, code: String) {

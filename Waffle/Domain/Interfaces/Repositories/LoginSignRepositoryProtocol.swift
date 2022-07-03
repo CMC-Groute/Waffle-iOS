@@ -14,8 +14,6 @@ protocol LoginSignRepositoryProtocol {
     func sendEmail(email: String)
     func checkEmailCode(email: String, code: String)
     func findPW(email: String)
-    func login(email: String, password: String) -> AnyPublisher<Bool, Never>
-    
-    
-    
+    func login(loginInfo: Login) -> AnyPublisher<LoginResponse, Error> 
+
 }

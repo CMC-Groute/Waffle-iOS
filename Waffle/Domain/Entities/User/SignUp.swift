@@ -10,10 +10,9 @@ import Foundation
 struct SignUp: Codable {
     var email: String
     var password: String
-    var checkPassword: String
     var nickname: String
     var isAgreedMarketing: Bool
-    var profileImage: Data
+    var profileImage: String
 }
 
 

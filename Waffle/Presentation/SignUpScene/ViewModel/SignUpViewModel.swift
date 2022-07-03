@@ -122,7 +122,8 @@ class SignUpViewModel {
                         if bool {
                             output.isEmailInvalid.accept(.aready) // 중복임
                         }else {
-                            self.usecase.sendAuthenCode() // 이메일 보냄
+                            print("viewModel send sendAuthenCode")
+                            self.usecase.sendAuthenCode(email: email) // 이메일 보냄
                             output.isEmailInvalid.accept(.checkEmail)
                         }
                     }).disposed(by: disposeBag)
@@ -144,11 +145,11 @@ class SignUpViewModel {
         input.authenCodeButton
             .withLatestFrom(input.authenCodeTextField)
             .subscribe(onNext: { text in
-                if !(self.usecase.authenCode == text) { // 인증번호 같지 x
-                    output.isAuthenCodeInValid.accept(false)
-                }else {
-                    output.isAuthenCodeInValid.accept(true)
-                }
+//                if !(self.usecase.authenCode == text) { // 인증번호 같지 x
+//                    output.isAuthenCodeInValid.accept(false)
+//                }else {
+//                    output.isAuthenCodeInValid.accept(true)
+//                }
             }).disposed(by: disposeBag)
         
         //MARK: - passwordTextField

@@ -10,7 +10,7 @@ import Combine
 
 protocol URLSessionNetworkServiceProtocol {
     func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<Data, Error>
-    func request<T: Decodable>(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<T, Error>
+    func request<T: Decodable>(_ urlRequest: NetworkRequestBuilder, responseType: T.Type) -> AnyPublisher<T, Error>
     func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<[[String: Any]], Error>
     func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<[String: Any], Error>
 }

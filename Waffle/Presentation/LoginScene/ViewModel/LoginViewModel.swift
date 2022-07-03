@@ -41,34 +41,35 @@ class LoginViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
-//        Observable.combineLatest(input.emailTextField, input.passwordTextField)
-//            .map{ $0.0.count > 0 && $0.1.count > 8 }
-//            .bind(to: output.loginButtonEnabled)
-//            .disposed(by: disposeBag)
+        Observable.combineLatest(input.emailTextField, input.passwordTextField)
+            .map{ $0.0.count > 0 && $0.1.count > 8 }
+            .bind(to: output.loginButtonEnabled)
+            .disposed(by: disposeBag)
         
         input.loginButton
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.passwordTextField))
             .bind(onNext: { email, password in
-//                if !self.usecase.checkEmailValid(email:  email) { // 이메일 유효성 x
-//                    output.emailInvalidMessage.accept(false)
-//                }else {
-//                    output.emailInvalidMessage.accept(true)
-//                }
-//
-//                if !self.usecase.checkPasswordValid(password: password) { //패스워드 유효성 x
-//                    output.passwordInvalidMessage.accept(false)
-//                }else {
-//                    output.passwordInvalidMessage.accept(true)
-//                }
+                if !self.usecase.checkEmailValid(email:  email) { // 이메일 유효성 x
+                    output.emailInvalidMessage.accept(false)
+                }else {
+                    output.emailInvalidMessage.accept(true)
+                }
+
+                if !self.usecase.checkPasswordValid(password: password) { //패스워드 유효성 x
+                    output.passwordInvalidMessage.accept(false)
+                }else {
+                    output.passwordInvalidMessage.accept(true)
+                }
                 
-//                Observable.combineLatest(output.emailInvalidMessage, output.passwordInvalidMessage)
-//                    .map { $0.0 && $0.1 }
-//                    .filter { $0 == true }
-//                    .subscribe(onNext: { _ in
-//                        self.usecase.login(email: email, password: password)
-//                        self.coordinator.finish()
-//                    }).disposed(by: disposeBag)
-                self.coordinator.finish()
+                Observable.combineLatest(output.emailInvalidMessage, output.passwordInvalidMessage)
+                    .map { $0.0 && $0.1 }
+                    .filter { $0 == true }
+                    .subscribe(onNext: { _ in
+                        print("login enbled")
+                        self.usecase.login(email: email, password: password)
+                        self.coordinator.finish()
+                    }).disposed(by: disposeBag)
+                //self.coordinator.finish()
             }).disposed(by: disposeBag)
            
         

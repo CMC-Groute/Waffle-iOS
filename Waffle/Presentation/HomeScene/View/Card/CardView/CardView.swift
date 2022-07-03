@@ -59,7 +59,7 @@ final class CardView: UIView {
         if let memo = item.memo {
             memoLabel.text = memo
         }else {
-            memoLabel.text = DefaultDetailCardInfo.memo.rawValue
+            memoLabel.text = DefaultDetailCardInfo.archiveMemo.rawValue
         }
 
         wappleLabel.text = item.wapple
