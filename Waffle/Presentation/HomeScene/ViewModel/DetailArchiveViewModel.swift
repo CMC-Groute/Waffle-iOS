@@ -98,7 +98,8 @@ class DetailArchiveViewModel {
     }
     
     func detailPlace(place: PlaceInfo, category: Category) {
-        coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: self.category)
+        let sendCategory = self.category.filter { $0.index != -1 }
+        coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: sendCategory)
     }
     
     func setCategory(category: Category) {

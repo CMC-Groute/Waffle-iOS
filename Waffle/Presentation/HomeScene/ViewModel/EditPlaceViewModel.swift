@@ -21,12 +21,10 @@ class EditPlaceViewModel {
         self.usecase = usecase
     }
     
-    struct Input {
-        let placeCategoryId: Observable<Int>
-    }
+    struct Input {    }
     
     struct Output {
-        
+        let placeViewEnabled = BehaviorRelay<Bool>(value: true)
         
     }
     

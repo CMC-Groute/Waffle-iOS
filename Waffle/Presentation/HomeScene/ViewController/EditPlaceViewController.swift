@@ -16,6 +16,9 @@ class EditPlaceViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var linkLabel: UILabel!
+    @IBOutlet weak var linkDeleteButton: UIButton!
+    
+    let disposeBag = DisposeBag()
     
     lazy var placeFramView: UIView = {
         let view = UIView()
@@ -65,16 +68,24 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func configureUI() {
+        linkDeleteButton.isHidden = true
         editButton.makeRounded(corner: 26)
         linkTextView.makeRounded(width: nil, color: nil, value: 10)
+        linkTextView.isEditable = false
+        linkTextView.isSelectable = true
+        linkTextView.delegate = self
+        linkTextView.text = "https://g-y-e-o-m.tistory.com"
+        linkTextView.isUserInteractionEnabled = true
+        linkTextView.textContainerInset = UIEdgeInsets(top: 15, left: 14, bottom: 15, right: 48)
+        
+        
         memoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
         memoTextView.dataDetectorTypes = .link
-//        linkTextView.padding(value: 9, icon: Asset.Assets.deleteButton.name)
-//        linkTextView.setClearButton(with: Asset.Assets.delete.image, mode: .whileEditing)
         memoTextView.attributedText = memoTextView.text.setLineHeight(24)
         memoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         configureNavigationBar()
         configureCollectionView()
+        configureGesture()
     }
     
     @objc func didTapBackButton() {
@@ -98,6 +109,11 @@ class EditPlaceViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+    }
+    
+    private func configureGesture() {
+        let tapTextViewGesture = UITapGestureRecognizer(target: self, action: #selector(textViewDidTapped))
+        linkTextView.addGestureRecognizer(tapTextViewGesture)
     }
     
     private func textViewScrollToBottom() {
@@ -157,7 +173,22 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        let input = EditPlaceViewModel.Input()
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
+        linkDeleteButton.rx.tap
+            .subscribe(onNext: {
+                self.linkTextView.text = ""
+            }).disposed(by: disposeBag)
+        
+        output?.placeViewEnabled
+            .subscribe(onNext: { bool in
+                if bool {
+                    self.placeAddLayout()
+                }else {
+                    self.placeInputTextFieldLayout()
+                }
+            }).disposed(by: disposeBag)
     }
 
 }
@@ -181,6 +212,76 @@ extension EditPlaceViewController: UICollectionViewDataSource {
     }
 }
 
+extension EditPlaceViewController: UITextViewDelegate {
+    
+    fileprivate func placeCursor(_ textView: UITextView, _ location: CGPoint) {
+       // place the cursor on tap position
+       if let tapPosition = textView.closestPosition(to: location) {
+           let uiTextRange = textView.textRange(from: tapPosition, to: tapPosition)
+           
+           if let start = uiTextRange?.start, let end = uiTextRange?.end {
+               let loc = textView.offset(from: textView.beginningOfDocument, to: tapPosition)
+               let length = textView.offset(from: start, to: end)
+               textView.selectedRange = NSMakeRange(loc, length)
+           }
+       }
+    }
+    
+    fileprivate func changeTextViewToNormalState() {
+        linkTextView.isEditable = true
+        linkTextView.dataDetectorTypes = []
+        linkTextView.becomeFirstResponder()
+    }
+    
+    @objc func textViewDidTapped(recognizer: UITapGestureRecognizer) {
+       guard let myTextView = recognizer.view as? UITextView else { return }
+       let layoutManager = myTextView.layoutManager
+       var location = recognizer.location(in: myTextView)
+       location.x -= myTextView.textContainerInset.left
+       location.y -= myTextView.textContainerInset.top
+
+       let glyphIndex: Int = myTextView.layoutManager.glyphIndex(for: location, in: myTextView.textContainer, fractionOfDistanceThroughGlyph: nil)
+       let glyphRect = layoutManager.boundingRect(forGlyphRange: NSRange(location: glyphIndex, length: 1), in: myTextView.textContainer)
+       
+       if glyphRect.contains(location) {
+           let characterIndex: Int = layoutManager.characterIndexForGlyph(at: glyphIndex)
+           let attributeName = NSAttributedString.Key.link
+           let attributeValue = myTextView.textStorage.attribute(attributeName, at: characterIndex, effectiveRange: nil)
+           if let url = attributeValue as? URL {
+               if UIApplication.shared.canOpenURL(url) {
+                   UIApplication.shared.open(url, options: [:], completionHandler: nil)
+               } else {
+                   print("There is a problem in your link.")
+               }
+           } else {
+               // place the cursor to tap position
+               placeCursor(myTextView, location)
+               
+               // back to normal state
+               changeTextViewToNormalState()
+           }
+       } else {
+           changeTextViewToNormalState()
+       }
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        linkDeleteButton.isHidden = false
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.isEditable = false
+        textView.dataDetectorTypes = .all
+        guard let text = textView.text else { return }
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.linked(text: text, url: text)
+
+        textView.attributedText = attributedString
+        textView.resignFirstResponder()
+        linkDeleteButton.isHidden = true
+    }
+}
+
 extension EditPlaceViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
@@ -201,3 +302,14 @@ extension EditPlaceViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension NSMutableAttributedString {
+  public func linked(text: String, url: String) {
+    let foundRange = self.mutableString.range(of: text)
+    if foundRange.location != NSNotFound {
+//        self.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue,
+//                                            range: foundRange)
+//        self.addAttribute(.font, value: UIFont.fontWithName(type: .regular, size: 15) , range: foundRange)
+      self.addAttribute(.link, value: url, range: foundRange)
+    }
+  }
+}

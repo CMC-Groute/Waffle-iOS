@@ -1784,17 +1784,90 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="장소와 관련된 링크 주소를 입력해요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x9c-ni-vBM">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x9c-ni-vBM">
                                                 <rect key="frame" x="16" y="254" width="382" height="94"/>
                                                 <color key="backgroundColor" name="Gray2"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="uUe-F8-9Hc"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="장소와">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content=" ">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="관련된">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content=" ">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="링크">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content=" ">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="주소를">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content=" ">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="입력해요">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-HX-DrB">
+                                                <rect key="frame" x="350" y="265" width="40" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="1Wq-Nj-13Y"/>
+                                                    <constraint firstAttribute="height" constant="40" id="rp6-jN-fz1"/>
+                                                </constraints>
+                                                <color key="tintColor" name="Black"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="delete"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1802,6 +1875,7 @@
                                             <constraint firstItem="pXP-JI-1rX" firstAttribute="top" secondItem="Uie-kg-NDT" secondAttribute="top" constant="17" id="4qc-Fi-yL3"/>
                                             <constraint firstItem="ngR-JW-qxs" firstAttribute="top" secondItem="nEd-Xs-Q4o" secondAttribute="bottom" constant="12" id="9CM-lN-2rP"/>
                                             <constraint firstAttribute="bottom" secondItem="PzS-si-S6K" secondAttribute="bottom" id="AIb-4z-piF"/>
+                                            <constraint firstItem="x9c-ni-vBM" firstAttribute="bottom" secondItem="Ftm-HX-DrB" secondAttribute="bottom" constant="5" id="Dwg-Ar-h2g"/>
                                             <constraint firstItem="nEd-Xs-Q4o" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="18" id="FjG-Mh-ZBR"/>
                                             <constraint firstItem="DwL-oK-ULg" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="6" id="GRl-me-kBT"/>
                                             <constraint firstItem="DwL-oK-ULg" firstAttribute="top" secondItem="pXP-JI-1rX" secondAttribute="bottom" constant="10" id="IeQ-No-NuC"/>
@@ -1810,6 +1884,7 @@
                                             <constraint firstItem="XoJ-JW-whA" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="20" id="NaE-TO-xYS"/>
                                             <constraint firstAttribute="trailing" secondItem="DwL-oK-ULg" secondAttribute="trailing" constant="6" id="Pp5-Rn-u4p"/>
                                             <constraint firstItem="pXP-JI-1rX" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="20" id="QJJ-x5-tv8"/>
+                                            <constraint firstItem="x9c-ni-vBM" firstAttribute="trailing" secondItem="Ftm-HX-DrB" secondAttribute="trailing" constant="8" id="Uxf-Vt-Kw4"/>
                                             <constraint firstItem="x9c-ni-vBM" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="16" id="bKS-c5-aIh"/>
                                             <constraint firstItem="x9c-ni-vBM" firstAttribute="top" secondItem="Dff-8r-gR7" secondAttribute="bottom" constant="11" id="dcN-Y1-Pl2"/>
                                             <constraint firstItem="nEd-Xs-Q4o" firstAttribute="top" secondItem="x9c-ni-vBM" secondAttribute="bottom" constant="32" id="fnv-Vy-65y"/>
@@ -1817,6 +1892,7 @@
                                             <constraint firstAttribute="trailing" secondItem="ngR-JW-qxs" secondAttribute="trailing" constant="16" id="mLp-Vg-KyE"/>
                                             <constraint firstItem="Dff-8r-gR7" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="18" id="nTe-dt-qY4"/>
                                             <constraint firstItem="ngR-JW-qxs" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="16" id="sJS-0t-pip"/>
+                                            <constraint firstItem="Ftm-HX-DrB" firstAttribute="top" secondItem="x9c-ni-vBM" secondAttribute="top" constant="5" id="w3i-Pa-9re"/>
                                             <constraint firstAttribute="trailing" secondItem="PzS-si-S6K" secondAttribute="trailing" id="zww-xY-dq3"/>
                                         </constraints>
                                     </view>
@@ -1844,6 +1920,7 @@
                     <connections>
                         <outlet property="collectionView" destination="DwL-oK-ULg" id="eKm-Ox-nx3"/>
                         <outlet property="editButton" destination="Hht-ek-gPN" id="oNq-TO-Y0n"/>
+                        <outlet property="linkDeleteButton" destination="Ftm-HX-DrB" id="ybW-hZ-BQD"/>
                         <outlet property="linkLabel" destination="Dff-8r-gR7" id="Kdd-FG-GsP"/>
                         <outlet property="linkTextView" destination="x9c-ni-vBM" id="Cdi-aa-7ig"/>
                         <outlet property="memoTextView" destination="ngR-JW-qxs" id="ZiD-hN-7lO"/>
@@ -1858,6 +1935,7 @@
     <resources>
         <image name="category-etc" width="14" height="14"/>
         <image name="close-etc" width="40" height="40"/>
+        <image name="delete" width="20" height="20"/>
         <image name="detailWapple-1" width="111" height="120"/>
         <image name="etc" width="30" height="30"/>
         <image name="heart" width="16" height="16"/>
