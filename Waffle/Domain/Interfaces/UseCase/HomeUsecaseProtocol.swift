@@ -9,4 +9,5 @@ import Foundation
 
 protocol HomeUsecaseProtocol {
     func getCardInfo()
+    func deletePlace(placeId: Int)
 }

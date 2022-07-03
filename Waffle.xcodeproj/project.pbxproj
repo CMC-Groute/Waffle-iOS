@@ -50,6 +50,7 @@
 		13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */; };
 		13CA03E92871960A0087E79E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E82871960A0087E79E /* Place.swift */; };
 		13CA03EE2871AC820087E79E /* AddPlaceSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */; };
+		13CA03F02871D6550087E79E /* DeletePlacePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -215,6 +216,7 @@
 		13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewModel.swift; sourceTree = "<group>"; };
 		13CA03E82871960A0087E79E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceSearchTableViewCell.swift; sourceTree = "<group>"; };
+		13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlacePopUpViewController.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */,
 				1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */,
 				1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */,
+				13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -1514,6 +1517,7 @@
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
 				1390EC6628647D3900E5520C /* DetailArchiveViewModel.swift in Sources */,
 				F29ED3282855EF97002371FD /* UserRepository.swift in Sources */,
+				13CA03F02871D6550087E79E /* DeletePlacePopUpViewController.swift in Sources */,
 				F29ED33828562074002371FD /* Date.swift in Sources */,
 				F29ED3242855EE0D002371FD /* UserUsecase.swift in Sources */,
 				F29ED32A2855EFB6002371FD /* UserRepositoryProtocol.swift in Sources */,

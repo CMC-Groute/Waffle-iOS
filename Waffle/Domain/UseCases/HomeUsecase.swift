@@ -41,7 +41,10 @@ class HomeUsecase: HomeUsecaseProtocol {
     func likeSend() { // 좋아요 조르기
         
     }
-
+    
+    func deletePlace(placeId: Int) { //장소 삭제하기
+        
+    }
 
 }
 

@@ -112,7 +112,17 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
         topViewController.viewModel?.getPlace = place
         topViewController.viewModel?.placeViewEnabled.accept(true)
+    }
+    
+    func deletePlace() {
         
+        let deletePlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeletePlacePopUpViewController") as! DeletePlacePopUpViewController
+        deletePlacePopUpView.coordinator = self
+        deletePlacePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
+        deletePlacePopUpView.modalPresentationStyle = .overFullScreen
+        deletePlacePopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(deletePlacePopUpView, animated: false)
+
     }
     
     func finish() {
