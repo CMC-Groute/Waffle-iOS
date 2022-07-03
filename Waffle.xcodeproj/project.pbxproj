@@ -48,6 +48,7 @@
 		13CA03E228701B920087E79E /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E128701B920087E79E /* Encodable.swift */; };
 		13CA03E428718C1F0087E79E /* SearchPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */; };
 		13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */; };
+		13CA03E92871960A0087E79E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E82871960A0087E79E /* Place.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -211,6 +212,7 @@
 		13CA03E128701B920087E79E /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewController.swift; sourceTree = "<group>"; };
 		13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewModel.swift; sourceTree = "<group>"; };
+		13CA03E82871960A0087E79E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -496,9 +498,18 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		13CA03E7287195FF0087E79E /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				13CA03E82871960A0087E79E /* Place.swift */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
 		13E2A075285EF1E50015499E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				13CA03E7287195FF0087E79E /* Place */,
 				1390EC882869396B00E5520C /* User */,
 				1390EC822866DE0000E5520C /* Home */,
 				13E2A076285EF1F00015499E /* Archive */,
@@ -1532,6 +1543,7 @@
 				1390EC842866DE1000E5520C /* PlaceInfo.swift in Sources */,
 				F29ED340285629A5002371FD /* ArchiveRepositoryProtocol.swift in Sources */,
 				1390EC9728698EAF00E5520C /* AddCategoryCollectionViewCell.swift in Sources */,
+				13CA03E92871960A0087E79E /* Place.swift in Sources */,
 				F20551A52854A75A0051E94D /* SetProfileImageViewController.swift in Sources */,
 				13E2A082285F022A0015499E /* HomeRepositoryProtocol.swift in Sources */,
 				F29ED30A2855DB99002371FD /* HomeViewModel.swift in Sources */,

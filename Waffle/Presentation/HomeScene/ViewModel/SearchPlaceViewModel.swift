@@ -13,7 +13,7 @@ class SearchPlaceViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    var place: [String] = ["first 장소", "second 장소"]
+    var place: [String] = ["first 장소", "second 장소"] // TO DO PlaceSearchInfo
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
