@@ -114,7 +114,7 @@ class SearchPlaceViewController: UIViewController {
 
     
     func tableViewSetup() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(AddPlaceSearchTableViewCell.self, forCellReuseIdentifier: AddPlaceSearchTableViewCell.identifider)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -173,21 +173,15 @@ extension SearchPlaceViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        if #available(iOS 14.0, *) {
-            var content = cell.defaultContentConfiguration()
-            guard let place = viewModel?.place else { return cell }
-            content.text = place[indexPath.row]
-            cell.contentConfiguration = content
-        } else {
-            // Fallback on earlier versions
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: AddPlaceSearchTableViewCell.identifider) as! AddPlaceSearchTableViewCell
+        cell.configureCell(title: "test", address: "test")
+        
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(45)
+        return CGFloat(64)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -49,6 +49,7 @@
 		13CA03E428718C1F0087E79E /* SearchPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */; };
 		13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */; };
 		13CA03E92871960A0087E79E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E82871960A0087E79E /* Place.swift */; };
+		13CA03EE2871AC820087E79E /* AddPlaceSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -213,6 +214,7 @@
 		13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewController.swift; sourceTree = "<group>"; };
 		13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewModel.swift; sourceTree = "<group>"; };
 		13CA03E82871960A0087E79E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceSearchTableViewCell.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -405,7 +407,7 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
-		1390EC6E286485DD00E5520C /* Cell */ = {
+		1390EC6E286485DD00E5520C /* DetailPlaceCell */ = {
 			isa = PBXGroup;
 			children = (
 				1390EC79286494B100E5520C /* DetailPlaceTableViewCell.swift */,
@@ -414,7 +416,7 @@
 				132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */,
 				132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */,
 			);
-			path = Cell;
+			path = DetailPlaceCell;
 			sourceTree = "<group>";
 		};
 		1390EC7D2864950800E5520C /* Button */ = {
@@ -458,8 +460,9 @@
 		1390EC8E28698E5B00E5520C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				13CA03EA2871AC310087E79E /* AddPlaceCell */,
 				1390EC9028698E7A00E5520C /* Category */,
-				1390EC6E286485DD00E5520C /* Cell */,
+				1390EC6E286485DD00E5520C /* DetailPlaceCell */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -504,6 +507,14 @@
 				13CA03E82871960A0087E79E /* Place.swift */,
 			);
 			path = Place;
+			sourceTree = "<group>";
+		};
+		13CA03EA2871AC310087E79E /* AddPlaceCell */ = {
+			isa = PBXGroup;
+			children = (
+				13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */,
+			);
+			path = AddPlaceCell;
 			sourceTree = "<group>";
 		};
 		13E2A075285EF1E50015499E /* Entities */ = {
@@ -1497,6 +1508,7 @@
 				13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */,
 				F29ED2FA2855D945002371FD /* ArchiveCoordinator.swift in Sources */,
 				135F6E7A28576EA700F9F71E /* Locatioin.swift in Sources */,
+				13CA03EE2871AC820087E79E /* AddPlaceSearchTableViewCell.swift in Sources */,
 				F29ED3222855E84A002371FD /* ChangePWViewController.swift in Sources */,
 				F29ED342285629DB002371FD /* ArchiveRepository.swift in Sources */,
 				F2125D14284E0E88008E1185 /* UserDefaultKey.swift in Sources */,
