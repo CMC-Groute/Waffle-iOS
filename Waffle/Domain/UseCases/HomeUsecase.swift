@@ -45,6 +45,10 @@ class HomeUsecase: HomeUsecaseProtocol {
     func deletePlace(placeId: Int) { //장소 삭제하기
         
     }
+    
+    func editPlace(placeId: Int) { //장소 수정하기
+        
+    }
 
 }
 

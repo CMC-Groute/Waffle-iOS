@@ -114,15 +114,19 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         topViewController.viewModel?.placeViewEnabled.accept(true)
     }
     
-    func deletePlace() {
-        
+    func deletePlace(placeId: Int) {
         let deletePlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeletePlacePopUpViewController") as! DeletePlacePopUpViewController
+        deletePlacePopUpView.placeId = placeId
         deletePlacePopUpView.coordinator = self
         deletePlacePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
         deletePlacePopUpView.modalPresentationStyle = .overFullScreen
         deletePlacePopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(deletePlacePopUpView, animated: false)
-
+    }
+    
+    func editPlace(placeId: Int) {
+        let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
+        editPlaceViewController
     }
     
     func finish() {

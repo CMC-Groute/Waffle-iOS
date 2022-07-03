@@ -51,6 +51,8 @@
 		13CA03E92871960A0087E79E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E82871960A0087E79E /* Place.swift */; };
 		13CA03EE2871AC820087E79E /* AddPlaceSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */; };
 		13CA03F02871D6550087E79E /* DeletePlacePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */; };
+		13CA03F22871D8150087E79E /* EditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03F12871D8150087E79E /* EditPlaceViewController.swift */; };
+		13CA03F42871D94B0087E79E /* EditPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03F32871D94B0087E79E /* EditPlaceViewModel.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -217,6 +219,8 @@
 		13CA03E82871960A0087E79E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		13CA03ED2871AC820087E79E /* AddPlaceSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceSearchTableViewCell.swift; sourceTree = "<group>"; };
 		13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlacePopUpViewController.swift; sourceTree = "<group>"; };
+		13CA03F12871D8150087E79E /* EditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaceViewController.swift; sourceTree = "<group>"; };
+		13CA03F32871D94B0087E79E /* EditPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaceViewModel.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -1034,6 +1038,7 @@
 				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
 				1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */,
 				13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */,
+				13CA03F12871D8150087E79E /* EditPlaceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1061,6 +1066,7 @@
 				1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */,
 				1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */,
 				13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */,
+				13CA03F32871D94B0087E79E /* EditPlaceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1476,6 +1482,7 @@
 				F29ED34428562D7E002371FD /* UITextView.swift in Sources */,
 				F20551A128549D320051E94D /* UIFont.swift in Sources */,
 				13E2A07C285EFB2D0015499E /* EmptyCardView.swift in Sources */,
+				13CA03F42871D94B0087E79E /* EditPlaceViewModel.swift in Sources */,
 				F29ED33628561DC0002371FD /* AddLocationViewController.swift in Sources */,
 				F2125D5F2850EF45008E1185 /* FindPWViewController.swift in Sources */,
 				F2125D1E284E10B8008E1185 /* LoginCoordinator.swift in Sources */,
@@ -1506,6 +1513,7 @@
 				135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */,
 				13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
+				13CA03F22871D8150087E79E /* EditPlaceViewController.swift in Sources */,
 				13CA03E02870173A0087E79E /* LoginSignAPI.swift in Sources */,
 				F2125D26284E16FE008E1185 /* CoordinatorFinishDelegate.swift in Sources */,
 				13CA03E628718E140087E79E /* SearchPlaceViewModel.swift in Sources */,

@@ -27,6 +27,5 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func deleteCategory(category: Category)
     func arhiveDelete()
     func likeSend()
-    
-    
+    func deletePlace(placeId: Int)
 }
