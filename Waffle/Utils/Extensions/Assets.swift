@@ -60,6 +60,7 @@ internal enum Asset {
     internal static let heart = ImageAsset(name: "heart")
     internal static let placeCheckSelected = ImageAsset(name: "placeCheck-selected")
     internal static let placeCheck = ImageAsset(name: "placeCheck")
+    internal static let delete = ImageAsset(name: "delete")
     internal static let inviteButton = ImageAsset(name: "inviteButton")
     internal static let noPlace = ImageAsset(name: "noPlace")
     internal static let participantsEtc = ImageAsset(name: "participants-etc")

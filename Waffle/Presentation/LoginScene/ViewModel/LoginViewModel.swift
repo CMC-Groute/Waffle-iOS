@@ -41,10 +41,10 @@ class LoginViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
-        Observable.combineLatest(input.emailTextField, input.passwordTextField)
-            .map{ $0.0.count > 0 && $0.1.count > 8 }
-            .bind(to: output.loginButtonEnabled)
-            .disposed(by: disposeBag)
+//        Observable.combineLatest(input.emailTextField, input.passwordTextField)
+//            .map{ $0.0.count > 0 && $0.1.count > 8 }
+//            .bind(to: output.loginButtonEnabled)
+//            .disposed(by: disposeBag)
         
         input.loginButton
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.passwordTextField))
@@ -60,16 +60,16 @@ class LoginViewModel {
                 }else {
                     output.passwordInvalidMessage.accept(true)
                 }
-                
+
                 Observable.combineLatest(output.emailInvalidMessage, output.passwordInvalidMessage)
                     .map { $0.0 && $0.1 }
                     .filter { $0 == true }
                     .subscribe(onNext: { _ in
                         print("login enbled")
-                        self.usecase.login(email: email, password: password)
-                        self.coordinator.finish()
+                        //self.usecase.login(email: email, password: password)
+                       self.coordinator.finish()
                     }).disposed(by: disposeBag)
-                //self.coordinator.finish()
+                self.coordinator.finish()
             }).disposed(by: disposeBag)
            
         

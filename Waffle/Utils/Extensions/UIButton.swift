@@ -8,6 +8,16 @@
 import UIKit
 
 extension UIButton {
+    func makeRounded(corner: CGFloat) {
+        self.layer.cornerRadius = corner
+        self.layer.masksToBounds = true
+    }
+    
+    func makeCircle(corner: CGFloat) {
+        self.layer.cornerRadius = self.frame.size.width / 2
+        self.layer.masksToBounds = true
+    }
+    
     func setEnabled(color: String?) {
         self.isUserInteractionEnabled = true
         self.isEnabled = true
@@ -51,4 +61,6 @@ extension UIButton {
         self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0, bottom: 0, right: -titleSize.width)
     }
 }
+
+
 

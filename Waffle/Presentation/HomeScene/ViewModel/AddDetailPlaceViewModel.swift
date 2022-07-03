@@ -31,4 +31,8 @@ class AddDetailPlaceViewModel {
         let output = Output()
         return output
     }
+    
+    func back() {
+        coordinator.popViewController()
+    }
 }

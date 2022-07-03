@@ -87,19 +87,32 @@ extension UITextField {
         }
     }
     
-    
-}
-
-extension UIButton {
-    func makeRounded(corner: CGFloat) {
-        self.layer.cornerRadius = corner
-        self.layer.masksToBounds = true
+    func setClearButton(with image: UIImage, mode: UITextField.ViewMode) {
+        let iconView = UIView(frame: CGRect(x: 0, y: 0, width: 48, height: self.frame.height))
+        let clearButton = UIButton(type: .custom)
+        clearButton.setImage(image, for: .normal)
+        clearButton.frame = CGRect(x: 0, y: 5, width: 40, height: 40)
+        clearButton.contentMode = .scaleAspectFit
+        clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
+        self.addTarget(self, action: #selector(UITextField.displayClearButtonIfNeeded), for: .editingDidBegin)
+        self.addTarget(self, action: #selector(UITextField.displayClearButtonIfNeeded), for: .editingChanged)
+        iconView.addSubview(clearButton)
+        self.rightView = iconView
+        self.rightViewMode = mode
+    }
+        
+    @objc
+    private func displayClearButtonIfNeeded() {
+        self.rightView?.isHidden = (self.text?.isEmpty) ?? true
     }
     
-    func makeCircle(corner: CGFloat) {
-        self.layer.cornerRadius = self.frame.size.width / 2
-        self.layer.masksToBounds = true
+    @objc
+    private func clear(sender: AnyObject) {
+        self.text = ""
+        sendActions(for: .editingChanged)
     }
+    
+    
 }
 
 
