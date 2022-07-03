@@ -14,6 +14,9 @@ class SearchPlaceViewController: UIViewController {
     var viewModel: SearchPlaceViewModel?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
+    
+    let searchBar = UISearchBar()
     var isSearching: Bool = false
     let disposeBag = DisposeBag()
     
@@ -35,15 +38,52 @@ class SearchPlaceViewController: UIViewController {
         let imageView = UIImageView(image: searchImage)
         return imageView
     }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         tableViewSetup()
         bindViewModel()
+        resignForKeyboardNotification()
+    }
+    
+    func resignForKeyboardNotification() {
+        hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+        
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+          if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+              let keyboardReactangle = keyboardFrame.cgRectValue
+              let keyboardHeight = keyboardReactangle.height
+              UIView.animate(
+                  withDuration: 0.3
+                  , animations: {
+                      self.bottonConstraint.constant = keyboardHeight - self.view.safeAreaInsets.bottom + 4
+                  }
+              )
+        }
+      }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(
+            withDuration: 0.3
+            , animations: {
+                self.bottonConstraint.constant = 0
+            }
+        )
     }
     
     func configureUI() {
+        searchBar.becomeFirstResponder()
         selectButton.makeRounded(corner: 26)
         self.noSearchResultView.addSubview(searchImageView)
         self.noSearchResultView.addSubview(noInfoLabel)
@@ -62,9 +102,8 @@ class SearchPlaceViewController: UIViewController {
         func setNavigationBar() {
             let bounds = UIScreen.main.bounds
             let width = bounds.size.width //화면 너비
-            let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: width - 40, height: 0))
+            searchBar.frame = CGRect(x: 0, y: 0, width: width - 40, height: 0)
             searchBar.placeholder = "장소 검색"
-            searchBar.delegate = self
             navigationItem.titleView = searchBar
             let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
             let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
@@ -86,10 +125,29 @@ class SearchPlaceViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        guard let viewModel = viewModel else {
+            return
+        }
+
         let input = SearchPlaceViewModel.Input(viewDidLoadEvent: Observable.just(()), selectedItem: self.tableView.rx.itemSelected.map { $0.row }, selectButton: selectButton.rx.tap.asObservable())
         
-        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        let output = viewModel.transform(from: input, disposeBag: disposeBag)
         
+        searchBar.rx.text.orEmpty
+             .debounce(.microseconds(5), scheduler: MainScheduler.instance)
+             .distinctUntilChanged()
+             .subscribe(onNext: { searchText in
+                 if searchText.isEmpty {
+                     self.isSearching = false
+                     viewModel.filteringPlace = []
+                 }else {
+                     self.isSearching = true
+                     viewModel.filteringPlace = viewModel.place.filter{ $0.contains(searchText) }
+                 }
+                
+                 self.tableView.reloadData()
+             })
+             .disposed(by: disposeBag)
     }
     
     
@@ -97,7 +155,7 @@ class SearchPlaceViewController: UIViewController {
 
 extension SearchPlaceViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let place = viewModel?.place else {
+        guard let place = viewModel?.filteringPlace else {
             tableView.backgroundView  = noSearchResultView
             tableView.separatorStyle  = .none
             return 0
@@ -135,18 +193,6 @@ extension SearchPlaceViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectButton.setEnabled(color: Asset.Colors.black.name)
     }
-}
-
-extension SearchPlaceViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
-    
-    
 }
 
 

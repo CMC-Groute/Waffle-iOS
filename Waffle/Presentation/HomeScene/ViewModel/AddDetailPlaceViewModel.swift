@@ -42,7 +42,6 @@ class AddDetailPlaceViewModel {
         let output = Output()
         input.placeTextFieldTapEvent
             .subscribe(onNext: {
-                print("add location")
                 self.coordinator.searchPlace()
             }).disposed(by: disposeBag)
         return output

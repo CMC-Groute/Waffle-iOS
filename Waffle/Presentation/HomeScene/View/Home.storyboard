@@ -829,6 +829,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottonConstraint" destination="aHb-Lu-gQo" id="2xS-38-Vo4"/>
                         <outlet property="selectButton" destination="avG-Xo-WCk" id="jAy-qB-qjq"/>
                         <outlet property="tableView" destination="Wit-R4-4Vb" id="KxM-PM-9WH"/>
                     </connections>

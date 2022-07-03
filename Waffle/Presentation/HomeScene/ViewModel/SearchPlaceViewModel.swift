@@ -13,7 +13,10 @@ class SearchPlaceViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    var place: [String] = ["first 장소", "second 장소"] // TO DO PlaceSearchInfo
+    
+    // TO DO PlaceSearchInfo
+    var place: [String] = ["first 장소", "second 장소", "second 장소", "second 장소", "Third 장소"]
+    var filteringPlace: [String] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -26,22 +29,16 @@ class SearchPlaceViewModel {
         let selectButton: Observable<Void>
     }
     
-    struct Output {
-        let selecteButtonEnabled = BehaviorRelay<Bool>(value: false)
-    }
+    struct Output { }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         input.viewDidLoadEvent
             .subscribe(onNext: {
                 // TO DO get data
+                self.filteringPlace = self.place
             }).disposed(by: disposeBag)
-        
-        input.selectedItem
-            .subscribe(onNext: { index in
-                print("selected index \(index)")
-            }).disposed(by: disposeBag)
-        
+
         input.selectButton
             .withLatestFrom(input.selectedItem)
             .subscribe(onNext: { [weak self] index in
