@@ -60,6 +60,13 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(searchPlaceViewController, animated: true)
     }
     
+    func editPlace(placeId: Int, category: [Category]) {
+        let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
+        editPlaceViewController.viewModel = EditPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
+        editPlaceViewController.viewModel?.categoryInfo = category
+        self.navigationController.pushViewController(editPlaceViewController, animated: true)
+    }
+    
     func deleteCategory(category: Category) {
         let categoryDeletePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "CategoryDeletePopUpViewController") as! CategoryDeletePopUpViewController
         categoryDeletePopUpView.coordinator = self
@@ -89,6 +96,16 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.present(likeSendPopUpView, animated: false)
     }
     
+    func deletePlace(placeId: Int) {
+        let deletePlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeletePlacePopUpViewController") as! DeletePlacePopUpViewController
+        deletePlacePopUpView.placeId = placeId
+        deletePlacePopUpView.coordinator = self
+        deletePlacePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
+        deletePlacePopUpView.modalPresentationStyle = .overFullScreen
+        deletePlacePopUpView.modalTransitionStyle = .crossDissolve
+        self.navigationController.present(deletePlacePopUpView, animated: false)
+    }
+    
     func editArchive(cardInfo: CardInfo?) {
         let archiveCoordinator = ArchiveCoordinator(self.navigationController)
         self.childCoordinators.append(archiveCoordinator)
@@ -112,21 +129,6 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
         topViewController.viewModel?.getPlace = place
         topViewController.viewModel?.placeViewEnabled.accept(true)
-    }
-    
-    func deletePlace(placeId: Int) {
-        let deletePlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeletePlacePopUpViewController") as! DeletePlacePopUpViewController
-        deletePlacePopUpView.placeId = placeId
-        deletePlacePopUpView.coordinator = self
-        deletePlacePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
-        deletePlacePopUpView.modalPresentationStyle = .overFullScreen
-        deletePlacePopUpView.modalTransitionStyle = .crossDissolve
-        self.navigationController.present(deletePlacePopUpView, animated: false)
-    }
-    
-    func editPlace(placeId: Int) {
-        let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
-        editPlaceViewController
     }
     
     func finish() {
@@ -186,11 +188,12 @@ extension HomeCoordinator {
         self.navigationController.present(particiPopUpView, animated: false)
     }
     
-    func detailPlace(detailInfo: PlaceInfo, category: Category) {
+    func detailPlace(detailInfo: PlaceInfo, category: Category, categoryInfo: [Category]) {
         let detailPlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPlacePopUpViewController") as! DetailPlacePopUpViewController
         detailPlacePopUpView.coordinator = self
         detailPlacePopUpView.detailInfo = detailInfo
         detailPlacePopUpView.category = category
+        detailPlacePopUpView.categoryInfo = categoryInfo
         detailPlacePopUpView.modalPresentationStyle = .overFullScreen
         detailPlacePopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(detailPlacePopUpView, animated: false)

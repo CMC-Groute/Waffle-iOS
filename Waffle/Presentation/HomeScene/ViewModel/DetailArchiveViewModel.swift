@@ -98,7 +98,7 @@ class DetailArchiveViewModel {
     }
     
     func detailPlace(place: PlaceInfo, category: Category) {
-        coordinator.detailPlace(detailInfo: place, category: category)
+        coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: self.category)
     }
     
     func setCategory(category: Category) {

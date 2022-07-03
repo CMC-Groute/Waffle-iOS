@@ -31,14 +31,12 @@ class DetailPlacePopUpViewController: UIViewController {
     var bottomSheetPanMinTopConstant: CGFloat = 34
     var defaultHeight:CGFloat = 395
     private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
-
-    
     
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
     var detailInfo: PlaceInfo?
     var category: Category!
-    
+    var categoryInfo: [Category] = []
     convenience init(coordinator: HomeCoordinator){
         self.init()
         self.coordinator = coordinator
@@ -78,6 +76,14 @@ class DetailPlacePopUpViewController: UIViewController {
                 guard let self = self else { return }
                 self.likeCountButton.isSelected.toggle()
                 updateLikeCount()
+            }).disposed(by: disposBag)
+        
+        self.editButton.rx.tap
+            .subscribe(onNext: {[weak self] in
+                guard let self = self else { return }
+                let placeId: Int = 0
+                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+                self.coordinator.editPlace(placeId: placeId, category: self.categoryInfo)
             }).disposed(by: disposBag)
         
         func updateLikeCount() {

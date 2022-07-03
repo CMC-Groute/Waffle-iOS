@@ -21,7 +21,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func addCategory(category: [Category])
     func loadMemo(memo: String, wapple: String)
     func participants(cardInfo: CardInfo?)
-    func detailPlace(detailInfo: PlaceInfo, category: Category)
+    func detailPlace(detailInfo: PlaceInfo, category: Category, categoryInfo: [Category])
     
     //MARK: POPUP View click
     func deleteCategory(category: Category)

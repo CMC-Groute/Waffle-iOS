@@ -13,6 +13,8 @@ class EditPlaceViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
+    var placeId: Int?
+    var categoryInfo: [Category] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -20,15 +22,24 @@ class EditPlaceViewModel {
     }
     
     struct Input {
-
+        let placeCategoryId: Observable<Int>
     }
     
     struct Output {
+        
         
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         return output
+    }
+    
+    func back() {
+        coordinator.popViewController()
+    }
+    
+    func deletePlace() {
+        coordinator.deletePlace(placeId: 0)
     }
 }

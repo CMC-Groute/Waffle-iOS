@@ -1037,8 +1037,8 @@
 				F29ED2FF2855DB5B002371FD /* HomeViewController.swift */,
 				1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */,
 				1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */,
-				13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */,
 				13CA03F12871D8150087E79E /* EditPlaceViewController.swift */,
+				13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

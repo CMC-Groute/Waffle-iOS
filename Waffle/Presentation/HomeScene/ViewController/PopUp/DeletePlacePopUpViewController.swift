@@ -16,7 +16,7 @@ class DeletePlacePopUpViewController: UIViewController {
     
     @IBOutlet weak var framwView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var OKButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -32,7 +32,7 @@ class DeletePlacePopUpViewController: UIViewController {
     private func configureUI(){
         self.framwView.makeRounded(width: 0, color: "", value: 20)
         self.cancelButton.makeRounded(corner: 24)
-        self.OKButton.makeRounded(corner: 24)
+        self.deleteButton.makeRounded(corner: 24)
     }
     
 
@@ -42,9 +42,11 @@ class DeletePlacePopUpViewController: UIViewController {
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
         
-        OKButton.rx.tap
+        deleteButton.rx.tap
             .subscribe(onNext: {
                 self.usecase.deletePlace(placeId: self.placeId)
+                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+                self.coordinator.popViewController()
             }).disposed(by: disposBag)
     }
 }
