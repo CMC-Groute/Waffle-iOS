@@ -107,10 +107,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.popViewController(animated: true)
     }
     
-    func selectPlace(place: String) {
+    func selectPlace(place: PlaceSearchInfo?) {
         self.navigationController.popViewController(animated: true)
         guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
-        topViewController.placeTextField.text = place
+        topViewController.viewModel?.getPlace = place
+        topViewController.viewModel?.placeViewEnabled.accept(true)
         
     }
     

@@ -13,7 +13,6 @@ class SearchPlaceViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    
     // TO DO PlaceSearchInfo
     var place: [String] = ["first 장소", "second 장소", "second 장소", "second 장소", "Third 장소"]
     var filteringPlace: [String] = []
@@ -44,7 +43,8 @@ class SearchPlaceViewModel {
             .subscribe(onNext: { [weak self] index in
                 guard let self = self else { return }
                 let place = self.place[index]
-                self.coordinator.selectPlace(place: place)
+                let dummy = PlaceSearchInfo(address: "서울 종로구 신문로2가 108-3", categoryGroupCode: "FD6", categoryGroupName: "음식점 > 간식 > 제과,베이커리", distance: 0, id: "1971663923", phone: "02-737-0050", placeName: "아우어베이커리 광화문디팰리스점", placeUrl: "http://place.map.kakao.com/1971663923", roadAddressName: "서울 종로구 새문안로2길 10", longitude: 126.971982367222, latitude: 37.56870228531)
+                self.coordinator.selectPlace(place: dummy)
             }).disposed(by: disposeBag)
         
         return output

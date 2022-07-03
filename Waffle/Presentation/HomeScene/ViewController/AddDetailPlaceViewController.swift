@@ -12,21 +12,25 @@ import TTTAttributedLabel
 class AddDetailPlaceViewController: UIViewController {
     var viewModel: AddDetailPlaceViewModel?
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var linkLabel: UILabel!
+    
     let disposeBag = DisposeBag()
     
     lazy var placeFramView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.makeRounded(width: 1, color: Asset.Colors.gray2.name, value: 10)
+        view.backgroundColor = Asset.Colors.white.color
         return view
     }()
     
     lazy var placeTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Asset.Colors.black.color
+        label.text = "placeTitleLabel"
         label.font = UIFont.fontWithName(type: .medium, size: 17)
         return label
     }()
@@ -34,15 +38,26 @@ class AddDetailPlaceViewController: UIViewController {
     lazy var placeSubtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Asset.Colors.gray5.color
+        label.text = "placeTiplaceSubtitleLabeltleLabel"
         label.font = UIFont.fontWithName(type: .regular, size: 13)
         return label
     }()
     
-    lazy var deleteButton: UIButton = {
+    lazy var placeDeleteButton: UIButton = {
         let button = UIButton()
-        let image = Asset.Assets.deleteButton.image.withRenderingMode(.alwaysOriginal)
+        let image = Asset.Assets.delete.image.withRenderingMode(.alwaysOriginal)
         button.setImage(image, for: .normal)
         return button
+    }()
+    
+    lazy var placeTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "클릭하면 장소를 검색할 수 있어요"
+        textField.font = UIFont.fontWithName(type: .regular, size: 15)
+        textField.backgroundColor = Asset.Colors.gray2.color
+        textField.makeRounded(corner: 10)
+        textField.padding(value: 9)
+        return textField
     }()
 
     
@@ -56,13 +71,11 @@ class AddDetailPlaceViewController: UIViewController {
     
     private func configureUI() {
         addButton.makeRounded(corner: 26)
-        placeTextField.makeRounded(corner: 10)
         linkTextField.makeRounded(corner: 10)
         memoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
         memoTextView.dataDetectorTypes = .link
         linkTextField.padding(value: 9, icon: Asset.Assets.deleteButton.name)
         linkTextField.setClearButton(with: Asset.Assets.delete.image, mode: .whileEditing)
-        placeTextField.padding(value: 9)
         memoTextView.attributedText = memoTextView.text.setLineHeight(24)
         memoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         
@@ -90,13 +103,63 @@ class AddDetailPlaceViewController: UIViewController {
     
     private func textViewScrollToBottom() {
         let bottomRange = NSMakeRange(self.memoTextView.text.count - 1, 1)
-
         self.memoTextView.scrollRangeToVisible(bottomRange)
+    }
+    
+    private func placeAddLayout() {
+        placeTextField.removeFromSuperview()
+        
+        view.addSubview(placeFramView)
+        placeFramView.addSubview(placeTitleLabel)
+        placeFramView.addSubview(placeSubtitleLabel)
+        placeFramView.addSubview(placeDeleteButton)
+        
+        placeFramView.snp.makeConstraints {
+            $0.top.equalTo(placeLabel.snp.bottom).offset(11)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(linkLabel.snp.top).offset(-32)
+            $0.height.equalTo(86)
+        }
+        
+        placeTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(23)
+            $0.leading.equalToSuperview().offset(14)
+        }
+        
+        placeSubtitleLabel.snp.makeConstraints {
+            $0.top.equalTo(placeTitleLabel.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(14)
+            $0.bottom.equalToSuperview().offset(-23)
+        }
+        
+        placeDeleteButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(23)
+            $0.bottom.equalToSuperview().offset(-23)
+            $0.trailing.equalToSuperview().offset(-8)
+            $0.width.height.equalTo(40)
+        }
+        
+    }
+    
+    private func placeInputTextFieldLayout() {
+        for subView in placeFramView.subviews {
+            subView.removeFromSuperview()
+        }
+        view.addSubview(placeTextField)
+        placeTextField.snp.makeConstraints {
+            $0.top.equalTo(placeLabel.snp.bottom).offset(11)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(linkLabel.snp.top).offset(-32)
+            $0.height.equalTo(50)
+        }
+        placeFramView.removeFromSuperview()
     }
     
 
     func bindViewModel() {
-        let input = AddDetailPlaceViewModel.Input(placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: deleteButton.rx.tap.asObservable(), linkTextFieldDidTapEvent: linkTextField.rx.controlEvent(.editingDidBegin), linkTextFieldDidEndEvent: linkTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
+        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextFieldDidTapEvent: linkTextField.rx.controlEvent(.editingDidBegin), linkTextFieldDidEndEvent: linkTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         input.linkTextFieldDidTapEvent
@@ -158,6 +221,30 @@ class AddDetailPlaceViewController: UIViewController {
             .subscribe(onNext: {
                 self.placeTextField.resignFirstResponder()
             }).disposed(by: disposeBag)
+        
+        viewModel?.placeViewEnabled
+            .subscribe(onNext: { bool in
+                if bool {
+                    self.placeTitleLabel.text = self.viewModel?.getPlace?.placeName ?? ""
+                    self.placeSubtitleLabel.text = self.viewModel?.getPlace?.roadAddressName ?? ""
+                    self.linkTextField.text = self.viewModel?.getPlace?.placeUrl ?? ""
+                    self.placeAddLayout()
+                }else {
+                    self.placeInputTextFieldLayout()
+                }
+            }).disposed(by: disposeBag)
+
+        output?.addButtonEnabled
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
+                if bool {
+                    self.addButton.setEnabled(color: Asset.Colors.black.name)
+                }else {
+                    self.addButton.setUnEnabled(color: Asset.Colors.gray4.name)
+                }
+            }).disposed(by: disposeBag)
+        
+        
     }
 
 }

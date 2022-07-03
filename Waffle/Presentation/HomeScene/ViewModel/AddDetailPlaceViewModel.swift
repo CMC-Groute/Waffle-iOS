@@ -15,12 +15,17 @@ class AddDetailPlaceViewModel {
     var usecase: HomeUsecase!
     var categoryInfo: [Category] = []
     
+    //for layout
+    let placeViewEnabled = BehaviorRelay<Bool>(value: false)
+    var getPlace: PlaceSearchInfo?
+    
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
     }
     
     struct Input {
+        var categorySelectedItem: Observable<Int?>
         var placeTextFieldTapEvent: ControlEvent<Void>
         var placeViewDeleteButton: Observable<Void> // 클릭시 다시 장소 입력 textfield 레이아웃
                                         
@@ -41,9 +46,24 @@ class AddDetailPlaceViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         input.placeTextFieldTapEvent
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.coordinator.searchPlace()
             }).disposed(by: disposeBag)
+        
+        input.placeViewDeleteButton
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.placeViewEnabled.accept(false)
+            }).disposed(by: disposeBag)
+        
+        //addButtonEnabled button 활성화
+        Observable.combineLatest(placeViewEnabled, input.categorySelectedItem)
+            .map{ $0.0 == true && $0.1 != nil }
+            .bind(to: output.addButtonEnabled)
+            .disposed(by: disposeBag)
+        
+        
         return output
     }
     
