@@ -47,9 +47,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     
-    func addDetailPlace() {
+    func addDetailPlace(category: [Category]) {
         let addDetailPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AddDetailPlaceViewController") as! AddDetailPlaceViewController
         addDetailPlaceViewController.viewModel = AddDetailPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
+        addDetailPlaceViewController.viewModel?.categoryInfo = category
         self.navigationController.pushViewController(addDetailPlaceViewController, animated: true)
     }
     

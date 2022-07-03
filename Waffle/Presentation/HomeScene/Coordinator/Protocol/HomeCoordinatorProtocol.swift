@@ -11,7 +11,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func archiveFlow(cardInfo: CardInfo?)
     func editArchive(cardInfo: CardInfo?)
     func detailArchive(selectedArchive: CardInfo)
-    func addDetailPlace()
+    func addDetailPlace(category: [Category])
     
     //MARK: load BottomSheet View
     func detailArchiveBottomSheet(cardInfo: CardInfo?)

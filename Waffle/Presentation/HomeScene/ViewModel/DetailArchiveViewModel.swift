@@ -66,7 +66,8 @@ class DetailArchiveViewModel {
         input.addPlaceButton
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.coordinator.addDetailPlace()
+                let placeCategory = self.category.filter { $0.index != -1 }
+                self.coordinator.addDetailPlace(category: placeCategory)
             }).disposed(by: disposeBag)
         
         input.participantsButton
@@ -88,7 +89,7 @@ class DetailArchiveViewModel {
         usecase.currentArchive.onNext(archive)
     }
     
-    func placeInfoByCategory() -> [PlaceInfo]{
+    func placeInfoByCategory() -> [PlaceInfo] {
         return placeInfo.filter { $0.category.index == selectedCategory.index }
     }
     

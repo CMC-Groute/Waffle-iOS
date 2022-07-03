@@ -62,6 +62,7 @@ class AddDetailPlaceViewController: UIViewController {
         memoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         
         configureNavigationBar()
+        configureCollectionView()
     }
     
     private func configureNavigationBar() {
@@ -72,8 +73,53 @@ class AddDetailPlaceViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
     }
     
+    private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+    }
+    
     @objc func didTapBackButton() {
         viewModel?.back()
     }
 
+}
+
+extension AddDetailPlaceViewController: UICollectionViewDelegate {
+    
+}
+
+extension AddDetailPlaceViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let category = viewModel?.categoryInfo else { return 0 }
+        return category.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+        guard let categoryName = viewModel?.categoryInfo else { return cell }
+        cell.configureCell(name: categoryName[indexPath.row].name, isEditing: false)
+        return cell
+        
+    }
+}
+
+extension AddDetailPlaceViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+        cell.categoryLabel.text = viewModel!.categoryInfo[indexPath.row].name
+        cell.categoryLabel.sizeToFit()
+        let cellWidth = cell.categoryLabel.frame.width + 34
+
+        return CGSize(width: cellWidth, height: 33)
+    }
+
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+    }
 }
