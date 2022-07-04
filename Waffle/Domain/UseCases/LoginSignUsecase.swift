@@ -6,16 +6,12 @@
 //
 
 import Foundation
-import Combine
 import RxSwift
 import RxCocoa
 
 class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     private var repository: LoginSignRepository!
-    var cancellables = Set<AnyCancellable>()
-    let resultMessage = PublishSubject<String>()
-    let errorMessage = PublishSubject<String>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -44,11 +40,7 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         print("LoginSignUsecase")
         let loginInfo = Login(email: email, password: password)
         repository.login(loginInfo: loginInfo)
-            .sink(receiveCompletion: { (error) in
-                print("failed: \(String(describing: error))")
-            }, receiveValue: { (result) in
-                print("login \(result)")
-            }).store(in: &cancellables)
+            
     }
     
     func signUp(email: String, password: String, profile: String, nickName: String, isAgreedMarketing: Bool) {
@@ -60,18 +52,14 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         
     }
     
-    func checkEmailValidation(email: String) -> Observable<Bool> {
+    func checkEmailValidation(email: String, code: String) -> Observable<Bool> {
+        repository.checkEmailCode(email: email, code: code)
+            
         return Observable.of(false)
     }
     
     func sendAuthenCode(email: String) {
         repository.sendEmail(email: email)
-            .compactMap { $0 }
-            .sink(receiveCompletion: { error in
-                print(error)
-            }, receiveValue: { data in
-                self.resultMessage.onNext(data.message)
-            }).store(in: &cancellables)
     }
     
 }

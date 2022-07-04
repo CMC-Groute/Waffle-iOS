@@ -8,7 +8,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Combine
 
 enum EmailValidType {
     case none, notValid, needValid, aready, checkEmail, valid
@@ -19,7 +18,6 @@ enum EmailValidColor: String {
 }
 
 class SignUpViewModel {
-    private var cancellables = Set<AnyCancellable>()
 
     struct Input {
         var emailTextField: Observable<String>
@@ -120,7 +118,7 @@ class SignUpViewModel {
             .withLatestFrom(input.emailTextField)
             .bind(onNext: { [weak self] email in
                 guard let self = self else { return }
-                self.usecase.checkEmailValidation(email: email)
+                self.usecase.checkEmailValidation(email: email, code: "")
                     .subscribe(onNext: { bool in
                         if bool {
                             output.isEmailInvalid.accept(.aready) // 중복임

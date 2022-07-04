@@ -6,16 +6,14 @@
 //
 
 import Foundation
-import Combine
 import RxSwift
 
 class UserRepository: UserRepositoryProtocol {
     
-    let urlSessionNetworkService: URLSessionNetworkServiceProtocol
-    private var cancellables = Set<AnyCancellable>()
+    let urlSessionNetworkService: URLSessionNetworkService
     var disposBag = DisposeBag()
     
-    init(networkService: URLSessionNetworkServiceProtocol) {
+    init(networkService: URLSessionNetworkService) {
         self.urlSessionNetworkService = networkService
     }
     

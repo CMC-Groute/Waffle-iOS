@@ -9,10 +9,10 @@ import Foundation
 import RxSwift
 
 class HomeRepository: HomeRepositoryProtocol {
-    let urlSessionNetworkService: URLSessionNetworkServiceProtocol
+    let urlSessionNetworkService: URLSessionNetworkService
     var disposBag = DisposeBag()
     
-    init(networkService: URLSessionNetworkServiceProtocol) {
+    init(networkService: URLSessionNetworkService) {
         self.urlSessionNetworkService = networkService
     }
     

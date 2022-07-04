@@ -8,7 +8,6 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Combine
 
 protocol LoginSignUsecaseProtocol {
     func login(email: String, password: String)
@@ -19,6 +18,6 @@ protocol LoginSignUsecaseProtocol {
     func signUp(email: String, password: String, profile: String, nickName: String, isAgreedMarketing: Bool) 
     func getTempPassword(email: String)
     
-    func checkEmailValidation(email: String) -> Observable<Bool>
+    func checkEmailValidation(email: String, code: String) -> Observable<Bool>
     func sendAuthenCode(email: String)
 }

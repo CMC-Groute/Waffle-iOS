@@ -10,10 +10,10 @@ import RxSwift
 import RxCocoa
 
 class ArchiveRepository: ArchiveRepositoryProtocol {
-    let urlSessionNetworkService: URLSessionNetworkServiceProtocol
+    let urlSessionNetworkService: URLSessionNetworkService
     var disposBag = DisposeBag()
     
-    init(networkService: URLSessionNetworkServiceProtocol) {
+    init(networkService: URLSessionNetworkService) {
         self.urlSessionNetworkService = networkService
     }
     

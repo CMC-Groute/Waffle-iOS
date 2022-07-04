@@ -6,38 +6,55 @@
 //
 
 import Foundation
-import Combine
+import RxSwift
+import RxCocoa
+
+enum LoginSignError: Error {
+    case decodingError
+}
 
 class LoginSignRepository: LoginSignRepositoryProtocol {
+    
+    private func decode<T: Decodable>(data: Data, to target: T.Type) -> T? {
+        return try? JSONDecoder().decode(target, from: data)
+    }
+    
     let service: URLSessionNetworkService
-    private var cancellables = Set<AnyCancellable>()
+    private var disposedBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
         self.service = networkService
     }
     
-    func login(loginInfo: Login) -> AnyPublisher<LoginResponse, Error> {
+    func login(loginInfo: Login) -> Observable<DefaultResponse> {
         print("login repository")
         let api = LoginSignAPI.login(login: loginInfo)
-        return service.request(api, responseType: LoginResponse.self)
-            .eraseToAnyPublisher()
+        return self.service.request(api)
+            .map ({ response -> DefaultResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+         
     }
     
     func singUp(signUpInfo: SignUp) {
         print("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
-        service.request(api, responseType: SignUp.self)
    
     }
     
-    func sendEmail(email: String) -> AnyPublisher<DefaultResponse, Error> {
+    func sendEmail(email: String) {
         print("login repository sendEmail")
-        return service.defaultRequest(LoginSignAPI.sendEmail(email: email))
-            .eraseToAnyPublisher()
+       
     }
     
     func checkEmailCode(email: String, code: String) {
-        
+      
     }
     
     func findPW(email: String) {
