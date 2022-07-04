@@ -11,9 +11,9 @@ import Combine
 protocol LoginSignRepositoryProtocol {
     //MARK: FROM
     func singUp(signUpInfo: SignUp)
-    func sendEmail(email: String)
+    func sendEmail(email: String) -> AnyPublisher<DefaultResponse, Error>
     func checkEmailCode(email: String, code: String)
     func findPW(email: String)
-    func login(loginInfo: Login) -> AnyPublisher<LoginResponse, Error> 
+    func login(loginInfo: Login) -> AnyPublisher<LoginResponse, Error>
 
 }

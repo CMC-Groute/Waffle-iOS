@@ -8,16 +8,17 @@
 import Foundation
 import Combine
 
-class URLSessionNetworkService: URLSessionNetworkServiceProtocol {
-    enum NetworkErrors: LocalizedError {
-        case invalidURL
-        var errorDescription: String? {
-            switch self {
-            case .invalidURL:
-                return "유효하지 않은 URL입니다."
-            }
+enum NetworkErrors: LocalizedError {
+    case invalidURL
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "유효하지 않은 URL입니다."
         }
     }
+}
+
+class URLSessionNetworkService: URLSessionNetworkServiceProtocol {
     
     static let shared: URLSessionNetworkService = URLSessionNetworkService()
     
@@ -27,17 +28,13 @@ class URLSessionNetworkService: URLSessionNetworkServiceProtocol {
     init() {}
     
     func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<Data, Error> {
-        print("request \(urlRequest)")
-        print(urlRequest.body)
-        print(urlRequest.urlRequest)
-        print(urlRequest.parameters)
         guard let urlRequest = urlRequest.urlRequest else {
             return Fail(error: NetworkErrors.invalidURL).eraseToAnyPublisher()
         }
         return self.session.dataTaskPublisher(for: urlRequest)
+            
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
-                    print("status \((response as? HTTPURLResponse)?.statusCode)")
                     switch (response as? HTTPURLResponse)?.statusCode {
                     case .some(404):
                         throw URLError(.cannotFindHost)

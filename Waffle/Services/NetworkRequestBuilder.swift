@@ -53,25 +53,22 @@ extension NetworkRequestBuilder {
         }
         
         if let compoentURL = component?.url {
-            urlRequest =  URLRequest(url: compoentURL)
+            urlRequest = URLRequest(url: compoentURL)
         } else {
-            urlRequest =  URLRequest(url: requestURL)
+            urlRequest = URLRequest(url: requestURL)
         }
 
         switch method {
-        case .get:
-            return urlRequest
-
-        case .post, .put, .delete, .patch:
-            urlRequest.httpMethod = method.rawValue
-            
-            if let httpbody = self.body {
-                urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: httpbody)
-            }
-            headers?.forEach { key, value in
-                urlRequest.addValue(value, forHTTPHeaderField: key)
-            }
-            
+            case .get, .post, .put, .delete, .patch:
+                urlRequest.httpMethod = method.rawValue
+                
+                if let httpbody = self.body {
+                    urlRequest.httpBody = try! JSONSerialization.data(withJSONObject: httpbody, options: [])
+                }
+                headers?.forEach { key, value in
+                    urlRequest.addValue(value, forHTTPHeaderField: key)
+                }
+                
             return urlRequest
         }
     }

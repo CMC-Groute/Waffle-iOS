@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="801-8s-uxP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.naver.com" placeholder="공백 포함 10자 이하" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-3G-70P">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="공백 포함 10자 이하" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZF-3G-70P">
                                                 <rect key="frame" x="16" y="47.5" width="382" height="44"/>
                                                 <color key="backgroundColor" name="Gray2"/>
                                                 <constraints>
@@ -163,7 +163,10 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yLu-Jt-Ml4">
-                                                <rect key="frame" x="263" y="222" width="135" height="30"/>
+                                                <rect key="frame" x="258" y="222" width="140" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="xJZ-1K-k9u"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <color key="tintColor" name="Gray4"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
@@ -173,7 +176,10 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YX-76-TMZ">
-                                                <rect key="frame" x="263" y="369.5" width="135" height="30"/>
+                                                <rect key="frame" x="258" y="369.5" width="140" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="uYq-W3-Qp6"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <color key="tintColor" name="Gray4"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>

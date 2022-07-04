@@ -20,24 +20,20 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
         print("login repository")
         let api = LoginSignAPI.login(login: loginInfo)
         return service.request(api, responseType: LoginResponse.self)
+            .eraseToAnyPublisher()
     }
     
     func singUp(signUpInfo: SignUp) {
         print("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
         service.request(api, responseType: SignUp.self)
+   
     }
     
-    func sendEmail(email: String) {
+    func sendEmail(email: String) -> AnyPublisher<DefaultResponse, Error> {
         print("login repository sendEmail")
-        service.defaultRequest(LoginSignAPI.sendEmail(email: email))
+        return service.defaultRequest(LoginSignAPI.sendEmail(email: email))
             .eraseToAnyPublisher()
-            .sink(receiveCompletion: { (error) in
-                print("failed: \(String(describing: error))")
-            }, receiveValue: { (result) in
-                print("login \(result)")
-            }).store(in: &cancellables)
-            
     }
     
     func checkEmailCode(email: String, code: String) {

@@ -78,12 +78,13 @@ extension LoginSignAPI {
 
     
     var headers: [String : String]? {
-        guard let jwtToken = UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) else { return nil }
+        let defaultHeader = ["Content-Type" : "application/json"]
+        guard let jwtToken = UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) else { return defaultHeader }
         switch self {
         case .updatePassword(_), .updateProfile(_, _):
-            return ["token": jwtToken]
+            return ["token": jwtToken, "Content-Type" : "application/json"]
         default:
-            return nil
+            return defaultHeader
         }
     }
     

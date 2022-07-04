@@ -11,8 +11,11 @@ import RxSwift
 import RxCocoa
 
 class LoginSignUsecase: LoginSignUsecaseProtocol {
+    
     private var repository: LoginSignRepository!
     var cancellables = Set<AnyCancellable>()
+    let resultMessage = PublishSubject<String>()
+    let errorMessage = PublishSubject<String>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -63,10 +66,12 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     func sendAuthenCode(email: String) {
         repository.sendEmail(email: email)
+            .compactMap { $0 }
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { data in
+                self.resultMessage.onNext(data.message)
+            }).store(in: &cancellables)
     }
-
-    
-    
-    
     
 }
