@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import TTTAttributedLabel
 
 class AddDetailPlaceViewController: UIViewController {
     var viewModel: AddDetailPlaceViewModel?

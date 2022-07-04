@@ -8,7 +8,6 @@ PODS:
   - RxSwift (6.5.0)
   - SnapKit (5.6.0)
   - SwiftGen (6.5.1)
-  - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
   - MSPeekCollectionViewDelegateImplementation
@@ -16,7 +15,6 @@ DEPENDENCIES:
   - RxSwift (~> 6.5.0)
   - SnapKit (~> 5.6.0)
   - SwiftGen (~> 6.0)
-  - TTTAttributedLabel
 
 SPEC REPOS:
   trunk:
@@ -26,7 +24,6 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - SwiftGen
-    - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   MSPeekCollectionViewDelegateImplementation: be35a217bd302976a9e4476151be992c1f150127
@@ -35,8 +32,7 @@ SPEC CHECKSUMS:
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
-  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: d6ea8c935d9623120300db62a57a3110f1595ae3
+PODFILE CHECKSUM: 4ca9c0f7d09f50588784111520b3ba7465d2b924
 
 COCOAPODS: 1.11.3

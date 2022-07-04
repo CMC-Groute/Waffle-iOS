@@ -14,6 +14,7 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     private var repository: LoginSignRepository!
     let disposeBag = DisposeBag()
     let authenCodeSuccess = PublishSubject<Bool>()
+    let loginSuccess = PublishSubject<Bool>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -42,7 +43,20 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         print("LoginSignUsecase")
         let loginInfo = Login(email: email, password: password)
         repository.login(loginInfo: loginInfo)
-            
+            .subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.message == "success" {
+                    loginSuccess.onNext(true)
+                }else {
+                    loginSuccess.onNext(false)
+                }
+                self.storeUserInfo(user: response.data)
+            }).disposed(by: disposeBag)
+    }
+    
+    func storeUserInfo(user: UserInfo) {
+        UserDefaults.standard.set(user.id, forKey: UserDefaultKey.userId)
+        UserDefaults.standard.set(user.token, forKey: UserDefaultKey.jwtToken)
     }
     
     func signUp(signUp: SignUp) -> Observable<Bool> {
@@ -55,8 +69,10 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         }
     }
     
-    func getTempPassword(email: String) {
-        
+    //임시 비밀번호 발급
+    func getTempPassword(email: String) -> Observable<Bool> {
+        return repository.getTempPassword(email: email)
+            .map { $0.message == "success" }
     }
     
     func checkEmailValidation(email: String) -> Observable<Bool> {
@@ -69,7 +85,6 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     }
     
     func sendAuthenCode(email: String) {
-        print("sendAuthenCode")
         repository.sendEmail(email: email)
             .subscribe(onNext: { response in
                 if response.message == "success" {

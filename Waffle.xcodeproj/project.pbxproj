@@ -53,6 +53,7 @@
 		13CA03F02871D6550087E79E /* DeletePlacePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */; };
 		13CA03F22871D8150087E79E /* EditPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03F12871D8150087E79E /* EditPlaceViewController.swift */; };
 		13CA03F42871D94B0087E79E /* EditPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03F32871D94B0087E79E /* EditPlaceViewModel.swift */; };
+		13CA03F62873310D0087E79E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03F52873310C0087E79E /* Common.swift */; };
 		13E2A05A285B756F0015499E /* InputArchiveCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */; };
 		13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		13E2A070285DD1CF0015499E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A06F285DD1CF0015499E /* TabBarViewController.swift */; };
@@ -220,6 +221,7 @@
 		13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlacePopUpViewController.swift; sourceTree = "<group>"; };
 		13CA03F12871D8150087E79E /* EditPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaceViewController.swift; sourceTree = "<group>"; };
 		13CA03F32871D94B0087E79E /* EditPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlaceViewModel.swift; sourceTree = "<group>"; };
+		13CA03F52873310C0087E79E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewController.swift; sourceTree = "<group>"; };
 		13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArchiveCodeViewModel.swift; sourceTree = "<group>"; };
 		13E2A06F285DD1CF0015499E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				1390EC882869396B00E5520C /* User */,
 				1390EC822866DE0000E5520C /* Home */,
 				13E2A076285EF1F00015499E /* Archive */,
+				13CA03F52873310C0087E79E /* Common.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1508,6 +1511,7 @@
 				135F6E7D2857A5C300F9F71E /* UILabel.swift in Sources */,
 				135B60592858507A0035AE4B /* TableAddLocationViewController.swift in Sources */,
 				13E2A05C285B75BB0015499E /* InputArchiveCodeViewModel.swift in Sources */,
+				13CA03F62873310D0087E79E /* Common.swift in Sources */,
 				F29ED3082855DB8C002371FD /* SettingViewModel.swift in Sources */,
 				13CA03F22871D8150087E79E /* EditPlaceViewController.swift in Sources */,
 				13CA03E02870173A0087E79E /* LoginSignAPI.swift in Sources */,

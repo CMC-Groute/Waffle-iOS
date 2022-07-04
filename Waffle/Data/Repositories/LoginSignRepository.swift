@@ -26,14 +26,14 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
         self.service = networkService
     }
     
-    func login(loginInfo: Login) -> Observable<DefaultResponse> {
+    func login(loginInfo: Login) -> Observable<LoginResponse> {
         print("login repository")
         let api = LoginSignAPI.login(login: loginInfo)
         return self.service.request(api)
-            .map ({ response -> DefaultResponse in
+            .map ({ response -> LoginResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = self.decode(data: data, to: LoginResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -87,8 +87,19 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             })
     }
     
-    func findPW(email: String) {
-        
+    func getTempPassword(email: String) -> Observable<DefaultResponse> {
+        let api = LoginSignAPI.findPassword(email: email)
+        print("login repository getTempPassword")
+        return self.service.request(api)
+            .map ({ response -> DefaultResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
     
 }

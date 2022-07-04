@@ -124,13 +124,3 @@ class URLSessionNetworkService {
         ?? URLSessionNetworkServiceError.unknownError
     }
 }
-
-struct DefaultResponse: Codable {
-    var message: String
-    var data: String
-}
-
-struct SignUpResponse: Codable {
-    var message: String
-    var data: Int
-}
