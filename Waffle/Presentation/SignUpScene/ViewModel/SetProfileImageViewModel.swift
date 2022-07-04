@@ -44,9 +44,15 @@ class SetProfileImageViewModel {
             .bind(onNext: { nickName in
                 let profileImage = WappleType.init(index: self.selectedIndex).wappleName()
                 self.signUpInfo?.nickname = nickName
-                self.signUpInfo?.profileImage = profileImage
+                self.signUpInfo?.profileImage = "TWO"
                 self.usecase.signUp(signUp: self.signUpInfo!)
-                self.coordinator.finish()
+                    .subscribe(onNext: { bool in
+                        if bool { // 회원가입 성공시에만 finish
+                            self.coordinator.finish()
+                        }else {
+                            print("가입된 회원입니다.")
+                        }
+                    }).disposed(by: disposeBag)
             }).disposed(by: disposeBag)
         
         input.nickNameTextField

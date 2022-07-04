@@ -46,8 +46,13 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     }
     
     func signUp(signUp: SignUp) -> Observable<Bool> {
-        return repository.singUp(signUpInfo: signUp)
-            .map { $0.message == "success" }
+        do {
+            let bool = try repository.singUp(signUpInfo: signUp)
+                .map { $0.message == "success" }
+            return bool
+        } catch {
+            return Observable.of(false)
+        }
     }
     
     func getTempPassword(email: String) {

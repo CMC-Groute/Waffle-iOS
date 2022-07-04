@@ -42,14 +42,14 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
          
     }
     
-    func singUp(signUpInfo: SignUp) -> Observable<DefaultResponse> {
+    func singUp(signUpInfo: SignUp) throws -> Observable<SignUpResponse>  {
         print("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
         return self.service.request(api)
-            .map ({ response -> DefaultResponse in
+            .map ({ response -> SignUpResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = self.decode(data: data, to: SignUpResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error

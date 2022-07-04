@@ -64,6 +64,8 @@ class URLSessionNetworkService {
             return .just(.failure(URLSessionNetworkServiceError.invalidURLError))
         }
         return Observable<Result<Data, URLSessionNetworkServiceError>>.create { emitter in
+            print("signup \(String(data: urlRequest.httpBody!, encoding: .utf8))")
+            print(urlRequest.allHTTPHeaderFields)
             let task = URLSession.shared.dataTask(with: urlRequest) { data, reponse, error in
                 guard let httpResponse = reponse as? HTTPURLResponse else {
                     emitter.onError(URLSessionNetworkServiceError.unknownError)
@@ -126,4 +128,9 @@ class URLSessionNetworkService {
 struct DefaultResponse: Codable {
     var message: String
     var data: String
+}
+
+struct SignUpResponse: Codable {
+    var message: String
+    var data: Int
 }
