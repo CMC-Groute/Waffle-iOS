@@ -22,38 +22,23 @@ class TermsViewController: UIViewController {
     
     @IBOutlet weak var serviceAgreeText: UILabel!
     @IBOutlet weak var privacyCollectText: UILabel!
-    @IBOutlet weak var useForMaketingAgreeText: UILabel!
+    @IBOutlet weak var useForMarketingAgreeText: UILabel!
     
     @IBOutlet weak var nextButton: UIButton!
     var coordinator: SignUpCoordinator!
+    var signUp: SignUp?
     
     let disposeBag = DisposeBag()
     private var selectedImage = Asset.Assets.check.image.withRenderingMode(.alwaysOriginal)
     private var unSelectedImage = Asset.Assets.unCheck.image.withRenderingMode(.alwaysOriginal)
-    
+    var isMarketingAgree: Bool = false
     var buttons: [UIButton] = []
-    struct Terms: Identifiable {
-        var id = UUID()
-        var title: String
-        var isMandatory: TemsMandatory
-    }
-    
-    var terms = [
-            [Terms(title: "전체 동의", isMandatory: .none)],
-            [
-                Terms(title: "서비스 이용약관 동의(필수)", isMandatory: .required),
-                Terms(title: "개인정보 수집 및 이용 동의(필수)", isMandatory: .required),
-                Terms(title: "마케팅 활용 동의(선택)", isMandatory: .none)
-            ]
-        ]
-    
+
     convenience init(coordinator: SignUpCoordinator){
         self.init()
         self.coordinator = coordinator
     }
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -69,7 +54,7 @@ class TermsViewController: UIViewController {
         let umText = "마케팅 활용 동의(선택)"
         serviceAgreeText.attributedText = saText.underBarLine(length: pcText.count - 4)
         privacyCollectText.attributedText = pcText.underBarLine(length: pcText.count - 4)
-        useForMaketingAgreeText.attributedText = umText.underBarLine(length: umText.count - 4)
+        useForMarketingAgreeText.attributedText = umText.underBarLine(length: umText.count - 4)
         configureNavigationBar()
     }
     
@@ -105,11 +90,13 @@ class TermsViewController: UIViewController {
                         $0.setTitle(.none, for: .normal)
                         $0.setImage(self.unSelectedImage, for: .normal)
                     }
+                    self.isMarketingAgree = true
                 }else {
                     self.buttons.forEach {
                         $0.setTitle(.none, for: .normal)
                         $0.setImage(self.selectedImage, for: .normal)
                     }
+                    self.isMarketingAgree = false
                 }
                 
                 self.check()
@@ -145,15 +132,19 @@ class TermsViewController: UIViewController {
                 self.useForMaketingAgreeButton.setTitle(.none, for: .normal)
                 if self.useForMaketingAgreeButton.image(for: .normal) == self.selectedImage {
                     self.useForMaketingAgreeButton.setImage(self.unSelectedImage, for: .normal)
+                    self.isMarketingAgree = false
                 }else {
                     self.useForMaketingAgreeButton.setImage(self.selectedImage, for: .normal)
+                    self.isMarketingAgree = true
                 }
                 self.check()
             }).disposed(by: disposeBag)
 
         nextButton.rx.tap
-            .subscribe(onNext: {  _ in
-                self.coordinator.setProfileImage()
+            .subscribe(onNext: {  [weak self] in
+                guard let self = self else { return }
+                self.signUp?.isAgreedMarketing = self.isMarketingAgree
+                self.coordinator.setProfileImage(signUpInfo: self.signUp!)
             }).disposed(by: disposeBag)
             
  

@@ -11,24 +11,25 @@ import RxSwift
 import RxCocoa
 
 class SetProfileImageViewModel {
-//    var profileImage: UIImage
+
+    var signUpInfo: SignUp?
+    
     struct Input {
         var nickNameTextField: Observable<String>
         var startButton: Observable<Void>
         var nickNameTextFieldDidTapEvent: ControlEvent<Void>
         var nickNameTextFieldDidEndEvent: ControlEvent<Void>
-        var selectedCell: Observable<IndexPath>
     }
     
     struct Output {
         var nickNameInvalidMessage = PublishRelay<Bool>()
         var startButtonEnabled = BehaviorRelay<Bool>(value: false)
-        //var profileImage = BehaviorRelay<UIImage?>(value: UIImage(named: "") ?? nil)
     }
     
     private var disposable = DisposeBag()
     private var usecase: LoginSignUsecase
     private var coordinator: SignUpCoordinator!
+    var selectedIndex: Int = 0
     
     init(coordinator: SignUpCoordinator, usecase: LoginSignUsecase) {
         self.coordinator = coordinator
@@ -39,7 +40,12 @@ class SetProfileImageViewModel {
         let output = Output()
         
         input.startButton
-            .subscribe(onNext: {
+            .withLatestFrom(input.nickNameTextField)
+            .bind(onNext: { nickName in
+                let profileImage = WappleType.init(index: self.selectedIndex).wappleName()
+                self.signUpInfo?.nickname = nickName
+                self.signUpInfo?.profileImage = profileImage
+                self.usecase.signUp(signUp: self.signUpInfo!)
                 self.coordinator.finish()
             }).disposed(by: disposeBag)
         

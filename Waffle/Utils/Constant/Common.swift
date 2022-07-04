@@ -26,9 +26,25 @@ enum WappleType: String, CaseIterable {
     case wapple = "WAPPLE"
     case choco = "CHOCO"
     case blueberry = "BLUEBERRY"
-    case vanila = "VANILA"
+    case vanilla = "VANILLA"
     case strawberry = "STRAWBERRY"
     case malcha = "MALCHA"
+    
+    init(index: Int) {
+        switch index {
+        case 0: self = .wapple
+        case 1: self = .choco
+        case 2: self = .blueberry
+        case 3: self = .vanilla
+        case 4: self = .strawberry
+        case 5: self = .malcha
+        default: self = .wapple
+        }
+    }
+    
+    func wappleName() -> String {
+        return self.rawValue
+    }
 }
 
 enum DefaultDetailCardInfo: String {

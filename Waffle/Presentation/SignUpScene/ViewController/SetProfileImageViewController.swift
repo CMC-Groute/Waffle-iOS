@@ -19,10 +19,10 @@ class SetProfileImageViewController: UIViewController {
     
     var viewModel: SetProfileImageViewModel?
     var disposeBag = DisposeBag()
-
-    let imageList = ["heart.fill", "heart", "heart.fill", "heart", "heart.fill"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("setImage \(viewModel)")
         configureUI()
         bindViewModel()
         collectionviewSetUp()
@@ -101,7 +101,7 @@ class SetProfileImageViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = SetProfileImageViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), startButton: self.startButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd), selectedCell: self.collectionView.rx.itemSelected.asObservable())
+        let input = SetProfileImageViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), startButton: self.startButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd))
         
         
         
@@ -116,11 +116,6 @@ class SetProfileImageViewController: UIViewController {
             }).disposed(by: disposeBag)
       
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
-        
-        input.selectedCell
-            .subscribe(onNext: { indexpath in
-                print("selectedCell \(indexpath)")
-            }).disposed(by: disposeBag)
         
         output?.nickNameInvalidMessage
             .subscribe(onNext: { bool in
@@ -165,6 +160,7 @@ extension SetProfileImageViewController: UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewModel?.selectedIndex = indexPath.row
         self.profileImage.image = UIImage(named: "wapple-\(indexPath.row+1)")
     }
 }

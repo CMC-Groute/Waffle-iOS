@@ -45,9 +45,9 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             
     }
     
-    func signUp(email: String, password: String, profile: String, nickName: String, isAgreedMarketing: Bool) {
-        let signInfo = SignUp(email: email, password: password, nickname: nickName, isAgreedMarketing: false, profileImage: profile)
-        repository.singUp(signUpInfo: signInfo)
+    func signUp(signUp: SignUp) -> Observable<Bool> {
+        return repository.singUp(signUpInfo: signUp)
+            .map { $0.message == "success" }
     }
     
     func getTempPassword(email: String) {

@@ -7,18 +7,17 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 
 protocol LoginSignUsecaseProtocol {
     func login(email: String, password: String)
     func checkEmailValid(email: String) -> Bool
     func checkPasswordValid(password: String) -> Bool
     func checkNickNameValid(nickName: String) -> Bool
-
-    func signUp(email: String, password: String, profile: String, nickName: String, isAgreedMarketing: Bool) 
+    
     func getTempPassword(email: String)
     
     func checkEmailValidation(email: String) -> Observable<Bool>
     func checkEmailCode(email: String, code: String) -> Observable<Bool>
     func sendAuthenCode(email: String)
+    func signUp(signUp: SignUp) -> Observable<Bool>
 }

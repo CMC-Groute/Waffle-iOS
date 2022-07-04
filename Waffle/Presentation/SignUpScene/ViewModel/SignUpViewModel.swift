@@ -63,15 +63,18 @@ class SignUpViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         //nextButton 활성화
-        Observable.combineLatest(output.isEmailInvalid, output.isAuthenCodeInValid, output.ispasswordInvalid, output.isRepasswordInvalid)
-            .map{ $0.0 == .checkEmail && $0.1 == true && $0.2 == true && $0.3 == true } //유효 메세지 없다면
+        Observable.combineLatest(output.isEmailInvalid, output.isAuthenCodeInValid, output.ispasswordInvalid, output.isRepasswordInvalid, input.passwordTextField, input.rePasswordTextField)
+            .map{ $0.0 == .checkEmail && $0.1 == true && $0.2 == true && $0.3 == true &&  ($0.4 == $0.5) } //유효 메세지 없다면, 비밀번호가 일치한다면
             .bind(to: output.nextButtonEnabled)
             .disposed(by: disposeBag)
         
         input.nextButton
-            .subscribe(onNext: {
-                self.coordinator.termsStep()
+            .withLatestFrom(Observable.combineLatest(input.emailTextField, input.passwordTextField))
+            .bind(onNext: { email, password in
+                let signUpInfo = SignUp(email: email, password: password, nickname: "", isAgreedMarketing: false, profileImage: "")
+                self.coordinator.termsStep(signUpInfo: signUpInfo)
             }).disposed(by: disposeBag)
+            
         
         input.emailTextField
             .distinctUntilChanged()

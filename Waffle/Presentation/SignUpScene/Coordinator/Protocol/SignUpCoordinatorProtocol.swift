@@ -8,6 +8,6 @@
 import Foundation
 
 protocol SignUpCoordinatorProtocol: Coordinator {
-    func termsStep()
-    func setProfileImage()
+    func termsStep(signUpInfo: SignUp)
+    func setProfileImage(signUpInfo: SignUp)
 }
