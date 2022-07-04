@@ -45,12 +45,23 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     func singUp(signUpInfo: SignUp) {
         print("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
+
    
     }
     
-    func sendEmail(email: String) {
+    func sendEmail(email: String) -> Observable<DefaultResponse>  {
         print("login repository sendEmail")
-       
+        let api = LoginSignAPI.sendEmail(email: email)
+        return self.service.request(api)
+            .map ({ response -> DefaultResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
     
     func checkEmailCode(email: String, code: String) {

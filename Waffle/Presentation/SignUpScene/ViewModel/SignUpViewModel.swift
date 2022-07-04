@@ -123,13 +123,20 @@ class SignUpViewModel {
                         if bool {
                             output.isEmailInvalid.accept(.aready) // 중복임
                         }else {
-                            print("viewModel send sendAuthenCode")
                             self.usecase.sendAuthenCode(email: email)
                         }
                     }).disposed(by: disposeBag)
             }).disposed(by: disposeBag)
         
-        
+        usecase.authenCodeSuccess
+            .subscribe(onNext: { bool in
+                print("authenCodeSuccess \(bool)")
+                if bool { // 전송 성공
+                    output.isEmailInvalid.accept(.checkEmail)
+                }else { // 이미 가입된 메일
+                    output.isEmailInvalid.accept(.aready)
+                }
+            }).disposed(by: disposeBag)
         
         
         //MARK: - authenTextField

@@ -174,25 +174,28 @@ class SignUpViewController: UIViewController {
         
         output?.emailInvalidMessage
             .subscribe(onNext: { type in
-                if let message = type.0, let color = type.1 {
-                    self.emailInValidText.isHidden = false
-                    self.emailInValidText.text = message
-                    self.emailInValidText.textColor = UIColor(named: color.rawValue)
-                    switch color {
-                    case .green:
-                        self.emailTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
-                        self.authenTextField.becomeFirstResponder()
-                    case .red:
-                        self.emailTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
-                        self.emailTextField.errorBorder(bool: false)
-                    default:
+                    DispatchQueue.main.async {
+                        if let message = type.0, let color = type.1 {
+                            self.emailInValidText.isHidden = false
+                            self.emailInValidText.text = message
+                            self.emailInValidText.textColor = UIColor(named: color.rawValue)
+                        switch color {
+                        case .green:
+                            self.emailTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
+                            self.authenTextField.becomeFirstResponder()
+                        case .red:
+                            self.emailTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+                            self.emailTextField.errorBorder(bool: false)
+                        default:
+                            self.emailTextField.errorBorder(bool: true)
+                        }
+                    }else {
                         self.emailTextField.errorBorder(bool: true)
+                        self.emailTextField.focusingBorder(color: Asset.Colors.orange.name)
+                        self.emailInValidText.isHidden = true
                     }
-                }else {
-                    self.emailTextField.errorBorder(bool: true)
-                    self.emailTextField.focusingBorder(color: Asset.Colors.orange.name)
-                    self.emailInValidText.isHidden = true
-                }
+                    }
+                    
             }).disposed(by: disposeBag)
         
         output?.authenCodeButtonEnabled

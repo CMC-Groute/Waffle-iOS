@@ -12,6 +12,8 @@ import RxCocoa
 class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     private var repository: LoginSignRepository!
+    let disposeBag = DisposeBag()
+    let authenCodeSuccess = PublishSubject<Bool>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -60,6 +62,14 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     func sendAuthenCode(email: String) {
         repository.sendEmail(email: email)
+            .subscribe(onNext: { response in
+                if response.message == "success" {
+                    //메세지 전송 성공
+                    self.authenCodeSuccess.onNext(true)
+                }else {
+                    self.authenCodeSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
 }
