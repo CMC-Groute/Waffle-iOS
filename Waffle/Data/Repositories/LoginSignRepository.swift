@@ -64,8 +64,18 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             })
     }
     
-    func checkEmailCode(email: String, code: String) {
-      
+    func checkEmailCode(email: String, code: String) -> Observable<DefaultResponse> {
+        let api = LoginSignAPI.checkEmailCode(email: email, code: code)
+        return self.service.request(api)
+            .map ({ response -> DefaultResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
     
     func findPW(email: String) {

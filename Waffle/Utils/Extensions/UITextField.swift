@@ -25,15 +25,17 @@ extension UITextField {
     }
     
     func errorBorder(bool: Bool){
-        switch bool {
-        case true:
-            self.layer.borderColor = .none
-            self.layer.borderWidth = 0
-            self.rightViewMode = .never
-        case false:
-            self.layer.borderColor = UIColor(named: Asset.Colors.red.name)?.cgColor
-            self.layer.borderWidth = 2
-            self.rightViewMode = .always
+        DispatchQueue.main.async {
+            switch bool {
+            case true:
+                self.layer.borderColor = .none
+                self.layer.borderWidth = 0
+                self.rightViewMode = .never
+            case false:
+                self.layer.borderColor = UIColor(named: Asset.Colors.red.name)?.cgColor
+                self.layer.borderWidth = 2
+                self.rightViewMode = .always
+            }
         }
     }
     

@@ -118,11 +118,11 @@ class SignUpViewModel {
             .withLatestFrom(input.emailTextField)
             .bind(onNext: { [weak self] email in
                 guard let self = self else { return }
-                self.usecase.checkEmailValidation(email: email, code: "")
+                self.usecase.checkEmailValidation(email: email)
                     .subscribe(onNext: { bool in
                         if bool {
                             output.isEmailInvalid.accept(.aready) // 중복임
-                        }else {
+                        }else { // 이메일 보냄
                             self.usecase.sendAuthenCode(email: email)
                         }
                     }).disposed(by: disposeBag)
@@ -130,7 +130,6 @@ class SignUpViewModel {
         
         usecase.authenCodeSuccess
             .subscribe(onNext: { bool in
-                print("authenCodeSuccess \(bool)")
                 if bool { // 전송 성공
                     output.isEmailInvalid.accept(.checkEmail)
                 }else { // 이미 가입된 메일
@@ -148,15 +147,15 @@ class SignUpViewModel {
                     output.authenCodeButtonEnabled.accept(false)
                 }
             }).disposed(by: disposeBag)
-        
+                        
+        //MARK: 인증 코드 같은지 체크
         input.authenCodeButton
-            .withLatestFrom(input.authenCodeTextField)
-            .subscribe(onNext: { text in
-//                if !(self.usecase.authenCode == text) { // 인증번호 같지 x
-//                    output.isAuthenCodeInValid.accept(false)
-//                }else {
-//                    output.isAuthenCodeInValid.accept(true)
-//                }
+            .withLatestFrom(Observable.combineLatest(input.emailTextField, input.authenCodeTextField))
+            .bind(onNext: { email, code in
+                self.usecase.checkEmailCode(email: email, code: code)
+                    .subscribe(onNext: { bool in
+                        output.isAuthenCodeInValid.accept(bool)
+                    }).disposed(by: disposeBag)
             }).disposed(by: disposeBag)
         
         //MARK: - passwordTextField

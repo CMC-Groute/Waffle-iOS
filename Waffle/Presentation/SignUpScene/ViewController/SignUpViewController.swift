@@ -210,16 +210,18 @@ class SignUpViewController: UIViewController {
         
         output?.isAuthenCodeInValid
             .subscribe(onNext: { bool in
-                self.authenInValidText.isHidden = bool
-                self.authenTextField.errorBorder(bool: bool)
-                self.codeAuthenButton.setDisabled(with: bool, color: Asset.Colors.orange.name)
-                if bool {
-                    self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
-                    self.emailAuthenButton.setDisabled(with: true, color: Asset.Colors.orange.name)
-                    self.codeAuthenButton.setTitle("확인 완료", for: .normal)
-                }else {
-                    self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
-                    self.codeAuthenButton.setTitle("확인", for: .normal)
+                DispatchQueue.main.async {
+                    self.authenInValidText.isHidden = bool
+                    self.authenTextField.errorBorder(bool: bool)
+                    self.codeAuthenButton.setDisabled(with: bool, color: Asset.Colors.orange.name)
+                    if bool {
+                        self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
+                        self.emailAuthenButton.setDisabled(with: true, color: Asset.Colors.orange.name)
+                        self.codeAuthenButton.setTitle("확인 완료", for: .normal)
+                    }else {
+                        self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+                        self.codeAuthenButton.setTitle("확인", for: .normal)
+                    }
                 }
             }).disposed(by: disposeBag)
         

@@ -54,13 +54,17 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         
     }
     
-    func checkEmailValidation(email: String, code: String) -> Observable<Bool> {
-        repository.checkEmailCode(email: email, code: code)
-            
+    func checkEmailValidation(email: String) -> Observable<Bool> {
         return Observable.of(false)
     }
     
+    func checkEmailCode(email: String, code: String) -> Observable<Bool> {
+        return repository.checkEmailCode(email: email, code: code)
+            .map { $0.message == "success" }
+    }
+    
     func sendAuthenCode(email: String) {
+        print("sendAuthenCode")
         repository.sendEmail(email: email)
             .subscribe(onNext: { response in
                 if response.message == "success" {

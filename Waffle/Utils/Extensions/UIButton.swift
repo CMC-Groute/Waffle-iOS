@@ -19,11 +19,13 @@ extension UIButton {
     }
     
     func setEnabled(color: String?) {
-        self.isUserInteractionEnabled = true
-        self.isEnabled = true
-        if let color = color {
-            self.backgroundColor = UIColor(named: color)
-            self.setTitleColor(UIColor(named: Asset.Colors.white.name), for: .normal)
+        DispatchQueue.main.async {
+            self.isUserInteractionEnabled = true
+            self.isEnabled = true
+            if let color = color {
+                self.backgroundColor = UIColor(named: color)
+                self.setTitleColor(UIColor(named: Asset.Colors.white.name), for: .normal)
+            }
         }
     }
     
