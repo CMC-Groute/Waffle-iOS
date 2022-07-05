@@ -11,6 +11,6 @@ import UIKit
 enum UserDefaultKey {
     static let userId = "userId"
     static let nickName = "nickName"
-    static let isLoggedIn = "isLoggedIn"
     static let jwtToken = "jwtToken"
+    static let deviceToken = "deviceToken"
 }

@@ -87,11 +87,14 @@ class UserUsecase: UserUseCaseProtocol {
             
     }
     
-    func quit() {
-        
+    func logout() { // userDefault에 있는 값 모두 초기화 deviceToken만 제외
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            if key == UserDefaultKey.deviceToken { continue }
+            UserDefaults.standard.removeObject(forKey: key.description)
+        }
     }
     
-    func logout() {
+    func quit() {
         
     }
     
