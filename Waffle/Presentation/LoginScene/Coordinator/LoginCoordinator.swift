@@ -58,11 +58,13 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
 
 extension LoginCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        switch childCoordinator.type {
-        case .signUp:
-            self.navigationController.popToRootViewController(animated: true)
-        default:
-            print(childCoordinator.type)
+        DispatchQueue.main.async {
+            switch childCoordinator.type {
+            case .signUp:
+                self.navigationController.popToRootViewController(animated: true)
+            default:
+                print(childCoordinator.type)
+            }
         }
     }
 }

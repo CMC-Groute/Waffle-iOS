@@ -59,20 +59,14 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         UserDefaults.standard.set(user.token, forKey: UserDefaultKey.jwtToken)
     }
     
-    func signUp(signUp: SignUp) -> Observable<Bool> {
-        do {
-            let bool = try repository.singUp(signUpInfo: signUp)
-                .map { $0.message == "success" }
-            return bool
-        } catch {
-            return Observable.of(false)
-        }
+    func signUp(signUp: SignUp) -> Observable<SignUpResponse> {
+        return repository.singUp(signUpInfo: signUp)
     }
     
     //임시 비밀번호 발급
     func getTempPassword(email: String) -> Observable<Bool> {
         return repository.getTempPassword(email: email)
-            .map { $0.message == "success" }
+            .map { $0.status == 200 }
     }
     
     func checkEmailValidation(email: String) -> Observable<Bool> {
@@ -81,13 +75,13 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     func checkEmailCode(email: String, code: String) -> Observable<Bool> {
         return repository.checkEmailCode(email: email, code: code)
-            .map { $0.message == "success" }
+            .map { $0.status == 200 }
     }
     
     func sendAuthenCode(email: String) {
         repository.sendEmail(email: email)
             .subscribe(onNext: { response in
-                if response.message == "success" {
+                if response.status == 200 {
                     //메세지 전송 성공
                     self.authenCodeSuccess.onNext(true)
                 }else {

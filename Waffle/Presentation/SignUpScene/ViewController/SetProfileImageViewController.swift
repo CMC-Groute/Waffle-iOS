@@ -137,6 +137,13 @@ class SetProfileImageViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
+        output?.alertMessage
+            .filter { !$0.isEmpty }
+            .subscribe(onNext: { alert in
+                print("alert message \(alert)")
+                self.presentAlert(withTitle: "회원가입 실패", message: alert)
+            }).disposed(by: disposeBag)
+        
     }
 }
 

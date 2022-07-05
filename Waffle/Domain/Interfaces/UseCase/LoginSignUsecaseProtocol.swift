@@ -19,5 +19,5 @@ protocol LoginSignUsecaseProtocol {
     func checkEmailValidation(email: String) -> Observable<Bool>
     func checkEmailCode(email: String, code: String) -> Observable<Bool>
     func sendAuthenCode(email: String)
-    func signUp(signUp: SignUp) -> Observable<Bool>
+    func signUp(signUp: SignUp) -> Observable<SignUpResponse>
 }

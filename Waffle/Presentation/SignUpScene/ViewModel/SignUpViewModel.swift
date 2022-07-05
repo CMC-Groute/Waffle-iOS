@@ -71,7 +71,7 @@ class SignUpViewModel {
         input.nextButton
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.passwordTextField))
             .bind(onNext: { email, password in
-                let signUpInfo = SignUp(email: email, password: password, nickname: "", checkPassword: password, profileImage: "", isAgreedMarketing: false)
+                let signUpInfo = SignUp(email: email, password: password, nickname: "", profileImage: "", isAgreedMarketing: false)
                 self.coordinator.termsStep(signUpInfo: signUpInfo)
             }).disposed(by: disposeBag)
             

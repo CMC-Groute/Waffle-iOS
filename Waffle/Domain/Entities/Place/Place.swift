@@ -36,7 +36,7 @@ struct PlaceSearchInfo: Codable {
 }
 
 struct DefaultResponse: Codable {
-    var message: String
+    var status: Int
     var data: String
 }
 

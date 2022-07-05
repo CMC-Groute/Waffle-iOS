@@ -30,18 +30,21 @@ extension UIButton {
     }
     
     func setUnEnabled(color: String?) {
-        self.isUserInteractionEnabled = false
-        self.isEnabled = true
-        if let color = color {
-            self.backgroundColor = UIColor(named: color)
-            self.setTitleColor(UIColor(named: Asset.Colors.white.name), for: .disabled)
+        DispatchQueue.main.async {
+            self.isUserInteractionEnabled = false
+            self.isEnabled = true
+            if let color = color {
+                self.backgroundColor = UIColor(named: color)
+                self.setTitleColor(UIColor(named: Asset.Colors.white.name), for: .disabled)
+            }
         }
-        
     }
     
     func setDisabled(with bool: Bool, color: String){
-        self.isUserInteractionEnabled = !bool
-        self.backgroundColor =  bool ? UIColor(named: color)!.withAlphaComponent(0.5) : UIColor(named: color)!
+        DispatchQueue.main.async {
+            self.isUserInteractionEnabled = !bool
+            self.backgroundColor =  bool ? UIColor(named: color)!.withAlphaComponent(0.5) : UIColor(named: color)!
+        }
     }
     
     func alignTextBelow(spacing: CGFloat = 10.0) {
