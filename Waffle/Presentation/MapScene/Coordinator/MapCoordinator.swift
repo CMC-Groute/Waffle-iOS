@@ -19,7 +19,7 @@ final class MapCoordinator: MapCoordinatorProtocol {
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.navigationController.setNavigationBarHidden(true, animated: true)
+        self.navigationController.setNavigationBarHidden(false, animated: true)
         self.mapViewController = UIStoryboard(name: "Map", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
     }
     

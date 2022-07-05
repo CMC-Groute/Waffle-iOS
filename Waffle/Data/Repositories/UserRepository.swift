@@ -17,13 +17,23 @@ class UserRepository: UserRepositoryProtocol {
         self.service = networkService
     }
     
-    func getProfileInfo() -> Observable<ProfileInfo> {
-        return Observable.of(ProfileInfo(nickName: "uri", email: "jouureee@gmail.com", profileImage: nil))
-    }
-    
     func setAlarm(state: Bool) {
         
     }
+    
+    func getProfileInfo() -> Observable<UserInfoResponse> {
+        let api = LoginSignAPI.getUserInfo
+        return self.service.request(api)
+            .map ({ response -> UserInfoResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: UserInfoResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+        }
     
     func updateUserInfo(nickName: String, image: String) -> Observable<UpdatePasswordResponse> {
         let api = LoginSignAPI.updateProfile(nickName: nickName, image: image)

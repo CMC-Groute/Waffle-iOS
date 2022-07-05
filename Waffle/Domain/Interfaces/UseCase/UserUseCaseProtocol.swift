@@ -7,16 +7,9 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
-
-struct ProfileInfo {
-    var nickName: String
-    var email: String
-    var profileImage: Data?
-}
 
 protocol UserUseCaseProtocol {
-    func getProfileInfo() -> Observable<ProfileInfo>
+    func getProfileInfo() -> Observable<GetUserInfo>
     func setAlarm(state: Bool)
     func checkPasswordValid(password: String) -> Bool
     func checkNickNameValid(nickName: String) -> Bool

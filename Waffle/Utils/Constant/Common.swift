@@ -45,6 +45,17 @@ enum WappleType: String, CaseIterable {
     func wappleName() -> String {
         return self.rawValue
     }
+    
+    func wappleIndex() -> Int {
+        switch self {
+            case .wapple: return 0
+            case .choco: return 1
+            case .blueberry: return 2
+            case .vanilla: return 3
+            case .strawberry: return 4
+            case .malcha: return 5
+        }
+    }
 }
 
 enum DefaultDetailCardInfo: String {

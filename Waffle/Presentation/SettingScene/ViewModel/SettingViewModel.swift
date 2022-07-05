@@ -21,7 +21,9 @@ class SettingViewModel {
     }
     
     struct Output {
-        
+        let userNickName = PublishRelay<String>()
+        let userEmail = PublishRelay<String>()
+        let userImage = PublishRelay<String>()
     }
     
     private var disposable = DisposeBag()
@@ -38,6 +40,11 @@ class SettingViewModel {
         input.viewWillAppearEvent
             .subscribe(onNext: { [weak self] _ in
                 self?.usecase.getProfileInfo()
+                    .subscribe(onNext: { user in
+                        output.userNickName.accept(user.nickName)
+                        output.userEmail.accept(user.email)
+                        output.userImage.accept(user.profileImage)
+                    }).disposed(by: disposeBag)
             })
             .disposed(by: disposeBag)
         

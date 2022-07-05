@@ -25,8 +25,10 @@ class UserUsecase: UserUseCaseProtocol {
         password = "spqjf12345"
     }
     
-    func getProfileInfo() -> Observable<ProfileInfo> {
+    func getProfileInfo() -> Observable<GetUserInfo> {
         return repository.getProfileInfo()
+            .observe(on: MainScheduler.instance)
+            .map { $0.data }
     }
     
     func setAlarm(state: Bool) {

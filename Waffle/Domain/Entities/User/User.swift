@@ -7,9 +7,20 @@
 
 import Foundation
 
-struct EditProfile: Codable {
+struct UserInfoResponse: Codable {
+    var status: Int
+    var data: GetUserInfo
+}
+
+struct GetUserInfo: Codable {
     var nickName: String
-    var progileImage: Data
+    var email: String
+    var profileImage: String
+    
+    enum CodingKeys: String, CodingKey {
+        case nickName = "nickname"
+        case email, profileImage
+    }
 }
 
 struct Password: Codable {

@@ -115,7 +115,19 @@ class SettingViewController: UIViewController {
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
+        output?.userImage
+            .subscribe(onNext: { imageName in
+                let index = WappleType.init(rawValue: imageName)?.wappleIndex() ?? 0
+                self.profileImage.image = UIImage(named: "wapple-\(index)") ?? nil
+            }).disposed(by: disposeBag)
         
+        output?.userNickName
+            .bind(to: profileNickname.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.userEmail
+            .bind(to: profileEmail.rx.text)
+            .disposed(by: disposeBag)
     }
 
     
