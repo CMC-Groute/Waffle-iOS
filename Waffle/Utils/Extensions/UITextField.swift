@@ -102,6 +102,16 @@ extension UITextField {
         self.rightView = iconView
         self.rightViewMode = mode
     }
+    
+    func changePlaceHolderColor(with color: UIColor = Asset.Colors.gray4.color) {
+        if let placeHolderText = self.placeholder {
+            self.attributedPlaceholder =
+            NSAttributedString(
+                string: placeHolderText,
+                attributes: [NSAttributedString.Key.foregroundColor: Asset.Colors.gray4.color]
+            )
+        }
+    }
         
     @objc
     private func displayClearButtonIfNeeded() {

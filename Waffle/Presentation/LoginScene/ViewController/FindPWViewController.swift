@@ -29,6 +29,7 @@ class FindPWViewController: UIViewController {
     
     private func configureUI() {
         self.getTempPWButton.makeRounded(corner: 26)
+        emailTextField.changePlaceHolderColor()
         emailTextField.makeRounded(corner: 10)
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         emailTextField.becomeFirstResponder()

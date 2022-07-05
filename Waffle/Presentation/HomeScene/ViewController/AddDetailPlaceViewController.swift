@@ -55,6 +55,7 @@ class AddDetailPlaceViewController: UIViewController {
         textField.placeholder = "클릭하면 장소를 검색할 수 있어요"
         textField.font = UIFont.fontWithName(type: .regular, size: 15)
         textField.backgroundColor = Asset.Colors.gray2.color
+        textField.changePlaceHolderColor()
         textField.makeRounded(corner: 10)
         textField.padding(value: 9)
         return textField
@@ -71,7 +72,7 @@ class AddDetailPlaceViewController: UIViewController {
     
     private func configureUI() {
         linkDeleteButton.isHidden = true
-
+        
         addButton.makeRounded(corner: 26)
 
         memoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)

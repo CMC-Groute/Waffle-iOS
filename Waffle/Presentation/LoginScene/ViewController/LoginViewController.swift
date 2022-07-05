@@ -75,9 +75,10 @@ class LoginViewController: UIViewController {
     func configureUI() {
         UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
         loginButton.makeRounded(corner: 26)
-        
+        emailTextField.changePlaceHolderColor()
         emailTextField.makeRounded(corner: 10)
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+        passwordTextField.changePlaceHolderColor()
         passwordTextField.makeRounded(corner: 10)
         passwordTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         configureNavigationBar()

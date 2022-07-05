@@ -30,6 +30,7 @@ class EditSettingViewController: UIViewController {
     }
     
     private func configureUI() {
+        nickNameTextField.changePlaceHolderColor()
         profileImage.makeCircleShape()
         doneButton.makeRounded(corner: 26)
         doneButton.setUnEnabled(color: Asset.Colors.gray4.name)

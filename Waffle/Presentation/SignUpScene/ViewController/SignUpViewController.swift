@@ -47,6 +47,7 @@ class SignUpViewController: UIViewController {
         nextButton.makeRounded(corner: 26)
         textFields.forEach {
             $0.makeRounded(corner: 10)
+            $0.changePlaceHolderColor()
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
         configureNavigationBar()

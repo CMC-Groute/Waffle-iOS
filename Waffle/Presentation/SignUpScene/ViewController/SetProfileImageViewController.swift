@@ -22,7 +22,6 @@ class SetProfileImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("setImage \(viewModel)")
         configureUI()
         bindViewModel()
         collectionviewSetUp()
@@ -34,6 +33,7 @@ class SetProfileImageViewController: UIViewController {
         profileImage.makeCircleShape()
         startButton.makeRounded(corner: 26)
         startButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        nickNameTextField.changePlaceHolderColor()
         nickNameTextField.makeRounded(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         configureNavigationBar()

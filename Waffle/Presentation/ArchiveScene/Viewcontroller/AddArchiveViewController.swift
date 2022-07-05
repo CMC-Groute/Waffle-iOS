@@ -65,6 +65,11 @@ class AddArchiveViewController: UIViewController {
     }
     
     private func configureUI() {
+        archiveNameTextField.changePlaceHolderColor()
+        archiveDateTextField.changePlaceHolderColor()
+        archiveTimeTextField.changePlaceHolderColor()
+        archiveLocationTextField.changePlaceHolderColor()
+        
         archiveNameTextField.makeRounded(corner: 10)
         archiveDateTextField.makeRounded(corner: 10)
         archiveTimeTextField.makeRounded(corner: 10)

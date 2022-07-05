@@ -56,6 +56,7 @@ class EditPlaceViewController: UIViewController {
         textField.font = UIFont.fontWithName(type: .regular, size: 15)
         textField.backgroundColor = Asset.Colors.gray2.color
         textField.makeRounded(corner: 10)
+        textField.changePlaceHolderColor()
         textField.padding(value: 9)
         return textField
     }()

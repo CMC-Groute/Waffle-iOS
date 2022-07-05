@@ -68,6 +68,7 @@ class InputArchiveCodeViewController: UIViewController {
       }
     
     func configureUI() {
+        codeTextField.changePlaceHolderColor()
         codeTextField.makeRounded(corner: 10)
         codeTextField.becomeFirstResponder()
         codeTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)

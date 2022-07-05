@@ -41,6 +41,7 @@ class ChangePWViewController: UIViewController {
         textFields = [PWTextField, newPWTextField, newRePWTextField]
         textFields.forEach {
             $0.makeRounded(corner: 10)
+            $0.changePlaceHolderColor()
             $0.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         }
         doneButton.makeRounded(corner: 26)
