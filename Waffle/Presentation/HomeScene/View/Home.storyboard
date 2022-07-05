@@ -630,16 +630,6 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="장소와 관련된 링크 주소를 입력해요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dVI-Xz-5iH">
-                                                <rect key="frame" x="16" y="257.5" width="382" height="50"/>
-                                                <color key="backgroundColor" name="Gray2"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="i6z-r4-LYe"/>
-                                                </constraints>
-                                                <color key="textColor" name="Black"/>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                            </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="장소에 대한 메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UB-Ut-et1">
                                                 <rect key="frame" x="18" y="379.5" width="105.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
@@ -705,27 +695,58 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EkH-37-1JJ">
+                                                <rect key="frame" x="16" y="254" width="382" height="94"/>
+                                                <color key="backgroundColor" name="Gray2"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="VUe-1e-avH"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="장소와 관련된 링크 주소를 입력해요">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="labelColor"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BA-P4-8AY">
+                                                <rect key="frame" x="350" y="265" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="TUe-T3-Yti"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Zio-RW-9Rk"/>
+                                                </constraints>
+                                                <color key="tintColor" name="Black"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="delete"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="dVI-Xz-5iH" secondAttribute="trailing" constant="16" id="91C-ON-qnZ"/>
-                                            <constraint firstItem="dVI-Xz-5iH" firstAttribute="top" secondItem="PI0-Ll-GD4" secondAttribute="bottom" constant="11" id="Efy-0t-RFh"/>
-                                            <constraint firstItem="dVI-Xz-5iH" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="16" id="IIU-kj-kha"/>
+                                            <constraint firstItem="EkH-37-1JJ" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="16" id="3ay-9b-5wk"/>
+                                            <constraint firstItem="EkH-37-1JJ" firstAttribute="trailing" secondItem="3BA-P4-8AY" secondAttribute="trailing" constant="8" id="HEb-95-8qP"/>
                                             <constraint firstItem="dLd-0M-gzA" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" id="Mre-1N-sMs"/>
+                                            <constraint firstItem="1UB-Ut-et1" firstAttribute="top" secondItem="EkH-37-1JJ" secondAttribute="bottom" constant="32" id="Oy7-Q4-FeU"/>
+                                            <constraint firstAttribute="trailing" secondItem="EkH-37-1JJ" secondAttribute="trailing" constant="16" id="Oyi-Jf-1oL"/>
                                             <constraint firstItem="WOE-oi-I14" firstAttribute="top" secondItem="oCG-84-YbC" secondAttribute="bottom" constant="10" id="QrE-SJ-s2f"/>
                                             <constraint firstItem="oCG-84-YbC" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="20" id="TFe-eW-OYG"/>
                                             <constraint firstItem="dLd-0M-gzA" firstAttribute="top" secondItem="vYO-DS-Sj8" secondAttribute="bottom" constant="200" id="Tnn-hj-6Ug"/>
                                             <constraint firstAttribute="trailing" secondItem="dLd-0M-gzA" secondAttribute="trailing" id="UMY-sH-Mg5"/>
                                             <constraint firstItem="kya-BQ-C1q" firstAttribute="top" secondItem="WOE-oi-I14" secondAttribute="bottom" constant="29" id="VNo-TU-FdL"/>
                                             <constraint firstItem="kya-BQ-C1q" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="20" id="XLn-45-cRT"/>
+                                            <constraint firstItem="3BA-P4-8AY" firstAttribute="top" secondItem="EkH-37-1JJ" secondAttribute="top" constant="5" id="aIX-xf-FnW"/>
+                                            <constraint firstItem="EkH-37-1JJ" firstAttribute="bottom" secondItem="3BA-P4-8AY" secondAttribute="bottom" constant="5" id="b7D-be-uQ9"/>
                                             <constraint firstAttribute="trailing" secondItem="WOE-oi-I14" secondAttribute="trailing" constant="6" id="bHt-aT-gby"/>
                                             <constraint firstAttribute="bottom" secondItem="dLd-0M-gzA" secondAttribute="bottom" id="beb-oU-Rn0"/>
                                             <constraint firstItem="oCG-84-YbC" firstAttribute="top" secondItem="M0N-8v-ezH" secondAttribute="top" constant="17" id="flS-bG-wif"/>
                                             <constraint firstAttribute="trailing" secondItem="vYO-DS-Sj8" secondAttribute="trailing" constant="16" id="grF-OH-8KV"/>
                                             <constraint firstItem="1UB-Ut-et1" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="18" id="h2Y-ZJ-cQJ"/>
                                             <constraint firstItem="vYO-DS-Sj8" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="16" id="hSs-7k-Bwi"/>
+                                            <constraint firstItem="EkH-37-1JJ" firstAttribute="top" secondItem="PI0-Ll-GD4" secondAttribute="bottom" constant="11" id="lKX-Km-Z8B"/>
                                             <constraint firstItem="PI0-Ll-GD4" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="18" id="qtj-sU-8bi"/>
-                                            <constraint firstItem="1UB-Ut-et1" firstAttribute="top" secondItem="dVI-Xz-5iH" secondAttribute="bottom" constant="72" id="uER-0u-uAR"/>
                                             <constraint firstItem="vYO-DS-Sj8" firstAttribute="top" secondItem="1UB-Ut-et1" secondAttribute="bottom" constant="12" id="vfo-Y3-0Ce"/>
                                             <constraint firstItem="WOE-oi-I14" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="6" id="xcz-Go-yss"/>
                                         </constraints>
@@ -754,8 +775,9 @@
                     <connections>
                         <outlet property="addButton" destination="SUY-6P-JTd" id="w36-Rb-QNc"/>
                         <outlet property="collectionView" destination="WOE-oi-I14" id="F27-vp-Sas"/>
+                        <outlet property="linkDeleteButton" destination="3BA-P4-8AY" id="4lw-m1-NO5"/>
                         <outlet property="linkLabel" destination="PI0-Ll-GD4" id="eDO-ZP-xVb"/>
-                        <outlet property="linkTextField" destination="dVI-Xz-5iH" id="STq-F7-HWV"/>
+                        <outlet property="linkTextView" destination="EkH-37-1JJ" id="JdX-su-K7M"/>
                         <outlet property="memoTextView" destination="vYO-DS-Sj8" id="A6u-7n-ghP"/>
                         <outlet property="placeLabel" destination="kya-BQ-C1q" id="K6V-zh-urP"/>
                     </connections>

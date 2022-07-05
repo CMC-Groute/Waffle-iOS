@@ -23,7 +23,6 @@ class UserUsecase: UserUseCaseProtocol {
     
     init(repository: UserRepository) {
         self.repository = repository
-        password = "spqjf12345"
     }
     
     func getProfileInfo() -> Observable<GetUserInfo> {
@@ -106,6 +105,7 @@ class UserUsecase: UserUseCaseProtocol {
                 WappleLog.debug("quit user \(response)")
                 if response.status == 200 {
                     self.userQuitSuccess.accept(true)
+                    self.logout()
                 }else {
                     self.userQuitSuccess.accept(false)
                 }
