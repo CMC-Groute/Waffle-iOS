@@ -19,13 +19,13 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     private var disposedBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
-        self.service = networkService
+        service = networkService
     }
     
     func login(loginInfo: Login) -> Observable<LoginResponse> {
         print("login repository")
         let api = LoginSignAPI.login(login: loginInfo)
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> LoginResponse in
                 switch response {
                 case .success(let data):
@@ -41,7 +41,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     func singUp(signUpInfo: SignUp) -> Observable<SignUpResponse>  {
         print("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> SignUpResponse in
                 switch response {
                 case .success(let data):
@@ -57,7 +57,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     func sendEmail(email: String) -> Observable<DefaultResponse>  {
         print("login repository sendEmail")
         let api = LoginSignAPI.sendEmail(email: email)
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
@@ -71,7 +71,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     
     func checkEmailCode(email: String, code: String) -> Observable<DefaultResponse> {
         let api = LoginSignAPI.checkEmailCode(email: email, code: code)
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
@@ -86,11 +86,10 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     func getTempPassword(email: String) -> Observable<DefaultResponse> {
         let api = LoginSignAPI.findPassword(email: email)
         print("login repository getTempPassword")
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    print("success")
                     guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):

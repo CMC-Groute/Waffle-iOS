@@ -46,20 +46,40 @@ struct Participants: Codable {
     var nickName: String
 }
 
-struct CardInfo: Hashable, Identifiable, Codable {
+struct GetCardResponse: Codable {
+    var message: String
+    var data: [CardInfo]?
+}
+
+struct CardInfo: Codable {
+    var id: Int
     var title: String
     var date: String?
     var place: String?
     var memo: String?
-    var wapple: String
-    var topping: [String]
-    var color: Int
-    var id = UUID()
+    var wappleId: Int
+    var topping: [ToppingInfo]
+    var cardType: String
     
     enum CodingKeys: String, CodingKey {
-        case title, date, wapple, topping, color, id
-        case memo = "comment"
+        case id = "invitationId"
+        case title, date
         case place = "invitationPlace"
+        case memo = "comment"
+        case wappleId = "waffleId"
+        case topping = "invitationMemberDto"
+        case cardType = "invitationImageCategory"
+    }
+}
+
+struct ToppingInfo: Codable {
+    var userId: Int
+    var nickName: String
+    var profileImage: String
+    
+    enum CodingKeys: String, CodingKey {
+        case nickName = "nickname"
+        case userId, profileImage
     }
 }
 

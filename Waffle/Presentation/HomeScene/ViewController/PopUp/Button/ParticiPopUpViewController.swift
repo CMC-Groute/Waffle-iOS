@@ -90,12 +90,13 @@ extension ParticiPopUpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ParticipantsTableViewCell.identifier, for: indexPath) as! ParticipantsTableViewCell
         let dummy = Asset.Assets.wapple1.name
+        guard let toppingInfo = cardInfo?.topping else { return cell }
         if indexPath.row == 0 {
-            guard let wappleNickName = cardInfo?.wapple else { return cell }
-            cell.configureCell(image: dummy, nickName: wappleNickName, type: .wapple)
+            let wapple = toppingInfo.filter { $0.userId == cardInfo?.wappleId }
+            cell.configureCell(info: wapple[0], type: .wapple)
         }else {
-            guard let toppingNickName = cardInfo?.topping else { return cell }
-            cell.configureCell(image: dummy, nickName: toppingNickName[indexPath.row - 1], type: .topping)
+            var topping = toppingInfo.filter { $0.userId != cardInfo?.wappleId }
+            cell.configureCell(info: topping[indexPath.row - 1], type: .topping)
         }
         return cell
     }

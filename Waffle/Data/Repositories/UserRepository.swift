@@ -14,7 +14,7 @@ class UserRepository: UserRepositoryProtocol {
     var disposBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
-        self.service = networkService
+        service = networkService
     }
     
     func setAlarm(state: Bool) {
@@ -23,7 +23,7 @@ class UserRepository: UserRepositoryProtocol {
     
     func getProfileInfo() -> Observable<UserInfoResponse> {
         let api = LoginSignAPI.getUserInfo
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> UserInfoResponse in
                 switch response {
                 case .success(let data):
@@ -37,7 +37,7 @@ class UserRepository: UserRepositoryProtocol {
     
     func updateUserInfo(nickName: String, image: String) -> Observable<DetaultIntResponse> {
         let api = LoginSignAPI.updateProfile(nickName: nickName, image: image)
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> DetaultIntResponse in
                 switch response {
                 case .success(let data):
@@ -52,7 +52,7 @@ class UserRepository: UserRepositoryProtocol {
     
     func updatePassword(password: Password) -> Observable<DetaultIntResponse> {
         let api = LoginSignAPI.updatePassword(password: password)
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> DetaultIntResponse in
                 switch response {
                 case .success(let data):
@@ -66,7 +66,7 @@ class UserRepository: UserRepositoryProtocol {
     
     func quitUser() -> Observable<DetaultIntResponse> {
         let api = LoginSignAPI.quitUser
-        return self.service.request(api)
+        return service.request(api)
             .map ({ response -> DetaultIntResponse in
                 switch response {
                 case .success(let data):
