@@ -173,7 +173,33 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = EditPlaceViewModel.Input()
+        let input = EditPlaceViewModel.Input(linkTextViewDidTapEvent: self.linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: self.linkTextView.rx.didEndEditing)
+        
+        input.linkTextViewDidTapEvent
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                guard let text = self.linkTextView.text else { return }
+                if text == """
+                장소와 관련된 링크 주소를 입력해요
+                """ {
+                    self.linkTextView.text = nil
+                    self.linkTextView.textColor = Asset.Colors.black.color
+                }
+                self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.linkTextViewDidEndEvent
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                if self.linkTextView.text.isEmpty || self.linkTextView.text == nil {
+                    self.linkTextView.textColor = Asset.Colors.gray4.color
+                    self.linkTextView.text = """
+                장소와 관련된 링크 주소를 입력해요
+                """
+                }
+                self.linkTextView.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap

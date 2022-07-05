@@ -27,10 +27,11 @@ class AddDetailPlaceViewModel {
     struct Input {
         var categorySelectedItem: Observable<Int?>
         var placeTextFieldTapEvent: ControlEvent<Void>
-        var placeViewDeleteButton: Observable<Void> // 클릭시 다시 장소 입력 textfield 레이아웃
+        // 클릭시 다시 장소 입력 textfield 레이아웃
+        var placeViewDeleteButton: Observable<Void>
                                         
-        var linkTextFieldDidTapEvent: ControlEvent<Void>
-        var linkTextFieldDidEndEvent: ControlEvent<Void> // 링킹으로 만들기
+        var linkTextViewDidTapEvent: ControlEvent<Void>
+        var linkTextViewDidEndEvent: ControlEvent<Void>
         
         var memoTextViewDidTapEvent: ControlEvent<Void>
         var memoTextViewDidEndEvent: ControlEvent<Void>

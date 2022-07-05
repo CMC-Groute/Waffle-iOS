@@ -83,7 +83,6 @@ class AddDetailPlaceViewController: UIViewController {
         linkTextView.isEditable = false
         linkTextView.isSelectable = true
         linkTextView.delegate = self
-        linkTextView.text = "https://g-y-e-o-m.tistory.com"
         linkTextView.isUserInteractionEnabled = true
         linkTextView.textContainerInset = UIEdgeInsets(top: 15, left: 14, bottom: 15, right: 48)
         configureNavigationBar()
@@ -172,7 +171,7 @@ class AddDetailPlaceViewController: UIViewController {
     
 
     func bindViewModel() {
-        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextFieldDidTapEvent: linkTextView.rx.didEndEditing, linkTextFieldDidEndEvent: linkTextView.rx.didEndEditing, memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
+        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap
@@ -180,19 +179,28 @@ class AddDetailPlaceViewController: UIViewController {
                 self.linkTextView.text = ""
             }).disposed(by: disposeBag)
         
-        input.linkTextFieldDidTapEvent
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
-            }).disposed(by: disposeBag)
-        
-        input.linkTextFieldDidEndEvent
+        input.linkTextViewDidTapEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 guard let text = self.linkTextView.text else { return }
-                //TO DO make linking text
-                guard let link = self.linkTextView.text else { return }
-
+                if text == """
+                장소와 관련된 링크 주소를 입력해요
+                """ {
+                    self.linkTextView.text = nil
+                    self.linkTextView.textColor = Asset.Colors.black.color
+                }
+                self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.linkTextViewDidEndEvent
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                if self.linkTextView.text.isEmpty || self.linkTextView.text == nil {
+                    self.linkTextView.textColor = Asset.Colors.gray4.color
+                    self.linkTextView.text = """
+                장소와 관련된 링크 주소를 입력해요
+                """
+                }
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
@@ -356,6 +364,10 @@ extension AddDetailPlaceViewController: UITextViewDelegate {
        } else {
            changeTextViewToNormalState()
        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.focusingBorder(color: Asset.Colors.orange.name)
     }
 
     func textViewDidChange(_ textView: UITextView) {

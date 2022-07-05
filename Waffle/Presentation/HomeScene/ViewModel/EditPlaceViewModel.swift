@@ -21,7 +21,10 @@ class EditPlaceViewModel {
         self.usecase = usecase
     }
     
-    struct Input {    }
+    struct Input {
+        var linkTextViewDidTapEvent: ControlEvent<Void>
+        var linkTextViewDidEndEvent: ControlEvent<Void>
+    }
     
     struct Output {
         let placeViewEnabled = BehaviorRelay<Bool>(value: true)

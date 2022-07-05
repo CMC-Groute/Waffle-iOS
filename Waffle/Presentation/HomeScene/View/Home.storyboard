@@ -695,21 +695,14 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EkH-37-1JJ">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="장소와 관련된 링크 주소를 입력해요" translatesAutoresizingMaskIntoConstraints="NO" id="EkH-37-1JJ">
                                                 <rect key="frame" x="16" y="254" width="382" height="94"/>
                                                 <color key="backgroundColor" name="Gray2"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="VUe-1e-avH"/>
                                                 </constraints>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="장소와 관련된 링크 주소를 입력해요">
-                                                        <attributes>
-                                                            <color key="NSColor" systemColor="labelColor"/>
-                                                            <font key="NSFont" metaFont="system" size="14"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
+                                                <color key="textColor" name="Gray4"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
