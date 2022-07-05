@@ -7,6 +7,21 @@
 
 import Foundation
 
+//MARK: 약속 만들기
+struct ArchiveInfo: Codable {
+    var title: String
+    var date: String?
+    var time: String?
+    var memo: String?
+    var location: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case title, date, time
+        case memo = "comment"
+        case location = "invitationPlace"
+    }
+}
+
 //MARK: 약속
 struct DetailArhive: Codable {
     var title: String

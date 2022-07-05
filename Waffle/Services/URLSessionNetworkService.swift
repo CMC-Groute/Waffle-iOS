@@ -64,7 +64,6 @@ class URLSessionNetworkService {
             return .just(.failure(URLSessionNetworkServiceError.invalidURLError))
         }
         return Observable<Result<Data, URLSessionNetworkServiceError>>.create { emitter in
-            print("signup \(String(data: urlRequest.httpBody!, encoding: .utf8))")
             print(urlRequest.allHTTPHeaderFields)
             let task = URLSession.shared.dataTask(with: urlRequest) { data, reponse, error in
                 guard let httpResponse = reponse as? HTTPURLResponse else {
@@ -76,10 +75,12 @@ class URLSessionNetworkService {
                     return
                 }
                 guard 200...299 ~= httpResponse.statusCode else {
+                    print("httpResponse.statusCode \(httpResponse.statusCode)")
                     emitter.onError(self.configureHTTPError(errorCode: httpResponse.statusCode))
                     return
                 }
                 guard let data = data else {
+                    print("httpResponse. emptyDataError")
                     emitter.onNext(.failure(.emptyDataError))
                     return
                 }

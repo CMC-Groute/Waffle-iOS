@@ -46,9 +46,9 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
                 if response.message == "success" {
-                    loginSuccess.onNext(true)
+                    self.loginSuccess.onNext(true)
                 }else {
-                    loginSuccess.onNext(false)
+                    self.loginSuccess.onNext(false)
                 }
                 self.storeUserInfo(user: response.data)
             }).disposed(by: disposeBag)

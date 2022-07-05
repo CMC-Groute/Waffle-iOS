@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,11 +13,25 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="Y6W-OH-hqX" customClass="MapViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mapComingSoon" translatesAutoresizingMaskIntoConstraints="NO" id="zeb-6Y-FUP">
+                                <rect key="frame" x="117.5" y="291" width="179" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="179" id="HTt-cg-V1Q"/>
+                                    <constraint firstAttribute="height" constant="128" id="IXr-KF-eL4"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zeb-6Y-FUP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="247" id="MlS-nB-hJm"/>
+                            <constraint firstItem="zeb-6Y-FUP" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="lHK-ZY-3mb"/>
+                            <constraint firstItem="zeb-6Y-FUP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="qtk-3n-Rvp"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -25,6 +40,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="mapComingSoon" width="179" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

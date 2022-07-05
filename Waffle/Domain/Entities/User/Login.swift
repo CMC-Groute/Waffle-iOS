@@ -15,7 +15,7 @@ struct Login: Codable {
 
 //MARK: Login Response
 struct LoginResponse: Codable {
-    var message: Bool
+    var message: String
     var data: UserInfo
 }
 

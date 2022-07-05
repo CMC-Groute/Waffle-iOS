@@ -11,19 +11,21 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureUI() {
+        func setNavigationBar() {
+            let image = Asset.Assets.wapple.image.withRenderingMode(.alwaysOriginal)
+            self.navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
+            let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            spacer.width = 26
+            let calendarButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.calendar.name)
+            let bellButton = self.navigationItem.rightBarButton(self, level: Asset.Assets.bell.name)
+            
+            self.navigationController?.navigationBar.topItem?.rightBarButtonItems = [bellButton, spacer, calendarButton]
+        }
+        setNavigationBar()
     }
-    */
 
 }
