@@ -18,7 +18,7 @@ class AppCoordinator: AppCoordinatorProtocol {
     }
 
     func start() {
-        if UserDefaults.standard.bool(forKey: UserDefaultKey.isLoggedIn) {
+        if UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) != nil {
             self.showTabBarFlow()
         } else {
             self.showLoginFlow()

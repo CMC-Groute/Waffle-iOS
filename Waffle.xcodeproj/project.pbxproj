@@ -138,6 +138,7 @@
 		133D55E128744C4C0068EA90 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */; };
 		133D55E228744C4C0068EA90 /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519E28546AD30051E94D /* FindPWViewModel.swift */; };
 		133D55E328745CE70068EA90 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
+		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
 		1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */; };
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
@@ -176,6 +177,7 @@
 		112C07E8D03FEF4C5797A43C /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
+		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
 		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLeftTableviewCell.swift; sourceTree = "<group>"; };
@@ -890,6 +892,7 @@
 				13E9B0BD285A2F0800723CAA /* String.swift */,
 				1390EC372863573800E5520C /* UIView.swift */,
 				13CA03E128701B920087E79E /* Encodable.swift */,
+				133D55E4287472320068EA90 /* WappleLog.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1530,6 +1533,7 @@
 				133D5444287446530068EA90 /* UITextView.swift in Sources */,
 				133D5445287446530068EA90 /* UILabel.swift in Sources */,
 				133D5446287446530068EA90 /* String.swift in Sources */,
+				133D55E5287472320068EA90 /* WappleLog.swift in Sources */,
 				133D5447287446530068EA90 /* UIView.swift in Sources */,
 				133D5448287446530068EA90 /* Encodable.swift in Sources */,
 				133D5438287446490068EA90 /* TapBarPage.swift in Sources */,

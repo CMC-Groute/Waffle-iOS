@@ -10,11 +10,11 @@ import RxSwift
 
 class UserRepository: UserRepositoryProtocol {
     
-    let urlSessionNetworkService: URLSessionNetworkService
+    let service: URLSessionNetworkService
     var disposBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
-        self.urlSessionNetworkService = networkService
+        self.service = networkService
     }
     
     func getProfileInfo() -> Observable<ProfileInfo> {
@@ -29,9 +29,21 @@ class UserRepository: UserRepositoryProtocol {
         
     }
     
-    func changePassword(password: Password) {
-        
+    func updatePassword(password: Password) -> Observable<UpdatePasswordResponse> {
+        let api = LoginSignAPI.updatePassword(password: password)
+        return self.service.request(api)
+            .map ({ response -> UpdatePasswordResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: UpdatePasswordResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
+    
+    
     
     
 }

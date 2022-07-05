@@ -9,6 +9,10 @@ import Foundation
 
 struct JSON {
     static let encoder = JSONEncoder()
+    
+    static func decode<T: Decodable>(data: Data, to target: T.Type) -> T? {
+        return try? JSONDecoder().decode(target, from: data)
+    }
 }
 
 extension Encodable {

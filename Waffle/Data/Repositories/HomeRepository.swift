@@ -9,11 +9,11 @@ import Foundation
 import RxSwift
 
 class HomeRepository: HomeRepositoryProtocol {
-    let urlSessionNetworkService: URLSessionNetworkService
+    let service: URLSessionNetworkService
     var disposBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
-        self.urlSessionNetworkService = networkService
+        self.service = networkService
     }
     
     func getCardInfo() -> Observable<[CardInfo]> {

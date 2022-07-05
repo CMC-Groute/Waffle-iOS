@@ -15,10 +15,6 @@ enum LoginSignError: Error {
 
 class LoginSignRepository: LoginSignRepositoryProtocol {
     
-    private func decode<T: Decodable>(data: Data, to target: T.Type) -> T? {
-        return try? JSONDecoder().decode(target, from: data)
-    }
-    
     let service: URLSessionNetworkService
     private var disposedBag = DisposeBag()
     
@@ -33,7 +29,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> LoginResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: LoginResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: LoginResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -49,7 +45,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> SignUpResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: SignUpResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: SignUpResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -65,7 +61,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -79,7 +75,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -94,7 +90,8 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = self.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    print("success")
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error

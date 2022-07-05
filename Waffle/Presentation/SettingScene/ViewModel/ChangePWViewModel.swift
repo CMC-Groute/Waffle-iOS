@@ -54,9 +54,12 @@ class ChangePWViewModel {
             .disposed(by: disposeBag)
         
         input.doneButton
-            .subscribe(onNext: {
-                self.coordinator.popToRootViewController(with: "새 비밀번호로 변경되었어요", width: 172, height: 34)
+            .withLatestFrom(Observable.combineLatest(input.passwordTextField, input.newPasswordTextField))
+            .bind(onNext: { pw, nPw in
+                let data = Password(nowPassword: pw, newPassword: nPw)
+                self.usecase.updatePassword(password: data)
             }).disposed(by: disposeBag)
+        
         
         input.passwordTextField
             .distinctUntilChanged()
@@ -64,7 +67,7 @@ class ChangePWViewModel {
                 if text.count == 0 {
                     output.passwordInValid.accept(nil)
                 }else {
-                    if !self.usecase.checkPassword(password: text) {
+                    if !self.usecase.checkPasswordValid(password: text) {
                         output.passwordInValid.accept(false)
                     }else {
                         output.passwordInValid.accept(true)
@@ -99,22 +102,15 @@ class ChangePWViewModel {
                     }
                 }
             }).disposed(by: disposeBag)
-            
-//        input.newRePasswordTextField
-//            .distinctUntilChanged()
-//            .subscribe(onNext: { text in
-//                if text.count == 0 {
-//                    output.newRePasswordInValid.accept(nil)
-//                }else {
-//                    if !self.usecase.checkPasswordValid(password: text) {
-//                        output.newRePasswordInValid.accept(false)
-//                    }else {
-//                        output.newRePasswordInValid.accept(true)
-//                    }
-//                }
-//            }).disposed(by: disposeBag)
-    
         
+        usecase.updatePasswordSuccess
+            .subscribe(onNext: { bool in
+                if bool {
+                    self.coordinator.popToRootViewController(with: "새 비밀번호로 변경되었어요", width: 172, height: 34)
+                }else {
+                    WappleLog.debug("can't not go to setting")
+                }
+            }).disposed(by: disposeBag)
         return output
     }
     

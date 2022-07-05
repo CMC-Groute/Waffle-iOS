@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class UserUsecase: UserUseCaseProtocol {
     
@@ -15,6 +16,8 @@ class UserUsecase: UserUseCaseProtocol {
     var nickName: String?
     var email: String?
     var password: String?
+    let disposeBag = DisposeBag()
+    var updatePasswordSuccess = PublishRelay<Bool>()
     
     init(repository: UserRepository) {
         self.repository = repository
@@ -44,6 +47,24 @@ class UserUsecase: UserUseCaseProtocol {
         let nickNameReg = "^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9\\s]{0,6}$"
         let nickNameTest = NSPredicate(format: "SELF MATCHES %@", nickNameReg)
         return nickNameTest.evaluate(with: nickName)
+    }
+    
+    func updatePassword(password: Password) { // 비밀번호 업데이트
+        repository.updatePassword(password: password)
+            .catch { error -> Observable<UpdatePasswordResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                print("error \(error)")
+                return .just(UpdatePasswordResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                print("updatePassword")
+                if response.status == 200 {
+                    self.updatePasswordSuccess.accept(true)
+                }else {
+                    self.updatePasswordSuccess.accept(false)
+                }
+            }).disposed(by: disposeBag)
+            
     }
     
     func quit() {

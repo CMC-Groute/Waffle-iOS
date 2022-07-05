@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 
 class ArchiveRepository: ArchiveRepositoryProtocol {
-    let urlSessionNetworkService: URLSessionNetworkService
+    let service: URLSessionNetworkService
     var disposBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
-        self.urlSessionNetworkService = networkService
+        self.service = networkService
     }
     
     func checkCodeValid(code: String) -> Bool {

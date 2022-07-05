@@ -38,7 +38,21 @@ struct PlaceSearchInfo: Codable {
 struct DefaultResponse: Codable {
     var status: Int
     var data: String
+    
+    static func errorResponse(code: Int) -> DefaultResponse {
+        return DefaultResponse(status: code, data: "error")
+    }
 }
+
+struct UpdatePasswordResponse: Codable {
+    var status: Int
+    var data: Int
+    
+    static func errorResponse(code: Int) -> UpdatePasswordResponse {
+        return UpdatePasswordResponse(status: code, data: 0)
+    }
+}
+
 
 struct SignUpResponse: Codable {
     var message: String

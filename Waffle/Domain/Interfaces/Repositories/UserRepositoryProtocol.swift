@@ -12,7 +12,7 @@ import RxCocoa
 protocol UserRepositoryProtocol {
     //MARK: FROM
     func editProfile(profile: EditProfile)
-    func changePassword(password: Password)
+    func updatePassword(password: Password) -> Observable<UpdatePasswordResponse>
     
     func getProfileInfo() -> Observable<ProfileInfo>
     func setAlarm(state: Bool)
