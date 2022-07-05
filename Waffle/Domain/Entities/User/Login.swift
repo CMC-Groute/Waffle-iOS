@@ -15,8 +15,8 @@ struct Login: Codable {
 
 //MARK: Login Response
 struct LoginResponse: Codable {
-    var message: String
-    var data: UserInfo
+    var status: Int
+    var data: UserInfo?
 }
 
 struct UserInfo: Codable {

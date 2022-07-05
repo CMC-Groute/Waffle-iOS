@@ -137,6 +137,7 @@
 		133D55E028744C4C0068EA90 /* QuitPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3312856089B002371FD /* QuitPopUpViewController.swift */; };
 		133D55E128744C4C0068EA90 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D0D284DFDD5008E1185 /* LoginViewModel.swift */; };
 		133D55E228744C4C0068EA90 /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519E28546AD30051E94D /* FindPWViewModel.swift */; };
+		133D55E328745CE70068EA90 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
 		1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */; };
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
@@ -1268,6 +1269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				133D55E328745CE70068EA90 /* Setting.storyboard in Resources */,
 				132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */,
 				F29ED30E2855DBB2002371FD /* Home.storyboard in Resources */,
 				F29ED3142855DBCE002371FD /* Map.storyboard in Resources */,

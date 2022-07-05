@@ -9,12 +9,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum LoginStatus {
+    case login
+    case invalidEmail
+    case invalidPW
+    case unDefined
+}
+
 class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     private var repository: LoginSignRepository!
     let disposeBag = DisposeBag()
     let authenCodeSuccess = PublishSubject<Bool>()
-    let loginSuccess = PublishSubject<Bool>()
+    let loginSuccess = PublishSubject<LoginStatus>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -45,12 +52,17 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         repository.login(loginInfo: loginInfo)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                if response.message == "success" {
-                    self.loginSuccess.onNext(true)
+                print(response.status)
+                if response.status == 200 {
+                    self.loginSuccess.onNext(.login)
+                    self.storeUserInfo(user: response.data!)
+                }else if response.status == 403 {
+                    self.loginSuccess.onNext(.invalidPW)
+                }else if response.status == 404 {
+                    self.loginSuccess.onNext(.invalidEmail)
                 }else {
-                    self.loginSuccess.onNext(false)
+                    self.loginSuccess.onNext(.unDefined)
                 }
-                self.storeUserInfo(user: response.data)
             }).disposed(by: disposeBag)
     }
     

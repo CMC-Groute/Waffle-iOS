@@ -31,6 +31,7 @@ class LoginViewModel {
         var loginButtonEnabled = BehaviorRelay<Bool>(value: true) // for develop
         var emailInvalidMessage = PublishRelay<Bool>()
         var passwordInvalidMessage = PublishRelay<Bool>()
+        var alertMessage = PublishRelay<String>()
     }
     
     init(loginSignUseCase: LoginSignUsecase, coordinator: LoginCoordinator) {
@@ -63,18 +64,26 @@ class LoginViewModel {
 
                 Observable.combineLatest(output.emailInvalidMessage, output.passwordInvalidMessage)
                     .map { $0.0 && $0.1 }
-                    .filter { $0 == true }
+                    .filter { $0 }
                     .subscribe(onNext: { _ in
+                        print("loginViewMoldel")
                         self.usecase.login(email: email, password: password)
                     }).disposed(by: disposeBag)
-                self.coordinator.finish()
             }).disposed(by: disposeBag)
            
         //loginSuccess true인 경우만 로그인 허용
         usecase.loginSuccess
-            .map { $0 == true }
-            .subscribe(onNext: { _ in
-                self.coordinator.finish()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { status in
+                //403 존재하지 않는 비밀번호 입니다.
+                //404 존재하지 않는 사용자입니다.
+                if status == .login {
+                    self.coordinator.finish()
+                }else if status == .invalidPW {
+                    output.passwordInvalidMessage.accept(true)
+                }else if status == .invalidEmail {
+                    output.emailInvalidMessage.accept(true)
+                }
             }).disposed(by: disposeBag)
         
         input.signInButton
