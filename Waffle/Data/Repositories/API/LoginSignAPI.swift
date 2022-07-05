@@ -16,6 +16,7 @@ enum LoginSignAPI: NetworkRequestBuilder {
     case updateProfile(nickName: String, image: String)
     case updatePassword(password: Password)
     case getUserInfo
+    case quitUser
     
 }
 
@@ -28,7 +29,7 @@ extension LoginSignAPI {
         switch self {
         case .login(_):
             return "/users/login"
-        case .signUp(_), .getUserInfo:
+        case .signUp(_), .getUserInfo, .quitUser:
             return "/users"
         case .sendEmail(_):
             return "/email"
@@ -52,6 +53,8 @@ extension LoginSignAPI {
             return .post
         case .updatePassword(_), .updateProfile(_, _):
             return .put
+        case .quitUser:
+            return .delete
         }
     }
     
@@ -61,7 +64,7 @@ extension LoginSignAPI {
     
     var body: [String : Any]? {
         switch self {
-        case .getUserInfo:
+        case .getUserInfo, .quitUser:
             return nil
         case .login(let login):
             return login.dictionary
@@ -86,7 +89,7 @@ extension LoginSignAPI {
         let defaultHeader = ["Content-Type" : "application/json"]
         guard let jwtToken = UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) else { return defaultHeader }
         switch self {
-        case .updatePassword(_), .updateProfile(_, _), .getUserInfo:
+        case .updatePassword(_), .updateProfile(_, _), .getUserInfo, .quitUser:
             return ["token": jwtToken, "Content-Type" : "application/json"]
         default:
             return defaultHeader

@@ -45,7 +45,6 @@ class QuitPopUpViewController: UIViewController {
         OKButton.rx.tap
             .subscribe(onNext: {
                 self.usecase.quit()
-                exit(0)
             }).disposed(by: disposBag)
     }
     

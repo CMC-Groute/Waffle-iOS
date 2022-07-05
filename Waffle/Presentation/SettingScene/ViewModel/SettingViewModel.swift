@@ -63,6 +63,13 @@ class SettingViewModel {
                 self.coordinator.quit()
             }).disposed(by: disposeBag)
         
+        usecase.userQuitSuccess
+            .subscribe(onNext: { bool in
+                if bool {
+                    WappleLog.debug("quit success")
+                }
+            }).disposed(by: disposeBag)
+        
         input.itemSelected
             .subscribe(onNext: { line in
                 if line.row == 5 { //logout

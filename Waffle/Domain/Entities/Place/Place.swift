@@ -44,12 +44,12 @@ struct DefaultResponse: Codable {
     }
 }
 
-struct UpdatePasswordResponse: Codable {
+struct DetaultIntResponse: Codable {
     var status: Int
     var data: Int
     
-    static func errorResponse(code: Int) -> UpdatePasswordResponse {
-        return UpdatePasswordResponse(status: code, data: 0)
+    static func errorResponse(code: Int) -> DetaultIntResponse {
+        return DetaultIntResponse(status: code, data: 0)
     }
 }
 

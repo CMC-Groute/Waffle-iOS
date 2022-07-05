@@ -35,13 +35,13 @@ class UserRepository: UserRepositoryProtocol {
             })
         }
     
-    func updateUserInfo(nickName: String, image: String) -> Observable<UpdatePasswordResponse> {
+    func updateUserInfo(nickName: String, image: String) -> Observable<DetaultIntResponse> {
         let api = LoginSignAPI.updateProfile(nickName: nickName, image: image)
         return self.service.request(api)
-            .map ({ response -> UpdatePasswordResponse in
+            .map ({ response -> DetaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: UpdatePasswordResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -50,13 +50,27 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     
-    func updatePassword(password: Password) -> Observable<UpdatePasswordResponse> {
+    func updatePassword(password: Password) -> Observable<DetaultIntResponse> {
         let api = LoginSignAPI.updatePassword(password: password)
         return self.service.request(api)
-            .map ({ response -> UpdatePasswordResponse in
+            .map ({ response -> DetaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: UpdatePasswordResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    func quitUser() -> Observable<DetaultIntResponse> {
+        let api = LoginSignAPI.quitUser
+        return self.service.request(api)
+            .map ({ response -> DetaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

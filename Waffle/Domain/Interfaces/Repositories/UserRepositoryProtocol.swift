@@ -11,11 +11,12 @@ import RxCocoa
 
 protocol UserRepositoryProtocol {
     //MARK: FROM
-    func updateUserInfo(nickName: String, image: String) -> Observable<UpdatePasswordResponse>
-    func updatePassword(password: Password) -> Observable<UpdatePasswordResponse>
+    func updateUserInfo(nickName: String, image: String) -> Observable<DetaultIntResponse>
+    func updatePassword(password: Password) -> Observable<DetaultIntResponse>
     
     func getProfileInfo() -> Observable<UserInfoResponse>
     func setAlarm(state: Bool)
+    func quitUser() -> Observable<DetaultIntResponse>
                                                         
                                                             
 }

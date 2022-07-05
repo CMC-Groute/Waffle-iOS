@@ -19,6 +19,7 @@ class UserUsecase: UserUseCaseProtocol {
     let disposeBag = DisposeBag()
     var updatePasswordSuccess = PublishRelay<Bool>()
     var updateUserInfoSuccess = PublishRelay<Bool>()
+    var userQuitSuccess = PublishRelay<Bool>()
     
     init(repository: UserRepository) {
         self.repository = repository
@@ -54,10 +55,10 @@ class UserUsecase: UserUseCaseProtocol {
     
     func updateUserInfo(nickName: String, image: String) {
         repository.updateUserInfo(nickName: nickName, image: image)
-            .catch { error -> Observable<UpdatePasswordResponse> in
+            .catch { error -> Observable<DetaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
-                WappleLog.debug("error \(error)")
-                return .just(UpdatePasswordResponse.errorResponse(code: error.rawValue))
+                WappleLog.error("error \(error)")
+                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("updateUserInfo \(response)")
@@ -71,13 +72,13 @@ class UserUsecase: UserUseCaseProtocol {
     
     func updatePassword(password: Password) { // 비밀번호 업데이트
         repository.updatePassword(password: password)
-            .catch { error -> Observable<UpdatePasswordResponse> in
+            .catch { error -> Observable<DetaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
-                print("error \(error)")
-                return .just(UpdatePasswordResponse.errorResponse(code: error.rawValue))
+                WappleLog.error("error \(error)")
+                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                print("updatePassword")
+                WappleLog.debug("updatePassword \(response)")
                 if response.status == 200 {
                     self.updatePasswordSuccess.accept(true)
                 }else {
@@ -95,7 +96,20 @@ class UserUsecase: UserUseCaseProtocol {
     }
     
     func quit() {
-        
+        repository.quitUser()
+            .catch { error -> Observable<DetaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("error \(error)")
+                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                WappleLog.debug("quit user \(response)")
+                if response.status == 200 {
+                    self.userQuitSuccess.accept(true)
+                }else {
+                    self.userQuitSuccess.accept(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
 }
