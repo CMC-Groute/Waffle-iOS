@@ -27,6 +27,7 @@ class EditSettingViewModel {
     private var disposable = DisposeBag()
     private var usecase: UserUsecase
     private var coordinator: SettingCoordinator!
+    var selectedIndex: Int = 0
     
     init(coordinator: SettingCoordinator, usecase: UserUsecase) {
         self.coordinator = coordinator
@@ -37,9 +38,15 @@ class EditSettingViewModel {
         let output = Output()
         
         input.doneButton
-            .subscribe(onNext: {
+            .withLatestFrom(input.nickNameTextField)
+            .bind(onNext: { nickName in
+                let profileImage = WappleType.init(index: self.selectedIndex).wappleName()
+                WappleLog.debug("\(nickName) \(profileImage)")
+                self.usecase.updateUserInfo(nickName: nickName, image: profileImage)
                 self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposeBag)
+
+        
         
         input.nickNameTextField
             .distinctUntilChanged()

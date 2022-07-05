@@ -162,6 +162,7 @@ extension EditSettingViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewModel?.selectedIndex = indexPath.row
         self.profileImage.image = UIImage(named: "wapple-\(indexPath.row+1)")
     }
 }

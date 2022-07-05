@@ -11,7 +11,7 @@ import RxCocoa
 
 protocol UserRepositoryProtocol {
     //MARK: FROM
-    func editProfile(profile: EditProfile)
+    func updateUserInfo(nickName: String, image: String) -> Observable<UpdatePasswordResponse>
     func updatePassword(password: Password) -> Observable<UpdatePasswordResponse>
     
     func getProfileInfo() -> Observable<ProfileInfo>
