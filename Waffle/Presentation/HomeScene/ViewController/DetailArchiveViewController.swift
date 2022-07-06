@@ -27,7 +27,6 @@ class DetailArchiveViewController: UIViewController {
 //    private var screenHeight: Double = UIScreen.main.bounds.height
 //    private var categoryHeaderOffset: Double = 0
 //    private var isTableView: Bool = false
-//    var isCategoryEditing: Bool = false
     
 //    var noPlaceView: UIView = {
 //        let view = UIView()
@@ -142,12 +141,7 @@ class DetailArchiveViewController: UIViewController {
 //        noPlaceView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
 //    }
 //
-//    private func bindUI() {
-//        scrollView.delegate = self
-//        tableView.register(UINib(nibName: "DetailPlaceTableViewCell", bundle: nil), forCellReuseIdentifier: DetailPlaceTableViewCell.identifier)
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.estimatedRowHeight = UITableView.automaticDimension
+
     
     @objc
     func didTapMoreButton() {
@@ -161,114 +155,13 @@ class DetailArchiveViewController: UIViewController {
     }
 }
 
-//extension DetailArchiveViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let viewModel = viewModel else { return 0 }
-//        if viewModel.placeInfoByCategory().isEmpty {
-//            tableView.backgroundView  = noPlaceView
-//            return 0
-//        }
-//        tableView.backgroundView = nil
-//        return viewModel.placeInfoByCategory().count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: DetailPlaceTableViewCell.identifier, for: indexPath) as! DetailPlaceTableViewCell
-//        cell.selectionStyle = .none
-//        cell.delegate = self
-//        cell.setPlaceId(index: indexPath.row)
-//        guard let place = viewModel?.placeInfoByCategory() else { return cell }
-//        cell.configureCell(placeInfo: place[indexPath.row])
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//       return true
-//    }
-//
-//    // Move Row Instance Method
-//    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        var place = viewModel!.placeInfoByCategory()
-//        //print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
-//        let moveCell = place[sourceIndexPath.row]
-//        place.remove(at: sourceIndexPath.row)
-//        place.insert(moveCell, at: destinationIndexPath.row)
-//        tableView.dragInteractionEnabled = false
-//    }
-//}
-//
-//extension DetailArchiveViewController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CGFloat(182)
-//    }
-//}
-//
-////MARK: Drag And Drop
-//extension DetailArchiveViewController: UITableViewDragDelegate {
-//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//            return [UIDragItem(itemProvider: NSItemProvider())]
-//        }
-//}
-//
-//extension DetailArchiveViewController: UITableViewDropDelegate {
-//    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-//        if session.localDragSession != nil {
-//            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-//        }
-//        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
-//    }
-//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-//    }
-//}
-//
-//extension DetailArchiveViewController: DetailPlaceTableViewCellDelegate {
-//    func canEditingButton(cell: DetailPlaceTableViewCell) {
-//        //TO DO
-//        //tableView drag and drop
-//        tableView.dragInteractionEnabled = true
-//        tableView.dragDelegate = self
-//        tableView.dropDelegate = self
-//    }
-//
-//    func didTapLikeButton(cell: DetailPlaceTableViewCell) {
-//        print("didTapLikeButton")
-////        print(cell.likeButton.isSelected)
-////        print(cell.placeId)
-//        if cell.likeButton.isSelected {
-//            viewModel?.placeInfo[cell.placeId].likeCount += 1
-//        }else {
-//            if (viewModel?.placeInfo[cell.placeId].likeCount)! > 0 {
-//                viewModel?.placeInfo[cell.placeId].likeCount -= 1
-//            }
-//        }
-//        viewModel?.placeInfo[cell.placeId].likeSelected = cell.likeButton.isSelected
-//        tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
-//    }
-//
-//    func didTapConfirmButton(cell: DetailPlaceTableViewCell) {
-//        print("didTapConfirmButton")
-////        print(cell.confirmButton.isSelected)
-////        print(cell.placeId)
-//    }
-//
-//    func didTapDetailButton(cell: DetailPlaceTableViewCell) {
-//        guard let placeInfo = viewModel?.placeInfo[cell.placeId] else { return }
-//        guard let category = viewModel?.category else { return }
-//        self.viewModel!.detailPlace(place: placeInfo, category: category[cell.placeId])
-//    }
-//
-//
-//}
-
 ////MARK: Home Category에서 받아온 카테고리 업데이트
 extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
     func selectedCategory(category: [Category]) {
         viewModel?.addCategory(category: category)
         DispatchQueue.main.async { [weak self] in
-            print("selectedCategory \(category)")
             guard let self = self else { return }
+            print("DetailArchiveViewController selectedCategory \(category)")
             self.collectionView.reloadSections(IndexSet(integer: 2))
         }
     }
@@ -307,10 +200,13 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
             cell.viewModel = self.viewModel
+            cell.delegate = self
             cell.backgroundColor = .gray
             return cell
         }else if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TableDetailArchiveCollectionViewCell
+            let updatePlace = viewModel.placeInfoByCategory()
+            cell.configureCell(place: updatePlace)
             cell.backgroundColor = .green
             return cell
         }
@@ -339,5 +235,15 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: screenWidth, height: 900)
         }
         return CGSize(width: screenWidth, height: 500)
+    }
+}
+
+extension DetailArchiveViewController: CategoryDetailArchiveCollectionViewCellDelegate {
+    func tableViewLoad() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.reloadSections(.init(integer: 3))
+
+        }
     }
 }

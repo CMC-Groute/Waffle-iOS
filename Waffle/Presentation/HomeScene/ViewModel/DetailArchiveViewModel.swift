@@ -59,7 +59,8 @@ class DetailArchiveViewModel {
     }
     
     func placeInfoByCategory() -> [PlaceInfo] {
-        return placeInfo.filter { $0.category.index == selectedCategory.index }
+        let place = placeInfo.filter { $0.category.index == selectedCategory.index }
+        return place
     }
     
     func detailArhive() { // bottomSheet popUp

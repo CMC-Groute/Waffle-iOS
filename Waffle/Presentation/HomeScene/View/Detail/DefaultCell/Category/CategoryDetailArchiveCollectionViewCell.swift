@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol CategoryDetailArchiveCollectionViewCellDelegate: AnyObject {
+    func tableViewLoad()
+}
+
 class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryDefailArchiveCollectionViewCell"
     @IBOutlet private weak var collectionView: UICollectionView!
     var isCategoryEditing: Bool = false
     var viewModel: DetailArchiveViewModel?
     var confirmCellCount = 1
+    weak var delegate: CategoryDetailArchiveCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,7 +72,7 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegate {
             }else {
                 let selectedCategory = viewModel.category[indexPath.row]
                 viewModel.setCategory(category: selectedCategory)
-                //tableView.reloadData()
+                delegate?.tableViewLoad()
             }
         }
 }
