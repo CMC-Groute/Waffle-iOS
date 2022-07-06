@@ -40,8 +40,11 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG0-qU-Nh4" userLabel="emptyView" customClass="EmptyCardView" customModule="Waffle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="76" width="414" height="674"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="536"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="536" id="Mhw-3f-FDi"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1C-ck-AzA">
                                 <rect key="frame" x="174.5" y="814" width="65" height="28"/>
@@ -63,7 +66,7 @@
                             <constraint firstItem="7VB-Rp-5vH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="NBo-cQ-BKQ"/>
                             <constraint firstItem="7VB-Rp-5vH" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QVZ-z2-1fR"/>
                             <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="7VB-Rp-5vH" secondAttribute="bottom" constant="16" id="Yqx-yI-Nk0"/>
-                            <constraint firstItem="F1C-ck-AzA" firstAttribute="top" secondItem="cG0-qU-Nh4" secondAttribute="bottom" constant="64" id="aUM-Zu-j18"/>
+                            <constraint firstItem="F1C-ck-AzA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cG0-qU-Nh4" secondAttribute="bottom" constant="30" id="aUM-Zu-j18"/>
                             <constraint firstItem="cG0-qU-Nh4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="jW5-qX-6lw"/>
                             <constraint firstItem="7VB-Rp-5vH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="mra-Fu-g40"/>
                         </constraints>

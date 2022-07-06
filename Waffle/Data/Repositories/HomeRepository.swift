@@ -30,14 +30,15 @@ class HomeRepository: HomeRepositoryProtocol {
             })
         }
     
-    func getCardInfo() -> Observable<[CardInfo]?> {
+    func getCardInfo() -> Observable<GetCardResponse> {
         let api = ArchiveAPI.getArchiveCard
         return service.request(api)
-            .map ({ response -> [CardInfo]? in
+            .map ({ response -> GetCardResponse in
                 switch response {
                 case .success(let data):
                     guard let data = JSON.decode(data: data, to: GetCardResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
-                    return data.data
+                    WappleLog.debug("data \(data.data)")
+                    return data
                 case .failure(let error):
                     throw error
                 }

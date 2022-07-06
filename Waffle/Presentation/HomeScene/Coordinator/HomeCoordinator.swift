@@ -30,11 +30,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(self.homeViewController, animated: true)
     }
     
-    func archiveFlow(cardInfo: CardInfo?) {
+    func archiveFlow(cardInfo: CardInfo?) { 
         let archiveCoordinator = ArchiveCoordinator(self.navigationController)
         self.childCoordinators.append(archiveCoordinator)
         archiveCoordinator.finishDelegate = self
-        archiveCoordinator.addArchive(isEditing: true, cardInfo: cardInfo)
+        archiveCoordinator.addArchive(isEditing: false, cardInfo: cardInfo)
     }
     
     func detailArchive(selectedArchive: CardInfo) {

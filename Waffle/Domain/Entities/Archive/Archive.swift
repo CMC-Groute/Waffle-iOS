@@ -49,6 +49,10 @@ struct Participants: Codable {
 struct GetCardResponse: Codable {
     var message: String
     var data: [CardInfo]?
+    
+    static func errorResponse(message: String, data:[CardInfo]? = nil) -> GetCardResponse {
+        return GetCardResponse(message: message, data: data)
+    }
 }
 
 struct CardInfo: Codable {

@@ -64,7 +64,6 @@ class HomeViewController: UIViewController {
                 }else {
                     self.hideEmptyView()
                 }
-                print(bool)
             }).disposed(by: disposeBag)
         
     }
@@ -72,6 +71,7 @@ class HomeViewController: UIViewController {
     func hideCardView() {
         emptyView.isHidden = false
         collectionView.isHidden = true
+        cardCountButton.isHidden = true
     }
     
     func hideEmptyView() {

@@ -151,12 +151,12 @@ extension EditSettingViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.identifier, for: indexPath) as! ProfileImageCollectionViewCell
         cell.makeCircleShape()
-        cell.imageview.image = UIImage(named: "wapple-\(indexPath.row+1)")
+        cell.imageview.image = UIImage(named: "wapple-\(indexPath.row)")
         if indexPath.row == 0 {
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             
-            self.profileImage.image = UIImage(named: "wapple-\(indexPath.row+1)")
+            self.profileImage.image = UIImage(named: "wapple-\(indexPath.row)")
         }
         
         return cell
@@ -164,7 +164,7 @@ extension EditSettingViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.viewModel?.selectedIndex = indexPath.row
-        self.profileImage.image = UIImage(named: "wapple-\(indexPath.row+1)")
+        self.profileImage.image = UIImage(named: "wapple-\(indexPath.row)")
     }
 }
 

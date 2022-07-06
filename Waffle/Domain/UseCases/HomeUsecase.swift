@@ -24,9 +24,14 @@ class HomeUsecase: HomeUsecaseProtocol {
     
     func getCardInfo() {
         repository.getCardInfo()
-            .subscribe(onNext: { [weak self] cardInfo in
+            .catch { error -> Observable<GetCardResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("error \(error)")
+                return .just(GetCardResponse.errorResponse(message: "error", data: nil))
+            }.subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
-                self.cardInfo = cardInfo
+                WappleLog.debug("cardInfo \(cardInfo)")
+                self.cardInfo = cardInfo.data
             }).disposed(by: disposeBag)
     }
     
