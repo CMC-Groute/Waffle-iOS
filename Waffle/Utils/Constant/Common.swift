@@ -46,14 +46,25 @@ enum WappleType: String, CaseIterable {
         return self.rawValue
     }
     
+    func wappleColor() -> CardViewInfoType {
+        switch self {
+            case .wapple: return .lightMelon
+            case .choco: return .lightPink
+            case .blueberry: return .lightMelon
+            case .vanilla: return .lightPurple
+            case .strawberry: return .lightMint
+            case .malcha: return .yellow
+        }
+    }
+    
     func wappleIndex() -> Int {
         switch self {
-            case .wapple: return 0
+            case .vanilla: return 0
             case .choco: return 1
             case .blueberry: return 2
-            case .vanilla: return 3
-            case .strawberry: return 4
-            case .malcha: return 5
+            case .strawberry: return 3
+            case .malcha: return 4
+            case .wapple: return 0
         }
     }
 }
@@ -83,6 +94,16 @@ enum CardViewInfoType: String, CaseIterable {
     
     func colorName() -> String {
         return self.rawValue
+    }
+    
+    func cardViewIndex() -> Int {
+        switch self {
+            case .lightPurple: return 0
+            case .lightPink: return 1
+            case .lightMelon: return 2
+            case .lightMint: return 3
+            case .yellow: return 4
+        }
     }
 }
 

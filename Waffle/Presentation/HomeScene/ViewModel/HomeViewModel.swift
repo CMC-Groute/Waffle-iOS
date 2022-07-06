@@ -44,7 +44,8 @@ class HomeViewModel: ObservableObject {
         
         
         func hideView() {
-            if self.usecase.cardInfo.isEmpty {
+            guard let cardInfo = self.usecase.cardInfo else { return }
+            if cardInfo.isEmpty {
                 output.isHiddenView.accept(true)
             }else {
                 output.isHiddenView.accept(false)

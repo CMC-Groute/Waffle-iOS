@@ -45,13 +45,15 @@ final class CardView: UIView {
     }
     
     func bindUI(item: CardInfo) {
-        topView.backgroundColor = UIColor(named: CardViewInfoType(index: item.color).colorName())
-        cardImageView.image = UIImage(named: "card\(item.color + 1)")
+        let backgroundColor = WappleType.init(rawValue: item.cardType)?.wappleColor().rawValue
+        topView.backgroundColor = UIColor(named: backgroundColor ?? "")
+        let cardImageIndex = CardViewInfoType.init(rawValue: item.cardType)?.cardViewIndex()
+        cardImageView.image = UIImage(named: "card-\(cardImageIndex ?? 0)")
         titleLabel.text = item.title
         placeLabel.text = item.place ?? DefaultDetailCardInfo.where.rawValue
         if let date = item.date {
-            let dateArray = Date.getDate(dateString: date)
-            timeLabel.text = "\(dateArray[0]) \(dateArray[1])"
+            //let dateArray = Date.getDate(dateString: date) "\(dateArray[0]) \(dateArray[1])"
+            timeLabel.text = date
         }else {
             timeLabel.text = DefaultDetailCardInfo.when.rawValue
         }
@@ -61,12 +63,14 @@ final class CardView: UIView {
         }else {
             memoLabel.text = DefaultDetailCardInfo.archiveMemo.rawValue
         }
-
-        wappleLabel.text = item.wapple
+        let wapple = item.topping.filter { $0.userId == item.wappleId }.first
+        let topping = item.topping.filter { $0.userId != item.wappleId }
+        wappleLabel.text = wapple?.nickName
         if item.topping.isEmpty {
             toppingLabel.text = DefaultDetailCardInfo.topping.rawValue
         }else {
-            toppingLabel.text = item.topping.joined(separator: ", ")
+            let toppingName = topping.map { $0.nickName }.joined(separator: ", ")
+            toppingLabel.text = toppingName
         }
     }
 }

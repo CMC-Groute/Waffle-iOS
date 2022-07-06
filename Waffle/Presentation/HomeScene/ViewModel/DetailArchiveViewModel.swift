@@ -57,8 +57,10 @@ class DetailArchiveViewModel {
                    output.whenTextLabel.accept("\(dateString.joined(separator: " "))")
                }
                output.whereTextLabel.accept(detailArchive.place ?? DefaultDetailCardInfo.where.rawValue)
-               output.frameImageView.accept(UIImage(named: "detailWapple-\(detailArchive.color + 1)")!)
-               output.frameViewColor.accept(CardViewInfoType(index: detailArchive.color).colorName())
+                let wappleIndex = WappleType.init(rawValue: detailArchive.cardType)?.wappleIndex() ?? 0
+                output.frameImageView.accept(UIImage(named: "detailWapple-\(wappleIndex)")!)
+                let cardColor = WappleType.init(rawValue: detailArchive.cardType)?.wappleColor().colorName() ?? "lightPurple"
+                output.frameViewColor.accept(cardColor)
                 output.memoTextLabel.accept(detailArchive.memo ?? DefaultDetailCardInfo.archiveMemo.rawValue)
                 self.category += Category.dummyList
             }).disposed(by: disposeBag)
@@ -124,7 +126,8 @@ class DetailArchiveViewModel {
     func loadMemo() {
         guard let detailArchive = detailArchive else { return }
         guard let memo = detailArchive.memo else { return }
-        coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(detailArchive.color + 1)")
+        let cardImageIndex = CardViewInfoType.init(rawValue: detailArchive.cardType)?.cardViewIndex() ?? 0
+        coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(cardImageIndex)")
     }
     
     func popViewController() {

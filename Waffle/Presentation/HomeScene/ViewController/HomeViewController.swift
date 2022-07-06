@@ -77,38 +77,39 @@ class HomeViewController: UIViewController {
     func hideEmptyView() {
         emptyView.isHidden = true
         collectionView.isHidden = false
-        cardCountButton.setTitle("1/\(viewModel!.usecase.cardInfo.count)", for: .normal)
+        guard let viewModel = viewModel else { return }
+        guard let cardInfo = viewModel.usecase.cardInfo else { return }
+        cardCountButton.setTitle("1/\(cardInfo.count)", for: .normal)
     }
     
     
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let cardInfo =  viewModel?.usecase.cardInfo else { return 0 }
+        return cardInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
-        cell.configureCell(item: viewModel!.usecase.cardInfo[indexPath.row])
+        guard let cardInfo =  viewModel?.usecase.cardInfo else { return cell }
+        cell.configureCell(item: cardInfo[indexPath.row])
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel!.usecase.cardInfo.count
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-        self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(self.viewModel!.usecase.cardInfo.count)", for: .normal)
+        guard let cardInfo = viewModel?.usecase.cardInfo else { return }
+        self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(cardInfo.count)", for: .normal)
     }
     
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //viewModel과 바인딩
-        guard let selectedArchive = self.viewModel?.usecase.cardInfo[indexPath.row] else { return }
-        self.viewModel?.detailArchive(selectedArchive: selectedArchive)
+        guard let selectedArchive = viewModel?.usecase.cardInfo else { return }
+        self.viewModel?.detailArchive(selectedArchive: selectedArchive[indexPath.row] )
     }
 }
 

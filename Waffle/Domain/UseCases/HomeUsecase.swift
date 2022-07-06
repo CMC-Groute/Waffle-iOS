@@ -15,7 +15,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var currentArchive = PublishSubject<CardInfo>()
     
     var repository: HomeRepository!
-    @Published var cardInfo: [CardInfo] = []
+    var cardInfo: [CardInfo]?
     var disposeBag = DisposeBag()
     
     init(repository: HomeRepository){
