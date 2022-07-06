@@ -35,17 +35,18 @@ extension Date {
     }
     
     static func getDate(dateString: String) -> [String] {
-        let dateComponent = dateString.components(separatedBy: "T")
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm:ss"
-        
-        let date = dateFormatter.date(from: dateComponent[0])
-        let time = timeFormatter.date(from: dateComponent[1])
-        
-        return [date!.addArchiveDateToString(), time!.addArhiveTimeToString()]
+//        let dateComponent = dateString.components(separatedBy: "T")
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//
+//        let timeFormatter = DateFormatter()
+//        timeFormatter.dateFormat = "HH:mm:ss"
+//
+//        let date = dateFormatter.date(from: dateComponent[0])
+//        let time = timeFormatter.date(from: dateComponent[1])
+//
+//        return [date!.addArchiveDateToString(), time!.addArhiveTimeToString()]
+        return []
     }
 
 }

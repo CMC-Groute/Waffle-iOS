@@ -54,7 +54,7 @@ class DetailArchiveViewModel {
                }
                if let date = detailArchive.date {
                    let dateString = Date.getDate(dateString: date)
-                   output.whenTextLabel.accept("\(dateString.joined(separator: " "))")
+                   output.whenTextLabel.accept(date)
                }
                output.whereTextLabel.accept(detailArchive.place ?? DefaultDetailCardInfo.where.rawValue)
                 let wappleIndex = WappleType.init(rawValue: detailArchive.cardType)?.wappleIndex() ?? 0
@@ -134,4 +134,17 @@ class DetailArchiveViewModel {
         coordinator.popViewController()
     }
 
+}
+
+extension DetailArchiveViewModel {
+    enum Section: Int, CaseIterable {
+        case topView
+        case subView
+        case categoryView
+        case tableView
+    }
+    
+    var numberOfSections: Int {
+        return Section.allCases.count
+    }
 }

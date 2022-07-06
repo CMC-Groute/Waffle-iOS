@@ -139,6 +139,15 @@
 		133D55E228744C4C0068EA90 /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519E28546AD30051E94D /* FindPWViewModel.swift */; };
 		133D55E328745CE70068EA90 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
 		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
+		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
+		137853322875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift */; };
+		137853332875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib */; };
+		137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */; };
+		137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */; };
+		1378533D2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378533B2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift */; };
+		1378533E2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1378533C2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib */; };
+		137853422875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */; };
+		137853432875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */; };
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
 		1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */; };
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
@@ -186,6 +195,15 @@
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		13712DD628733948008AD9FA /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
 		1378532C2875589C00B11E5E /* Waffle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waffle.entitlements; sourceTree = "<group>"; };
+		1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderCollectioinViewFlowLayout.swift; sourceTree = "<group>"; };
+		137853302875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetialArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		137853312875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopDetialArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
+		137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
+		1378533B2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDefailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		1378533C2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDefailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
+		137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		1390EC33286335E200E5520C /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		1390EC352863362900E5520C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1390EC372863573800E5520C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -370,6 +388,54 @@
 			path = LocationContainterViewController;
 			sourceTree = "<group>";
 		};
+		1378532D2875A4F600B11E5E /* DefaultCell */ = {
+			isa = PBXGroup;
+			children = (
+				137853342875A83F00B11E5E /* Top */,
+				137853352875A85500B11E5E /* Sub */,
+				1378533A2875A87700B11E5E /* Category */,
+				1378533F2875A89A00B11E5E /* Table */,
+				1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */,
+			);
+			path = DefaultCell;
+			sourceTree = "<group>";
+		};
+		137853342875A83F00B11E5E /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				137853302875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift */,
+				137853312875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		137853352875A85500B11E5E /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */,
+				137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
+		1378533A2875A87700B11E5E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1378533B2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift */,
+				1378533C2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		1378533F2875A89A00B11E5E /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */,
+				137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		1390EC5B28647AA600E5520C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +521,7 @@
 		1390EC8E28698E5B00E5520C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				1378532D2875A4F600B11E5E /* DefaultCell */,
 				13CA03EA2871AC310087E79E /* AddPlaceCell */,
 				1390EC9028698E7A00E5520C /* Category */,
 				1390EC6E286485DD00E5520C /* DetailPlaceCell */,
@@ -1283,10 +1350,14 @@
 				F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */,
 				13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */,
 				1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */,
+				137853432875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib in Resources */,
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */,
+				137853332875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib in Resources */,
+				137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */,
 				1390EC34286335E200E5520C /* CardView.xib in Resources */,
+				1378533E2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib in Resources */,
 				F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1468,16 +1539,19 @@
 				133D55A728744BDD0068EA90 /* DetailPlaceTableViewCell.swift in Sources */,
 				133D55A828744BDD0068EA90 /* HomeCategoryCollectionViewCell.swift in Sources */,
 				133D55A928744BDD0068EA90 /* ParticipantsTableViewCell.swift in Sources */,
+				137853322875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift in Sources */,
 				133D55AA28744BDD0068EA90 /* EmptyCardView.swift in Sources */,
 				133D55AB28744BDD0068EA90 /* CardView.swift in Sources */,
 				133D55AC28744BDD0068EA90 /* CardCollectionViewCell.swift in Sources */,
 				133D55AD28744BDD0068EA90 /* HomeViewModel.swift in Sources */,
 				133D55AE28744BDD0068EA90 /* DetailArchiveViewModel.swift in Sources */,
+				1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */,
 				133D55AF28744BDD0068EA90 /* AddDetailPlaceViewModel.swift in Sources */,
 				133D55B028744BDD0068EA90 /* SearchPlaceViewModel.swift in Sources */,
 				133D55B128744BDD0068EA90 /* EditPlaceViewModel.swift in Sources */,
 				133D55B228744BDD0068EA90 /* HomeCategoryPopUpViewController.swift in Sources */,
 				133D55B328744BDD0068EA90 /* ParticiPopUpViewController.swift in Sources */,
+				137853422875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift in Sources */,
 				133D55B428744BDD0068EA90 /* MemoPopUpViewController.swift in Sources */,
 				133D55B528744BDD0068EA90 /* DetailPlacePopUpViewController.swift in Sources */,
 				133D55B628744BDD0068EA90 /* InvitationBottomSheetViewController.swift in Sources */,
@@ -1494,6 +1568,7 @@
 				133D55C128744BDD0068EA90 /* SearchPlaceViewController.swift in Sources */,
 				133D55C228744BDD0068EA90 /* HomeCoordinatorProtocol.swift in Sources */,
 				133D55C328744BDD0068EA90 /* HomeCoordinator.swift in Sources */,
+				137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */,
 				133D55C428744BDD0068EA90 /* SettingCoordinatorProtocol.swift in Sources */,
 				133D558B28744BBA0068EA90 /* LoginSignUsecaseProtocol.swift in Sources */,
 				133D558C28744BBA0068EA90 /* UserUseCaseProtocol.swift in Sources */,
@@ -1536,6 +1611,7 @@
 				133D5445287446530068EA90 /* UILabel.swift in Sources */,
 				133D5446287446530068EA90 /* String.swift in Sources */,
 				133D55E5287472320068EA90 /* WappleLog.swift in Sources */,
+				1378533D2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift in Sources */,
 				133D5447287446530068EA90 /* UIView.swift in Sources */,
 				133D5448287446530068EA90 /* Encodable.swift in Sources */,
 				133D5438287446490068EA90 /* TapBarPage.swift in Sources */,
