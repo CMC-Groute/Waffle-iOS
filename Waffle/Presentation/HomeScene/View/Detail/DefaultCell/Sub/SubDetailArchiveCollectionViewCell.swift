@@ -6,13 +6,33 @@
 //
 
 import UIKit
+import RxSwift
 
 class SubDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "SubDetailArchiveCollectionViewCell"
     
+    @IBOutlet private weak var participantsButton: UIButton!
+    @IBOutlet private weak var invitationButton: UIButton!
+    var viewModel: DetailArchiveViewModel?
+    var disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+    }
+    
+    func configureCell() {
+        participantsButton
+            .rx.tap.subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel?.participants()
+            }).disposed(by: disposeBag)
+        
+        invitationButton
+            .rx.tap.subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel?.invitations()
+            }).disposed(by: disposeBag)
     }
 
 }

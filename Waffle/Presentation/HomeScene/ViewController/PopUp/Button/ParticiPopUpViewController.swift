@@ -38,7 +38,7 @@ class ParticiPopUpViewController: UIViewController {
     }
     
     private func configureUI() {
-        countLabel.text = "\((cardInfo?.topping.count ?? 0) + 1)명"
+        countLabel.text = "\((cardInfo?.topping.count ?? 0))명"
         frameView.makeRounded(width: nil, color: nil, value: 20)
         tableView.separatorColor = Asset.Colors.gray1.color
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -83,20 +83,20 @@ class ParticiPopUpViewController: UIViewController {
 
 extension ParticiPopUpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let topping = cardInfo?.topping else { return 1 }
-        return topping.count + 1
+        guard let topping = cardInfo?.topping else { return 0 }
+        return topping.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ParticipantsTableViewCell.identifier, for: indexPath) as! ParticipantsTableViewCell
-        let dummy = Asset.Assets.wapple1.name
         guard let toppingInfo = cardInfo?.topping else { return cell }
         if indexPath.row == 0 {
             let wapple = toppingInfo.filter { $0.userId == cardInfo?.wappleId }
             cell.configureCell(info: wapple[0], type: .wapple)
         }else {
-            var topping = toppingInfo.filter { $0.userId != cardInfo?.wappleId }
-            cell.configureCell(info: topping[indexPath.row - 1], type: .topping)
+            var topping = toppingInfo.filter { $0.userId == cardInfo?.wappleId }
+            topping += toppingInfo.filter { $0.userId != cardInfo?.wappleId }
+            cell.configureCell(info: topping[indexPath.row], type: .topping)
         }
         return cell
     }

@@ -71,18 +71,18 @@ class DetailArchiveViewModel {
                 let placeCategory = self.category.filter { $0.index != -1 }
                 self.coordinator.addDetailPlace(category: placeCategory)
             }).disposed(by: disposeBag)
+//        
+//        input.participantsButton
+//            .subscribe(onNext: { [weak self] in
+//                guard let self = self else { return }
+//                self.coordinator.participants(cardInfo: self.detailArchive)
+//            }).disposed(by: disposeBag)
         
-        input.participantsButton
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.coordinator.participants(cardInfo: self.detailArchive)
-            }).disposed(by: disposeBag)
-        
-        input.invitationButton
-            .subscribe(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.coordinator.invitationBottomSheet(copyCode: self.code ?? "")
-            }).disposed(by: disposeBag)
+//        input.invitationButton
+//            .subscribe(onNext: { [weak self] in
+//                guard let self = self else { return }
+//                self.coordinator.invitationBottomSheet(copyCode: self.code ?? "")
+//            }).disposed(by: disposeBag)
         
         return output
     }
@@ -102,6 +102,14 @@ class DetailArchiveViewModel {
     func detailPlace(place: PlaceInfo, category: Category) {
         let sendCategory = self.category.filter { $0.index != -1 }
         coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: sendCategory)
+    }
+    
+    func participants() {
+        self.coordinator.participants(cardInfo: self.detailArchive)
+    }
+    
+    func invitations() {
+        self.coordinator.invitationBottomSheet(copyCode: self.code ?? "")
     }
     
     func setCategory(category: Category) {

@@ -466,9 +466,12 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TopDetailArchiveCollectionViewCell
             cell.configureCell(cardInfo: viewModel.detailArchive)
+            cell.viewModel = self.viewModel
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier, for: indexPath) as! SubDetailArchiveCollectionViewCell
+            cell.configureCell()
+            cell.viewModel = self.viewModel
             cell.backgroundColor = .blue
             return cell
         }else if indexPath.section == 2 {
