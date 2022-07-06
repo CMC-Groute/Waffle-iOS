@@ -8,7 +8,7 @@
 import Foundation
 
 enum ArchiveAPI: NetworkRequestBuilder {
-    case makeArchive(archiveInfo: ArchiveInfo)
+    case addArchive(archiveInfo: AddArchive)
     case joinArchive(code: String)
     case getArchiveCode(archiveId: Int)
     case getArchiveCard
@@ -23,7 +23,7 @@ extension ArchiveAPI {
     
     var path: String? {
         switch self {
-        case .makeArchive(_), .getArchiveCard:
+        case .addArchive(_), .getArchiveCard:
             return "/invitations"
         case .joinArchive(_):
             return "/invitations/code"
@@ -44,7 +44,7 @@ extension ArchiveAPI {
         switch self {
         case .getArchiveCard, .getArchiveDetail(_), .getArchiveCode(_):
             return .get
-        case .joinArchive(_), .makeArchive(_):
+        case .joinArchive(_), .addArchive(_):
             return .post
         case .deleteArchive(_):
             return .delete
@@ -63,7 +63,7 @@ extension ArchiveAPI {
                 return nil
             case .joinArchive(let code):
                 return code.dictionary
-            case .makeArchive(let archive):
+            case .addArchive(let archive):
                 return archive.dictionary
             }
     }

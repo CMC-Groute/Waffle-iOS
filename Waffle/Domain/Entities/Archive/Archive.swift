@@ -8,12 +8,12 @@
 import Foundation
 
 //MARK: 약속 만들기
-struct ArchiveInfo: Codable {
+struct AddArchive: Codable {
     var title: String
-    var date: String?
-    var time: String?
-    var memo: String?
-    var location: String?
+    var date: String? = nil
+    var time: String? = nil
+    var memo: String? = nil
+    var location: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case title, date, time
@@ -87,19 +87,6 @@ struct ToppingInfo: Codable {
     }
 }
 
-struct ArhiveInfo: Codable {
-    var title: String
-    var date: String
-    var memo: String
-    var location: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case date
-        case memo = "comment"
-        case location = "invitationPlace"
-    }
-}
 
 struct AddCategory: Codable {
     var category: [String]

@@ -12,6 +12,17 @@ enum WeekDayString: Int {
 }
 
 extension Date {
+    func sendDataFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
+    
+    func sendTimeFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        return dateFormatter.string(from: self)
+    }
     
     func addArchiveDateToString() -> String {
         let dateFormatter = DateFormatter()

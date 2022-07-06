@@ -14,7 +14,7 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
     var disposBag = DisposeBag()
     
     init(networkService: URLSessionNetworkService) {
-        self.service = networkService
+        service = networkService
     }
     
     func checkCodeValid(code: String) -> Bool {
@@ -24,6 +24,20 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
     
     func joinArchiveCode(invitationCode: String) {
         //약속 참여하기
+    }
+    
+    func addArchive(archive: AddArchive) -> Observable<DetaultIntResponse> {
+        let api = ArchiveAPI.addArchive(archiveInfo: archive)
+        return service.request(api)
+            .map ({ response -> DetaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw LoginSignError.decodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
     
     

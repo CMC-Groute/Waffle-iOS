@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AddArchiveModel {
+class AddArchiveViewModel {
     var usecase: ArchiveUsecase!
     var coordinator: ArchiveCoordinator!
     
@@ -22,7 +22,9 @@ class AddArchiveModel {
         self.coordinator = coordinator
     }
     
-    let locationTextField = PublishRelay<String>() //외부에서 받아오는 데이터
+    let locationTextField = BehaviorRelay<String?>(value: nil) //외부에서 받아오는 데이터
+    let datePickerDate = BehaviorRelay<Date?>(value: nil)
+    let timePickerTime = BehaviorRelay<Date?>(value: nil)
     
     struct Input {
         var nameTextField: Observable<String>
@@ -30,7 +32,7 @@ class AddArchiveModel {
         var dateTextField: Observable<String>
         var timeTextField: Observable<String>
         var locationTextField: Observable<String>
-        var memoTextView: Observable<String>
+        var memoTextView: Observable<String?>
         
         var nameTextFieldDidTapEvent: ControlEvent<Void>
         var memoTextViewDidTapEvent: ControlEvent<Void>
@@ -69,15 +71,36 @@ class AddArchiveModel {
         }
         
         input.addArchiveButton
-            .subscribe(onNext: {
-                //TO DO
-                //약속 추가 서버
-                self.coordinator.popTonavigaionController()
+            .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
+            .bind(onNext: { name, date, time, memo, location in
+                var arhive = AddArchive(title: name)
+                let defaultText = "약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요"
+                if memo != defaultText {
+                    arhive.memo = memo
+                }
+                let dateString = date?.sendDataFormat()
+                let timeString = time?.sendTimeFormat()
+                arhive.date = dateString
+                arhive.time = timeString
+                arhive.location = location
+                WappleLog.debug("\(name) \(date) \(time) \(memo) \(location)")
+                WappleLog.debug("\(dateString) \(timeString)")
+                 WappleLog.debug("inputData \(arhive)")
+                self.usecase.addArchive(archive: arhive)
+            }).disposed(by: disposeBag)
+
+        usecase.addArchiveSuccess
+            .subscribe(onNext: { bool in
+                if bool {
+                    self.coordinator.popTonavigaionController()
+                }else {
+                    WappleLog.error("약속을 만드는데 실패하였습니다.")
+                }
             }).disposed(by: disposeBag)
         
         //done button 활성화
-        Observable.combineLatest(input.nameTextField, input.dateTextField, input.timeTextField, output.dateTimeLaterButtonEnabled, input.locationTextField, output.locationLaterButtonEnabled)
-            .map{ !$0.0.isEmpty && ((!$0.1.isEmpty && !$0.2.isEmpty) || $0.3 == false) && (!$0.4.isEmpty || $0.5 == false) } //false = 토핑이 원하는 위치로
+        Observable.combineLatest(input.nameTextField, input.dateTextField, input.timeTextField, output.dateTimeLaterButtonEnabled, self.locationTextField, output.locationLaterButtonEnabled)
+            .map{ !$0.0.isEmpty && ((!$0.1.isEmpty && !$0.2.isEmpty) || $0.3 == false) && (!($0.4 == nil) || $0.5 == false) } //false = 토핑이 원하는 위치로
             .bind(to: output.doneButtonEnabled)
             .disposed(by: disposeBag)
         

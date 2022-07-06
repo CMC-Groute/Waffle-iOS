@@ -20,7 +20,7 @@ class HomeViewModel: ObservableObject {
     }
     
     struct Input {
-        let viewDidLoadEvent: Observable<Void>
+        var viewWillAppearEvent: Observable<Void>
         var makeArchiveButton: Observable<Void>
     }
     
@@ -35,7 +35,7 @@ class HomeViewModel: ObservableObject {
                 self.coordinator.archiveFlow(cardInfo: nil)
             }).disposed(by: disposeBag)
         
-        input.viewDidLoadEvent
+        input.viewWillAppearEvent
             .subscribe(
                 onNext: { [weak self] _ in
                     self?.usecase.getCardInfo()

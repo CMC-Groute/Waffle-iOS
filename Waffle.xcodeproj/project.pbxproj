@@ -57,7 +57,7 @@
 		133D559028744BBA0068EA90 /* UserUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3232855EE0D002371FD /* UserUsecase.swift */; };
 		133D559128744BBA0068EA90 /* ArchiveUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33B2856290E002371FD /* ArchiveUsecase.swift */; };
 		133D559228744BBA0068EA90 /* HomeUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A07D285F00C80015499E /* HomeUsecase.swift */; };
-		133D559328744BDD0068EA90 /* AddArchiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED339285628F2002371FD /* AddArchiveModel.swift */; };
+		133D559328744BDD0068EA90 /* AddArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED339285628F2002371FD /* AddArchiveViewModel.swift */; };
 		133D559428744BDD0068EA90 /* InputArchiveCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */; };
 		133D559528744BDD0068EA90 /* LocationLeftTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */; };
 		133D559628744BDD0068EA90 /* LocationRightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B605C285899250035AE4B /* LocationRightTableViewCell.swift */; };
@@ -139,6 +139,8 @@
 		133D55E228744C4C0068EA90 /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519E28546AD30051E94D /* FindPWViewModel.swift */; };
 		133D55E328745CE70068EA90 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
 		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
+		135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */; };
+		135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543952875DBB100F8CA0D /* EditArchiveViewController.swift */; };
 		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
 		137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */; };
 		137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */; };
@@ -187,6 +189,8 @@
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
+		135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewModel.swift; sourceTree = "<group>"; };
+		135543952875DBB100F8CA0D /* EditArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewController.swift; sourceTree = "<group>"; };
 		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLeftTableviewCell.swift; sourceTree = "<group>"; };
@@ -333,7 +337,7 @@
 		F29ED33328561D2A002371FD /* AddArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveViewController.swift; sourceTree = "<group>"; };
 		F29ED33528561DC0002371FD /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		F29ED33728562074002371FD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		F29ED339285628F2002371FD /* AddArchiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveModel.swift; sourceTree = "<group>"; };
+		F29ED339285628F2002371FD /* AddArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArchiveViewModel.swift; sourceTree = "<group>"; };
 		F29ED33B2856290E002371FD /* ArchiveUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUsecase.swift; sourceTree = "<group>"; };
 		F29ED33D2856291A002371FD /* ArchiveUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveUsecaseProtocol.swift; sourceTree = "<group>"; };
 		F29ED33F285629A5002371FD /* ArchiveRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -1171,6 +1175,7 @@
 				F29ED33328561D2A002371FD /* AddArchiveViewController.swift */,
 				F29ED33528561DC0002371FD /* AddLocationViewController.swift */,
 				13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */,
+				135543952875DBB100F8CA0D /* EditArchiveViewController.swift */,
 			);
 			path = Viewcontroller;
 			sourceTree = "<group>";
@@ -1189,8 +1194,9 @@
 		F29ED31C2855DBFD002371FD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F29ED339285628F2002371FD /* AddArchiveModel.swift */,
+				F29ED339285628F2002371FD /* AddArchiveViewModel.swift */,
 				13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */,
+				135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1487,6 +1493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				133D55D828744C4C0068EA90 /* SettingViewModel.swift in Sources */,
+				135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */,
 				133D55D928744C4C0068EA90 /* EditSettingViewModel.swift in Sources */,
 				133D55DA28744C4C0068EA90 /* ChangePWViewModel.swift in Sources */,
 				133D55DB28744C4C0068EA90 /* SettingViewController.swift in Sources */,
@@ -1516,7 +1523,7 @@
 				133D55CB28744BE90068EA90 /* CoordinatorFinishDelegate.swift in Sources */,
 				133D55CC28744BE90068EA90 /* Coordinator.swift in Sources */,
 				133D55CD28744BE90068EA90 /* TabBarCoordinatorProtocol.swift in Sources */,
-				133D559328744BDD0068EA90 /* AddArchiveModel.swift in Sources */,
+				133D559328744BDD0068EA90 /* AddArchiveViewModel.swift in Sources */,
 				133D559428744BDD0068EA90 /* InputArchiveCodeViewModel.swift in Sources */,
 				133D559528744BDD0068EA90 /* LocationLeftTableviewCell.swift in Sources */,
 				133D559628744BDD0068EA90 /* LocationRightTableViewCell.swift in Sources */,
@@ -1540,6 +1547,7 @@
 				133D55A828744BDD0068EA90 /* HomeCategoryCollectionViewCell.swift in Sources */,
 				133D55A928744BDD0068EA90 /* ParticipantsTableViewCell.swift in Sources */,
 				137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */,
+				135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */,
 				133D55AA28744BDD0068EA90 /* EmptyCardView.swift in Sources */,
 				133D55AB28744BDD0068EA90 /* CardView.swift in Sources */,
 				133D55AC28744BDD0068EA90 /* CardCollectionViewCell.swift in Sources */,

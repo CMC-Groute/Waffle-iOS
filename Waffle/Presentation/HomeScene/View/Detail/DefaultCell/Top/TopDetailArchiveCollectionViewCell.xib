@@ -52,9 +52,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6x-h0-C2h" userLabel="memoView">
                                 <rect key="frame" x="16" y="109" width="519" height="98"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nuu-DX-CrN">
-                                        <rect key="frame" x="16" y="15" width="487" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuu-DX-CrN">
+                                        <rect key="frame" x="16" y="10" width="487" height="20"/>
                                         <attributedString key="attributedText">
                                             <fragment content="참가자들에게보내는메세지 ">
                                                 <attributes>
@@ -69,9 +68,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nuu-DX-CrN" secondAttribute="bottom" constant="15" id="ASe-Vh-puo"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nuu-DX-CrN" secondAttribute="bottom" constant="10" id="ASe-Vh-puo"/>
                                     <constraint firstAttribute="trailing" secondItem="nuu-DX-CrN" secondAttribute="trailing" constant="16" id="Lf2-bQ-fY5"/>
-                                    <constraint firstItem="nuu-DX-CrN" firstAttribute="top" secondItem="m6x-h0-C2h" secondAttribute="top" constant="15" id="Sy0-K3-5jd"/>
+                                    <constraint firstItem="nuu-DX-CrN" firstAttribute="top" secondItem="m6x-h0-C2h" secondAttribute="top" constant="10" id="Sy0-K3-5jd"/>
                                     <constraint firstItem="nuu-DX-CrN" firstAttribute="leading" secondItem="m6x-h0-C2h" secondAttribute="leading" constant="16" id="oSg-xN-qMl"/>
                                 </constraints>
                             </view>

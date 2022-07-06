@@ -23,7 +23,7 @@ class AddArchiveViewController: UIViewController {
     
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
-    var viewModel: AddArchiveModel?
+    var viewModel: AddArchiveViewModel?
     var disposeBag = DisposeBag()
     
     let datePicker: UIDatePicker = {
@@ -169,7 +169,7 @@ class AddArchiveViewController: UIViewController {
 
     
     private func bindViewModel() {
-        let input = AddArchiveModel.Input(nameTextField: self.archiveNameTextField.rx.text.orEmpty.asObservable(), dateTextField: self.archiveMemoTextView.rx.text.orEmpty.asObservable(),timeTextField : self.archiveDateTextField.rx.text.orEmpty.asObservable(), locationTextField: self.archiveTimeTextField.rx.text.orEmpty.asObservable(), memoTextView: self.archiveLocationTextField.rx.text.orEmpty.asObservable(), nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), addArchiveButton: self.addArchiveButton.rx.tap.asObservable())
+        let input = AddArchiveViewModel.Input(nameTextField: self.archiveNameTextField.rx.text.orEmpty.asObservable(), dateTextField: self.archiveDateTextField.rx.text.orEmpty.asObservable(), timeTextField : self.archiveTimeTextField.rx.text.orEmpty.asObservable(), locationTextField: self.archiveLocationTextField.rx.text.orEmpty.asObservable(), memoTextView: self.archiveMemoTextView.rx.text.asObservable(), nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), addArchiveButton: self.addArchiveButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
@@ -338,16 +338,18 @@ class AddArchiveViewController: UIViewController {
     }
     
     @objc func dDonePressed(_ sender: UIDatePicker) {
-        self.archiveDateTextField.text = datePicker.date.addArchiveDateToString()
-        self.view.endEditing(true)
+        viewModel?.datePickerDate.accept(datePicker.date)
+        archiveDateTextField.text = datePicker.date.addArchiveDateToString()
+        view.endEditing(true)
     }
     
     @objc func tDonePressed(_ sender: UIDatePicker) {
-        self.archiveTimeTextField.text = timePicker.date.addArhiveTimeToString()
-        self.view.endEditing(true)
+        viewModel?.timePickerTime.accept(timePicker.date)
+        archiveTimeTextField.text = timePicker.date.addArhiveTimeToString()
+        view.endEditing(true)
     }
     
     @objc func cancelPressed(_ sender: UIDatePicker) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }
