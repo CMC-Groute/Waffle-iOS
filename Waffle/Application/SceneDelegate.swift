@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+        WappleLog.debug("jwtToken \(UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken))")
         self.appCoordinator = AppCoordinator(navigationController)
         appCoordinator?.start()
     }

@@ -15,7 +15,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var currentArchive = PublishSubject<CardInfo>()
     
     var repository: HomeRepository!
-    var cardInfo: [CardInfo]?
+    var cardInfo = PublishSubject<[CardInfo]?>()
     var disposeBag = DisposeBag()
     
     init(repository: HomeRepository){
@@ -27,11 +27,13 @@ class HomeUsecase: HomeUsecaseProtocol {
             .catch { error -> Observable<GetCardResponse> in
                 let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("error \(error)")
-                return .just(GetCardResponse.errorResponse(message: "error", data: nil))
-            }.subscribe(onNext: { [weak self] cardInfo in
+                return .just(GetCardResponse.errorResponse(status: error.rawValue, data: nil))
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
                 WappleLog.debug("cardInfo \(cardInfo)")
-                self.cardInfo = cardInfo.data
+                self.cardInfo.onNext(cardInfo.data)
             }).disposed(by: disposeBag)
     }
     

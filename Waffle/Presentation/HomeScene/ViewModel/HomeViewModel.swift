@@ -13,7 +13,7 @@ class HomeViewModel: ObservableObject {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    
+    var cardInfo: [CardInfo]?
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
@@ -39,18 +39,17 @@ class HomeViewModel: ObservableObject {
             .subscribe(
                 onNext: { [weak self] _ in
                     self?.usecase.getCardInfo()
-                    hideView()
                 }).disposed(by: disposeBag)
         
-        
-        func hideView() {
-            if ((self.usecase.cardInfo?.isEmpty) != nil) {
-                output.isHiddenView.accept(false)
-            }else {
-                output.isHiddenView.accept(true)
-            }
-
-        }
+        usecase.cardInfo
+            .subscribe(onNext: { cardInfo in
+                if let cardInfo = cardInfo {
+                    self.cardInfo = cardInfo
+                    output.isHiddenView.accept(false)
+                }else {
+                    output.isHiddenView.accept(true)
+                }
+            }).disposed(by: disposeBag)
         
         return output
     }

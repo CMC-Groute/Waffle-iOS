@@ -69,8 +69,12 @@ final class CardView: UIView {
         if item.topping.isEmpty {
             toppingLabel.text = DefaultDetailCardInfo.topping.rawValue
         }else {
-            let toppingName = topping.map { $0.nickName }.joined(separator: ", ")
-            toppingLabel.text = toppingName
+            if topping.isEmpty {
+                toppingLabel.text = DefaultDetailCardInfo.topping.rawValue
+            }else {
+                let toppingName = topping.map { $0.nickName }.joined(separator: ", ")
+                toppingLabel.text = toppingName
+            }
         }
     }
 }

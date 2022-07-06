@@ -56,9 +56,9 @@ class HomeViewController: UIViewController {
         
         output?.isHiddenView
             .subscribe(onNext: { [weak self] bool in
-                print(bool)
                 guard let self = self else { return }
-                print(bool)
+                self.collectionView.reloadData()
+                self.updateButtonCount()
                 if bool {
                     self.hideCardView()
                 }else {
@@ -77,8 +77,11 @@ class HomeViewController: UIViewController {
     func hideEmptyView() {
         emptyView.isHidden = true
         collectionView.isHidden = false
-        guard let viewModel = viewModel else { return }
-        guard let cardInfo = viewModel.usecase.cardInfo else { return }
+        updateButtonCount()
+    }
+    
+    func updateButtonCount() {
+        guard let cardInfo = viewModel?.cardInfo else { return }
         cardCountButton.setTitle("1/\(cardInfo.count)", for: .normal)
     }
     
@@ -86,21 +89,25 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let cardInfo =  viewModel?.usecase.cardInfo else { return 0 }
+        guard let cardInfo = viewModel?.cardInfo else { return 0 }
         return cardInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCollectionViewCell.identifier, for: indexPath) as! CardCollectionViewCell
-        guard let cardInfo =  viewModel?.usecase.cardInfo else { return cell }
+        guard let cardInfo =  viewModel?.cardInfo else { return cell }
         cell.configureCell(item: cardInfo[indexPath.row])
         return cell
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-        guard let cardInfo = viewModel?.usecase.cardInfo else { return }
+        guard let cardInfo = viewModel?.cardInfo else { return }
         self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(cardInfo.count)", for: .normal)
     }
     
@@ -108,7 +115,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //viewModel과 바인딩
-        guard let selectedArchive = viewModel?.usecase.cardInfo else { return }
+        guard let selectedArchive = viewModel?.cardInfo else { return }
         self.viewModel?.detailArchive(selectedArchive: selectedArchive[indexPath.row] )
     }
 }
