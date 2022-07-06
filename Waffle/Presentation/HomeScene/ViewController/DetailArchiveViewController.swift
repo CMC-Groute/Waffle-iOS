@@ -9,13 +9,7 @@ import UIKit
 import RxSwift
 
 class DetailArchiveViewController: UIViewController {
-//    @IBOutlet private weak var whenLabel: UILabel!
-//    @IBOutlet private weak var whereLabel: UILabel!
-//    @IBOutlet private weak var toppingImageView: UIImageView!
-//    @IBOutlet private weak var loadMemoButton: UIButton!
-//    @IBOutlet private weak var participantsButton: UIButton!
-//    @IBOutlet private weak var invitationButton: UIButton!
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var addPlaceButton: UIButton!
     private var lastOffsetY: CGFloat = .zero
@@ -61,7 +55,7 @@ class DetailArchiveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        //bindViewModel()
+        bindViewModel()
         //bindUI()
     }
     
@@ -154,53 +148,19 @@ class DetailArchiveViewController: UIViewController {
 //        tableView.delegate = self
 //        tableView.dataSource = self
 //        tableView.estimatedRowHeight = UITableView.automaticDimension
-//
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.allowsSelection = true
-//        collectionView.register(ConfirmCategoryCollectionViewCell.self, forCellWithReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier)
-//        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
-//        collectionView.register(AddCategoryCollectionViewCell.self, forCellWithReuseIdentifier: AddCategoryCollectionViewCell.identifier)
-//    }
-//
+    
     @objc
     func didTapMoreButton() {
         self.viewModel?.detailArhive()
     }
-//
-//    private func bindViewModel() {
-//        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), participantsButton: participantsButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
-//
-//        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
-//
-//        output?.whenTextLabel
-//            .bind(to: self.whenLabel.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        output?.whereTextLabel
-//            .bind(to: self.whereLabel.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        output?.memoTextLabel
-//            .bind(to: self.memoLabel.rx.text)
-//            .disposed(by: disposeBag)
-//
-//        output?.frameViewColor
-//            .subscribe(onNext: { colorName in
-//                self.topView.backgroundColor = UIColor(named: colorName)
-//            }).disposed(by: disposeBag)
-//
-//        output?.frameImageView
-//            .subscribe(onNext: { wapple in
-//                self.toppingImageView.image = wapple
-//            }).disposed(by: disposeBag)
-//
-//        let count = viewModel?.detailArchive?.topping.count ?? 0 + 1
-//        participantsButton.setTitle("\(count)명", for: .normal)
-//
-//    }
-//}
-//
+
+    private func bindViewModel() {
+        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(), loadMemoButton: addPlaceButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
+
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+    }
+}
+
 //extension DetailArchiveViewController: UITableViewDataSource {
 //
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -301,147 +261,17 @@ class DetailArchiveViewController: UIViewController {
 //
 //
 //}
-//
-//extension DetailArchiveViewController: UIScrollViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if categoryHeaderOffset == 0 {
-//            categoryHeaderOffset = collectionView.frame.minY // 238
-//            //print("update \(categoryHeaderOffset)")
-//        }
-//
-//        if isTableView == false {
-//            if scrollView.contentOffset.y >= categoryHeaderOffset && scrollView == self.scrollView {
-//                //print("tableview")
-//                categoryTopAnchor.constant = scrollView.contentOffset.y - categoryHeaderOffset
-//                self.scrollView.isScrollEnabled = false
-//                self.tableView.isScrollEnabled = true
-//                isTableView = true
-//            }
-//            else {
-//                //print("scrollview")
-//                categoryTopAnchor.constant = 0
-//                self.scrollView.isScrollEnabled = true
-//                self.tableView.isScrollEnabled = false
-//            }
-//        }
-//
-//        if scrollView == self.tableView && scrollView.contentOffset.y <= 0 {
-//            //처음 지점으로 돌아온다면
-//            //print("처음 지점")
-//            categoryTopAnchor.constant = 0
-//            self.scrollView.isScrollEnabled = true
-//            self.tableView.isScrollEnabled = false
-//            isTableView = false
-//        }
-//
-//        //print("offset \(scrollView.contentOffset.y)")
-//
-//    }
-//}
-//
-//extension DetailArchiveViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return viewModel!.category.count + 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if indexPath.row == 0 {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
-//            if viewModel?.selectedCategory.index == -1 {
-//                cell.isSelected = true
-//                collectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .init())
-//            }
-//            return cell
-//        }
-//
-//        if indexPath.row == viewModel!.category.count {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCategoryCollectionViewCell.identifier, for: indexPath) as! AddCategoryCollectionViewCell
-//            cell.configureCell(isEditing: isCategoryEditing)
-//            return cell
-//        }
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-//        if 0...8 ~= viewModel!.selectedCategory.index {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: [0, viewModel!.selectedCategory.index], animated: true, scrollPosition: .init())
-//        }
-//        cell.delegate = self
-//        cell.indexPath = indexPath
-//        cell.configureCell(name: viewModel!.category[indexPath.row].name, isEditing: isCategoryEditing)
-//        return cell
-//
-//    }
-//
-//
-//}
-//
-//extension DetailArchiveViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let viewModel = viewModel else { return }
-//        if indexPath.row == viewModel.category.count { //마지막 셀 클릭 시
-//            if isCategoryEditing {
-//                isCategoryEditing = false
-//                DispatchQueue.main.async { [weak self] in
-//                    guard let self = self else { return }
-//                    self.collectionView.reloadData()
-//                }
-//            }else {
-//                viewModel.addHomeCategory(without: viewModel.category)
-//            }
-//        }else {
-//            let selectedCategory = viewModel.category[indexPath.row]
-//            viewModel.setCategory(category: selectedCategory)
-//            tableView.reloadData()
-//        }
-//    }
-//}
-//
-//extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.row == viewModel!.category.count || indexPath.row == 0 {
-//            return CGSize(width: 60, height: 33)
-//        }
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-//        cell.categoryLabel.text = viewModel!.category[indexPath.row].name
-//        cell.categoryLabel.sizeToFit()
-//        var cellWidth = cell.categoryLabel.frame.width + 34
-//        if isCategoryEditing {
-//            cellWidth += 12 // 버튼만큼의 너비
-//        }
-//        return CGSize(width: cellWidth, height: 33)
-//    }
-//
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 8
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-//    }
-//}
-//
-//extension DetailArchiveViewController: CategoryCollectionViewCellDelegate {
-//    func didTapDeleteButton(cell: CategoryCollectionViewCell) {
-//        guard let viewModel = viewModel else { return }
-//        let currentCategory = viewModel.category[cell.indexPath!.row]
-//        viewModel.deleteCategory(category: currentCategory)
-//    }
-//}
-//
+
 ////MARK: Home Category에서 받아온 카테고리 업데이트
-//extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
-//    func selectedCategory(category: [Category]) {
-//        viewModel?.addCategory(category: category)
-//        DispatchQueue.main.async { [weak self] in
-//            print("selectedCategory \(category)")
-//            guard let self = self else { return }
-//            self.collectionView.reloadData()
-//        }
-//    }
-//}
-    
+extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
+    func selectedCategory(category: [Category]) {
+        viewModel?.addCategory(category: category)
+        DispatchQueue.main.async { [weak self] in
+            print("selectedCategory \(category)")
+            guard let self = self else { return }
+            self.collectionView.reloadSections(IndexSet(integer: 2))
+        }
+    }
 }
 
 extension DetailArchiveViewController: UICollectionViewDelegate {
@@ -470,12 +300,13 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier, for: indexPath) as! SubDetailArchiveCollectionViewCell
-            cell.configureCell()
+            cell.configureCell(count: viewModel.detailArchive?.topping.count ?? 1)
             cell.viewModel = self.viewModel
             cell.backgroundColor = .blue
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
+            cell.viewModel = self.viewModel
             cell.backgroundColor = .gray
             return cell
         }else if indexPath.section == 3 {

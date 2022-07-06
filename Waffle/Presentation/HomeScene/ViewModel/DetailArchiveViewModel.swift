@@ -28,18 +28,10 @@ class DetailArchiveViewModel {
     struct Input {
         var viewDidLoad: Observable<Void>
         var loadMemoButton: Observable<Void>
-        var invitationButton: Observable<Void>
-        var participantsButton: Observable<Void>
         var addPlaceButton: Observable<Void>
     }
     
-    struct Output {
-        var whenTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.when.rawValue)
-        var whereTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.where.rawValue)
-        var memoTextLabel = BehaviorRelay<String>(value: DefaultDetailCardInfo.archiveMemo.rawValue)
-        var frameViewColor = BehaviorRelay<String>(value: "")
-        var frameImageView = BehaviorRelay<UIImage>(value: UIImage(named: Asset.Assets.detailWapple1.name)!)
-    }
+    struct Output { }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
@@ -49,19 +41,6 @@ class DetailArchiveViewModel {
                 //TO DO get place data 
                 guard let self = self else { return }
                 self.placeInfo = PlaceInfo.dummyPlace
-                guard let detailArchive = self.detailArchive else {
-                   return
-               }
-               if let date = detailArchive.date {
-                   let dateString = Date.getDate(dateString: date)
-                   output.whenTextLabel.accept(date)
-               }
-               output.whereTextLabel.accept(detailArchive.place ?? DefaultDetailCardInfo.where.rawValue)
-                let wappleIndex = WappleType.init(rawValue: detailArchive.cardType)?.wappleIndex() ?? 0
-                output.frameImageView.accept(UIImage(named: "detailWapple-\(wappleIndex)")!)
-                let cardColor = WappleType.init(rawValue: detailArchive.cardType)?.wappleColor().colorName() ?? "lightPurple"
-                output.frameViewColor.accept(cardColor)
-                output.memoTextLabel.accept(detailArchive.memo ?? DefaultDetailCardInfo.archiveMemo.rawValue)
                 self.category += Category.dummyList
             }).disposed(by: disposeBag)
         
@@ -71,18 +50,6 @@ class DetailArchiveViewModel {
                 let placeCategory = self.category.filter { $0.index != -1 }
                 self.coordinator.addDetailPlace(category: placeCategory)
             }).disposed(by: disposeBag)
-//        
-//        input.participantsButton
-//            .subscribe(onNext: { [weak self] in
-//                guard let self = self else { return }
-//                self.coordinator.participants(cardInfo: self.detailArchive)
-//            }).disposed(by: disposeBag)
-        
-//        input.invitationButton
-//            .subscribe(onNext: { [weak self] in
-//                guard let self = self else { return }
-//                self.coordinator.invitationBottomSheet(copyCode: self.code ?? "")
-//            }).disposed(by: disposeBag)
         
         return output
     }

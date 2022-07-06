@@ -21,7 +21,8 @@ class SubDetailArchiveCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configureCell() {
+    func configureCell(count: Int) {
+        participantsButton.setTitle("\(count)명", for: .normal)
         participantsButton
             .rx.tap.subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
