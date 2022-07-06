@@ -1946,7 +1946,6 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="ma4-2E-o49" id="GNV-Jy-JlU"/>
                                     <outlet property="delegate" destination="ma4-2E-o49" id="JiD-f9-Dgi"/>
                                 </connections>
                             </collectionView>

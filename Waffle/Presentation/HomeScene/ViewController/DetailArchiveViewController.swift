@@ -18,6 +18,7 @@ class DetailArchiveViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var addPlaceButton: UIButton!
+    private var lastOffsetY: CGFloat = .zero
 //    @IBOutlet private weak var categoryTopAnchor: NSLayoutConstraint!
 //    @IBOutlet private weak var topView: UIView!
 //    @IBOutlet private weak var middleView: UIView!
@@ -59,7 +60,8 @@ class DetailArchiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //configureUI()
+        
+        configureUI()
         //bindViewModel()
         //bindUI()
     }
@@ -71,7 +73,13 @@ class DetailArchiveViewController: UIViewController {
     
     private func configureCollectionView() {
         let stickyHeaderLayout = StickyHeaderCollectionViewFlowLayout(stickyIndexPath: IndexPath(item: 0, section: 2))
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.collectionViewLayout = stickyHeaderLayout
+        collectionView.register(UINib(nibName: "TopDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: "SubDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: "CategoryDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: "TableDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier)
     }
 //        configureNoPlaceView()
 //        addPlaceButton.makeRounded(corner: 26)
@@ -436,18 +444,66 @@ class DetailArchiveViewController: UIViewController {
 }
 
 extension DetailArchiveViewController: UICollectionViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = collectionView.contentOffset.y
+        lastOffsetY = offsetY
+    }
 }
 
 extension DetailArchiveViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard let viewModel = viewModel else { return }
+        print("count \(viewModel?.numberOfSections)")
+        guard let viewModel = self.viewModel else { return 0 }
         return viewModel.numberOfSections
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("count \(viewModel?.numberOfSections)")
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TopDetailArchiveCollectionViewCell
+            cell.backgroundColor = .red
+            return cell
+        }else if indexPath.section == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier, for: indexPath) as! SubDetailArchiveCollectionViewCell
+            cell.backgroundColor = .blue
+            return cell
+        }else if indexPath.section == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
+            cell.backgroundColor = .gray
+            return cell
+        }else if indexPath.section == 3 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TableDetailArchiveCollectionViewCell
+            cell.backgroundColor = .green
+            return cell
         }
+        return UICollectionViewCell()
+    }
+}
+
+extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenWidth = UIScreen.main.bounds.width
+        if indexPath.section == 0 {
+            return CGSize(width: screenWidth, height: 200)
+        }else if indexPath.section == 1 {
+            return CGSize(width: screenWidth, height: 41)
+        }else if indexPath.section == 2 {
+            return CGSize(width: screenWidth, height: 57)
+        }else if indexPath.section == 3 {
+            return CGSize(width: screenWidth, height: 900)
+        }
+        return CGSize(width: screenWidth, height: 500)
     }
 }

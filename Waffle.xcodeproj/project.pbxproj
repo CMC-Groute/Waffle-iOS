@@ -140,12 +140,12 @@
 		133D55E328745CE70068EA90 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
 		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
 		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
-		137853322875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift */; };
-		137853332875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib */; };
+		137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */; };
+		137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */; };
 		137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */; };
 		137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */; };
-		1378533D2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378533B2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift */; };
-		1378533E2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1378533C2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib */; };
+		1378533D2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378533B2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift */; };
+		1378533E2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1378533C2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib */; };
 		137853422875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */; };
 		137853432875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */; };
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
@@ -196,12 +196,12 @@
 		13712DD628733948008AD9FA /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
 		1378532C2875589C00B11E5E /* Waffle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waffle.entitlements; sourceTree = "<group>"; };
 		1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderCollectioinViewFlowLayout.swift; sourceTree = "<group>"; };
-		137853302875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetialArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
-		137853312875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopDetialArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
+		137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
-		1378533B2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDefailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
-		1378533C2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDefailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
+		1378533B2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		1378533C2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		1390EC33286335E200E5520C /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
@@ -403,8 +403,8 @@
 		137853342875A83F00B11E5E /* Top */ = {
 			isa = PBXGroup;
 			children = (
-				137853302875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift */,
-				137853312875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib */,
+				137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */,
+				137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */,
 			);
 			path = Top;
 			sourceTree = "<group>";
@@ -421,8 +421,8 @@
 		1378533A2875A87700B11E5E /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				1378533B2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift */,
-				1378533C2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib */,
+				1378533B2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift */,
+				1378533C2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1354,10 +1354,10 @@
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */,
-				137853332875A83400B11E5E /* TopDetialArchiveCollectionViewCell.xib in Resources */,
+				137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */,
 				137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */,
 				1390EC34286335E200E5520C /* CardView.xib in Resources */,
-				1378533E2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.xib in Resources */,
+				1378533E2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib in Resources */,
 				F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1539,7 +1539,7 @@
 				133D55A728744BDD0068EA90 /* DetailPlaceTableViewCell.swift in Sources */,
 				133D55A828744BDD0068EA90 /* HomeCategoryCollectionViewCell.swift in Sources */,
 				133D55A928744BDD0068EA90 /* ParticipantsTableViewCell.swift in Sources */,
-				137853322875A83400B11E5E /* TopDetialArchiveCollectionViewCell.swift in Sources */,
+				137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */,
 				133D55AA28744BDD0068EA90 /* EmptyCardView.swift in Sources */,
 				133D55AB28744BDD0068EA90 /* CardView.swift in Sources */,
 				133D55AC28744BDD0068EA90 /* CardCollectionViewCell.swift in Sources */,
@@ -1611,7 +1611,7 @@
 				133D5445287446530068EA90 /* UILabel.swift in Sources */,
 				133D5446287446530068EA90 /* String.swift in Sources */,
 				133D55E5287472320068EA90 /* WappleLog.swift in Sources */,
-				1378533D2875A88D00B11E5E /* CategoryDefailArchiveCollectionViewCell.swift in Sources */,
+				1378533D2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift in Sources */,
 				133D5447287446530068EA90 /* UIView.swift in Sources */,
 				133D5448287446530068EA90 /* Encodable.swift in Sources */,
 				133D5438287446490068EA90 /* TapBarPage.swift in Sources */,

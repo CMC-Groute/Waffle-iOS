@@ -162,7 +162,7 @@ extension HomeCoordinator {
     func addCategory(category: [Category]) {
         let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeCategoryPopUpViewController") as! HomeCategoryPopUpViewController
         homeCategoryPopUpView.coordinator = self
-        homeCategoryPopUpView.delegate = detailArchiveViewController
+        //homeCategoryPopUpView.delegate = detailArchiveViewController
         homeCategoryPopUpView.selectedCategoryList = category
         homeCategoryPopUpView.modalPresentationStyle = .overFullScreen
         homeCategoryPopUpView.modalTransitionStyle = .crossDissolve

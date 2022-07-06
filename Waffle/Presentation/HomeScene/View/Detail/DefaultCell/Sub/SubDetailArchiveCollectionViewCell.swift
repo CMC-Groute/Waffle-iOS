@@ -8,7 +8,8 @@
 import UIKit
 
 class SubDetailArchiveCollectionViewCell: UICollectionViewCell {
-
+    static let identifier = "SubDetailArchiveCollectionViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
