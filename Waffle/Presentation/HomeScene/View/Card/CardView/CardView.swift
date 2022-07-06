@@ -47,8 +47,8 @@ final class CardView: UIView {
     func bindUI(item: CardInfo) {
         let backgroundColor = WappleType.init(rawValue: item.cardType)?.wappleColor().rawValue
         topView.backgroundColor = UIColor(named: backgroundColor ?? "")
-        let cardImageIndex = CardViewInfoType.init(rawValue: item.cardType)?.cardViewIndex()
-        cardImageView.image = UIImage(named: "card-\(cardImageIndex ?? 0)")
+        let wappleIndex = WappleType.init(rawValue: item.cardType)?.wappleIndex() ?? 0
+        cardImageView.image = UIImage(named: "card-\(wappleIndex)")
         titleLabel.text = item.title
         placeLabel.text = item.place ?? DefaultDetailCardInfo.where.rawValue
         if let date = item.date {

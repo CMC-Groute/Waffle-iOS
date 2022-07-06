@@ -60,15 +60,29 @@ class DetailArchiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
+        configure()
         //bindViewModel()
         //bindUI()
     }
-
+    
+    private func configure() {
+        configureUI()
+        configureCollectionView()
+        configureNavigationBar()
+    }
     
     private func configureUI() {
-        configureCollectionView()
+        addPlaceButton.makeRounded(corner: 26)
+    }
+
+    
+    private func configureNavigationBar() {
+        let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
+        let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
+        self.navigationItem.title = viewModel?.detailArchive?.title
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapMoreButton))
     }
     
     private func configureCollectionView() {
@@ -82,32 +96,21 @@ class DetailArchiveViewController: UIViewController {
         collectionView.register(UINib(nibName: "TableDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier)
     }
 //        configureNoPlaceView()
-//        addPlaceButton.makeRounded(corner: 26)
-//        memoView.makeRounded(width: nil, color: nil, value: 20)
-//        //memoLabel.addTrailing(with: "...", moreText: "더보기", moreTextFont: UIFont.fontWithName(type: .regular, size: 14), moreTextColor: Asset.Colors.gray5.color)
-//        scrollView.bounces = false
+
 ////        tableView.bounces = false
 //        tableView.isScrollEnabled = false
-//        func setNavigationBar() {
-//            let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
-//            let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
-//            navigationItem.leftBarButtonItem = backButton
-//            self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
-//            self.navigationItem.title = viewModel?.detailArchive?.title
-//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapMoreButton))
-//            configureGesture()
-//        }
+
 //
-//        setNavigationBar()
+
 //        configureGesture()
 //
 //    }
 //
     
 //
-//    @objc func didTapBackButton() {
-//        viewModel?.popViewController()
-//    }
+    @objc func didTapBackButton() {
+        viewModel?.popViewController()
+    }
     
 //    func configureGesture() {
 //        memoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo)))
@@ -117,9 +120,7 @@ class DetailArchiveViewController: UIViewController {
 //        collectionView.addGestureRecognizer(editGesture)
 //    }
     
-//    @objc func didTapLoadMemo() {
-//        viewModel?.loadMemo()
-//    }
+
 //
 //    @objc func didTapEditingMode() {
 //        isCategoryEditing = true
@@ -162,10 +163,10 @@ class DetailArchiveViewController: UIViewController {
 //        collectionView.register(AddCategoryCollectionViewCell.self, forCellWithReuseIdentifier: AddCategoryCollectionViewCell.identifier)
 //    }
 //
-//    @objc
-//    func didTapMoreButton() {
-//        self.viewModel?.detailArhive()
-//    }
+    @objc
+    func didTapMoreButton() {
+        self.viewModel?.detailArhive()
+    }
 //
 //    private func bindViewModel() {
 //        let input = DetailArchiveViewModel.Input(viewDidLoad: Observable<Void>.just(()).asObservable(),loadMemoButton: loadMemoButton.rx.tap.asObservable(), invitationButton: invitationButton.rx.tap.asObservable(), participantsButton: participantsButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
@@ -452,20 +453,19 @@ extension DetailArchiveViewController: UICollectionViewDelegate {
 
 extension DetailArchiveViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("count \(viewModel?.numberOfSections)")
         guard let viewModel = self.viewModel else { return 0 }
         return viewModel.numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("count \(viewModel?.numberOfSections)")
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let viewModel = viewModel else { return UICollectionViewCell() }
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TopDetailArchiveCollectionViewCell
-            cell.backgroundColor = .red
+            cell.configureCell(cardInfo: viewModel.detailArchive)
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier, for: indexPath) as! SubDetailArchiveCollectionViewCell
