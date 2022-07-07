@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class HomeCoordinator: HomeCoordinatorProtocol {
+final class HomeCoordinator: HomeCoordinatorProtocol {    
     
     var finishDelegate: CoordinatorFinishDelegate?
     
@@ -45,7 +45,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     
-    func addDetailPlace(category: [Category]) {
+    func addDetailPlace(category: [PlaceCategory]) {
         let addDetailPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AddDetailPlaceViewController") as! AddDetailPlaceViewController
         addDetailPlaceViewController.viewModel = AddDetailPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         addDetailPlaceViewController.viewModel?.categoryInfo = category
@@ -58,14 +58,14 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(searchPlaceViewController, animated: true)
     }
     
-    func editPlace(placeId: Int, category: [Category]) {
+    func editPlace(placeId: Int, category: [PlaceCategory]) {
         let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
         editPlaceViewController.viewModel = EditPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         editPlaceViewController.viewModel?.categoryInfo = category
         self.navigationController.pushViewController(editPlaceViewController, animated: true)
     }
     
-    func deleteCategory(category: Category) {
+    func deleteCategory(category: PlaceCategory) {
         let categoryDeletePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "CategoryDeletePopUpViewController") as! CategoryDeletePopUpViewController
         categoryDeletePopUpView.coordinator = self
         categoryDeletePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
@@ -157,7 +157,7 @@ extension HomeCoordinator {
 }
 
 extension HomeCoordinator {
-    func addCategory(category: [Category]) {
+    func addCategory(category: [PlaceCategory]) {
         let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeCategoryPopUpViewController") as! HomeCategoryPopUpViewController
         homeCategoryPopUpView.coordinator = self
         homeCategoryPopUpView.delegate = detailArchiveViewController

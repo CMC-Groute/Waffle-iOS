@@ -14,6 +14,8 @@ class HomeViewModel: ObservableObject {
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
     var cardInfo: [CardInfo]?
+    var archiveId: Int = -1
+    
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase

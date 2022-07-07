@@ -9,14 +9,14 @@ import UIKit
 import RxSwift
 
 protocol HomeCategoryPopUpDelegate {
-    func selectedCategory(category: [Category])
+    func selectedCategory(category: [PlaceCategory])
 }
 
 class HomeCategoryPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     
-    var selectedCategoryList: [Category] = []
-    var enableCategoryList = Category.categoryList
+    var selectedCategoryList: [PlaceCategory] = []
+    var enableCategoryList = PlaceCategory.categoryList
     
     var disposeBag = DisposeBag()
     
@@ -44,15 +44,15 @@ class HomeCategoryPopUpViewController: UIViewController {
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
     }
     
-    private func filterEnabledCategory() {
-        print("get selectedCategoryList \(selectedCategoryList)")
-        for i in selectedCategoryList {
-            enableCategoryList[i.index].selected = true
-        }
-    }
+//    private func filterEnabledCategory() {
+//        print("get selectedCategoryList \(selectedCategoryList)")
+//        for i in selectedCategoryList {
+//            enableCategoryList[i.index].isSelected = true
+//        }
+//    }
     
     private func collectionViewSetup() {
-        filterEnabledCategory()
+        //filterEnabledCategory()
         collectionView.register(HomeCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -68,7 +68,7 @@ class HomeCategoryPopUpViewController: UIViewController {
         addButton.rx.tap
         .subscribe(onNext: { [weak self] in
             guard let self = self else { return }
-            var items: [Category] = []
+            var items: [PlaceCategory] = []
             for i in self.collectionView.indexPathsForSelectedItems! {
                 items.append(self.enableCategoryList[i.row])
             }
@@ -98,7 +98,7 @@ extension HomeCategoryPopUpViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
         print(enableCategoryList)
-        cell.configureCell(category: enableCategoryList[indexPath.row])
+        cell.configureCell(category: enableCategoryList[indexPath.row], selectedCategoryList: selectedCategoryList)
         return cell
     }
     

@@ -14,7 +14,7 @@ class EditPlaceViewModel {
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
     var placeId: Int?
-    var categoryInfo: [Category] = []
+    var categoryInfo: [PlaceCategory] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator

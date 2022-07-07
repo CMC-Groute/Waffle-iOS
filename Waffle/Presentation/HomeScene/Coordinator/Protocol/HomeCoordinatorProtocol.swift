@@ -11,20 +11,20 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func archiveFlow(cardInfo: CardInfo?)
     func editArchive(cardInfo: CardInfo?)
     func detailArchive(selectedArchive: CardInfo)
-    func addDetailPlace(category: [Category])
+    func addDetailPlace(category: [PlaceCategory])
     
     //MARK: load BottomSheet View
     func detailArchiveBottomSheet(cardInfo: CardInfo?)
     func invitationBottomSheet(copyCode: String)
     
     //MARK: Button Click
-    func addCategory(category: [Category])
+    func addCategory(category: [PlaceCategory])
     func loadMemo(memo: String, wapple: String)
     func participants(cardInfo: CardInfo?)
-    func detailPlace(detailInfo: PlaceInfo, category: Category, categoryInfo: [Category])
+    func detailPlace(detailInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory])
     
     //MARK: POPUP View click
-    func deleteCategory(category: Category)
+    func deleteCategory(category: PlaceCategory)
     func arhiveDelete()
     func likeSend()
     func deletePlace(placeId: Int)

@@ -34,7 +34,6 @@
 		133D544D287446740068EA90 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21972C2284B8B3F0086E56B /* AppCoordinatorProtocol.swift */; };
 		133D557A28744BB20068EA90 /* LoginSignAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DF2870173A0087E79E /* LoginSignAPI.swift */; };
 		133D557B28744BB20068EA90 /* ArchiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13712DD628733948008AD9FA /* ArchiveAPI.swift */; };
-		133D557C28744BB20068EA90 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E32AAC28743DBF00C991FF /* CategoryAPI.swift */; };
 		133D557D28744BB20068EA90 /* LoginSignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3C284E53AB008E1185 /* LoginSignRepository.swift */; };
 		133D557E28744BB20068EA90 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3272855EF97002371FD /* UserRepository.swift */; };
 		133D557F28744BB20068EA90 /* ArchiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED341285629DB002371FD /* ArchiveRepository.swift */; };
@@ -141,6 +140,8 @@
 		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
 		135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */; };
 		135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543952875DBB100F8CA0D /* EditArchiveViewController.swift */; };
+		135543982877276100F8CA0D /* GetPlaceByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543972877276100F8CA0D /* GetPlaceByCategory.swift */; };
+		1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543992877299800F8CA0D /* PlaceAPI.swift */; };
 		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
 		137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */; };
 		137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */; };
@@ -191,6 +192,8 @@
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
 		135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewModel.swift; sourceTree = "<group>"; };
 		135543952875DBB100F8CA0D /* EditArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewController.swift; sourceTree = "<group>"; };
+		135543972877276100F8CA0D /* GetPlaceByCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlaceByCategory.swift; sourceTree = "<group>"; };
+		135543992877299800F8CA0D /* PlaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAPI.swift; sourceTree = "<group>"; };
 		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLeftTableviewCell.swift; sourceTree = "<group>"; };
@@ -258,7 +261,6 @@
 		13E2A07F285F01F00015499E /* HomeUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUsecaseProtocol.swift; sourceTree = "<group>"; };
 		13E2A081285F022A0015499E /* HomeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		13E2A083285F025E0015499E /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
-		13E32AAC28743DBF00C991FF /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
 		13E9B0BD285A2F0800723CAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		23ED6BEBFC9D062FBCA62A08 /* Pods_Waffle_WaffleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Waffle_WaffleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24023E6DDF9AAE80534394F1 /* Pods-WaffleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.debug.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				1390EC832866DE0F00E5520C /* PlaceInfo.swift */,
+				135543972877276100F8CA0D /* GetPlaceByCategory.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -563,8 +566,8 @@
 			isa = PBXGroup;
 			children = (
 				13CA03DF2870173A0087E79E /* LoginSignAPI.swift */,
+				135543992877299800F8CA0D /* PlaceAPI.swift */,
 				13712DD628733948008AD9FA /* ArchiveAPI.swift */,
-				13E32AAC28743DBF00C991FF /* CategoryAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1566,6 +1569,7 @@
 				133D55B728744BDD0068EA90 /* ArchiveDetailPopUpViewController.swift in Sources */,
 				133D55B828744BDD0068EA90 /* CategoryDeletePopUpViewController.swift in Sources */,
 				133D55B928744BDD0068EA90 /* DeleteArhiveViewPopUpController.swift in Sources */,
+				1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */,
 				133D55BA28744BDD0068EA90 /* LikeSendPopUpViewController.swift in Sources */,
 				133D55BB28744BDD0068EA90 /* AddPlaceCategoryViewController.swift in Sources */,
 				133D55BC28744BDD0068EA90 /* DeletePlacePopUpViewController.swift in Sources */,
@@ -1576,6 +1580,7 @@
 				133D55C128744BDD0068EA90 /* SearchPlaceViewController.swift in Sources */,
 				133D55C228744BDD0068EA90 /* HomeCoordinatorProtocol.swift in Sources */,
 				133D55C328744BDD0068EA90 /* HomeCoordinator.swift in Sources */,
+				135543982877276100F8CA0D /* GetPlaceByCategory.swift in Sources */,
 				137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */,
 				133D55C428744BDD0068EA90 /* SettingCoordinatorProtocol.swift in Sources */,
 				133D558B28744BBA0068EA90 /* LoginSignUsecaseProtocol.swift in Sources */,
@@ -1588,7 +1593,6 @@
 				133D559228744BBA0068EA90 /* HomeUsecase.swift in Sources */,
 				133D557A28744BB20068EA90 /* LoginSignAPI.swift in Sources */,
 				133D557B28744BB20068EA90 /* ArchiveAPI.swift in Sources */,
-				133D557C28744BB20068EA90 /* CategoryAPI.swift in Sources */,
 				133D557D28744BB20068EA90 /* LoginSignRepository.swift in Sources */,
 				133D557E28744BB20068EA90 /* UserRepository.swift in Sources */,
 				133D557F28744BB20068EA90 /* ArchiveRepository.swift in Sources */,

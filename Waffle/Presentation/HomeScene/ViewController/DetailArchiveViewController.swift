@@ -72,7 +72,7 @@ class DetailArchiveViewController: UIViewController {
 
 ////MARK: Home Category에서 받아온 카테고리 업데이트
 extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
-    func selectedCategory(category: [Category]) {
+    func selectedCategory(category: [PlaceCategory]) {
         viewModel?.addCategory(category: category)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -153,7 +153,6 @@ extension DetailArchiveViewController: CategoryDetailArchiveCollectionViewCellDe
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.collectionView.reloadSections(.init(integer: 3))
-
         }
     }
 }

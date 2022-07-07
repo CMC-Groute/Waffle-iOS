@@ -13,7 +13,7 @@ class AddDetailPlaceViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    var categoryInfo: [Category] = []
+    var categoryInfo: [PlaceCategory] = []
     
     //for layout
     let placeViewEnabled = BehaviorRelay<Bool>(value: false)

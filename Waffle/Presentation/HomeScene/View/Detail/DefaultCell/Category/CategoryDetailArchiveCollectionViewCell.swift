@@ -17,6 +17,7 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     var isCategoryEditing: Bool = false
     var viewModel: DetailArchiveViewModel?
     var confirmCellCount = 1
+    let confirmCategoryId = -1
     weak var delegate: CategoryDetailArchiveCollectionViewCellDelegate?
     
     override func awakeFromNib() {
@@ -89,7 +90,7 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
         print("category \(viewModel.category)")
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
-            if viewModel.selectedCategory.index == -1 {
+            if viewModel.selectedCategory.id == confirmCategoryId {
                 cell.isSelected = true
                 collectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .init())
             }
@@ -103,9 +104,9 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
         }
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        if 0...8 ~= viewModel.selectedCategory.index {
+        if 0...8 ~= viewModel.selectedCategory.id {
             cell.isSelected = true
-            collectionView.selectItem(at: [0, viewModel.selectedCategory.index], animated: true, scrollPosition: .init())
+            collectionView.selectItem(at: [0, viewModel.selectedCategory.id], animated: true, scrollPosition: .init())
         }
         cell.delegate = self
         cell.indexPath = indexPath
