@@ -18,6 +18,15 @@ enum PlaceAPI: NetworkRequestBuilder {
     case editPlace(archiveId: Int, placeId: Int, place: AddPlace)
     case placeSearch
     case deletePlace(archiveId: Int, placeId: Int)
+    
+    //MARK: category
+    case addPlaceCategory(archiveId: Int, placeCategory: [String])
+    case deletePlacCategory(archiveId: Int, categoryId: Int)
+    
+    //MARK: Like
+    case addLike(placeId: Int)
+    case deleteLike(placeId: Int)
+    
 }
 
 extension PlaceAPI {
@@ -47,6 +56,14 @@ extension PlaceAPI {
             return "/place/search"
         case .deletePlace(let archiveId, let placeId):
             return "/invitations/\(archiveId)/place/\(placeId)"
+        case .addPlaceCategory(let archiveId, _):
+            return "/invitations/\(archiveId)/placeCategory"
+        case .deletePlacCategory(let archiveId, let categoryId):
+            return "/invitations/\(archiveId)/placeCategory/\(categoryId)"
+        case .addLike(let placeId):
+            return "/invitation/place/\(placeId)/likes"
+        case .deleteLike(let placeId):
+            return "/invitation/place/\(placeId)/likes"
         }
     }
     
@@ -56,14 +73,15 @@ extension PlaceAPI {
     
     var method: HttpMethod {
         switch self {
-        case .addPlace(_, _, _):
+        case .addPlace(_, _, _), .addPlaceCategory(_, _), .addLike(_):
             return .post
         case .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .getConfirmSequence(_, _), .editPlace(_, _, _):
             return .put
         case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .placeSearch:
             return .get
-        case .deletePlace(_, _):
+        case .deletePlace(_, _), .deletePlacCategory(_, _), .deleteLike(_):
             return .delete
+        
         }
     }
     
@@ -73,10 +91,18 @@ extension PlaceAPI {
             return nil
         case .addPlace(_, _, let place):
             return place.dictionary
+        case .addPlaceCategory(_, let placeCategory):
+            return ["placeCategories" : placeCategory]
         case .getConfirmSequence(_, let placeSequence):
             return placeSequence.dictionary
         case .editPlace(_, _, let place):
             return place.dictionary
+        case .deletePlacCategory(_, _):
+            return nil
+        case .addLike(_):
+            return nil
+        case .deleteLike(_):
+            return nil
         }
     }
     
