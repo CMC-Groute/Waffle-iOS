@@ -53,7 +53,6 @@ struct DetaultIntResponse: Codable {
     }
 }
 
-
 struct SignUpResponse: Codable {
     var message: String
     var data: Int

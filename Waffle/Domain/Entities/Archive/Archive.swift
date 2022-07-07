@@ -22,7 +22,12 @@ struct AddArchive: Codable {
     }
 }
 
-//MARK: 약속
+//MARK: 약속 상세
+struct GetDetailArchive: Codable {
+    var status: Int
+    var data: DetailArhive?
+}
+
 struct DetailArhive: Codable {
     var title: String
     var date: String?
@@ -44,6 +49,7 @@ struct DetailArhive: Codable {
 struct Participants: Codable {
     var userId: Int
     var nickName: String
+    var progileImage: String
 }
 
 struct GetCardResponse: Codable {
@@ -54,6 +60,17 @@ struct GetCardResponse: Codable {
         return GetCardResponse(status: status, data: data)
     }
 }
+
+//MARK: get code
+struct GetArchiveCode: Codable {
+    var status: Int
+    var data: DataGetArchiveCode?
+}
+
+struct DataGetArchiveCode: Codable {
+    var code: String
+}
+
 
 struct CardInfo: Codable {
     var id: Int
@@ -115,9 +132,12 @@ struct PlaceCategory: Codable {
         case id = "placeCategoryId"
         case name = "placeCategoryName"
     }
+    
+    static var confirmCategory = PlaceCategory(id: -1, name: "확정")
 }
 
 struct DecidedPlace: Codable {
+    var placeId: Int
     var title: String
     var seq: Int // 순서
 }
