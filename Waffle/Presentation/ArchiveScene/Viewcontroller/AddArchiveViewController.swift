@@ -232,7 +232,6 @@ class AddArchiveViewController: UIViewController {
         
         input.locationTextFieldTapEvent // 키보드 내리기
             .subscribe(onNext: {
-
                 self.archiveLocationTextField.resignFirstResponder()
             }).disposed(by: disposeBag)
         
@@ -296,9 +295,12 @@ class AddArchiveViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         viewModel?.locationTextField
-            .subscribe(onNext: { str in
-                self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
-                self.archiveLocationTextField.text = str
+            .subscribe(onNext: { [weak self] str in
+                guard let self = self else { return }
+                if str != nil {
+                    self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
+                    self.archiveLocationTextField.text = str
+                }
             }).disposed(by: disposeBag)
         }
     

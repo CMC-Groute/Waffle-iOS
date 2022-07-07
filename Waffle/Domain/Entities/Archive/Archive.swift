@@ -59,6 +59,7 @@ struct CardInfo: Codable {
     var id: Int
     var title: String
     var date: String?
+    var time: String?
     var place: String?
     var memo: String?
     var wappleId: Int
@@ -67,7 +68,7 @@ struct CardInfo: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id = "invitationId"
-        case title, date
+        case title, date, time
         case place = "invitationPlace"
         case memo = "comment"
         case wappleId = "waffleId"

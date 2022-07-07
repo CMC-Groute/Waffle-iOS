@@ -62,7 +62,7 @@ class EditArchiveViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         output.navigationTitle.accept("약속 편집하기")
-        
+        print("get edit archive \(cardInfo)")
         input.addArchiveButton
             .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
             .bind(onNext: { name, date, time, memo, location in
@@ -86,7 +86,7 @@ class EditArchiveViewModel {
         usecase.addArchiveSuccess
             .subscribe(onNext: { bool in
                 if bool {
-                    self.coordinator.popTonavigaionController()
+                    self.coordinator.popToRootViewController()
                 }else {
                     WappleLog.error("약속을 만드는데 실패하였습니다.")
                 }
@@ -111,6 +111,6 @@ class EditArchiveViewModel {
     }
     
     func back() {
-        self.coordinator.popTonavigaionController()
+        self.coordinator.popToNavigaionController()
     }
 }

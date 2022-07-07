@@ -46,12 +46,16 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
     func inputCodeArchive() {
         let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveCodeViewController") as! InputArchiveCodeViewController
         inputArchiveCodeViewController.viewModel = InputArchiveCodeViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
-        self.navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
+        navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
 
     }
     
-    func popTonavigaionController() {
-        self.navigationController.popViewController(animated: true)
+    func popToNavigaionController() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    func popToRootViewController() {
+        navigationController.popToRootViewController(animated: true)
     }
     
     

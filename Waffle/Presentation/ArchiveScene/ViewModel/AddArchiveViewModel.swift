@@ -85,7 +85,7 @@ class AddArchiveViewModel {
         usecase.addArchiveSuccess
             .subscribe(onNext: { bool in
                 if bool {
-                    self.coordinator.popTonavigaionController()
+                    self.coordinator.popToNavigaionController()
                 }else {
                     WappleLog.error("약속을 만드는데 실패하였습니다.")
                 }
@@ -106,7 +106,7 @@ class AddArchiveViewModel {
     }
     
     func back() {
-        self.coordinator.popTonavigaionController()
+        self.coordinator.popToNavigaionController()
     }
     
 }
