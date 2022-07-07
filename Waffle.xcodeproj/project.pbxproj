@@ -1173,9 +1173,9 @@
 			children = (
 				135B60552858501E0035AE4B /* LocationContainterViewController */,
 				F29ED33328561D2A002371FD /* AddArchiveViewController.swift */,
+				135543952875DBB100F8CA0D /* EditArchiveViewController.swift */,
 				F29ED33528561DC0002371FD /* AddLocationViewController.swift */,
 				13E2A059285B756F0015499E /* InputArchiveCodeViewController.swift */,
-				135543952875DBB100F8CA0D /* EditArchiveViewController.swift */,
 			);
 			path = Viewcontroller;
 			sourceTree = "<group>";
@@ -1195,8 +1195,8 @@
 			isa = PBXGroup;
 			children = (
 				F29ED339285628F2002371FD /* AddArchiveViewModel.swift */,
-				13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */,
 				135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */,
+				13E2A05B285B75BB0015499E /* InputArchiveCodeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

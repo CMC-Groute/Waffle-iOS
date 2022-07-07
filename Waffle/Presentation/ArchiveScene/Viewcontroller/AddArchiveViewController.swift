@@ -57,9 +57,7 @@ class AddArchiveViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if !viewModel!.isEditing {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -219,7 +217,6 @@ class AddArchiveViewController: UIViewController {
                 let estimatedSize = self.archiveMemoTextView.sizeThatFits(size)
                 self.archiveMemoTextView.translatesAutoresizingMaskIntoConstraints = false
                 self.archiveMemoTextView.constraints.forEach { (constraint) in
-                        
                   /// 360 이하일때는 더 이상 줄어들지 않게하기
                     if estimatedSize.height <= 360 {
                     
@@ -293,42 +290,16 @@ class AddArchiveViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         output?.doneButtonEnabled
-            .subscribe(onNext: { bool in
-                if !self.viewModel!.isEditing {
-                    if bool {
-                        self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
-                    }else {
-                        self.addArchiveButton.setUnEnabled(color: Asset.Colors.gray4.name)
-                    }
-                }else {
-                    self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
-                }
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
+                bool ? self.addArchiveButton.setEnabled(color: Asset.Colors.black.name) : self.addArchiveButton.setUnEnabled(color: Asset.Colors.gray4.name)
             }).disposed(by: disposeBag)
-        
-        
         
         viewModel?.locationTextField
             .subscribe(onNext: { str in
                 self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
                 self.archiveLocationTextField.text = str
             }).disposed(by: disposeBag)
-        
-        output?.editModeEnabled
-            .subscribe(onNext: { [weak self] bool in
-                guard let self = self else { return }
-                if bool {
-                    self.archiveDateTextField.text = self.viewModel?.cardInfo?.date
-                    self.archiveTimeTextField.text = self.viewModel?.cardInfo?.date
-                    self.archiveMemoTextView.text = self.viewModel?.cardInfo?.memo
-                    self.archiveMemoTextView.textColor = Asset.Colors.black.color
-                    self.archiveNameTextField.text = self.viewModel?.cardInfo?.title
-                    self.archiveLocationTextField.text = self.viewModel?.cardInfo?.place
-                    self.archiveLocationTextField.addIconLeft(value: 9, icon: Asset.Assets.flagOrange.image, width: 15, height: 17)
-                    self.addArchiveButton.setEnabled(color: Asset.Colors.black.name)
-                    self.addArchiveButton.setTitle("편집 완료", for: .normal)
-                }
-            }).disposed(by: disposeBag)
-
         }
     
     private func textViewScrollToBottom() {

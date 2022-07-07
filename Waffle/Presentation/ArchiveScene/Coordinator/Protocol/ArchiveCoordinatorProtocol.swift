@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ArchiveCoordinatorProtocol: Coordinator {
-    func addArchive(isEditing: Bool, cardInfo: CardInfo?)
+    func addArchive()
     func inputCodeArchive()
     func addLocation()
+    func editArchive(cardInfo: CardInfo?)
 }

@@ -23,14 +23,19 @@ final class ArchiveCoordinator: ArchiveCoordinatorProtocol {
     
     func start() {}
     
-    func addArchive(isEditing: Bool, cardInfo: CardInfo?) {
+    func addArchive() {
         let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddArchiveViewController") as! AddArchiveViewController
         addArchiveViewcontroller.viewModel = AddArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
-        if let cardInfo = cardInfo {
-            addArchiveViewcontroller.viewModel?.cardInfo = cardInfo
-        }
-        addArchiveViewcontroller.viewModel?.isEditing = isEditing
         self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
+    }
+    
+    func editArchive(cardInfo: CardInfo?) {
+        let editArchiveViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "EditArchiveViewController") as! EditArchiveViewController
+        editArchiveViewController.viewModel = EditArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        if let cardInfo = cardInfo {
+            editArchiveViewController.viewModel?.cardInfo = cardInfo
+        }
+        self.navigationController.pushViewController(editArchiveViewController, animated: true)
     }
     
     func addLocation() {

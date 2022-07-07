@@ -34,7 +34,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         let archiveCoordinator = ArchiveCoordinator(self.navigationController)
         self.childCoordinators.append(archiveCoordinator)
         archiveCoordinator.finishDelegate = self
-        archiveCoordinator.addArchive(isEditing: false, cardInfo: cardInfo)
+        archiveCoordinator.addArchive()
     }
     
     func detailArchive(selectedArchive: CardInfo) {
@@ -110,7 +110,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         let archiveCoordinator = ArchiveCoordinator(self.navigationController)
         self.childCoordinators.append(archiveCoordinator)
         archiveCoordinator.finishDelegate = self
-        archiveCoordinator.addArchive(isEditing: true, cardInfo: cardInfo)
+        archiveCoordinator.editArchive(cardInfo: cardInfo)
     }
     
     func popToViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {

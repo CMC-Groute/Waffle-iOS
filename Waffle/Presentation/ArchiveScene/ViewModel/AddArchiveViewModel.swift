@@ -14,8 +14,6 @@ class AddArchiveViewModel {
     var coordinator: ArchiveCoordinator!
     
     var disposeBag = DisposeBag()
-    var isEditing: Bool = false
-    var cardInfo: CardInfo?
     
     init(usecase: ArchiveUsecase, coordinator: ArchiveCoordinator){
         self.usecase = usecase
@@ -63,12 +61,7 @@ class AddArchiveViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        if isEditing {
-            output.navigationTitle
-                .accept("약속 편집하기")
-        }else {
-            output.navigationTitle.accept("약속 만들기")
-        }
+        output.navigationTitle.accept("약속 만들기")
         
         input.addArchiveButton
             .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
@@ -108,11 +101,7 @@ class AddArchiveViewModel {
             .subscribe(onNext: {
                 self.coordinator.addLocation()
             }).disposed(by: disposeBag)
-        
-        if let cardInfo = cardInfo {
-            output.editModeEnabled.accept(true)
-            output.doneButtonEnabled.accept(true)
-        }
+
         return output
     }
     
