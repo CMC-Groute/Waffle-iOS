@@ -32,7 +32,33 @@ struct PlaceSearchInfo: Codable {
         case latitude = "y"
         
     }
+}
 
+//MARK: 장소 추가
+struct AddPlace: Codable {
+    var title: String
+    var memo: String?
+    var link: String?
+    var roadNameAddress: String?
+    var longitude: Double?
+    var latitude: Double?
+    var categoryId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case title, link, roadNameAddress, longitude, latitude
+        case memo = "comment"
+        case categoryId = "placeCategoryId"
+    }
+}
+
+//MARK: 장소 순서 조회
+struct GetPlaceSequence: Codable {
+    var placeSequences: [PlaceSequence]
+}
+
+struct PlaceSequence: Codable {
+    var placeId: Int
+    var seq: Int
 }
 
 struct DefaultResponse: Codable {

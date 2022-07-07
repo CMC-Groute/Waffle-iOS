@@ -51,12 +51,6 @@ extension ArchiveAPI {
         }
     }
     
-    var headers: [String : String]? {
-        let defaultHeader = ["Content-Type" : "application/json"]
-        guard let jwtToken = UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) else { return defaultHeader }
-        return ["token": jwtToken, "Content-Type" : "application/json"]
-    }
-    
     var body: [String : Any]? {
         switch self {
             case .getArchiveCard, .getArchiveCode(_), .getArchiveDetail(_), .deleteArchive(_):
@@ -66,6 +60,12 @@ extension ArchiveAPI {
             case .addArchive(let archive):
                 return archive.dictionary
             }
+    }
+    
+    var headers: [String : String]? {
+        let defaultHeader = ["Content-Type" : "application/json"]
+        guard let jwtToken = UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) else { return defaultHeader }
+        return ["token": jwtToken, "Content-Type" : "application/json"]
     }
     
 }
