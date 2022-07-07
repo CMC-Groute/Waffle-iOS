@@ -73,7 +73,7 @@ enum DefaultDetailCardInfo: String {
     case when = "토핑이 원하는 날짜와 시간"
     case `where` = "토핑이 원하는 위치"
     case archiveMemo = "약속에 대한 메모를 입력하지 않았어요"
-    case topping = "초대한 토핑이 없어요"
+    case noTopping = "-"
     case link = "장소와 관련된 링크 주소를 입력하지 않았어요"
     case placeMemo = "장소에 대한 메모를 입력하지 않았어요"
 }
