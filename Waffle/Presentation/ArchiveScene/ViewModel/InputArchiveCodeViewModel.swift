@@ -49,11 +49,11 @@ class InputArchiveCodeViewModel {
             .withLatestFrom(input.codeTextField)
             .subscribe(onNext: { [weak self] code in
                 guard let self = self else { return }
-                if self.usecase.checkCodeValid(code: code) {
-                    // self.coordinator. 약속 참여하기
-                }else {
-                    output.inValidCodeMessage.accept(true)
-                }
+//                if self.usecase.checkCodeValid(code: code) {
+//                    // self.coordinator. 약속 참여하기
+//                }else {
+//                    output.inValidCodeMessage.accept(true)
+//                }
             })
             .disposed(by: disposeBag)
         

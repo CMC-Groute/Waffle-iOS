@@ -11,6 +11,6 @@ import RxSwift
 
 protocol HomeRepositoryProtocol {
     func getCardInfo() -> Observable<GetCardResponse>
-    func getDetailArchiveInfo(id: Int) -> Observable<[DetailArhive]>
+    func getDetailArchiveInfo(id: Int) -> Observable<GetDetailArchive>
     func addCategory(id: Int, category: AddCategory) -> Observable<[GetCategory]>
 }

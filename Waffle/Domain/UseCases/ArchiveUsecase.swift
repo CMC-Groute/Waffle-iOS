@@ -14,6 +14,7 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
     var repository: ArchiveRepository!
     var disposeBag = DisposeBag()
     var addArchiveSuccess = PublishRelay<Bool>()
+    var code: String?
     
     init(repository: ArchiveRepository){
         self.repository = repository
@@ -25,11 +26,6 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
             return String(s[..<index])
         }
         return s
-    }
-    
-    func checkCodeValid(code: String) -> Bool {
-        return repository.checkCodeValid(code: code)
-            
     }
     
     func addArchive(archive: AddArchive) {
@@ -47,6 +43,10 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
                     self.addArchiveSuccess.accept(false)
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    func joinArchive(code: String) {
+        
     }
     
 }
