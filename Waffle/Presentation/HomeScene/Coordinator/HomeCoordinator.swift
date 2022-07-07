@@ -27,7 +27,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     func start() {
         homeViewController.viewModel = HomeViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
-        self.navigationController.pushViewController(self.homeViewController, animated: true)
+        self.navigationController.pushViewController(homeViewController, animated: true)
     }
     
     func archiveFlow(cardInfo: CardInfo?) { 
@@ -39,11 +39,9 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     func detailArchive(selectedArchive: CardInfo) {
         detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
-        detailArchiveViewController.viewModel?.setArchive(archive: selectedArchive)
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
-        
-        //데이터 전달
-        detailArchiveViewController.viewModel?.detailArchive = selectedArchive
+        detailArchiveViewController.viewModel?.id = selectedArchive.id
+        detailArchiveViewController.viewModel?.cardInfo = selectedArchive
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     

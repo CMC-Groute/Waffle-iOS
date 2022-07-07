@@ -9,5 +9,4 @@ import Foundation
 
 protocol ArchiveUsecaseProtocol {
     func maximumTextLength(length: Int, s: String) -> String
-    func checkCodeValid(code: String) -> Bool
 }

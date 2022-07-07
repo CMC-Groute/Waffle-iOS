@@ -11,8 +11,5 @@ import RxSwift
 
 protocol ArchiveRepositoryProtocol {
     func joinArchiveCode(invitationCode: String)
-    //약속 만들기
     func addArchive(archive: AddArchive) -> Observable<DetaultIntResponse>
-    func checkCodeValid(code: String) -> Bool
-    
 }
