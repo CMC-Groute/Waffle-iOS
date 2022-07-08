@@ -8,7 +8,7 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-    var coordinator: ArchiveCoordinator!
+    var coordinator: HomeCoordinator!
     var popUpView = ArchivePopUpView()
     
     var didTapLastItem: Bool = false

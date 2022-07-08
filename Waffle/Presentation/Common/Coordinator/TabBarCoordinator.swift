@@ -89,6 +89,7 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             mapCoordinator.start()
         case .home:
             let homeCoordinator = HomeCoordinator(navigationVewController)
+            tabBarController.coordinator = homeCoordinator
             homeCoordinator.finishDelegate = self
             self.childCoordinators.append(homeCoordinator)
             homeCoordinator.start()
@@ -98,7 +99,8 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()
         case .archive:
-            self.tabBarController.coordinator = ArchiveCoordinator(self.navigationController)
+            WappleLog.debug("archive")
+//            self.tabBarController.coordinator = homeCoordinator
         
        }
     }

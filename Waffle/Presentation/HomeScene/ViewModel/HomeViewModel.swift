@@ -33,8 +33,8 @@ class HomeViewModel: ObservableObject {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         input.makeArchiveButton
-            .subscribe(onNext: {
-                self.coordinator.archiveFlow(cardInfo: nil)
+            .subscribe(onNext: { [weak self] _ in
+                self?.coordinator.addArchive()
             }).disposed(by: disposeBag)
         
         input.viewWillAppearEvent
@@ -44,7 +44,8 @@ class HomeViewModel: ObservableObject {
                 }).disposed(by: disposeBag)
         
         usecase.cardInfo
-            .subscribe(onNext: { cardInfo in
+            .subscribe(onNext: { [weak self] cardInfo in
+                guard let self = self else { return }
                 if let cardInfo = cardInfo {
                     self.cardInfo = cardInfo
                     output.isHiddenView.accept(false)
@@ -57,6 +58,6 @@ class HomeViewModel: ObservableObject {
     }
     
     func detailArchive(selectedArchive: CardInfo) {
-        self.coordinator.detailArchive(selectedArchive: selectedArchive)
+        coordinator.detailArchive(selectedArchive: selectedArchive)
     }
 }

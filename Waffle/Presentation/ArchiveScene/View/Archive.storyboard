@@ -386,7 +386,7 @@
         <!--Input Archive Code View Controller-->
         <scene sceneID="9RF-tz-8xz">
             <objects>
-                <viewController storyboardIdentifier="InputArchiveCodeViewController" id="LTN-Fd-8Dg" customClass="InputArchiveCodeViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InputArchiveCodeViewController" hidesBottomBarWhenPushed="YES" id="LTN-Fd-8Dg" customClass="InputArchiveCodeViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fA7-Ns-zEg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

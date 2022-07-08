@@ -8,8 +8,6 @@
 import Foundation
 
 protocol HomeCoordinatorProtocol: Coordinator {
-    func archiveFlow(cardInfo: CardInfo?)
-    func editArchive(cardInfo: CardInfo?)
     func detailArchive(selectedArchive: CardInfo)
     func addDetailPlace(category: [PlaceCategory])
     
@@ -28,4 +26,10 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func arhiveDelete()
     func likeSend()
     func deletePlace(placeId: Int)
+    
+    //MARK: Archive
+    func addArchive()
+    func inputCodeArchive()
+    func addLocation()
+    func editArchive(cardInfo: CardInfo?)
 }

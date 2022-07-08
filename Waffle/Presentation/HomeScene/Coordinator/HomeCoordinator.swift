@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-final class HomeCoordinator: HomeCoordinatorProtocol {    
-    
+final class HomeCoordinator: HomeCoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
@@ -28,13 +27,6 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     func start() {
         homeViewController.viewModel = HomeViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(homeViewController, animated: true)
-    }
-    
-    func archiveFlow(cardInfo: CardInfo?) { 
-        let archiveCoordinator = ArchiveCoordinator(self.navigationController)
-        self.childCoordinators.append(archiveCoordinator)
-        archiveCoordinator.finishDelegate = self
-        archiveCoordinator.addArchive()
     }
     
     func detailArchive(selectedArchive: CardInfo) {
@@ -102,13 +94,6 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         deletePlacePopUpView.modalPresentationStyle = .overFullScreen
         deletePlacePopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(deletePlacePopUpView, animated: false)
-    }
-    
-    func editArchive(cardInfo: CardInfo?) {
-        let archiveCoordinator = ArchiveCoordinator(self.navigationController)
-        self.childCoordinators.append(archiveCoordinator)
-        archiveCoordinator.finishDelegate = self
-        archiveCoordinator.editArchive(cardInfo: cardInfo)
     }
     
     func popToViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
@@ -203,6 +188,44 @@ extension HomeCoordinator: CoordinatorFinishDelegate {
         self.childCoordinators = self.childCoordinators
             .filter({ $0.type != childCoordinator.type })
         childCoordinator.navigationController.popViewController(animated: true)
+    }
+    
+}
+
+extension HomeCoordinator {
+    func addArchive() {
+        let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddArchiveViewController") as! AddArchiveViewController
+        addArchiveViewcontroller.viewModel = AddArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
+    }
+    
+    func editArchive(cardInfo: CardInfo?) {
+        let editArchiveViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "EditArchiveViewController") as! EditArchiveViewController
+        editArchiveViewController.viewModel = EditArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        if let cardInfo = cardInfo {
+            editArchiveViewController.viewModel?.cardInfo = cardInfo
+        }
+        self.navigationController.pushViewController(editArchiveViewController, animated: true)
+    }
+    
+    func addLocation() {
+        let addLocationViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as! AddLocationViewController
+        self.navigationController.pushViewController(addLocationViewController, animated: true)
+    }
+    
+    func inputCodeArchive() {
+        let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveCodeViewController") as! InputArchiveCodeViewController
+        inputArchiveCodeViewController.viewModel = InputArchiveCodeViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
+
+    }
+    
+    func popToNavigaionController() {
+        navigationController.popViewController(animated: true)
+    }
+    
+    func popToRootViewController() {
+        navigationController.popToRootViewController(animated: true)
     }
     
 }

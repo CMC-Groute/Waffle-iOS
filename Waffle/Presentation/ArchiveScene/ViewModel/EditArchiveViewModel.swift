@@ -11,12 +11,12 @@ import RxCocoa
 
 class EditArchiveViewModel {
     var usecase: ArchiveUsecase!
-    var coordinator: ArchiveCoordinator!
+    var coordinator: HomeCoordinator!
     
     var disposeBag = DisposeBag()
     var cardInfo: CardInfo?
     
-    init(usecase: ArchiveUsecase, coordinator: ArchiveCoordinator){
+    init(usecase: ArchiveUsecase, coordinator: HomeCoordinator){
         self.usecase = usecase
         self.coordinator = coordinator
     }
