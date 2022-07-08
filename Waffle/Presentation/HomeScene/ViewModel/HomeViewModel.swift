@@ -46,7 +46,7 @@ class HomeViewModel: ObservableObject {
         usecase.cardInfo
             .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
-                if let cardInfo = cardInfo {
+                if let cardInfo = cardInfo, !cardInfo.isEmpty {
                     self.cardInfo = cardInfo
                     output.isHiddenView.accept(false)
                 }else {

@@ -17,8 +17,8 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
         service = networkService
     }
     
+    //약속 참여하기
     func joinArchiveCode(invitationCode: String) -> Observable<DetaultIntResponse> {
-        //약속 참여하기
         let api = ArchiveAPI.joinArchive(code: invitationCode)
         return service.request(api)
             .map ({ response -> DetaultIntResponse in

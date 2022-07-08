@@ -56,6 +56,7 @@ class HomeViewController: UIViewController {
         
         output?.isHiddenView
             .subscribe(onNext: { [weak self] bool in
+                print("isHidden \(bool)")
                 guard let self = self else { return }
                 self.collectionView.reloadData()
                 self.updateButtonCount()

@@ -19,8 +19,8 @@ class DetailArchiveViewModel {
     var selectedCategory: PlaceCategory = PlaceCategory.confirmCategory // 확정 카테고리
     var placeInfo: [DecidedPlace]?
     var confirmCategoryIndex = -1
-    var id: Int = 0
-    var code: String?
+    var archiveId: Int = 0
+    var archiveCode: String?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -42,7 +42,9 @@ class DetailArchiveViewModel {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 guard let id = self.cardInfo?.id else { return }
-                self.usecase.getDetailArchiveInfo(placeId: id)
+                self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
+                WappleLog.debug("detailArchiveVieModel id - \(self.archiveId)")
+                self.getArchiveCode()
             }).disposed(by: disposeBag)
         
         input.addPlaceButton
@@ -52,14 +54,26 @@ class DetailArchiveViewModel {
             }).disposed(by: disposeBag)
         
         usecase.detailArchive
-            .subscribe(onNext: { detailArchive in
+            .subscribe(onNext: { [weak self] detailArchive in
+                    guard let self = self else { return }
                 if let detailArchive = detailArchive {
                     self.placeInfo = detailArchive.decidedPlace
                     self.category += detailArchive.category ?? []
                 }
             }).disposed(by: disposeBag)
         
+        usecase.archiveCode
+            .subscribe(onNext: { [weak self] code in
+                guard let self = self else { return }
+                self.archiveCode = code
+                WappleLog.debug("archiveCode \(code ?? nil)")
+            }).disposed(by: disposeBag)
+        
         return output
+    }
+    
+    func getArchiveCode() {
+        usecase.getArchiveCode(archiveId: archiveId) {}
     }
     
     func loadCategoryWithoutConfirm() -> [PlaceCategory] {
@@ -86,7 +100,7 @@ class DetailArchiveViewModel {
     }
     
     func invitations() {
-        self.coordinator.invitationBottomSheet(copyCode: self.usecase.code ?? "")
+        self.coordinator.invitationBottomSheet(copyCode: self.archiveCode ?? "")
     }
     
     func setCategory(category: PlaceCategory) {
@@ -115,10 +129,6 @@ class DetailArchiveViewModel {
     
     func popViewController() {
         coordinator.popViewController()
-    }
-    
-    func getArchiveCode() {
-       
     }
 
 }

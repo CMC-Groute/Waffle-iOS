@@ -32,7 +32,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     func detailArchive(selectedArchive: CardInfo) {
         detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
-        detailArchiveViewController.viewModel?.id = selectedArchive.id
+        detailArchiveViewController.viewModel?.archiveId = selectedArchive.id
         detailArchiveViewController.viewModel?.cardInfo = selectedArchive
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }

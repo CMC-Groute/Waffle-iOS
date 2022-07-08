@@ -51,9 +51,9 @@ final class CardView: UIView {
         cardImageView.image = UIImage(named: "card-\(wappleIndex)")
         titleLabel.text = item.title
         placeLabel.text = item.place ?? DefaultDetailCardInfo.where.rawValue
-        if let date = item.date {
+        if let date = item.date, let time = item.time {
             //let dateArray = Date.getDate(dateString: date) "\(dateArray[0]) \(dateArray[1])"
-            timeLabel.text = date
+            timeLabel.text = "\(date) \(time)"
         }else {
             timeLabel.text = DefaultDetailCardInfo.when.rawValue
         }

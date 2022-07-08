@@ -16,8 +16,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var detailArchive = PublishSubject<DetailArhive?>()
     var cardInfo = PublishSubject<[CardInfo]?>()
     var disposeBag = DisposeBag()
-    var archiveId: Int = 0
-    var code: String?
+    var archiveCode = PublishSubject<String?>()
     
     init(repository: HomeRepository){
         self.repository = repository
@@ -41,11 +40,10 @@ class HomeUsecase: HomeUsecaseProtocol {
     func getDetailArchiveInfo(placeId: Int) { // 디테일 페이지 카드 조회
         repository.getDetailArchiveInfo(id: placeId)
             .catch { error -> Observable<GetDetailArchive> in
-                let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("getDetailArchiveInfo error \(error)")
+                let error = error as! URLSessionNetworkServiceError
                 return .just(GetDetailArchive(status: error.rawValue, data: nil))
-            }
-            .observe(on: MainScheduler.instance)
+            }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] detailArchive in
                 guard let self = self else { return }
                 WappleLog.debug("getDetailArchiveInfo \(detailArchive)")
@@ -79,14 +77,17 @@ class HomeUsecase: HomeUsecaseProtocol {
         
     }
     
-    func getArchiveCode() {
+    // 약속 코드 조회
+    func getArchiveCode(archiveId: Int, completion: () -> Void) {
         repository.getArchiveCode(id: archiveId)
+            .observe(on: MainScheduler.instance)
             .catch { error -> Observable<GetArchiveCode> in
                 let error = error as! URLSessionNetworkServiceError
-                WappleLog.error("error \(error)")
+                WappleLog.error("getArchiveCode error \(error)")
                 return .just(GetArchiveCode(status: error.rawValue, data: nil))
-            }.subscribe(onNext: { response in
-                self.code = response.data?.code
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                self.archiveCode.onNext(response.data?.code)
             }).disposed(by: disposeBag)
     }
 
