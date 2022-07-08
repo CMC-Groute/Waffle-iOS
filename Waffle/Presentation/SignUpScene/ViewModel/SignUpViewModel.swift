@@ -117,25 +117,21 @@ class SignUpViewModel {
                 output.emailInvalidMessage.accept((message ?? nil, color ?? nil))
             }).disposed(by: disposeBag)
         
-        input.emailAuthenButton // 중복 이메일 검사 TO DO
+        input.emailAuthenButton
             .withLatestFrom(input.emailTextField)
             .bind(onNext: { [weak self] email in
                 guard let self = self else { return }
-                self.usecase.checkEmailValidation(email: email)
-                    .subscribe(onNext: { bool in
-                        if bool {
-                            output.isEmailInvalid.accept(.aready) // 중복임
-                        }else { // 이메일 보냄
-                            self.usecase.sendAuthenCode(email: email)
-                        }
-                    }).disposed(by: disposeBag)
+                //email send
+                self.usecase.sendEmail(email: email)
             }).disposed(by: disposeBag)
         
-        usecase.authenCodeSuccess
-            .subscribe(onNext: { bool in
-                if bool { // 전송 성공
+        usecase.sendEmailSuccess
+            .subscribe(onNext: { status in
+                WappleLog.debug("sendEmailSuccess \(status)")
+                switch status {
+                case .sendEmail:
                     output.isEmailInvalid.accept(.checkEmail)
-                }else { // 이미 가입된 메일
+                case .already:
                     output.isEmailInvalid.accept(.aready)
                 }
             }).disposed(by: disposeBag)

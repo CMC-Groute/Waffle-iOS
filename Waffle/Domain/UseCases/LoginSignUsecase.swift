@@ -9,6 +9,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum SendEmailStatus {
+    case already
+    case sendEmail
+}
+
 enum LoginStatus {
     case login
     case invalidEmail
@@ -20,7 +25,7 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     private var repository: LoginSignRepository!
     let disposeBag = DisposeBag()
-    let authenCodeSuccess = PublishSubject<Bool>()
+    let sendEmailSuccess = PublishSubject<SendEmailStatus>()
     let loginSuccess = PublishSubject<LoginStatus>()
     
     init(repository: LoginSignRepository) {
@@ -81,23 +86,23 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             .map { $0.status == 200 }
     }
     
-    func checkEmailValidation(email: String) -> Observable<Bool> {
-        return Observable.of(false)
-    }
-    
     func checkEmailCode(email: String, code: String) -> Observable<Bool> {
         return repository.checkEmailCode(email: email, code: code)
             .map { $0.status == 200 }
     }
     
-    func sendAuthenCode(email: String) {
+    func sendEmail(email: String) {
         repository.sendEmail(email: email)
+            .catch { error -> Observable<DefaultResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("error \(error)")
+                return .just(DefaultResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 if response.status == 200 {
-                    //메세지 전송 성공
-                    self.authenCodeSuccess.onNext(true)
+                    self.sendEmailSuccess.onNext(.sendEmail)
                 }else {
-                    self.authenCodeSuccess.onNext(false)
+                    self.sendEmailSuccess.onNext(.already)
                 }
             }).disposed(by: disposeBag)
     }
