@@ -17,8 +17,19 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
         service = networkService
     }
     
-    func joinArchiveCode(invitationCode: String) {
+    func joinArchiveCode(invitationCode: String) -> Observable<DetaultIntResponse> {
         //약속 참여하기
+        let api = ArchiveAPI.joinArchive(code: invitationCode)
+        return service.request(api)
+            .map ({ response -> DetaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw LoginSignError.decodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
     
     func addArchive(archive: AddArchive) -> Observable<DetaultIntResponse> {

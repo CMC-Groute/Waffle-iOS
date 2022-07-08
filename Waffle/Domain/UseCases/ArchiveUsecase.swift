@@ -9,11 +9,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum JoinArchiveStatus {
+    case success
+    case inValid
+    case already
+}
+
 class ArchiveUsecase: ArchiveUsecaseProtocol {
    
     var repository: ArchiveRepository!
     var disposeBag = DisposeBag()
+
     var addArchiveSuccess = PublishRelay<Bool>()
+    var joinArhicveSuccess = PublishRelay<JoinArchiveStatus>()
     var code: String?
     
     init(repository: ArchiveRepository){
@@ -46,7 +54,22 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
     }
     
     func joinArchive(code: String) {
-        
+        return repository.joinArchiveCode(invitationCode: code)
+            .catch { error -> Observable<DetaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("joinArchive \(error)")
+                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                WappleLog.debug("joinArchive \(response)")
+                if response.status == 400 { // 이미 가입
+                    self.joinArhicveSuccess.accept(.already)
+                }else if response.status == 404 {
+                    self.joinArhicveSuccess.accept(.inValid)
+                }else {
+                    self.joinArhicveSuccess.accept(.success)
+                }
+            }).disposed(by: disposeBag)
     }
     
 }

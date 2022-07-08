@@ -56,7 +56,7 @@ extension ArchiveAPI {
             case .getArchiveCard, .getArchiveCode(_), .getArchiveDetail(_), .deleteArchive(_):
                 return nil
             case .joinArchive(let code):
-                return code.dictionary
+            return ["invitationCode" : code]
             case .addArchive(let archive):
                 return archive.dictionary
             }

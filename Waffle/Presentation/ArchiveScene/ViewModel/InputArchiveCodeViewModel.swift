@@ -9,6 +9,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum CodeInvalidType: String {
+    case already = "이미 중복된 회원이에요."
+    case inValid = "존재하지 않는 약속 코드에요."
+    case success = ""
+}
+
 class InputArchiveCodeViewModel {
     var usecase: ArchiveUsecase!
     var coordinator: HomeCoordinator!
@@ -28,8 +34,9 @@ class InputArchiveCodeViewModel {
     }
     
     struct Output {
-        let inValidCodeMessage = BehaviorRelay<Bool>(value: false)
+        let inValidCodeMessage = PublishRelay<(CodeInvalidType, Bool)>()
         let joinButtonEnabled = BehaviorRelay<Bool>(value: false)
+        //let
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -39,7 +46,7 @@ class InputArchiveCodeViewModel {
             .subscribe(onNext: { text in
                 if !text.isEmpty { // 조건 : 한글자 이상 입력
                     output.joinButtonEnabled.accept(true)
-                    output.inValidCodeMessage.accept(false)
+                    output.inValidCodeMessage.accept((.success, false))
                 }else {
                     output.joinButtonEnabled.accept(false)
                 }
@@ -49,13 +56,21 @@ class InputArchiveCodeViewModel {
             .withLatestFrom(input.codeTextField)
             .subscribe(onNext: { [weak self] code in
                 guard let self = self else { return }
-//                if self.usecase.checkCodeValid(code: code) {
-//                    // self.coordinator. 약속 참여하기
-//                }else {
-//                    output.inValidCodeMessage.accept(true)
-//                }
-            })
-            .disposed(by: disposeBag)
+                self.usecase.joinArchive(code: code)
+            }).disposed(by: disposeBag)
+        
+        usecase.joinArhicveSuccess
+            .subscribe(onNext: { [weak self] status in
+                guard let self = self else { return }
+                switch status {
+                case .inValid:
+                    output.inValidCodeMessage.accept((.inValid, true))
+                case .success:
+                    output.inValidCodeMessage.accept((.success, false))
+                case .already:
+                    output.inValidCodeMessage.accept((.already, true))
+                }
+            }).disposed(by: disposeBag)
         
         return output
     }

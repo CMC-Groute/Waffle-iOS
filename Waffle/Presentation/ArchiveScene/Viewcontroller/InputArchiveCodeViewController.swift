@@ -114,8 +114,9 @@ class InputArchiveCodeViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         output?.inValidCodeMessage
-            .subscribe(onNext: { bool in
+            .subscribe(onNext: { (status, bool) in
                 self.inValidCodeMessageText.isHidden = !bool
+                self.inValidCodeMessageText.text = status.rawValue
                 self.codeTextField.errorBorder(bool: !bool)
             }).disposed(by: disposeBag)
         

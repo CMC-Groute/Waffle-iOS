@@ -10,6 +10,6 @@ import RxCocoa
 import RxSwift
 
 protocol ArchiveRepositoryProtocol {
-    func joinArchiveCode(invitationCode: String)
+    func joinArchiveCode(invitationCode: String) -> Observable<DetaultIntResponse>
     func addArchive(archive: AddArchive) -> Observable<DetaultIntResponse>
 }
