@@ -35,7 +35,6 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
                     throw error
                 }
             })
-         
     }
     
     func singUp(signUpInfo: SignUp) -> Observable<SignUpResponse>  {
@@ -85,7 +84,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     
     func getTempPassword(email: String) -> Observable<DefaultResponse> {
         let api = LoginSignAPI.findPassword(email: email)
-        print("login repository getTempPassword")
+        WappleLog.debug("login repository getTempPassword")
         return service.request(api)
             .map ({ response -> DefaultResponse in
                 switch response {

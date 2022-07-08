@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct GetPlaceResponse: Codable {
+    var message: String
+    var data: [PlaceByCategory]
+}
+
 struct PlaceSearchInfo: Codable {
     var address: String
     var categoryGroupCode: String

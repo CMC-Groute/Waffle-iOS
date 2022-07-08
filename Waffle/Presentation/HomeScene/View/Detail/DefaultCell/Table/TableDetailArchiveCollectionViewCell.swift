@@ -11,7 +11,7 @@ class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "TableDetailArchiveCollectionViewCell"
     @IBOutlet private weak var tableView: UITableView!
     //var viewModel: DetailArchiveViewModel?
-    var place: [PlaceInfo] = []
+    var place: [PlaceByCategory] = []
     var categories: [Category] = []
     
     var noPlaceView: UIView = {
@@ -68,7 +68,7 @@ class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
-    func configureCell(place: [PlaceInfo]) {
+    func configureCell(place: [PlaceByCategory]) {
         self.place = place
         self.tableView.reloadData()
     }
@@ -130,13 +130,13 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
     //        print(cell.likeButton.isSelected)
     //        print(cell.placeId)
             if cell.likeButton.isSelected {
-                place[cell.placeId].likeCount += 1
+                place[cell.placeId].placeLike.likeCount += 1
             }else {
-                if (place[cell.placeId].likeCount) > 0 {
-                    place[cell.placeId].likeCount -= 1
+                if (place[cell.placeId].placeLike.likeCount) > 0 {
+                    place[cell.placeId].placeLike.likeCount -= 1
                 }
             }
-            place[cell.placeId].likeSelected = cell.likeButton.isSelected
+            place[cell.placeId].placeLike.isPlaceLike = cell.likeButton.isSelected
             tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
         }
     

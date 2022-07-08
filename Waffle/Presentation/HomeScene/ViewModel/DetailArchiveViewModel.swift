@@ -70,15 +70,15 @@ class DetailArchiveViewModel {
     // 카테고리로 필터링된 place들
     func placeInfoByCategory() -> [PlaceByCategory] {
         //let place = placeInfo.filter { $0.category.index == selectedCategory.index }
-        return place
+        return []
     }
     
     func detailArhive() { // bottomSheet popUp
         coordinator.detailArchiveBottomSheet(cardInfo: cardInfo)
     }
     
-    func detailPlace(place: PlaceInfo, category: PlaceCategory) {
-        coordinator.detailPlace(detailInfo: place, category: loadCategoryWithoutConfirm(), categoryInfo: category)
+    func detailPlace(place: PlaceByCategory, category: PlaceCategory) {
+        coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: loadCategoryWithoutConfirm())
         }
     
     func participants() {

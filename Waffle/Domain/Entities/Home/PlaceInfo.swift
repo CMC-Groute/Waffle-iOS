@@ -26,7 +26,7 @@ import Foundation
 //    var index: Int
 //    //var selected: Bool = false
 //    static var defaultList = Category(name: "확정", index: -1)
-//    static var dummyList = [Category(name: "아침", index: 2), Category(name: "할거리", index: 6)]
+//    static var dummySelectedList = [Category(name: "아침", index: 2), Category(name: "할거리", index: 6)]
 //    static var categoryList = [Category(name: "맛집", index: 0),
 //                               Category(name: "카페", index: 1),
 //                               Category(name: "아침", index: 2),

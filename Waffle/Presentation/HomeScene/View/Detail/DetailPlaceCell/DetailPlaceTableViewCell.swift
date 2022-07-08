@@ -74,28 +74,28 @@ class DetailPlaceTableViewCell: UITableViewCell {
         self.placeId = index
     }
     
-    func configureCell(placeInfo: PlaceInfo) {
-        if placeInfo.category.index == -1 {
-            canEditingButton.isHidden = false
-        }else {
-            canEditingButton.isHidden = true
-        }
+    func configureCell(placeInfo: PlaceByCategory) {
+//        if placeInfo.category.index == -1 {
+//            canEditingButton.isHidden = false
+//        }else {
+//            canEditingButton.isHidden = true
+//        }
         
         titleLabel.text = placeInfo.title
-        placeLabel.text = placeInfo.place
+        placeLabel.text = placeInfo.roadNameAddress
         if placeInfo.isConfirm {
             confirmButton.setImage(Asset.Assets.placeCheckSelected.image, for: .normal)
         }else {
             confirmButton.setImage(Asset.Assets.placeCheck.image, for: .normal)
         }
         
-        if placeInfo.likeSelected {
+        if placeInfo.placeLike.isPlaceLike {
             likeButton.isSelected = true
         }else {
             likeButton.isSelected = false
         }
         // TO DO : 유저가 좋아요 한 장소인지에 따라 버튼 이미지 바꾸기
-        likeButton.setTitle("좋아요 \(placeInfo.likeCount)", for: .normal)
+        likeButton.setTitle("좋아요 \(placeInfo.placeLike.likeCount)", for: .normal)
     }
     
     private func bindUI() {

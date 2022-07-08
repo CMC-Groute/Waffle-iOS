@@ -16,11 +16,21 @@ struct PlaceByCategory: Codable {
     var placeId: Int
     var title: String
     var roadNameAddress: String
-    var isDecision: Bool
+    var isConfirm: Bool
     var placeLike: PlaceLike
+    
+    enum CodingKeys: String, CodingKey {
+        case placeId, title, roadNameAddress, placeLike
+        case isConfirm = "isDecision"
+    }
 }
 
 struct PlaceLike: Codable {
     var isPlaceLike: Bool
-    var likeCnt: Int
+    var likeCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case isPlaceLike
+        case likeCount = "likeCnt"
+    }
 }

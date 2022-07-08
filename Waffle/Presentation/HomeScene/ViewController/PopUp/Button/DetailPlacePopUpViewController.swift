@@ -34,9 +34,9 @@ class DetailPlacePopUpViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
-    var detailInfo: PlaceInfo?
-    var category: Category!
-    var categoryInfo: [Category] = []
+    var detailInfo: PlaceByCategory?
+    var category: PlaceCategory!
+    var categories: [PlaceCategory] = []
     convenience init(coordinator: HomeCoordinator){
         self.init()
         self.coordinator = coordinator
@@ -63,13 +63,13 @@ class DetailPlacePopUpViewController: UIViewController {
 
         self.titleLabel.text = detailInfo.title
         self.categoryLabel.text = "#\(category.name)"
-        self.placeLabel.text = detailInfo.place
-        if detailInfo.likeSelected {
+        self.placeLabel.text = detailInfo.roadNameAddress
+        if detailInfo.placeLike.isPlaceLike {
             likeCountButton.isSelected = true
         }
         
         updateConfirm(isConfirm: detailInfo.isConfirm)
-        self.likeCountButton.setTitle("\(detailInfo.likeCount)", for: .normal)
+        self.likeCountButton.setTitle("\(detailInfo.placeLike.likeCount)", for: .normal)
         
         self.likeCountButton
             .rx.tap.subscribe(onNext: { [weak self] in
@@ -83,15 +83,15 @@ class DetailPlacePopUpViewController: UIViewController {
                 guard let self = self else { return }
                 let placeId: Int = 0
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editPlace(placeId: placeId, category: self.categoryInfo)
+                self.coordinator.editPlace(placeId: placeId, category: self.categories)
             }).disposed(by: disposBag)
         
         func updateLikeCount() {
             if likeCountButton.isSelected {
-                self.likeCountButton.setTitle("\(detailInfo.likeCount + 1)", for: .normal)
+                self.likeCountButton.setTitle("\(detailInfo.placeLike.likeCount + 1)", for: .normal)
             }else {
-                if detailInfo.likeCount > 0 {
-                    self.likeCountButton.setTitle("\(detailInfo.likeCount)", for: .normal)
+                if detailInfo.placeLike.likeCount > 0 {
+                    self.likeCountButton.setTitle("\(detailInfo.placeLike.likeCount)", for: .normal)
                 }
             }
         }
