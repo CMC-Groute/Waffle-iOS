@@ -1587,6 +1587,36 @@
             </objects>
             <point key="canvasLocation" x="3643" y="690"/>
         </scene>
+        <!--Home Alarm View Controller-->
+        <scene sceneID="ZLo-NY-GSv">
+            <objects>
+                <viewController storyboardIdentifier="HomeAlarmViewController" hidesBottomBarWhenPushed="YES" id="Td9-v7-R7D" customClass="HomeAlarmViewController" customModule="Waffle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HRx-hD-uPe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PAw-Xk-uMr">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hD4-IA-VDg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hD4-IA-VDg" firstAttribute="bottom" secondItem="PAw-Xk-uMr" secondAttribute="bottom" id="0Ah-EZ-1zO"/>
+                            <constraint firstItem="PAw-Xk-uMr" firstAttribute="leading" secondItem="hD4-IA-VDg" secondAttribute="leading" id="C76-WX-oXq"/>
+                            <constraint firstItem="hD4-IA-VDg" firstAttribute="trailing" secondItem="PAw-Xk-uMr" secondAttribute="trailing" id="W1e-WS-yH2"/>
+                            <constraint firstItem="PAw-Xk-uMr" firstAttribute="top" secondItem="hD4-IA-VDg" secondAttribute="top" id="f5g-on-JZB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PAw-Xk-uMr" id="qNo-yb-EMg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xLc-CS-LxZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4344" y="690"/>
+        </scene>
         <!--Delete Place Pop Up View Controller-->
         <scene sceneID="v4J-Tk-uya">
             <objects>

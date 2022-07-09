@@ -13,6 +13,10 @@
 		13062E0C28795399003774A7 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 13062E0B28795399003774A7 /* FirebaseDatabase */; };
 		13062E0E28795399003774A7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 13062E0D28795399003774A7 /* FirebaseFirestore */; };
 		13062E1028795399003774A7 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 13062E0F28795399003774A7 /* FirebaseMessaging */; };
+		13062E122879576A003774A7 /* HomeAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E112879576A003774A7 /* HomeAlarmViewController.swift */; };
+		13062E1A28795B6F003774A7 /* HomeAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */; };
+		13062E1B28795B6F003774A7 /* HomeAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */; };
+		13062E1F287965B7003774A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1E287965B7003774A7 /* GoogleService-Info.plist */; };
 		132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */; };
 		133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D13284E0E88008E1185 /* UserDefaultKey.swift */; };
 		133D5438287446490068EA90 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
@@ -192,6 +196,10 @@
 /* Begin PBXFileReference section */
 		06B67A86390343DB721A26CA /* Pods_WaffleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaffleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		112C07E8D03FEF4C5797A43C /* Pods-Waffle-WaffleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Waffle-WaffleUITests.debug.xcconfig"; path = "Target Support Files/Pods-Waffle-WaffleUITests/Pods-Waffle-WaffleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		13062E112879576A003774A7 /* HomeAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmViewController.swift; sourceTree = "<group>"; };
+		13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmTableViewCell.swift; sourceTree = "<group>"; };
+		13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAlarmTableViewCell.xib; sourceTree = "<group>"; };
+		13062E1E287965B7003774A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
@@ -395,6 +403,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13062E1728795A94003774A7 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */,
+				13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
 		135B60552858501E0035AE4B /* LocationContainterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1123,6 +1140,7 @@
 				1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */,
 				13CA03F12871D8150087E79E /* EditPlaceViewController.swift */,
 				13CA03E328718C1F0087E79E /* SearchPlaceViewController.swift */,
+				13062E112879576A003774A7 /* HomeAlarmViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1158,6 +1176,7 @@
 		F29ED30C2855DBAA002371FD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13062E1728795A94003774A7 /* Alarm */,
 				1390EC8E28698E5B00E5520C /* Detail */,
 				1390EC8D28698E4C00E5520C /* Card */,
 				F29ED30D2855DBB2002371FD /* Home.storyboard */,
@@ -1237,6 +1256,7 @@
 		F2A412D62849EFD700E04BF5 /* Waffle */ = {
 			isa = PBXGroup;
 			children = (
+				13062E1E287965B7003774A7 /* GoogleService-Info.plist */,
 				1378532C2875589C00B11E5E /* Waffle.entitlements */,
 				F21972CC284B8C1B0086E56B /* Utils */,
 				F21972C9284B8BC60086E56B /* Resources */,
@@ -1373,6 +1393,7 @@
 				133D55E328745CE70068EA90 /* Setting.storyboard in Resources */,
 				132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */,
 				F29ED30E2855DBB2002371FD /* Home.storyboard in Resources */,
+				13062E1B28795B6F003774A7 /* HomeAlarmTableViewCell.xib in Resources */,
 				F29ED3142855DBCE002371FD /* Map.storyboard in Resources */,
 				F2A412E12849EFD900E04BF5 /* Assets.xcassets in Resources */,
 				F2125D51284E60FD008E1185 /* SignUp.storyboard in Resources */,
@@ -1386,6 +1407,7 @@
 				137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */,
 				137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */,
 				1390EC34286335E200E5520C /* CardView.xib in Resources */,
+				13062E1F287965B7003774A7 /* GoogleService-Info.plist in Resources */,
 				1378533E2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib in Resources */,
 				F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */,
 			);
@@ -1602,9 +1624,11 @@
 				133D55C328744BDD0068EA90 /* HomeCoordinator.swift in Sources */,
 				135543982877276100F8CA0D /* GetPlaceByCategory.swift in Sources */,
 				137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */,
+				13062E122879576A003774A7 /* HomeAlarmViewController.swift in Sources */,
 				133D55C428744BDD0068EA90 /* SettingCoordinatorProtocol.swift in Sources */,
 				133D558B28744BBA0068EA90 /* LoginSignUsecaseProtocol.swift in Sources */,
 				133D558C28744BBA0068EA90 /* UserUseCaseProtocol.swift in Sources */,
+				13062E1A28795B6F003774A7 /* HomeAlarmTableViewCell.swift in Sources */,
 				133D558D28744BBA0068EA90 /* ArchiveUsecaseProtocol.swift in Sources */,
 				133D558E28744BBA0068EA90 /* HomeUsecaseProtocol.swift in Sources */,
 				133D558F28744BBA0068EA90 /* LoginSignUsecase.swift in Sources */,

@@ -55,7 +55,7 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
 
 extension TabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.tag == 3 {
+        if item.tag == 2 {
             popUpView.isHidden.toggle()
             if self.tabBar.items![item.tag].image == Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal) {
                 self.tabBar.items![item.tag].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
