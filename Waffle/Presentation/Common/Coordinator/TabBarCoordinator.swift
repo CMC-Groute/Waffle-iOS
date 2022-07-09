@@ -82,11 +82,11 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     
     func startTabCoordinator(of page: TabBarPage, to navigationVewController: UINavigationController) {
         switch page {
-        case .map:
-            let mapCoordinator = MapCoordinator(navigationVewController)
-            mapCoordinator.finishDelegate = self
-            self.childCoordinators.append(mapCoordinator)
-            mapCoordinator.start()
+//        case .map:
+//            let mapCoordinator = MapCoordinator(navigationVewController)
+//            mapCoordinator.finishDelegate = self
+//            self.childCoordinators.append(mapCoordinator)
+//            mapCoordinator.start()
         case .home:
             let homeCoordinator = HomeCoordinator(navigationVewController)
             tabBarController.coordinator = homeCoordinator

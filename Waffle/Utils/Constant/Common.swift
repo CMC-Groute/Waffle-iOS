@@ -14,7 +14,7 @@ struct Common {
 }
 
 enum CoordinatorType {
-    case app, login, signUp, tab, home, map, setting, archive
+    case app, login, signUp, tab, home, setting, archive //map
 }
 
 enum CategoryType: String {
