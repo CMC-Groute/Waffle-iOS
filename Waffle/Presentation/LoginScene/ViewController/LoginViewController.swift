@@ -99,17 +99,20 @@ class LoginViewController: UIViewController {
         let output = self.viewModel?.transform(from: input, disposeBag: self.disposeBag)
         output?.emailInvalidMessage
             .subscribe(onNext: { [weak self] bool in
+                WappleLog.debug("email \(bool)")
                 guard let self = self else { return }
-                self.emailInvalidText.isHidden = bool
-                self.emailTextField.errorBorder(bool: bool)
+                self.emailInvalidText.isHidden = !bool
+                self.emailTextField.errorBorder(bool: !bool)
+                self.passwordTextField.errorBorder(bool: bool)
             }).disposed(by: disposeBag)
         
         
         output?.passwordInvalidMessage
             .subscribe(onNext: { [weak self] bool in
                 guard let self = self else { return }
-                self.passwordInvalidText.isHidden = bool
-                self.passwordTextField.errorBorder(bool: bool)
+                self.passwordInvalidText.isHidden = !bool
+                self.passwordTextField.errorBorder(bool: !bool)
+                self.emailTextField.errorBorder(bool: bool)
             }).disposed(by: disposeBag)
         
         input.emailTextFieldDidTapEvent

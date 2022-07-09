@@ -64,12 +64,15 @@ class HomeRepository: HomeRepositoryProtocol {
     
     //약속 상세 조회
     func getDetailArchiveInfo(id: Int) -> Observable<GetDetailArchive> {
-        let api = ArchiveAPI.deleteArchive(archiveId: id)
+        let api = ArchiveAPI.getArchiveDetail(archiveId: id)
         return service.request(api)
             .map ({ response -> GetDetailArchive in
                 switch response {
                 case .success(let data):
+                    let staring = String(data: data, encoding: .utf8)
+                    WappleLog.debug("getDetailArchiveInfo data \(staring)")
                     guard let data = JSON.decode(data: data, to: GetDetailArchive.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+        
                     return data
                 case .failure(let error):
                     throw error

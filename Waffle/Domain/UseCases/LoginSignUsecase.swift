@@ -55,6 +55,11 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         print("LoginSignUsecase")
         let loginInfo = Login(email: email, password: password)
         repository.login(loginInfo: loginInfo)
+            .catch { error -> Observable<LoginResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("error \(error)")
+                return .just(LoginResponse(status: error.rawValue, data: nil))
+            }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
                 print(response.status)

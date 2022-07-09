@@ -29,7 +29,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> LoginResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: LoginResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: LoginResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

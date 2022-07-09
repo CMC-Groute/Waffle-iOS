@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
+        Messaging.messaging().isAutoInitEnabled = true
         UNUserNotificationCenter.current().delegate = self
+        //최초 한번 실행
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { granted, error in
                 if granted {
@@ -47,13 +49,66 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                 willPresent notification: UNNotification,
+                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
+                                   -> Void) {
+       let userInfo = notification.request.content.userInfo
+
+       // With swizzling disabled you must let Messaging know about the message, for Analytics
+       // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+       // ...
+
+       // Print full message.
+        WappleLog.debug("willPresent \(userInfo)")
+
+       // Change this to your preferred presentation option
+       completionHandler([[.alert, .sound]])
+     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                  didReceive response: UNNotificationResponse,
+                                  withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+        // Print full message.
+        WappleLog.debug("didReceive \(userInfo)")
+
+        completionHandler()
+      }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
+                       -> Void) {
+      // If you are receiving a notification message while your app is in the background,
+      // this callback will not be fired till the user taps on the notification launching the application.
+      // TODO: Handle data of notification
+
+      // With swizzling disabled you must let Messaging know about the message, for Analytics
+      // Messaging.messaging().appDidReceiveMessage(userInfo)
+
+      // Print message ID.
+//      if let messageID = userInfo[gcmMessageIDKey] {
+//        print("Message ID: \(messageID)")
+//      }
+
+      // Print full message.
+      WappleLog.debug("didReceiveRemoteNotification \(userInfo)")
+      completionHandler(UIBackgroundFetchResult.newData)
+    }
 }
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        WappleLog.debug("FCM Token \(fcmToken)")
+        if let deviceToken = fcmToken {
+            WappleLog.debug("FCM Token \(fcmToken)")
+            UserDefaults.standard.set(deviceToken, forKey: UserDefaultKey.deviceToken)
+        }
     }
 }
-
-
-

@@ -31,15 +31,20 @@ struct GetDetailArchive: Codable {
 struct DetailArhive: Codable {
     var title: String
     var date: String?
+    var time: String?
     var memo: String?
     var wappleId: Int
+    var placeImage: String?
     var member: [Participants]?
     var category: [PlaceCategory]?
     var decidedPlace: [DecidedPlace]?
+    var place: String?
     
     enum CodingKeys: String, CodingKey {
-        case title, date, wappleId
         case memo = "comment"
+        case title, date, wappleId, time
+        case place = "invitationPlace"
+        case placeImage = "invitationImageCategory"
         case member = "invitationMemberDto"
         case category = "placeCategoryDto"
         case decidedPlace = "decidedPlaceDetailResponses"
@@ -49,7 +54,13 @@ struct DetailArhive: Codable {
 struct Participants: Codable {
     var userId: Int
     var nickName: String
-    var progileImage: String
+    var profileImage: String
+
+    enum CodingKeys: String, CodingKey {
+        case userId
+        case nickName = "nickname"
+        case profileImage
+    }
 }
 
 struct GetCardResponse: Codable {
