@@ -39,10 +39,8 @@ class TopDetailArchiveCollectionViewCell: UICollectionViewCell {
         guard let cardInfo = detailArchive else { return }
         
         let wappleIndex = WappleType.init(rawValue: cardInfo.placeImage)?.wappleIndex() ?? 0
-        print("wappleIndex \(wappleIndex) \(cardInfo.placeImage)")
         toppingImageView.image = UIImage(named: "detailWapple-\(wappleIndex)")
         let cardColor = WappleType.init(rawValue: cardInfo.placeImage)?.wappleColor().colorName() ?? "lightPurple"
-        print("cardColor \(cardColor)")
         frameView.backgroundColor = UIColor(named: cardColor)
         whenLabel.text = cardInfo.date ?? DefaultDetailCardInfo.when.rawValue
         whereLabel.text = cardInfo.place ?? DefaultDetailCardInfo.where.rawValue

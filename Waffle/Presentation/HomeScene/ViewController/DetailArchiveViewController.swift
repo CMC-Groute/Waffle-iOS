@@ -68,9 +68,10 @@ class DetailArchiveViewController: UIViewController {
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         output?.loadData
             .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
                 if bool {
-                    self?.navigationItem.title = self?.viewModel?.detailArchive?.title
-                    self?.collectionView.reloadData()
+                    self.navigationItem.title = self.viewModel?.detailArchive?.title
+                    self.collectionView.reloadData()
                 }
             }).disposed(by: disposeBag)
     }
@@ -115,7 +116,8 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
-            cell.viewModel = self.viewModel
+            WappleLog.debug("CategoryDetailArchiveCollectionViewCell category \(viewModel.category)")
+            cell.viewModel = viewModel
             cell.delegate = self
             cell.backgroundColor = .gray
             return cell

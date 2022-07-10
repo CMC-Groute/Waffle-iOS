@@ -14,11 +14,17 @@ protocol CategoryDetailArchiveCollectionViewCellDelegate: AnyObject {
 class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryDefailArchiveCollectionViewCell"
     @IBOutlet private weak var collectionView: UICollectionView!
+
+    var viewModel: DetailArchiveViewModel? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
-    var isCategoryEditing: Bool = false
-    var viewModel: DetailArchiveViewModel?
-    var confirmCellCount = 1
-    let confirmCategoryId = -1
+    //MARK: Private Property
+    private var isCategoryEditing: Bool = false
+    private var confirmCellCount = 1
+    private let confirmCategoryName = "확정"
     weak var delegate: CategoryDetailArchiveCollectionViewCellDelegate?
     
     override func awakeFromNib() {
@@ -58,6 +64,45 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
 
 }
 
+extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let viewModel = viewModel else { return 0 }
+        return viewModel.category.count + confirmCellCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        WappleLog.debug("usecase.detailArchive category \(viewModel?.category)")
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
+            if viewModel?.selectedCategory.name == confirmCategoryName {
+                cell.isSelected = true
+                collectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .init())
+            }
+            return cell
+        }
+
+        if indexPath.row == viewModel?.category.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCategoryCollectionViewCell.identifier, for: indexPath) as! AddCategoryCollectionViewCell
+            cell.configureCell(isEditing: isCategoryEditing)
+            return cell
+        }
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
+//        if 0...8 ~= viewModel?.selectedCategory.id {
+//            cell.isSelected = true
+//            collectionView.selectItem(at: [0, viewModel?.selectedCategory.id], animated: true, scrollPosition: .init())
+//        }
+        cell.delegate = self
+        cell.indexPath = indexPath
+        guard let categories = viewModel?.category else { return cell }
+        let name = CategoryType.init(rawValue: categories[indexPath.row].name)?.format() ?? ""
+        cell.configureCell(name: name, isEditing: isCategoryEditing)
+        return cell
+
+    }
+}
+
+
 extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             guard let viewModel = viewModel else { return }
@@ -77,44 +122,6 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegate {
                 delegate?.tableViewLoad()
             }
         }
-}
-
-extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let viewModel = viewModel else { return 0 }
-        return viewModel.category.count + confirmCellCount
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let viewModel = viewModel else { return UICollectionViewCell() }
-        print("category \(viewModel.category)")
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
-            if viewModel.selectedCategory.id == confirmCategoryId {
-                cell.isSelected = true
-                collectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .init())
-            }
-            return cell
-        }
-
-        if indexPath.row == viewModel.category.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddCategoryCollectionViewCell.identifier, for: indexPath) as! AddCategoryCollectionViewCell
-            cell.configureCell(isEditing: isCategoryEditing)
-            return cell
-        }
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        if 0...8 ~= viewModel.selectedCategory.id {
-            cell.isSelected = true
-            collectionView.selectItem(at: [0, viewModel.selectedCategory.id], animated: true, scrollPosition: .init())
-        }
-        cell.delegate = self
-        cell.indexPath = indexPath
-        cell.configureCell(name: viewModel.category[indexPath.row].name, isEditing: isCategoryEditing)
-        return cell
-
-    }
 }
 
 extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegateFlowLayout {

@@ -17,11 +17,6 @@ enum CoordinatorType {
     case app, login, signUp, tab, home, setting, archive //map
 }
 
-enum CategoryType: String {
-    case FOOD, BREAKFAST, LUNCH, DINNER, PROP_SHOP
-    case TODO, TO_SEE, ETC
-}
-
 enum WappleType: String, CaseIterable {
     case wapple = "WAPPLE"
     case choco = "CHOCO"
@@ -106,4 +101,33 @@ enum CardViewInfoType: String, CaseIterable {
         }
     }
 }
+
+
+
+enum CategoryType: String, CaseIterable {
+    case CAFE = "CAFE"
+    case FOOD = "FOOD"
+    case BREAKFAST = "BREAKFAST"
+    case LUNCH = "LUNCH"
+    case DINNER = "DINNER"
+    case PROP_SHOP = "PROP_SHOP"
+    case TODO = "TODO"
+    case TO_SEE = "TO_SEE"
+    case ETC = "ETC"
+    
+    func format() -> String {
+        switch self {
+            case .CAFE: return "카페"
+            case .FOOD: return "맛집"
+            case .BREAKFAST: return "아침"
+            case .LUNCH: return "점심"
+            case .DINNER: return "저녁"
+            case .PROP_SHOP: return "소품샵"
+            case .TODO: return "할거리"
+            case .TO_SEE: return "볼거리"
+            case .ETC: return "기타"
+        }
+    }
+}
+
 

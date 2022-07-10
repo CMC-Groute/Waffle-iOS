@@ -69,7 +69,7 @@ class DetailArchiveViewModel {
             .subscribe(onNext: { [weak self] code in
                 guard let self = self else { return }
                 self.archiveCode = code
-                WappleLog.debug("archiveCode \(code ?? nil)")
+                WappleLog.debug("archiveCode \(code ?? "")")
             }).disposed(by: disposeBag)
         
         return output
