@@ -42,8 +42,13 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
     
     func configureCell(category: PlaceCategory, selectedCategoryList: [PlaceCategory]) {
         titleButton.setTitle(category.name, for: .normal)
-        let category = selectedCategoryList.filter { $0.name == category.name }
-        if !category.isEmpty { //선택된 카테고리라면
+        let selectedCategory = selectedCategoryList.filter {
+            let name = CategoryType.init(rawValue: $0.name)?.format() ?? ""
+            //WappleLog.debug("selectedCategory \(name) category \(category)")
+            return name == category.name
+        }
+        
+        if !selectedCategory.isEmpty { //선택된 카테고리라면
             self.isUserInteractionEnabled = false
             self.selectedUI()
             self.titleButton.layer.opacity = 0.3
@@ -52,20 +57,6 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
             self.unSelectedUI()
         }
     }
-    
-//
-//    func setSelected(_ value: Bool) {
-//        if value == true { // 선택 되어 있는 셀 비활성화, 클릭 x
-//            self.isUserInteractionEnabled = false
-//            //UI
-//            self.selectedUI()
-//            self.titleButton.layer.opacity = 0.3
-//        }else {
-//            //UI
-//            self.titleButton.layer.opacity = 1.0
-//            self.unSelectedUI()
-//        }
-//    }
     
     func selectedUI() {
         self.titleButton.setTitleColor(Asset.Colors.white.color, for: .normal)

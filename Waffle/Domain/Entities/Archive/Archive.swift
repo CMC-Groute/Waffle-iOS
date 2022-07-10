@@ -135,7 +135,7 @@ struct GetCategory: Codable {
     }
 }
 
-struct PlaceCategory: Codable {
+struct PlaceCategory: Codable, Equatable {
     var id: Int
     var name: String
     

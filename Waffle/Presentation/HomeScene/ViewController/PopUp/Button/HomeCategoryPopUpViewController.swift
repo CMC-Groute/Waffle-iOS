@@ -15,7 +15,7 @@ protocol HomeCategoryPopUpDelegate {
 class HomeCategoryPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     
-    var selectedCategoryList: [PlaceCategory] = []
+    var selectedCategoryList: [PlaceCategory] = [] // 선택된 카테고리 리스트
     var enableCategoryList = PlaceCategory.categoryList
     
     var disposeBag = DisposeBag()
@@ -39,6 +39,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     }
     
     private func configureUI() {
+        closeButton.setImage(Asset.Assets.delete.image.withRenderingMode(.alwaysOriginal), for: .normal)
         frameView.makeRounded(width: nil, color: nil, value: 20)
         addButton.makeRounded(corner: 24)
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
@@ -97,7 +98,6 @@ extension HomeCategoryPopUpViewController: UICollectionViewDelegate {
 extension HomeCategoryPopUpViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
-        print(enableCategoryList)
         cell.configureCell(category: enableCategoryList[indexPath.row], selectedCategoryList: selectedCategoryList)
         return cell
     }

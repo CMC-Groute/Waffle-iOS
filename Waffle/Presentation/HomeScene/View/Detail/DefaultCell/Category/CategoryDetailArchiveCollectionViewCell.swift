@@ -71,7 +71,6 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        WappleLog.debug("usecase.detailArchive category \(viewModel?.category)")
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConfirmCategoryCollectionViewCell.identifier, for: indexPath) as! ConfirmCategoryCollectionViewCell
             if viewModel?.selectedCategory.name == confirmCategoryName {

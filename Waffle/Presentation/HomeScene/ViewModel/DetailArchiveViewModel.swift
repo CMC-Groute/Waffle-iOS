@@ -18,7 +18,7 @@ class DetailArchiveViewModel {
     var selectedCategory: PlaceCategory = PlaceCategory.confirmCategory // 확정 카테고리
     var placeInfo: [DecidedPlace]?
     var detailArchive: DetailArhive?
-    var confirmCategoryIndex = -1
+    var confirmCategoryName = "확정"
     var archiveId: Int = 0
     var archiveCode: String?
     
@@ -80,7 +80,7 @@ class DetailArchiveViewModel {
     }
     
     func loadCategoryWithoutConfirm() -> [PlaceCategory] {
-        return category.filter { $0.id != confirmCategoryIndex }
+        return category.filter { $0.name != confirmCategoryName }
     }
     
     
