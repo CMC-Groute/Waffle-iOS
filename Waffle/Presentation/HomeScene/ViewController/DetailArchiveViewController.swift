@@ -80,6 +80,7 @@ class DetailArchiveViewController: UIViewController {
 ////MARK: Home Category에서 받아온 카테고리 업데이트
 extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
     func selectedCategory(category: [PlaceCategory]) {
+        //update category 새로 넣은 카테고리만 줌
         viewModel?.addCategory(category: category)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -116,7 +117,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
-            WappleLog.debug("CategoryDetailArchiveCollectionViewCell category \(viewModel.category)")
+//            WappleLog.debug("CategoryDetailArchiveCollectionViewCell category \(viewModel.category)")
             cell.viewModel = viewModel
             cell.delegate = self
             cell.backgroundColor = .gray

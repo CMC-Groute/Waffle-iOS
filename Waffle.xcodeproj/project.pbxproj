@@ -106,7 +106,6 @@
 		133D55B828744BDD0068EA90 /* CategoryDeletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */; };
 		133D55B928744BDD0068EA90 /* DeleteArhiveViewPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */; };
 		133D55BA28744BDD0068EA90 /* LikeSendPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */; };
-		133D55BB28744BDD0068EA90 /* AddPlaceCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */; };
 		133D55BC28744BDD0068EA90 /* DeletePlacePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */; };
 		133D55BD28744BDD0068EA90 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED2FF2855DB5B002371FD /* HomeViewController.swift */; };
 		133D55BE28744BDD0068EA90 /* DetailArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */; };
@@ -235,7 +234,6 @@
 		1390EC6328647D1100E5520C /* DetailArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveViewController.swift; sourceTree = "<group>"; };
 		1390EC6528647D3900E5520C /* DetailArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveViewModel.swift; sourceTree = "<group>"; };
 		1390EC672864823600E5520C /* InvitationBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationBottomSheetViewController.swift; sourceTree = "<group>"; };
-		1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceCategoryViewController.swift; sourceTree = "<group>"; };
 		1390EC6C2864834400E5520C /* ArchiveDetailPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveDetailPopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC732864927900E5520C /* HomeCategoryPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryPopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC752864929100E5520C /* MemoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoPopUpViewController.swift; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 				1390EC5C28647AB500E5520C /* CategoryDeletePopUpViewController.swift */,
 				1390EC5E28647AC800E5520C /* DeleteArhiveViewPopUpController.swift */,
 				1390EC6028647AE000E5520C /* LikeSendPopUpViewController.swift */,
-				1390EC692864826A00E5520C /* AddPlaceCategoryViewController.swift */,
 				13CA03EF2871D6550087E79E /* DeletePlacePopUpViewController.swift */,
 			);
 			path = PopUp;
@@ -1617,7 +1614,6 @@
 				133D55B928744BDD0068EA90 /* DeleteArhiveViewPopUpController.swift in Sources */,
 				1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */,
 				133D55BA28744BDD0068EA90 /* LikeSendPopUpViewController.swift in Sources */,
-				133D55BB28744BDD0068EA90 /* AddPlaceCategoryViewController.swift in Sources */,
 				133D55BC28744BDD0068EA90 /* DeletePlacePopUpViewController.swift in Sources */,
 				133D55BD28744BDD0068EA90 /* HomeViewController.swift in Sources */,
 				133D55BE28744BDD0068EA90 /* DetailArchiveViewController.swift in Sources */,

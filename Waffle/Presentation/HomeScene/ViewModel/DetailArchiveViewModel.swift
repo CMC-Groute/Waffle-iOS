@@ -60,7 +60,11 @@ class DetailArchiveViewModel {
                 if let detailArchive = detailArchive {
                     self.detailArchive = detailArchive // 전체 약속 데이터
                     self.placeInfo = detailArchive.decidedPlace // 확정 장소
-                    self.category += detailArchive.category ?? [] // 카테고리
+                    var category = detailArchive.category?.compactMap { category in
+                        return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "")
+                    }
+                    
+                    self.category += category ?? [] // 카테고리
                     output.loadData.onNext(true)
                 }
             }).disposed(by: disposeBag)

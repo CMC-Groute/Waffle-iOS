@@ -43,9 +43,8 @@ class HomeCategoryCollectionViewCell: UICollectionViewCell {
     func configureCell(category: PlaceCategory, selectedCategoryList: [PlaceCategory]) {
         titleButton.setTitle(category.name, for: .normal)
         let selectedCategory = selectedCategoryList.filter {
-            let name = CategoryType.init(rawValue: $0.name)?.format() ?? ""
-            //WappleLog.debug("selectedCategory \(name) category \(category)")
-            return name == category.name
+            WappleLog.debug("selectedCategory \($0.name) category \(category)")
+            return $0.name == category.name
         }
         
         if !selectedCategory.isEmpty { //선택된 카테고리라면

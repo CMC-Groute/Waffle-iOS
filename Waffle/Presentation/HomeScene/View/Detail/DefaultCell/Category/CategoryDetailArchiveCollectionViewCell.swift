@@ -93,9 +93,7 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
 //        }
         cell.delegate = self
         cell.indexPath = indexPath
-        guard let categories = viewModel?.category else { return cell }
-        let name = CategoryType.init(rawValue: categories[indexPath.row].name)?.format() ?? ""
-        cell.configureCell(name: name, isEditing: isCategoryEditing)
+        cell.configureCell(name: viewModel?.category[indexPath.row].name ?? "", isEditing: isCategoryEditing)
         return cell
 
     }
