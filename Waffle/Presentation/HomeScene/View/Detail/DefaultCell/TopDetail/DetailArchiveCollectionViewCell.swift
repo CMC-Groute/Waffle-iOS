@@ -1,31 +1,22 @@
 //
-//  TopDetialArchiveCollectionViewCell.swift
+//  DetailArchiveCollectionViewCell.swift
 //  Waffle
 //
-//  Created by 조한빛 on 2022/07/06.
+//  Created by 조한빛 on 2022/07/10.
 //
 
 import UIKit
 
-protocol ViewTappedDelegate: AnyObject {
-    func viewTapped(_ photo : String)
-  }
-
-
-class TopDetailArchiveCollectionViewCell: UICollectionViewCell, UIGestureRecognizerDelegate {
-    static let identifier = "TopDetailArchiveCollectionViewCell"
+class DetailArchiveCollectionViewCell: UICollectionViewCell {
+    static let identifier = "DetailArchiveCollectionViewCell"
+    
+    @IBOutlet weak var memoView: UIView!
     @IBOutlet weak var frameView: UIView!
     @IBOutlet private weak var whenLabel: UILabel!
     @IBOutlet private weak var whereLabel: UILabel!
     @IBOutlet private weak var toppingImageView: UIImageView!
-    @IBOutlet weak var memoView: UIView!
     @IBOutlet weak var memoLabel: UILabel!
-    
-    @IBAction func buttonTap(_ sender: Any) {
-        print("Button tap")
-    }
     var viewModel: DetailArchiveViewModel?
-    weak var delegate : ViewTappedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,27 +24,13 @@ class TopDetailArchiveCollectionViewCell: UICollectionViewCell, UIGestureRecogni
     }
     
     private func setUp() {
-        memoView.makeRounded(width: nil, color: nil, value: 20)
-        let tapGesture = UITapGestureRecognizer(target: self,
-                                                            action: #selector(handleTap(recognizer:)))
-                    tapGesture.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(loadMemo(recognizer:)))
         memoView.isUserInteractionEnabled = true
         memoView.addGestureRecognizer(tapGesture)
-        
-//        let loadMemoTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo))
-//        loadMemoTapGesture.delegate = self
-//        memoView.isUserInteractionEnabled = true
-//        memoView.addGestureRecognizer(loadMemoTapGesture)
     }
     
-    @objc func handleTap(recognizer:UITapGestureRecognizer) {
-                //Call Delegate method from here...
-        print("handleTap")
-        delegate?.viewTapped("")
-            }
-    
-    @objc func didTapLoadMemo() {
-        print("didTapLoadMemo")
+    @objc func loadMemo(recognizer:UITapGestureRecognizer) {
+        print("viewModel \(viewModel)")
         viewModel?.loadMemo()
     }
     

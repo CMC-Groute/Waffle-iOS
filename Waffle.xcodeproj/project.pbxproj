@@ -19,6 +19,8 @@
 		13062E1F287965B7003774A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1E287965B7003774A7 /* GoogleService-Info.plist */; };
 		13062E21287A891E003774A7 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E20287A891D003774A7 /* DefaultResponse.swift */; };
 		13062E24287A9E50003774A7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E23287A9E50003774A7 /* Category.swift */; };
+		13062E28287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */; };
+		13062E29287AE0BB003774A7 /* DetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */; };
 		132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */; };
 		133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D13284E0E88008E1185 /* UserDefaultKey.swift */; };
 		133D5438287446490068EA90 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
@@ -203,6 +205,8 @@
 		13062E1E287965B7003774A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13062E20287A891D003774A7 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		13062E23287A9E50003774A7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
@@ -422,6 +426,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		13062E25287AE072003774A7 /* TopDetail */ = {
+			isa = PBXGroup;
+			children = (
+				13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */,
+				13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */,
+			);
+			path = TopDetail;
+			sourceTree = "<group>";
+		};
 		135B60552858501E0035AE4B /* LocationContainterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +447,7 @@
 		1378532D2875A4F600B11E5E /* DefaultCell */ = {
 			isa = PBXGroup;
 			children = (
+				13062E25287AE072003774A7 /* TopDetail */,
 				137853342875A83F00B11E5E /* Top */,
 				137853352875A85500B11E5E /* Sub */,
 				1378533A2875A87700B11E5E /* Category */,
@@ -1408,6 +1422,7 @@
 				F29ED3142855DBCE002371FD /* Map.storyboard in Resources */,
 				F2A412E12849EFD900E04BF5 /* Assets.xcassets in Resources */,
 				F2125D51284E60FD008E1185 /* SignUp.storyboard in Resources */,
+				13062E29287AE0BB003774A7 /* DetailArchiveCollectionViewCell.xib in Resources */,
 				F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */,
 				13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */,
 				1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */,
@@ -1646,6 +1661,7 @@
 				133D558F28744BBA0068EA90 /* LoginSignUsecase.swift in Sources */,
 				133D559028744BBA0068EA90 /* UserUsecase.swift in Sources */,
 				133D559128744BBA0068EA90 /* ArchiveUsecase.swift in Sources */,
+				13062E28287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift in Sources */,
 				133D559228744BBA0068EA90 /* HomeUsecase.swift in Sources */,
 				133D557A28744BB20068EA90 /* LoginSignAPI.swift in Sources */,
 				133D557B28744BB20068EA90 /* ArchiveAPI.swift in Sources */,

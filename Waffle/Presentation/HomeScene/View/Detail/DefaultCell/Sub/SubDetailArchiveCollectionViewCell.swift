@@ -10,16 +10,11 @@ import RxSwift
 
 class SubDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "SubDetailArchiveCollectionViewCell"
-    
+    @IBOutlet private weak var frameView: UIView!
     @IBOutlet private weak var participantsButton: UIButton!
     @IBOutlet private weak var invitationButton: UIButton!
     var viewModel: DetailArchiveViewModel?
     var disposeBag = DisposeBag()
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
     
     func configureCell(count: Int) {
         participantsButton.setTitle("\(count)명", for: .normal)

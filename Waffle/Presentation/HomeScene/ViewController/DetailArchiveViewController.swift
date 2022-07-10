@@ -47,7 +47,7 @@ class DetailArchiveViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = stickyHeaderLayout
-        collectionView.register(UINib(nibName: "TopDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier)
+        collectionView.register(UINib(nibName: "DetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: DetailArchiveCollectionViewCell.identifier)
         collectionView.register(UINib(nibName: "SubDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier)
         collectionView.register(UINib(nibName: "CategoryDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier)
         collectionView.register(UINib(nibName: "TableDetailArchiveCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier)
@@ -96,7 +96,7 @@ extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
 
 extension DetailArchiveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        print(indexPath.section)
     }
 }
 
@@ -113,7 +113,8 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let viewModel = viewModel else { return UICollectionViewCell() }
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TopDetailArchiveCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailArchiveCollectionViewCell.identifier, for: indexPath) as! DetailArchiveCollectionViewCell
+            cell.backgroundColor = .red
             cell.configureCell(detailArchive: viewModel.detailArchive)
             cell.viewModel = self.viewModel
             return cell
@@ -137,6 +138,11 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    @objc func didTapLoadMemo() {
+        print("didTapLoadMemo")
+        viewModel?.loadMemo()
     }
 }
 
@@ -171,4 +177,12 @@ extension DetailArchiveViewController: CategoryDetailArchiveCollectionViewCellDe
             self.collectionView.reloadSections(.init(integer: 3))
         }
     }
+}
+
+extension DetailArchiveViewController: ViewTappedDelegate {
+    func viewTapped(_ photo: String) {
+        viewModel?.loadMemo()
+    }
+    
+    
 }

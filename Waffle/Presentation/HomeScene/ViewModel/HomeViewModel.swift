@@ -48,7 +48,7 @@ class HomeViewModel: ObservableObject {
         usecase.cardInfo
             .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
-                WappleLog.debug("HomeViewModel \(cardInfo)")
+                self.coordinator.detailArchive(archiveId: 9)
                 if let cardInfo = cardInfo, !cardInfo.isEmpty {
                     self.cardInfo = cardInfo
                     output.isHiddenView.accept(false)
@@ -59,7 +59,7 @@ class HomeViewModel: ObservableObject {
         
         usecase.networkError
             .map { $0 == true }
-            .subscribe(onNext: { [weak self] _ in
+            .subscribe(onNext: { 
                 output.networkErrorMessage.accept(true)
             }).disposed(by: disposeBag)
         
