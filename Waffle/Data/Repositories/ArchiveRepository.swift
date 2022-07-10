@@ -24,7 +24,7 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
             .map ({ response -> DefaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -38,7 +38,7 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
             .map ({ response -> DefaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

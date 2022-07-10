@@ -8,23 +8,25 @@
 import UIKit
 import RxSwift
 
-protocol HomeCategoryPopUpDelegate {
+protocol HomeCategoryPopUpDelegate: AnyObject {
     func selectedCategory(category: [PlaceCategory])
 }
 
 class HomeCategoryPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
+    var usecase: HomeUsecase!
     
     var selectedCategoryList: [PlaceCategory] = [] // 선택된 카테고리 리스트
     var enableCategoryList = PlaceCategory.categoryList
+    var archiveId: Int?
     
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
-    @IBOutlet weak var frameView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var addButton: UIButton!
-    var delegate: HomeCategoryPopUpDelegate?
+    @IBOutlet private weak var frameView: UIView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var addButton: UIButton!
+    weak var delegate: HomeCategoryPopUpDelegate?
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -69,13 +71,17 @@ class HomeCategoryPopUpViewController: UIViewController {
         addButton.rx.tap
         .subscribe(onNext: { [weak self] in
             guard let self = self else { return }
+            guard let archiveId = self.archiveId else { return }
+
             var items: [PlaceCategory] = []
             for i in self.collectionView.indexPathsForSelectedItems! {
                 items.append(self.enableCategoryList[i.row])
             }
-            print("selected item \(items)")
+            print("selected item \(items.map { $0.name })")
+            let name = items.map { $0.name }
+            self.usecase.addCategory(archiveId: archiveId, categoryName: name)
             self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-            self.delegate?.selectedCategory(category: items)
+            //self.delegate?.selectedCategory(category: items)
         }).disposed(by: disposeBag)
     }
     

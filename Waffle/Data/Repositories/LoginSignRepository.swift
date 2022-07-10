@@ -9,12 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum LoginSignError: Error {
-    case decodingError
-}
-
 class LoginSignRepository: LoginSignRepositoryProtocol {
-    
     let service: URLSessionNetworkService
     private var disposedBag = DisposeBag()
     
@@ -23,7 +18,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     }
     
     func login(loginInfo: Login) -> Observable<LoginResponse> {
-        print("login repository")
+        WappleLog.debug("login repository")
         let api = LoginSignAPI.login(login: loginInfo)
         return service.request(api)
             .map ({ response -> LoginResponse in
@@ -38,13 +33,13 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     }
     
     func singUp(signUpInfo: SignUp) -> Observable<SignUpResponse>  {
-        print("singUp repository")
+        WappleLog.debug("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
         return service.request(api)
             .map ({ response -> SignUpResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: SignUpResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: SignUpResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -54,13 +49,13 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     }
     
     func sendEmail(email: String) -> Observable<DefaultResponse>  {
-        print("login repository sendEmail")
+        WappleLog.debug("login repository sendEmail")
         let api = LoginSignAPI.sendEmail(email: email)
         return service.request(api)
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -70,11 +65,12 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
     
     func checkEmailCode(email: String, code: String) -> Observable<DefaultResponse> {
         let api = LoginSignAPI.checkEmailCode(email: email, code: code)
+        WappleLog.debug("login repository checkEmailCode")
         return service.request(api)
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -89,7 +85,7 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             .map ({ response -> DefaultResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

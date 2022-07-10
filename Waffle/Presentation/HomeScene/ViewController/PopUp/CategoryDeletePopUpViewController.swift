@@ -16,8 +16,10 @@ class CategoryDeletePopUpViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
-    var disposBag = DisposeBag()
     var selectedCategory: PlaceCategory?
+    var archiveId: Int?
+    
+    private var disposBag = DisposeBag()
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -49,7 +51,10 @@ class CategoryDeletePopUpViewController: UIViewController {
         OKButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.usecase.deleteCategory(categoryId: self.selectedCategory?.id ?? 0)
+                guard let archiveId = self.archiveId else {
+                    return
+                }
+                self.usecase.deleteCategory(archiveId: archiveId, categoryId: self.selectedCategory?.id ?? 0)
             }).disposed(by: disposBag)
     }
 }

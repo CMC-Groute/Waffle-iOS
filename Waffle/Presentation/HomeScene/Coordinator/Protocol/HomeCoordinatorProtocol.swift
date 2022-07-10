@@ -16,13 +16,13 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func invitationBottomSheet(copyCode: String)
     
     //MARK: Button Click
-    func addCategory(category: [PlaceCategory])
+    func addCategory(archiveId: Int, category: [PlaceCategory])
     func loadMemo(memo: String, wapple: String)
     func participants(detailArchive: DetailArhive?)
     func detailPlace(detailInfo: PlaceByCategory, category: PlaceCategory, categoryInfo: [PlaceCategory])
     
     //MARK: POPUP View click
-    func deleteCategory(category: PlaceCategory)
+    func deleteCategory(archiveId: Int, category: PlaceCategory)
     func arhiveDelete(archiveId: Int)
     func likeSend()
     func deletePlace(placeId: Int)

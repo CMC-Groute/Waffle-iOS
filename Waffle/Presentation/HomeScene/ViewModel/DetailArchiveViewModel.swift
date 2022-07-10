@@ -44,7 +44,7 @@ class DetailArchiveViewModel {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
-                WappleLog.debug("detailArchiveVieModel id - \(self.archiveId)")
+                WappleLog.debug("detailArchiveVieModel archiveId - \(self.archiveId)")
                 self.getArchiveCode()
             }).disposed(by: disposeBag)
         
@@ -54,27 +54,46 @@ class DetailArchiveViewModel {
                 self.coordinator.addDetailPlace(category: self.loadCategoryWithoutConfirm())
             }).disposed(by: disposeBag)
         
-        usecase.detailArchive
-            .subscribe(onNext: { [weak self] detailArchive in
-                    guard let self = self else { return }
-                if let detailArchive = detailArchive {
-                    self.detailArchive = detailArchive // 전체 약속 데이터
-                    self.placeInfo = detailArchive.decidedPlace // 확정 장소
-                    var category = detailArchive.category?.compactMap { category in
-                        return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "")
-                    }
-                    
-                    self.category += category ?? [] // 카테고리
-                    output.loadData.onNext(true)
-                }
-            }).disposed(by: disposeBag)
+        bindUsecase()
         
-        usecase.archiveCode
-            .subscribe(onNext: { [weak self] code in
-                guard let self = self else { return }
-                self.archiveCode = code
-                WappleLog.debug("archiveCode \(code ?? "")")
-            }).disposed(by: disposeBag)
+        func bindUsecase() {
+            usecase.detailArchive
+                .subscribe(onNext: { [weak self] detailArchive in
+                        guard let self = self else { return }
+                    if let detailArchive = detailArchive {
+                        self.detailArchive = detailArchive // 전체 약속 데이터
+                        self.placeInfo = detailArchive.decidedPlace // 확정 장소
+                        let category = detailArchive.category?.compactMap { category in
+                            return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
+                        self.category += category ?? [] // 카테고리
+                        output.loadData.onNext(true)
+                    }
+                }).disposed(by: disposeBag)
+            
+            usecase.archiveCode
+                .subscribe(onNext: { [weak self] code in
+                    guard let self = self else { return }
+                    self.archiveCode = code
+                    WappleLog.debug("DetailArchiveViewModel archiveCode \(code ?? "")")
+                }).disposed(by: disposeBag)
+            
+            usecase.addCategory
+                .subscribe(onNext: { [weak self] addCategory in
+                    guard let addCategory = addCategory else { return }
+                    WappleLog.debug("DetailArchiveViewModel addCategory \(addCategory)")
+//                    viewWillApear에서 해줘서 안해도 되나 확인 필요
+//                    self?.category += addCategory
+//                    output.loadData.onNext(true)
+                }).disposed(by: disposeBag)
+            
+            usecase.deleteCategory
+                .subscribe(onNext: { [weak self] deleteCategory in
+                    WappleLog.debug("DetailArchiveViewModel deleteCategory \(deleteCategory)")
+                    //viewWillApear에서 해줘서 안해도 되나 확인 필요
+                    //self?.category += addCategory
+                    //output.loadData.onNext(true)
+                }).disposed(by: disposeBag)
+        }
         
         return output
     }
@@ -120,11 +139,11 @@ class DetailArchiveViewModel {
     }
     
     func addHomeCategory(without category: [PlaceCategory]) {
-        coordinator.addCategory(category: loadCategoryWithoutConfirm())
+        coordinator.addCategory(archiveId: archiveId, category: loadCategoryWithoutConfirm())
     }
     
     func deleteCategory(category: PlaceCategory) {
-        coordinator.deleteCategory(category: category)
+        coordinator.deleteCategory(archiveId: archiveId, category: category)
     }
     
     func loadMemo() {

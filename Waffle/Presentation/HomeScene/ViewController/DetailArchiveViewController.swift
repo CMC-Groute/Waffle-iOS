@@ -81,12 +81,12 @@ class DetailArchiveViewController: UIViewController {
 extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
     func selectedCategory(category: [PlaceCategory]) {
         //update category 새로 넣은 카테고리만 줌
-        viewModel?.addCategory(category: category)
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            print("DetailArchiveViewController selectedCategory \(category)")
-            self.collectionView.reloadSections(IndexSet(integer: 2))
-        }
+//        viewModel?.addCategory(category: category)
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//            print("DetailArchiveViewController selectedCategory \(category)")
+//            self.collectionView.reloadSections(IndexSet(integer: 2))
+//        }
     }
 }
 

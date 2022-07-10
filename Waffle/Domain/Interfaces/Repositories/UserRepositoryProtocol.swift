@@ -17,6 +17,6 @@ protocol UserRepositoryProtocol {
     func getProfileInfo() -> Observable<UserInfoResponse>
     func setAlarm(state: Bool)
     func quitUser() -> Observable<DefaultIntResponse>
-                                                        
+                                    
                                                             
 }

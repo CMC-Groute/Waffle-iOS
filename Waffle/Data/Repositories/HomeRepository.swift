@@ -16,20 +16,6 @@ class HomeRepository: HomeRepositoryProtocol {
         self.service = networkService
     }
     
-    func getProfileInfo() -> Observable<UserInfoResponse> {
-        let api = LoginSignAPI.getUserInfo
-        return service.request(api)
-            .map ({ response -> UserInfoResponse in
-                switch response {
-                case .success(let data):
-                    guard let data = JSON.decode(data: data, to: UserInfoResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
-                    return data
-                case .failure(let error):
-                    throw error
-                }
-            })
-        }
-    
     func getCardInfo() -> Observable<GetCardResponse> {
         let api = ArchiveAPI.getArchiveCard
         return service.request(api)
@@ -52,7 +38,7 @@ class HomeRepository: HomeRepositoryProtocol {
             .map ({ response -> GetArchiveCode in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: GetArchiveCode.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: GetArchiveCode.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -89,8 +75,34 @@ class HomeRepository: HomeRepositoryProtocol {
             })
     }
     
-    func addCategory(id: Int, category: AddCategory) -> Observable<[GetCategory]> {
-        return Observable.of([])
+    //카테고리 추가
+    func addCategory(archiveId: Int, categoryName: [String]) -> Observable<AddCategoryResponse> {
+        let api = PlaceAPI.addPlaceCategory(archiveId: archiveId, placeCategory: categoryName)
+        return service.request(api)
+            .map ({  response -> AddCategoryResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: AddCategoryResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    //카테고리 삭제
+    func deleteCategory(archiveId: Int, categoryId: Int) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.deletePlacCategory(archiveId: archiveId, categoryId: categoryId)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
     
     

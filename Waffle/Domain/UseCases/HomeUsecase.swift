@@ -21,6 +21,8 @@ class HomeUsecase: HomeUsecaseProtocol {
     var detailArchive = PublishSubject<DetailArhive?>()
     var deleteSuccess = PublishSubject<Bool>()
     var archiveCode = PublishSubject<String?>()
+    var addCategory = PublishSubject<[PlaceCategory]?>()
+    var deleteCategory = PublishSubject<Bool>()
     
     init(repository: HomeRepository){
         self.repository = repository
@@ -61,8 +63,38 @@ class HomeUsecase: HomeUsecaseProtocol {
         }
     }
     
-    func deleteCategory(categoryId: Int) { // cardId, categoryId
-       //currentCardId
+    func deleteCategory(archiveId: Int, categoryId: Int) { // cardId, categoryId
+        repository.deleteCategory(archiveId: archiveId, categoryId: categoryId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("deleteCategory error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.deleteCategory.onNext(true)
+                }else {
+                    self.deleteCategory.onNext(false)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func addCategory(archiveId: Int, categoryName: [String]) {
+        repository.addCategory(archiveId: archiveId, categoryName: categoryName)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<AddCategoryResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("addCategory error \(error)")
+                return .just(AddCategoryResponse(status: error.rawValue, data: nil))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.addCategory.onNext(response.data)
+                }else if response.status == 400 {
+                    self.addCategory.onNext(nil)
+                }
+            }).disposed(by: disposeBag)
     }
     
     func deleteArchive(archiveId: Int) { //약속 나가기
