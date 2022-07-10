@@ -54,10 +54,10 @@ class UserUsecase: UserUseCaseProtocol {
     
     func updateUserInfo(nickName: String, image: String) {
         repository.updateUserInfo(nickName: nickName, image: image)
-            .catch { error -> Observable<DetaultIntResponse> in
+            .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("error \(error)")
-                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("updateUserInfo \(response)")
@@ -71,10 +71,10 @@ class UserUsecase: UserUseCaseProtocol {
     
     func updatePassword(password: Password) { // 비밀번호 업데이트
         repository.updatePassword(password: password)
-            .catch { error -> Observable<DetaultIntResponse> in
+            .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
-                WappleLog.error("error \(error)")
-                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+                WappleLog.error("updatePassword error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("updatePassword \(response)")
@@ -96,10 +96,10 @@ class UserUsecase: UserUseCaseProtocol {
     
     func quit() {
         repository.quitUser()
-            .catch { error -> Observable<DetaultIntResponse> in
+            .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
-                WappleLog.error("error \(error)")
-                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+                WappleLog.error("quit error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("quit user \(response)")

@@ -18,13 +18,13 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
     }
     
     //약속 참여하기
-    func joinArchiveCode(invitationCode: String) -> Observable<DetaultIntResponse> {
+    func joinArchiveCode(invitationCode: String) -> Observable<DefaultIntResponse> {
         let api = ArchiveAPI.joinArchive(code: invitationCode)
         return service.request(api)
-            .map ({ response -> DetaultIntResponse in
+            .map ({ response -> DefaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error
@@ -32,13 +32,13 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
             })
     }
     
-    func addArchive(archive: AddArchive) -> Observable<DetaultIntResponse> {
+    func addArchive(archive: AddArchive) -> Observable<DefaultIntResponse> {
         let api = ArchiveAPI.addArchive(archiveInfo: archive)
         return service.request(api)
-            .map ({ response -> DetaultIntResponse in
+            .map ({ response -> DefaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw LoginSignError.decodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw LoginSignError.decodingError }
                     return data
                 case .failure(let error):
                     throw error

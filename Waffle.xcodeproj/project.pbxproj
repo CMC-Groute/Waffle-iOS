@@ -17,6 +17,7 @@
 		13062E1A28795B6F003774A7 /* HomeAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */; };
 		13062E1B28795B6F003774A7 /* HomeAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */; };
 		13062E1F287965B7003774A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1E287965B7003774A7 /* GoogleService-Info.plist */; };
+		13062E21287A891E003774A7 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E20287A891D003774A7 /* DefaultResponse.swift */; };
 		132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */; };
 		133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D13284E0E88008E1185 /* UserDefaultKey.swift */; };
 		133D5438287446490068EA90 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
@@ -200,6 +201,7 @@
 		13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAlarmTableViewCell.xib; sourceTree = "<group>"; };
 		13062E1E287965B7003774A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		13062E20287A891D003774A7 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				1390EC882869396B00E5520C /* User */,
 				1390EC822866DE0000E5520C /* Home */,
 				13E2A076285EF1F00015499E /* Archive */,
+				13062E20287A891D003774A7 /* DefaultResponse.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1541,6 +1544,7 @@
 				135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */,
 				133D55D928744C4C0068EA90 /* EditSettingViewModel.swift in Sources */,
 				133D55DA28744C4C0068EA90 /* ChangePWViewModel.swift in Sources */,
+				13062E21287A891E003774A7 /* DefaultResponse.swift in Sources */,
 				133D55DB28744C4C0068EA90 /* SettingViewController.swift in Sources */,
 				133D55DC28744C4C0068EA90 /* SettingTableViewCell.swift in Sources */,
 				133D55DD28744C4C0068EA90 /* EditSettingViewController.swift in Sources */,

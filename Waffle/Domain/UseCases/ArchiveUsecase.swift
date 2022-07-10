@@ -38,10 +38,10 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
     
     func addArchive(archive: AddArchive) {
         return repository.addArchive(archive: archive)
-            .catch { error -> Observable<DetaultIntResponse> in
+            .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("addArchive \(error)")
-                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("addArchive \(response)")
@@ -55,10 +55,10 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
     
     func joinArchive(code: String) {
         return repository.joinArchiveCode(invitationCode: code)
-            .catch { error -> Observable<DetaultIntResponse> in
+            .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("joinArchive \(error)")
-                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("joinArchive \(response)")

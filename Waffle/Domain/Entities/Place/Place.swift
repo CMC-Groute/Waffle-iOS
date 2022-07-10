@@ -66,26 +66,3 @@ struct PlaceSequence: Codable {
     var seq: Int
 }
 
-struct DefaultResponse: Codable {
-    var status: Int
-    var data: String
-    
-    static func errorResponse(code: Int) -> DefaultResponse {
-        return DefaultResponse(status: code, data: "error")
-    }
-}
-
-struct DetaultIntResponse: Codable {
-    var status: Int
-    var data: Int
-    
-    static func errorResponse(code: Int) -> DetaultIntResponse {
-        return DetaultIntResponse(status: code, data: 0)
-    }
-}
-
-struct SignUpResponse: Codable {
-    var message: String
-    var data: Int
-}
-

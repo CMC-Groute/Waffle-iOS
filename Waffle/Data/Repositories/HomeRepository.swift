@@ -75,13 +75,13 @@ class HomeRepository: HomeRepositoryProtocol {
             })
     }
     
-    func deleteArchive(archiveId: Int) -> Observable<DetaultIntResponse> {
+    func deleteArchive(archiveId: Int) -> Observable<DefaultIntResponse> {
         let api = ArchiveAPI.deleteArchive(archiveId: archiveId)
         return service.request(api)
-            .map ({  response -> DetaultIntResponse in
+            .map ({  response -> DefaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

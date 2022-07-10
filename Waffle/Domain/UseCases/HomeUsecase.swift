@@ -68,10 +68,10 @@ class HomeUsecase: HomeUsecaseProtocol {
     func deleteArchive(archiveId: Int) { //약속 나가기
         repository.deleteArchive(archiveId: archiveId)
             .observe(on: MainScheduler.instance)
-            .catch { error -> Observable<DetaultIntResponse> in
+            .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("deleteArchive error \(error)")
-                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
                 if response.status == 200 {

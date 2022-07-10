@@ -14,6 +14,7 @@ protocol CategoryDetailArchiveCollectionViewCellDelegate: AnyObject {
 class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryDefailArchiveCollectionViewCell"
     @IBOutlet private weak var collectionView: UICollectionView!
+    
     var isCategoryEditing: Bool = false
     var viewModel: DetailArchiveViewModel?
     var confirmCellCount = 1
