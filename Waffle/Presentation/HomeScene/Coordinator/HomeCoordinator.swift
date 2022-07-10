@@ -29,11 +29,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(homeViewController, animated: true)
     }
     
-    func detailArchive(selectedArchive: CardInfo) {
+    func detailArchive(id: Int) {
         detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
-        detailArchiveViewController.viewModel?.archiveId = selectedArchive.id
-        detailArchiveViewController.viewModel?.cardInfo = selectedArchive
+        detailArchiveViewController.viewModel?.archiveId = id
+        //detailArchiveViewController.viewModel?.detailArchive = selectedArchive
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     
@@ -122,10 +122,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
 }
 
 extension HomeCoordinator {
-    func detailArchiveBottomSheet(cardInfo: CardInfo?) {
+    func detailArchiveBottomSheet(detailArchive: DetailArhive?) {
         let detailArchiveBottomSheetView  = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ArchiveDetailPopUpViewController") as! ArchiveDetailPopUpViewController
         detailArchiveBottomSheetView.coordinator = self
-        detailArchiveBottomSheetView.cardInfo = cardInfo
+        detailArchiveBottomSheetView.detailArchive = detailArchive
         detailArchiveBottomSheetView.modalPresentationStyle = .overFullScreen
         detailArchiveBottomSheetView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(detailArchiveBottomSheetView, animated: false)
@@ -162,10 +162,10 @@ extension HomeCoordinator {
         self.navigationController.present(memoPopUpView, animated: false)
     }
     
-    func participants(cardInfo: CardInfo?) {
+    func participants(detailArchive: DetailArhive?) {
         let particiPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ParticiPopUpViewController") as! ParticiPopUpViewController
         particiPopUpView.coordinator = self
-        particiPopUpView.cardInfo = cardInfo
+        particiPopUpView.detailArchive = detailArchive
         particiPopUpView.modalPresentationStyle = .overFullScreen
         particiPopUpView.modalTransitionStyle = .crossDissolve
         self.navigationController.present(particiPopUpView, animated: false)
@@ -199,11 +199,11 @@ extension HomeCoordinator {
         self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
     }
     
-    func editArchive(cardInfo: CardInfo?) {
+    func editArchive(detailArchive: DetailArhive?) {
         let editArchiveViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "EditArchiveViewController") as! EditArchiveViewController
         editArchiveViewController.viewModel = EditArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
-        if let cardInfo = cardInfo {
-            editArchiveViewController.viewModel?.cardInfo = cardInfo
+        if let detailArchive = detailArchive {
+            editArchiveViewController.viewModel?.detailArchive = detailArchive
         }
         self.navigationController.pushViewController(editArchiveViewController, animated: true)
     }

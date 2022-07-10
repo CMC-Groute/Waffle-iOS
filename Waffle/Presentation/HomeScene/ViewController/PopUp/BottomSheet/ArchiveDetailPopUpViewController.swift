@@ -18,7 +18,7 @@ class ArchiveDetailPopUpViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
-    var cardInfo: CardInfo?
+    var detailArchive: DetailArhive?
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -42,7 +42,7 @@ class ArchiveDetailPopUpViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editArchive(cardInfo: self.cardInfo)
+                self.coordinator.editArchive(detailArchive: self.detailArchive)
             }).disposed(by: disposeBag)
         
         deleteArchiveButton.rx.tap

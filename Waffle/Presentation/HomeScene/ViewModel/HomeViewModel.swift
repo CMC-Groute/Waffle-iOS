@@ -59,7 +59,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func detailArchive(selectedArchive: CardInfo) {
-        coordinator.detailArchive(selectedArchive: selectedArchive)
+        coordinator.detailArchive(id: selectedArchive.id)
     }
     
     func homeAlarm() {

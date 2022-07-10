@@ -14,10 +14,10 @@ class DetailArchiveViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
-    var cardInfo: CardInfo?
     var category: [PlaceCategory] = [PlaceCategory.confirmCategory]
     var selectedCategory: PlaceCategory = PlaceCategory.confirmCategory // 확정 카테고리
     var placeInfo: [DecidedPlace]?
+    var detailArchive: DetailArhive?
     var confirmCategoryIndex = -1
     var archiveId: Int = 0
     var archiveCode: String?
@@ -33,7 +33,9 @@ class DetailArchiveViewModel {
         var addPlaceButton: Observable<Void>
     }
     
-    struct Output { }
+    struct Output {
+        var loadData = PublishSubject<Bool>()
+    }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
@@ -41,7 +43,6 @@ class DetailArchiveViewModel {
         input.viewWillAppearEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let id = self.cardInfo?.id else { return }
                 self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
                 WappleLog.debug("detailArchiveVieModel id - \(self.archiveId)")
                 self.getArchiveCode()
@@ -57,8 +58,10 @@ class DetailArchiveViewModel {
             .subscribe(onNext: { [weak self] detailArchive in
                     guard let self = self else { return }
                 if let detailArchive = detailArchive {
-                    self.placeInfo = detailArchive.decidedPlace
-                    self.category += detailArchive.category ?? []
+                    self.detailArchive = detailArchive // 전체 약속 데이터
+                    self.placeInfo = detailArchive.decidedPlace // 확정 장소
+                    self.category += detailArchive.category ?? [] // 카테고리
+                    output.loadData.onNext(true)
                 }
             }).disposed(by: disposeBag)
         
@@ -88,7 +91,7 @@ class DetailArchiveViewModel {
     }
     
     func detailArhive() { // bottomSheet popUp
-        coordinator.detailArchiveBottomSheet(cardInfo: cardInfo)
+        coordinator.detailArchiveBottomSheet(detailArchive: detailArchive)
     }
     
     func detailPlace(place: PlaceByCategory, category: PlaceCategory) {
@@ -96,11 +99,11 @@ class DetailArchiveViewModel {
         }
     
     func participants() {
-        self.coordinator.participants(cardInfo: self.cardInfo)
+        self.coordinator.participants(detailArchive: detailArchive)
     }
     
     func invitations() {
-        self.coordinator.invitationBottomSheet(copyCode: self.archiveCode ?? "")
+        self.coordinator.invitationBottomSheet(copyCode: archiveCode ?? "")
     }
     
     func setCategory(category: PlaceCategory) {
@@ -121,9 +124,9 @@ class DetailArchiveViewModel {
     }
     
     func loadMemo() {
-        guard let detailArchive = cardInfo else { return }
+        guard let detailArchive = detailArchive else { return }
         guard let memo = detailArchive.memo else { return }
-        let cardImageIndex = CardViewInfoType.init(rawValue: detailArchive.cardType)?.cardViewIndex() ?? 0
+        let cardImageIndex = CardViewInfoType.init(rawValue: detailArchive.placeImage)?.cardViewIndex() ?? 0
         coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(cardImageIndex)")
     }
     

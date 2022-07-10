@@ -39,7 +39,6 @@ class DetailArchiveViewController: UIViewController {
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         navigationItem.leftBarButtonItem = backButton
         self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
-        self.navigationItem.title = viewModel?.cardInfo?.title
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.more.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapMoreButton))
     }
     
@@ -67,6 +66,13 @@ class DetailArchiveViewController: UIViewController {
         let input = DetailArchiveViewModel.Input(viewWillAppearEvent: self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in }, loadMemoButton: addPlaceButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
 
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        output?.loadData
+            .subscribe(onNext: { [weak self] bool in
+                if bool {
+                    self?.navigationItem.title = self?.viewModel?.detailArchive?.title
+                    self?.collectionView.reloadData()
+                }
+            }).disposed(by: disposeBag)
     }
 }
 
@@ -98,12 +104,12 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         guard let viewModel = viewModel else { return UICollectionViewCell() }
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TopDetailArchiveCollectionViewCell
-            cell.configureCell(cardInfo: viewModel.cardInfo)
+            cell.configureCell(detailArchive: viewModel.detailArchive)
             cell.viewModel = self.viewModel
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier, for: indexPath) as! SubDetailArchiveCollectionViewCell
-            cell.configureCell(count: viewModel.cardInfo?.topping.count ?? 1)
+            cell.configureCell(count: viewModel.detailArchive?.member.count ?? 1)
             cell.viewModel = self.viewModel
             cell.backgroundColor = .blue
             return cell

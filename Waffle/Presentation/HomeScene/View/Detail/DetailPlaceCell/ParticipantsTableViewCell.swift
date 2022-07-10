@@ -27,7 +27,7 @@ class ParticipantsTableViewCell: UITableViewCell {
         wappleImageView.makeCircleShape()
     }
     
-    func configureCell(info: ToppingInfo, type: ParticipantsType) {
+    func configureCell(info: Participants, type: ParticipantsType) {
         wappleImageView.image = UIImage(named: info.profileImage)
         nickNameLabel.text = info.nickName
         typeImageView.image = UIImage(named: "\(type.rawValue)-caption")

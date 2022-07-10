@@ -14,7 +14,7 @@ class EditArchiveViewModel {
     var coordinator: HomeCoordinator!
     
     var disposeBag = DisposeBag()
-    var cardInfo: CardInfo?
+    var detailArchive: DetailArhive?
     
     init(usecase: ArchiveUsecase, coordinator: HomeCoordinator){
         self.usecase = usecase
@@ -62,7 +62,7 @@ class EditArchiveViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         output.navigationTitle.accept("약속 편집하기")
-        print("get edit archive \(cardInfo)")
+        print("get edit archive \(detailArchive)")
         input.addArchiveButton
             .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
             .bind(onNext: { name, date, time, memo, location in
@@ -103,7 +103,7 @@ class EditArchiveViewModel {
                 self.coordinator.addLocation()
             }).disposed(by: disposeBag)
         
-        if let cardInfo = cardInfo {
+        if let _ = detailArchive {
             output.editModeEnabled.accept(true)
             output.doneButtonEnabled.accept(true)
         }

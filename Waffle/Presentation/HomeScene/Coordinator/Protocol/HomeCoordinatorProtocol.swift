@@ -8,17 +8,17 @@
 import Foundation
 
 protocol HomeCoordinatorProtocol: Coordinator {
-    func detailArchive(selectedArchive: CardInfo)
+    func detailArchive(id: Int)
     func addDetailPlace(category: [PlaceCategory])
     
     //MARK: load BottomSheet View
-    func detailArchiveBottomSheet(cardInfo: CardInfo?)
+    func detailArchiveBottomSheet(detailArchive: DetailArhive?)
     func invitationBottomSheet(copyCode: String)
     
     //MARK: Button Click
     func addCategory(category: [PlaceCategory])
     func loadMemo(memo: String, wapple: String)
-    func participants(cardInfo: CardInfo?)
+    func participants(detailArchive: DetailArhive?)
     func detailPlace(detailInfo: PlaceByCategory, category: PlaceCategory, categoryInfo: [PlaceCategory])
     
     //MARK: POPUP View click
@@ -31,5 +31,5 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func addArchive()
     func inputCodeArchive()
     func addLocation()
-    func editArchive(cardInfo: CardInfo?)
+    func editArchive(detailArchive: DetailArhive?)
 }

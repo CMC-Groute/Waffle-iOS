@@ -34,15 +34,15 @@ struct DetailArhive: Codable {
     var time: String?
     var memo: String?
     var wappleId: Int
-    var placeImage: String?
-    var member: [Participants]?
+    var placeImage: String
+    var member: [Participants]
     var category: [PlaceCategory]?
     var decidedPlace: [DecidedPlace]?
     var place: String?
     
     enum CodingKeys: String, CodingKey {
         case memo = "comment"
-        case title, date, wappleId, time
+        case title, date, wappleId = "waffleId", time
         case place = "invitationPlace"
         case placeImage = "invitationImageCategory"
         case member = "invitationMemberDto"

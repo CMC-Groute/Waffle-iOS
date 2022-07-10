@@ -70,9 +70,7 @@ class HomeRepository: HomeRepositoryProtocol {
                 switch response {
                 case .success(let data):
                     let staring = String(data: data, encoding: .utf8)
-                    WappleLog.debug("getDetailArchiveInfo data \(staring)")
                     guard let data = JSON.decode(data: data, to: GetDetailArchive.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
-        
                     return data
                 case .failure(let error):
                     throw error

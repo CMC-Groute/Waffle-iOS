@@ -290,19 +290,19 @@ class EditArchiveViewController: UIViewController {
             guard let viewModel = viewModel else {
                 return
             }
-            if let date = viewModel.cardInfo?.date, let time = viewModel.cardInfo?.time {
+            if let date = viewModel.detailArchive?.date, let time = viewModel.detailArchive?.time {
                 self.archiveDateTextField.text = date
                 self.archiveTimeTextField.text = time
             }else {
                 tapDateTimeLaterButton()
             }
-            self.archiveNameTextField.text = self.viewModel?.cardInfo?.title
+            self.archiveNameTextField.text = self.viewModel?.detailArchive?.title
             
-            if let memo = viewModel.cardInfo?.memo {
+            if let memo = viewModel.detailArchive?.memo {
                 archiveMemoTextView.text = memo
                 archiveMemoTextView.textColor = Asset.Colors.black.color
             }
-            if let place = viewModel.cardInfo?.place  {
+            if let place = viewModel.detailArchive?.place  {
                 self.archiveLocationTextField.text = place
                 self.archiveLocationTextField.addIconLeft(value: 9, icon: Asset.Assets.flagOrange.image, width: 15, height: 17)
             }

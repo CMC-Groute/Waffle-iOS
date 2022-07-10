@@ -11,7 +11,7 @@ import RxSwift
 class ParticiPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
-    var cardInfo: CardInfo?
+    var detailArchive: DetailArhive?
     
     @IBOutlet private weak var frameView: UIView!
     @IBOutlet private weak var countLabel: UILabel!
@@ -38,7 +38,7 @@ class ParticiPopUpViewController: UIViewController {
     }
     
     private func configureUI() {
-        countLabel.text = "\((cardInfo?.topping.count ?? 0))명"
+        countLabel.text = "\((detailArchive?.member.count ?? 0))명"
         frameView.makeRounded(width: nil, color: nil, value: 20)
         tableView.separatorColor = Asset.Colors.gray1.color
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -51,7 +51,7 @@ class ParticiPopUpViewController: UIViewController {
     
     private func configureHeight() {
         let tableViewlineHeight: CGFloat = 52
-        let count: CGFloat = CGFloat(cardInfo?.topping.count ?? 0)
+        let count: CGFloat = CGFloat(detailArchive?.member.count ?? 0)
         if count > 1 {
             if tableViewlineHeight * (count + 1) > maximumHeight {
                 tableView.isScrollEnabled = true
@@ -83,19 +83,19 @@ class ParticiPopUpViewController: UIViewController {
 
 extension ParticiPopUpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let topping = cardInfo?.topping else { return 0 }
+        guard let topping = detailArchive?.member else { return 0 }
         return topping.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ParticipantsTableViewCell.identifier, for: indexPath) as! ParticipantsTableViewCell
-        guard let toppingInfo = cardInfo?.topping else { return cell }
+        guard let toppingInfo = detailArchive?.member else { return cell }
         if indexPath.row == 0 {
-            let wapple = toppingInfo.filter { $0.userId == cardInfo?.wappleId }
+            let wapple = toppingInfo.filter { $0.userId == detailArchive?.wappleId }
             cell.configureCell(info: wapple[0], type: .wapple)
         }else {
-            var topping = toppingInfo.filter { $0.userId == cardInfo?.wappleId }
-            topping += toppingInfo.filter { $0.userId != cardInfo?.wappleId }
+            var topping = toppingInfo.filter { $0.userId == detailArchive?.wappleId }
+            topping += toppingInfo.filter { $0.userId != detailArchive?.wappleId }
             cell.configureCell(info: topping[indexPath.row], type: .topping)
         }
         return cell
