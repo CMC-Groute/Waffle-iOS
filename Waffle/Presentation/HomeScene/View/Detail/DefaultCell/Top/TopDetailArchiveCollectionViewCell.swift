@@ -24,9 +24,12 @@ class TopDetailArchiveCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUp() {
+        frameView.isUserInteractionEnabled = true
+        self.contentView.isUserInteractionEnabled = true
         memoView.makeRounded(width: nil, color: nil, value: 20)
-        memoView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo)))
-        
+        let loadMemoTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoadMemo))
+        memoView.isUserInteractionEnabled = true
+        memoView.addGestureRecognizer(loadMemoTapGesture)
     }
     
     @objc func didTapLoadMemo() {
@@ -35,9 +38,7 @@ class TopDetailArchiveCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(detailArchive: DetailArhive?) {
-        WappleLog.debug("detailArchive \(detailArchive)")
         guard let cardInfo = detailArchive else { return }
-        
         let wappleIndex = WappleType.init(rawValue: cardInfo.placeImage)?.wappleIndex() ?? 0
         toppingImageView.image = UIImage(named: "detailWapple-\(wappleIndex)")
         let cardColor = WappleType.init(rawValue: cardInfo.placeImage)?.wappleColor().colorName() ?? "lightPurple"

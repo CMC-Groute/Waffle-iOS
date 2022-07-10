@@ -23,6 +23,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var archiveCode = PublishSubject<String?>()
     var addCategory = PublishSubject<[PlaceCategory]?>()
     var deleteCategory = PublishSubject<Bool>()
+    var networkError = BehaviorSubject<Bool>(value: false)
     
     init(repository: HomeRepository){
         self.repository = repository
@@ -36,10 +37,15 @@ class HomeUsecase: HomeUsecaseProtocol {
                 return .just(GetCardResponse.errorResponse(status: error.rawValue, data: nil))
             }
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] cardInfo in
+            .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                self.cardInfo.onNext(cardInfo.data)
-                WappleLog.debug("getCardInfo \(cardInfo)")
+                if response.status == 500 {
+                    //network 연결 x
+                    self.networkError.onNext(true)
+                }else {
+                    self.cardInfo.onNext(response.data)
+                    WappleLog.debug("getCardInfo \(response.data)")
+                }
             }).disposed(by: disposeBag)
         }
     

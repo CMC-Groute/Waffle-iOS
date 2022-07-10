@@ -70,6 +70,8 @@ class HomeViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
+        
+        
     }
     
     func hideCardView() {

@@ -29,6 +29,7 @@ class HomeViewModel: ObservableObject {
     
     struct Output {
         let isHiddenView = BehaviorRelay<Bool>(value: false)
+        var networkErrorMessage = BehaviorRelay<Bool>(value: false)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -54,6 +55,12 @@ class HomeViewModel: ObservableObject {
                 }else {
                     output.isHiddenView.accept(true)
                 }
+            }).disposed(by: disposeBag)
+        
+        usecase.networkError
+            .map { $0 == true }
+            .subscribe(onNext: { [weak self] _ in
+                output.networkErrorMessage.accept(true)
             }).disposed(by: disposeBag)
         
         return output

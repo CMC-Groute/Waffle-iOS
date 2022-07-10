@@ -19,19 +19,11 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var changePWButton: UIButton!
     @IBOutlet weak var quitButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     var viewModel: SettingViewModel?
     let disposeBag = DisposeBag()
 
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.delegate = self
-        tableView.dataSource = self
-        return tableView
-    }()
     
     lazy var versionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 20))
@@ -86,11 +78,17 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configure()
         bindViewModel()
     }
     
+    private func configure() {
+        configureUI()
+        configureTableView()
+    }
+    
     private func configureUI() {
+        
         profileImage.makeCircleShape()
         changePWButton.makeRounded(corner: 20)
         changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
@@ -98,15 +96,16 @@ class SettingViewController: UIViewController {
         editButton.makeRounded(corner: 20)
         editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         editButton.layer.borderWidth = 1
-        self.view.addSubview(self.tableView)
         
         quitButton.setAttributedTitle("탈퇴하기".underBarLine(), for: .normal)
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(profileView.snp.bottom).offset(9)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(quitButton.snp.top).offset(-18)
-            make.height.equalTo(290)
-        }
+    }
+    
+    private func configureTableView() {
+        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func bindViewModel() {
