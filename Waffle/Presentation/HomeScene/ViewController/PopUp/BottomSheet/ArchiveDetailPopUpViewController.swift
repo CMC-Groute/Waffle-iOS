@@ -19,6 +19,7 @@ class ArchiveDetailPopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var detailArchive: DetailArhive?
+    var archiveId: Int?
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -46,13 +47,18 @@ class ArchiveDetailPopUpViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         deleteArchiveButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                guard let archiveId = self.archiveId else {
+                    return
+                }
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.arhiveDelete()
+                self.coordinator.arhiveDelete(archiveId: archiveId)
             }).disposed(by: disposeBag)
         
         likeArchiceButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
                 self.coordinator.likeSend()
             }).disposed(by: disposeBag)

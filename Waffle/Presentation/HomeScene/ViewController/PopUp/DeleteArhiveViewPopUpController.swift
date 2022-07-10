@@ -13,10 +13,13 @@ class DeleteArhiveViewPopUpController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var OKButton: UIButton!
     
+    //MARK: Private property
+    private var disposBag = DisposeBag()
+    
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
-    var disposBag = DisposeBag()
-
+    var archiveId: Int?
+    
     convenience init(coordinator: HomeCoordinator){
         self.init()
         self.coordinator = coordinator
@@ -37,13 +40,19 @@ class DeleteArhiveViewPopUpController: UIViewController {
 
     private func bindUI(){
         cancelButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
         
         OKButton.rx.tap
-            .subscribe(onNext: {
-                self.usecase.deleteArchive()
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                guard let archiveId = self.archiveId else {
+                    return
+                }
+                self.usecase.deleteArchive(archiveId: archiveId)
+                self.coordinator.dissmissAndPopToRootViewController()
             }).disposed(by: disposBag)
     }
 }

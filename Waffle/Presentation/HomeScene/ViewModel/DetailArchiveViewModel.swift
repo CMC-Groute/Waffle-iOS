@@ -91,7 +91,7 @@ class DetailArchiveViewModel {
     }
     
     func detailArhive() { // bottomSheet popUp
-        coordinator.detailArchiveBottomSheet(detailArchive: detailArchive)
+        coordinator.detailArchiveBottomSheet(detailArchive: detailArchive, archiveId: self.archiveId)
     }
     
     func detailPlace(place: PlaceByCategory, category: PlaceCategory) {

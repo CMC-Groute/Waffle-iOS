@@ -44,8 +44,6 @@ class HomeRepository: HomeRepositoryProtocol {
                 }
             })
         }
-//        let dummy = [CardInfo(title: "와플이랑 데이트", date: "2022-01-23T22:14:22", place: "창원 마산 합포구", memo: "오늘 그동안 모은 돈으로 오마카세를 먹는 날!!! 다들 지금까지 너무 고생많고 우리 신나게 한번 먹어보자구", wapple: "기해", topping: ["원", "메이", "우리", "채원", "원", "메이", "우리", "채원", "원", "메이", "우리", "채원"], color: 0), CardInfo(title: "와플이랑 데이트", date: "2022-11-23T22:04:22", place: "창원 마산 합포구", memo: "오늘 그동안 모은 돈으로 오마카세를 먹는 날!!! 다들 지금까지 너무 고생많고 우리 신나게 한번 먹어보자구", wapple: "기해", topping: ["원", "메이", "우리", "채원"], color: 1), CardInfo(title: "와플이랑 데이트", date: "2022-11-23T22:04:22", place: "창원 마산 합포구", memo: "오늘 그동안 모은 돈으로 오마카세를 먹는 날!!! 다들 지금까지 너무 고생많고 우리 신나게 한번 먹어보자구", wapple: "기해", topping: ["원", "메이", "우리", "채원"], color: 2), CardInfo(title: "와플이랑 데이트", date: "2022-11-23T22:04:22", place: "창원 마산 합포구", memo: "오늘 그동안 모은 돈으로 오마카세를 먹는 날!!! 다들 지금까지 너무 고생많고 우리 신나게 한번 먹어보자구", wapple: "기해", topping: ["원", "메이", "우리", "채원"], color: 3), CardInfo(title: "와플이랑 데이트", date: nil, place: nil, memo: nil, wapple: "기해", topping: [], color: 4)]
-//        return Observable.of(dummy)
     
     //약속 조회
     func getArchiveCode(id: Int) -> Observable<GetArchiveCode> {
@@ -69,8 +67,21 @@ class HomeRepository: HomeRepositoryProtocol {
             .map ({ response -> GetDetailArchive in
                 switch response {
                 case .success(let data):
-                    let staring = String(data: data, encoding: .utf8)
                     guard let data = JSON.decode(data: data, to: GetDetailArchive.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    func deleteArchive(archiveId: Int) -> Observable<DetaultIntResponse> {
+        let api = ArchiveAPI.deleteArchive(archiveId: archiveId)
+        return service.request(api)
+            .map ({  response -> DetaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DetaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

@@ -47,6 +47,7 @@ class HomeViewModel: ObservableObject {
         usecase.cardInfo
             .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
+                WappleLog.debug("HomeViewModel \(cardInfo)")
                 if let cardInfo = cardInfo, !cardInfo.isEmpty {
                     self.cardInfo = cardInfo
                     output.isHiddenView.accept(false)
@@ -59,7 +60,7 @@ class HomeViewModel: ObservableObject {
     }
     
     func detailArchive(selectedArchive: CardInfo) {
-        coordinator.detailArchive(id: selectedArchive.id)
+        coordinator.detailArchive(archiveId: selectedArchive.id)
     }
     
     func homeAlarm() {

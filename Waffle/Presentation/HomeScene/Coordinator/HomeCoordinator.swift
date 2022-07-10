@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class HomeCoordinator: HomeCoordinatorProtocol {
+    
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
@@ -29,10 +30,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(homeViewController, animated: true)
     }
     
-    func detailArchive(id: Int) {
+    func detailArchive(archiveId: Int) {
         detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
-        detailArchiveViewController.viewModel?.archiveId = id
+        detailArchiveViewController.viewModel?.archiveId = archiveId
         //detailArchiveViewController.viewModel?.detailArchive = selectedArchive
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
@@ -67,8 +68,9 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.present(categoryDeletePopUpView, animated: false)
     }
     
-    func arhiveDelete() {
+    func arhiveDelete(archiveId: Int) {
         let deleteArchivePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeleteArhiveViewPopUpController") as! DeleteArhiveViewPopUpController
+        deleteArchivePopUpView.archiveId = archiveId
         deleteArchivePopUpView.coordinator = self
         deleteArchivePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
         deleteArchivePopUpView.modalPresentationStyle = .overFullScreen
@@ -122,9 +124,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
 }
 
 extension HomeCoordinator {
-    func detailArchiveBottomSheet(detailArchive: DetailArhive?) {
+    func detailArchiveBottomSheet(detailArchive: DetailArhive?, archiveId: Int) {
         let detailArchiveBottomSheetView  = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ArchiveDetailPopUpViewController") as! ArchiveDetailPopUpViewController
         detailArchiveBottomSheetView.coordinator = self
+        detailArchiveBottomSheetView.archiveId = archiveId
         detailArchiveBottomSheetView.detailArchive = detailArchive
         detailArchiveBottomSheetView.modalPresentationStyle = .overFullScreen
         detailArchiveBottomSheetView.modalTransitionStyle = .crossDissolve
@@ -232,6 +235,11 @@ extension HomeCoordinator {
         let homeAlarmViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeAlarmViewController") as! HomeAlarmViewController
         homeAlarmViewController.alarm = alarm
         self.navigationController.pushViewController(homeAlarmViewController, animated: true)
+    }
+    
+    func dissmissAndPopToRootViewController() {
+        self.popToViewController(with: nil, width: nil, height: nil)
+        self.popToRootViewController()
     }
     
 }

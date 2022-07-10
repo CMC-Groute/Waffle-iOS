@@ -8,11 +8,11 @@
 import Foundation
 
 protocol HomeCoordinatorProtocol: Coordinator {
-    func detailArchive(id: Int)
+    func detailArchive(archiveId: Int)
     func addDetailPlace(category: [PlaceCategory])
     
     //MARK: load BottomSheet View
-    func detailArchiveBottomSheet(detailArchive: DetailArhive?)
+    func detailArchiveBottomSheet(detailArchive: DetailArhive?, archiveId: Int)
     func invitationBottomSheet(copyCode: String)
     
     //MARK: Button Click
@@ -23,7 +23,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     
     //MARK: POPUP View click
     func deleteCategory(category: PlaceCategory)
-    func arhiveDelete()
+    func arhiveDelete(archiveId: Int)
     func likeSend()
     func deletePlace(placeId: Int)
     

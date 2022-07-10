@@ -12,10 +12,14 @@ class HomeUsecase: HomeUsecaseProtocol {
     //let categoryList = Category.categoryList
     //var selectedCategoryList: [Category] = []
     
-    var repository: HomeRepository!
-    var detailArchive = PublishSubject<DetailArhive?>()
+    //MARK: Private property
+    private var repository: HomeRepository!
+    private var disposeBag = DisposeBag()
+    
+    //MARK: Response Subject
     var cardInfo = PublishSubject<[CardInfo]?>()
-    var disposeBag = DisposeBag()
+    var detailArchive = PublishSubject<DetailArhive?>()
+    var deleteSuccess = PublishSubject<Bool>()
     var archiveCode = PublishSubject<String?>()
     
     init(repository: HomeRepository){
@@ -32,10 +36,10 @@ class HomeUsecase: HomeUsecaseProtocol {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
-                WappleLog.debug("getCardInfo \(cardInfo)")
                 self.cardInfo.onNext(cardInfo.data)
+                WappleLog.debug("getCardInfo \(cardInfo)")
             }).disposed(by: disposeBag)
-    }
+        }
     
     func getDetailArchiveInfo(placeId: Int) { // 디테일 페이지 카드 조회
         repository.getDetailArchiveInfo(id: placeId)
@@ -49,7 +53,7 @@ class HomeUsecase: HomeUsecaseProtocol {
                 WappleLog.debug("getDetailArchiveInfo \(detailArchive)")
                 self.detailArchive.onNext(detailArchive.data)
             }).disposed(by: disposeBag)
-    }
+        }
     
     func getPlaceByCategory(placeId: Int, categoris: [PlaceCategory]) {
         for i in categoris {
@@ -61,8 +65,21 @@ class HomeUsecase: HomeUsecaseProtocol {
        //currentCardId
     }
     
-    func deleteArchive() { //약속 나가기
-        
+    func deleteArchive(archiveId: Int) { //약속 나가기
+        repository.deleteArchive(archiveId: archiveId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DetaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("deleteArchive error \(error)")
+                return .just(DetaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.deleteSuccess.onNext(true)
+                }else {
+                    self.deleteSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
     func likeSend() { // 좋아요 조르기
