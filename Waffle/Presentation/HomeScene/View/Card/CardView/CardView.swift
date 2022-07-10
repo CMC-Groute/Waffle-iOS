@@ -52,8 +52,7 @@ final class CardView: UIView {
         titleLabel.text = item.title
         placeLabel.text = item.place ?? DefaultDetailCardInfo.where.rawValue
         if let date = item.date, let time = item.time {
-            //let dateArray = Date.getDate(dateString: date) "\(dateArray[0]) \(dateArray[1])"
-            timeLabel.text = "\(date) \(time)"
+            timeLabel.text = "\(date) \(time.amPmChangeFormat())"
         }else {
             timeLabel.text = DefaultDetailCardInfo.when.rawValue
         }

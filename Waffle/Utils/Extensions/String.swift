@@ -38,5 +38,14 @@ extension String {
                                            range: textRange)
         return attributedText
     }
+    
+    func amPmChangeFormat() -> String {
+        if self.contains("AM") {
+            return self.replacingOccurrences(of: "AM", with: "오전")
+        }else if self.contains("PM") {
+            return self.replacingOccurrences(of: "PM", with: "오후")
+        }
+        return self
+    }
 }
 
