@@ -48,7 +48,7 @@ class HomeViewModel: ObservableObject {
         usecase.cardInfo
             .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
-                self.coordinator.detailArchive(archiveId: 9)
+                //self.coordinator.detailArchive(archiveId: 9)
                 if let cardInfo = cardInfo, !cardInfo.isEmpty {
                     self.cardInfo = cardInfo
                     output.isHiddenView.accept(false)
@@ -58,8 +58,8 @@ class HomeViewModel: ObservableObject {
             }).disposed(by: disposeBag)
         
         usecase.networkError
-            .map { $0 == true }
-            .subscribe(onNext: { 
+            .filter { $0 == true }
+            .subscribe(onNext: { _ in 
                 output.networkErrorMessage.accept(true)
             }).disposed(by: disposeBag)
         

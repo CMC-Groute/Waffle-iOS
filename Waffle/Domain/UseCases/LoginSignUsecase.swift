@@ -24,9 +24,12 @@ enum LoginStatus {
 class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     private var repository: LoginSignRepository!
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    
+    //MARK:
     let sendEmailSuccess = PublishSubject<SendEmailStatus>()
     let loginSuccess = PublishSubject<LoginStatus>()
+    let checkEmailCode = PublishSubject<Bool>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -81,7 +84,7 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
         UserDefaults.standard.set(user.token, forKey: UserDefaultKey.jwtToken)
     }
     
-    func signUp(signUp: SignUp) -> Observable<SignUpResponse> {
+    func signUp(signUp: SignUp) -> Observable<DefaultIntResponse> {
         return repository.singUp(signUpInfo: signUp)
     }
     
@@ -91,9 +94,21 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             .map { $0.status == 200 }
     }
     
-    func checkEmailCode(email: String, code: String) -> Observable<Bool> {
-        return repository.checkEmailCode(email: email, code: code)
-            .map { $0.status == 200 }
+    func checkEmailCode(email: String, code: String) {
+        repository.checkEmailCode(email: email, code: code)
+            .catch { error -> Observable<DefaultResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("error \(error)")
+                return .just(DefaultResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                WappleLog.debug("checkEmailCode \(response.status)")
+                if response.status == 200 {
+                    self.checkEmailCode.onNext(true)
+                }else if response.status == 403  || response.status == 400 {
+                    self.checkEmailCode.onNext(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
     func sendEmail(email: String) {

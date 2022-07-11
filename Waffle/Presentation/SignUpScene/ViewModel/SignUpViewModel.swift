@@ -125,18 +125,6 @@ class SignUpViewModel {
                 self.usecase.sendEmail(email: email)
             }).disposed(by: disposeBag)
         
-        usecase.sendEmailSuccess
-            .subscribe(onNext: { status in
-                WappleLog.debug("sendEmailSuccess \(status)")
-                switch status {
-                case .sendEmail:
-                    output.isEmailInvalid.accept(.checkEmail)
-                case .already:
-                    output.isEmailInvalid.accept(.aready)
-                }
-            }).disposed(by: disposeBag)
-        
-        
         //MARK: - authenTextField
         input.authenCodeTextField
             .subscribe(onNext: { text in
@@ -152,9 +140,6 @@ class SignUpViewModel {
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.authenCodeTextField))
             .bind(onNext: { email, code in
                 self.usecase.checkEmailCode(email: email, code: code)
-                    .subscribe(onNext: { bool in
-                        output.isAuthenCodeInValid.accept(bool)
-                    }).disposed(by: disposeBag)
             }).disposed(by: disposeBag)
         
         //MARK: - passwordTextField
@@ -185,6 +170,24 @@ class SignUpViewModel {
                         output.isRepasswordInvalid.accept(true)
                     }
                 }
+            }).disposed(by: disposeBag)
+        
+        //MARK: Binding Usecase
+        usecase.sendEmailSuccess
+            .subscribe(onNext: { status in
+                WappleLog.debug("sendEmailSuccess \(status)")
+                switch status {
+                case .sendEmail:
+                    output.isEmailInvalid.accept(.checkEmail)
+                case .already:
+                    output.isEmailInvalid.accept(.aready)
+                }
+            }).disposed(by: disposeBag)
+        
+        usecase.checkEmailCode
+            .subscribe(onNext: { bool in
+                WappleLog.debug("checkCodeSuccess \(bool)")
+                    output.isAuthenCodeInValid.accept(bool)
             }).disposed(by: disposeBag)
         
         return output

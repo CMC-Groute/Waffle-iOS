@@ -32,14 +32,14 @@ class LoginSignRepository: LoginSignRepositoryProtocol {
             })
     }
     
-    func singUp(signUpInfo: SignUp) -> Observable<SignUpResponse>  {
+    func singUp(signUpInfo: SignUp) -> Observable<DefaultIntResponse>  {
         WappleLog.debug("singUp repository")
         let api = LoginSignAPI.signUp(signUp: signUpInfo)
         return service.request(api)
-            .map ({ response -> SignUpResponse in
+            .map ({ response -> DefaultIntResponse in
                 switch response {
                 case .success(let data):
-                    guard let data = JSON.decode(data: data, to: SignUpResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

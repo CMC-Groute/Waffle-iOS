@@ -24,8 +24,3 @@ struct DefaultIntResponse: Codable {
         return DefaultIntResponse(status: code, data: 0)
     }
 }
-
-struct SignUpResponse: Codable {
-    var message: String
-    var data: Int
-}

@@ -22,6 +22,7 @@ protocol HomeRepositoryProtocol {
     
     //MARK: Place
     
+    
     //MARK: Like
     
 }

@@ -46,20 +46,21 @@ class SetProfileImageViewModel {
                 let profileImage = WappleType.init(index: self.selectedIndex).wappleName()
                 self.signUpInfo?.nickname = nickName
                 self.signUpInfo?.profileImage = profileImage
-                print("signUp info \(self.signUpInfo!)")
+                WappleLog.debug("signUp info \(self.signUpInfo!)")
                 self.usecase.signUp(signUp: self.signUpInfo!)
-                    .subscribe(on: MainScheduler.instance)
-                    .catch { error  in
-                            .just(SignUpResponse(message: error.localizedDescription, data: 0))
-                    }.subscribe(onNext: { response in
-                        if response.message == "success" { // 회원가입 성공시에만 finish
+                    .catch { error -> Observable<DefaultIntResponse> in
+                        let error = error as! URLSessionNetworkServiceError
+                        WappleLog.error("error \(error)")
+                        return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+                    }.observe(on: MainScheduler.instance)
+                    .subscribe(onNext: { response in
+                        if response.status == 200 { // 회원가입 성공시에만 finish
                             self.coordinator.finish()
-                        }else if response.message == "error" {
+                        }else if response.status == 403 {
                             print("error occured")
                         }else {
                             //400 중복회원입니다.
                             print("error occured occured")
-                            print(response.message)
                             //TO DO 하드코딩 변경하기
                             output.alertMessage.accept("중복 회원입니다.")
                         }
