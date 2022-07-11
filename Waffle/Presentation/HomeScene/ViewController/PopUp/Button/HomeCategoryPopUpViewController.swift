@@ -80,9 +80,6 @@ class HomeCategoryPopUpViewController: UIViewController {
             
             let name = items.map { $0.name }
                 .map { SendCategory.dictionary[$0] ?? "" }
-            
-            print("selected item \(name)")
-            
             self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             self.delegate?.selectedCategory(archiveId: archiveId, categoryName: name)
         }).disposed(by: disposeBag)

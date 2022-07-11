@@ -22,7 +22,7 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: Private Property
-    private var isCategoryEditing: Bool = false
+    var isCategoryEditing: Bool = false
     private var confirmCellCount = 1
     private let confirmCategoryName = "확정"
     weak var delegate: CategoryDetailArchiveCollectionViewCellDelegate?
@@ -87,10 +87,6 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
         }
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-//        if 0...8 ~= viewModel?.selectedCategory.id {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: [0, viewModel?.selectedCategory.id], animated: true, scrollPosition: .init())
-//        }
         cell.delegate = self
         cell.indexPath = indexPath
         cell.configureCell(name: viewModel?.category[indexPath.row].name ?? "", isEditing: isCategoryEditing)

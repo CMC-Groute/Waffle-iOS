@@ -14,13 +14,13 @@ class DetailArchiveViewController: UIViewController {
     @IBOutlet private weak var addPlaceButton: UIButton!
 
     var viewModel: DetailArchiveViewModel?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
+    private var isCategoryEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         bindViewModel()
-        //bindUI()
     }
     
     private func configure() {
@@ -71,28 +71,32 @@ class DetailArchiveViewController: UIViewController {
                 guard let self = self else { return }
                 if bool {
                     self.navigationItem.title = self.viewModel?.detailArchive?.title
-                    self.collectionView.reloadData()
+                    if self.isEditing {
+                        self.isEditing = false
+                        WappleLog.debug("isEditing now \(self.isEditing) reloadSection")
+                        self.collectionView.reloadSections(.init(integer: 2))
+                    }else {
+                        self.collectionView.reloadData()
+                    }
                 }
             }).disposed(by: disposeBag)
     }
 }
 
-////MARK: Home Category에서 받아온 카테고리 업데이트
+//MARK: Home Category에서 받아온 카테고리 업데이트
 extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
     func selectedCategory(archiveId: Int, categoryName: [String]) {
-        WappleLog.debug("selectedItem Called")
         viewModel?.addCategories(archiveId: archiveId, categoryName: categoryName)
     }
+}
+
+//MARK: Home Category delete PopUp 에서 받아온 카테고리 업데이트
+extension DetailArchiveViewController: HomeCategoryDeleteDelegate {
+    func deleteCategory(categoryId: Int) {
+        viewModel?.deleteCategories(categoryId: categoryId)
+    }
     
-//    func selectedCategory(category: [PlaceCategory]) {
-//        //update category 새로 넣은 카테고리만 줌
-//        viewModel?.addCategory(category: category)
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//            print("DetailArchiveViewController selectedCategory \(category)")
-//            self.collectionView.reloadSections(IndexSet(integer: 2))
-//        }
-//    }
+    
 }
 
 extension DetailArchiveViewController: UICollectionViewDelegate {
@@ -127,6 +131,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
+            cell.isCategoryEditing = isCategoryEditing
             cell.viewModel = viewModel
             cell.delegate = self
             cell.backgroundColor = .gray
@@ -142,7 +147,6 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
     }
     
     @objc func didTapLoadMemo() {
-        print("didTapLoadMemo")
         viewModel?.loadMemo()
     }
 }

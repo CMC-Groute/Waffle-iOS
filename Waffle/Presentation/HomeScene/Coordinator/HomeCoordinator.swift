@@ -62,6 +62,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         let categoryDeletePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "CategoryDeletePopUpViewController") as! CategoryDeletePopUpViewController
         categoryDeletePopUpView.coordinator = self
         categoryDeletePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
+        categoryDeletePopUpView.delegate = detailArchiveViewController
         categoryDeletePopUpView.archiveId = archiveId
         categoryDeletePopUpView.selectedCategory = category
         categoryDeletePopUpView.modalPresentationStyle = .overFullScreen

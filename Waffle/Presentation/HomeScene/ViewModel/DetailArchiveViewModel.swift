@@ -61,11 +61,13 @@ class DetailArchiveViewModel {
                 .subscribe(onNext: { [weak self] detailArchive in
                         guard let self = self else { return }
                     if let detailArchive = detailArchive {
-                        WappleLog.debug("DetailArchiveViewModel detailArchive \(self.addCategory)")
+                        WappleLog.debug("DetailArchiveViewModel detailArchive \(detailArchive)")
                         self.detailArchive = detailArchive // 전체 약속 데이터
                         self.placeInfo = detailArchive.decidedPlace // 확정 장소
                         let category = detailArchive.category?.compactMap { category in
                             return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
+                        //Delete시 cell 초기화
+                        if self.category.count > 1 { self.category = [PlaceCategory.confirmCategory]  }
                         self.category += category ?? [] // 카테고리
                         output.loadData.onNext(true)
                     }
@@ -90,11 +92,10 @@ class DetailArchiveViewModel {
                 }).disposed(by: disposeBag)
             
             usecase.deleteCategory
-                .subscribe(onNext: { [weak self] deleteCategory in
-                    WappleLog.debug("DetailArchiveViewModel deleteCategory \(deleteCategory)")
-                    //viewWillApear에서 해줘서 안해도 되나 확인 필요
-                    //self?.category += addCategory
-                    //output.loadData.onNext(true)
+                .subscribe(onNext: { [weak self] bool in
+                    guard let self = self else { return }
+                    WappleLog.debug("DetailArchiveViewModel deleteCategory \(bool)")
+                    self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
                 }).disposed(by: disposeBag)
         }
         
@@ -162,6 +163,10 @@ class DetailArchiveViewModel {
     
     func addCategories(archiveId: Int, categoryName: [String]) {
         usecase.addCategory(archiveId: archiveId, categoryName: categoryName)
+    }
+    
+    func deleteCategories(categoryId: Int) {
+        usecase.deleteCategory(archiveId: archiveId, categoryId: categoryId)
     }
 
 }

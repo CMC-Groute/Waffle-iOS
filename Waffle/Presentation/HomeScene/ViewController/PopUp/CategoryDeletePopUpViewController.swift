@@ -8,6 +8,10 @@
 import UIKit
 import RxSwift
 
+protocol HomeCategoryDeleteDelegate {
+    func deleteCategory(categoryId: Int)
+}
+
 class CategoryDeletePopUpViewController: UIViewController {
     @IBOutlet weak var framwView: UIView!
     @IBOutlet weak var titleText: UILabel!
@@ -18,6 +22,7 @@ class CategoryDeletePopUpViewController: UIViewController {
     var usecase: HomeUsecase!
     var selectedCategory: PlaceCategory?
     var archiveId: Int?
+    var delegate: HomeCategoryDeleteDelegate?
     
     private var disposBag = DisposeBag()
     
@@ -51,10 +56,12 @@ class CategoryDeletePopUpViewController: UIViewController {
         OKButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let archiveId = self.archiveId else {
+                guard let archiveId = self.archiveId, let selectedCategory = self.selectedCategory else {
                     return
                 }
-                self.usecase.deleteCategory(archiveId: archiveId, categoryId: self.selectedCategory?.id ?? 0)
+                WappleLog.debug("deletePopUp Delegate \(selectedCategory.name) \(archiveId)")
+                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+                self.delegate?.deleteCategory(categoryId: selectedCategory.id)
             }).disposed(by: disposBag)
     }
 }
