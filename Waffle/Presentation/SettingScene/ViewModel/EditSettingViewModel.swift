@@ -42,7 +42,6 @@ class EditSettingViewModel {
             .withLatestFrom(input.nickNameTextField)
             .bind(onNext: { nickName in
                 let profileImage = WappleType.init(index: self.selectedIndex).wappleName()
-                WappleLog.debug("\(nickName) \(profileImage)")
                 self.usecase.updateUserInfo(nickName: nickName, image: profileImage)
                 self.coordinator.popToRootViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposeBag)

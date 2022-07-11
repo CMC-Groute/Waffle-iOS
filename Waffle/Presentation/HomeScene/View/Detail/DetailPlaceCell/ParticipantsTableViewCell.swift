@@ -28,7 +28,9 @@ class ParticipantsTableViewCell: UITableViewCell {
     }
     
     func configureCell(info: Participants, type: ParticipantsType) {
-        wappleImageView.image = UIImage(named: info.profileImage)
+        if let imageIndex = WappleType.init(rawValue: info.profileImage)?.wappleIndex() {
+            wappleImageView.image = UIImage(named: "wapple-\(imageIndex)")
+        }
         nickNameLabel.text = info.nickName
         typeImageView.image = UIImage(named: "\(type.rawValue)-caption")
     }

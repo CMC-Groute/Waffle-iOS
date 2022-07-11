@@ -15,7 +15,7 @@ class DetailArchiveViewController: UIViewController {
 
     var viewModel: DetailArchiveViewModel?
     private var disposeBag = DisposeBag()
-    private var isCategoryEditing: Bool = false
+//    private var isCategoryEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +131,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
-            cell.isCategoryEditing = isCategoryEditing
+            //cell.isCategoryEditing = isCategoryEditing
             cell.viewModel = viewModel
             cell.delegate = self
             cell.backgroundColor = .gray
@@ -145,10 +145,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         }
         return UICollectionViewCell()
     }
-    
-    @objc func didTapLoadMemo() {
-        viewModel?.loadMemo()
-    }
+
 }
 
 extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
@@ -182,12 +179,4 @@ extension DetailArchiveViewController: CategoryDetailArchiveCollectionViewCellDe
             self.collectionView.reloadSections(.init(integer: 3))
         }
     }
-}
-
-extension DetailArchiveViewController: ViewTappedDelegate {
-    func viewTapped(_ photo: String) {
-        viewModel?.loadMemo()
-    }
-    
-    
 }

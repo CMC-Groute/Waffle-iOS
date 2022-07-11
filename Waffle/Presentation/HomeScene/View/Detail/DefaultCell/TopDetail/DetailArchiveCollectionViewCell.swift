@@ -24,13 +24,13 @@ class DetailArchiveCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUp() {
+        memoView.makeRounded(width: nil, color: nil, value: 20)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(loadMemo(recognizer:)))
         memoView.isUserInteractionEnabled = true
         memoView.addGestureRecognizer(tapGesture)
     }
     
     @objc func loadMemo(recognizer:UITapGestureRecognizer) {
-        print("viewModel \(viewModel)")
         viewModel?.loadMemo()
     }
     
