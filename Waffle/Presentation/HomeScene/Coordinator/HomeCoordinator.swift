@@ -110,7 +110,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.popViewController(animated: true)
     }
     
-    func selectPlace(place: PlaceSearchInfo?) {
+    func selectPlace(place: PlaceSearchResponse?) {
         self.navigationController.popViewController(animated: true)
         guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
         topViewController.viewModel?.getPlace = place
@@ -148,6 +148,7 @@ extension HomeCoordinator {
 extension HomeCoordinator {
     func addCategory(archiveId: Int, category: [PlaceCategory]) {
         let homeCategoryPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeCategoryPopUpViewController") as! HomeCategoryPopUpViewController
+        homeCategoryPopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
         homeCategoryPopUpView.coordinator = self
         homeCategoryPopUpView.delegate = detailArchiveViewController
         homeCategoryPopUpView.archiveId = archiveId

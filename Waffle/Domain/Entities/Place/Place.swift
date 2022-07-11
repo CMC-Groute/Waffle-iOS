@@ -12,7 +12,13 @@ struct GetPlaceResponse: Codable {
     var data: [PlaceByCategory]
 }
 
-struct PlaceSearchInfo: Codable {
+struct PlaceSearchRequest: Codable {
+    var keyword: String
+    var currentPage: Int
+    var pageSize: Int
+}
+
+struct PlaceSearchResponse: Codable {
     var address: String
     var categoryGroupCode: String
     var categoryGroupName: String

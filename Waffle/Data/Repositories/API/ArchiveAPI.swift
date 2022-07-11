@@ -50,7 +50,7 @@ extension ArchiveAPI {
         case .deleteArchive(_):
             return .delete
         case .editArchive(_, _):
-            return .put
+            return .patch
         }
     }
     

@@ -75,8 +75,10 @@ extension PlaceAPI {
         switch self {
         case .addPlace(_, _, _), .addPlaceCategory(_, _), .addLike(_):
             return .post
-        case .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .getConfirmSequence(_, _), .editPlace(_, _, _):
+        case .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .getConfirmSequence(_, _):
             return .put
+        case .editPlace(_, _, _):
+            return .patch
         case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .placeSearch:
             return .get
         case .deletePlace(_, _), .deletePlacCategory(_, _), .deleteLike(_):
