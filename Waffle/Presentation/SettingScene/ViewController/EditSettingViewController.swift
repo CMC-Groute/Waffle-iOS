@@ -101,7 +101,7 @@ class EditSettingViewController: UIViewController {
     
     private func bindViewModel(){
         let input = EditSettingViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), doneButton: self.doneButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd), selectedCell: self.collectionView.rx.itemSelected.asObservable())
-
+        nickNameTextField.text = viewModel?.nickName
         input.nickNameTextFieldDidTapEvent
             .subscribe(onNext: {
                 self.nickNameTextField.focusingBorder(color: Asset.Colors.orange.name)

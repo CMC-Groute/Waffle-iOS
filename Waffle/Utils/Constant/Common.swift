@@ -18,7 +18,7 @@ enum CoordinatorType {
 }
 
 enum WappleType: String, CaseIterable {
-    case wapple = "WAPPLE"
+    case wapple = "WAFFLE"
     case choco = "CHOCO"
     case blueberry = "BLUEBERRY"
     case vanilla = "VANILLA"

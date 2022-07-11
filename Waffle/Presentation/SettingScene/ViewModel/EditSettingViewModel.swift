@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 
 class EditSettingViewModel {
+    var nickName: String?
     
     struct Input {
         var nickNameTextField: Observable<String>

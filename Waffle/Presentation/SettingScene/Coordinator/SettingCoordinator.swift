@@ -30,10 +30,11 @@ final class SettingCoordinator: SettingCoordinatorProtocol {
         self.navigationController.viewControllers = [self.settingViewController]
     }
     
-    func editProfile() {
+    func editProfile(nickName: String) {
         self.navigationController.setNavigationBarHidden(false, animated: true)
         let editSettingViewController = UIStoryboard(name: "Setting", bundle: nil).instantiateViewController(withIdentifier: "EditSettingViewController") as! EditSettingViewController
         editSettingViewController.viewModel = EditSettingViewModel(coordinator: self, usecase: UserUsecase(repository: UserRepository(networkService: URLSessionNetworkService())))
+        editSettingViewController.viewModel?.nickName = nickName
         self.navigationController.pushViewController(editSettingViewController, animated: true)
     }
     

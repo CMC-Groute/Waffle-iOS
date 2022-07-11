@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SettingCoordinatorProtocol: Coordinator {
-    func editProfile()
+    func editProfile(nickName: String)
     func changePassword()
     func logout()
     func quit()

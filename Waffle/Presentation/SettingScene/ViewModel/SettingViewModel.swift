@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 
 class SettingViewModel {
+    
     struct Input {
         let viewWillAppearEvent: Observable<Void> 
         let editButton: Observable<Void>
@@ -49,8 +50,9 @@ class SettingViewModel {
             .disposed(by: disposeBag)
         
         input.editButton
-            .subscribe(onNext: {
-                self.coordinator.editProfile()
+            .withLatestFrom(output.userNickName)
+            .subscribe(onNext: { [weak self] nickName in
+                self?.coordinator.editProfile(nickName: nickName)
             }).disposed(by: disposeBag)
         
         input.chagePWButton
