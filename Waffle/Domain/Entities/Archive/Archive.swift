@@ -22,6 +22,11 @@ struct AddArchive: Codable {
     }
 }
 
+//MARK: 약속 편집
+struct EditArchive: Codable {
+    
+}
+
 //MARK: 약속 상세
 struct GetDetailArchive: Codable {
     var status: Int

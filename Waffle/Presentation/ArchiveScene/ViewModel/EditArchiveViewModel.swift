@@ -44,7 +44,7 @@ class EditArchiveViewModel {
         var locationTextFieldTapEvent: ControlEvent<Void>
         var locationLaterButton: Observable<Void>
         
-        var addArchiveButton: Observable<Void>
+        var EditArchiveButton: Observable<Void>
     }
     
     struct Output {
@@ -63,7 +63,7 @@ class EditArchiveViewModel {
         let output = Output()
         output.navigationTitle.accept("약속 편집하기")
         print("get edit archive \(detailArchive)")
-        input.addArchiveButton
+        input.EditArchiveButton
             .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
             .bind(onNext: { name, date, time, memo, location in
                 //TO DO change to edit
@@ -80,7 +80,7 @@ class EditArchiveViewModel {
                 WappleLog.debug("\(name) \(date) \(time) \(memo) \(location)")
                 WappleLog.debug("\(dateString) \(timeString)")
                  WappleLog.debug("inputData \(arhive)")
-                self.usecase.addArchive(archive: arhive)
+                self.usecase
             }).disposed(by: disposeBag)
 
         usecase.addArchiveSuccess

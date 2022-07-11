@@ -53,6 +53,11 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
     
+    // 약속 편집하기
+    func editArchive(archiveId: Int, archive: AddArchive) {
+        
+    }
+    
     func joinArchive(code: String) {
         return repository.joinArchiveCode(invitationCode: code)
             .catch { error -> Observable<DefaultIntResponse> in
