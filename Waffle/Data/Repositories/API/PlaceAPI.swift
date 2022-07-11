@@ -94,7 +94,7 @@ extension PlaceAPI {
         case .addPlace(_, _, let place):
             return place.dictionary
         case .addPlaceCategory(_, let placeCategory):
-            return ["placeCategories" : placeCategory]
+            return ["placeCategories" : placeCategory].dictionary
         case .getConfirmSequence(_, let placeSequence):
             return placeSequence.dictionary
         case .editPlace(_, _, let place):

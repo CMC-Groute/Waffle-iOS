@@ -130,4 +130,18 @@ enum CategoryType: String, CaseIterable {
     }
 }
 
+struct SendCategory {
+    static var dictionary: [String: String] = ["카페" : "CAFE",
+                                                "맛집" : "FOOD",
+                                                "아침" : "BREAKFAST",
+                                                "점심" : "LUNCH",
+                                                "저녁" : "DINNER",
+                                                "소품샵" : "PROP_SHOP",
+                                                "할거리" : "TODO",
+                                                "볼거리" : "TO_SEE",
+                                                "기타" : "ETC"]
+}
+
+
+
 

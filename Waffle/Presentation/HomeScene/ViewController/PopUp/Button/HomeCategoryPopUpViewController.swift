@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol HomeCategoryPopUpDelegate: AnyObject {
-    func selectedCategory(category: [PlaceCategory])
+    func selectedCategory(archiveId: Int, categoryName: [String])
 }
 
 class HomeCategoryPopUpViewController: UIViewController {
@@ -77,11 +77,14 @@ class HomeCategoryPopUpViewController: UIViewController {
             for i in self.collectionView.indexPathsForSelectedItems! {
                 items.append(self.enableCategoryList[i.row])
             }
-            print("selected item \(items.map { $0.name })")
+            
             let name = items.map { $0.name }
-            self.usecase.addCategory(archiveId: archiveId, categoryName: name)
+                .map { SendCategory.dictionary[$0] ?? "" }
+            
+            print("selected item \(name)")
+            
             self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-            //self.delegate?.selectedCategory(category: items)
+            self.delegate?.selectedCategory(archiveId: archiveId, categoryName: name)
         }).disposed(by: disposeBag)
     }
     

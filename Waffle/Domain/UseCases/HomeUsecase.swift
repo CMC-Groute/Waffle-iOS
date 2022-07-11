@@ -95,6 +95,7 @@ class HomeUsecase: HomeUsecaseProtocol {
                 return .just(AddCategoryResponse(status: error.rawValue, data: nil))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
+                WappleLog.debug("addCategory \(response.data)")
                 if response.status == 200 {
                     self.addCategory.onNext(response.data)
                 }else if response.status == 400 {

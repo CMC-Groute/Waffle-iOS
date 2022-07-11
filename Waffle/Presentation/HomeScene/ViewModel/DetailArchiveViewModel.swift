@@ -61,6 +61,7 @@ class DetailArchiveViewModel {
                 .subscribe(onNext: { [weak self] detailArchive in
                         guard let self = self else { return }
                     if let detailArchive = detailArchive {
+                        WappleLog.debug("DetailArchiveViewModel detailArchive \(self.addCategory)")
                         self.detailArchive = detailArchive // 전체 약속 데이터
                         self.placeInfo = detailArchive.decidedPlace // 확정 장소
                         let category = detailArchive.category?.compactMap { category in
@@ -79,11 +80,13 @@ class DetailArchiveViewModel {
             
             usecase.addCategory
                 .subscribe(onNext: { [weak self] addCategory in
-                    guard let addCategory = addCategory else { return }
                     WappleLog.debug("DetailArchiveViewModel addCategory \(addCategory)")
+                    guard let addCategory = addCategory else { return }
+                    let category = addCategory.compactMap { category in
+                        return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
 //                    viewWillApear에서 해줘서 안해도 되나 확인 필요
-//                    self?.category += addCategory
-//                    output.loadData.onNext(true)
+                    self?.category += category
+                    output.loadData.onNext(true)
                 }).disposed(by: disposeBag)
             
             usecase.deleteCategory
@@ -155,6 +158,10 @@ class DetailArchiveViewModel {
     
     func popViewController() {
         coordinator.popViewController()
+    }
+    
+    func addCategories(archiveId: Int, categoryName: [String]) {
+        usecase.addCategory(archiveId: archiveId, categoryName: categoryName)
     }
 
 }

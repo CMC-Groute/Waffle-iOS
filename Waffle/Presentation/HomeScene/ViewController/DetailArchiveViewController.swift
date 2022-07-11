@@ -79,8 +79,9 @@ class DetailArchiveViewController: UIViewController {
 
 ////MARK: Home Category에서 받아온 카테고리 업데이트
 extension DetailArchiveViewController: HomeCategoryPopUpDelegate {
-    func selectedCategory(category: [PlaceCategory]) {
-        
+    func selectedCategory(archiveId: Int, categoryName: [String]) {
+        WappleLog.debug("selectedItem Called")
+        viewModel?.addCategories(archiveId: archiveId, categoryName: categoryName)
     }
     
 //    func selectedCategory(category: [PlaceCategory]) {
