@@ -103,7 +103,6 @@ class DetailPlaceTableViewCell: UITableViewCell {
             likeButton.isSelected = false
         }
         updatedLikeCount = placeInfo.placeLike.likeCount
-        // TO DO : 유저가 좋아요 한 장소인지에 따라 버튼 이미지 바꾸기
         likeButton.setTitle("좋아요 \(updatedLikeCount)", for: .normal)
     }
     

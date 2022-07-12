@@ -109,7 +109,6 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
        return true
     }
 
-    // Move Row Instance Method
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         //print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
@@ -135,7 +134,6 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
     }
     
     func canEditingButton(cell: DetailPlaceTableViewCell) {
-            //TO DO
             //tableView drag and drop
             tableView.dragInteractionEnabled = true
             tableView.dragDelegate = self
@@ -143,18 +141,9 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
         }
     
     func didTapLikeButton(cell: DetailPlaceTableViewCell) {
-//        if cell.likeButton.isSelected {
-//            place[cell.placeId].placeLike.likeCount += 1
-//        }else {
-//            if (place[cell.placeId].placeLike.likeCount) > 0 {
-//                place[cell.placeId].placeLike.likeCount -= 1
-//            }
-//        }
-//        place[cell.placeId].placeLike.isPlaceLike = cell.likeButton.isSelected
         guard let viewModel = viewModel else { return }
         let placeId = cell.placeId
         viewModel.addLike(placeId: placeId)
-//        tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
     }
     
     func didTapDeleteLikeButton(cell: DetailPlaceTableViewCell) {

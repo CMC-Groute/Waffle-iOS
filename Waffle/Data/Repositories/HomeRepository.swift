@@ -234,7 +234,7 @@ extension HomeRepository {
     
     //MARK: 좋아요 취소
     func deleteLike(placeId: Int) -> Observable<DefaultIntResponse> {
-        let api = PlaceAPI.addLike(placeId: placeId)
+        let api = PlaceAPI.deleteLike(placeId: placeId)
         return service.request(api)
             .map({ response -> DefaultIntResponse in
                 switch response {
