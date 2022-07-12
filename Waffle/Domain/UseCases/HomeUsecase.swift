@@ -158,6 +158,24 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
+    //MARK: 확정 장소 조회
+    func getConfirmPlace(archiveId: Int) {
+        repository.getConfirmPlace(archiveId: archiveId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<GetPlaceByCategoryResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("getPlaceByCategory error \(error)")
+                return .just(GetPlaceByCategoryResponse(status: error.rawValue, data: nil))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.getPlaceByCategorySuccess.onNext(response.data)
+                }else {
+                    self.getPlaceByCategorySuccess.onNext(nil)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
     //카테고리별 장소 조회
     func getPlaceByCategory(archiveId: Int, categoryId: Int) {
         repository.getPlaceByCategory(archiveId: archiveId, categoryId: categoryId)

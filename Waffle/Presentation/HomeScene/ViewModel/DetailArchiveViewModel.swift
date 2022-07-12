@@ -150,7 +150,11 @@ class DetailArchiveViewModel {
     func updateSelectedCategory(category: PlaceCategory) {
         WappleLog.debug("Update selectedCategory \(category)")
         selectedCategory = category
-        usecase.getPlaceByCategory(archiveId: archiveId, categoryId: category.id)
+        if category.name == confirmCategoryName {
+            usecase.getConfirmPlace(archiveId: archiveId)
+        }else {
+            usecase.getPlaceByCategory(archiveId: archiveId, categoryId: category.id)
+        }
     }
     
     func addCategory(category: [PlaceCategory]) {

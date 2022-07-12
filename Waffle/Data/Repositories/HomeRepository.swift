@@ -157,6 +157,21 @@ extension HomeRepository {
             })
     }
     
+    //MARK: 확정 장소 조회
+    func getConfirmPlace(archiveId: Int) -> Observable<GetPlaceByCategoryResponse> {
+        let api = PlaceAPI.getConfirmPlace(archiveId: archiveId)
+        return service.request(api)
+            .map({ response -> GetPlaceByCategoryResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: GetPlaceByCategoryResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
     //MARK: 카테고리별 장소 조회
     func getPlaceByCategory(archiveId: Int, categoryId: Int) -> Observable<GetPlaceByCategoryResponse> {
         let api = PlaceAPI.getPlaceByCategory(archiveId: archiveId, categoryId: categoryId)
