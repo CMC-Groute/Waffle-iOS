@@ -138,7 +138,8 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TableDetailArchiveCollectionViewCell
             let updatePlace = viewModel.placeInfo ?? []
             WappleLog.debug("updatePlace \(updatePlace)")
-            cell.configureCell(place: updatePlace, selectedCategory: viewModel.selectedCategory)
+            cell.viewModel = viewModel
+            //cell.configureCell(place: updatePlace, selectedCategory: viewModel.selectedCategory)
             cell.backgroundColor = .green
             return cell
         }

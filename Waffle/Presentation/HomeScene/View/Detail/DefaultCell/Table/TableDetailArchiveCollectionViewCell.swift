@@ -6,11 +6,21 @@
 //
 
 import UIKit
+//protocol TableDetailArchiveCollectionViewCellDelegate: AnyObject {
+//    func
+//}
 
 class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "TableDetailArchiveCollectionViewCell"
     @IBOutlet private weak var tableView: UITableView!
-    //var viewModel: DetailArchiveViewModel?
+    var viewModel: DetailArchiveViewModel? {
+        didSet {
+            self.place = viewModel?.placeInfo ?? []
+            self.selectedCategory = viewModel?.selectedCategory
+            tableView.reloadData()
+        }
+    }
+    
     var place: [PlaceInfo] = []
     var categories: [Category] = []
     var selectedCategory: PlaceCategory?
@@ -68,12 +78,6 @@ class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
         tableView.dataSource = self
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
-    
-    func configureCell(place: [PlaceInfo], selectedCategory: PlaceCategory) {
-        self.place = place
-        self.selectedCategory = selectedCategory
-        self.tableView.reloadData()
-    }
 
 }
 
@@ -98,7 +102,7 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailPlaceTableViewCell.identifier, for: indexPath) as! DetailPlaceTableViewCell
         cell.selectionStyle = .none
         cell.delegate = self
-        cell.setPlaceId(index: indexPath.row)
+        cell.setPlaceId(index: place[indexPath.row].placeId)
         cell.configureCell(placeInfo: place[indexPath.row], selectedCategory: selectedCategory ?? PlaceCategory.confirmCategory)
         return cell
     }
@@ -128,9 +132,8 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
         }
     
         func didTapLikeButton(cell: DetailPlaceTableViewCell) {
-            print("didTapLikeButton")
+            print("didTapLikeButton \(cell.placeId)")
     //        print(cell.likeButton.isSelected)
-    //        print(cell.placeId)
             if cell.likeButton.isSelected {
                 place[cell.placeId].placeLike.likeCount += 1
             }else {
@@ -149,7 +152,8 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
         }
     
         func didTapDetailButton(cell: DetailPlaceTableViewCell) {
-            //guard let placeInfo = place[cell.placeId] else { return }
+            let placeId = cell.placeId
+            print("didTapDetailButton \(placeId)")
            // self.viewModel!.detailPlace(place: placeInfo, category: category[cell.placeId])
         }
 }
