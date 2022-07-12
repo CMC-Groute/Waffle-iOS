@@ -16,7 +16,7 @@ enum PlaceAPI: NetworkRequestBuilder {
     case getPlaceByCategory(archiveId: Int, categoryId: Int)
     case getDetailPlace(archiveId: Int, placeId: Int)
     case editPlace(archiveId: Int, placeId: Int, place: AddPlace)
-    case placeSearch
+    case placeSearch(searchInfo: PlaceSearchRequest)
     case deletePlace(archiveId: Int, placeId: Int)
     
     //MARK: category
@@ -89,8 +89,10 @@ extension PlaceAPI {
     
     var body: [String : Any]? {
         switch self {
-        case .getConfirmPlace(_),  .getPlaceByCategory(_, _), .getDetailPlace(_, _), .placeSearch, .deletePlace(_, _), .setConfirmPlace(_, _), .cancelConfirmPlace(_, _):
+        case .getConfirmPlace(_),  .getPlaceByCategory(_, _), .getDetailPlace(_, _), .deletePlace(_, _), .setConfirmPlace(_, _), .cancelConfirmPlace(_, _):
             return nil
+        case .placeSearch(let search):
+            return search.dictionary
         case .addPlace(_, _, let place):
             return place.dictionary
         case .addPlaceCategory(_, let placeCategory):

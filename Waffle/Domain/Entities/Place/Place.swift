@@ -44,6 +44,7 @@ struct GetPlaceByCategoryResponse: Codable {
     var data: [PlaceInfo]?
 }
 
+//MARK: 장소 검색
 struct PlaceSearchRequest: Codable {
     var keyword: String
     var currentPage: Int
@@ -51,9 +52,15 @@ struct PlaceSearchRequest: Codable {
 }
 
 struct PlaceSearchResponse: Codable {
+    var document: [PlaceSearch]
+    var meta: PlaceSearchMeta
+}
+
+struct PlaceSearch: Codable {
     var address: String
     var categoryGroupCode: String
     var categoryGroupName: String
+    var categoryName: String
     var distance: Double
     var id: String
     var phone: String
@@ -67,6 +74,7 @@ struct PlaceSearchResponse: Codable {
         case address = "address_name"
         case categoryGroupCode = "category_group_code"
         case categoryGroupName = "category_group_name"
+        case categoryName = "category_name"
         case distance, id, phone
         case placeName = "place_name"
         case placeUrl = "place_url"
@@ -74,6 +82,31 @@ struct PlaceSearchResponse: Codable {
         case longitude = "x"
         case latitude = "y"
         
+    }
+}
+
+struct PlaceSearchMeta: Codable {
+    var isEnd: Bool
+    var pageableCount: Int
+    var sameName: PlaceSearchSameName
+    var totalCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case isEnd = "is_end"
+        case pageableCount = "pageable_count"
+        case sameName = "same_name"
+        case totalCount = "total_count"
+    }
+}
+
+struct PlaceSearchSameName: Codable {
+    var keyword: String
+    var region: [String]
+    var selectedRegion: String
+    
+    enum CodingKeys: String, CodingKey {
+        case keyword, region
+        case selectedRegion = "selected_region"
     }
 }
 
