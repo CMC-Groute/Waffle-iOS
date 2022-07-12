@@ -110,11 +110,15 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
         print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
-        let moveCell = place[sourceIndexPath.row]
+        let movePlace = place[sourceIndexPath.row]
+        let destinationPlace = place[destinationIndexPath.row]
+        let moveSequence = PlaceSequence(placeId: movePlace.placeId, seq: destinationPlace.seq ?? 0)
+        let destinationSequence = PlaceSequence(placeId: destinationPlace.placeId, seq: movePlace.seq ?? 0)
+        let sequence = GetPlaceSequence(placeSequences: [moveSequence, destinationSequence])
+        viewModel?.changeConfirmSequence(placeSequence: sequence)
         place.remove(at: sourceIndexPath.row)
-        place.insert(moveCell, at: destinationIndexPath.row)
+        place.insert(movePlace, at: destinationIndexPath.row)
         tableView.dragInteractionEnabled = false
     }
 }

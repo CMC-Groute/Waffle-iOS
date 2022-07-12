@@ -323,6 +323,7 @@ extension HomeUsecase {
     
     //MARK: 확정 장소 순서 변경
     func changeConfirmSquence(archiveId: Int, placeSequence: GetPlaceSequence) {
+        WappleLog.debug("sequece \(placeSequence)")
         repository.changeConfirmSquence(archiveId: archiveId, placeSequence: placeSequence)
             .observe(on: MainScheduler.instance)
             .catch { error -> Observable<GetPlaceByCategoryResponse> in

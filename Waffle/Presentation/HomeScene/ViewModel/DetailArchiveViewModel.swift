@@ -221,8 +221,8 @@ extension DetailArchiveViewModel {
         usecase.deleteLike(placeId: placeId)
     }
     
-    func changeConfirmSequence() {
-        
+    func changeConfirmSequence(placeSequence: GetPlaceSequence) {
+        usecase.changeConfirmSquence(archiveId: archiveId, placeSequence: placeSequence)
     }
 }
 
