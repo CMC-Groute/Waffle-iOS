@@ -29,6 +29,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var getPlaceByCategorySuccess = PublishSubject<[PlaceInfo]?>() // 카테고리별 장소 조회
     var getSearchedPlaceSuccess = PublishSubject<[PlaceSearch]?>()
     var getDetailPlaceSuccess = PublishSubject<DetailPlaceInfo?>()
+    var changeConfirmSquenceSuccess = PublishSubject<[PlaceInfo]?>() // 순서 변경 조회
     
     init(repository: HomeRepository){
         self.repository = repository
@@ -316,6 +317,25 @@ extension HomeUsecase {
                     self.setComfirmPlaceSuccess.onNext(true)
                 }else {
                     self.setComfirmPlaceSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    //MARK: 확정 장소 순서 변경
+    func changeConfirmSquence(archiveId: Int, placeSequence: GetPlaceSequence) {
+        repository.changeConfirmSquence(archiveId: archiveId, placeSequence: placeSequence)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<GetPlaceByCategoryResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("changeConfirmSquence error \(error)")
+                return .just(GetPlaceByCategoryResponse(status: error.rawValue, data: nil))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("changeConfirmSquence \(response)")
+                if response.status == 200 {
+                    self.changeConfirmSquenceSuccess.onNext(response.data)
+                }else {
+                    self.changeConfirmSquenceSuccess.onNext(nil)
                 }
             }).disposed(by: disposeBag)
     }

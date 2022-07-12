@@ -246,4 +246,19 @@ extension HomeRepository {
                 }
             })
     }
+    
+    //MARK: 확정 장소 순서 변경
+    func changeConfirmSquence(archiveId: Int, placeSequence: GetPlaceSequence)  -> Observable<GetPlaceByCategoryResponse> {
+        let api = PlaceAPI.getConfirmSequence(archiveId: archiveId, placeSequence: placeSequence)
+        return service.request(api)
+            .map({ response -> GetPlaceByCategoryResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: GetPlaceByCategoryResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
 }

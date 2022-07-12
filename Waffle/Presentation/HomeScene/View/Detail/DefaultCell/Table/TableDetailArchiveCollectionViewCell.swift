@@ -111,7 +111,7 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        //print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
+        print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
         let moveCell = place[sourceIndexPath.row]
         place.remove(at: sourceIndexPath.row)
         place.insert(moveCell, at: destinationIndexPath.row)

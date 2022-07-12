@@ -140,6 +140,10 @@ struct AddPlace: Codable {
 //MARK: 장소 순서 조회
 struct GetPlaceSequence: Codable {
     var placeSequences: [PlaceSequence]
+    
+    enum CodingKeys: String, CodingKey {
+        case placeSequences = "placeSeqDtos"
+    }
 }
 
 struct PlaceSequence: Codable {

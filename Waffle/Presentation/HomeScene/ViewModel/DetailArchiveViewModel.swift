@@ -220,6 +220,10 @@ extension DetailArchiveViewModel {
     func deletLike(placeId: Int) {
         usecase.deleteLike(placeId: placeId)
     }
+    
+    func changeConfirmSequence() {
+        
+    }
 }
 
 extension DetailArchiveViewModel {
