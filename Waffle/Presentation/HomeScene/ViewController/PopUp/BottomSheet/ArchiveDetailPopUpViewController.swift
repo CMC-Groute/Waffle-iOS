@@ -42,8 +42,12 @@ class ArchiveDetailPopUpViewController: UIViewController {
         editArchiveButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
+                guard let archiveId = self.archiveId else {
+                    return
+                }
+
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editArchive(detailArchive: self.detailArchive)
+                self.coordinator.editArchive(archiveId: archiveId, detailArchive: self.detailArchive)
             }).disposed(by: disposeBag)
         
         deleteArchiveButton.rx.tap

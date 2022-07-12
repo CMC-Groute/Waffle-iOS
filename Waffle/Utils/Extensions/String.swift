@@ -49,3 +49,25 @@ extension String {
     }
 }
 
+extension String {
+    func toDate() -> Date? { //"yyyy-MM-dd"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = dateFormatter.date(from: self) {
+            return date
+        } else {
+            return nil
+        }
+    }
+    
+    func toTime() -> Date? { //"HH:mm"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        if let time = timeFormatter.date(from: self) {
+            return time
+        } else {
+            return nil
+        }
+    }
+}
+

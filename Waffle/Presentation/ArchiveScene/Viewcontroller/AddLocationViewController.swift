@@ -107,8 +107,10 @@ class AddLocationViewController: UIViewController {
         self.doneButton
             .rx.tap.subscribe(onNext: {
                 self.navigationController?.popViewController(animated: true)
-                if let vc = self.navigationController?.topViewController as? AddArchiveViewController {
-                    vc.viewModel?.locationTextField.accept(self.selectedText)
+                if let addVC = self.navigationController?.topViewController as? AddArchiveViewController {
+                    addVC.viewModel?.locationTextField.accept(self.selectedText)
+                }else if let editVC = self.navigationController?.topViewController as? EditArchiveViewController {
+                    editVC.viewModel?.locationTextField.accept(self.selectedText)
                 }
             }).disposed(by: disposeBag)
     }

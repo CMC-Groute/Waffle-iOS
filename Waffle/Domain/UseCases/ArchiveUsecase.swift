@@ -21,6 +21,7 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
     var disposeBag = DisposeBag()
 
     var addArchiveSuccess = PublishRelay<Bool>()
+    var editArchiveSuccess = PublishRelay<Bool>()
     var joinArhicveSuccess = PublishRelay<JoinArchiveStatus>()
     var code: String?
     
@@ -36,6 +37,7 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
         return s
     }
     
+    //MARK: 약속 생성하기
     func addArchive(archive: AddArchive) {
         return repository.addArchive(archive: archive)
             .catch { error -> Observable<DefaultIntResponse> in
@@ -53,11 +55,25 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
     
-    // 약속 편집하기
+    //MARK: 약속 편집하기
     func editArchive(archiveId: Int, archive: AddArchive) {
-        
+        return repository.editArchive(archiveId: archiveId, archive: archive)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("editArchive \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                WappleLog.debug("editArchive \(response)")
+                if response.status == 200 {
+                    self.editArchiveSuccess.accept(true)
+                }else {
+                    self.editArchiveSuccess.accept(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
+    //MARK: 약속 코드로 가입
     func joinArchive(code: String) {
         return repository.joinArchiveCode(invitationCode: code)
             .catch { error -> Observable<DefaultIntResponse> in

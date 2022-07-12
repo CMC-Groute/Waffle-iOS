@@ -48,7 +48,7 @@ class ArchiveRepository: ArchiveRepositoryProtocol {
     }
     
     // 약속 편집하기
-    func editArchive(archiveId: Int, archive: EditArchive) -> Observable<DefaultIntResponse> {
+    func editArchive(archiveId: Int, archive: AddArchive) -> Observable<DefaultIntResponse> {
         let api = ArchiveAPI.editArchive(archiveId: archiveId, editArchive: archive)
         return service.request(api)
             .map ({ response -> DefaultIntResponse in

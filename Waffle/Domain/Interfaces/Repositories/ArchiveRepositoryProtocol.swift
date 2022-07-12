@@ -12,5 +12,5 @@ import RxSwift
 protocol ArchiveRepositoryProtocol {
     func joinArchiveCode(invitationCode: String) -> Observable<DefaultIntResponse>
     func addArchive(archive: AddArchive) -> Observable<DefaultIntResponse>
-    func editArchive(archiveId: Int, archive: EditArchive) -> Observable<DefaultIntResponse> 
+    func editArchive(archiveId: Int, archive: AddArchive) -> Observable<DefaultIntResponse>
 }

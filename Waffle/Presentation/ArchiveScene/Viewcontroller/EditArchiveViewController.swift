@@ -166,11 +166,15 @@ class EditArchiveViewController: UIViewController {
 
     
     private func bindViewModel() {
-        let input = EditArchiveViewModel.Input(nameTextField: self.archiveNameTextField.rx.text.orEmpty.asObservable(), dateTextField: self.archiveDateTextField.rx.text.orEmpty.asObservable(), timeTextField : self.archiveTimeTextField.rx.text.orEmpty.asObservable(), locationTextField: self.archiveLocationTextField.rx.text.orEmpty.asObservable(), memoTextView: self.archiveMemoTextView.rx.text.asObservable(), nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), EditArchiveButton: self.addArchiveButton.rx.tap.asObservable())
+        let input = EditArchiveViewModel.Input(nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), EditArchiveButton: self.addArchiveButton.rx.tap.asObservable())
         
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
-        input.nameTextField
+        output?.title
+            .bind(to: self.archiveNameTextField.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        output?.title
             .subscribe(onNext: { text in
                 let restrictedStr = self.viewModel?.maxInputRestricted(length: 10, s: text)
                 self.archiveNameTextField.text = restrictedStr
@@ -292,7 +296,7 @@ class EditArchiveViewController: UIViewController {
             }
             if let date = viewModel.detailArchive?.date, let time = viewModel.detailArchive?.time {
                 self.archiveDateTextField.text = date
-                self.archiveTimeTextField.text = time
+                self.archiveTimeTextField.text = time.amPmChangeFormat()
             }else {
                 tapDateTimeLaterButton()
             }

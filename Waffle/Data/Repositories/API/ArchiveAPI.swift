@@ -9,7 +9,7 @@ import Foundation
 
 enum ArchiveAPI: NetworkRequestBuilder {
     case addArchive(archiveInfo: AddArchive)
-    case editArchive(archiveId: Int, editArchive: EditArchive)
+    case editArchive(archiveId: Int, editArchive: AddArchive)
     case joinArchive(code: String)
     case getArchiveCode(archiveId: Int)
     case getArchiveCard

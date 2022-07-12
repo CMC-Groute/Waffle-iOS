@@ -31,7 +31,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func addArchive()
     func inputCodeArchive()
     func addLocation()
-    func editArchive(detailArchive: DetailArhive?)
+    func editArchive(archiveId: Int, detailArchive: DetailArhive?)
     
     func selectPlace(place: PlaceSearch)
 }

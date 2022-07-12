@@ -15,6 +15,7 @@ class EditArchiveViewModel {
     
     var disposeBag = DisposeBag()
     var detailArchive: DetailArhive?
+    var archiveId: Int?
     
     init(usecase: ArchiveUsecase, coordinator: HomeCoordinator){
         self.usecase = usecase
@@ -26,11 +27,11 @@ class EditArchiveViewModel {
     let timePickerTime = BehaviorRelay<Date?>(value: nil)
     
     struct Input {
-        var nameTextField: Observable<String>
-        var dateTextField: Observable<String>
-        var timeTextField: Observable<String>
-        var locationTextField: Observable<String>
-        var memoTextView: Observable<String?>
+        //var nameTextField: Observable<String>
+        //var locationTextField: Observable<String>
+        //var dateTextField: Observable<String>
+        //var timeTextField: Observable<String>
+        //var memoTextView: Observable<String?>
         
         var nameTextFieldDidTapEvent: ControlEvent<Void>
         var memoTextViewDidTapEvent: ControlEvent<Void>
@@ -48,12 +49,16 @@ class EditArchiveViewModel {
     }
     
     struct Output {
-        var navigationTitle = BehaviorRelay<String>(value: "약속 만들기")
+        var title = PublishRelay<String>()
+        var memo = BehaviorRelay<String?>(value: nil)
+        
+        var navigationTitle = BehaviorRelay<String>(value: "약속 편집하기")
         var editModeEnabled = BehaviorRelay<Bool>(value: false)
         let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
         let locationLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
         let doneButtonEnabled = BehaviorRelay<Bool>(value: false)
     }
+    
     
     func maxInputRestricted(length: Int, s: String) -> String {
         return self.usecase.maximumTextLength(length: length, s: s)
@@ -61,13 +66,22 @@ class EditArchiveViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        output.navigationTitle.accept("약속 편집하기")
-        print("get edit archive \(detailArchive)")
+        guard let detailArchive = detailArchive else { return output }
+        if let date = detailArchive.date?.toDate(), let time = detailArchive.time?.toTime() {
+            WappleLog.debug("date \(date) time \(time)")
+            datePickerDate.accept(date) //"2022년 12월 02일"
+            timePickerTime.accept(time)  //("AM 12시 41분")
+            locationTextField.accept(detailArchive.place ?? nil)
+            output.title.accept(detailArchive.title)
+            output.memo.accept(detailArchive.memo ?? nil)
+        }
+        
         input.EditArchiveButton
-            .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
-            .bind(onNext: { name, date, time, memo, location in
-                //TO DO change to edit
-                var arhive = AddArchive(title: name)
+            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .withLatestFrom(Observable.combineLatest(output.title, datePickerDate, timePickerTime, output.memo, locationTextField))
+            .bind(onNext: { title, date, time, memo, location in
+                guard let archiveId = self.archiveId else { return }
+                var arhive = AddArchive(title: title)
                 let defaultText = "약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요"
                 if memo != defaultText {
                     arhive.memo = memo
@@ -77,10 +91,11 @@ class EditArchiveViewModel {
                 arhive.date = dateString
                 arhive.time = timeString
                 arhive.location = location
-                WappleLog.debug("\(name) \(date) \(time) \(memo) \(location)")
-                WappleLog.debug("\(dateString) \(timeString)")
-                 WappleLog.debug("inputData \(arhive)")
-                self.usecase
+                WappleLog.debug("EditArchiveViewModel \(title) \(date) \(time) \(memo) \(location)")
+                WappleLog.debug("EditArchiveViewModel \(dateString) \(timeString)")
+                 WappleLog.debug("EditArchiveViewModel total inputData \(arhive)")
+//                self.usecase.editArchive(archiveId: archiveId, archive: arhive)
+//                self.coordinator.popViewController()
             }).disposed(by: disposeBag)
 
         usecase.addArchiveSuccess
@@ -93,7 +108,7 @@ class EditArchiveViewModel {
             }).disposed(by: disposeBag)
         
         //done button 활성화
-        Observable.combineLatest(input.nameTextField, input.dateTextField, input.timeTextField, output.dateTimeLaterButtonEnabled, self.locationTextField, output.locationLaterButtonEnabled)
+        Observable.combineLatest(output.name, datePickerDate, timePickerTime, output.dateTimeLaterButtonEnabled, self.locationTextField, output.locationLaterButtonEnabled)
             .map{ !$0.0.isEmpty && ((!$0.1.isEmpty && !$0.2.isEmpty) || $0.3 == false) && (!($0.4 == nil) || $0.5 == false) } //false = 토핑이 원하는 위치로
             .bind(to: output.doneButtonEnabled)
             .disposed(by: disposeBag)
@@ -103,10 +118,10 @@ class EditArchiveViewModel {
                 self.coordinator.addLocation()
             }).disposed(by: disposeBag)
         
-        if let _ = detailArchive {
-            output.editModeEnabled.accept(true)
-            output.doneButtonEnabled.accept(true)
-        }
+        
+        output.editModeEnabled.accept(true)
+        output.doneButtonEnabled.accept(true)
+        
         return output
     }
     

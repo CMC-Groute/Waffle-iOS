@@ -208,9 +208,10 @@ extension HomeCoordinator {
         self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
     }
     
-    func editArchive(detailArchive: DetailArhive?) {
+    func editArchive(archiveId: Int, detailArchive: DetailArhive?) {
         let editArchiveViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "EditArchiveViewController") as! EditArchiveViewController
         editArchiveViewController.viewModel = EditArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
+        editArchiveViewController.viewModel?.archiveId = archiveId
         if let detailArchive = detailArchive {
             editArchiveViewController.viewModel?.detailArchive = detailArchive
         }
