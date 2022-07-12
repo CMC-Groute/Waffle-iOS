@@ -25,6 +25,10 @@ class HomeUsecase: HomeUsecaseProtocol {
     var deleteCategory = PublishSubject<Bool>()
     var networkError = BehaviorSubject<Bool>(value: false)
     
+    var addPlaceSuccess = PublishSubject<Bool>()
+    var setComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정
+    var cancelComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정 취소
+    
     init(repository: HomeRepository){
         self.repository = repository
     }
@@ -62,12 +66,6 @@ class HomeUsecase: HomeUsecaseProtocol {
                 self.detailArchive.onNext(detailArchive.data)
             }).disposed(by: disposeBag)
         }
-    
-    func getPlaceByCategory(placeId: Int, categoris: [PlaceCategory]) {
-        for i in categoris {
-            repository
-        }
-    }
     
     func deleteCategory(archiveId: Int, categoryId: Int) { // cardId, categoryId
         repository.deleteCategory(archiveId: archiveId, categoryId: categoryId)
@@ -125,14 +123,6 @@ class HomeUsecase: HomeUsecaseProtocol {
         
     }
     
-    func deletePlace(placeId: Int) { //장소 삭제하기
-        
-    }
-    
-    func editPlace(placeId: Int) { //장소 수정하기
-        
-    }
-    
     // 약속 코드 조회
     func getArchiveCode(archiveId: Int, completion: () -> Void) {
         repository.getArchiveCode(id: archiveId)
@@ -147,5 +137,75 @@ class HomeUsecase: HomeUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
 
+}
+
+//MARK: Place API
+extension HomeUsecase {
+    //장소 추가
+    func addPlace(archiveId: Int, categoryId: Int, addPlace: AddPlace) {
+        repository.addPlace(archiveId: archiveId, categoryId: categoryId, placeInfo: addPlace)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("addPlace error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.addPlaceSuccess.onNext(true)
+                }else {
+                    self.addPlaceSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    //카테고리별 장소 조회
+    func getPlaceByCategory(placeId: Int, categoris: [PlaceCategory]) {
+        
+    }
+    
+    //장소 확정
+    func setConfirmPlace(archiveId: Int, placeId: Int) {
+        repository.setConfirmPlace(archiveId: archiveId, placeId: placeId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("setConfirmPlace error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.setComfirmPlaceSuccess.onNext(true)
+                }else {
+                    self.setComfirmPlaceSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    //장소 확정 취소
+    func cancelConfirmPlace(archiveId: Int, placeId: Int) {
+        repository.cancelConfirmPlace(archiveId: archiveId, placeId: placeId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("cancelConfirmPlace error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.cancelComfirmPlaceSuccess.onNext(true)
+                }else {
+                    self.cancelComfirmPlaceSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func deletePlace(placeId: Int) { //장소 삭제하기
+        
+    }
+    
+    func editPlace(placeId: Int) { //장소 수정하기
+        
+    }
 }
 

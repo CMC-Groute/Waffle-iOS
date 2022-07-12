@@ -16,6 +16,7 @@ class HomeRepository: HomeRepositoryProtocol {
         self.service = networkService
     }
     
+    //MARK: 메인 카드 조회
     func getCardInfo() -> Observable<GetCardResponse> {
         let api = ArchiveAPI.getArchiveCard
         return service.request(api)
@@ -31,7 +32,7 @@ class HomeRepository: HomeRepositoryProtocol {
             })
         }
     
-    //약속 조회
+    //MARK: 약속 조회
     func getArchiveCode(id: Int) -> Observable<GetArchiveCode> {
         let api = ArchiveAPI.getArchiveCode(archiveId: id)
         return service.request(api)
@@ -46,7 +47,7 @@ class HomeRepository: HomeRepositoryProtocol {
             })
     }
     
-    //약속 상세 조회
+    //MARK: 약속 상세 조회
     func getDetailArchiveInfo(id: Int) -> Observable<GetDetailArchive> {
         let api = ArchiveAPI.getArchiveDetail(archiveId: id)
         return service.request(api)
@@ -61,6 +62,7 @@ class HomeRepository: HomeRepositoryProtocol {
             })
     }
     
+    //MARK: 약속 나가기
     func deleteArchive(archiveId: Int) -> Observable<DefaultIntResponse> {
         let api = ArchiveAPI.deleteArchive(archiveId: archiveId)
         return service.request(api)
@@ -75,7 +77,7 @@ class HomeRepository: HomeRepositoryProtocol {
             })
     }
     
-    //카테고리 추가
+    //MARK: 카테고리 추가
     func addCategory(archiveId: Int, categoryName: [String]) -> Observable<AddCategoryResponse> {
         let api = PlaceAPI.addPlaceCategory(archiveId: archiveId, placeCategory: categoryName)
         return service.request(api)
@@ -90,7 +92,7 @@ class HomeRepository: HomeRepositoryProtocol {
             })
     }
     
-    //카테고리 삭제
+    //MARK: 카테고리 삭제
     func deleteCategory(archiveId: Int, categoryId: Int) -> Observable<DefaultIntResponse> {
         let api = PlaceAPI.deletePlacCategory(archiveId: archiveId, categoryId: categoryId)
         return service.request(api)
@@ -104,7 +106,54 @@ class HomeRepository: HomeRepositoryProtocol {
                 }
             })
     }
+
+}
+
+//MARK: Place API
+extension HomeRepository {
     
+    //MARK: 장소 추가
+    func addPlace(archiveId: Int, categoryId: Int, placeInfo: AddPlace) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.addPlace(archiveId: archiveId, categoryId: categoryId, place: placeInfo)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
     
+    //MARK: 장소 확정
+    func setConfirmPlace(archiveId: Int, placeId: Int) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.setConfirmPlace(archiveId: archiveId, placeId: placeId)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
     
+    //MARK: 장소 확정 취소
+    func cancelConfirmPlace(archiveId: Int, placeId: Int)  -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.cancelConfirmPlace(archiveId: archiveId, placeId: placeId)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
 }

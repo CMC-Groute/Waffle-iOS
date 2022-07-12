@@ -51,14 +51,10 @@ struct AddPlace: Codable {
     var memo: String?
     var link: String?
     var roadNameAddress: String?
-    var longitude: Double?
-    var latitude: Double?
-    var categoryId: Int
     
     enum CodingKeys: String, CodingKey {
-        case title, link, roadNameAddress, longitude, latitude
+        case title, link, roadNameAddress
         case memo = "comment"
-        case categoryId = "placeCategoryId"
     }
 }
 
