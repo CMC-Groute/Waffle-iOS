@@ -11,8 +11,8 @@ import RxSwift
 protocol DetailPlacePopUpViewDelegate {
     func setConfirm(placeId: Int)
     func cancelConfirm(placeId: Int)
-    func likeSend(placeId: Int)
-    func likeCancel(placeId: Int)
+    func addLike(placeId: Int)
+    func deleteLike(placeId: Int)
 }
 
 class DetailPlacePopUpViewController: UIViewController {
@@ -47,6 +47,7 @@ class DetailPlacePopUpViewController: UIViewController {
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
     var delegate: DetailPlacePopUpViewDelegate?
+    private var updatedLikeCount: Int = 0
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -71,7 +72,8 @@ class DetailPlacePopUpViewController: UIViewController {
         guard let detailInfo = detailInfo, var placeInfo = placeInfo else {
             return
         }
-
+        updatedLikeCount = placeInfo.placeLike.likeCount
+        
         self.titleLabel.text = placeInfo.title
         self.linkLabel.text = detailInfo.link ?? DefaultDetailCardInfo.link.rawValue
         self.memoTextView.text = detailInfo.memo ?? DefaultDetailCardInfo.placeMemo.rawValue
@@ -82,16 +84,27 @@ class DetailPlacePopUpViewController: UIViewController {
         }
         
         updateConfirm(isConfirm: placeInfo.isConfirm)
-        self.likeCountButton.setTitle("\(placeInfo.placeLike.likeCount)", for: .normal)
+        self.likeCountButton.setTitle("\(updatedLikeCount)", for: .normal)
         
         self.likeCountButton
-            .rx.tap.subscribe(onNext: { [weak self] in
+            .rx.tap
+            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.likeCountButton.isSelected.toggle()
+                if placeInfo.placeLike.isPlaceLike { // 좋아요 누른 상태
+                    self.likeCountButton.isSelected = false
+                    self.delegate?.deleteLike(placeId: placeInfo.placeId)
+                }else {
+                    self.likeCountButton.isSelected = true
+                    self.delegate?.addLike(placeId: placeInfo.placeId)
+                }
+                placeInfo.placeLike.isPlaceLike.toggle()
+                
                 updateLikeCount()
             }).disposed(by: disposBag)
         
         self.editButton.rx.tap
+            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self = self else { return }
                 let placeId: Int = 0
@@ -101,10 +114,12 @@ class DetailPlacePopUpViewController: UIViewController {
         
         func updateLikeCount() {
             if likeCountButton.isSelected {
-                self.likeCountButton.setTitle("\(placeInfo.placeLike.likeCount + 1)", for: .normal)
+                updatedLikeCount += 1
+                self.likeCountButton.setTitle("\(updatedLikeCount)", for: .normal)
             }else {
-                if placeInfo.placeLike.likeCount > 0 {
-                    self.likeCountButton.setTitle("\(placeInfo.placeLike.likeCount)", for: .normal)
+                if self.updatedLikeCount > 0 {
+                    self.updatedLikeCount -= 1
+                    self.likeCountButton.setTitle("\(updatedLikeCount)", for: .normal)
                 }
             }
         }

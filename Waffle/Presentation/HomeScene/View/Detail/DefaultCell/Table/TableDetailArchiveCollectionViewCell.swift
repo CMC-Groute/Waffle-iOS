@@ -146,7 +146,6 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
     
         func didTapLikeButton(cell: DetailPlaceTableViewCell) {
             print("didTapLikeButton \(cell.placeId)")
-    //        print(cell.likeButton.isSelected)
             if cell.likeButton.isSelected {
                 place[cell.placeId].placeLike.likeCount += 1
             }else {

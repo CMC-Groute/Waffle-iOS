@@ -264,6 +264,7 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
+    //MARK: 디테일 약속 조회
     func getDetailPlace(archiveId: Int, placeId: Int) {
         repository.getDetailPlace(archiveId: archiveId, placeId: placeId)
             .observe(on: MainScheduler.instance)
@@ -277,6 +278,44 @@ extension HomeUsecase {
                     self.getDetailPlaceSuccess.onNext(response.data)
                 }else {
                     self.getDetailPlaceSuccess.onNext(nil)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    //MARK: like 누르기
+    func addLike(placeId: Int){
+        repository.addLike(placeId: placeId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("addLike error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("addLike \(response)")
+                if response.status == 200 {
+                    self.setComfirmPlaceSuccess.onNext(true)
+                }else {
+                    self.setComfirmPlaceSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    //MARK: like 취소하기
+    func deleteLike(placeId: Int){
+        repository.deleteLike(placeId: placeId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("deleteLike error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("deleteLike \(response)")
+                if response.status == 200 {
+                    self.setComfirmPlaceSuccess.onNext(true)
+                }else {
+                    self.setComfirmPlaceSuccess.onNext(false)
                 }
             }).disposed(by: disposeBag)
     }

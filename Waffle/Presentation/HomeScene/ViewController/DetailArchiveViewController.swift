@@ -167,22 +167,21 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension DetailArchiveViewController: DetailPlacePopUpViewDelegate {
+    func addLike(placeId: Int) {
+        viewModel?.addLike(placeId: placeId)
+    }
+    
+    func deleteLike(placeId: Int) {
+        viewModel?.deletLike(placeId: placeId)
+    }
+    
     func setConfirm(placeId: Int) {
-        print("setConfirm")
         viewModel?.setConfirm(placeId: placeId)
     }
     
     func cancelConfirm(placeId: Int) {
-        print("cancelConfirm")
         viewModel?.cancelConfirm(placeId: placeId)
         
     }
-    
-    func likeSend(placeId: Int) {
-        print("likeSend")
-    }
-    
-    func likeCancel(placeId: Int) {
-        print("likeCancel")
-    }
+
 }

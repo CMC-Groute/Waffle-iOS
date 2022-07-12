@@ -212,6 +212,14 @@ extension DetailArchiveViewModel {
     func setConfirm(placeId: Int) {
         usecase.setConfirmPlace(archiveId: archiveId, placeId: placeId)
     }
+    
+    func addLike(placeId: Int) {
+        usecase.addLike(placeId: placeId)
+    }
+    
+    func deletLike(placeId: Int) {
+        usecase.deleteLike(placeId: placeId)
+    }
 }
 
 extension DetailArchiveViewModel {

@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 class HomeRepository: HomeRepositoryProtocol {
+    
     let service: URLSessionNetworkService
     var disposBag = DisposeBag()
     
@@ -209,6 +210,36 @@ extension HomeRepository {
                 switch response {
                 case .success(let data):
                     guard let data = JSON.decode(data: data, to: DetailPlaceResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    //MARK: 좋아요 누르기
+    func addLike(placeId: Int) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.addLike(placeId: placeId)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    //MARK: 좋아요 취소
+    func deleteLike(placeId: Int) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.addLike(placeId: placeId)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error
