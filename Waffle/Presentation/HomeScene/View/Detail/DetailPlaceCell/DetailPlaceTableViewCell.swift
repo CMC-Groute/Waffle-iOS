@@ -11,8 +11,11 @@ import RxCocoa
 
 protocol DetailPlaceTableViewCellDelegate {
     func didTapLikeButton(cell: DetailPlaceTableViewCell)
+    func didTapDeleteLikeButton(cell: DetailPlaceTableViewCell)
+    
     func didTapsetConfirmButton(cell: DetailPlaceTableViewCell)
     func didTapcancelConfirmButton(cell: DetailPlaceTableViewCell)
+    
     func didTapDetailButton(cell: DetailPlaceTableViewCell)
     func canEditingButton(cell: DetailPlaceTableViewCell)
 }
@@ -28,6 +31,7 @@ class DetailPlaceTableViewCell: UITableViewCell {
     var placeId: Int = 0
     let disposeBag = DisposeBag()
     var delegate: DetailPlaceTableViewCellDelegate?
+    private var updatedLikeCount: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -70,7 +74,7 @@ class DetailPlaceTableViewCell: UITableViewCell {
     }
     
     @objc func didTapLabel(recognizer: UITapGestureRecognizer) {
-        print("didTapLabel ")
+        WappleLog.debug("didTapLabel")
         delegate?.didTapDetailButton(cell: self)
     }
     
@@ -98,8 +102,9 @@ class DetailPlaceTableViewCell: UITableViewCell {
         }else {
             likeButton.isSelected = false
         }
+        updatedLikeCount = placeInfo.placeLike.likeCount
         // TO DO : 유저가 좋아요 한 장소인지에 따라 버튼 이미지 바꾸기
-        likeButton.setTitle("좋아요 \(placeInfo.placeLike.likeCount)", for: .normal)
+        likeButton.setTitle("좋아요 \(updatedLikeCount)", for: .normal)
     }
     
     private func bindUI() {
@@ -124,9 +129,26 @@ class DetailPlaceTableViewCell: UITableViewCell {
         likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.delegate?.didTapLikeButton(cell: self)
-                self.likeButton.isSelected.toggle()
+                if self.likeButton.isSelected {
+                    self.likeButton.isSelected = false
+                    self.delegate?.didTapDeleteLikeButton(cell: self)
+                }else {
+                    self.likeButton.isSelected = true
+                    self.delegate?.didTapLikeButton(cell: self)
+                }
+                updateLikeCount(bool: self.likeButton.isSelected)
             }).disposed(by: disposeBag)
+        
+        func updateLikeCount(bool: Bool) {
+            if bool == false { // delete like count
+                if self.updatedLikeCount > 0 {
+                    self.updatedLikeCount -= 1
+                }
+            }else {
+                self.updatedLikeCount += 1
+            }
+            self.likeButton.setTitle("좋아요 \(updatedLikeCount)", for: .normal)
+        }
     }
 
 }

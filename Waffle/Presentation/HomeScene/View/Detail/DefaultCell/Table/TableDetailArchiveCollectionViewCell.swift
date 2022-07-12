@@ -6,12 +6,10 @@
 //
 
 import UIKit
-//protocol TableDetailArchiveCollectionViewCellDelegate: AnyObject {
-//    func
-//}
 
 class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "TableDetailArchiveCollectionViewCell"
+    
     @IBOutlet private weak var tableView: UITableView!
     var viewModel: DetailArchiveViewModel? {
         didSet {
@@ -123,7 +121,7 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
 }
 
 extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate {
-    
+
     func didTapsetConfirmButton(cell: DetailPlaceTableViewCell) {
         guard let viewModel = viewModel else { return }
         let placeId = cell.placeId
@@ -144,25 +142,33 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
             tableView.dropDelegate = self
         }
     
-        func didTapLikeButton(cell: DetailPlaceTableViewCell) {
-            print("didTapLikeButton \(cell.placeId)")
-            if cell.likeButton.isSelected {
-                place[cell.placeId].placeLike.likeCount += 1
-            }else {
-                if (place[cell.placeId].placeLike.likeCount) > 0 {
-                    place[cell.placeId].placeLike.likeCount -= 1
-                }
-            }
-            place[cell.placeId].placeLike.isPlaceLike = cell.likeButton.isSelected
-            tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
-        }
+    func didTapLikeButton(cell: DetailPlaceTableViewCell) {
+//        if cell.likeButton.isSelected {
+//            place[cell.placeId].placeLike.likeCount += 1
+//        }else {
+//            if (place[cell.placeId].placeLike.likeCount) > 0 {
+//                place[cell.placeId].placeLike.likeCount -= 1
+//            }
+//        }
+//        place[cell.placeId].placeLike.isPlaceLike = cell.likeButton.isSelected
+        guard let viewModel = viewModel else { return }
+        let placeId = cell.placeId
+        viewModel.addLike(placeId: placeId)
+//        tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
+    }
     
-        func didTapDetailButton(cell: DetailPlaceTableViewCell) {
-            guard let viewModel = viewModel else { return }
-            let placeId = cell.placeId
-            guard let currentPlace = viewModel.placeInfo?.filter({ $0.placeId == placeId })[0] else { return }
-            viewModel.detailPlace(place: currentPlace, category: viewModel.selectedCategory)
-        }
+    func didTapDeleteLikeButton(cell: DetailPlaceTableViewCell) {
+        guard let viewModel = viewModel else { return }
+        let placeId = cell.placeId
+        viewModel.deletLike(placeId: placeId)
+    }
+    
+    func didTapDetailButton(cell: DetailPlaceTableViewCell) {
+        guard let viewModel = viewModel else { return }
+        let placeId = cell.placeId
+        guard let currentPlace = viewModel.placeInfo?.filter({ $0.placeId == placeId })[0] else { return }
+        viewModel.detailPlace(place: currentPlace, category: viewModel.selectedCategory)
+    }
 }
 
 //MARK: Drag And Drop
