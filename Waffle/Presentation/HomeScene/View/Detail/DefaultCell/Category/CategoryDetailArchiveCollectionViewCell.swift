@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CategoryDetailArchiveCollectionViewCellDelegate: AnyObject {
-    func tableViewLoad()
-}
-
 class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryDefailArchiveCollectionViewCell"
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -25,7 +21,6 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     var isCategoryEditing: Bool = false
     private var confirmCellCount = 1
     private let confirmCategoryName = "확정"
-    weak var delegate: CategoryDetailArchiveCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -111,8 +106,8 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegate {
                 }
             }else {
                 let selectedCategory = viewModel.category[indexPath.row]
-                viewModel.setCategory(category: selectedCategory)
-                delegate?.tableViewLoad()
+                //선택된 카테고리 업데이트
+                viewModel.updateSelectedCategory(category: selectedCategory)
             }
         }
 }

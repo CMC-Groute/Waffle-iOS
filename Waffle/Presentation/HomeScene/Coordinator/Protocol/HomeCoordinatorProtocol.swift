@@ -19,7 +19,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func addCategory(archiveId: Int, category: [PlaceCategory])
     func loadMemo(memo: String, wapple: String)
     func participants(detailArchive: DetailArhive?)
-    func detailPlace(detailInfo: PlaceByCategory, category: PlaceCategory, categoryInfo: [PlaceCategory])
+    func detailPlace(detailInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory])
     
     //MARK: POPUP View click
     func deleteCategory(archiveId: Int, category: PlaceCategory)

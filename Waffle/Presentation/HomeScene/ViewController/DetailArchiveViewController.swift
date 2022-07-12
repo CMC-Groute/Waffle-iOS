@@ -67,17 +67,16 @@ class DetailArchiveViewController: UIViewController {
 
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         output?.loadData
-            .subscribe(onNext: { [weak self] bool in
+            .subscribe(onNext: { [weak self] indexPathType in
                 guard let self = self else { return }
-                if bool {
-                    self.navigationItem.title = self.viewModel?.detailArchive?.title
-                    if self.isEditing {
-                        self.isEditing = false
-                        WappleLog.debug("isEditing now \(self.isEditing) reloadSection")
-                        self.collectionView.reloadSections(.init(integer: 2))
-                    }else {
-                        self.collectionView.reloadData()
-                    }
+                self.navigationItem.title = self.viewModel?.detailArchive?.title
+                switch indexPathType {
+                case .all:
+                    self.collectionView.reloadData()
+                case .category:
+                    self.collectionView.reloadSections(.init(integer: 2))
+                case .tableView:
+                    self.collectionView.reloadSections(.init(integer: 3))
                 }
             }).disposed(by: disposeBag)
     }
@@ -133,13 +132,13 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
             //cell.isCategoryEditing = isCategoryEditing
             cell.viewModel = viewModel
-            cell.delegate = self
             cell.backgroundColor = .gray
             return cell
         }else if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TableDetailArchiveCollectionViewCell
-            let updatePlace = viewModel.placeInfoByCategory()
-            cell.configureCell(place: updatePlace)
+            let updatePlace = viewModel.placeInfo ?? []
+            WappleLog.debug("updatePlace \(updatePlace)")
+            cell.configureCell(place: updatePlace, selectedCategory: viewModel.selectedCategory)
             cell.backgroundColor = .green
             return cell
         }
@@ -169,14 +168,5 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: screenWidth, height: 900)
         }
         return CGSize(width: screenWidth, height: 500)
-    }
-}
-
-extension DetailArchiveViewController: CategoryDetailArchiveCollectionViewCellDelegate {
-    func tableViewLoad() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.collectionView.reloadSections(.init(integer: 3))
-        }
     }
 }

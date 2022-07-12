@@ -9,6 +9,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum LoadIndexPathType {
+    case all
+    case category
+    case tableView
+}
+
 class DetailArchiveViewModel {
     
     var coordinator: HomeCoordinator!
@@ -16,7 +22,7 @@ class DetailArchiveViewModel {
     var usecase: HomeUsecase!
     var category: [PlaceCategory] = [PlaceCategory.confirmCategory]
     var selectedCategory: PlaceCategory = PlaceCategory.confirmCategory // 확정 카테고리
-    var placeInfo: [DecidedPlace]?
+    var placeInfo: [PlaceInfo]?
     var detailArchive: DetailArhive?
     var confirmCategoryName = "확정"
     var archiveId: Int = 0
@@ -34,7 +40,7 @@ class DetailArchiveViewModel {
     }
     
     struct Output {
-        var loadData = PublishSubject<Bool>()
+        var loadData = PublishSubject<LoadIndexPathType>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -63,13 +69,17 @@ class DetailArchiveViewModel {
                     if let detailArchive = detailArchive {
                         WappleLog.debug("DetailArchiveViewModel detailArchive \(detailArchive)")
                         self.detailArchive = detailArchive // 전체 약속 데이터
-                        self.placeInfo = detailArchive.decidedPlace // 확정 장소
+                        self.placeInfo = detailArchive.placeInfo ?? []
                         let category = detailArchive.category?.compactMap { category in
                             return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
                         //Delete시 cell 초기화
-                        if self.category.count > 1 { self.category = [PlaceCategory.confirmCategory]  }
-                        self.category += category ?? [] // 카테고리
-                        output.loadData.onNext(true)
+                        if self.category.count > 1 { self.category = [PlaceCategory.confirmCategory]
+                            output.loadData.onNext(.category)
+                        }else {
+                            self.category += category ?? [] // 카테고리
+                            output.loadData.onNext(.all)
+                        }
+                        
                     }
                 }).disposed(by: disposeBag)
             
@@ -88,7 +98,7 @@ class DetailArchiveViewModel {
                         return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
 //                    viewWillApear에서 해줘서 안해도 되나 확인 필요
                     self?.category += category
-                    output.loadData.onNext(true)
+                    output.loadData.onNext(.category)
                 }).disposed(by: disposeBag)
             
             usecase.deleteCategory
@@ -96,6 +106,17 @@ class DetailArchiveViewModel {
                     guard let self = self else { return }
                     WappleLog.debug("DetailArchiveViewModel deleteCategory \(bool)")
                     self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
+                }).disposed(by: disposeBag)
+            
+            usecase.getPlaceByCategorySuccess
+                .subscribe(onNext: { [weak self] place in
+                    guard let self = self else { return }
+                    guard let place = place else {
+                        return
+                    }
+                    WappleLog.debug("getPlaceByCategorySuccess \(place)")
+                    self.placeInfo = place
+                    output.loadData.onNext(.tableView)
                 }).disposed(by: disposeBag)
         }
         
@@ -110,18 +131,11 @@ class DetailArchiveViewModel {
         return category.filter { $0.name != confirmCategoryName }
     }
     
-    
-    // 카테고리로 필터링된 place들
-    func placeInfoByCategory() -> [PlaceByCategory] {
-        //let place = placeInfo.filter { $0.category.index == selectedCategory.index }
-        return []
-    }
-    
     func detailArhive() { // bottomSheet popUp
         coordinator.detailArchiveBottomSheet(detailArchive: detailArchive, archiveId: self.archiveId)
     }
     
-    func detailPlace(place: PlaceByCategory, category: PlaceCategory) {
+    func detailPlace(place: PlaceInfo, category: PlaceCategory) {
         coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: loadCategoryWithoutConfirm())
         }
     
@@ -133,9 +147,10 @@ class DetailArchiveViewModel {
         self.coordinator.invitationBottomSheet(copyCode: archiveCode ?? "")
     }
     
-    func setCategory(category: PlaceCategory) {
-        //카테고리 클릭시마다 update해줌
+    func updateSelectedCategory(category: PlaceCategory) {
+        WappleLog.debug("Update selectedCategory \(category)")
         selectedCategory = category
+        usecase.getPlaceByCategory(archiveId: archiveId, categoryId: category.id)
     }
     
     func addCategory(category: [PlaceCategory]) {

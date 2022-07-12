@@ -9,9 +9,6 @@ import Foundation
 import RxSwift
 
 class HomeUsecase: HomeUsecaseProtocol {
-    //let categoryList = Category.categoryList
-    //var selectedCategoryList: [Category] = []
-    
     //MARK: Private property
     private var repository: HomeRepository!
     private var disposeBag = DisposeBag()
@@ -28,6 +25,8 @@ class HomeUsecase: HomeUsecaseProtocol {
     var addPlaceSuccess = PublishSubject<Bool>()
     var setComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정
     var cancelComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정 취소
+    var getConfrimPlaceSuccess = PublishSubject<[PlaceInfo]?>() // 확정 장소 조회
+    var getPlaceByCategorySuccess = PublishSubject<[PlaceInfo]?>() // 카테고리별 장소 조회
     
     init(repository: HomeRepository){
         self.repository = repository
@@ -160,8 +159,21 @@ extension HomeUsecase {
     }
     
     //카테고리별 장소 조회
-    func getPlaceByCategory(placeId: Int, categoris: [PlaceCategory]) {
-        
+    func getPlaceByCategory(archiveId: Int, categoryId: Int) {
+        repository.getPlaceByCategory(archiveId: archiveId, categoryId: categoryId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<GetPlaceByCategoryResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("getPlaceByCategory error \(error)")
+                return .just(GetPlaceByCategoryResponse(status: error.rawValue, data: nil))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.getPlaceByCategorySuccess.onNext(response.data)
+                }else {
+                    self.getPlaceByCategorySuccess.onNext(nil)
+                }
+            }).disposed(by: disposeBag)
     }
     
     //장소 확정

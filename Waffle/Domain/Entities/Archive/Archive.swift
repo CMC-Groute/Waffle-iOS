@@ -39,11 +39,11 @@ struct DetailArhive: Codable {
     var time: String?
     var memo: String?
     var wappleId: Int
+    var place: String?
     var placeImage: String
     var member: [Participants]
     var category: [PlaceCategory]?
-    var decidedPlace: [DecidedPlace]?
-    var place: String?
+    var placeInfo: [PlaceInfo]
     
     enum CodingKeys: String, CodingKey {
         case memo = "comment"
@@ -52,7 +52,7 @@ struct DetailArhive: Codable {
         case placeImage = "invitationImageCategory"
         case member = "invitationMemberDto"
         case category = "placeCategoryDto"
-        case decidedPlace = "decidedPlaceDetailResponses"
+        case placeInfo = "decidedPlaceDetailResponses"
     }
 }
 
@@ -138,10 +138,4 @@ struct GetCategory: Codable {
         case id = "placeCategoryId"
         case name
     }
-}
-
-struct DecidedPlace: Codable {
-    var placeId: Int
-    var title: String
-    var seq: Int // 순서
 }

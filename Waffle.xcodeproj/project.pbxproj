@@ -55,7 +55,6 @@
 		133D558228744BB20068EA90 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC892869397F00E5520C /* SignUp.swift */; };
 		133D558328744BB20068EA90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC8B28693B6000E5520C /* User.swift */; };
 		133D558428744BB20068EA90 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03D9286DECC70087E79E /* Login.swift */; };
-		133D558528744BB20068EA90 /* PlaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC832866DE0F00E5520C /* PlaceInfo.swift */; };
 		133D558628744BB20068EA90 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2A077285EF2020015499E /* Archive.swift */; };
 		133D558728744BB20068EA90 /* LoginSignRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D3A284E5373008E1185 /* LoginSignRepositoryProtocol.swift */; };
 		133D558828744BB20068EA90 /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED3292855EFB6002371FD /* UserRepositoryProtocol.swift */; };
@@ -152,7 +151,6 @@
 		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
 		135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */; };
 		135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543952875DBB100F8CA0D /* EditArchiveViewController.swift */; };
-		135543982877276100F8CA0D /* GetPlaceByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543972877276100F8CA0D /* GetPlaceByCategory.swift */; };
 		1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543992877299800F8CA0D /* PlaceAPI.swift */; };
 		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
 		137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */; };
@@ -212,7 +210,6 @@
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
 		135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewModel.swift; sourceTree = "<group>"; };
 		135543952875DBB100F8CA0D /* EditArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewController.swift; sourceTree = "<group>"; };
-		135543972877276100F8CA0D /* GetPlaceByCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlaceByCategory.swift; sourceTree = "<group>"; };
 		135543992877299800F8CA0D /* PlaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAPI.swift; sourceTree = "<group>"; };
 		135B60562858504C0035AE4B /* ButtonAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
@@ -248,7 +245,6 @@
 		1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailPlaceTableViewCell.xib; sourceTree = "<group>"; };
 		1390EC7E2864952600E5520C /* DetailPlacePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlacePopUpViewController.swift; sourceTree = "<group>"; };
 		1390EC8028649A6200E5520C /* HomeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCategoryCollectionViewCell.swift; path = Waffle/Presentation/HomeScene/View/HomeCategoryCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		1390EC832866DE0F00E5520C /* PlaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfo.swift; sourceTree = "<group>"; };
 		1390EC892869397F00E5520C /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		1390EC8B28693B6000E5520C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1390EC9228698E9B00E5520C /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -550,8 +546,6 @@
 		1390EC822866DE0000E5520C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1390EC832866DE0F00E5520C /* PlaceInfo.swift */,
-				135543972877276100F8CA0D /* GetPlaceByCategory.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1649,7 +1643,6 @@
 				133D55C128744BDD0068EA90 /* SearchPlaceViewController.swift in Sources */,
 				133D55C228744BDD0068EA90 /* HomeCoordinatorProtocol.swift in Sources */,
 				133D55C328744BDD0068EA90 /* HomeCoordinator.swift in Sources */,
-				135543982877276100F8CA0D /* GetPlaceByCategory.swift in Sources */,
 				137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */,
 				13062E122879576A003774A7 /* HomeAlarmViewController.swift in Sources */,
 				133D55C428744BDD0068EA90 /* SettingCoordinatorProtocol.swift in Sources */,
@@ -1673,7 +1666,6 @@
 				133D558228744BB20068EA90 /* SignUp.swift in Sources */,
 				133D558328744BB20068EA90 /* User.swift in Sources */,
 				133D558428744BB20068EA90 /* Login.swift in Sources */,
-				133D558528744BB20068EA90 /* PlaceInfo.swift in Sources */,
 				133D558628744BB20068EA90 /* Archive.swift in Sources */,
 				133D558728744BB20068EA90 /* LoginSignRepositoryProtocol.swift in Sources */,
 				133D558828744BB20068EA90 /* UserRepositoryProtocol.swift in Sources */,

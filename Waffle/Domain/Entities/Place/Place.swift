@@ -7,9 +7,41 @@
 
 import Foundation
 
+//MARK: 디테일 -> 장소 조회
 struct GetPlaceResponse: Codable {
-    var message: String
-    var data: [PlaceByCategory]
+    var status: Int
+    var data: [PlaceInfo]?
+}
+
+struct PlaceInfo: Codable {
+    var placeId: Int
+    var title: String
+    var seq: Int?
+    var roadNameAddress: String?
+    var isConfirm: Bool
+    var placeLike: PlaceLike
+    
+    enum CodingKeys: String, CodingKey {
+        case placeId, title, seq
+        case roadNameAddress, placeLike = "placeLikesDto"
+        case isConfirm = "isDecision"
+    }
+}
+
+struct PlaceLike: Codable {
+    var isPlaceLike: Bool
+    var likeCount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case isPlaceLike
+        case likeCount = "likeCnt"
+    }
+}
+
+//MARK: 카테고리별 장소 조회
+struct GetPlaceByCategoryResponse: Codable {
+    var status: Int
+    var data: [PlaceInfo]?
 }
 
 struct PlaceSearchRequest: Codable {

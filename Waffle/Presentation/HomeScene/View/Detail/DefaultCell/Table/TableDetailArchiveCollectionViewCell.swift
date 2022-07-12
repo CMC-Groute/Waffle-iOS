@@ -11,8 +11,9 @@ class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "TableDetailArchiveCollectionViewCell"
     @IBOutlet private weak var tableView: UITableView!
     //var viewModel: DetailArchiveViewModel?
-    var place: [PlaceByCategory] = []
+    var place: [PlaceInfo] = []
     var categories: [Category] = []
+    var selectedCategory: PlaceCategory?
     
     var noPlaceView: UIView = {
         let view = UIView()
@@ -68,8 +69,9 @@ class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
-    func configureCell(place: [PlaceByCategory]) {
+    func configureCell(place: [PlaceInfo], selectedCategory: PlaceCategory) {
         self.place = place
+        self.selectedCategory = selectedCategory
         self.tableView.reloadData()
     }
 
@@ -97,7 +99,7 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
         cell.selectionStyle = .none
         cell.delegate = self
         cell.setPlaceId(index: indexPath.row)
-        cell.configureCell(placeInfo: place[indexPath.row])
+        cell.configureCell(placeInfo: place[indexPath.row], selectedCategory: selectedCategory ?? PlaceCategory.confirmCategory)
         return cell
     }
 

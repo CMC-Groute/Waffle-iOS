@@ -34,7 +34,7 @@ class DetailPlacePopUpViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
-    var detailInfo: PlaceByCategory?
+    var detailInfo: PlaceInfo?
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
     convenience init(coordinator: HomeCoordinator){

@@ -21,7 +21,7 @@ protocol HomeRepositoryProtocol {
     func deleteCategory(archiveId: Int, categoryId: Int) -> Observable<DefaultIntResponse>
     
     //MARK: Place
-    
+    func getPlaceByCategory(archiveId: Int, categoryId: Int) -> Observable<GetPlaceByCategoryResponse>
     
     //MARK: Like
     

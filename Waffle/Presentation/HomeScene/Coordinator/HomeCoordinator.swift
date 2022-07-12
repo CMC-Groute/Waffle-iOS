@@ -178,7 +178,7 @@ extension HomeCoordinator {
         self.navigationController.present(particiPopUpView, animated: false)
     }
     
-    func detailPlace(detailInfo: PlaceByCategory, category: PlaceCategory, categoryInfo: [PlaceCategory]) {
+    func detailPlace(detailInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory]) {
         let detailPlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPlacePopUpViewController") as! DetailPlacePopUpViewController
         detailPlacePopUpView.coordinator = self
         detailPlacePopUpView.detailInfo = detailInfo

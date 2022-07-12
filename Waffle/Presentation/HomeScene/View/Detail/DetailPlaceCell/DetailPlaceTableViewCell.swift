@@ -74,12 +74,12 @@ class DetailPlaceTableViewCell: UITableViewCell {
         self.placeId = index
     }
     
-    func configureCell(placeInfo: PlaceByCategory) {
-//        if placeInfo.category.index == -1 {
-//            canEditingButton.isHidden = false
-//        }else {
-//            canEditingButton.isHidden = true
-//        }
+    func configureCell(placeInfo: PlaceInfo, selectedCategory: PlaceCategory) {
+        if selectedCategory.id == -1 { // 확정 장소 일때만
+            canEditingButton.isHidden = false
+        }else {
+            canEditingButton.isHidden = true
+        }
         
         titleLabel.text = placeInfo.title
         placeLabel.text = placeInfo.roadNameAddress
