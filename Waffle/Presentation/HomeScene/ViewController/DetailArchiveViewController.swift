@@ -15,7 +15,6 @@ class DetailArchiveViewController: UIViewController {
 
     var viewModel: DetailArchiveViewModel?
     private var disposeBag = DisposeBag()
-//    private var isCategoryEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,11 +97,7 @@ extension DetailArchiveViewController: HomeCategoryDeleteDelegate {
     
 }
 
-extension DetailArchiveViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.section)
-    }
-}
+extension DetailArchiveViewController: UICollectionViewDelegate { }
 
 extension DetailArchiveViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -130,7 +125,6 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
-            //cell.isCategoryEditing = isCategoryEditing
             cell.viewModel = viewModel
             cell.backgroundColor = .gray
             return cell

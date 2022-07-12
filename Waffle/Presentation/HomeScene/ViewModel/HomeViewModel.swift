@@ -34,7 +34,9 @@ class HomeViewModel: ObservableObject {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        
         input.makeArchiveButton
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.coordinator.addArchive()
             }).disposed(by: disposeBag)
@@ -48,7 +50,6 @@ class HomeViewModel: ObservableObject {
         usecase.cardInfo
             .subscribe(onNext: { [weak self] cardInfo in
                 guard let self = self else { return }
-                //self.coordinator.detailArchive(archiveId: 9)
                 if let cardInfo = cardInfo, !cardInfo.isEmpty {
                     self.cardInfo = cardInfo
                     output.isHiddenView.accept(false)

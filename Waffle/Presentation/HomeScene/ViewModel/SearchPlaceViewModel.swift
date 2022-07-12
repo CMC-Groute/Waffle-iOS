@@ -46,6 +46,7 @@ class SearchPlaceViewModel {
             }).disposed(by: disposeBag)
 
         input.selectButton
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .withLatestFrom(input.selectedItem)
             .subscribe(onNext: { [weak self] index in
                 guard let self = self else { return }

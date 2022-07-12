@@ -53,6 +53,7 @@ class AddDetailPlaceViewModel {
             }).disposed(by: disposeBag)
         
         input.placeViewDeleteButton
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.placeViewEnabled.accept(false)

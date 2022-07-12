@@ -57,6 +57,7 @@ class DetailArchiveViewModel {
             }).disposed(by: disposeBag)
         
         input.addPlaceButton
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.coordinator.addDetailPlace(category: self.loadCategoryWithoutConfirm())

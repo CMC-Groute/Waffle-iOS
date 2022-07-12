@@ -69,6 +69,7 @@ class SignUpViewModel {
             .disposed(by: disposeBag)
         
         input.nextButton
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.passwordTextField))
             .bind(onNext: { email, password in
                 let signUpInfo = SignUp(email: email, password: password, nickname: "", profileImage: "", isAgreedMarketing: false)
@@ -137,6 +138,7 @@ class SignUpViewModel {
                         
         //MARK: 인증 코드 같은지 체크
         input.authenCodeButton
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .withLatestFrom(Observable.combineLatest(input.emailTextField, input.authenCodeTextField))
             .bind(onNext: { email, code in
                 self.usecase.checkEmailCode(email: email, code: code)
