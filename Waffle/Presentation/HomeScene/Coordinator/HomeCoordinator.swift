@@ -111,7 +111,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.popViewController(animated: true)
     }
     
-    func selectPlace(place: PlaceSearchResponse?) {
+    func selectPlace(place: PlaceSearch) {
         self.navigationController.popViewController(animated: true)
         guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
         topViewController.viewModel?.getPlace = place

@@ -186,4 +186,24 @@ extension HomeRepository {
                 }
             })
     }
+    
+    func getSearchedPlace(searchText: String, page: Int, size: Int) -> Observable<PlaceSearchResponse> {
+        let searchInfo = PlaceSearchRequest(keyword: searchText, currentPage: page, pageSize: size)
+        let api = PlaceAPI.placeSearch(searchInfo: searchInfo)
+        return service.request(api)
+            .map({ response -> PlaceSearchResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: PlaceSearchResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    WappleLog.debug("error statusCode \(error.rawValue)")
+                    throw error
+                }
+            })
+    }
+    
+    func getDetailPlace(archiveId: Int, placeId: Int) -> Observable<DetailPlaceResponse> {
+        
+    }
 }

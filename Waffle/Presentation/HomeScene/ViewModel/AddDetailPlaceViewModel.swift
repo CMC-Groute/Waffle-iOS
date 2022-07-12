@@ -17,7 +17,7 @@ class AddDetailPlaceViewModel {
     
     //for layout
     let placeViewEnabled = BehaviorRelay<Bool>(value: false)
-    var getPlace: PlaceSearchResponse?
+    var getPlace: PlaceSearch?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator

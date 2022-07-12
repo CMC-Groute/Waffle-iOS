@@ -132,9 +132,14 @@ class SearchPlaceViewController: UIViewController {
         let input = SearchPlaceViewModel.Input(viewDidLoadEvent: Observable.just(()), selectedItem: self.tableView.rx.itemSelected.map { $0.row }, selectButton: selectButton.rx.tap.asObservable())
         
         let output = viewModel.transform(from: input, disposeBag: disposeBag)
-        
+        output.loadData.subscribe(onNext: { [weak self] bool in
+            guard let self = self else { return }
+            viewModel.filteringPlace = self.viewModel?.place ?? []
+            self.tableView.reloadData()
+            
+        })
         searchBar.rx.text.orEmpty
-             .debounce(.microseconds(5), scheduler: MainScheduler.instance)
+             .debounce(.microseconds(10), scheduler: MainScheduler.instance)
              .distinctUntilChanged()
              .subscribe(onNext: { searchText in
                  if searchText.isEmpty {
@@ -142,10 +147,8 @@ class SearchPlaceViewController: UIViewController {
                      viewModel.filteringPlace = []
                  }else {
                      self.isSearching = true
-                     viewModel.filteringPlace = viewModel.place.filter{ $0.contains(searchText) }
+                     viewModel.getPlace(for: searchText)
                  }
-                
-                 self.tableView.reloadData()
              })
              .disposed(by: disposeBag)
     }
@@ -174,9 +177,9 @@ extension SearchPlaceViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AddPlaceSearchTableViewCell.identifider) as! AddPlaceSearchTableViewCell
-        cell.configureCell(title: "test", address: "test")
-        
-
+        guard let places = viewModel?.place else { return cell }
+        let place = places[indexPath.row]
+        cell.configureCell(title: place.placeName, address: place.roadAddressName)
         return cell
     }
     
