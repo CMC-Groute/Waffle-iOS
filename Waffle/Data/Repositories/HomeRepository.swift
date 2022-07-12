@@ -197,13 +197,22 @@ extension HomeRepository {
                     guard let data = JSON.decode(data: data, to: PlaceSearchResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
-                    WappleLog.debug("error statusCode \(error.rawValue)")
                     throw error
                 }
             })
     }
     
     func getDetailPlace(archiveId: Int, placeId: Int) -> Observable<DetailPlaceResponse> {
-        
+        let api = PlaceAPI.getDetailPlace(archiveId: archiveId, placeId: placeId)
+        return service.request(api)
+            .map({ response -> DetailPlaceResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DetailPlaceResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
 }

@@ -152,9 +152,11 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
         }
     
         func didTapDetailButton(cell: DetailPlaceTableViewCell) {
+            guard let viewModel = viewModel else { return }
             let placeId = cell.placeId
-            print("didTapDetailButton \(placeId)")
-           // self.viewModel!.detailPlace(place: placeInfo, category: category[cell.placeId])
+            guard let currentPlace = viewModel.placeInfo?.filter({ $0.placeId == placeId })[0] else { return }
+            print("didTapDetailButton \(currentPlace) \(viewModel.selectedCategory)")
+            viewModel.detailPlace(place: currentPlace, category: viewModel.selectedCategory)
         }
 }
 

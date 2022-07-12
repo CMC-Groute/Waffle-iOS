@@ -28,6 +28,20 @@ struct PlaceInfo: Codable {
     }
 }
 
+struct DetailPlaceResponse: Codable {
+    var status: Int
+    var data: DetailPlaceInfo?
+}
+
+struct DetailPlaceInfo: Codable {
+    var link: String?
+    var memo: String?
+    enum CodingKeys: String, CodingKey {
+        case link
+        case memo = "comment"
+    }
+}
+
 struct PlaceLike: Codable {
     var isPlaceLike: Bool
     var likeCount: Int
@@ -53,7 +67,7 @@ struct PlaceSearchRequest: Codable {
 
 struct PlaceSearchResponse: Codable {
     var document: [PlaceSearch]
-    var meta: PlaceSearchMeta
+    var meta: PlaceSearchMeta?
 }
 
 struct PlaceSearch: Codable {

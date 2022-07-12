@@ -24,9 +24,11 @@ class DetailArchiveViewModel {
     var selectedCategory: PlaceCategory = PlaceCategory.confirmCategory // 확정 카테고리
     var placeInfo: [PlaceInfo]?
     var detailArchive: DetailArhive?
-    var confirmCategoryName = "확정"
+    private var confirmCategoryName = "확정"
+    var detailPlaceInfo: DetailPlaceInfo?
     var archiveId: Int = 0
     var archiveCode: String?
+    var currentPlace: PlaceInfo?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -96,7 +98,6 @@ class DetailArchiveViewModel {
                     guard let addCategory = addCategory else { return }
                     let category = addCategory.compactMap { category in
                         return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
-//                    viewWillApear에서 해줘서 안해도 되나 확인 필요
                     self?.category += category
                     output.loadData.onNext(.category)
                 }).disposed(by: disposeBag)
@@ -118,6 +119,14 @@ class DetailArchiveViewModel {
                     self.placeInfo = place
                     output.loadData.onNext(.tableView)
                 }).disposed(by: disposeBag)
+            
+            usecase.getDetailPlaceSuccess //링크, 메모로 데이터 받아와 이동
+                .subscribe(onNext: {  [weak self] detailPlace in
+                    guard let self = self else { return }
+                    guard let currentPlace = self.currentPlace else { return }
+                    self.detailPlaceInfo = detailPlace
+                    self.coordinator.detailPlace(detailInfo: detailPlace, placeInfo: currentPlace, category: self.selectedCategory, categoryInfo: self.loadCategoryWithoutConfirm())
+                }).disposed(by: disposeBag)
         }
         
         return output
@@ -136,8 +145,10 @@ class DetailArchiveViewModel {
     }
     
     func detailPlace(place: PlaceInfo, category: PlaceCategory) {
-        coordinator.detailPlace(detailInfo: place, category: category, categoryInfo: loadCategoryWithoutConfirm())
-        }
+        //선택된 장소 업데이트
+        self.currentPlace = place
+        usecase.getDetailPlace(archiveId: archiveId, placeId: place.placeId)
+    }
     
     func participants() {
         self.coordinator.participants(detailArchive: detailArchive)

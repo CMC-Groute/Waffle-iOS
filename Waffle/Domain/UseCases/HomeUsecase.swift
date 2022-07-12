@@ -27,6 +27,8 @@ class HomeUsecase: HomeUsecaseProtocol {
     var cancelComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정 취소
     var getConfrimPlaceSuccess = PublishSubject<[PlaceInfo]?>() // 확정 장소 조회
     var getPlaceByCategorySuccess = PublishSubject<[PlaceInfo]?>() // 카테고리별 장소 조회
+    var getSearchedPlaceSuccess = PublishSubject<[PlaceSearch]?>()
+    var getDetailPlaceSuccess = PublishSubject<DetailPlaceInfo?>()
     
     init(repository: HomeRepository){
         self.repository = repository
@@ -176,7 +178,7 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
-    //카테고리별 장소 조회
+    //MARK: 카테고리별 장소 조회
     func getPlaceByCategory(archiveId: Int, categoryId: Int) {
         repository.getPlaceByCategory(archiveId: archiveId, categoryId: categoryId)
             .observe(on: MainScheduler.instance)
@@ -194,7 +196,7 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
-    //장소 확정
+    //MARK: 장소 확정
     func setConfirmPlace(archiveId: Int, placeId: Int) {
         repository.setConfirmPlace(archiveId: archiveId, placeId: placeId)
             .observe(on: MainScheduler.instance)
@@ -212,7 +214,7 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
-    //장소 확정 취소
+    //MARK: 장소 확정 취소
     func cancelConfirmPlace(archiveId: Int, placeId: Int) {
         repository.cancelConfirmPlace(archiveId: archiveId, placeId: placeId)
             .observe(on: MainScheduler.instance)
@@ -230,12 +232,50 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
-    func deletePlace(placeId: Int) { //장소 삭제하기
+    //MARK: 장소 삭제하기
+    func deletePlace(placeId: Int) {
         
     }
     
-    func editPlace(placeId: Int) { //장소 수정하기
+    //MARK: 장소 수정하기
+    func editPlace(placeId: Int) {
         
+    }
+    
+    //MARK: 장소 검색
+    func getSearcPlace(searchText: String, page: Int, size: Int) {
+        WappleLog.debug("searchText \(searchText)")
+        repository.getSearchedPlace(searchText: searchText, page: page, size: size)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<PlaceSearchResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("getSearcPlace error \(error)")
+                return .just(PlaceSearchResponse(document: [], meta: nil))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if !response.document.isEmpty {
+                    self.getSearchedPlaceSuccess.onNext(response.document)
+                }else {
+                    self.getSearchedPlaceSuccess.onNext([])
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func getDetailPlace(archiveId: Int, placeId: Int) {
+        repository.getDetailPlace(archiveId: archiveId, placeId: placeId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DetailPlaceResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("getDetailPlace error \(error)")
+                return .just(DetailPlaceResponse(status: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.getDetailPlaceSuccess.onNext(response.data)
+                }else {
+                    self.getDetailPlaceSuccess.onNext(nil)
+                }
+            }).disposed(by: disposeBag)
     }
 }
 

@@ -33,8 +33,9 @@ class DetailPlacePopUpViewController: UIViewController {
     private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
     
     var coordinator: HomeCoordinator!
-    var disposBag = DisposeBag()
-    var detailInfo: PlaceInfo?
+    private var disposBag = DisposeBag()
+    var detailInfo: DetailPlaceInfo? //link, memo
+    var placeInfo: PlaceInfo?
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
     convenience init(coordinator: HomeCoordinator){
@@ -57,19 +58,21 @@ class DetailPlacePopUpViewController: UIViewController {
     }
     
     private func bindUI() {
-        guard var detailInfo = detailInfo else {
+        guard var detailInfo = detailInfo, var placeInfo = placeInfo else {
             return
         }
 
-        self.titleLabel.text = detailInfo.title
+        self.titleLabel.text = placeInfo.title
+        self.linkLabel.text = detailInfo.link ?? DefaultDetailCardInfo.link.rawValue
+        self.memoTextView.text = detailInfo.memo ?? DefaultDetailCardInfo.placeMemo.rawValue
         self.categoryLabel.text = "#\(category.name)"
-        self.placeLabel.text = detailInfo.roadNameAddress
-        if detailInfo.placeLike.isPlaceLike {
+        self.placeLabel.text = placeInfo.roadNameAddress
+        if placeInfo.placeLike.isPlaceLike {
             likeCountButton.isSelected = true
         }
         
-        updateConfirm(isConfirm: detailInfo.isConfirm)
-        self.likeCountButton.setTitle("\(detailInfo.placeLike.likeCount)", for: .normal)
+        updateConfirm(isConfirm: placeInfo.isConfirm)
+        self.likeCountButton.setTitle("\(placeInfo.placeLike.likeCount)", for: .normal)
         
         self.likeCountButton
             .rx.tap.subscribe(onNext: { [weak self] in
@@ -88,10 +91,10 @@ class DetailPlacePopUpViewController: UIViewController {
         
         func updateLikeCount() {
             if likeCountButton.isSelected {
-                self.likeCountButton.setTitle("\(detailInfo.placeLike.likeCount + 1)", for: .normal)
+                self.likeCountButton.setTitle("\(placeInfo.placeLike.likeCount + 1)", for: .normal)
             }else {
-                if detailInfo.placeLike.likeCount > 0 {
-                    self.likeCountButton.setTitle("\(detailInfo.placeLike.likeCount)", for: .normal)
+                if placeInfo.placeLike.likeCount > 0 {
+                    self.likeCountButton.setTitle("\(placeInfo.placeLike.likeCount)", for: .normal)
                 }
             }
         }
@@ -109,8 +112,8 @@ class DetailPlacePopUpViewController: UIViewController {
         
         confirmButton.rx.tap
             .subscribe(onNext: {
-                detailInfo.isConfirm.toggle()
-                updateConfirm(isConfirm: detailInfo.isConfirm)
+                placeInfo.isConfirm.toggle()
+                updateConfirm(isConfirm: placeInfo.isConfirm)
             }).disposed(by: disposBag)
     }
     
