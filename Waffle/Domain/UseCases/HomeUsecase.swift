@@ -188,6 +188,7 @@ extension HomeUsecase {
                 return .just(GetPlaceByCategoryResponse(status: error.rawValue, data: nil))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
+                WappleLog.debug("getPlaceByCategory \(response)")
                 if response.status == 200 {
                     self.getPlaceByCategorySuccess.onNext(response.data)
                 }else {
@@ -206,6 +207,7 @@ extension HomeUsecase {
                 return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
+                WappleLog.debug("setConfirmPlace \(response)")
                 if response.status == 200 {
                     self.setComfirmPlaceSuccess.onNext(true)
                 }else {
@@ -224,6 +226,7 @@ extension HomeUsecase {
                 return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
+                WappleLog.debug("cancelConfirmPlace \(response)")
                 if response.status == 200 {
                     self.cancelComfirmPlaceSuccess.onNext(true)
                 }else {

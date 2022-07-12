@@ -180,6 +180,7 @@ extension HomeCoordinator {
     
     func detailPlace(detailInfo: DetailPlaceInfo?, placeInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory]) {
         let detailPlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPlacePopUpViewController") as! DetailPlacePopUpViewController
+        detailPlacePopUpView.delegate = detailArchiveViewController
         detailPlacePopUpView.coordinator = self
         detailPlacePopUpView.detailInfo = detailInfo
         detailPlacePopUpView.placeInfo = placeInfo

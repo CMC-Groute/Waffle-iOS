@@ -64,8 +64,8 @@ class DetailArchiveViewController: UIViewController {
     private func bindViewModel() {
         let input = DetailArchiveViewModel.Input(viewWillAppearEvent: self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in }, loadMemoButton: addPlaceButton.rx.tap.asObservable(), addPlaceButton: addPlaceButton.rx.tap.asObservable())
 
-        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
-        output?.loadData
+        let _ = viewModel?.transform(from: input, disposeBag: disposeBag)
+        viewModel?.loadData
             .subscribe(onNext: { [weak self] indexPathType in
                 guard let self = self else { return }
                 self.navigationItem.title = self.viewModel?.detailArchive?.title
@@ -163,5 +163,26 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: screenWidth, height: 900)
         }
         return CGSize(width: screenWidth, height: 500)
+    }
+}
+
+extension DetailArchiveViewController: DetailPlacePopUpViewDelegate {
+    func setConfirm(placeId: Int) {
+        print("setConfirm")
+        viewModel?.setConfirm(placeId: placeId)
+    }
+    
+    func cancelConfirm(placeId: Int) {
+        print("cancelConfirm")
+        viewModel?.cancelConfirm(placeId: placeId)
+        
+    }
+    
+    func likeSend(placeId: Int) {
+        print("likeSend")
+    }
+    
+    func likeCancel(placeId: Int) {
+        print("likeCancel")
     }
 }

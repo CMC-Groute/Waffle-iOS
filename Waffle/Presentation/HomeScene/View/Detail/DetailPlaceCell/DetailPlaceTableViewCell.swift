@@ -11,7 +11,8 @@ import RxCocoa
 
 protocol DetailPlaceTableViewCellDelegate {
     func didTapLikeButton(cell: DetailPlaceTableViewCell)
-    func didTapConfirmButton(cell: DetailPlaceTableViewCell)
+    func didTapsetConfirmButton(cell: DetailPlaceTableViewCell)
+    func didTapcancelConfirmButton(cell: DetailPlaceTableViewCell)
     func didTapDetailButton(cell: DetailPlaceTableViewCell)
     func canEditingButton(cell: DetailPlaceTableViewCell)
 }
@@ -45,7 +46,9 @@ class DetailPlaceTableViewCell: UITableViewCell {
         self.backgroundColor = Asset.Colors.gray1.color
         contentView.backgroundColor = Asset.Colors.white.color
         canEditingButton.isHidden = false
+        likeButton.setImage(Asset.Assets.heart.image, for: .normal)
         likeButton.setImage(Asset.Assets.heartSelected.image, for: .selected)
+        confirmButton.setImage(Asset.Assets.placeCheck.image, for: .normal)
         confirmButton.setImage(Asset.Assets.placeCheckSelected.image, for: .selected)
         configureGesture()
     }
@@ -56,17 +59,18 @@ class DetailPlaceTableViewCell: UITableViewCell {
         longGesture.minimumPressDuration = 1
         canEditingButton.addGestureRecognizer(longGesture)
         
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLabel))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLabel(recognizer:)))
             
-    titleLabel.addGestureRecognizer(tapGesture)
-    placeLabel.addGestureRecognizer(tapGesture)
+        titleLabel.addGestureRecognizer(tapGesture)
+        placeLabel.addGestureRecognizer(tapGesture)
     }
     
     @objc func longGesture() {
         delegate?.canEditingButton(cell: self)
     }
     
-    @objc func didTapLabel() {
+    @objc func didTapLabel(recognizer: UITapGestureRecognizer) {
+        print("didTapLabel ")
         delegate?.didTapDetailButton(cell: self)
     }
     
@@ -84,9 +88,9 @@ class DetailPlaceTableViewCell: UITableViewCell {
         titleLabel.text = placeInfo.title
         placeLabel.text = placeInfo.roadNameAddress
         if placeInfo.isConfirm {
-            confirmButton.setImage(Asset.Assets.placeCheckSelected.image, for: .normal)
+            confirmButton.isSelected = true
         }else {
-            confirmButton.setImage(Asset.Assets.placeCheck.image, for: .normal)
+            confirmButton.isSelected = false
         }
         
         if placeInfo.placeLike.isPlaceLike {
@@ -108,15 +112,20 @@ class DetailPlaceTableViewCell: UITableViewCell {
         confirmButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.confirmButton.isSelected.toggle()
-                self.delegate?.didTapConfirmButton(cell: self)
+                if self.confirmButton.isSelected {
+                    self.confirmButton.isSelected = false
+                    self.delegate?.didTapcancelConfirmButton(cell: self)
+                }else {
+                    self.confirmButton.isSelected = true
+                    self.delegate?.didTapsetConfirmButton(cell: self)
+                }
             }).disposed(by: disposeBag)
         
         likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.likeButton.isSelected.toggle()
                 self.delegate?.didTapLikeButton(cell: self)
+                self.likeButton.isSelected.toggle()
             }).disposed(by: disposeBag)
     }
 

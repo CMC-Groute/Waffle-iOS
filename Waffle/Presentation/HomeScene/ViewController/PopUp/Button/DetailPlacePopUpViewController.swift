@@ -8,6 +8,13 @@
 import UIKit
 import RxSwift
 
+protocol DetailPlacePopUpViewDelegate {
+    func setConfirm(placeId: Int)
+    func cancelConfirm(placeId: Int)
+    func likeSend(placeId: Int)
+    func likeCancel(placeId: Int)
+}
+
 class DetailPlacePopUpViewController: UIViewController {
     enum BottomSheetViewState {
         case expanded
@@ -28,16 +35,19 @@ class DetailPlacePopUpViewController: UIViewController {
     @IBOutlet private weak var likeCountButton: UIButton!
     @IBOutlet private weak var confirmButton: UIButton!
     
-    var bottomSheetPanMinTopConstant: CGFloat = 34
-    var defaultHeight:CGFloat = 395
+    //MARK: Private property
+    private var bottomSheetPanMinTopConstant: CGFloat = 34
+    private var defaultHeight:CGFloat = 395
     private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
+    private var disposBag = DisposeBag()
     
     var coordinator: HomeCoordinator!
-    private var disposBag = DisposeBag()
     var detailInfo: DetailPlaceInfo? //link, memo
     var placeInfo: PlaceInfo?
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
+    var delegate: DetailPlacePopUpViewDelegate?
+    
     convenience init(coordinator: HomeCoordinator){
         self.init()
         self.coordinator = coordinator
@@ -58,7 +68,7 @@ class DetailPlacePopUpViewController: UIViewController {
     }
     
     private func bindUI() {
-        guard var detailInfo = detailInfo, var placeInfo = placeInfo else {
+        guard let detailInfo = detailInfo, var placeInfo = placeInfo else {
             return
         }
 
@@ -103,6 +113,7 @@ class DetailPlacePopUpViewController: UIViewController {
             if isConfirm {
                 self.confirmButton.backgroundColor = Asset.Colors.green.color
                 self.confirmButton.setTitle("확정이 완료되었어요", for: .normal)
+                
             }else {
                 self.confirmButton.backgroundColor = Asset.Colors.gray4.color
                 self.confirmButton.setTitle("확정할래요", for: .normal)
@@ -111,7 +122,14 @@ class DetailPlacePopUpViewController: UIViewController {
         }
         
         confirmButton.rx.tap
-            .subscribe(onNext: {
+            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                if placeInfo.isConfirm { //
+                    self.delegate?.cancelConfirm(placeId: placeInfo.placeId)
+                }else {
+                    self.delegate?.setConfirm(placeId: placeInfo.placeId)
+                }
                 placeInfo.isConfirm.toggle()
                 updateConfirm(isConfirm: placeInfo.isConfirm)
             }).disposed(by: disposBag)

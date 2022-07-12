@@ -123,6 +123,19 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
 }
 
 extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate {
+    
+    func didTapsetConfirmButton(cell: DetailPlaceTableViewCell) {
+        guard let viewModel = viewModel else { return }
+        let placeId = cell.placeId
+        viewModel.setConfirm(placeId: placeId)
+    }
+    
+    func didTapcancelConfirmButton(cell: DetailPlaceTableViewCell) {
+        guard let viewModel = viewModel else { return }
+        let placeId = cell.placeId
+        viewModel.cancelConfirm(placeId: placeId)
+    }
+    
     func canEditingButton(cell: DetailPlaceTableViewCell) {
             //TO DO
             //tableView drag and drop
@@ -145,17 +158,10 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
             tableView.reloadRows(at: [[0, cell.placeId]], with: .none)
         }
     
-        func didTapConfirmButton(cell: DetailPlaceTableViewCell) {
-            print("didTapConfirmButton")
-    //        print(cell.confirmButton.isSelected)
-    //        print(cell.placeId)
-        }
-    
         func didTapDetailButton(cell: DetailPlaceTableViewCell) {
             guard let viewModel = viewModel else { return }
             let placeId = cell.placeId
             guard let currentPlace = viewModel.placeInfo?.filter({ $0.placeId == placeId })[0] else { return }
-            print("didTapDetailButton \(currentPlace) \(viewModel.selectedCategory)")
             viewModel.detailPlace(place: currentPlace, category: viewModel.selectedCategory)
         }
 }

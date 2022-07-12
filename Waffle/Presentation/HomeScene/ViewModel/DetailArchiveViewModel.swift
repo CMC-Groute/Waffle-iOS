@@ -30,6 +30,8 @@ class DetailArchiveViewModel {
     var archiveCode: String?
     var currentPlace: PlaceInfo?
     
+    var loadData = PublishSubject<LoadIndexPathType>()
+    
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
@@ -42,7 +44,7 @@ class DetailArchiveViewModel {
     }
     
     struct Output {
-        var loadData = PublishSubject<LoadIndexPathType>()
+        
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -72,15 +74,15 @@ class DetailArchiveViewModel {
                     if let detailArchive = detailArchive {
                         WappleLog.debug("DetailArchiveViewModel detailArchive \(detailArchive)")
                         self.detailArchive = detailArchive // 전체 약속 데이터
-                        self.placeInfo = detailArchive.placeInfo ?? []
+                        self.placeInfo = detailArchive.placeInfo
                         let category = detailArchive.category?.compactMap { category in
                             return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
                         //Delete시 cell 초기화
                         if self.category.count > 1 { self.category = [PlaceCategory.confirmCategory]
-                            output.loadData.onNext(.category)
+                            self.loadData.onNext(.category)
                         }else {
                             self.category += category ?? [] // 카테고리
-                            output.loadData.onNext(.all)
+                            self.loadData.onNext(.all)
                         }
                         
                     }
@@ -100,7 +102,7 @@ class DetailArchiveViewModel {
                     let category = addCategory.compactMap { category in
                         return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
                     self?.category += category
-                    output.loadData.onNext(.category)
+                    self?.loadData.onNext(.category)
                 }).disposed(by: disposeBag)
             
             usecase.deleteCategory
@@ -118,7 +120,7 @@ class DetailArchiveViewModel {
                     }
                     WappleLog.debug("getPlaceByCategorySuccess \(place)")
                     self.placeInfo = place
-                    output.loadData.onNext(.tableView)
+                    self.loadData.onNext(.tableView)
                 }).disposed(by: disposeBag)
             
             usecase.getDetailPlaceSuccess //링크, 메모로 데이터 받아와 이동
@@ -200,6 +202,16 @@ class DetailArchiveViewModel {
         usecase.deleteCategory(archiveId: archiveId, categoryId: categoryId)
     }
 
+}
+
+extension DetailArchiveViewModel {
+    func cancelConfirm(placeId: Int) {
+        usecase.cancelConfirmPlace(archiveId: archiveId, placeId: placeId)
+    }
+    
+    func setConfirm(placeId: Int) {
+        usecase.setConfirmPlace(archiveId: archiveId, placeId: placeId)
+    }
 }
 
 extension DetailArchiveViewModel {
