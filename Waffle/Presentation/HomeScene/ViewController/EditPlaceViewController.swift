@@ -101,9 +101,10 @@ class EditPlaceViewController: UIViewController {
         let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         navigationItem.leftBarButtonItem = backButton
-        self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
-        self.navigationItem.title = "장소 수정하기"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.trash.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapTrashButton))
+        navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
+        navigationItem.title = "장소 수정하기"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.trash.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapTrashButton))
     }
     
     private func configureCollectionView() {

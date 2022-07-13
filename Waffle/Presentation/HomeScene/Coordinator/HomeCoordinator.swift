@@ -56,6 +56,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
         editPlaceViewController.viewModel = EditPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         editPlaceViewController.viewModel?.archiveId = archiveId
+        editPlaceViewController.viewModel?.placeId = placeId
         editPlaceViewController.viewModel?.categoryInfo = category
         self.navigationController.pushViewController(editPlaceViewController, animated: true)
     }
