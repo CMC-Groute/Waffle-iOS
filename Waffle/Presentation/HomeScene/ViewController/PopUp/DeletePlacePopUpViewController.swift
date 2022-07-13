@@ -12,7 +12,8 @@ class DeletePlacePopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var disposBag = DisposeBag()
     var usecase: HomeUsecase!
-    var placeId: Int!
+    var placeId: Int?
+    var archiveId: Int?
     
     @IBOutlet weak var framwView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
@@ -38,13 +39,19 @@ class DeletePlacePopUpViewController: UIViewController {
 
     private func bindUI(){
         cancelButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
         
         deleteButton.rx.tap
-            .subscribe(onNext: {
-                self.usecase.deletePlace(placeId: self.placeId)
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                guard let archiveId = self.archiveId, let placeId = self.placeId else {
+                    return
+                }
+
+                self.usecase.deletePlace(archiveId: archiveId, placeId: placeId)
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
                 self.coordinator.popViewController()
             }).disposed(by: disposBag)

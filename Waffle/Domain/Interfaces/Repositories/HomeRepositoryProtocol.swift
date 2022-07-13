@@ -22,6 +22,7 @@ protocol HomeRepositoryProtocol {
     
     //MARK: Place
     func getPlaceByCategory(archiveId: Int, categoryId: Int) -> Observable<GetPlaceByCategoryResponse>
+    func deletePlace(archiveId: Int, placeId: Int) -> Observable<DefaultIntResponse>
     
     //MARK: Like
     func addLike(placeId: Int) -> Observable<DefaultIntResponse>

@@ -9,6 +9,10 @@ import Foundation
 
 protocol HomeUsecaseProtocol {
     func getCardInfo()
-    func deletePlace(placeId: Int)
+    func deletePlace(archiveId: Int, placeId: Int)
+    func getDetailArchiveInfo(placeId: Int)
     func editPlace(placeId: Int)
+    
+    //MARK: Archive
+    func deleteArchive(archiveId: Int)
 }

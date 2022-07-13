@@ -95,6 +95,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     func deletePlace(archiveId: Int, placeId: Int) {
         let deletePlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeletePlacePopUpViewController") as! DeletePlacePopUpViewController
+        deletePlacePopUpView.archiveId = archiveId
         deletePlacePopUpView.placeId = placeId
         deletePlacePopUpView.coordinator = self
         deletePlacePopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))

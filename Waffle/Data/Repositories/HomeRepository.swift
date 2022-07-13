@@ -261,4 +261,20 @@ extension HomeRepository {
                 }
             })
     }
+    
+    //MARK: 장소 삭제
+    func deletePlace(archiveId: Int, placeId: Int) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.deletePlace(archiveId: archiveId, placeId: placeId)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+
 }

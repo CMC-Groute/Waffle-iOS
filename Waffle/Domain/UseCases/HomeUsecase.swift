@@ -237,8 +237,22 @@ extension HomeUsecase {
     }
     
     //MARK: 장소 삭제하기
-    func deletePlace(placeId: Int) {
-        
+    func deletePlace(archiveId: Int, placeId: Int) {
+        repository.deletePlace(archiveId: archiveId, placeId: placeId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("deletePlace error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("deletePlace \(response)")
+                if response.status == 200 {
+                    WappleLog.debug("장소 삭제 성공")
+                }else {
+                    WappleLog.debug("장소 삭제 실패")
+                }
+            }).disposed(by: disposeBag)
     }
     
     //MARK: 장소 수정하기
