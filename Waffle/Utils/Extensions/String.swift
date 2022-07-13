@@ -50,9 +50,9 @@ extension String {
 }
 
 extension String {
-    func toDate() -> Date? { //"yyyy-MM-dd"
+    func toDate() -> Date? { //"yyyy년 MM월 dd일"
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         if let date = dateFormatter.date(from: self) {
             return date
         } else {
@@ -60,9 +60,11 @@ extension String {
         }
     }
     
-    func toTime() -> Date? { //"HH:mm"
+    func toTime() -> Date? { //"오전 HH시 mm분"
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
+        timeFormatter.dateFormat = "a h시 m분"
+        timeFormatter.amSymbol = "오전"
+        timeFormatter.pmSymbol = "오후"
         if let time = timeFormatter.date(from: self) {
             return time
         } else {
