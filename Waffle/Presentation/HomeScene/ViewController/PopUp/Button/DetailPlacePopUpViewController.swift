@@ -42,7 +42,7 @@ class DetailPlacePopUpViewController: UIViewController {
     private var disposBag = DisposeBag()
     
     var coordinator: HomeCoordinator!
-    var detailInfo: DetailPlaceInfo? //link, memo
+    var detailPlaceInfo: DetailPlaceInfo? //link, memo
     var placeInfo: PlaceInfo?
     
     var category: PlaceCategory!
@@ -72,7 +72,7 @@ class DetailPlacePopUpViewController: UIViewController {
     }
     
     private func bindUI() {
-        guard let detailInfo = detailInfo, var placeInfo = placeInfo else {
+        guard let detailInfo = detailPlaceInfo, var placeInfo = placeInfo else {
             return
         }
         updatedLikeCount = placeInfo.placeLike.likeCount
@@ -116,7 +116,7 @@ class DetailPlacePopUpViewController: UIViewController {
 
                 
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories)
+                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories, place: placeInfo, detailPlace: detailInfo)
             }).disposed(by: disposBag)
         
         func updateLikeCount() {

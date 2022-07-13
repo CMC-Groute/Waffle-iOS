@@ -52,9 +52,11 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(searchPlaceViewController, animated: true)
     }
     
-    func editPlace(archiveId: Int, placeId: Int, category: [PlaceCategory]) {
+    func editPlace(archiveId: Int, placeId: Int, category: [PlaceCategory], place: PlaceInfo, detailPlace: DetailPlaceInfo) {
         let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
         editPlaceViewController.viewModel = EditPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
+        editPlaceViewController.viewModel?.place = place
+        editPlaceViewController.viewModel?.detailPlace = detailPlace
         editPlaceViewController.viewModel?.archiveId = archiveId
         editPlaceViewController.viewModel?.placeId = placeId
         editPlaceViewController.viewModel?.categoryInfo = category
@@ -187,7 +189,7 @@ extension HomeCoordinator {
         detailPlacePopUpView.archiveId = archiveId
         detailPlacePopUpView.delegate = detailArchiveViewController
         detailPlacePopUpView.coordinator = self
-        detailPlacePopUpView.detailInfo = detailInfo
+        detailPlacePopUpView.detailPlaceInfo = detailInfo
         detailPlacePopUpView.placeInfo = placeInfo
         detailPlacePopUpView.category = category
         detailPlacePopUpView.categories = categoryInfo

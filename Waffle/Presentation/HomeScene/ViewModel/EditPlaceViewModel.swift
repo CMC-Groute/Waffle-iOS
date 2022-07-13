@@ -16,6 +16,8 @@ class EditPlaceViewModel {
     var placeId: Int?
     var categoryInfo: [PlaceCategory] = []
     var archiveId: Int?
+    var detailPlace: DetailPlaceInfo?
+    var place: PlaceInfo?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
