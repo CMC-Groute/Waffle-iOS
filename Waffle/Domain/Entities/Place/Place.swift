@@ -66,7 +66,7 @@ struct PlaceSearchRequest: Codable {
 }
 
 struct PlaceSearchResponse: Codable {
-    var document: [PlaceSearch]
+    var documents: [PlaceSearch]
     var meta: PlaceSearchMeta?
 }
 
@@ -75,14 +75,14 @@ struct PlaceSearch: Codable {
     var categoryGroupCode: String
     var categoryGroupName: String
     var categoryName: String
-    var distance: Double
+    var distance: String
     var id: String
     var phone: String
     var placeName: String
     var placeUrl: String
     var roadAddressName: String
-    var longitude: Double
-    var latitude: Double
+    var longitude: String
+    var latitude: String
     
     enum CodingKeys: String, CodingKey {
         case address = "address_name"

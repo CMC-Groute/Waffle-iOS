@@ -80,7 +80,7 @@ extension PlaceAPI {
         case .editPlace(_, _, _):
             return .patch
         case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .placeSearch:
-            return .get
+            return .post
         case .deletePlace(_, _), .deletePlacCategory(_, _), .deleteLike(_):
             return .delete
         

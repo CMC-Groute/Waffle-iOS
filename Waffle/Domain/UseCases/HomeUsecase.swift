@@ -27,7 +27,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var cancelComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정 취소
     var getConfrimPlaceSuccess = PublishSubject<[PlaceInfo]?>() // 확정 장소 조회
     var getPlaceByCategorySuccess = PublishSubject<[PlaceInfo]?>() // 카테고리별 장소 조회
-    var getSearchedPlaceSuccess = PublishSubject<[PlaceSearch]?>()
+    var getSearchedPlaceSuccess = PublishSubject<PlaceSearchResponse>()
     var getDetailPlaceSuccess = PublishSubject<DetailPlaceInfo?>()
     var changeConfirmSquenceSuccess = PublishSubject<[PlaceInfo]?>() // 순서 변경 조회
     
@@ -254,13 +254,13 @@ extension HomeUsecase {
             .catch { error -> Observable<PlaceSearchResponse> in
                 let error = error as! URLSessionNetworkServiceError
                 WappleLog.error("getSearcPlace error \(error)")
-                return .just(PlaceSearchResponse(document: [], meta: nil))
+                return .just(PlaceSearchResponse(documents: [], meta: nil))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                if !response.document.isEmpty {
-                    self.getSearchedPlaceSuccess.onNext(response.document)
+                if !response.documents.isEmpty {
+                    self.getSearchedPlaceSuccess.onNext(response)
                 }else {
-                    self.getSearchedPlaceSuccess.onNext([])
+                    self.getSearchedPlaceSuccess.onNext(PlaceSearchResponse(documents: []))
                 }
             }).disposed(by: disposeBag)
     }

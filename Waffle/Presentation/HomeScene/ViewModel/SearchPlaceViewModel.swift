@@ -9,12 +9,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+struct LoadSearchPlace {
+    static var size = 15
+    static var currentPage = 1
+}
+
 class SearchPlaceViewModel {
-    
-    struct LoadSearchPlace {
-        static var size = 15
-        static var currentPage = 1
-    }
     
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
@@ -22,6 +22,9 @@ class SearchPlaceViewModel {
 
     var place: [PlaceSearch] = []
     var filteringPlace: [PlaceSearch] = []
+    var loadedItemCount: Int = 0
+    var isLoading: Bool = true
+    var updateRows: Int = 0
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -51,16 +54,14 @@ class SearchPlaceViewModel {
             .subscribe(onNext: { [weak self] index in
                 guard let self = self else { return }
                 let place = self.place[index]
-//                let dummy = PlaceSearchResponse(address: "서울 종로구 신문로2가 108-3", categoryGroupCode: "FD6", categoryGroupName: "음식점 > 간식 > 제과,베이커리", distance: 0, id: "1971663923", phone: "02-737-0050", placeName: "아우어베이커리 광화문디팰리스점", placeUrl: "http://place.map.kakao.com/1971663923", roadAddressName: "서울 종로구 새문안로2길 10", longitude: 126.971982367222, latitude: 37.56870228531)
                 self.coordinator.selectPlace(place: place)
             }).disposed(by: disposeBag)
         
         usecase.getSearchedPlaceSuccess
             .subscribe(onNext: { [weak self] place in
-                guard let place = place else { return }
                 guard let self = self else { return }
                 WappleLog.debug("getSearchPlace \(place)")
-                self.place = place
+                self.place = place.documents
                 output.loadData.onNext(true)
             }).disposed(by: disposeBag)
         return output
