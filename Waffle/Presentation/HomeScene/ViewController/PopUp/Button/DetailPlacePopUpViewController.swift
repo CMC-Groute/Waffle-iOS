@@ -44,9 +44,12 @@ class DetailPlacePopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var detailInfo: DetailPlaceInfo? //link, memo
     var placeInfo: PlaceInfo?
+    
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
     var delegate: DetailPlacePopUpViewDelegate?
+    var archiveId: Int?
+
     private var updatedLikeCount: Int = 0
     
     convenience init(coordinator: HomeCoordinator){
@@ -107,9 +110,13 @@ class DetailPlacePopUpViewController: UIViewController {
             .throttle(.microseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self = self else { return }
-                let placeId: Int = 0
+                guard let archiveId = self.archiveId else {
+                    return
+                }
+
+                
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editPlace(placeId: placeId, category: self.categories)
+                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories)
             }).disposed(by: disposBag)
         
         func updateLikeCount() {

@@ -129,10 +129,14 @@ struct AddPlace: Codable {
     var title: String
     var memo: String?
     var link: String?
-    var roadNameAddress: String?
+    var roadNameAddress: String
+    var longitude: String
+    var latitude: String
+    
     
     enum CodingKeys: String, CodingKey {
         case title, link, roadNameAddress
+        case longitude, latitude
         case memo = "comment"
     }
 }

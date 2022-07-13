@@ -38,9 +38,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     
-    func addDetailPlace(category: [PlaceCategory]) {
+    func addDetailPlace(archiveId: Int, category: [PlaceCategory]) {
         let addDetailPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AddDetailPlaceViewController") as! AddDetailPlaceViewController
         addDetailPlaceViewController.viewModel = AddDetailPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
+        addDetailPlaceViewController.viewModel?.archiveId = archiveId
         addDetailPlaceViewController.viewModel?.categoryInfo = category
         self.navigationController.pushViewController(addDetailPlaceViewController, animated: true)
     }
@@ -51,9 +52,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.pushViewController(searchPlaceViewController, animated: true)
     }
     
-    func editPlace(placeId: Int, category: [PlaceCategory]) {
+    func editPlace(archiveId: Int, placeId: Int, category: [PlaceCategory]) {
         let editPlaceViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "EditPlaceViewController") as! EditPlaceViewController
         editPlaceViewController.viewModel = EditPlaceViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
+        editPlaceViewController.viewModel?.archiveId = archiveId
         editPlaceViewController.viewModel?.categoryInfo = category
         self.navigationController.pushViewController(editPlaceViewController, animated: true)
     }
@@ -90,7 +92,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.present(likeSendPopUpView, animated: false)
     }
     
-    func deletePlace(placeId: Int) {
+    func deletePlace(archiveId: Int, placeId: Int) {
         let deletePlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DeletePlacePopUpViewController") as! DeletePlacePopUpViewController
         deletePlacePopUpView.placeId = placeId
         deletePlacePopUpView.coordinator = self
@@ -111,7 +113,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.popViewController(animated: true)
     }
     
-    func selectPlace(place: PlaceSearch) {
+    func selectPlace(place: PlaceSearch) { // 장소 검색 후 돌아오기
         self.navigationController.popViewController(animated: true)
         guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
         topViewController.viewModel?.getPlace = place
@@ -178,8 +180,9 @@ extension HomeCoordinator {
         self.navigationController.present(particiPopUpView, animated: false)
     }
     
-    func detailPlace(detailInfo: DetailPlaceInfo?, placeInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory]) {
+    func detailPlace(archiveId: Int, detailInfo: DetailPlaceInfo?, placeInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory]) {
         let detailPlacePopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailPlacePopUpViewController") as! DetailPlacePopUpViewController
+        detailPlacePopUpView.archiveId = archiveId
         detailPlacePopUpView.delegate = detailArchiveViewController
         detailPlacePopUpView.coordinator = self
         detailPlacePopUpView.detailInfo = detailInfo

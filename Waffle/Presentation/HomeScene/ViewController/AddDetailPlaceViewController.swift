@@ -172,12 +172,15 @@ class AddDetailPlaceViewController: UIViewController {
     
 
     func bindViewModel() {
-        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
+        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, memoTextView: memoTextView.rx.text.orEmpty.asObservable(), memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap
             .subscribe(onNext: {
-                self.linkTextView.text = ""
+                self.linkTextView.textColor = Asset.Colors.gray4.color
+                self.linkTextView.text = """
+                    장소와 관련된 링크 주소를 입력해요
+                    """
             }).disposed(by: disposeBag)
         
         input.linkTextViewDidTapEvent
@@ -245,17 +248,22 @@ class AddDetailPlaceViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         input.placeTextFieldTapEvent // 키보드 내리기
-            .subscribe(onNext: {
-                self.placeTextField.resignFirstResponder()
+            .subscribe(onNext: { [weak self] in
+                self?.placeTextField.resignFirstResponder()
             }).disposed(by: disposeBag)
         
         viewModel?.placeViewEnabled
-            .subscribe(onNext: { bool in
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
                 if bool {
                     self.placeTitleLabel.text = self.viewModel?.getPlace?.placeName ?? ""
                     self.placeSubtitleLabel.text = self.viewModel?.getPlace?.roadAddressName ?? ""
-                    self.linkTextView.text = self.viewModel?.getPlace?.placeUrl ?? ""
+                    output?.linkTextView.accept(self.viewModel?.getPlace?.placeUrl ?? "")
+                    //self.linkTextView.text = self.viewModel?.getPlace?.placeUrl ?? ""
                     self.placeAddLayout()
+                    output?.linkTextView
+                        .bind(to: self.linkTextView.rx.text)
+                        .disposed(by: self.disposeBag)
                 }else {
                     self.placeInputTextFieldLayout()
                 }

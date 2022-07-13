@@ -18,7 +18,9 @@ class AddDetailPlaceViewModel {
     //for layout
     let placeViewEnabled = BehaviorRelay<Bool>(value: false)
     var getPlace: PlaceSearch?
+    var archiveId: Int?
     
+    private let defaultText = "장소에 대한 간략한 정보나 가고 싶은 이유, 추천하는 이유 등을 자유롭게 작성하면 좋아요"
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
@@ -29,10 +31,10 @@ class AddDetailPlaceViewModel {
         var placeTextFieldTapEvent: ControlEvent<Void>
         // 클릭시 다시 장소 입력 textfield 레이아웃
         var placeViewDeleteButton: Observable<Void>
-                                        
         var linkTextViewDidTapEvent: ControlEvent<Void>
         var linkTextViewDidEndEvent: ControlEvent<Void>
         
+        let memoTextView: Observable<String>
         var memoTextViewDidTapEvent: ControlEvent<Void>
         var memoTextViewDidEndEvent: ControlEvent<Void>
         var memoTextViewEditing: ControlEvent<Void>
@@ -40,8 +42,11 @@ class AddDetailPlaceViewModel {
         
     }
     
+    
     struct Output {
         let addButtonEnabled = BehaviorRelay<Bool>(value: false)
+        let linkTextView = BehaviorRelay<String?>(value: nil)
+        
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -65,6 +70,28 @@ class AddDetailPlaceViewModel {
             .bind(to: output.addButtonEnabled)
             .disposed(by: disposeBag)
         
+        input.addButton
+            .withLatestFrom(Observable.combineLatest(input.categorySelectedItem, input.memoTextView, output.linkTextView))
+            .bind(onNext: { [weak self] categoryIndex, memo, link in
+                guard let self = self else { return }
+                guard let categoryIndex = categoryIndex, let archiveId = self.archiveId else { return }
+                let categoryId = self.categoryInfo[categoryIndex].id
+                guard let getPlace = self.getPlace else { return }
+
+                var addPlaceInfo = AddPlace(title: getPlace.placeName, roadNameAddress: getPlace.roadAddressName, longitude: getPlace.longitude, latitude: getPlace.latitude )
+                if memo != self.defaultText { addPlaceInfo.memo = memo }
+                addPlaceInfo.link = link
+                WappleLog.debug("categoryId \(categoryId) // addPlaceInfo \(addPlaceInfo)")
+                self.usecase.addPlace(archiveId: archiveId, categoryId: categoryId, addPlace: addPlaceInfo)
+            }).disposed(by: disposeBag)
+        
+        usecase.addPlaceSuccess
+            .subscribe(onNext: { bool in
+                if bool {
+                    WappleLog.debug("약속 추가 성공")
+                    self.coordinator.popViewController()
+                }
+            }).disposed(by: disposeBag)
         
         return output
     }

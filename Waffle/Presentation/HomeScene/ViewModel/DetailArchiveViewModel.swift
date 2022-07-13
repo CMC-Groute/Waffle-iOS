@@ -63,8 +63,7 @@ class DetailArchiveViewModel {
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                WappleLog.debug("장소 추가 버튼 클릭 \(self.loadCategoryWithoutConfirm())")
-                self.coordinator.addDetailPlace(category: self.loadCategoryWithoutConfirm())
+                self.coordinator.addDetailPlace(archiveId: self.archiveId, category: self.loadCategoryWithoutConfirm())
             }).disposed(by: disposeBag)
         
         bindUsecase()
@@ -134,7 +133,7 @@ class DetailArchiveViewModel {
                     guard let self = self else { return }
                     guard let currentPlace = self.currentPlace else { return }
                     self.detailPlaceInfo = detailPlace
-                    self.coordinator.detailPlace(detailInfo: detailPlace, placeInfo: currentPlace, category: self.selectedCategory, categoryInfo: self.loadCategoryWithoutConfirm())
+                    self.coordinator.detailPlace(archiveId: self.archiveId, detailInfo: detailPlace, placeInfo: currentPlace, category: self.selectedCategory, categoryInfo: self.loadCategoryWithoutConfirm())
                 }).disposed(by: disposeBag)
         }
         

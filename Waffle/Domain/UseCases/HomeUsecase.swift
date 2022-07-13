@@ -167,7 +167,7 @@ extension HomeUsecase {
             .observe(on: MainScheduler.instance)
             .catch { error -> Observable<GetPlaceByCategoryResponse> in
                 let error = error as! URLSessionNetworkServiceError
-                WappleLog.error("getPlaceByCategory error \(error)")
+                WappleLog.error("getConfirmPlace error \(error)")
                 return .just(GetPlaceByCategoryResponse(status: error.rawValue, data: nil))
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }

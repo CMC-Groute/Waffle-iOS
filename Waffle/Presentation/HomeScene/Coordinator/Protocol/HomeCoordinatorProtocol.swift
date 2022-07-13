@@ -8,27 +8,33 @@
 import Foundation
 
 protocol HomeCoordinatorProtocol: Coordinator {
-    func detailArchive(archiveId: Int)
-    func addDetailPlace(category: [PlaceCategory])
+    //MARK: Place
+    func detailArchive(archiveId: Int) // 장소 조회
+    func addDetailPlace(archiveId: Int, category: [PlaceCategory]) // 장소 추가
+    func deletePlace(archiveId: Int, placeId: Int) // 장소 삭제
+    func editPlace(archiveId: Int, placeId: Int, category: [PlaceCategory]) // 장소 편집
+    func detailPlace(archiveId: Int, detailInfo: DetailPlaceInfo?, placeInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory]) // 세부 장소 조회
     
     //MARK: load BottomSheet View
     func detailArchiveBottomSheet(detailArchive: DetailArhive?, archiveId: Int)
     func invitationBottomSheet(copyCode: String)
     
-    //MARK: Button Click
+    //MARK: Category
     func addCategory(archiveId: Int, category: [PlaceCategory])
+    func deleteCategory(archiveId: Int, category: PlaceCategory)
+    
+    //MARK: Button
     func loadMemo(memo: String, wapple: String)
     func participants(detailArchive: DetailArhive?)
-    func detailPlace(detailInfo: DetailPlaceInfo?, placeInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory])
+   
     
     //MARK: POPUP View click
-    func deleteCategory(archiveId: Int, category: PlaceCategory)
-    func arhiveDelete(archiveId: Int)
     func likeSend()
-    func deletePlace(placeId: Int)
+
     
     //MARK: Archive
     func addArchive()
+    func arhiveDelete(archiveId: Int)
     func inputCodeArchive()
     func addLocation()
     func editArchive(archiveId: Int, detailArchive: DetailArhive?)

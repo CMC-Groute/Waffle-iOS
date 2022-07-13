@@ -15,6 +15,7 @@ class EditPlaceViewModel {
     var usecase: HomeUsecase!
     var placeId: Int?
     var categoryInfo: [PlaceCategory] = []
+    var archiveId: Int?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -41,6 +42,9 @@ class EditPlaceViewModel {
     }
     
     func deletePlace() {
-        coordinator.deletePlace(placeId: 0)
+        guard let archiveId = self.archiveId, let placeId = self.placeId else {
+            return
+        }
+        coordinator.deletePlace(archiveId: archiveId, placeId: placeId)
     }
 }

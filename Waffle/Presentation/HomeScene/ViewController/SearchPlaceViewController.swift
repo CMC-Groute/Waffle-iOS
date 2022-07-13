@@ -137,7 +137,8 @@ class SearchPlaceViewController: UIViewController {
             viewModel.filteringPlace = self.viewModel?.place ?? []
             self.tableView.reloadData()
             
-        })
+        }).disposed(by: disposeBag)
+        
         searchBar.rx.text.orEmpty
              .debounce(.microseconds(10), scheduler: MainScheduler.instance)
              .distinctUntilChanged()

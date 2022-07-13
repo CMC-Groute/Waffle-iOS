@@ -73,14 +73,14 @@ extension PlaceAPI {
     
     var method: HttpMethod {
         switch self {
-        case .addPlace(_, _, _), .addPlaceCategory(_, _), .addLike(_):
+        case .addPlace(_, _, _), .addPlaceCategory(_, _), .addLike(_), .placeSearch:
             return .post
         case .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .getConfirmSequence(_, _):
             return .put
         case .editPlace(_, _, _):
             return .patch
-        case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .placeSearch:
-            return .post
+        case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _):
+            return .get
         case .deletePlace(_, _), .deletePlacCategory(_, _), .deleteLike(_):
             return .delete
         
