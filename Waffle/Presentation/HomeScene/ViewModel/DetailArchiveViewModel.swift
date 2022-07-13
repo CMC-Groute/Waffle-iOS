@@ -31,6 +31,7 @@ class DetailArchiveViewModel {
     var currentPlace: PlaceInfo?
     
     var loadData = PublishSubject<LoadIndexPathType>()
+    var idFromDelete: Bool = false
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -54,7 +55,7 @@ class DetailArchiveViewModel {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
-                WappleLog.debug("detailArchiveVieModel archiveId - \(self.archiveId)")
+                WappleLog.debug("detailArchiveVieModel archiveId \(self.archiveId)")
                 self.getArchiveCode()
             }).disposed(by: disposeBag)
         
@@ -62,6 +63,7 @@ class DetailArchiveViewModel {
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
+                WappleLog.debug("장소 추가 버튼 클릭 \(self.loadCategoryWithoutConfirm())")
                 self.coordinator.addDetailPlace(category: self.loadCategoryWithoutConfirm())
             }).disposed(by: disposeBag)
         
@@ -78,9 +80,12 @@ class DetailArchiveViewModel {
                         let category = detailArchive.category?.compactMap { category in
                             return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
                         //Delete시 cell 초기화
-                        if self.category.count > 1 { self.category = [PlaceCategory.confirmCategory]
+                        if self.idFromDelete {
+                            self.category = [PlaceCategory.confirmCategory]
+                            self.idFromDelete = false
                             self.loadData.onNext(.category)
                         }else {
+                            self.category = [PlaceCategory.confirmCategory]
                             self.category += category ?? [] // 카테고리
                             self.loadData.onNext(.all)
                         }
@@ -109,6 +114,7 @@ class DetailArchiveViewModel {
                 .subscribe(onNext: { [weak self] bool in
                     guard let self = self else { return }
                     WappleLog.debug("DetailArchiveViewModel deleteCategory \(bool)")
+                    self.idFromDelete = true
                     self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
                 }).disposed(by: disposeBag)
             
