@@ -10,7 +10,7 @@ import UIKit
 class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "TableDetailArchiveCollectionViewCell"
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     var viewModel: DetailArchiveViewModel? {
         didSet {
             self.place = viewModel?.placeInfo ?? []

@@ -160,7 +160,9 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
         }else if indexPath.section == 2 {
             return CGSize(width: screenWidth, height: 57)
         }else if indexPath.section == 3 {
-            return CGSize(width: screenWidth, height: 900)
+            guard let placeInfo = viewModel?.placeInfo else { return CGSize(width: screenWidth, height: 500) }
+            let height = CGFloat(placeInfo.count * 182)
+            return CGSize(width: screenWidth, height: height)
         }
         return CGSize(width: screenWidth, height: 500)
     }
