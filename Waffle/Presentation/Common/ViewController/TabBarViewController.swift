@@ -12,7 +12,7 @@ class TabBarViewController: UITabBarController {
     var popUpView = ArchivePopUpView()
     
     var didTapLastItem: Bool = false
-    
+    let lastItemIndex = 2
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -39,13 +39,13 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: ArchivePopUpViewDelegate {
     func didTapAddArchiveView() {
-        self.tabBar.items![3].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
         self.coordinator.addArchive()
         popUpView.isHidden = true // 팝업뷰 닫기
     }
     
     func didTapInputArchiveView() {
-        self.tabBar.items![3].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
         self.coordinator.inputCodeArchive()
         popUpView.isHidden = true
     }
@@ -55,7 +55,7 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
 
 extension TabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.tag == 2 {
+        if item.tag == lastItemIndex {
             popUpView.isHidden.toggle()
             if self.tabBar.items![item.tag].image == Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal) {
                 self.tabBar.items![item.tag].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
