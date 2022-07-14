@@ -116,7 +116,7 @@ class DetailPlacePopUpViewController: UIViewController {
 
                 
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories, place: placeInfo, detailPlace: detailInfo)
+                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories, place: placeInfo, detailPlace: detailInfo, selectedCategory: self.category)
             }).disposed(by: disposBag)
         
         func updateLikeCount() {

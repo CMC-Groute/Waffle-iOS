@@ -18,6 +18,8 @@ class EditPlaceViewModel {
     var archiveId: Int?
     var detailPlace: DetailPlaceInfo?
     var place: PlaceInfo?
+    var selectedCategory: PlaceCategory?
+    var selectedCategoryIndex: Int?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -36,6 +38,7 @@ class EditPlaceViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
+        selectedCategoryIndex = categoryInfo.index(where: { $0.name == selectedCategory?.name })
         return output
     }
     

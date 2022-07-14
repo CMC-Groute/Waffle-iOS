@@ -75,7 +75,6 @@ class EditPlaceViewController: UIViewController {
         linkTextView.isEditable = false
         linkTextView.isSelectable = true
         linkTextView.delegate = self
-        linkTextView.text = "https://g-y-e-o-m.tistory.com"
         linkTextView.isUserInteractionEnabled = true
         linkTextView.textContainerInset = UIEdgeInsets(top: 15, left: 14, bottom: 15, right: 48)
         
@@ -174,7 +173,31 @@ class EditPlaceViewController: UIViewController {
         placeFramView.removeFromSuperview()
     }
     
-    private func bindViewModel() {
+    private func bindViewModel() { //rx 없이 연결
+        guard let viewModel = viewModel, let place = viewModel.place else {
+            return
+        }
+
+        placeTitleLabel.text = place.title
+        placeSubtitleLabel.text = place.roadNameAddress
+        if let link = viewModel.detailPlace?.link {
+            linkTextView.text = link
+        }else { //placeHolder
+            self.linkTextView.textColor = Asset.Colors.gray4.color
+            self.linkTextView.text = "장소와 관련된 링크 주소를 입력해요"
+        }
+        
+        if let memo = viewModel.detailPlace?.memo {
+            memoTextView.text = memo
+            memoTextView.textColor = Asset.Colors.black.color
+        }
+        
+        
+        bindViewModels()
+        
+    }
+    
+    private func bindViewModels() {
         let input = EditPlaceViewModel.Input(linkTextViewDidTapEvent: self.linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: self.linkTextView.rx.didEndEditing)
         
         input.linkTextViewDidTapEvent
@@ -234,6 +257,11 @@ extension EditPlaceViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
         guard let categoryName = viewModel?.categoryInfo else { return cell }
+        print("viewModel?.selectedCategoryIndex \(viewModel?.selectedCategoryIndex)")
+        if indexPath.row == viewModel?.selectedCategoryIndex {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
+        }
         cell.configureCell(name: categoryName[indexPath.row].name, isEditing: false)
         return cell
         

@@ -12,7 +12,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
     func detailArchive(archiveId: Int) // 장소 조회
     func addDetailPlace(archiveId: Int, category: [PlaceCategory]) // 장소 추가
     func deletePlace(archiveId: Int, placeId: Int) // 장소 삭제
-    func editPlace(archiveId: Int, placeId: Int, category: [PlaceCategory], place: PlaceInfo, detailPlace: DetailPlaceInfo) // 장소 편집
+    func editPlace(archiveId: Int, placeId: Int, category: [PlaceCategory], place: PlaceInfo, detailPlace: DetailPlaceInfo, selectedCategory: PlaceCategory) // 장소 편집
     func detailPlace(archiveId: Int, detailInfo: DetailPlaceInfo?, placeInfo: PlaceInfo, category: PlaceCategory, categoryInfo: [PlaceCategory]) // 세부 장소 조회
     
     //MARK: load BottomSheet View
