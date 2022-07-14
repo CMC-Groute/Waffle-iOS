@@ -163,6 +163,7 @@
 		137853432875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */; };
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
 		1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */; };
+		1398A09E28800F4A009B0187 /* KaKaoShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398A09D28800F4A009B0187 /* KaKaoShare.swift */; };
 		13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A071285DE4560015499E /* ArchivePopUpView.xib */; };
 		13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E2A079285EFAC90015499E /* EmptyCardView.xib */; };
 		5276F7A46E66E4E434DB5D65 /* Pods_Waffle_WaffleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23ED6BEBFC9D062FBCA62A08 /* Pods_Waffle_WaffleUITests.framework */; };
@@ -253,6 +254,7 @@
 		1390EC9A286A0E2800E5520C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewController.swift; sourceTree = "<group>"; };
 		1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewModel.swift; sourceTree = "<group>"; };
+		1398A09D28800F4A009B0187 /* KaKaoShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoShare.swift; sourceTree = "<group>"; };
 		13CA03D9286DECC70087E79E /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		13CA03DC286DEF230087E79E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		13CA03DF2870173A0087E79E /* LoginSignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignAPI.swift; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 		1390EC822866DE0000E5520C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1398A09D28800F4A009B0187 /* KaKaoShare.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1606,6 +1609,7 @@
 				133D55A128744BDD0068EA90 /* MapCoordinatorProtocol.swift in Sources */,
 				133D55A228744BDD0068EA90 /* MapCoordinator.swift in Sources */,
 				133D55A328744BDD0068EA90 /* AddPlaceSearchTableViewCell.swift in Sources */,
+				1398A09E28800F4A009B0187 /* KaKaoShare.swift in Sources */,
 				133D55A428744BDD0068EA90 /* CategoryCollectionViewCell.swift in Sources */,
 				133D55A528744BDD0068EA90 /* AddCategoryCollectionViewCell.swift in Sources */,
 				133D55A628744BDD0068EA90 /* ConfirmCategoryCollectionViewCell.swift in Sources */,
@@ -1861,9 +1865,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Waffle/Waffle.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = FJ57DUH592;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Waffle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1876,8 +1881,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Develop.Wapple.com;
+				PRODUCT_BUNDLE_IDENTIFIER = Develop.Wapple.com.identifer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1891,9 +1897,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Waffle/Waffle.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = FJ57DUH592;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Waffle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1906,8 +1913,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Develop.Wapple.com;
+				PRODUCT_BUNDLE_IDENTIFIER = Develop.Wapple.com.identifer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

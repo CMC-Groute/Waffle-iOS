@@ -9,6 +9,7 @@ import UIKit
 import UserNotifications
 import Firebase
 import FirebaseMessaging
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         Messaging.messaging().isAutoInitEnabled = true
+        KakaoSDK.initSDK(appKey: "9d221cbc36f57f5d7e31879b43c6a546")
         UNUserNotificationCenter.current().delegate = self
         //최초 한번 실행
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

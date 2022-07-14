@@ -163,7 +163,7 @@ class DetailArchiveViewModel {
     }
     
     func invitations() {
-        self.coordinator.invitationBottomSheet(copyCode: archiveCode ?? "")
+        self.coordinator.invitationBottomSheet(archiveId: archiveId, copyCode: archiveCode ?? "")
     }
     
     func updateSelectedCategory(category: PlaceCategory) {
