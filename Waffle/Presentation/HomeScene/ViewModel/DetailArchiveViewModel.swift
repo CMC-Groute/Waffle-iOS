@@ -188,10 +188,10 @@ class DetailArchiveViewModel {
         coordinator.deleteCategory(archiveId: archiveId, category: category)
     }
     
-    func loadMemo() {
-        guard let detailArchive = detailArchive else { return }
-        guard let memo = detailArchive.memo else { return }
-        let cardImageIndex = CardViewInfoType.init(rawValue: detailArchive.placeImage)?.cardViewIndex() ?? 0
+    func loadMemo(memo: String) {
+        guard let detailArchive = detailArchive else { return }        
+        let cardImageIndex = WappleType.init(rawValue: detailArchive.placeImage)?.wappleIndex() ?? 0
+        WappleLog.debug("cardImageIndex \(cardImageIndex)")
         coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(cardImageIndex)")
     }
     

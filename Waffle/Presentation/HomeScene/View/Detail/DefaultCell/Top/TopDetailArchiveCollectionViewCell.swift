@@ -54,7 +54,7 @@ class TopDetailArchiveCollectionViewCell: UICollectionViewCell, UIGestureRecogni
     
     @objc func didTapLoadMemo() {
         print("didTapLoadMemo")
-        viewModel?.loadMemo()
+        viewModel?.loadMemo(memo: memoLabel.text ?? DefaultDetailCardInfo.archiveMemo.rawValue)
     }
     
     func configureCell(detailArchive: DetailArhive?) {

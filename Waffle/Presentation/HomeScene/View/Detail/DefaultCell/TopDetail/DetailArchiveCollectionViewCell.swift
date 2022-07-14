@@ -31,7 +31,7 @@ class DetailArchiveCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func loadMemo(recognizer:UITapGestureRecognizer) {
-        viewModel?.loadMemo()
+        viewModel?.loadMemo(memo: memoLabel.text ?? DefaultDetailCardInfo.archiveMemo.rawValue)
     }
     
     func configureCell(detailArchive: DetailArhive?) {

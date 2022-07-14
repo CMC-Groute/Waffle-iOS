@@ -78,9 +78,9 @@ class InvitationBottomSheetViewController: UIViewController {
         updateImage()
 //        let link = Link(webUrl: URL(string:"https://developers.kakao.com"),
 //                        mobileWebUrl: URL(string:"https://developers.kakao.com"))
-        
+        guard let archiveId = archiveId else { return }
         let appLink = Link(androidExecutionParams: ["archiveId": "\(archiveId)"],
-                            iosExecutionParams: ["archiveId": "value1"])
+                            iosExecutionParams: ["archiveId": "\(archiveId)"])
         
         let button1 = Button(title: "약속에 참여하기", link: appLink)
 
