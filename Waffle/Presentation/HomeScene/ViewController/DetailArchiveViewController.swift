@@ -133,7 +133,6 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             let updatePlace = viewModel.placeInfo ?? []
             WappleLog.debug("updatePlace \(updatePlace)")
             cell.viewModel = viewModel
-            //cell.configureCell(place: updatePlace, selectedCategory: viewModel.selectedCategory)
             cell.backgroundColor = .green
             return cell
         }
@@ -160,7 +159,8 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
         }else if indexPath.section == 2 {
             return CGSize(width: screenWidth, height: 57)
         }else if indexPath.section == 3 {
-            guard let placeInfo = viewModel?.placeInfo else { return CGSize(width: screenWidth, height: 500) }
+            guard let placeInfo = viewModel?.placeInfo, viewModel?.placeInfo?.isEmpty == false else {
+                return CGSize(width: screenWidth, height: 500) }
             let height = CGFloat(placeInfo.count * 182)
             return CGSize(width: screenWidth, height: height)
         }

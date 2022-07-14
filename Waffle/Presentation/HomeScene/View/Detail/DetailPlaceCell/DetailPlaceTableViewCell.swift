@@ -60,7 +60,7 @@ class DetailPlaceTableViewCell: UITableViewCell {
     //MARK: Drag and Drop
     private func configureGesture() {
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
-        longGesture.minimumPressDuration = 1
+        
         canEditingButton.addGestureRecognizer(longGesture)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLabel(recognizer:)))
