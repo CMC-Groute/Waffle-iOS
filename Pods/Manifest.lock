@@ -1,4 +1,17 @@
 PODS:
+  - Alamofire (5.6.1)
+  - KakaoSDKCommon (2.11.0):
+    - KakaoSDKCommon/Common (= 2.11.0)
+    - KakaoSDKCommon/Network (= 2.11.0)
+  - KakaoSDKCommon/Common (2.11.0)
+  - KakaoSDKCommon/Network (2.11.0):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.11.0)
+  - KakaoSDKShare (2.11.0):
+    - KakaoSDKCommon (= 2.11.0)
+    - KakaoSDKTemplate (= 2.11.0)
+  - KakaoSDKTemplate (2.11.0):
+    - KakaoSDKCommon/Common (= 2.11.0)
   - MSPeekCollectionViewDelegateImplementation (3.2.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
@@ -10,6 +23,9 @@ PODS:
   - SwiftGen (6.5.1)
 
 DEPENDENCIES:
+  - KakaoSDKCommon
+  - KakaoSDKShare
+  - KakaoSDKTemplate
   - MSPeekCollectionViewDelegateImplementation
   - RxCocoa (~> 6.5.0)
   - RxSwift (~> 6.5.0)
@@ -18,6 +34,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - KakaoSDKCommon
+    - KakaoSDKShare
+    - KakaoSDKTemplate
     - MSPeekCollectionViewDelegateImplementation
     - RxCocoa
     - RxRelay
@@ -26,6 +46,10 @@ SPEC REPOS:
     - SwiftGen
 
 SPEC CHECKSUMS:
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
+  KakaoSDKCommon: 0f59f2c1aead6012d92758e8ca46b63ea11c408b
+  KakaoSDKShare: 05c1b2253401f4a12d448c45bbb700cbd6ed0ec6
+  KakaoSDKTemplate: 61a4c2e46bbaee884770b2f1cd7d59cdbbc1e250
   MSPeekCollectionViewDelegateImplementation: be35a217bd302976a9e4476151be992c1f150127
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -33,6 +57,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: 4ca9c0f7d09f50588784111520b3ba7465d2b924
+PODFILE CHECKSUM: cfaed13ff29410ddeb81459a4e35ded78882e6cf
 
 COCOAPODS: 1.11.3

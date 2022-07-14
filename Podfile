@@ -11,6 +11,11 @@ pod 'SwiftGen', '~> 6.0'
 pod 'RxSwift', '~> 6.5.0'
 pod 'RxCocoa', '~> 6.5.0'
 pod 'MSPeekCollectionViewDelegateImplementation'
+
+pod 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
+pod 'KakaoSDKShare'  # 메시지(카카오톡 공유)
+pod 'KakaoSDKTemplate'  # 메시지 템플릿 
+
   target 'WaffleTests' do
     inherit! :search_paths
     # Pods for testing
