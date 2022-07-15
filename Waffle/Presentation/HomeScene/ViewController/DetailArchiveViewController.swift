@@ -15,6 +15,7 @@ class DetailArchiveViewController: UIViewController {
 
     var viewModel: DetailArchiveViewModel?
     private var disposeBag = DisposeBag()
+    private var isCategoryEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +71,16 @@ class DetailArchiveViewController: UIViewController {
                 guard let self = self else { return }
                 self.navigationItem.title = self.viewModel?.detailArchive?.title
                 switch indexPathType {
-                case .all:
-                    self.collectionView.reloadData()
-                case .category:
-                    self.collectionView.reloadSections(.init(integer: 2))
-                case .tableView:
-                    self.collectionView.reloadSections(.init(integer: 3))
+                    case .all:
+                        self.collectionView.reloadData()
+                    case .deleteCategory:
+                        self.isCategoryEditing = true
+                        self.collectionView.reloadSections(.init(integer: 2))
+                    case .addCategory:
+                        self.isCategoryEditing = false
+                        self.collectionView.reloadSections(.init(integer: 2))
+                    case .tableView:
+                        self.collectionView.reloadSections(.init(integer: 3))
                 }
             }).disposed(by: disposeBag)
     }
@@ -126,6 +131,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
             cell.viewModel = viewModel
+            cell.isCategoryEditing = isCategoryEditing
             cell.backgroundColor = .gray
             return cell
         }else if indexPath.section == 3 {

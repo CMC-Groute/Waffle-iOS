@@ -11,7 +11,8 @@ import RxCocoa
 
 enum LoadIndexPathType {
     case all
-    case category
+    case deleteCategory
+    case addCategory
     case tableView
 }
 
@@ -81,8 +82,9 @@ class DetailArchiveViewModel {
                         //Delete시 cell 초기화
                         if self.idFromDelete {
                             self.category = [PlaceCategory.confirmCategory]
+                            self.category += category ?? [] // 카테고리
                             self.idFromDelete = false
-                            self.loadData.onNext(.category)
+                            self.loadData.onNext(.deleteCategory)
                         }else {
                             self.category = [PlaceCategory.confirmCategory]
                             self.category += category ?? [] // 카테고리
@@ -106,7 +108,7 @@ class DetailArchiveViewModel {
                     let category = addCategory.compactMap { category in
                         return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
                     self?.category += category
-                    self?.loadData.onNext(.category)
+                    self?.loadData.onNext(.addCategory)
                 }).disposed(by: disposeBag)
             
             usecase.deleteCategory
