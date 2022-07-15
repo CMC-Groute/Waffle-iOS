@@ -33,7 +33,6 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     init(repository: LoginSignRepository) {
         self.repository = repository
-        print("create \(repository)")
     }
     
     func checkEmailValid(email: String) -> Bool {
