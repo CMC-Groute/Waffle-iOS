@@ -71,6 +71,10 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDataSource {
             if viewModel?.selectedCategory.name == confirmCategoryName {
                 cell.isSelected = true
                 collectionView.selectItem(at: [0, 0], animated: true, scrollPosition: .init())
+            }else { // 해당 카테고리 선택되어 있게끔 수정
+                guard let row = viewModel?.category.firstIndex(where: { $0.name == viewModel?.selectedCategory.name }) else { return cell }
+                cell.isSelected = true
+                collectionView.selectItem(at: [0, row], animated: true, scrollPosition: .init())
             }
             return cell
         }

@@ -118,7 +118,6 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         guard let viewModel = viewModel else { return UICollectionViewCell() }
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailArchiveCollectionViewCell.identifier, for: indexPath) as! DetailArchiveCollectionViewCell
-            cell.backgroundColor = .red
             cell.configureCell(detailArchive: viewModel.detailArchive)
             cell.viewModel = self.viewModel
             return cell
@@ -126,20 +125,17 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubDetailArchiveCollectionViewCell.identifier, for: indexPath) as! SubDetailArchiveCollectionViewCell
             cell.configureCell(count: viewModel.detailArchive?.member.count ?? 1)
             cell.viewModel = self.viewModel
-            cell.backgroundColor = .blue
             return cell
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
             cell.viewModel = viewModel
             cell.isCategoryEditing = isCategoryEditing
-            cell.backgroundColor = .gray
             return cell
         }else if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TableDetailArchiveCollectionViewCell
             let updatePlace = viewModel.placeInfo ?? []
             WappleLog.debug("updatePlace \(updatePlace)")
             cell.viewModel = viewModel
-            cell.backgroundColor = .green
             return cell
         }
         return UICollectionViewCell()

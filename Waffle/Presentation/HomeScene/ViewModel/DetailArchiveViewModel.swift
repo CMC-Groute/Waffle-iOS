@@ -76,7 +76,9 @@ class DetailArchiveViewModel {
                     if let detailArchive = detailArchive {
                         WappleLog.debug("DetailArchiveViewModel detailArchive \(detailArchive)")
                         self.detailArchive = detailArchive // 전체 약속 데이터
-                        self.placeInfo = detailArchive.placeInfo
+                        // 기본은 확정 장소이나
+                        //self.placeInfo = detailArchive.placeInfo
+                        self.updateSelectedCategory(category: self.selectedCategory)
                         let category = detailArchive.category?.compactMap { category in
                             return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
                         //Delete시 cell 초기화
