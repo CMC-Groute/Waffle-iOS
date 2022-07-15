@@ -19,9 +19,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
-        WappleLog.debug("jwtToken \(UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken))")
         self.appCoordinator = AppCoordinator(navigationController)
+        WappleLog.debug("jwtToken \(UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken))")
+        
         appCoordinator?.start()
+        
+        if let url = connectionOptions.urlContexts.first?.url {
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            let archiveId = components.queryItems?.first?.value ?? "0"
+        
+            guard let tabBarCoordinator = self.appCoordinator?.findCoordinator(type: .tab) as? TabBarCoordinator,
+            let homeCoordinator = self.appCoordinator?.findCoordinator(type: .home) as? HomeCoordinator else { return }
+            
+            tabBarCoordinator.selectPage(.home)
+            guard (homeCoordinator.navigationController.viewControllers.last
+                   is DetailArchiveViewController == false) else { return }
+            //마지막 화면이 DetailArchiveViewController가 아니였다면
+            homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -55,11 +70,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url, UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) != nil {
             //example: kakao9d221cbc36f57f5d7e31879b43c6a546://kakaolink?archiveId=19
-
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-            print(components.queryItems?.first?.name) // archiveId
             let archiveId = components.queryItems?.first?.value ?? "0"
-            //print(components.queryItems?.first?.value) // 19
             guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
                   let appCoordinator = sceneDelegate.appCoordinator,
                   let tabBarCoordinator = appCoordinator.findCoordinator(type: .tab) as? TabBarCoordinator,
@@ -67,7 +79,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             tabBarCoordinator.selectPage(.home)
             guard (homeCoordinator.navigationController.viewControllers.last
                    is DetailArchiveViewController == false) else { return }
-            //마지막 화면이 DetailArchiveViewController가 아니였다면
             homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
             
         }
