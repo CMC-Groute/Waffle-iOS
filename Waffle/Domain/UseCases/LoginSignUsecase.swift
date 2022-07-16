@@ -55,7 +55,8 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     func login(email: String, password: String) {
         print("LoginSignUsecase")
-        let loginInfo = Login(email: email, password: password)
+        guard let deviceToken = UserDefaults.standard.string(forKey: UserDefaultKey.deviceToken) else { return }
+        let loginInfo = Login(email: email, password: password, deviceToken: deviceToken)
         repository.login(loginInfo: loginInfo)
             .catch { error -> Observable<LoginResponse> in
                 let error = error as! URLSessionNetworkServiceError

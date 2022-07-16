@@ -11,6 +11,7 @@ import Foundation
 struct Login: Codable {
     var email: String
     var password: String
+    var deviceToken: String
 }
 
 //MARK: Login Response
