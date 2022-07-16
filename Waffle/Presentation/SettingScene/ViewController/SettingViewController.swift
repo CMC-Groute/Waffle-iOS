@@ -18,7 +18,6 @@ final class SettingViewController: UIViewController {
     @IBOutlet private weak var profileEmail: UILabel!
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var changePWButton: UIButton!
-    @IBOutlet private weak var quitButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
@@ -33,6 +32,14 @@ final class SettingViewController: UIViewController {
         }
         label.text = version
         return label
+    }()
+    
+    lazy var quitButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(Asset.Colors.gray6.color, for: .normal)
+        button.titleLabel?.font = UIFont.fontWithName(type: .medium, size: 13)
+        button.setAttributedTitle("탈퇴하기".underBarLine(), for: .normal)
+        return button
     }()
 
     struct SettingOptions {
@@ -52,12 +59,12 @@ final class SettingViewController: UIViewController {
         
         let contributorCell = SettingTableViewCell(style: .detail)
         contributorCell.title = "개발자 정보"
-        contributorCell.detailText = "gnelesh@gmail.com"
+        contributorCell.detailText = "wapple2app@gmail.com"
         let contributorsOption = SettingOptions(cell: contributorCell, handler: nil)
         
         let feedbackCell = SettingTableViewCell(style: .plain)
         feedbackCell.title = "피드백 남기기"
-        let feedbackOption = SettingOptions(cell: feedbackCell, handler: nil)
+        let feedbackOption = SettingOptions(cell: feedbackCell, handler: openFeedbackMail())
 
         let privacyCell = SettingTableViewCell(style: .plain)
         privacyCell.title = "개인 정보 처리 방침"
@@ -70,6 +77,10 @@ final class SettingViewController: UIViewController {
         let options: [SettingOptions] = [alertOption, appVersionOption, contributorsOption, feedbackOption, privacyOption, logoutOption]
         return options
     }()
+    
+    private func openFeedbackMail() {
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -92,7 +103,6 @@ final class SettingViewController: UIViewController {
     }
     
     private func configureUI() {
-        
         profileImage.makeCircleShape()
         changePWButton.makeRounded(corner: 20)
         changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
@@ -100,8 +110,6 @@ final class SettingViewController: UIViewController {
         editButton.makeRounded(corner: 20)
         editButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
         editButton.layer.borderWidth = 1
-        
-        quitButton.setAttributedTitle("탈퇴하기".underBarLine(), for: .normal)
     }
     
     private func configureTableView() {
@@ -110,6 +118,19 @@ final class SettingViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
+        addQuitView()
+        
+        func addQuitView() {
+            let quitView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 48))
+            quitView.addSubview(quitButton)
+            quitButton.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(24)
+                $0.top.equalToSuperview().offset(14)
+                $0.centerY.equalToSuperview()
+            }
+            
+            tableView.tableFooterView = quitView
+        }
     }
     
     private func bindViewModel() {
@@ -150,6 +171,7 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(48)
     }
+    
 }
 
 extension SettingViewController: UITableViewDataSource {

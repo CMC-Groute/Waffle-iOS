@@ -35,6 +35,7 @@ final class SettingTableViewCell: UITableViewCell {
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
         switchControl.onTintColor = UIColor(named: Asset.Colors.orange.name)
+        switchControl.isOn = true
         return switchControl
     }()
     
