@@ -124,6 +124,7 @@ class SignUpViewModel {
                 guard let self = self else { return }
                 //email send
                 self.usecase.sendEmail(email: email)
+                output.isEmailInvalid.accept(.checkEmail)
             }).disposed(by: disposeBag)
         
         //MARK: - authenTextField
@@ -177,10 +178,9 @@ class SignUpViewModel {
         //MARK: Binding Usecase
         usecase.sendEmailSuccess
             .subscribe(onNext: { status in
-                WappleLog.debug("sendEmailSuccess \(status)")
                 switch status {
                 case .sendEmail:
-                    output.isEmailInvalid.accept(.checkEmail)
+                    WappleLog.debug("sendEmailSuccess \(status)")
                 case .already:
                     output.isEmailInvalid.accept(.aready)
                 }
