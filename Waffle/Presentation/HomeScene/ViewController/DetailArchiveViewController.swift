@@ -194,5 +194,11 @@ extension DetailArchiveViewController: DetailPlacePopUpViewDelegate {
         viewModel?.cancelConfirm(placeId: placeId)
         
     }
+    
+    func dismiss() {
+        if let currentCategory = viewModel?.selectedCategory {
+            viewModel?.updateSelectedCategory(category: currentCategory)
+        }
+    }
 
 }

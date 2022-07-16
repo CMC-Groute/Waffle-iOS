@@ -8,11 +8,12 @@
 import UIKit
 import RxSwift
 
-protocol DetailPlacePopUpViewDelegate {
+protocol DetailPlacePopUpViewDelegate: AnyObject {
     func setConfirm(placeId: Int)
     func cancelConfirm(placeId: Int)
     func addLike(placeId: Int)
     func deleteLike(placeId: Int)
+    func dismiss()
 }
 
 class DetailPlacePopUpViewController: UIViewController {
@@ -47,7 +48,8 @@ class DetailPlacePopUpViewController: UIViewController {
     
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
-    var delegate: DetailPlacePopUpViewDelegate?
+    weak var delegate: DetailPlacePopUpViewDelegate?
+   
     var archiveId: Int?
 
     private var updatedLikeCount: Int = 0
@@ -218,7 +220,9 @@ class DetailPlacePopUpViewController: UIViewController {
         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: {_ in
-            self.dismiss(animated: true)
+            self.dismiss(animated: true) {
+                self.delegate?.dismiss()
+            }
         })
     }
     
