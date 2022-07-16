@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class EditSettingViewController: UIViewController {
+final class EditSettingViewController: UIViewController {
     var viewModel: EditSettingViewModel?
     var disposeBag = DisposeBag()
     

@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class QuitPopUpViewController: UIViewController {
+final class QuitPopUpViewController: UIViewController {
     @IBOutlet weak var framwView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var OKButton: UIButton!

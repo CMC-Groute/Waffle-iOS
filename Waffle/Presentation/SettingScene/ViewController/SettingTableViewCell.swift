@@ -12,7 +12,7 @@ import Combine
 import RxSwift
 import RxCocoa
 
-class SettingTableViewCell: UITableViewCell {
+final class SettingTableViewCell: UITableViewCell {
     enum Style {
         case plain, detail, switchControl
     }

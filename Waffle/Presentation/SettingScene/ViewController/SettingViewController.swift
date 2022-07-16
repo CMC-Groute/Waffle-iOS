@@ -10,20 +10,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SettingViewController: UIViewController {
+final class SettingViewController: UIViewController {
     
-    @IBOutlet weak var profileView: UIView!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var profileNickname: UILabel!
-    @IBOutlet weak var profileEmail: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var changePWButton: UIButton!
-    @IBOutlet weak var quitButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var profileView: UIView!
+    @IBOutlet private weak var profileImage: UIImageView!
+    @IBOutlet private weak var profileNickname: UILabel!
+    @IBOutlet private weak var profileEmail: UILabel!
+    @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var changePWButton: UIButton!
+    @IBOutlet private weak var quitButton: UIButton!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     var viewModel: SettingViewModel?
-    let disposeBag = DisposeBag()
-
+    private var disposeBag = DisposeBag()
     
     lazy var versionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 20))
@@ -80,6 +80,10 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         configure()
         bindViewModel()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        tableViewHeightConstraint.constant = tableView.contentSize.height
     }
     
     private func configure() {
@@ -154,8 +158,6 @@ extension SettingViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-    
-    
 }
 
 

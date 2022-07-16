@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class ChangePWViewController: UIViewController {
+final class ChangePWViewController: UIViewController {
     
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
