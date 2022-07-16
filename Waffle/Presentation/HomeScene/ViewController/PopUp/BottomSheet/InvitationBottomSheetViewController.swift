@@ -62,9 +62,7 @@ class InvitationBottomSheetViewController: UIViewController {
     }
     
     private func sendLink() {
-        guard let detailArchive = detailArchive else {
-            return
-        }
+        guard let detailArchive = detailArchive else { return }
 
 //        let link = Link(webUrl: URL(string:"https://developers.kakao.com"),
 //                        mobileWebUrl: URL(string:"https://developers.kakao.com"))
@@ -92,7 +90,7 @@ class InvitationBottomSheetViewController: UIViewController {
         let imageLink = WappleType.init(rawValue: detailArchive.placeImage)?.wappleLink() ?? ""
         
         let content = Content(title: "\(title)\n\(timeString)\n\(placeString)",
-                                imageUrl: URL(string: imageLink)!,
+                                imageUrl: URL(string: imageLink)!, imageWidth: 330, imageHeight: 370,
                                 link: appLink)
         let feedTemplate = FeedTemplate(content: content, buttons: [button1])
         
