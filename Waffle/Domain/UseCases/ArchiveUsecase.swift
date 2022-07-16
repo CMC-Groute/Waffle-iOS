@@ -22,7 +22,7 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
 
     var addArchiveSuccess = PublishRelay<Bool>()
     var editArchiveSuccess = PublishRelay<Bool>()
-    var joinArhicveSuccess = PublishRelay<JoinArchiveStatus>()
+    var joinArhicveSuccess = PublishRelay<(JoinArchiveStatus, Int?)>() // 상태, archiveId
     var code: String?
     
     init(repository: ArchiveRepository){
@@ -83,12 +83,12 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
                 WappleLog.debug("joinArchive \(response)")
-                if response.status == 400 { // 이미 가입
-                    self.joinArhicveSuccess.accept(.already)
+                if response.status == 400 { // 이미 참여
+                    self.joinArhicveSuccess.accept((.already, response.data))
                 }else if response.status == 404 {
-                    self.joinArhicveSuccess.accept(.inValid)
+                    self.joinArhicveSuccess.accept((.inValid, response.data))
                 }else {
-                    self.joinArhicveSuccess.accept(.success)
+                    self.joinArhicveSuccess.accept((.success, response.data))
                 }
             }).disposed(by: disposeBag)
     }

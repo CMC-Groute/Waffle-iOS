@@ -25,7 +25,6 @@ class InputArchiveCodeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -85,6 +84,7 @@ class InputArchiveCodeViewController: UIViewController {
     }
     
     @objc func didTapBackButton() {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         viewModel?.back()
     }
     
@@ -114,9 +114,17 @@ class InputArchiveCodeViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         output?.inValidCodeMessage
-            .subscribe(onNext: { (status, bool) in
+            .subscribe(onNext: { [weak self] (status, bool) in
+                guard let self = self else { return }
                 self.inValidCodeMessageText.isHidden = !bool
-                self.inValidCodeMessageText.text = status.rawValue
+                switch status {
+                case .already:
+                    self.inValidCodeMessageText.text = "이미 참여하고 있는 약속이에요."
+                case .inValid:
+                    self.inValidCodeMessageText.text = "존재하지 않는 약속 코드예요."
+                case .success:
+                    break
+                }
                 self.codeTextField.errorBorder(bool: !bool)
             }).disposed(by: disposeBag)
         

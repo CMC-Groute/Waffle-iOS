@@ -31,10 +31,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func detailArchive(archiveId: Int) {
+        self.navigationController.setNavigationBarHidden(false, animated: true)
         detailArchiveViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "DetailArchiveViewController") as! DetailArchiveViewController
         detailArchiveViewController.viewModel = DetailArchiveViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         detailArchiveViewController.viewModel?.archiveId = archiveId
-        //detailArchiveViewController.viewModel?.detailArchive = selectedArchive
         self.navigationController.pushViewController(detailArchiveViewController, animated: true)
     }
     

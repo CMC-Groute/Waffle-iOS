@@ -60,13 +60,15 @@ class InputArchiveCodeViewModel {
             }).disposed(by: disposeBag)
         
         usecase.joinArhicveSuccess
-            .subscribe(onNext: { [weak self] status in
+            .subscribe(onNext: { [weak self] status, archiveId in
                 guard let self = self else { return }
+                guard let archiveId = archiveId else { return }
                 switch status {
                 case .inValid:
                     output.inValidCodeMessage.accept((.inValid, true))
                 case .success:
                     output.inValidCodeMessage.accept((.success, false))
+                    self.coordinator.detailArchive(archiveId: archiveId)
                 case .already:
                     output.inValidCodeMessage.accept((.already, true))
                 }
