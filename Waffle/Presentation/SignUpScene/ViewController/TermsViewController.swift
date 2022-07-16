@@ -13,26 +13,36 @@ enum TemsMandatory {
     case none,required
 }
 
-class TermsViewController: UIViewController {
-    @IBOutlet weak var boxView: UIView!
-    @IBOutlet weak var allCheckButton: UIButton!
-    @IBOutlet weak var serviceAgreeButton: UIButton!
-    @IBOutlet weak var privacyCollectAgreeButton: UIButton!
-    @IBOutlet weak var useForMaketingAgreeButton: UIButton!
+final class TermsViewController: UIViewController {
+    enum TermsLink: String {
+        case serviceAgreeText = "서비스 이용약관 동의(필수)"
+        case privacyCollectText = "개인정보 수집 및 이용 동의(필수)"
+        case useForMarketingAgreeText = "마케팅 활용 동의(선택)"
+        
+        case serviceAgreeLink = "https://imminent-tuna-9bf.notion.site/8e3f0dce21d349638c921b5fbc9b9de5"
+        case privacyCollectionLink = "https://imminent-tuna-9bf.notion.site/bda407df49f045978aa0366b20695e49"
+        case useForMarketingLink = "https://imminent-tuna-9bf.notion.site/a82d1f2a9d244413bd14ebb0e60485b8"
+    }
+    @IBOutlet private weak var boxView: UIView!
+    @IBOutlet private weak var allCheckButton: UIButton!
+    @IBOutlet private weak var serviceAgreeButton: UIButton!
+    @IBOutlet private weak var privacyCollectAgreeButton: UIButton!
+    @IBOutlet private weak var useForMaketingAgreeButton: UIButton!
     
-    @IBOutlet weak var serviceAgreeText: UILabel!
-    @IBOutlet weak var privacyCollectText: UILabel!
-    @IBOutlet weak var useForMarketingAgreeText: UILabel!
+    @IBOutlet private weak var serviceAgreeTextButton: UIButton!
+    @IBOutlet private weak var privacyCollectTextButton: UIButton!
+    @IBOutlet private weak var useForMarketingAgreeTextButton: UIButton!
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet private weak var nextButton: UIButton!
     var coordinator: SignUpCoordinator!
     var signUp: SignUp?
     
-    let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     private var selectedImage = Asset.Assets.check.image.withRenderingMode(.alwaysOriginal)
     private var unSelectedImage = Asset.Assets.unCheck.image.withRenderingMode(.alwaysOriginal)
-    var isMarketingAgree: Bool = false
-    var buttons: [UIButton] = []
+    private var buttons: [UIButton] = []
+    private var isMarketingAgree: Bool = false
+    
 
     convenience init(coordinator: SignUpCoordinator){
         self.init()
@@ -49,12 +59,9 @@ class TermsViewController: UIViewController {
         nextButton.makeRounded(corner: 26)
         nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
         boxView.makeRounded(width: 3, color: Asset.Colors.gray4.name, value: 10)
-        let saText = "서비스 이용약관 동의(필수)"
-        let pcText = "개인정보 수집 및 이용 동의(필수)"
-        let umText = "마케팅 활용 동의(선택)"
-        serviceAgreeText.attributedText = saText.underBarLine(length: pcText.count - 4)
-        privacyCollectText.attributedText = pcText.underBarLine(length: pcText.count - 4)
-        useForMarketingAgreeText.attributedText = umText.underBarLine(length: umText.count - 4)
+        serviceAgreeTextButton.setAttributedTitle(TermsLink.serviceAgreeText.rawValue.underBarLine(length: TermsLink.serviceAgreeText.rawValue.count - 4), for: .normal)
+        privacyCollectTextButton.setAttributedTitle(TermsLink.privacyCollectText.rawValue.underBarLine(length: TermsLink.privacyCollectText.rawValue.count - 4), for: .normal)
+        useForMarketingAgreeTextButton.setAttributedTitle(TermsLink.useForMarketingAgreeText.rawValue.underBarLine(length: TermsLink.useForMarketingAgreeText.rawValue.count - 4), for: .normal)
         configureNavigationBar()
     }
     
@@ -77,10 +84,6 @@ class TermsViewController: UIViewController {
     func bindUI(){
         allCheckButton.setTitle(.none, for: .normal)
         self.buttons = [allCheckButton, serviceAgreeButton, privacyCollectAgreeButton, useForMaketingAgreeButton]
-//        self.buttons.forEach {
-//            $0.setImage(UIImage(named: Asset.Assets.check.name), for: .selected)
-//            $0.setImage(UIImage(named: Asset.Assets.unCheck.name), for: .normal)
-//        }
         
         allCheckButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
@@ -146,6 +149,35 @@ class TermsViewController: UIViewController {
                 self.signUp?.isAgreedMarketing = self.isMarketingAgree
                 self.coordinator.setProfileImage(signUpInfo: self.signUp!)
             }).disposed(by: disposeBag)
+        
+        landingPolicyButton()
+        
+        func landingPolicyButton() {
+            serviceAgreeTextButton
+                .rx.tap.throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+                .subscribe(onNext: {
+                    if let url = URL(string: TermsLink.serviceAgreeLink.rawValue) {
+                        UIApplication.shared.open(url)
+                    }
+                    
+                }).disposed(by: disposeBag)
+            
+            privacyCollectTextButton
+                .rx.tap.throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+                .subscribe(onNext: {
+                    if let url = URL(string: TermsLink.privacyCollectionLink.rawValue) {
+                        UIApplication.shared.open(url)
+                    }
+                }).disposed(by: disposeBag)
+            
+            useForMarketingAgreeTextButton
+                .rx.tap.throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+                .subscribe(onNext: {
+                    if let url = URL(string: TermsLink.useForMarketingLink.rawValue) {
+                        UIApplication.shared.open(url)
+                    }
+                }).disposed(by: disposeBag)
+        }
             
  
         

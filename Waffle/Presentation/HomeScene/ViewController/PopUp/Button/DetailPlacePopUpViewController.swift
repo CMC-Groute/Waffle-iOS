@@ -91,7 +91,7 @@ class DetailPlacePopUpViewController: UIViewController {
         
         self.likeCountButton
             .rx.tap
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 if placeInfo.placeLike.isPlaceLike { // 좋아요 누른 상태
@@ -107,7 +107,7 @@ class DetailPlacePopUpViewController: UIViewController {
             }).disposed(by: disposBag)
         
         self.editButton.rx.tap
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self = self else { return }
                 guard let archiveId = self.archiveId else {
@@ -144,7 +144,7 @@ class DetailPlacePopUpViewController: UIViewController {
         }
         
         confirmButton.rx.tap
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 if placeInfo.isConfirm { //

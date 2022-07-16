@@ -9,16 +9,16 @@ import Foundation
 import UIKit
 import RxSwift
 
-class SetProfileImageViewController: UIViewController {
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nickNameTextField: UITextField!
-    @IBOutlet weak var nickNameInValidText: UILabel!
-    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
+final class SetProfileImageViewController: UIViewController {
+    @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var profileImage: UIImageView!
+    @IBOutlet private weak var nickNameTextField: UITextField!
+    @IBOutlet private weak var nickNameInValidText: UILabel!
+    @IBOutlet private weak var bottonConstraint: NSLayoutConstraint!
     
     var viewModel: SetProfileImageViewModel?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

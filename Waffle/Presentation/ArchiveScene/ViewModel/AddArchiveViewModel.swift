@@ -64,7 +64,7 @@ class AddArchiveViewModel {
         output.navigationTitle.accept("약속 만들기")
 
         input.addArchiveButton
-            .throttle(.microseconds(500), scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .withLatestFrom(Observable.combineLatest(input.nameTextField, datePickerDate, timePickerTime, input.memoTextView, locationTextField))
             .bind(onNext: { name, date, time, memo, location in
                 var arhive = AddArchive(title: name)

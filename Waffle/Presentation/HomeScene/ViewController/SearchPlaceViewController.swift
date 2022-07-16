@@ -140,7 +140,7 @@ class SearchPlaceViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         searchBar.rx.text.orEmpty
-             .debounce(.microseconds(10), scheduler: MainScheduler.instance)
+             .debounce(.milliseconds(10), scheduler: MainScheduler.instance)
              .distinctUntilChanged()
              .subscribe(onNext: { searchText in
                  if searchText.isEmpty {
