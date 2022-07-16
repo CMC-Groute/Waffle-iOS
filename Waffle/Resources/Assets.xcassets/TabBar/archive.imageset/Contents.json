@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "function=plus, state=no.png",
+      "filename" : "tab.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "function=plus, state=no@2x.png",
+      "filename" : "tab@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "function=plus, state=no@3x.png",
+      "filename" : "tab@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

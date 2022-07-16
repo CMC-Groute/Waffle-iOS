@@ -12,7 +12,7 @@ class TabBarViewController: UITabBarController {
     var popUpView = ArchivePopUpView()
     
     var didTapLastItem: Bool = false
-    let lastItemIndex = 2
+    let lastItemIndex = 1
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -30,10 +30,8 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         popUpView.delegate = self
         self.delegate = self
-        
         self.popUpView.isHidden = true
         self.view.addSubview(self.popUpView)
-        //configureNavigationBar()
     }
 }
 

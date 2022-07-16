@@ -32,7 +32,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     
     func start() {
         let pages: [TabBarPage] = TabBarPage.allCases
-        
         let controllers: [UINavigationController] = pages.map({
             self.createTabNavigationController(of: $0)
         })
@@ -93,13 +92,13 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             homeCoordinator.finishDelegate = self
             self.childCoordinators.append(homeCoordinator)
             homeCoordinator.start()
+        case .archive:
+            WappleLog.debug("archive")
         case .setting:
             let settingCoordinator = SettingCoordinator(navigationVewController)
             settingCoordinator.finishDelegate = self
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()
-        case .archive:
-            WappleLog.debug("archive")
 //            self.tabBarController.coordinator = homeCoordinator
         
        }
