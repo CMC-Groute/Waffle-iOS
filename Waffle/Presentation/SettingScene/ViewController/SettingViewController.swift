@@ -12,7 +12,11 @@ import RxCocoa
 import MessageUI
 
 final class SettingViewController: UIViewController {
-    
+    struct SettingInfo {
+        static var wappleOfficialEamil = "wapple2app@gmail.com"
+        static var privacyPolicyAgreeLink = "https://imminent-tuna-9bf.notion.site/8b426b79f055403ca2dad4fe493f84a4"
+        static var versionKey = "CFBundleShortVersionString"
+    }
     @IBOutlet private weak var profileView: UIView!
     @IBOutlet private weak var profileImage: UIImageView!
     @IBOutlet private weak var profileNickname: UILabel!
@@ -29,7 +33,7 @@ final class SettingViewController: UIViewController {
     lazy var versionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 20))
         var version: String? {
-            guard let dictionary = Bundle.main.infoDictionary, let version = dictionary["CFBundleShortVersionString"] as? String else { return ""}
+            guard let dictionary = Bundle.main.infoDictionary, let version = dictionary[SettingInfo.versionKey] as? String else { return ""}
             return version
         }
         label.text = version
@@ -175,7 +179,9 @@ extension SettingViewController: UITableViewDelegate {
         if indexPath.row == 3 {
             openFeedbackMail()
         }else if indexPath.row == 4 {
-            WappleLog.debug("개인정보 처리 방침 연결")
+            if let url = URL(string: SettingInfo.privacyPolicyAgreeLink) {
+                UIApplication.shared.open(url)
+            }
         }
     }
     

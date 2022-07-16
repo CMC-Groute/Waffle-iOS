@@ -12,22 +12,23 @@ import RxSwift
 
 final class ChangePWViewController: UIViewController {
     
-    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var PWTextField: UITextField!
-    @IBOutlet weak var PWTextInValidText: UILabel!
+    @IBOutlet private weak var bottonConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var PWTextField: UITextField!
+    @IBOutlet private weak var PWTextInValidText: UILabel!
     
-    @IBOutlet weak var newPWTextField: UITextField!
-    @IBOutlet weak var newPWTextInValidText: UILabel!
+    @IBOutlet private weak var newPWTextField: UITextField!
+    @IBOutlet private weak var newPWTextInValidText: UILabel!
     
-    @IBOutlet weak var newRePWTextField: UITextField!
-    @IBOutlet weak var newRePWTextInValidText: UILabel!
+    @IBOutlet private weak var newRePWTextField: UITextField!
+    @IBOutlet private weak var newRePWTextInValidText: UILabel!
     
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet private weak var doneButton: UIButton!
     
-    var textFields: [UITextField] = []
+    private var textFields: [UITextField] = []
+    private var disposeBag = DisposeBag()
+    
     var viewModel: ChangePWViewModel?
-    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,20 +61,19 @@ final class ChangePWViewController: UIViewController {
         viewModel?.back()
     }
     
-    func resignForKeyboardNotification() {
+    private func resignForKeyboardNotification() {
         hideKeyboardWhenTappedAround()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
-    //notification delete
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
               let keyboardReactangle = keyboardFrame.cgRectValue
               let keyboardHeight = keyboardReactangle.height
@@ -87,7 +87,7 @@ final class ChangePWViewController: UIViewController {
 
       }
       
-      @objc func keyboardWillHide(notification: NSNotification) {
+      @objc private func keyboardWillHide(notification: NSNotification) {
           UIView.animate(
               withDuration: 0.3
               , animations: {
@@ -205,7 +205,7 @@ final class ChangePWViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    func notFocusingTextFields(with tf: [UITextField]) {
+    private func notFocusingTextFields(with tf: [UITextField]) {
         tf.forEach {
             $0.focusingBorder(color: nil)
         }
