@@ -23,6 +23,7 @@ class InvitationBottomSheetViewController: UIViewController {
     var disposeBag = DisposeBag()
     var archiveCode: String?
     var archiveId: Int?
+    var detailArchive: DetailArhive?
     
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -60,22 +61,11 @@ class InvitationBottomSheetViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    private func updateImage() { //TO DO updateImage
-        if let image = UIImage(named: "sample1") {
-            ShareApi.shared.imageUpload(image:image) { [weak self] (imageUploadResult, error) in
-                if let error = error {
-                    print(error)
-                }
-                else {
-                    let imageUrl = imageUploadResult?.infos.original.url
-                    print("imageUpload() success.")
-                }
-            }
-        }
-    }
-    
     private func sendLink() {
-        updateImage()
+        guard let detailArchive = detailArchive else {
+            return
+        }
+
 //        let link = Link(webUrl: URL(string:"https://developers.kakao.com"),
 //                        mobileWebUrl: URL(string:"https://developers.kakao.com"))
         guard let archiveId = archiveId else { return }
@@ -83,9 +73,26 @@ class InvitationBottomSheetViewController: UIViewController {
                             iosExecutionParams: ["archiveId": "\(archiveId)"])
         
         let button1 = Button(title: "약속에 참여하기", link: appLink)
-
-        let content = Content(title: "우리 약속 어디서 만나?\n와플로 와, 와플에서 정하자!",
-                                imageUrl: URL(string:"https://mud-kage.kakao.com/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png")!,
+        let title = "\(detailArchive.title)에 초대를 받았어요"
+        var timeString: String = "⏰ "
+        var placeString: String = "🚩 "
+        
+        if let date = detailArchive.date, let time = detailArchive.time {
+            timeString += "\(date) \(time.amPmChangeFormat())"
+        }else {
+            timeString += DefaultDetailCardInfo.when.rawValue
+        }
+        
+        if let place = detailArchive.place {
+            placeString += "\(place)"
+        }else {
+            placeString += DefaultDetailCardInfo.where.rawValue
+        }
+        
+        let imageLink = WappleType.init(rawValue: detailArchive.placeImage)?.wappleLink() ?? ""
+        
+        let content = Content(title: "\(title)\n\(timeString)\n\(placeString)",
+                                imageUrl: URL(string: imageLink)!,
                                 link: appLink)
         let feedTemplate = FeedTemplate(content: content, buttons: [button1])
         

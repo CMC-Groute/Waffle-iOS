@@ -163,11 +163,13 @@ class DetailArchiveViewModel {
     }
     
     func participants() {
-        self.coordinator.participants(detailArchive: detailArchive)
+        coordinator.participants(detailArchive: detailArchive)
     }
     
     func invitations() {
-        self.coordinator.invitationBottomSheet(archiveId: archiveId, copyCode: archiveCode ?? "")
+        guard let archiveCode = archiveCode, let detailArchive = detailArchive else { return }
+
+        coordinator.invitationBottomSheet(archiveId: archiveId, copyCode: archiveCode, detailArchive: detailArchive)
     }
     
     func updateSelectedCategory(category: PlaceCategory) {

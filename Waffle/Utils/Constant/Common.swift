@@ -62,6 +62,23 @@ enum WappleType: String, CaseIterable {
             case .wapple: return 0
         }
     }
+    
+    func wappleLink() -> String {
+        switch self {
+        case .blueberry:
+            return "https://wapple2.s3.ap-northeast-2.amazonaws.com/blueberry.png"
+        case .choco:
+            return "https://wapple2.s3.ap-northeast-2.amazonaws.com/choco.png"
+        case .malcha:
+            return "https://wapple2.s3.ap-northeast-2.amazonaws.com/Malcha.png"
+        case .strawberry:
+            return "https://wapple2.s3.ap-northeast-2.amazonaws.com/Strawberry.png"
+        case .vanilla:
+            return "https://wapple2.s3.ap-northeast-2.amazonaws.com/VANILLA.png"
+        case .wapple:
+            return ""
+        }
+    }
 }
 
 enum DefaultDetailCardInfo: String {

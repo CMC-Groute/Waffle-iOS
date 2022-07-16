@@ -144,9 +144,10 @@ extension HomeCoordinator {
         self.navigationController.present(detailArchiveBottomSheetView, animated: false)
     }
     
-    func invitationBottomSheet(archiveId: Int, copyCode: String) {
+    func invitationBottomSheet(archiveId: Int, copyCode: String, detailArchive: DetailArhive) {
         let invitationBottomSheetView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "InvitationBottomSheetViewController") as! InvitationBottomSheetViewController
         invitationBottomSheetView.archiveId = archiveId
+        invitationBottomSheetView.detailArchive = detailArchive
         invitationBottomSheetView.coordinator = self
         invitationBottomSheetView.archiveCode = copyCode
         invitationBottomSheetView.modalPresentationStyle = .overFullScreen
