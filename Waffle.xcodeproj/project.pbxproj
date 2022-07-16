@@ -153,8 +153,6 @@
 		1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543992877299800F8CA0D /* PlaceAPI.swift */; };
 		137844F82882F64300AC7E00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137844F72882F64300AC7E00 /* GoogleService-Info.plist */; };
 		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
-		137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */; };
-		137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */; };
 		137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */; };
 		137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */; };
 		1378533D2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378533B2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift */; };
@@ -222,8 +220,6 @@
 		137844F72882F64300AC7E00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1378532C2875589C00B11E5E /* Waffle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waffle.entitlements; sourceTree = "<group>"; };
 		1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderCollectioinViewFlowLayout.swift; sourceTree = "<group>"; };
-		137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
-		137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		137853362875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		137853372875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		1378533B2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -447,22 +443,12 @@
 			isa = PBXGroup;
 			children = (
 				13062E25287AE072003774A7 /* TopDetail */,
-				137853342875A83F00B11E5E /* Top */,
 				137853352875A85500B11E5E /* Sub */,
 				1378533A2875A87700B11E5E /* Category */,
 				1378533F2875A89A00B11E5E /* Table */,
 				1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */,
 			);
 			path = DefaultCell;
-			sourceTree = "<group>";
-		};
-		137853342875A83F00B11E5E /* Top */ = {
-			isa = PBXGroup;
-			children = (
-				137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */,
-				137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */,
-			);
-			path = Top;
 			sourceTree = "<group>";
 		};
 		137853352875A85500B11E5E /* Sub */ = {
@@ -1423,7 +1409,6 @@
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
 				13E2A072285DE4560015499E /* ArchivePopUpView.xib in Resources */,
-				137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */,
 				137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */,
 				1390EC34286335E200E5520C /* CardView.xib in Resources */,
 				1378533E2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib in Resources */,
@@ -1610,7 +1595,6 @@
 				133D55A728744BDD0068EA90 /* DetailPlaceTableViewCell.swift in Sources */,
 				133D55A828744BDD0068EA90 /* HomeCategoryCollectionViewCell.swift in Sources */,
 				133D55A928744BDD0068EA90 /* ParticipantsTableViewCell.swift in Sources */,
-				137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */,
 				135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */,
 				133D55AA28744BDD0068EA90 /* EmptyCardView.swift in Sources */,
 				13062E24287A9E50003774A7 /* Category.swift in Sources */,

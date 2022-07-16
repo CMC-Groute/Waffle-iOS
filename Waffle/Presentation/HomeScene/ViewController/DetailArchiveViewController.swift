@@ -129,6 +129,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
         }else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
             cell.viewModel = viewModel
+            cell.delegate = self
             cell.isCategoryEditing = isCategoryEditing
             return cell
         }else if indexPath.section == 3 {
@@ -167,6 +168,12 @@ extension DetailArchiveViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: screenWidth, height: height)
         }
         return CGSize(width: screenWidth, height: 500)
+    }
+}
+
+extension DetailArchiveViewController: CategoruDetailArchiveDelegate {
+    func showNotDeleteCategoryToastMessage() {
+        self.showToast(message: "하나 남은 카테고리는 삭제할 수 없어요.", width: 231, height: 34, corner: 17)
     }
 }
 

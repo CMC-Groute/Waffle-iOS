@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CategoruDetailArchiveDelegate: AnyObject {
+    func showNotDeleteCategoryToastMessage()
+}
+
 class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryDefailArchiveCollectionViewCell"
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -19,6 +23,7 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     
     //MARK: Private Property
     var isCategoryEditing: Bool = false
+    weak var delegate: CategoruDetailArchiveDelegate?
     private var confirmCellCount = 1
     private let confirmCategoryName = "확정"
     
@@ -145,7 +150,12 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegateFlowL
 extension CategoryDetailArchiveCollectionViewCell: CategoryCollectionViewCellDelegate {
     func didTapDeleteButton(cell: CategoryCollectionViewCell) {
         guard let viewModel = viewModel else { return }
-        let currentCategory = viewModel.category[cell.indexPath!.row]
-        viewModel.deleteCategory(category: currentCategory)
+        // 확정, 1개만 남았을 경우 삭제 못하게 해야 함
+        if viewModel.category.count == 2 {
+            delegate?.showNotDeleteCategoryToastMessage()
+        }else {
+            let currentCategory = viewModel.category[cell.indexPath!.row]
+            viewModel.deleteCategory(category: currentCategory)
+        }
     }
 }
