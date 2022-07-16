@@ -139,6 +139,36 @@ class DetailArchiveViewModel {
                     self.detailPlaceInfo = detailPlace
                     self.coordinator.detailPlace(archiveId: self.archiveId, detailInfo: detailPlace, placeInfo: currentPlace, category: self.selectedCategory, categoryInfo: self.loadCategoryWithoutConfirm())
                 }).disposed(by: disposeBag)
+            
+            usecase.setComfirmPlaceSuccess
+                .filter { $0 == true }
+                .subscribe(onNext: { [weak self] _ in
+                    guard let selectedCategory = self?.selectedCategory else { return }
+                    self?.updateSelectedCategory(category: selectedCategory)
+                }).disposed(by: disposeBag)
+            
+            usecase.cancelComfirmPlaceSuccess
+                .filter { $0 == true }
+                .subscribe(onNext: { [weak self] _ in
+                    guard let selectedCategory = self?.selectedCategory else { return }
+                    self?.updateSelectedCategory(category: selectedCategory)
+                }).disposed(by: disposeBag)
+            
+            usecase.setLikePlaceSuccess
+                .filter { $0 == true }
+                .subscribe(onNext: { [weak self] _ in
+                    guard let selectedCategory = self?.selectedCategory else { return }
+                    self?.updateSelectedCategory(category: selectedCategory)
+                }).disposed(by: disposeBag)
+            
+            usecase.cancelLikePlaceSuccess
+                .filter { $0 == true }
+                .subscribe(onNext: { [weak self] _ in
+                    guard let selectedCategory = self?.selectedCategory else { return }
+                    self?.updateSelectedCategory(category: selectedCategory)
+                }).disposed(by: disposeBag)
+            
+            
         }
         
         return output

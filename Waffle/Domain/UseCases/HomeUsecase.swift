@@ -25,6 +25,10 @@ class HomeUsecase: HomeUsecaseProtocol {
     var addPlaceSuccess = PublishSubject<Bool>()
     var setComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정
     var cancelComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정 취소
+    
+    var setLikePlaceSuccess = PublishSubject<Bool>() // 장소 좋아요
+    var cancelLikePlaceSuccess = PublishSubject<Bool>() // 장소 좋아요 취소
+    
     var getConfrimPlaceSuccess = PublishSubject<[PlaceInfo]?>() // 확정 장소 조회
     var getPlaceByCategorySuccess = PublishSubject<[PlaceInfo]?>() // 카테고리별 장소 조회
     var getSearchedPlaceSuccess = PublishSubject<PlaceSearchResponse>()
@@ -303,7 +307,7 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
-    //MARK: like 누르기
+    //MARK: 좋아요 누르기
     func addLike(placeId: Int){
         repository.addLike(placeId: placeId)
             .observe(on: MainScheduler.instance)
@@ -315,14 +319,14 @@ extension HomeUsecase {
                 guard let self = self else { return }
                 WappleLog.debug("addLike \(response)")
                 if response.status == 200 {
-                    self.setComfirmPlaceSuccess.onNext(true)
+                    self.setLikePlaceSuccess.onNext(true)
                 }else {
-                    self.setComfirmPlaceSuccess.onNext(false)
+                    self.setLikePlaceSuccess.onNext(false)
                 }
             }).disposed(by: disposeBag)
     }
     
-    //MARK: like 취소하기
+    //MARK: 좋아요 취소하기
     func deleteLike(placeId: Int){
         repository.deleteLike(placeId: placeId)
             .observe(on: MainScheduler.instance)
@@ -334,9 +338,9 @@ extension HomeUsecase {
                 guard let self = self else { return }
                 WappleLog.debug("deleteLike \(response)")
                 if response.status == 200 {
-                    self.setComfirmPlaceSuccess.onNext(true)
+                    self.cancelLikePlaceSuccess.onNext(true)
                 }else {
-                    self.setComfirmPlaceSuccess.onNext(false)
+                    self.cancelLikePlaceSuccess.onNext(false)
                 }
             }).disposed(by: disposeBag)
     }
