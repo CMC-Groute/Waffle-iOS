@@ -11,10 +11,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
-
+    let navigationController = UINavigationController()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let navigationController = UINavigationController()
         
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = navigationController
@@ -23,20 +23,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         WappleLog.debug("jwtToken \(UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken))")
         
         appCoordinator?.start()
-        
-        if let url = connectionOptions.urlContexts.first?.url {
-            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-            let archiveId = components.queryItems?.first?.value ?? "0"
-        
-            guard let tabBarCoordinator = self.appCoordinator?.findCoordinator(type: .tab) as? TabBarCoordinator,
-            let homeCoordinator = self.appCoordinator?.findCoordinator(type: .home) as? HomeCoordinator else { return }
-            
-            tabBarCoordinator.selectPage(.home)
-            guard (homeCoordinator.navigationController.viewControllers.last
-                   is DetailArchiveViewController == false) else { return }
-            //마지막 화면이 DetailArchiveViewController가 아니였다면
-            homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
-        }
+//detailArchive에 가려면 로그인 된 사용자인지, 약속 코드에 참여된 사용자인지 알아야 할듯
+//        if let url = connectionOptions.urlContexts.first?.url {
+//            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+//            let archiveId = components.queryItems?.first?.value ?? "0"
+//
+//            guard let tabBarCoordinator = self.appCoordinator?.findCoordinator(type: .tab) as? TabBarCoordinator,
+//            let homeCoordinator = self.appCoordinator?.findCoordinator(type: .home) as? HomeCoordinator else { return }
+//
+//            tabBarCoordinator.selectPage(.home)
+//            guard (homeCoordinator.navigationController.viewControllers.last
+//                   is DetailArchiveViewController == false) else { return }
+//            //마지막 화면이 DetailArchiveViewController가 아니였다면
+//            homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -80,12 +80,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             guard (homeCoordinator.navigationController.viewControllers.last
                    is DetailArchiveViewController == false) else { return }
             homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
-            
+
         }
-//        else { // Login 화면으로 이동
-//            self.appCoordinator = AppCoordinator(navigationController)
-//            appCoordinator?.start()
-//        }
+        else { // Login 화면으로 이동
+            self.appCoordinator = AppCoordinator(navigationController)
+            appCoordinator?.start()
+        }
     }
 
 

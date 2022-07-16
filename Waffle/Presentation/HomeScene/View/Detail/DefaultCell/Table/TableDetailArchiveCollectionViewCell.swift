@@ -111,24 +111,20 @@ extension TableDetailArchiveCollectionViewCell: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
-        var sequences = [PlaceSequence]()
         let movePlace = place[sourceIndexPath.row]
-        let destinationPlace = place[destinationIndexPath.row]
-        let moveSequence = PlaceSequence(placeId: movePlace.placeId, seq: destinationPlace.seq ?? 0)
-        let destinationSequence = PlaceSequence(placeId: destinationPlace.placeId, seq: movePlace.seq ?? 0)
-        sequences.append(moveSequence)
-        sequences.append(destinationSequence)
-        for i in place {
-            if i.placeId != movePlace.placeId && i.placeId != destinationPlace.placeId {
-                sequences.append(PlaceSequence(placeId: i.placeId, seq: i.seq ?? 0))
-            }
+        place.remove(at: sourceIndexPath.row)
+        place.insert(movePlace, at: destinationIndexPath.row)
+        var sequences = [PlaceSequence]()
+        
+        for (idx, item) in place.enumerated() {
+            let seq = idx + 1 //place 배열 내 index + 1 값으로 seq를 준다
+            sequences.append(PlaceSequence(placeId: item.placeId, seq: seq))
         }
         
         let getSequence = GetPlaceSequence(placeSequences: sequences)
-        
+        WappleLog.debug("getSequence \(getSequence)")
+
         viewModel?.changeConfirmSequence(placeSequence: getSequence)
-        place.remove(at: sourceIndexPath.row)
-        place.insert(movePlace, at: destinationIndexPath.row)
         tableView.dragInteractionEnabled = false
     }
 }

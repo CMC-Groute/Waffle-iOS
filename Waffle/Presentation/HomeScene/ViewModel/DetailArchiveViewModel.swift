@@ -168,6 +168,13 @@ class DetailArchiveViewModel {
                     self?.updateSelectedCategory(category: selectedCategory)
                 }).disposed(by: disposeBag)
             
+            //순서 변경 후
+            usecase.changeConfirmSquenceSuccess
+                .subscribe(onNext: { [weak self] _ in
+                    guard let archiveId = self?.archiveId else { return }
+                    self?.usecase.getConfirmPlace(archiveId: archiveId) //확정 장소 가져오기
+                }).disposed(by: disposeBag)
+            
             
         }
         
