@@ -8,16 +8,18 @@
 import UIKit
 import RxSwift
 
-class DeletePlacePopUpViewController: UIViewController {
+final class DeletePlacePopUpViewController: UIViewController {
+    
+    @IBOutlet private weak var framwView: UIView!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var deleteButton: UIButton!
+    private var disposBag = DisposeBag()
+    
+    
     var coordinator: HomeCoordinator!
-    var disposBag = DisposeBag()
     var usecase: HomeUsecase!
     var placeId: Int?
     var archiveId: Int?
-    
-    @IBOutlet weak var framwView: UIView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
     
     convenience init(coordinator: HomeCoordinator){
         self.init()

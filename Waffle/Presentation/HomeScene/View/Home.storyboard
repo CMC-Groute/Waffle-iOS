@@ -1134,9 +1134,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="OKButton" destination="Xav-Uc-1jZ" id="VK1-QQ-qn6"/>
                         <outlet property="cancelButton" destination="QsK-OE-gYk" id="3r8-d0-O2y"/>
                         <outlet property="framwView" destination="Iv8-jf-5M5" id="gfl-Yh-lwk"/>
+                        <outlet property="sendButton" destination="Xav-Uc-1jZ" id="VK1-QQ-qn6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0w-ZI-EBZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

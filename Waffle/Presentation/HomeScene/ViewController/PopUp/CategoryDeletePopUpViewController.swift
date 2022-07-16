@@ -12,7 +12,7 @@ protocol HomeCategoryDeleteDelegate {
     func deleteCategory(categoryId: Int)
 }
 
-class CategoryDeletePopUpViewController: UIViewController {
+final class CategoryDeletePopUpViewController: UIViewController {
     @IBOutlet weak var framwView: UIView!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var cancelButton: UIButton!

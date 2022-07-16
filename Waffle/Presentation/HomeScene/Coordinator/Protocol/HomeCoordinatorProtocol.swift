@@ -29,7 +29,7 @@ protocol HomeCoordinatorProtocol: Coordinator {
    
     
     //MARK: POPUP View click
-    func likeSend()
+    func likeSend(archiveId: Int) //좋아요 조르기 popup
 
     
     //MARK: Archive

@@ -276,5 +276,11 @@ extension HomeRepository {
                 }
             })
     }
+    
+    func likeSend(archiveId: Int) {
+        let api = PlaceAPI.likeSend(archiveId: archiveId)
+        service.request(api)
+        WappleLog.debug("좋아요 전송")
+    }
 
 }

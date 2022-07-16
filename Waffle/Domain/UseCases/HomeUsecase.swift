@@ -35,7 +35,8 @@ class HomeUsecase: HomeUsecaseProtocol {
         self.repository = repository
     }
     
-    func getCardInfo() { // 메인페이지 카드 조회
+    //MARK: 메인페이지 카드 조회
+    func getCardInfo() {
         repository.getCardInfo()
             .catch { error -> Observable<GetCardResponse> in
                 let error = error as! URLSessionNetworkServiceError
@@ -55,7 +56,8 @@ class HomeUsecase: HomeUsecaseProtocol {
             }).disposed(by: disposeBag)
         }
     
-    func getDetailArchiveInfo(placeId: Int) { // 디테일 페이지 카드 조회
+    //MARK: 디테일 페이지 카드 조회
+    func getDetailArchiveInfo(placeId: Int) {
         repository.getDetailArchiveInfo(id: placeId)
             .catch { error -> Observable<GetDetailArchive> in
                 WappleLog.error("getDetailArchiveInfo error \(error)")
@@ -69,7 +71,8 @@ class HomeUsecase: HomeUsecaseProtocol {
             }).disposed(by: disposeBag)
         }
     
-    func deleteCategory(archiveId: Int, categoryId: Int) { // cardId, categoryId
+    //MARK: 카테고리 삭제
+    func deleteCategory(archiveId: Int, categoryId: Int) {
         repository.deleteCategory(archiveId: archiveId, categoryId: categoryId)
             .observe(on: MainScheduler.instance)
             .catch { error -> Observable<DefaultIntResponse> in
@@ -86,6 +89,7 @@ class HomeUsecase: HomeUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
     
+    //MARK: 카테고리 추가
     func addCategory(archiveId: Int, categoryName: [String]) {
         repository.addCategory(archiveId: archiveId, categoryName: categoryName)
             .observe(on: MainScheduler.instance)
@@ -104,7 +108,8 @@ class HomeUsecase: HomeUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
     
-    func deleteArchive(archiveId: Int) { //약속 나가기
+    //MARK: 약속 나가기
+    func deleteArchive(archiveId: Int) {
         repository.deleteArchive(archiveId: archiveId)
             .observe(on: MainScheduler.instance)
             .catch { error -> Observable<DefaultIntResponse> in
@@ -121,11 +126,12 @@ class HomeUsecase: HomeUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
     
-    func likeSend() { // 좋아요 조르기
-        
+    //MARK: 좋아요 조르기
+    func likeSend(archiveId: Int) {
+        repository.likeSend(archiveId: archiveId)
     }
     
-    // 약속 코드 조회
+    //MARK: 약속 코드 조회
     func getArchiveCode(archiveId: Int, completion: () -> Void) {
         repository.getArchiveCode(id: archiveId)
             .observe(on: MainScheduler.instance)
@@ -143,7 +149,7 @@ class HomeUsecase: HomeUsecaseProtocol {
 
 //MARK: Place API
 extension HomeUsecase {
-    //장소 추가
+    //MARK: 장소 추가
     func addPlace(archiveId: Int, categoryId: Int, addPlace: AddPlace) {
         repository.addPlace(archiveId: archiveId, categoryId: categoryId, placeInfo: addPlace)
             .observe(on: MainScheduler.instance)

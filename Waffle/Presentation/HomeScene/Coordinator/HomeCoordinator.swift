@@ -87,8 +87,9 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     
-    func likeSend() {
+    func likeSend(archiveId: Int) {
         let likeSendPopUpView = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "LikeSendPopUpViewController") as! LikeSendPopUpViewController
+        likeSendPopUpView.archiveId = archiveId
         likeSendPopUpView.coordinator = self
         likeSendPopUpView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
         likeSendPopUpView.modalPresentationStyle = .overFullScreen

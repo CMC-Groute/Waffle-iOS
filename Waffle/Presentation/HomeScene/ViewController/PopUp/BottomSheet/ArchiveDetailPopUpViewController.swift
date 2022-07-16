@@ -63,8 +63,11 @@ class ArchiveDetailPopUpViewController: UIViewController {
         likeArchiceButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
+                guard let archiveId = self.archiveId else {
+                    return
+                }
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.likeSend()
+                self.coordinator.likeSend(archiveId: archiveId)
             }).disposed(by: disposeBag)
         
         

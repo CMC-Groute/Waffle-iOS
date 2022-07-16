@@ -8,14 +8,15 @@
 import UIKit
 import RxSwift
 
-class LikeSendPopUpViewController: UIViewController {
-    @IBOutlet weak var framwView: UIView!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var OKButton: UIButton!
+final class LikeSendPopUpViewController: UIViewController {
+    @IBOutlet private weak var framwView: UIView!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var sendButton: UIButton!
+    private var disposeBag = DisposeBag()
     
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
-    var disposBag = DisposeBag()
+    var archiveId: Int?
 
     convenience init(coordinator: HomeCoordinator){
         self.init()
@@ -29,21 +30,26 @@ class LikeSendPopUpViewController: UIViewController {
     }
     
     private func configureUI(){
-        self.framwView.makeRounded(width: 0, color: "", value: 20)
-        self.cancelButton.makeRounded(corner: 24)
-        self.OKButton.makeRounded(corner: 24)
+        framwView.makeRounded(width: 0, color: "", value: 20)
+        cancelButton.makeRounded(corner: 24)
+        sendButton.makeRounded(corner: 24)
     }
     
 
     private func bindUI(){
         cancelButton.rx.tap
-            .subscribe(onNext: {
-                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-            }).disposed(by: disposBag)
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            }).disposed(by: disposeBag)
         
-        OKButton.rx.tap
-            .subscribe(onNext: {
-                self.usecase.likeSend()
-            }).disposed(by: disposBag)
+        sendButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                WappleLog.debug("archiveId \(self?.archiveId)")
+                guard let archiveId = self?.archiveId else {
+                    return
+                }
+                self?.usecase.likeSend(archiveId: archiveId)
+                self?.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            }).disposed(by: disposeBag)
     }
 }

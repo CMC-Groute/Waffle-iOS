@@ -109,7 +109,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         if let deviceToken = fcmToken {
-            WappleLog.debug("FCM Token \(fcmToken)")
+            WappleLog.debug("FCM Token \(deviceToken)")
             UserDefaults.standard.set(deviceToken, forKey: UserDefaultKey.deviceToken)
         }
     }
