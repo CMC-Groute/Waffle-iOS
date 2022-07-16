@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import MessageUI
 
 final class SettingViewController: UIViewController {
     
@@ -23,6 +24,7 @@ final class SettingViewController: UIViewController {
     
     var viewModel: SettingViewModel?
     private var disposeBag = DisposeBag()
+    private var wappleOfficialEamil = "wapple2app@gmail.com"
     
     lazy var versionLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 42, height: 20))
@@ -44,42 +46,47 @@ final class SettingViewController: UIViewController {
 
     struct SettingOptions {
         let cell: SettingTableViewCell
-        let handler: (() -> Void)?
     }
     
     private lazy var settingOptions: [SettingOptions] = {
         let alertCell = SettingTableViewCell(style: .switchControl)
         alertCell.title = "알림 설정"
-        let alertOption = SettingOptions(cell: alertCell, handler: nil)
+        let alertOption = SettingOptions(cell: alertCell)
 
         let versionCell = SettingTableViewCell(style: .detail)
         versionCell.title = "앱버전"
         versionCell.detailText = versionLabel.text
-        let appVersionOption = SettingOptions(cell: versionCell, handler: nil)
+        let appVersionOption = SettingOptions(cell: versionCell)
         
         let contributorCell = SettingTableViewCell(style: .detail)
         contributorCell.title = "개발자 정보"
-        contributorCell.detailText = "wapple2app@gmail.com"
-        let contributorsOption = SettingOptions(cell: contributorCell, handler: nil)
+        contributorCell.detailText = wappleOfficialEamil
+        let contributorsOption = SettingOptions(cell: contributorCell)
         
         let feedbackCell = SettingTableViewCell(style: .plain)
         feedbackCell.title = "피드백 남기기"
-        let feedbackOption = SettingOptions(cell: feedbackCell, handler: openFeedbackMail())
+        
+        let feedbackOption = SettingOptions(cell: feedbackCell)
 
         let privacyCell = SettingTableViewCell(style: .plain)
         privacyCell.title = "개인 정보 처리 방침"
-        let privacyOption = SettingOptions(cell: privacyCell, handler: nil)
+        let privacyOption = SettingOptions(cell: privacyCell)
         
         let logoutCell = SettingTableViewCell(style: .plain)
         logoutCell.title = "로그아웃"
-        let logoutOption = SettingOptions(cell: logoutCell, handler: nil)
+        let logoutOption = SettingOptions(cell: logoutCell)
 
         let options: [SettingOptions] = [alertOption, appVersionOption, contributorsOption, feedbackOption, privacyOption, logoutOption]
         return options
     }()
     
     private func openFeedbackMail() {
-        
+        guard let mailtoString = "mailto:\(wappleOfficialEamil)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        if let mailtoUrl = URL(string: mailtoString) {
+            if UIApplication.shared.canOpenURL(mailtoUrl) {
+                    UIApplication.shared.open(mailtoUrl, options: [:])
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -164,8 +171,12 @@ extension SettingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let handler = settingOptions[indexPath.row].handler else { return }
-        handler()
+        
+        if indexPath.row == 3 {
+            openFeedbackMail()
+        }else if indexPath.row == 4 {
+            WappleLog.debug("개인정보 처리 방침 연결")
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
