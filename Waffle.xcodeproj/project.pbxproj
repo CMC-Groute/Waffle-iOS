@@ -16,7 +16,6 @@
 		13062E122879576A003774A7 /* HomeAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E112879576A003774A7 /* HomeAlarmViewController.swift */; };
 		13062E1A28795B6F003774A7 /* HomeAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */; };
 		13062E1B28795B6F003774A7 /* HomeAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */; };
-		13062E1F287965B7003774A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13062E1E287965B7003774A7 /* GoogleService-Info.plist */; };
 		13062E21287A891E003774A7 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E20287A891D003774A7 /* DefaultResponse.swift */; };
 		13062E24287A9E50003774A7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E23287A9E50003774A7 /* Category.swift */; };
 		13062E28287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */; };
@@ -152,6 +151,7 @@
 		135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */; };
 		135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543952875DBB100F8CA0D /* EditArchiveViewController.swift */; };
 		1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543992877299800F8CA0D /* PlaceAPI.swift */; };
+		137844F82882F64300AC7E00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137844F72882F64300AC7E00 /* GoogleService-Info.plist */; };
 		1378532F2875A51600B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */; };
 		137853322875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */; };
 		137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853312875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib */; };
@@ -202,7 +202,6 @@
 		13062E112879576A003774A7 /* HomeAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmViewController.swift; sourceTree = "<group>"; };
 		13062E1828795B6F003774A7 /* HomeAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		13062E1928795B6F003774A7 /* HomeAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeAlarmTableViewCell.xib; sourceTree = "<group>"; };
-		13062E1E287965B7003774A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13062E20287A891D003774A7 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		13062E23287A9E50003774A7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +219,7 @@
 		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		13712DD628733948008AD9FA /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
+		137844F72882F64300AC7E00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1378532C2875589C00B11E5E /* Waffle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waffle.entitlements; sourceTree = "<group>"; };
 		1378532E2875A51500B11E5E /* StickyHeaderCollectioinViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderCollectioinViewFlowLayout.swift; sourceTree = "<group>"; };
 		137853302875A83400B11E5E /* TopDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1271,7 +1271,7 @@
 		F2A412D62849EFD700E04BF5 /* Waffle */ = {
 			isa = PBXGroup;
 			children = (
-				13062E1E287965B7003774A7 /* GoogleService-Info.plist */,
+				137844F72882F64300AC7E00 /* GoogleService-Info.plist */,
 				1378532C2875589C00B11E5E /* Waffle.entitlements */,
 				F21972CC284B8C1B0086E56B /* Utils */,
 				F21972C9284B8BC60086E56B /* Resources */,
@@ -1418,6 +1418,7 @@
 				F29ED31B2855DBFA002371FD /* Archive.storyboard in Resources */,
 				13E2A07A285EFAC90015499E /* EmptyCardView.xib in Resources */,
 				1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */,
+				137844F82882F64300AC7E00 /* GoogleService-Info.plist in Resources */,
 				137853432875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib in Resources */,
 				F21972CB284B8BF80086E56B /* Colors.xcassets in Resources */,
 				F2125D0A284DFC25008E1185 /* Login.storyboard in Resources */,
@@ -1425,7 +1426,6 @@
 				137853332875A83400B11E5E /* TopDetailArchiveCollectionViewCell.xib in Resources */,
 				137853392875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.xib in Resources */,
 				1390EC34286335E200E5520C /* CardView.xib in Resources */,
-				13062E1F287965B7003774A7 /* GoogleService-Info.plist in Resources */,
 				1378533E2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib in Resources */,
 				F2896CE028632A2F0091DD7C /* CardCollectionViewCell.xib in Resources */,
 			);
