@@ -36,29 +36,29 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="이메일 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNa-xr-Hy6">
-                                        <rect key="frame" x="25" y="511" width="364" height="17"/>
+                                        <rect key="frame" x="25" y="501" width="364" height="17"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHW-pW-YYX">
-                                        <rect key="frame" x="25" y="621.5" width="364" height="17"/>
+                                        <rect key="frame" x="25" y="611.5" width="364" height="17"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <color key="textColor" name="Gray5"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="wapple@wapple.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ptD-8W-MMd">
-                                        <rect key="frame" x="16" y="538" width="382" height="44"/>
+                                        <rect key="frame" x="16" y="528" width="382" height="44"/>
                                         <color key="backgroundColor" name="Gray2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pCg-Af-kPw"/>
                                         </constraints>
                                         <color key="textColor" name="Black"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gT-hg-bxZ">
-                                        <rect key="frame" x="16" y="726" width="382" height="52"/>
+                                        <rect key="frame" x="16" y="716" width="382" height="52"/>
                                         <color key="backgroundColor" name="Gray4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="mj3-HO-HF7"/>
@@ -71,19 +71,19 @@
                                         </state>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="이메일 주소가 올바르지 않거나 가입된 이메일이 아니에요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqD-hZ-ApE">
-                                        <rect key="frame" x="25" y="587" width="374" height="14.5"/>
+                                        <rect key="frame" x="25" y="577" width="374" height="14.5"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
                                         <color key="textColor" name="red"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="비밀번호가 올바르지 않아요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljo-x8-YEj">
-                                        <rect key="frame" x="25" y="697.5" width="374" height="14.5"/>
+                                        <rect key="frame" x="25" y="687.5" width="374" height="14.5"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
                                         <color key="textColor" name="red"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YUK-gs-lpz">
-                                        <rect key="frame" x="133.5" y="794" width="147" height="28"/>
+                                        <rect key="frame" x="133.5" y="784" width="147" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNk-z4-fMf">
                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="28"/>
@@ -108,13 +108,13 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="영문, 숫자 조합 8자리 이상" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kfc-u8-m09">
-                                        <rect key="frame" x="16" y="648.5" width="382" height="44"/>
+                                        <rect key="frame" x="16" y="638.5" width="382" height="44"/>
                                         <color key="backgroundColor" name="Gray2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="A85-92-Jak"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="loginPicture" translatesAutoresizingMaskIntoConstraints="NO" id="xNk-k6-xka">
                                         <rect key="frame" x="0.0" y="180" width="414" height="218"/>
@@ -134,7 +134,7 @@
                                     <constraint firstItem="xNk-k6-xka" firstAttribute="top" secondItem="41N-3a-gEd" secondAttribute="bottom" constant="24" id="Io9-gx-tlf"/>
                                     <constraint firstItem="sNa-xr-Hy6" firstAttribute="leading" secondItem="ZG8-ss-gxw" secondAttribute="leading" constant="25" id="KdA-Kg-JMc"/>
                                     <constraint firstAttribute="trailing" secondItem="0gT-hg-bxZ" secondAttribute="trailing" constant="16" id="OFh-aX-8nb"/>
-                                    <constraint firstAttribute="bottom" secondItem="YUK-gs-lpz" secondAttribute="bottom" constant="30" id="P5I-Z0-Aq3"/>
+                                    <constraint firstAttribute="bottom" secondItem="YUK-gs-lpz" secondAttribute="bottom" constant="40" id="P5I-Z0-Aq3"/>
                                     <constraint firstAttribute="trailing" secondItem="xNk-k6-xka" secondAttribute="trailing" id="PfS-4o-zJO"/>
                                     <constraint firstItem="0gT-hg-bxZ" firstAttribute="leading" secondItem="ZG8-ss-gxw" secondAttribute="leading" constant="16" id="RLa-92-ib7"/>
                                     <constraint firstItem="0gT-hg-bxZ" firstAttribute="top" secondItem="ljo-x8-YEj" secondAttribute="bottom" constant="14" id="RfI-LY-Y4I"/>

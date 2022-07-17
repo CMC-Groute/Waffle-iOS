@@ -135,7 +135,7 @@
                                                 </constraints>
                                                 <color key="textColor" name="Gray4"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GgJ-xp-fhJ" userLabel="ButtonView">
                                                 <rect key="frame" x="0.0" y="832" width="414" height="64"/>
@@ -640,7 +640,7 @@
                                                 </constraints>
                                                 <color key="textColor" name="Gray4"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-zt-edf" userLabel="ButtonView">
                                                 <rect key="frame" x="0.0" y="832" width="414" height="64"/>

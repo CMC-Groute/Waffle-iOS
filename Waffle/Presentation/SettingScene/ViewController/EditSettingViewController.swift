@@ -176,10 +176,7 @@ extension EditSettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
         let cellWidth: CGFloat = collectionView.frame.width // Your cell width
-
         let numberOfCells = floor(view.frame.size.width / cellWidth)
-        let edgeInsets = (view.frame.size.width - (numberOfCells * cellWidth)) / (numberOfCells + 1)
-
         return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
     

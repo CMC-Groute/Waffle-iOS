@@ -258,7 +258,7 @@ class EditArchiveViewController: UIViewController {
     private func bindViewsModel() {
         let input = EditArchiveViewModel.Input(nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), editArchiveButton: self.addArchiveButton.rx.tap.asObservable())
 
-        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        let _ = viewModel?.transform(from: input, disposeBag: disposeBag)
 //        editDataBinding()
         
 //        output?.title
