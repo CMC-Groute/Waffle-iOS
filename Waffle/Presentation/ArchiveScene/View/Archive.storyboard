@@ -354,23 +354,32 @@
                                 </tableView>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZDd-Ou-biE">
-                                <rect key="frame" x="150" y="0.0" width="264" height="748"/>
+                                <rect key="frame" x="151" y="0.0" width="263" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" name="White"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfQ-YL-BFq">
+                                <rect key="frame" x="150" y="44" width="1" height="704"/>
+                                <color key="backgroundColor" name="Gray2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="jbW-K6-ipZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ORi-t7-qc4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="GfQ-YL-BFq" firstAttribute="leading" secondItem="OQB-47-J5h" secondAttribute="trailing" id="3kx-na-sMZ"/>
                             <constraint firstItem="OQB-47-J5h" firstAttribute="top" secondItem="ekW-I2-7hR" secondAttribute="top" id="4f4-no-yAb"/>
                             <constraint firstAttribute="bottom" secondItem="ZDd-Ou-biE" secondAttribute="bottom" id="76s-vZ-t1d"/>
                             <constraint firstItem="ZDd-Ou-biE" firstAttribute="top" secondItem="ekW-I2-7hR" secondAttribute="top" id="7q4-QP-YnC"/>
-                            <constraint firstItem="ZDd-Ou-biE" firstAttribute="leading" secondItem="OQB-47-J5h" secondAttribute="trailing" id="CsD-5L-zJq"/>
+                            <constraint firstItem="ZDd-Ou-biE" firstAttribute="leading" secondItem="GfQ-YL-BFq" secondAttribute="trailing" id="C7s-EZ-mdX"/>
+                            <constraint firstItem="ORi-t7-qc4" firstAttribute="bottom" secondItem="GfQ-YL-BFq" secondAttribute="bottom" id="NzZ-7n-0BA"/>
                             <constraint firstItem="OQB-47-J5h" firstAttribute="leading" secondItem="ekW-I2-7hR" secondAttribute="leading" id="ONR-qx-5mk"/>
                             <constraint firstAttribute="bottom" secondItem="OQB-47-J5h" secondAttribute="bottom" id="PJn-KN-uRI"/>
                             <constraint firstAttribute="bottom" secondItem="OQB-47-J5h" secondAttribute="bottom" id="QdV-ww-fjS"/>
+                            <constraint firstItem="GfQ-YL-BFq" firstAttribute="top" secondItem="ORi-t7-qc4" secondAttribute="top" id="ayG-at-2BA"/>
                             <constraint firstItem="OQB-47-J5h" firstAttribute="top" secondItem="ekW-I2-7hR" secondAttribute="top" id="gnl-DS-Tux"/>
-                            <constraint firstItem="ZDd-Ou-biE" firstAttribute="leading" secondItem="OQB-47-J5h" secondAttribute="trailing" id="hhd-nM-TH4"/>
                             <constraint firstAttribute="trailing" secondItem="ZDd-Ou-biE" secondAttribute="trailing" id="zS3-ng-ohP"/>
                         </constraints>
                     </view>
