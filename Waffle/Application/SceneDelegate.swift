@@ -39,9 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             
             //check if user 이미 join 중
-            guard var archiveIdList = UserDefaults.standard.array(forKey: UserDefaultKey.joinArchiveId) as? [Int] else {
-                return
-            }
+            guard var archiveIdList = UserDefaults.standard.array(forKey: UserDefaultKey.joinArchiveId) as? [Int] else { return }
             
             guard let tabBarCoordinator = self.appCoordinator?.findCoordinator(type: .tab) as? TabBarCoordinator,
             let homeCoordinator = self.appCoordinator?.findCoordinator(type: .home) as? HomeCoordinator else { return }

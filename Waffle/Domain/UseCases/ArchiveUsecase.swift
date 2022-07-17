@@ -73,6 +73,12 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
             }).disposed(by: disposeBag)
     }
     
+    func addArchiveId(archiveId: Int) { // 약속 코드로 참여시 add 해주기
+        guard var archiveIdList = UserDefaults.standard.array(forKey: UserDefaultKey.joinArchiveId) as? [Int] else { return }
+        archiveIdList.append(archiveId)
+        UserDefaults.standard.synchronize()
+    }
+    
     //MARK: 약속 코드로 가입
     func joinArchive(code: String) {
         return repository.joinArchiveCode(invitationCode: code)
@@ -88,6 +94,7 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
                 }else if response.status == 404 {
                     self.joinArhicveSuccess.accept((.inValid, response.data))
                 }else {
+                    self.addArchiveId(archiveId: response.data)
                     self.joinArhicveSuccess.accept((.success, response.data))
                 }
             }).disposed(by: disposeBag)
