@@ -329,7 +329,6 @@ extension EditPlaceViewController: UITextViewDelegate {
         let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
         let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
         attributedString.linked(text: text, url: text)
-
         textView.attributedText = attributedString
         textView.resignFirstResponder()
         linkDeleteButton.isHidden = true

@@ -44,7 +44,7 @@ final class SettingViewController: UIViewController {
         let button = UIButton()
         button.setTitleColor(Asset.Colors.gray6.color, for: .normal)
         button.titleLabel?.font = UIFont.fontWithName(type: .medium, size: 13)
-        button.setAttributedTitle("탈퇴하기".underBarLine(), for: .normal)
+        button.setAttributedTitle("탈퇴하기".underBarLine(color: Asset.Colors.black.color), for: .normal)
         return button
     }()
 

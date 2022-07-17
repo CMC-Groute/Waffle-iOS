@@ -345,17 +345,8 @@
                                                         <color key="textColor" name="Gray5"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJi-nq-sSp">
-                                                        <rect key="frame" x="32" y="124.5" width="340" height="17"/>
-                                                        <accessibility key="accessibilityConfiguration">
-                                                            <accessibilityTraits key="traits" link="YES" staticText="YES"/>
-                                                        </accessibility>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
-                                                        <color key="textColor" name="blue"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Sn-bC-b3b">
-                                                        <rect key="frame" x="28" y="141.5" width="344" height="738.5"/>
+                                                        <rect key="frame" x="28" y="144" width="344" height="736"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                         <color key="textColor" name="Gray6"/>
@@ -369,9 +360,21 @@
                                                             <constraint firstAttribute="height" constant="18" id="ipc-R9-pIK"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcp-79-7bu">
+                                                        <rect key="frame" x="32" y="122" width="340" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="fah-6N-zUh"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="link">
+                                                            <color key="titleColor" name="blue"/>
+                                                        </state>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="White"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="Dcp-79-7bu" secondAttribute="trailing" constant="6" id="09s-7X-xdK"/>
                                                     <constraint firstItem="mt4-us-UCY" firstAttribute="leading" secondItem="WjP-Bz-H1c" secondAttribute="leading" constant="6" id="45E-hY-hk3"/>
                                                     <constraint firstAttribute="bottom" secondItem="6Sn-bC-b3b" secondAttribute="bottom" constant="20" id="7HH-ks-q76"/>
                                                     <constraint firstItem="JLF-lO-tHW" firstAttribute="centerY" secondItem="mt4-us-UCY" secondAttribute="centerY" id="7Hs-K1-Ma2"/>
@@ -383,19 +386,18 @@
                                                     <constraint firstAttribute="trailing" secondItem="6Yr-un-Xxx" secondAttribute="trailing" constant="20" id="FJX-QG-uDN"/>
                                                     <constraint firstItem="JLF-lO-tHW" firstAttribute="top" secondItem="WjP-Bz-H1c" secondAttribute="top" constant="17" id="Iem-0u-hge"/>
                                                     <constraint firstItem="6Sn-bC-b3b" firstAttribute="leading" secondItem="7EG-Bp-edc" secondAttribute="trailing" constant="4" id="K1S-T6-lS7"/>
-                                                    <constraint firstItem="gJi-nq-sSp" firstAttribute="centerY" secondItem="t7F-t0-uQQ" secondAttribute="centerY" id="KNU-m3-KX9"/>
                                                     <constraint firstAttribute="trailing" secondItem="JLF-lO-tHW" secondAttribute="trailing" constant="24" id="WOF-em-EF4"/>
                                                     <constraint firstItem="BAe-XP-sAs" firstAttribute="leading" secondItem="WjP-Bz-H1c" secondAttribute="leading" constant="6" id="XHe-ev-pzS"/>
-                                                    <constraint firstItem="6Sn-bC-b3b" firstAttribute="top" secondItem="gJi-nq-sSp" secondAttribute="bottom" id="hb4-zg-y31"/>
+                                                    <constraint firstItem="Dcp-79-7bu" firstAttribute="leading" secondItem="t7F-t0-uQQ" secondAttribute="trailing" constant="8" id="XVl-60-sd3"/>
+                                                    <constraint firstItem="t7F-t0-uQQ" firstAttribute="centerY" secondItem="Dcp-79-7bu" secondAttribute="centerY" id="cfT-rh-pxz"/>
+                                                    <constraint firstItem="6Sn-bC-b3b" firstAttribute="top" secondItem="Dcp-79-7bu" secondAttribute="bottom" id="lHg-1n-oCc"/>
                                                     <constraint firstAttribute="height" constant="900" id="lcq-l3-cCp"/>
                                                     <constraint firstItem="vrE-H7-Ep9" firstAttribute="centerY" secondItem="BAe-XP-sAs" secondAttribute="centerY" id="mMZ-5p-GeH"/>
-                                                    <constraint firstAttribute="trailing" secondItem="gJi-nq-sSp" secondAttribute="trailing" constant="6" id="pCa-gR-khy"/>
                                                     <constraint firstItem="t7F-t0-uQQ" firstAttribute="top" secondItem="6Yr-un-Xxx" secondAttribute="bottom" constant="32" id="pqn-Ft-YTX"/>
                                                     <constraint firstItem="vrE-H7-Ep9" firstAttribute="leading" secondItem="BAe-XP-sAs" secondAttribute="trailing" constant="3" id="w7u-kF-qMJ"/>
                                                     <constraint firstItem="BAe-XP-sAs" firstAttribute="top" secondItem="mt4-us-UCY" secondAttribute="bottom" constant="8" id="wdv-Ec-m5Q"/>
                                                     <constraint firstItem="t7F-t0-uQQ" firstAttribute="leading" secondItem="WjP-Bz-H1c" secondAttribute="leading" constant="6" id="wwS-QE-yd0"/>
                                                     <constraint firstAttribute="trailing" secondItem="6Sn-bC-b3b" secondAttribute="trailing" constant="6" id="xMf-Vj-uG3"/>
-                                                    <constraint firstItem="gJi-nq-sSp" firstAttribute="leading" secondItem="t7F-t0-uQQ" secondAttribute="trailing" constant="8" id="zXB-ry-WdJ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -465,7 +467,7 @@
                         <outlet property="draggingView" destination="3cG-FO-y61" id="btW-7J-DPB"/>
                         <outlet property="editButton" destination="vrE-H7-Ep9" id="C1y-8D-ubq"/>
                         <outlet property="likeCountButton" destination="JLF-lO-tHW" id="DRl-F6-A2v"/>
-                        <outlet property="linkLabel" destination="gJi-nq-sSp" id="uIf-XW-7oy"/>
+                        <outlet property="linkButton" destination="Dcp-79-7bu" id="qjw-6Y-aJn"/>
                         <outlet property="memoTextView" destination="6Sn-bC-b3b" id="W1b-oS-beh"/>
                         <outlet property="placeLabel" destination="6Yr-un-Xxx" id="VTA-bt-bD0"/>
                         <outlet property="scrollView" destination="YQh-0a-hzF" id="plX-sa-e4J"/>
@@ -1538,7 +1540,7 @@
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
                                                         <color key="tintColor" name="White"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="추가하기">
+                                                        <state key="normal" title="저장하기">
                                                             <color key="titleColor" name="White"/>
                                                         </state>
                                                     </button>

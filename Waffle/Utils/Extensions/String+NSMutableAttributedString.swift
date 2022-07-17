@@ -17,11 +17,18 @@ extension String {
         return myAttrString
     }
     
-    func underBarLine() -> NSAttributedString {
-        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: Asset.Colors.black.color, NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 13)] as [NSAttributedString.Key : Any]
-        let underlineAttributedString = NSAttributedString(string: self, attributes: underlineAttribute)
-        return underlineAttributedString
+    func underBarLine(color: UIColor? = nil) -> NSAttributedString {
+        let underlineAttributedString: NSAttributedString?
+        if let color = color {
+            let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 13)] as [NSAttributedString.Key : Any]
+            underlineAttributedString = NSAttributedString(string: self, attributes: underlineAttribute)
+        }else {
+            let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
+            underlineAttributedString = NSAttributedString(string: self, attributes: underlineAttribute)
+        }
+        return underlineAttributedString!
     }
+
     
     func underBarLine(length: Int) -> NSAttributedString {
         

@@ -16,7 +16,7 @@ protocol DetailPlacePopUpViewDelegate: AnyObject {
     func dismiss()
 }
 
-class DetailPlacePopUpViewController: UIViewController {
+final class DetailPlacePopUpViewController: UIViewController {
     enum BottomSheetViewState {
         case expanded
         case normal
@@ -31,7 +31,7 @@ class DetailPlacePopUpViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var placeLabel: UILabel!
-    @IBOutlet private weak var linkLabel: UILabel!
+    @IBOutlet private weak var linkButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var likeCountButton: UIButton!
     @IBOutlet private weak var confirmButton: UIButton!
@@ -40,7 +40,7 @@ class DetailPlacePopUpViewController: UIViewController {
     private var bottomSheetPanMinTopConstant: CGFloat = 34
     private var defaultHeight:CGFloat = 395
     private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
-    private var disposBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     var coordinator: HomeCoordinator!
     var detailPlaceInfo: DetailPlaceInfo? //link, memo
@@ -74,24 +74,40 @@ class DetailPlacePopUpViewController: UIViewController {
     }
     
     private func bindUI() {
-        guard let detailInfo = detailPlaceInfo, var placeInfo = placeInfo else {
-            return
-        }
+        guard let detailInfo = detailPlaceInfo, var placeInfo = placeInfo else { return }
         updatedLikeCount = placeInfo.placeLike.likeCount
         
-        self.titleLabel.text = placeInfo.title
-        self.linkLabel.text = detailInfo.link ?? DefaultDetailCardInfo.link.rawValue
-        self.memoTextView.text = detailInfo.memo ?? DefaultDetailCardInfo.placeMemo.rawValue
-        self.categoryLabel.text = "#\(category.name)"
-        self.placeLabel.text = placeInfo.roadNameAddress
+        titleLabel.text = placeInfo.title
+        if let url = detailInfo.link {
+            let urlString = url.underBarLine()
+            linkButton.setAttributedTitle(urlString, for: .normal)
+            linkButton.setTitleColor(Asset.Colors.blue.color, for: .normal)
+        }else {
+            linkButton.isUserInteractionEnabled = false
+            linkButton.setTitle(DefaultDetailCardInfo.link.rawValue, for: .normal)
+            linkButton.setTitleColor(Asset.Colors.gray6.color, for: .normal)
+        }
+        memoTextView.text = detailInfo.memo ?? DefaultDetailCardInfo.placeMemo.rawValue
+        categoryLabel.text = "#\(category.name)"
+        placeLabel.text = placeInfo.roadNameAddress
         if placeInfo.placeLike.isPlaceLike {
             likeCountButton.isSelected = true
         }
         
         updateConfirm(isConfirm: placeInfo.isConfirm)
-        self.likeCountButton.setTitle("\(updatedLikeCount)", for: .normal)
         
-        self.likeCountButton
+        linkButton
+            .rx.tap.throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: {
+                guard let link = detailInfo.link else { return }
+                if let url = URL(string: link) {
+                    UIApplication.shared.open(url)
+                }
+            }).disposed(by: disposeBag)
+        
+        likeCountButton.setTitle("\(updatedLikeCount)", for: .normal)
+        
+        likeCountButton
             .rx.tap
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
@@ -106,20 +122,17 @@ class DetailPlacePopUpViewController: UIViewController {
                 placeInfo.placeLike.isPlaceLike.toggle()
                 
                 updateLikeCount()
-            }).disposed(by: disposBag)
+            }).disposed(by: disposeBag)
         
-        self.editButton.rx.tap
+        editButton.rx.tap
             .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] in
                 guard let self = self else { return }
-                guard let archiveId = self.archiveId else {
-                    return
-                }
-
+                guard let archiveId = self.archiveId else { return }
                 
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
                 self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories, place: placeInfo, detailPlace: detailInfo, selectedCategory: self.category)
-            }).disposed(by: disposBag)
+            }).disposed(by: disposeBag)
         
         func updateLikeCount() {
             if likeCountButton.isSelected {
@@ -135,12 +148,12 @@ class DetailPlacePopUpViewController: UIViewController {
         
         func updateConfirm(isConfirm: Bool) {
             if isConfirm {
-                self.confirmButton.backgroundColor = Asset.Colors.green.color
-                self.confirmButton.setTitle("확정이 완료되었어요", for: .normal)
+                confirmButton.backgroundColor = Asset.Colors.green.color
+                confirmButton.setTitle("확정이 완료되었어요", for: .normal)
                 
             }else {
-                self.confirmButton.backgroundColor = Asset.Colors.gray4.color
-                self.confirmButton.setTitle("확정할래요", for: .normal)
+                confirmButton.backgroundColor = Asset.Colors.gray4.color
+                confirmButton.setTitle("확정할래요", for: .normal)
             }
            
         }
@@ -156,7 +169,7 @@ class DetailPlacePopUpViewController: UIViewController {
                 }
                 placeInfo.isConfirm.toggle()
                 updateConfirm(isConfirm: placeInfo.isConfirm)
-            }).disposed(by: disposBag)
+            }).disposed(by: disposeBag)
     }
     
 
