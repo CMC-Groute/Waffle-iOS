@@ -310,10 +310,7 @@ extension EditPlaceViewController: UITextViewDelegate {
                    print("There is a problem in your link.")
                }
            } else {
-               // place the cursor to tap position
                placeCursor(myTextView, location)
-               
-               // back to normal state
                changeTextViewToNormalState()
            }
        } else {
@@ -329,7 +326,8 @@ extension EditPlaceViewController: UITextViewDelegate {
         textView.isEditable = false
         textView.dataDetectorTypes = .all
         guard let text = textView.text else { return }
-        let attributedString = NSMutableAttributedString(string: text)
+        let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
+        let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
         attributedString.linked(text: text, url: text)
 
         textView.attributedText = attributedString
@@ -344,7 +342,6 @@ extension EditPlaceViewController: UICollectionViewDelegateFlowLayout {
         cell.categoryLabel.text = viewModel!.categoryInfo[indexPath.row].name
         cell.categoryLabel.sizeToFit()
         let cellWidth = cell.categoryLabel.frame.width + 34
-
         return CGSize(width: cellWidth, height: 33)
     }
 
@@ -356,16 +353,4 @@ extension EditPlaceViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
-}
-
-extension NSMutableAttributedString {
-  public func linked(text: String, url: String) {
-    let foundRange = self.mutableString.range(of: text)
-    if foundRange.location != NSNotFound {
-//        self.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue,
-//                                            range: foundRange)
-//        self.addAttribute(.font, value: UIFont.fontWithName(type: .regular, size: 15) , range: foundRange)
-      self.addAttribute(.link, value: url, range: foundRange)
-    }
-  }
 }

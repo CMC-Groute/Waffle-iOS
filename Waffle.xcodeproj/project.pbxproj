@@ -36,7 +36,7 @@
 		133D5443287446530068EA90 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED33728562074002371FD /* Date.swift */; };
 		133D5444287446530068EA90 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29ED34328562D7E002371FD /* UITextView.swift */; };
 		133D5445287446530068EA90 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7C2857A5C300F9F71E /* UILabel.swift */; };
-		133D5446287446530068EA90 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E9B0BD285A2F0800723CAA /* String.swift */; };
+		133D5446287446530068EA90 /* String+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E9B0BD285A2F0800723CAA /* String+NSMutableAttributedString.swift */; };
 		133D5447287446530068EA90 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC372863573800E5520C /* UIView.swift */; };
 		133D5448287446530068EA90 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03E128701B920087E79E /* Encodable.swift */; };
 		133D54492874465D0068EA90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A412D72849EFD700E04BF5 /* AppDelegate.swift */; };
@@ -276,7 +276,7 @@
 		13E2A07F285F01F00015499E /* HomeUsecaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUsecaseProtocol.swift; sourceTree = "<group>"; };
 		13E2A081285F022A0015499E /* HomeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepositoryProtocol.swift; sourceTree = "<group>"; };
 		13E2A083285F025E0015499E /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
-		13E9B0BD285A2F0800723CAA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		13E9B0BD285A2F0800723CAA /* String+NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
 		23ED6BEBFC9D062FBCA62A08 /* Pods_Waffle_WaffleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Waffle_WaffleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24023E6DDF9AAE80534394F1 /* Pods-WaffleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.debug.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		407C6D73C4D73BC810EE510D /* Pods-WaffleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaffleTests.release.xcconfig"; path = "Target Support Files/Pods-WaffleTests/Pods-WaffleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -992,7 +992,7 @@
 				F29ED33728562074002371FD /* Date.swift */,
 				F29ED34328562D7E002371FD /* UITextView.swift */,
 				135F6E7C2857A5C300F9F71E /* UILabel.swift */,
-				13E9B0BD285A2F0800723CAA /* String.swift */,
+				13E9B0BD285A2F0800723CAA /* String+NSMutableAttributedString.swift */,
 				1390EC372863573800E5520C /* UIView.swift */,
 				13CA03E128701B920087E79E /* Encodable.swift */,
 				133D55E4287472320068EA90 /* WappleLog.swift */,
@@ -1668,7 +1668,7 @@
 				133D5443287446530068EA90 /* Date.swift in Sources */,
 				133D5444287446530068EA90 /* UITextView.swift in Sources */,
 				133D5445287446530068EA90 /* UILabel.swift in Sources */,
-				133D5446287446530068EA90 /* String.swift in Sources */,
+				133D5446287446530068EA90 /* String+NSMutableAttributedString.swift in Sources */,
 				133D55E5287472320068EA90 /* WappleLog.swift in Sources */,
 				1378533D2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.swift in Sources */,
 				133D5447287446530068EA90 /* UIView.swift in Sources */,

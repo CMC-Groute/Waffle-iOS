@@ -705,7 +705,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="VUe-1e-avH"/>
                                                 </constraints>
                                                 <color key="textColor" name="Gray4"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>

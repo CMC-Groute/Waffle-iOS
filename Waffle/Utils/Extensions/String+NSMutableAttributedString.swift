@@ -73,3 +73,15 @@ extension String {
     }
 }
 
+extension NSMutableAttributedString {
+  public func linked(text: String, url: String) {
+    let foundRange = self.mutableString.range(of: text)
+    if foundRange.location != NSNotFound {
+//        self.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue,
+//                                            range: foundRange)
+//        self.addAttribute(.font, value: UIFont.fontWithName(type: .regular, size: 15) , range: foundRange)
+        self.addAttribute(.link, value: url, range: foundRange)
+    }
+  }
+}
+
