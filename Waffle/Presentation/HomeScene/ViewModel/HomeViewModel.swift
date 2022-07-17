@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class HomeViewModel: ObservableObject {
+class HomeViewModel {
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
     var usecase: HomeUsecase!

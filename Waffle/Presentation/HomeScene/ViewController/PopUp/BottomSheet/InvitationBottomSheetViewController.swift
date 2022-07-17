@@ -66,11 +66,11 @@ class InvitationBottomSheetViewController: UIViewController {
 
 //        let link = Link(webUrl: URL(string:"https://developers.kakao.com"),
 //                        mobileWebUrl: URL(string:"https://developers.kakao.com"))
-        guard let archiveId = archiveId else { return }
-        let appLink = Link(androidExecutionParams: ["archiveId": "\(archiveId)"],
-                            iosExecutionParams: ["archiveId": "\(archiveId)"])
+        guard let archiveId = archiveId, let archiveCode = archiveCode else { return }
+        let appLink = Link(androidExecutionParams: ["archiveId": "\(archiveId)", "archiveCode" : "\(archiveCode)"],
+                            iosExecutionParams: ["archiveId": "\(archiveId)", "archiveCode" : "\(archiveCode)"])
         
-        let button1 = Button(title: "약속에 참여하기", link: appLink)
+        let button = Button(title: "약속에 참여하기", link: appLink)
         let title = "\(detailArchive.title)에 초대를 받았어요"
         var timeString: String = "⏰ "
         var placeString: String = "🚩 "
@@ -92,8 +92,8 @@ class InvitationBottomSheetViewController: UIViewController {
         let content = Content(title: "\(title)\n\(timeString)\n\(placeString)",
                                 imageUrl: URL(string: imageLink)!, imageWidth: 330, imageHeight: 370,
                                 link: appLink)
-        let feedTemplate = FeedTemplate(content: content, buttons: [button1])
-        
+        let feedTemplate = FeedTemplate(content: content, buttons: [button])
+        WappleLog.debug("send feedTemplate \(feedTemplate)")
         //메시지 템플릿 encode
         if let feedTemplateJsonData = (try? SdkJSONEncoder.custom.encode(feedTemplate)) {
 

@@ -39,6 +39,11 @@ class HomeUsecase: HomeUsecaseProtocol {
         self.repository = repository
     }
     
+    func saveArchiveId(idList: [Int]?) {
+        UserDefaults.standard.set(idList, forKey: UserDefaultKey.joinArchiveId)
+        WappleLog.debug("id 저장 \(UserDefaults.standard.array(forKey: UserDefaultKey.joinArchiveId) as? [Int])")
+    }
+    
     //MARK: 메인페이지 카드 조회
     func getCardInfo() {
         repository.getCardInfo()
@@ -54,6 +59,7 @@ class HomeUsecase: HomeUsecaseProtocol {
                     //network 연결 x
                     self.networkError.onNext(true)
                 }else {
+                    self.saveArchiveId(idList: response.data.map { $0.map { $0.id} })
                     self.cardInfo.onNext(response.data)
                     WappleLog.debug("getCardInfo \(response.data)")
                 }

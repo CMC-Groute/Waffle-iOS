@@ -144,11 +144,11 @@ extension TableDetailArchiveCollectionViewCell: DetailPlaceTableViewCellDelegate
     }
     
     func canEditingButton(cell: DetailPlaceTableViewCell) {
-            //tableView drag and drop
-            tableView.dragInteractionEnabled = true
-            tableView.dragDelegate = self
-            tableView.dropDelegate = self
-        }
+        //tableView drag and drop
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+    }
     
     func didTapLikeButton(cell: DetailPlaceTableViewCell) {
         guard let viewModel = viewModel else { return }

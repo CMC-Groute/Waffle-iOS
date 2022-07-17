@@ -6,37 +6,66 @@
 //
 
 import UIKit
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
     let navigationController = UINavigationController()
+    var disposedBag = DisposeBag()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         self.appCoordinator = AppCoordinator(navigationController)
+        appCoordinator?.start()
         WappleLog.debug("jwtToken \(UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken))")
         
-        appCoordinator?.start()
-//detailArchive에 가려면 로그인 된 사용자인지, 약속 코드에 참여된 사용자인지 알아야 할듯
-//        if let url = connectionOptions.urlContexts.first?.url {
-//            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-//            let archiveId = components.queryItems?.first?.value ?? "0"
-//
-//            guard let tabBarCoordinator = self.appCoordinator?.findCoordinator(type: .tab) as? TabBarCoordinator,
-//            let homeCoordinator = self.appCoordinator?.findCoordinator(type: .home) as? HomeCoordinator else { return }
-//
-//            tabBarCoordinator.selectPage(.home)
-//            guard (homeCoordinator.navigationController.viewControllers.last
-//                   is DetailArchiveViewController == false) else { return }
-//            //마지막 화면이 DetailArchiveViewController가 아니였다면
-//            homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
-//        }
+        if let url = connectionOptions.urlContexts.first?.url, let jwtToken = UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken)  {
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            let queries = components.queryItems
+            var archiveId: Int = 0
+            var archiveCode: String = ""
+            
+            queries?.forEach { (item) in
+                if item.name == "archiveId" {
+                    archiveId = Int(item.value ?? "0")!
+                }else if item.name == "archiveCode" {
+                    archiveCode = item.value ?? "0"
+                }
+            }
+            
+            //check if user 이미 join 중
+            guard var archiveIdList = UserDefaults.standard.array(forKey: UserDefaultKey.joinArchiveId) as? [Int] else {
+                return
+            }
+            
+            guard let tabBarCoordinator = self.appCoordinator?.findCoordinator(type: .tab) as? TabBarCoordinator,
+            let homeCoordinator = self.appCoordinator?.findCoordinator(type: .home) as? HomeCoordinator else { return }
+            tabBarCoordinator.selectPage(.home)
+            
+            if archiveIdList.contains(archiveId) { // 이미 참여 중
+                homeCoordinator.detailArchive(archiveId: archiveId)
+            }else { //새롭게 참여 필요
+                let archiveUsecase = ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService()))
+                archiveUsecase.joinArchive(code: archiveCode)
+                archiveUsecase.joinArhicveSuccess
+                    .subscribe(onNext: { status, id in
+                    if status == .success {
+                        guard let id = id else { return }
+                        archiveIdList.append(id)
+                        UserDefaults.standard.synchronize()
+                        homeCoordinator.detailArchive(archiveId: id)
+                    }
+                }).disposed(by: disposedBag)
+            }
+        }else {
+            appCoordinator?.start()
+        }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -69,20 +98,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url, UserDefaults.standard.string(forKey: UserDefaultKey.jwtToken) != nil {
-            //example: kakao9d221cbc36f57f5d7e31879b43c6a546://kakaolink?archiveId=19
-            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-            let archiveId = components.queryItems?.first?.value ?? "0"
+            
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+            let queries = components.queryItems
+            var archiveId: Int = 0
+            var archiveCode: String = ""
+            
+            queries?.forEach { (item) in
+                if item.name == "archiveId" {
+                    archiveId = Int(item.value ?? "0")!
+                }else if item.name == "archiveCode" {
+                    archiveCode = item.value ?? "0"
+                }
+            }
+            
+            //check if user 이미 join 중
+            guard var archiveIdList = UserDefaults.standard.array(forKey: UserDefaultKey.joinArchiveId) as? [Int] else { return }
+            
             guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
                   let appCoordinator = sceneDelegate.appCoordinator,
                   let tabBarCoordinator = appCoordinator.findCoordinator(type: .tab) as? TabBarCoordinator,
                   let homeCoordinator = appCoordinator.findCoordinator(type: .home) as? HomeCoordinator else { return }
             tabBarCoordinator.selectPage(.home)
-            guard (homeCoordinator.navigationController.viewControllers.last
-                   is DetailArchiveViewController == false) else { return }
-            homeCoordinator.detailArchive(archiveId: Int(archiveId)!)
-
-        }
-        else { // Login 화면으로 이동
+            
+            if archiveIdList.contains(archiveId) { // 이미 참여 중
+                guard (homeCoordinator.navigationController.viewControllers.last
+                       is DetailArchiveViewController == false) else { return }
+                homeCoordinator.detailArchive(archiveId: archiveId)
+            }else { //새롭게 참여 필요
+                let archiveUsecase = ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService()))
+                archiveUsecase.joinArchive(code: archiveCode)
+                archiveUsecase.joinArhicveSuccess.subscribe(onNext: { status, id in
+                    if status == .success {
+                        guard let id = id else { return }
+                        archiveIdList.append(id)
+                        UserDefaults.standard.synchronize()
+                        homeCoordinator.detailArchive(archiveId: id)
+                    }
+                }).disposed(by: disposedBag)
+            }
+        }else {
             self.appCoordinator = AppCoordinator(navigationController)
             appCoordinator?.start()
         }
