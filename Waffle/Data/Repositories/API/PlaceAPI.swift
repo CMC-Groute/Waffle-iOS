@@ -29,7 +29,7 @@ enum PlaceAPI: NetworkRequestBuilder {
     
     //MARK: Push Notification
     case likeSend(archiveId: Int)
-    case getAlarm(alarm: [Alarm])
+    case getAlarm
     
 }
 
@@ -68,7 +68,7 @@ extension PlaceAPI {
             return "/invitation/place/\(placeId)/likes"
         case .likeSend(let archiveId):
             return "/invitation/\(archiveId)/push/likes"
-        case .getAlarm(_):
+        case .getAlarm:
             return "/push"
         }
     }
@@ -85,7 +85,7 @@ extension PlaceAPI {
             return .put
         case .editPlace(_, _, _):
             return .patch
-        case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .getAlarm(_):
+        case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .getAlarm:
             return .get
         case .deletePlace(_, _), .deletePlacCategory(_, _), .deleteLike(_):
             return .delete
@@ -94,7 +94,7 @@ extension PlaceAPI {
     
     var body: [String : Any]? {
         switch self {
-        case .getConfirmPlace(_),  .getPlaceByCategory(_, _), .getDetailPlace(_, _), .deletePlace(_, _), .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .likeSend(_), .getAlarm(_):
+        case .getConfirmPlace(_),  .getPlaceByCategory(_, _), .getDetailPlace(_, _), .deletePlace(_, _), .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .likeSend(_), .getAlarm:
             return nil
         case .placeSearch(let search):
             return search.dictionary

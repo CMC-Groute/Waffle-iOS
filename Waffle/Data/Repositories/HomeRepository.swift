@@ -299,4 +299,19 @@ extension HomeRepository {
         WappleLog.debug("좋아요 전송")
     }
 
+    
+    //MARK: 알람 가져오기
+    func getAlarms() -> Observable<GetAlarm> {
+        let api = PlaceAPI.getAlarm
+        return service.request(api)
+            .map({response -> GetAlarm in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: GetAlarm.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
 }

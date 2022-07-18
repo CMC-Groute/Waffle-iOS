@@ -36,6 +36,8 @@ class HomeUsecase: HomeUsecaseProtocol {
     var getDetailPlaceSuccess = PublishSubject<DetailPlaceInfo?>()
     var changeConfirmSquenceSuccess = PublishSubject<[PlaceInfo]?>() // 순서 변경 조회
     
+    var getAlarmSuccess = PublishSubject<[Alarm]>() // 알림 데이터 가져오기
+    
     var editPlaceSuccess = PublishSubject<Bool>() // 장소 수정
     init(repository: HomeRepository){
         self.repository = repository
@@ -386,5 +388,25 @@ extension HomeUsecase {
                 }
             }).disposed(by: disposeBag)
     }
+    
+    //MARK: 알람 데이터 가져오기
+    func getAlarms() {
+        repository.getAlarms()
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<GetAlarm> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("getAlarms error \(error)")
+                return .just(GetAlarm(status: error.rawValue, data: []))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("getAlarms \(response)")
+                if response.status == 200 {
+                    self.getAlarmSuccess.onNext(response.data)
+                }else {
+                    self.getAlarmSuccess.onNext([])
+                }
+            }).disposed(by: disposeBag)
+    }
+    
 }
 
