@@ -25,7 +25,6 @@
 		133D5438287446490068EA90 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
 		133D5439287446490068EA90 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2E284E2752008E1185 /* Config.swift */; };
 		133D543A287446490068EA90 /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
-		133D543B287446490068EA90 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1390EC9A286A0E2800E5520C /* Notification.swift */; };
 		133D543C287446490068EA90 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DC286DEF230087E79E /* Common.swift */; };
 		133D543D287446530068EA90 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D5C284F45A4008E1185 /* Assets.swift */; };
 		133D543E287446530068EA90 /* UINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D54284E635C008E1185 /* UINavigationItem.swift */; };
@@ -159,6 +158,7 @@
 		1378533E2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1378533C2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib */; };
 		137853422875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */; };
 		137853432875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */; };
+		138464832884111400F401F9 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138464822884111400F401F9 /* Alarm.swift */; };
 		1390EC34286335E200E5520C /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC33286335E200E5520C /* CardView.xib */; };
 		1390EC7C286494B100E5520C /* DetailPlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1390EC7A286494B100E5520C /* DetailPlaceTableViewCell.xib */; };
 		1398A0A028805637009B0187 /* Splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1398A09F28805637009B0187 /* Splash.jpg */; };
@@ -226,6 +226,7 @@
 		1378533C2875A88D00B11E5E /* CategoryDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		137853402875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailArchiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		137853412875A8B400B11E5E /* TableDetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableDetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
+		138464822884111400F401F9 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		1390EC33286335E200E5520C /* CardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		1390EC352863362900E5520C /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		1390EC372863573800E5520C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -248,7 +249,6 @@
 		1390EC9228698E9B00E5520C /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		1390EC9628698EAF00E5520C /* AddCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		1390EC982869E60700E5520C /* ConfirmCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		1390EC9A286A0E2800E5520C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		1390EC9C286B3F0500E5520C /* AddDetailPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewController.swift; sourceTree = "<group>"; };
 		1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailPlaceViewModel.swift; sourceTree = "<group>"; };
 		1398A09F28805637009B0187 /* Splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Splash.jpg; sourceTree = "<group>"; };
@@ -478,6 +478,14 @@
 			path = Table;
 			sourceTree = "<group>";
 		};
+		13846481288410FE00F401F9 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				138464822884111400F401F9 /* Alarm.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
 		1390EC5B28647AA600E5520C /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -617,6 +625,7 @@
 		13E2A075285EF1E50015499E /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				13846481288410FE00F401F9 /* Alarm */,
 				13062E22287A9E42003774A7 /* Category */,
 				13CA03E7287195FF0087E79E /* Place */,
 				1390EC882869396B00E5520C /* User */,
@@ -693,7 +702,6 @@
 				F2125D2A284E19AD008E1185 /* TapBarPage.swift */,
 				F2125D2E284E2752008E1185 /* Config.swift */,
 				135F6E7928576EA700F9F71E /* Locatioin.swift */,
-				1390EC9A286A0E2800E5520C /* Notification.swift */,
 				13CA03DC286DEF230087E79E /* Common.swift */,
 			);
 			path = Constant;
@@ -1545,6 +1553,7 @@
 				135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */,
 				133D55D928744C4C0068EA90 /* EditSettingViewModel.swift in Sources */,
 				133D55DA28744C4C0068EA90 /* ChangePWViewModel.swift in Sources */,
+				138464832884111400F401F9 /* Alarm.swift in Sources */,
 				13062E21287A891E003774A7 /* DefaultResponse.swift in Sources */,
 				133D55DB28744C4C0068EA90 /* SettingViewController.swift in Sources */,
 				133D55DC28744C4C0068EA90 /* SettingTableViewCell.swift in Sources */,
@@ -1676,7 +1685,6 @@
 				133D5438287446490068EA90 /* TapBarPage.swift in Sources */,
 				133D5439287446490068EA90 /* Config.swift in Sources */,
 				133D543A287446490068EA90 /* Locatioin.swift in Sources */,
-				133D543B287446490068EA90 /* Notification.swift in Sources */,
 				133D543C287446490068EA90 /* Common.swift in Sources */,
 				133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */,
 			);

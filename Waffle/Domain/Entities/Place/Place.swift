@@ -36,8 +36,10 @@ struct DetailPlaceResponse: Codable {
 struct DetailPlaceInfo: Codable {
     var link: String?
     var memo: String?
+    var category: PlaceCategory
+    
     enum CodingKeys: String, CodingKey {
-        case link
+        case link, category = "placeCategoryDto"
         case memo = "comment"
     }
 }

@@ -11,8 +11,8 @@ import RxCocoa
 
 class EditPlaceViewModel {
     var coordinator: HomeCoordinator!
-    var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
+    private var disposeBag = DisposeBag()
     var placeId: Int?
     var categoryInfo: [PlaceCategory] = []
     var archiveId: Int?
@@ -38,7 +38,7 @@ class EditPlaceViewModel {
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        selectedCategoryIndex = categoryInfo.index(where: { $0.name == selectedCategory?.name })
+        selectedCategoryIndex = categoryInfo.firstIndex(where: { $0.name == selectedCategory?.name })
         return output
     }
     
@@ -47,9 +47,7 @@ class EditPlaceViewModel {
     }
     
     func deletePlace() {
-        guard let archiveId = self.archiveId, let placeId = self.placeId else {
-            return
-        }
+        guard let archiveId = self.archiveId, let placeId = self.placeId else { return }
         coordinator.deletePlace(archiveId: archiveId, placeId: placeId)
     }
 }

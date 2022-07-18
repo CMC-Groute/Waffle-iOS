@@ -45,7 +45,6 @@ final class DetailPlacePopUpViewController: UIViewController {
     var coordinator: HomeCoordinator!
     var detailPlaceInfo: DetailPlaceInfo? //link, memo
     var placeInfo: PlaceInfo?
-    
     var category: PlaceCategory!
     var categories: [PlaceCategory] = []
     weak var delegate: DetailPlacePopUpViewDelegate?
@@ -88,6 +87,7 @@ final class DetailPlacePopUpViewController: UIViewController {
             linkButton.setTitleColor(Asset.Colors.gray6.color, for: .normal)
         }
         memoTextView.text = detailInfo.memo ?? DefaultDetailCardInfo.placeMemo.rawValue
+        let category = PlaceCategory(id: detailInfo.category.id, name: CategoryType.init(rawValue: detailInfo.category.name)?.format() ?? "")
         categoryLabel.text = "#\(category.name)"
         placeLabel.text = placeInfo.roadNameAddress
         if placeInfo.placeLike.isPlaceLike {
@@ -131,7 +131,7 @@ final class DetailPlacePopUpViewController: UIViewController {
                 guard let archiveId = self.archiveId else { return }
                 
                 self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories, place: placeInfo, detailPlace: detailInfo, selectedCategory: self.category)
+                self.coordinator.editPlace(archiveId: archiveId, placeId: placeInfo.placeId, category: self.categories, place: placeInfo, detailPlace: detailInfo, selectedCategory: category)
             }).disposed(by: disposeBag)
         
         func updateLikeCount() {
