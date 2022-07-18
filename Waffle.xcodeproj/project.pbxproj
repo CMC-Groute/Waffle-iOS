@@ -147,6 +147,7 @@
 		133D55E228744C4C0068EA90 /* FindPWViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F205519E28546AD30051E94D /* FindPWViewModel.swift */; };
 		133D55E328745CE70068EA90 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F29ED3102855DBC3002371FD /* Setting.storyboard */; };
 		133D55E5287472320068EA90 /* WappleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D55E4287472320068EA90 /* WappleLog.swift */; };
+		134FC8DF2885B4C00007036C /* HomeAlarmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FC8DE2885B4BF0007036C /* HomeAlarmViewModel.swift */; };
 		135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */; };
 		135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543952875DBB100F8CA0D /* EditArchiveViewController.swift */; };
 		1355439A2877299800F8CA0D /* PlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135543992877299800F8CA0D /* PlaceAPI.swift */; };
@@ -207,6 +208,7 @@
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
+		134FC8DE2885B4BF0007036C /* HomeAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmViewModel.swift; sourceTree = "<group>"; };
 		135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewModel.swift; sourceTree = "<group>"; };
 		135543952875DBB100F8CA0D /* EditArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewController.swift; sourceTree = "<group>"; };
 		135543992877299800F8CA0D /* PlaceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAPI.swift; sourceTree = "<group>"; };
@@ -1178,6 +1180,7 @@
 				1390EC9E286B3F8400E5520C /* AddDetailPlaceViewModel.swift */,
 				13CA03E528718E140087E79E /* SearchPlaceViewModel.swift */,
 				13CA03F32871D94B0087E79E /* EditPlaceViewModel.swift */,
+				134FC8DE2885B4BF0007036C /* HomeAlarmViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1591,6 +1594,7 @@
 				133D559928744BDD0068EA90 /* TableAddLocationViewController.swift in Sources */,
 				133D559A28744BDD0068EA90 /* AddArchiveViewController.swift in Sources */,
 				133D559B28744BDD0068EA90 /* AddLocationViewController.swift in Sources */,
+				134FC8DF2885B4C00007036C /* HomeAlarmViewModel.swift in Sources */,
 				133D559C28744BDD0068EA90 /* InputArchiveCodeViewController.swift in Sources */,
 				133D559D28744BDD0068EA90 /* ArchiveCoordinatorProtocol.swift in Sources */,
 				133D559E28744BDD0068EA90 /* ArchiveCoordinator.swift in Sources */,

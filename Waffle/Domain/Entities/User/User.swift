@@ -16,10 +16,12 @@ struct GetUserInfo: Codable {
     var nickName: String
     var email: String
     var profileImage: String
+    var isAgreedAlarm: Bool
     
     enum CodingKeys: String, CodingKey {
         case nickName = "nickname"
         case email, profileImage
+        case isAgreedAlarm
     }
 }
 

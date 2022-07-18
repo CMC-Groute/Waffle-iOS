@@ -11,6 +11,8 @@ import RxSwift
 
 class SettingViewModel {
     
+    var isAgreedAlarm = PublishRelay<Bool>()
+    
     struct Input {
         let viewWillAppearEvent: Observable<Void> 
         let editButton: Observable<Void>
@@ -45,6 +47,7 @@ class SettingViewModel {
                         output.userNickName.accept(user.nickName)
                         output.userEmail.accept(user.email)
                         output.userImage.accept(user.profileImage)
+                        self?.isAgreedAlarm.accept(user.isAgreedAlarm)
                     }).disposed(by: disposeBag)
             })
             .disposed(by: disposeBag)

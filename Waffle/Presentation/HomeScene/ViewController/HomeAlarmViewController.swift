@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class HomeAlarmViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     var alarm: [String] = ["알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림"]
+    var viewModel: HomeAlarmViewModel?
     
     var noSearchResultView: UIView = {
         let view = UIView()
@@ -34,6 +36,7 @@ class HomeAlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        bindViewModel()
     }
     
     private func configure() {
@@ -80,6 +83,10 @@ class HomeAlarmViewController: UIViewController {
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "HomeAlarmTableViewCell", bundle: nil), forCellReuseIdentifier: HomeAlarmTableViewCell.identifier)
+    }
+    
+    private func bindViewModel(){
+        let input =  HomeAlarmViewModel.Input(viewDidLoadEvent: Observable.just(()))
     }
 }
 

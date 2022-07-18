@@ -56,6 +56,11 @@ final class SettingViewController: UIViewController {
         let alertCell = SettingTableViewCell(style: .switchControl)
         alertCell.title = "알림 설정"
         alertCell.delegate = self
+        
+        viewModel?.isAgreedAlarm
+            .bind(to: alertCell.switchControl.rx.isOn)
+            .disposed(by: disposeBag)
+        
         let alertOption = SettingOptions(cell: alertCell)
 
         let versionCell = SettingTableViewCell(style: .detail)
