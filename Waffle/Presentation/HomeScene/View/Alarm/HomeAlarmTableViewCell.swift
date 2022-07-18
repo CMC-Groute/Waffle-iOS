@@ -12,6 +12,7 @@ class HomeAlarmTableViewCell: UITableViewCell {
     
     @IBOutlet weak var alrchiveImageView: UIImageView!
     
+    @IBOutlet weak var dotButton: UIButton!
     @IBOutlet weak var alarmText: UILabel!
     
     @IBOutlet weak var dateText: UILabel!
@@ -22,11 +23,11 @@ class HomeAlarmTableViewCell: UITableViewCell {
     }
     
     private func setUp() {
+        dotButton.tintColor = Asset.Colors.red.color
         alrchiveImageView.makeCircleShape()
     }
     
     func configureCell(test: String) {
-        print("here \(test)")
         alarmText.text = test
     }
 }

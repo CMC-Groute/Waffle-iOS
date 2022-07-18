@@ -10,7 +10,7 @@ import UIKit
 
 class HomeAlarmViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    var alarm: [String] = []
+    var alarm: [String] = ["알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림"]
     
     var noSearchResultView: UIView = {
         let view = UIView()

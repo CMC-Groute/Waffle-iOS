@@ -19,50 +19,47 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wapple-0" translatesAutoresizingMaskIntoConstraints="NO" id="YAS-gV-KSL">
-                        <rect key="frame" x="16" y="16" width="48" height="48"/>
+                        <rect key="frame" x="16" y="16" width="48" height="52"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="0M8-ag-TVu"/>
-                            <constraint firstAttribute="height" constant="48" id="Hhe-z8-Jcb"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOs-Pw-p0G">
-                        <rect key="frame" x="80" y="23" width="299" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="250" constant="17" id="lhZ-dy-Bh8"/>
-                        </constraints>
+                        <rect key="frame" x="80" y="16" width="299" height="31.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                         <color key="textColor" name="Black"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gce-nF-MCD">
-                        <rect key="frame" x="80" y="46" width="27" height="15"/>
+                        <rect key="frame" x="80" y="53.5" width="27" height="14.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
                         <color key="textColor" name="Gray5"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmDayDot" translatesAutoresizingMaskIntoConstraints="NO" id="WvG-ZF-9XU">
-                        <rect key="frame" x="110" y="46" width="5" height="5"/>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH3-wO-At5">
+                        <rect key="frame" x="110" y="53.5" width="5" height="5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="5" id="9xy-WW-2gP"/>
-                            <constraint firstAttribute="width" constant="5" id="HVn-dR-d7P"/>
+                            <constraint firstAttribute="height" constant="5" id="4Ky-OA-UAM"/>
+                            <constraint firstAttribute="width" constant="5" id="abO-Ko-xul"/>
                         </constraints>
-                    </imageView>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="alarmDayDot"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="WvG-ZF-9XU" firstAttribute="leading" secondItem="gce-nF-MCD" secondAttribute="trailing" constant="3" id="13o-jC-D2O"/>
+                    <constraint firstItem="ZH3-wO-At5" firstAttribute="top" secondItem="QOs-Pw-p0G" secondAttribute="bottom" constant="6" id="2ls-ra-n9J"/>
                     <constraint firstItem="YAS-gV-KSL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5ho-UV-iZj"/>
-                    <constraint firstAttribute="bottom" secondItem="WvG-ZF-9XU" secondAttribute="bottom" constant="33" id="EWQ-Es-1FF"/>
                     <constraint firstItem="QOs-Pw-p0G" firstAttribute="leading" secondItem="YAS-gV-KSL" secondAttribute="trailing" constant="16" id="Guo-fz-JGS"/>
                     <constraint firstItem="YAS-gV-KSL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="I2s-7T-lup"/>
-                    <constraint firstItem="WvG-ZF-9XU" firstAttribute="top" secondItem="QOs-Pw-p0G" secondAttribute="bottom" constant="6" id="L4x-JT-wL6"/>
                     <constraint firstAttribute="bottom" secondItem="YAS-gV-KSL" secondAttribute="bottom" constant="16" id="Ldu-5R-FzV"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WvG-ZF-9XU" secondAttribute="trailing" constant="20" id="Pzg-EF-gfy"/>
-                    <constraint firstAttribute="bottom" secondItem="gce-nF-MCD" secondAttribute="bottom" constant="23" id="cYM-Oi-GNF"/>
-                    <constraint firstItem="QOs-Pw-p0G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="e9r-mO-ZiO"/>
-                    <constraint firstItem="WvG-ZF-9XU" firstAttribute="firstBaseline" secondItem="gce-nF-MCD" secondAttribute="top" id="fRC-qb-9wC"/>
+                    <constraint firstItem="gce-nF-MCD" firstAttribute="top" secondItem="ZH3-wO-At5" secondAttribute="top" id="WCr-aC-Aq7"/>
+                    <constraint firstAttribute="bottom" secondItem="gce-nF-MCD" secondAttribute="bottom" constant="16" id="cYM-Oi-GNF"/>
+                    <constraint firstItem="QOs-Pw-p0G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="e9r-mO-ZiO"/>
                     <constraint firstItem="gce-nF-MCD" firstAttribute="leading" secondItem="YAS-gV-KSL" secondAttribute="trailing" constant="16" id="fcG-0l-TPv"/>
                     <constraint firstAttribute="trailing" secondItem="QOs-Pw-p0G" secondAttribute="trailing" constant="16" id="i9Q-0Q-c2T"/>
-                    <constraint firstItem="gce-nF-MCD" firstAttribute="top" secondItem="QOs-Pw-p0G" secondAttribute="bottom" constant="6" id="sbN-zf-PSN"/>
+                    <constraint firstItem="ZH3-wO-At5" firstAttribute="leading" secondItem="gce-nF-MCD" secondAttribute="trailing" constant="3" id="iUG-TW-XMg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -70,6 +67,7 @@
                 <outlet property="alarmText" destination="QOs-Pw-p0G" id="Tpr-cD-oZF"/>
                 <outlet property="alrchiveImageView" destination="YAS-gV-KSL" id="1K2-9o-a48"/>
                 <outlet property="dateText" destination="gce-nF-MCD" id="bED-a9-RLJ"/>
+                <outlet property="dotButton" destination="ZH3-wO-At5" id="M3M-Ga-Pfj"/>
             </connections>
             <point key="canvasLocation" x="190.57971014492756" y="40.178571428571423"/>
         </tableViewCell>

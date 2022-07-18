@@ -159,6 +159,9 @@ struct SendCategory {
                                                 "기타" : "ETC"]
 }
 
-
-
-
+enum AlarmType: String {
+    case ALARM_LIKES = "like"
+    case ALARM_JOIN = "join"
+    case ALARM_NOT_DECIDE = "undefined"
+    case ALARM_BEFORE_DAY = "beforeDay"
+}
