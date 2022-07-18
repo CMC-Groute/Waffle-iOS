@@ -15,7 +15,7 @@ enum PlaceAPI: NetworkRequestBuilder {
     case getConfirmSequence(archiveId: Int, placeSequence: GetPlaceSequence)
     case getPlaceByCategory(archiveId: Int, categoryId: Int)
     case getDetailPlace(archiveId: Int, placeId: Int)
-    case editPlace(archiveId: Int, placeId: Int, place: AddPlace)
+    case editPlace(archiveId: Int, placeId: Int, place: EditPlace)
     case placeSearch(searchInfo: PlaceSearchRequest)
     case deletePlace(archiveId: Int, placeId: Int)
     

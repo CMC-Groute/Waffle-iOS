@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 class HomeUsecase: HomeUsecaseProtocol {
+    
     //MARK: Private property
     private var repository: HomeRepository!
     private var disposeBag = DisposeBag()
@@ -35,6 +36,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var getDetailPlaceSuccess = PublishSubject<DetailPlaceInfo?>()
     var changeConfirmSquenceSuccess = PublishSubject<[PlaceInfo]?>() // 순서 변경 조회
     
+    var editPlaceSuccess = PublishSubject<Bool>() // 장소 수정
     init(repository: HomeRepository){
         self.repository = repository
     }
@@ -272,8 +274,22 @@ extension HomeUsecase {
     }
     
     //MARK: 장소 수정하기
-    func editPlace(placeId: Int) {
-        
+    func editPlace(archiveId: Int, placeId: Int, editPlace: EditPlace) {
+        WappleLog.debug("editPlace \(editPlace)")
+        repository.editPlace(archiveId: archiveId, placeId: placeId, editPlace: editPlace)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("getSearcPlace error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                if response.status == 200 {
+                    self.editPlaceSuccess.onNext(true)
+                }else {
+                    self.editPlaceSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
     //MARK: 장소 검색

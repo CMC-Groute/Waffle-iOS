@@ -188,6 +188,22 @@ extension HomeRepository {
             })
     }
     
+    //MARK: 장소 수정
+    func editPlace(archiveId: Int, placeId: Int, editPlace: EditPlace) -> Observable<DefaultIntResponse> {
+        let api = PlaceAPI.editPlace(archiveId: archiveId, placeId: placeId, place: editPlace)
+        return service.request(api)
+            .map({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    //MARK: 장소 검색
     func getSearchedPlace(searchText: String, page: Int, size: Int) -> Observable<PlaceSearchResponse> {
         let searchInfo = PlaceSearchRequest(keyword: searchText, currentPage: page, pageSize: size)
         let api = PlaceAPI.placeSearch(searchInfo: searchInfo)

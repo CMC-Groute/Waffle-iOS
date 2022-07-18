@@ -202,7 +202,7 @@ class EditPlaceViewController: UIViewController {
         
         let editPlace = EditPlace(title: title, memo: memo, link: link, roadNameAddress: roadAddress, longitude: nil, latitude: nil, placeCategoryId: selectedCategory.id)
         WappleLog.debug("editPlace \(editPlace)")
-        //viewModel.editPlaceButton()
+        viewModel.editPlaceButton(editPlace: editPlace)
     }
     
     private func bindViewModels() {

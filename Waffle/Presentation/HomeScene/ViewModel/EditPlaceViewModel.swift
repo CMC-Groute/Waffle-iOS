@@ -64,6 +64,16 @@ class EditPlaceViewModel {
                 self.placeViewEnabled.accept(false)
             }).disposed(by: disposeBag)
         
+        usecase.editPlaceSuccess
+            .subscribe(onNext: { bool in
+                if bool {
+                    WappleLog.debug("editPlaceSuccess 장소 편집 성공")
+                    self.coordinator.popViewController()
+                }else {
+                    WappleLog.error("장소를 편집 하는데 실패하였습니다.")
+                }
+            }).disposed(by: disposeBag)
+        
         return output
     }
     
@@ -81,7 +91,8 @@ class EditPlaceViewModel {
         selectedCategory = category
     }
     
-    func editPlaceButton() {
-        
+    func editPlaceButton(editPlace: EditPlace) {
+        guard let archiveId = archiveId, let placeId = placeId else { return }
+        usecase.editPlace(archiveId: archiveId, placeId: placeId, editPlace: editPlace)
     }
 }
