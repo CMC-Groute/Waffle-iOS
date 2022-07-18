@@ -183,8 +183,7 @@ class EditPlaceViewController: UIViewController {
         if let link = viewModel.detailPlace?.link {
             linkTextView.text = link
         }else { //placeHolder
-            self.linkTextView.textColor = Asset.Colors.gray4.color
-            self.linkTextView.text = "장소와 관련된 링크 주소를 입력해요"
+            originLinkText()
         }
         
         if let memo = viewModel.detailPlace?.memo {
@@ -204,23 +203,30 @@ class EditPlaceViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 guard let text = self.linkTextView.text else { return }
-                if text == """
-                장소와 관련된 링크 주소를 입력해요
-                """ {
+                if text == "장소와 관련된 링크 주소를 입력해요" {
                     self.linkTextView.text = nil
-                    self.linkTextView.textColor = Asset.Colors.black.color
                 }
+                self.linkTextView.textColor = Asset.Colors.black.color
                 self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
             }).disposed(by: disposeBag)
         
         input.linkTextViewDidEndEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
+                WappleLog.debug("linkTextViewDidEndEvent")
                 if self.linkTextView.text.isEmpty || self.linkTextView.text == nil {
-                    self.linkTextView.textColor = Asset.Colors.gray4.color
-                    self.linkTextView.text = """
-                장소와 관련된 링크 주소를 입력해요
-                """
+                    self.originLinkText()
+                }else { //비어있지 않을때
+                    self.linkTextView.isEditable = false
+                    self.linkTextView.dataDetectorTypes = []
+                    guard let text = self.linkTextView.text else { return }
+                    WappleLog.debug(text)
+                    let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
+                    let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
+                    attributedString.linked(text: text, url: text)
+                    self.linkTextView.attributedText = attributedString
+                    self.linkTextView.resignFirstResponder()
+                    self.linkDeleteButton.isHidden = true
                 }
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
@@ -229,7 +235,9 @@ class EditPlaceViewController: UIViewController {
         
         linkDeleteButton.rx.tap
             .subscribe(onNext: {
-                self.linkTextView.text = ""
+                WappleLog.debug("linkDeleteButton")
+                self.originLinkText()
+                self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
         output?.placeViewEnabled
@@ -240,6 +248,14 @@ class EditPlaceViewController: UIViewController {
                     self.placeInputTextFieldLayout()
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    func originLinkText() {
+        let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.gray4.color ]
+        let attributedString = NSMutableAttributedString(string: "장소와 관련된 링크 주소를 입력해요", attributes: myAttribute)
+        linkTextView.attributedText = attributedString
+        linkTextView.dataDetectorTypes = []
+        
     }
 
 }
@@ -257,7 +273,6 @@ extension EditPlaceViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
         guard let categoryName = viewModel?.categoryInfo else { return cell }
-        print("viewModel?.selectedCategoryIndex \(viewModel?.selectedCategoryIndex)")
         if indexPath.row == viewModel?.selectedCategoryIndex {
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .init())
@@ -284,8 +299,9 @@ extension EditPlaceViewController: UITextViewDelegate {
     }
     
     fileprivate func changeTextViewToNormalState() {
+        WappleLog.debug("changeTextViewToNormalState")
         linkTextView.isEditable = true
-        linkTextView.dataDetectorTypes = []
+        linkTextView.textColor = Asset.Colors.black.color
         linkTextView.becomeFirstResponder()
     }
     
@@ -320,18 +336,6 @@ extension EditPlaceViewController: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
         linkDeleteButton.isHidden = false
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        textView.isEditable = false
-        textView.dataDetectorTypes = .all
-        guard let text = textView.text else { return }
-        let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
-        let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
-        attributedString.linked(text: text, url: text)
-        textView.attributedText = attributedString
-        textView.resignFirstResponder()
-        linkDeleteButton.isHidden = true
     }
 }
 
