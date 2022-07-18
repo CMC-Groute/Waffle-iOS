@@ -76,7 +76,6 @@ class EditPlaceViewController: UIViewController {
         linkTextView.isUserInteractionEnabled = true
         linkTextView.textContainerInset = UIEdgeInsets(top: 15, left: 14, bottom: 15, right: 48)
         
-        
         memoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
         memoTextView.dataDetectorTypes = .link
         memoTextView.attributedText = memoTextView.text.setLineHeight(24)
@@ -199,9 +198,9 @@ class EditPlaceViewController: UIViewController {
         let roadAddress = placeSubtitleLabel.text ?? ""
         let memo = memoTextView.text == viewModel.defaultMemoText ? nil : memoTextView.text
         let link = linkTextView.text == viewModel.defaultLinkText ?  nil : linkTextView.text
-        
-        let editPlace = EditPlace(title: title, memo: memo, link: link, roadNameAddress: roadAddress, longitude: nil, latitude: nil, placeCategoryId: selectedCategory.id)
-        WappleLog.debug("editPlace \(editPlace)")
+        let logitude = viewModel.detailPlace?.longitude
+        let latitude = viewModel.detailPlace?.latitude
+        let editPlace = EditPlace(title: title, memo: memo, link: link, roadNameAddress: roadAddress, longitude: logitude, latitude: latitude, placeCategoryId: selectedCategory.id)
         viewModel.editPlaceButton(editPlace: editPlace)
     }
     
@@ -290,6 +289,8 @@ class EditPlaceViewController: UIViewController {
                         self.placeTitleLabel.text = getPlace.placeName
                         self.placeSubtitleLabel.text = getPlace.roadAddressName
                         self.linkTextView.text = getPlace.placeUrl
+                        self.viewModel?.detailPlace?.longitude = getPlace.longitude
+                        self.viewModel?.detailPlace?.latitude = getPlace.latitude
                     }
                     self.placeAddLayout()
                 }else {

@@ -294,7 +294,7 @@ extension HomeRepository {
     }
     
     func likeSend(archiveId: Int) {
-        let api = PlaceAPI.likeSend(archiveId: archiveId)
+        let api = AlarmAPI.likeSend(archiveId: archiveId)
         service.request(api)
         WappleLog.debug("좋아요 전송")
     }
@@ -302,12 +302,27 @@ extension HomeRepository {
     
     //MARK: 알람 가져오기
     func getAlarms() -> Observable<GetAlarm> {
-        let api = PlaceAPI.getAlarm
+        let api = AlarmAPI.getAlarm
         return service.request(api)
             .map({response -> GetAlarm in
                 switch response {
                 case .success(let data):
                     guard let data = JSON.decode(data: data, to: GetAlarm.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
+    }
+    
+    //MARK: 알람 읽었는지 값 변경
+    func isReadAlarm(alarmId: Int, isRead: Bool) -> Observable<DefaultIntResponse> {
+        let api = AlarmAPI.isReadAlarm(alarmId: alarmId, isRead: isRead)
+        return service.request(api)
+            .map({response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
                     return data
                 case .failure(let error):
                     throw error

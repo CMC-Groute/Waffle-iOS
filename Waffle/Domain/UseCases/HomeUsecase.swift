@@ -37,7 +37,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var changeConfirmSquenceSuccess = PublishSubject<[PlaceInfo]?>() // 순서 변경 조회
     
     var getAlarmSuccess = PublishSubject<[Alarm]>() // 알림 데이터 가져오기
-    
+    var isReadAlarmSuccess = PublishSubject<Bool>() // 알림 읽었는지 확인
     var editPlaceSuccess = PublishSubject<Bool>() // 장소 수정
     init(repository: HomeRepository){
         self.repository = repository
@@ -265,7 +265,6 @@ extension HomeUsecase {
                 WappleLog.error("deletePlace error \(error)")
                 return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.subscribe(onNext: { [weak self] response in
-                guard let self = self else { return }
                 WappleLog.debug("deletePlace \(response)")
                 if response.status == 200 {
                     WappleLog.debug("장소 삭제 성공")
@@ -404,6 +403,24 @@ extension HomeUsecase {
                     self.getAlarmSuccess.onNext(response.data)
                 }else {
                     self.getAlarmSuccess.onNext([])
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func isReadAlarm(alarmId: Int, isRead: Bool) {
+        repository.isReadAlarm(alarmId: alarmId, isRead: isRead)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("isReadAlarm error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("isReadAlarm \(response)")
+                if response.status == 200 {
+                    self.isReadAlarmSuccess.onNext(true)
+                }else {
+                    self.isReadAlarmSuccess.onNext(false)
                 }
             }).disposed(by: disposeBag)
     }

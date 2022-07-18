@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class SettingViewModel {
+final class SettingViewModel {
     
     var isAgreedAlarm = PublishRelay<Bool>()
     
