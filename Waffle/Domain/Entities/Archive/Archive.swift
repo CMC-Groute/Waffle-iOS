@@ -7,7 +7,7 @@
 
 import Foundation
 
-//MARK: 약속 만들기
+//MARK: 약속 만들기, 약속 편집
 struct AddArchive: Codable {
     var title: String
     var date: String? = nil
@@ -20,11 +20,6 @@ struct AddArchive: Codable {
         case memo = "comment"
         case location = "invitationPlace"
     }
-}
-
-//MARK: 약속 편집
-struct EditArchive: Codable {
-    
 }
 
 //MARK: 약속 상세

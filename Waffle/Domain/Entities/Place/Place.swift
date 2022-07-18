@@ -143,6 +143,23 @@ struct AddPlace: Codable {
     }
 }
 
+//MARK: 장소 수정
+struct EditPlace: Codable {
+    var title: String
+    var memo: String?
+    var link: String?
+    var roadNameAddress: String
+    var longitude: String?
+    var latitude: String?
+    var placeCategoryId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case title, link, roadNameAddress
+        case longitude, latitude, placeCategoryId
+        case memo = "comment"
+    }
+}
+
 //MARK: 장소 순서 조회
 struct GetPlaceSequence: Codable {
     var placeSequences: [PlaceSequence]
