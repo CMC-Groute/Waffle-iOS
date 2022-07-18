@@ -39,17 +39,24 @@ class HomeAlarmViewController: UIViewController {
     private func configure() {
         self.noSearchResultView.addSubview(searchImageView)
         self.noSearchResultView.addSubview(noInfoLabel)
-        noInfoLabel.snp.makeConstraints {
-            $0.centerX.equalTo(noSearchResultView)
-            $0.top.equalTo(searchImageView.snp.bottom).offset(10)
-        }
+        self.view.addSubview(noSearchResultView)
+        
         searchImageView.snp.makeConstraints {
-            $0.top.equalTo(170)
+            $0.top.equalTo(20)
             $0.centerX.equalTo(noSearchResultView)
             $0.width.height.equalTo(50)
         }
+        noInfoLabel.snp.makeConstraints {
+            $0.centerX.equalTo(noSearchResultView)
+            $0.top.equalTo(searchImageView.snp.bottom).offset(10)
+            $0.bottom.equalTo(noSearchResultView.snp.bottom).inset(10)
+        }
         
-        noSearchResultView.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
+        noSearchResultView.snp.makeConstraints {
+            $0.width.equalTo(200)
+            $0.height.equalTo(130)
+            $0.centerX.centerY.equalToSuperview()
+        }
         
         func configureNavigationBar() {
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()

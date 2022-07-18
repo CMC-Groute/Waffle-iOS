@@ -42,7 +42,6 @@ class HomeViewController: UIViewController {
     
     @objc func didTapBellButton() {
         viewModel?.homeAlarm()
-        WappleLog.debug("didTapBellButton")
     }
     
     func collectionViewSetUp() {
