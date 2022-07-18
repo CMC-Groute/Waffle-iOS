@@ -174,10 +174,7 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func bindViewModel() { //rx 없이 연결
-        guard let viewModel = viewModel, let place = viewModel.place else {
-            return
-        }
-
+        guard let viewModel = viewModel, let place = viewModel.place else { return }
         placeTitleLabel.text = place.title
         placeSubtitleLabel.text = place.roadNameAddress
         if let link = viewModel.detailPlace?.link {
@@ -213,7 +210,6 @@ class EditPlaceViewController: UIViewController {
         input.linkTextViewDidEndEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                WappleLog.debug("linkTextViewDidEndEvent")
                 if self.linkTextView.text.isEmpty || self.linkTextView.text == nil {
                     self.originLinkText()
                 }else { //비어있지 않을때
@@ -235,7 +231,6 @@ class EditPlaceViewController: UIViewController {
         
         linkDeleteButton.rx.tap
             .subscribe(onNext: {
-                WappleLog.debug("linkDeleteButton")
                 self.originLinkText()
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
@@ -255,7 +250,6 @@ class EditPlaceViewController: UIViewController {
         let attributedString = NSMutableAttributedString(string: "장소와 관련된 링크 주소를 입력해요", attributes: myAttribute)
         linkTextView.attributedText = attributedString
         linkTextView.dataDetectorTypes = []
-        
     }
 
 }
@@ -299,7 +293,6 @@ extension EditPlaceViewController: UITextViewDelegate {
     }
     
     fileprivate func changeTextViewToNormalState() {
-        WappleLog.debug("changeTextViewToNormalState")
         linkTextView.isEditable = true
         linkTextView.textColor = Asset.Colors.black.color
         linkTextView.becomeFirstResponder()
