@@ -30,7 +30,6 @@ class EditPlaceViewController: UIViewController {
     lazy var placeTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Asset.Colors.black.color
-        label.text = "placeTitleLabel"
         label.font = UIFont.fontWithName(type: .medium, size: 17)
         return label
     }()
@@ -38,7 +37,6 @@ class EditPlaceViewController: UIViewController {
     lazy var placeSubtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Asset.Colors.gray5.color
-        label.text = "placeTiplaceSubtitleLabeltleLabel"
         label.font = UIFont.fontWithName(type: .regular, size: 13)
         return label
     }()
@@ -188,19 +186,34 @@ class EditPlaceViewController: UIViewController {
             memoTextView.textColor = Asset.Colors.black.color
         }
         
-        
+        self.editButton.addTarget(self, action: #selector(didTapEditPlaceButton), for: .touchUpInside)
         bindViewModels()
         
     }
     
-    private func bindViewModels() {
-        let input = EditPlaceViewModel.Input(linkTextViewDidTapEvent: self.linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: self.linkTextView.rx.didEndEditing)
+    @objc func didTapEditPlaceButton() {
+        guard let viewModel = viewModel else { return }
+
+        guard let selectedCategory = viewModel.selectedCategory else { return }
+        let title = placeTitleLabel.text ?? ""
+        let roadAddress = placeSubtitleLabel.text ?? ""
+        let memo = memoTextView.text == viewModel.defaultMemoText ? nil : memoTextView.text
+        let link = linkTextView.text == viewModel.defaultLinkText ?  nil : linkTextView.text
         
+        let editPlace = EditPlace(title: title, memo: memo, link: link, roadNameAddress: roadAddress, longitude: nil, latitude: nil, placeCategoryId: selectedCategory.id)
+        WappleLog.debug("editPlace \(editPlace)")
+        //viewModel.editPlaceButton()
+    }
+    
+    private func bindViewModels() {
+        let input = EditPlaceViewModel.Input(placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewEditing: memoTextView.rx.didChange, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing)
+        guard let viewModel = viewModel else { return }
+
         input.linkTextViewDidTapEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 guard let text = self.linkTextView.text else { return }
-                if text == "장소와 관련된 링크 주소를 입력해요" {
+                if text == viewModel.defaultLinkText {
                     self.linkTextView.text = nil
                 }
                 self.linkTextView.textColor = Asset.Colors.black.color
@@ -227,7 +240,42 @@ class EditPlaceViewController: UIViewController {
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
-        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        input.memoTextViewDidTapEvent
+            .subscribe(onNext: { _ in
+                guard let text = self.memoTextView.text else { return }
+                if text == viewModel.defaultMemoText {
+                    self.memoTextView.text = nil
+                    self.memoTextView.textColor = Asset.Colors.black.color
+                }
+                
+                self.memoTextView.focusingBorder(color: Asset.Colors.orange.name)
+            }).disposed(by: disposeBag)
+        
+        input.memoTextViewDidEndEvent
+            .subscribe(onNext: { _ in
+                if self.memoTextView.text.isEmpty || self.memoTextView.text == nil {
+                    self.memoTextView.textColor = Asset.Colors.gray4.color
+                    self.memoTextView.text = viewModel.defaultMemoText
+                }
+                self.memoTextView.focusingBorder(color: Asset.Colors.gray2.name)
+            }).disposed(by: disposeBag)
+        
+        input.memoTextViewEditing
+            .subscribe(onNext: { _ in
+                let size = CGSize(width: self.view.frame.width, height: .infinity)
+                let estimatedSize = self.memoTextView.sizeThatFits(size)
+                self.memoTextView.translatesAutoresizingMaskIntoConstraints = false
+                self.memoTextView.constraints.forEach { (constraint) in
+                    if estimatedSize.height > 152 {
+                        if constraint.firstAttribute == .height {
+                            constraint.constant = estimatedSize.height
+                            self.textViewScrollToBottom()
+                        }
+                    }
+                }
+            }).disposed(by: disposeBag)
+        
+        let _ = viewModel.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap
             .subscribe(onNext: {
@@ -235,9 +283,14 @@ class EditPlaceViewController: UIViewController {
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
-        output?.placeViewEnabled
+        viewModel.placeViewEnabled
             .subscribe(onNext: { bool in
                 if bool {
+                    if let getPlace = self.viewModel?.getPlace {
+                        self.placeTitleLabel.text = getPlace.placeName
+                        self.placeSubtitleLabel.text = getPlace.roadAddressName
+                        self.linkTextView.text = getPlace.placeUrl
+                    }
                     self.placeAddLayout()
                 }else {
                     self.placeInputTextFieldLayout()
@@ -246,8 +299,9 @@ class EditPlaceViewController: UIViewController {
     }
     
     func originLinkText() {
+        guard let viewModel = viewModel else { return }
         let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.gray4.color ]
-        let attributedString = NSMutableAttributedString(string: "장소와 관련된 링크 주소를 입력해요", attributes: myAttribute)
+        let attributedString = NSMutableAttributedString(string: viewModel.defaultLinkText, attributes: myAttribute)
         linkTextView.attributedText = attributedString
         linkTextView.dataDetectorTypes = []
     }
@@ -255,7 +309,11 @@ class EditPlaceViewController: UIViewController {
 }
 
 extension EditPlaceViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
+        let selectedCategory = viewModel.categoryInfo[indexPath.row]
+        viewModel.updateSelectedCategory(category: selectedCategory)
+    }
 }
 
 extension EditPlaceViewController: UICollectionViewDataSource {
@@ -315,8 +373,6 @@ extension EditPlaceViewController: UITextViewDelegate {
            if let url = attributeValue as? URL {
                if UIApplication.shared.canOpenURL(url) {
                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-               } else {
-                   print("There is a problem in your link.")
                }
            } else {
                placeCursor(myTextView, location)

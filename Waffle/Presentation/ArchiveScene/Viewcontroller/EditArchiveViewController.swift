@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class EditArchiveViewController: UIViewController {
+final class EditArchiveViewController: UIViewController {
     @IBOutlet weak var archiveNameTextField: UITextField!
     @IBOutlet weak var archiveDateTextField: UITextField!
     @IBOutlet weak var archiveTimeTextField: UITextField!
@@ -24,7 +24,7 @@ class EditArchiveViewController: UIViewController {
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
     var viewModel: EditArchiveViewModel?
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     let style = NSMutableParagraphStyle()
     
     let datePicker: UIDatePicker = {
@@ -168,7 +168,7 @@ class EditArchiveViewController: UIViewController {
         let title = archiveNameTextField.text ?? ""
         let date = archiveDateTextField.text ?? nil
         let time = archiveTimeTextField.text ?? nil
-        let memo = archiveMemoTextView.text == viewModel?.defaultText ? nil : archiveMemoTextView.text
+        let memo = archiveMemoTextView.text == viewModel?.defaultMemoText ? nil : archiveMemoTextView.text
         let location = archiveLocationTextField.text == "" ? nil :  archiveLocationTextField.text
         
         let archive = AddArchive(title: title, date: date?.toDate()?.sendDataFormat(), time: time?.toTime()?.sendTimeFormat(), memo: memo, location: location)
@@ -259,6 +259,10 @@ class EditArchiveViewController: UIViewController {
         let input = EditArchiveViewModel.Input(nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), editArchiveButton: self.addArchiveButton.rx.tap.asObservable())
 
         let _ = viewModel?.transform(from: input, disposeBag: disposeBag)
+        guard let viewModel = viewModel else {
+            return
+        }
+
 //        editDataBinding()
         
 //        output?.title
@@ -283,22 +287,18 @@ class EditArchiveViewController: UIViewController {
         
         input.dateTimeLaterButton
             .subscribe(onNext: { _ in
-                print("dateTimeLaterButton")
                 self.tapDateTimeLaterButton()
             }).disposed(by: disposeBag)
         
         input.locationLaterButton
             .subscribe(onNext: { _ in
-                print("locationLaterButton")
                 self.tapLocationLaterButton()
             }).disposed(by: disposeBag)
         
         input.memoTextViewDidTapEvent
             .subscribe(onNext: { _ in
                 guard let text = self.archiveMemoTextView.text else { return }
-                if text == """
-                약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요
-                """ {
+                if text == viewModel.defaultMemoText {
                     self.archiveMemoTextView.text = nil
                     self.archiveMemoTextView.textColor = Asset.Colors.black.color
                 }
@@ -310,9 +310,7 @@ class EditArchiveViewController: UIViewController {
             .subscribe(onNext: { _ in
                 if self.archiveMemoTextView.text.isEmpty || self.archiveMemoTextView.text == nil {
                     self.archiveMemoTextView.textColor = Asset.Colors.gray4.color
-                    self.archiveMemoTextView.text = """
-                약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요
-                """
+                    self.archiveMemoTextView.text = viewModel.defaultMemoText
                 }
                 self.archiveMemoTextView.focusingBorder(color: Asset.Colors.gray2.name)
             }).disposed(by: disposeBag)

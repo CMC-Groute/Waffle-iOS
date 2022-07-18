@@ -25,7 +25,7 @@ class EditArchiveViewModel {
 //    let locationTextField = BehaviorRelay<String?>(value: nil) //외부에서 받아오는 데이터
 //    let datePickerDate = BehaviorRelay<Date?>(value: nil)
 //    let timePickerTime = BehaviorRelay<Date?>(value: nil)
-    let defaultText = "약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요"
+    let defaultMemoText = "약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요"
     let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
     let locationLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
     let doneButtonEnabled = BehaviorRelay<Bool>(value: false)

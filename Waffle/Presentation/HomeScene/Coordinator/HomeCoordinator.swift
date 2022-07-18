@@ -121,9 +121,15 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     
     func selectPlace(place: PlaceSearch) { // 장소 검색 후 돌아오기
         self.navigationController.popViewController(animated: true)
-        guard let topViewController = navigationController.topViewController as? AddDetailPlaceViewController else { return }
-        topViewController.viewModel?.getPlace = place
-        topViewController.viewModel?.placeViewEnabled.accept(true)
+        if let topViewController = navigationController.topViewController as? AddDetailPlaceViewController  {
+            topViewController.viewModel?.getPlace = place
+            topViewController.viewModel?.placeViewEnabled.accept(true)
+        }else {
+            if let topViewController = navigationController.topViewController as? EditPlaceViewController {
+                topViewController.viewModel?.getPlace = place
+                topViewController.viewModel?.placeViewEnabled.accept(true)
+            }
+        }
     }
     
     func finish() {
