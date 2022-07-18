@@ -15,7 +15,7 @@ protocol UserRepositoryProtocol {
     func updatePassword(password: Password) -> Observable<DefaultIntResponse>
     
     func getProfileInfo() -> Observable<UserInfoResponse>
-    func setAlarm(state: Bool)
+    func setAlarm(state: Bool) -> Observable<DefaultIntResponse> 
     func quitUser() -> Observable<DefaultIntResponse>
                                     
                                                             

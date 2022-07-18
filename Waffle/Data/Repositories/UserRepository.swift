@@ -17,9 +17,21 @@ class UserRepository: UserRepositoryProtocol {
         service = networkService
     }
     
-    func setAlarm(state: Bool) {
-        
-    }
+    func setAlarm(state: Bool) -> Observable<DefaultIntResponse> {
+        let api = LoginSignAPI.setAlarm(isOn: state)
+        return service.request(api)
+            .map ({ response -> DefaultIntResponse in
+                switch response {
+                case .success(let data):
+                    WappleLog.debug("알림 설정 성공")
+                    guard let data = JSON.decode(data: data, to: DefaultIntResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    WappleLog.debug("알림 설정 nn")
+                    throw error
+                }
+            })
+        }
     
     func getProfileInfo() -> Observable<UserInfoResponse> {
         let api = LoginSignAPI.getUserInfo

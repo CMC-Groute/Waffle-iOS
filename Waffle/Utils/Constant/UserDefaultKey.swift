@@ -14,4 +14,5 @@ enum UserDefaultKey {
     static let jwtToken = "jwtToken"
     static let deviceToken = "deviceToken"
     static let joinArchiveId = "joinArchiveId"
+    static let isOnAlarm = "isOnAlarm"
 }

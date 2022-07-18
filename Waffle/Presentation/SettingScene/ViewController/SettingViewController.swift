@@ -55,6 +55,7 @@ final class SettingViewController: UIViewController {
     private lazy var settingOptions: [SettingOptions] = {
         let alertCell = SettingTableViewCell(style: .switchControl)
         alertCell.title = "알림 설정"
+        alertCell.delegate = self
         let alertOption = SettingOptions(cell: alertCell)
 
         let versionCell = SettingTableViewCell(style: .detail)
@@ -178,7 +179,7 @@ extension SettingViewController: UITableViewDelegate {
         
         if indexPath.row == 3 {
             openFeedbackMail()
-        }else if indexPath.row == 4 {
+        }else if indexPath.row == 4 { //이용 약관 동의
             if let url = URL(string: SettingInfo.privacyPolicyAgreeLink) {
                 UIApplication.shared.open(url)
             }
@@ -197,6 +198,14 @@ extension SettingViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+}
+
+extension SettingViewController: SettingTableViewCellDelegate {
+    func didTapSwitch(isOn: Bool) {
+        viewModel?.setAlarm(isOn: isOn)
+    }
+    
+    
 }
 
 

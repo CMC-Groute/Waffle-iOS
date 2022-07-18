@@ -32,7 +32,19 @@ class UserUsecase: UserUseCaseProtocol {
     }
     
     func setAlarm(state: Bool) {
-        self.repository.setAlarm(state: state)
+        repository.setAlarm(state: state)
+            .catch { error -> Observable<DefaultIntResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("setAlarm error \(error)")
+                return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                if response.status == 200 {
+                    WappleLog.debug("setAlarm \(response)")
+                }else {
+                    
+                }
+            }).disposed(by: disposeBag)
     }
     
     func checkPasswordValid(password: String) -> Bool { // 영문, 숫자, 8자리 이상

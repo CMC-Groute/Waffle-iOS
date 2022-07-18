@@ -12,6 +12,10 @@ import Combine
 import RxSwift
 import RxCocoa
 
+protocol SettingTableViewCellDelegate: AnyObject {
+    func didTapSwitch(isOn: Bool)
+}
+
 final class SettingTableViewCell: UITableViewCell {
     enum Style {
         case plain, detail, switchControl
@@ -38,6 +42,8 @@ final class SettingTableViewCell: UITableViewCell {
         switchControl.isOn = true
         return switchControl
     }()
+    
+    weak var delegate: SettingTableViewCellDelegate?
     
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(
@@ -74,7 +80,8 @@ final class SettingTableViewCell: UITableViewCell {
     
     private func configureUI() {
         self.backgroundColor = .clear
-
+        switchControl.isOn = UserDefaults.standard.bool(forKey: UserDefaultKey.isOnAlarm)
+        switchControl.addTarget(self, action: #selector(didTapSwitch), for: .touchUpInside)
         self.contentView.addSubview(self.stackView)
         self.stackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(11)
@@ -96,6 +103,11 @@ final class SettingTableViewCell: UITableViewCell {
             self.switchControl.isHidden = false
         default: return
         }
+    }
+    
+    @objc func didTapSwitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey: UserDefaultKey.isOnAlarm)
+        delegate?.didTapSwitch(isOn: sender.isOn)
     }
 
 

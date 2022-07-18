@@ -81,6 +81,10 @@ class SettingViewModel {
         
         return output
     }
+    
+    func setAlarm(isOn: Bool) {
+        usecase.setAlarm(state: isOn)
+    }
         
 }
 
