@@ -29,6 +29,7 @@ enum PlaceAPI: NetworkRequestBuilder {
     
     //MARK: Push Notification
     case likeSend(archiveId: Int)
+    case getAlarm(alarm: [Alarm])
     
 }
 
@@ -67,7 +68,8 @@ extension PlaceAPI {
             return "/invitation/place/\(placeId)/likes"
         case .likeSend(let archiveId):
             return "/invitation/\(archiveId)/push/likes"
-        
+        case .getAlarm(_):
+            return "/push"
         }
     }
     
@@ -83,17 +85,16 @@ extension PlaceAPI {
             return .put
         case .editPlace(_, _, _):
             return .patch
-        case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _):
+        case .getConfirmPlace(_), .getPlaceByCategory(_, _), .getDetailPlace(_, _), .getAlarm(_):
             return .get
         case .deletePlace(_, _), .deletePlacCategory(_, _), .deleteLike(_):
             return .delete
-        
         }
     }
     
     var body: [String : Any]? {
         switch self {
-        case .getConfirmPlace(_),  .getPlaceByCategory(_, _), .getDetailPlace(_, _), .deletePlace(_, _), .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .likeSend(_):
+        case .getConfirmPlace(_),  .getPlaceByCategory(_, _), .getDetailPlace(_, _), .deletePlace(_, _), .setConfirmPlace(_, _), .cancelConfirmPlace(_, _), .likeSend(_), .getAlarm(_):
             return nil
         case .placeSearch(let search):
             return search.dictionary
