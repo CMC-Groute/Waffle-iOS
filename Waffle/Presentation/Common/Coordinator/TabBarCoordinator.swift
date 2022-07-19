@@ -94,13 +94,12 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
             homeCoordinator.start()
         case .archive:
             WappleLog.debug("archive")
+            
         case .setting:
             let settingCoordinator = SettingCoordinator(navigationVewController)
             settingCoordinator.finishDelegate = self
             self.childCoordinators.append(settingCoordinator)
             settingCoordinator.start()
-//            self.tabBarController.coordinator = homeCoordinator
-        
        }
     }
     

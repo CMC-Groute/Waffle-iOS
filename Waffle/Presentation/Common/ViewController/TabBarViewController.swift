@@ -36,13 +36,21 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: ArchivePopUpViewDelegate {
     func didTapAddArchiveView() {
+        print("didTapAddArchiveView \(coordinator)")
         self.tabBar.items![lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
+        if self.selectedIndex == 2 {
+            self.selectedIndex = 0
+        }
         self.coordinator.addArchive()
         popUpView.isHidden = true // 팝업뷰 닫기
     }
     
     func didTapInputArchiveView() {
+        print("didTapInputArchiveView \(coordinator)")
         self.tabBar.items![lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
+        if self.selectedIndex == 2 {
+            self.selectedIndex = 0
+        }
         self.coordinator.inputCodeArchive()
         popUpView.isHidden = true
     }

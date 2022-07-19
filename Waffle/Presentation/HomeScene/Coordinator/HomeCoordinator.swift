@@ -222,7 +222,7 @@ extension HomeCoordinator {
     func addArchive() {
         let addArchiveViewcontroller = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddArchiveViewController") as! AddArchiveViewController
         addArchiveViewcontroller.viewModel = AddArchiveViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
-        self.navigationController.pushViewController(addArchiveViewcontroller, animated: true)
+        navigationController.pushViewController(addArchiveViewcontroller, animated: true)
     }
     
     func editArchive(archiveId: Int, detailArchive: DetailArhive?) {
@@ -232,19 +232,18 @@ extension HomeCoordinator {
         if let detailArchive = detailArchive {
             editArchiveViewController.viewModel?.detailArchive = detailArchive
         }
-        self.navigationController.pushViewController(editArchiveViewController, animated: true)
+        navigationController.pushViewController(editArchiveViewController, animated: true)
     }
     
     func addLocation() {
         let addLocationViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "AddLocationViewController") as! AddLocationViewController
-        self.navigationController.pushViewController(addLocationViewController, animated: true)
+        navigationController.pushViewController(addLocationViewController, animated: true)
     }
     
     func inputCodeArchive() {
         let inputArchiveCodeViewController = UIStoryboard(name: "Archive", bundle: nil).instantiateViewController(withIdentifier: "InputArchiveCodeViewController") as! InputArchiveCodeViewController
         inputArchiveCodeViewController.viewModel = InputArchiveCodeViewModel(usecase: ArchiveUsecase(repository: ArchiveRepository(networkService: URLSessionNetworkService())), coordinator: self)
         navigationController.pushViewController(inputArchiveCodeViewController, animated: true)
-
     }
     
     func popToNavigaionController() {
