@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class EditSettingViewModel {
+final class EditSettingViewModel {
     var nickName: String?
     
     struct Input {

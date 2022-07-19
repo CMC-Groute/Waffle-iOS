@@ -20,7 +20,6 @@ final class SettingViewModel {
         let setAlarmState: ControlEvent<Void>
         let itemSelected: Observable<IndexPath>
         let quitButton: Observable<Void>
-        
     }
     
     struct Output {

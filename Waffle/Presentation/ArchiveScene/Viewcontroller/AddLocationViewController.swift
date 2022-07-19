@@ -89,7 +89,6 @@ class AddLocationViewController: UIViewController {
             searchBar.placeholder = "지역 검색"
             searchBar.delegate = self
             navigationItem.titleView = searchBar
-            searchBar.becomeFirstResponder()
             let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
             let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
             navigationItem.leftBarButtonItem = backButton
