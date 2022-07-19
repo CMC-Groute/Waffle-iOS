@@ -36,11 +36,13 @@ extension UILabel {
 }
 
 extension UILabel {
-    func asColor(targetString: String, color: UIColor) {
+    func asColor(targetList: [String], color: UIColor) {
         let fullText = text ?? ""
         let attributedString = NSMutableAttributedString(string: fullText)
-        let range = (fullText as NSString).range(of: targetString)
-        attributedString.addAttribute(.foregroundColor, value: color, range: range)
+        targetList.forEach {
+            let range = (fullText as NSString).range(of: $0)
+            attributedString.addAttribute(.foregroundColor, value: color, range: range)
+        }
         attributedText = attributedString
     }
 }
