@@ -26,7 +26,6 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     private var repository: LoginSignRepository!
     private let disposeBag = DisposeBag()
     
-    //MARK:
     let sendEmailSuccess = PublishSubject<SendEmailStatus>()
     let loginSuccess = PublishSubject<LoginStatus>()
     let checkEmailCode = PublishSubject<Bool>()

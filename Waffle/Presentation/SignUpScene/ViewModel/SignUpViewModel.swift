@@ -17,7 +17,7 @@ enum EmailValidColor: String {
     case red, green, orange
 }
 
-class SignUpViewModel {
+final class SignUpViewModel {
 
     struct Input {
         var emailTextField: Observable<String>

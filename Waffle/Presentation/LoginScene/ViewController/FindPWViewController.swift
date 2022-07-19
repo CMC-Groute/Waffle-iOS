@@ -10,13 +10,13 @@ import UIKit
 import RxSwift
 import SnapKit
 
-class FindPWViewController: UIViewController {
+final class FindPWViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var getTempPWButton: UIButton!
     @IBOutlet weak var emailInvalidText: UILabel!
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
-    let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     var viewModel: FindPWViewModel?
     
     override func viewDidLoad() {
@@ -42,11 +42,11 @@ class FindPWViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
     }
     
-    @objc func didTapBackButton() {
+    @objc private func didTapBackButton() {
         viewModel?.back()
     }
     
-    func resignForKeyboardNotification() {
+    private func resignForKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -57,7 +57,7 @@ class FindPWViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
               let keyboardReactangle = keyboardFrame.cgRectValue
               let keyboardHeight = keyboardReactangle.height
@@ -71,7 +71,7 @@ class FindPWViewController: UIViewController {
 
       }
       
-      @objc func keyboardWillHide(notification: NSNotification) {
+      @objc private func keyboardWillHide(notification: NSNotification) {
           UIView.animate(
               withDuration: 0.3
               , animations: {

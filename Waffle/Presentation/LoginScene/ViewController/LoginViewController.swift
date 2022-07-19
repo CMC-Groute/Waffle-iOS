@@ -10,21 +10,21 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginViewController: UIViewController {
-    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var findPWButton: UIButton!
+final class LoginViewController: UIViewController {
+    @IBOutlet private weak var bottonConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var findPWButton: UIButton!
     
-    @IBOutlet weak var userInputView: UIView!
-    @IBOutlet weak var emailInvalidText: UILabel!
-    @IBOutlet weak var passwordInvalidText: UILabel!
-    @IBOutlet weak var lastButtonView: UIStackView!
+    @IBOutlet private weak var userInputView: UIView!
+    @IBOutlet private weak var emailInvalidText: UILabel!
+    @IBOutlet private weak var passwordInvalidText: UILabel!
+    @IBOutlet private weak var lastButtonView: UIStackView!
     
     var viewModel: LoginViewModel?
-    let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         configureUI()
     }
     
-    func resignForKeyboardNotification() {
+    private func resignForKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc private func keyboardWillShow(notification: NSNotification) {
           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
               let keyboardReactangle = keyboardFrame.cgRectValue
               let keyboardHeight = keyboardReactangle.height
@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
 
       }
       
-      @objc func keyboardWillHide(notification: NSNotification) {
+      @objc private func keyboardWillHide(notification: NSNotification) {
           UIView.animate(
               withDuration: 0.3
               , animations: {
@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
           )
       }
     
-    func configureUI() {
+    private func configureUI() {
         UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
         loginButton.makeRounded(corner: 26)
         emailTextField.changePlaceHolderColor()
@@ -99,7 +99,6 @@ class LoginViewController: UIViewController {
         let output = self.viewModel?.transform(from: input, disposeBag: self.disposeBag)
         output?.emailInvalidMessage
             .subscribe(onNext: { [weak self] bool in
-                WappleLog.debug("email \(bool)")
                 guard let self = self else { return }
                 self.emailInvalidText.isHidden = !bool
                 self.emailTextField.errorBorder(bool: !bool)
@@ -141,7 +140,6 @@ class LoginViewController: UIViewController {
         
         output?.loginButtonEnabled
             .subscribe(onNext: { bool in
-
                 switch bool {
                 case true:
                     self.loginButton.setEnabled(color: Asset.Colors.black.name)

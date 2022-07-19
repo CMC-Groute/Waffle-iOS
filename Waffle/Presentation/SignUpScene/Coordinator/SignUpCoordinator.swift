@@ -20,7 +20,7 @@ final class SignUpCoordinator: SignUpCoordinatorProtocol {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.setNavigationBarHidden(false, animated: true)
-        self.signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController        
+        self.signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController       
     }
             
     func start() {

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class FindPWViewModel {
+final class FindPWViewModel {
     
     struct Input {
         var emailTextField: Observable<String>
@@ -23,8 +23,8 @@ class FindPWViewModel {
         var emailInvalidMessage = PublishRelay<Bool>()
     }
     
-    var usecase: LoginSignUsecase
-    var coordinator: LoginCoordinator
+    private var usecase: LoginSignUsecase
+    private var coordinator: LoginCoordinator
     
     init(usecase: LoginSignUsecase, coordinator: LoginCoordinator) {
         self.usecase = usecase

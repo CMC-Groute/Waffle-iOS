@@ -10,7 +10,7 @@ import RxRelay
 import RxSwift
 import RxCocoa
 
-class SetProfileImageViewModel {
+final class SetProfileImageViewModel {
 
     var signUpInfo: SignUp?
     

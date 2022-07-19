@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileImageCollectionViewCell: UICollectionViewCell {
+final class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ProfileImageCollectionViewCell"
     
@@ -66,9 +66,4 @@ class ProfileImageCollectionViewCell: UICollectionViewCell {
             make.centerX.centerY.equalToSuperview()
         }
     }
-    
-//    func selected(isSelected: Bool){
-//        self.selectedButton.isHidden = isSelected ? false : true
-//    }
-//
 }

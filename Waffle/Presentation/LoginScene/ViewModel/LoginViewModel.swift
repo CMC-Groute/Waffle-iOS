@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class LoginViewModel {
+final class LoginViewModel {
     
     private var disposable = DisposeBag()
     private var usecase: LoginSignUsecase
@@ -52,27 +52,6 @@ class LoginViewModel {
             .bind(onNext: { [weak self] email, password in
                 guard let self = self else { return }
                 self.usecase.login(email: email, password: password)
-//                if !self.usecase.checkEmailValid(email:  email) { // 이메일 유효성 x
-//                    output.emailInvalidMessage.accept(false)
-//                }else {
-//                    output.emailInvalidMessage.accept(true)
-//                }
-//
-//
-//
-//                if !self.usecase.checkPasswordValid(password: password) { //패스워드 유효성 x
-//                    output.passwordInvalidMessage.accept(false)
-//                }else {
-//                    output.passwordInvalidMessage.accept(true)
-//                }
-//
-//                Observable.combineLatest(output.emailInvalidMessage, output.passwordInvalidMessage)
-//                    .map { $0.0 && $0.1 }
-//                    .filter { $0 }
-//                    .subscribe(onNext: { _ in
-//                        print("loginViewMoldel")
-//                        self.usecase.login(email: email, password: password)
-//                    }).disposed(by: disposeBag)
             }).disposed(by: disposeBag)
            
         //loginSuccess true인 경우만 로그인 허용
@@ -102,8 +81,6 @@ class LoginViewModel {
             }).disposed(by: disposeBag)
         
         return output
-        
-    
     }
 
     

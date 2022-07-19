@@ -23,15 +23,14 @@ class TabBarViewController: UITabBarController {
             $0.bottom.equalToSuperview().inset(self.tabBar.frame.height)
             $0.top.leading.trailing.equalTo(self.view)
         }
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
         self.delegate = self
-        self.popUpView.isHidden = true
-        self.view.addSubview(self.popUpView)
+        popUpView.isHidden = true
+        view.addSubview(popUpView)
     }
 }
 
