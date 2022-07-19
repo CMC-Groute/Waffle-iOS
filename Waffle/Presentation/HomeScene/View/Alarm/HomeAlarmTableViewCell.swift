@@ -7,15 +7,13 @@
 
 import UIKit
 
-class HomeAlarmTableViewCell: UITableViewCell {
+final class HomeAlarmTableViewCell: UITableViewCell {
     static let identifier = "HomeAlarmTableViewCell"
     
-    @IBOutlet weak var archiveImageView: UIImageView!
-    
-    @IBOutlet weak var dotButton: UIButton!
-    @IBOutlet weak var alarmText: UILabel!
-    
-    @IBOutlet weak var dateText: UILabel!
+    @IBOutlet private weak var archiveImageView: UIImageView!
+    @IBOutlet private weak var dotButton: UIButton!
+    @IBOutlet private weak var alarmText: UILabel!
+    @IBOutlet private weak var dateText: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +28,6 @@ class HomeAlarmTableViewCell: UITableViewCell {
     func configureCell(alarm: Alarm) {
         let alarmType = AlarmType(rawValue: alarm.pushType)
         var alarmString = ""
-        //let attribtuedString = NSMutableAttributedString(string: fullText)
         switch alarmType {
             case .likes:
                 alarmString = "\(alarm.nickName)님이 좋아요 조르기를 시전! \(alarm.archiveTitle)을 위해 가고 싶은 장소에 좋아요를 눌러주세요. ❤️👇"

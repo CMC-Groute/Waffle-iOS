@@ -14,10 +14,10 @@ struct LoadSearchPlace {
     static var currentPage = 1
 }
 
-class SearchPlaceViewModel {
+final class SearchPlaceViewModel {
     
     var coordinator: HomeCoordinator!
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
 
     var place: [PlaceSearch] = []

@@ -255,7 +255,7 @@ extension HomeCoordinator {
         navigationController.popToRootViewController(animated: true)
     }
     
-    func alarm(alarm: [String]) {
+    func alarm() {
         let homeAlarmViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeAlarmViewController") as! HomeAlarmViewController
         homeAlarmViewController.viewModel = HomeAlarmViewModel(coordinator: self, usecase: HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService())))
         self.navigationController.pushViewController(homeAlarmViewController, animated: true)

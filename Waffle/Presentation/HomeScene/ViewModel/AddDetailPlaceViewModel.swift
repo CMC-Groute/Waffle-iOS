@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AddDetailPlaceViewModel {
+final class AddDetailPlaceViewModel {
     var coordinator: HomeCoordinator!
-    var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     var usecase: HomeUsecase!
     var categoryInfo: [PlaceCategory] = []
     
@@ -39,14 +39,12 @@ class AddDetailPlaceViewModel {
         var memoTextViewDidEndEvent: ControlEvent<Void>
         var memoTextViewEditing: ControlEvent<Void>
         var addButton: Observable<Void>
-        
     }
     
     
     struct Output {
         let addButtonEnabled = BehaviorRelay<Bool>(value: false)
         let linkTextView = BehaviorRelay<String?>(value: nil)
-        
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -81,16 +79,13 @@ class AddDetailPlaceViewModel {
                 var addPlaceInfo = AddPlace(title: getPlace.placeName, roadNameAddress: getPlace.roadAddressName, longitude: getPlace.longitude, latitude: getPlace.latitude )
                 if memo != self.defaultText { addPlaceInfo.memo = memo }
                 addPlaceInfo.link = link
-                WappleLog.debug("categoryId \(categoryId) // addPlaceInfo \(addPlaceInfo)")
                 self.usecase.addPlace(archiveId: archiveId, categoryId: categoryId, addPlace: addPlaceInfo)
             }).disposed(by: disposeBag)
         
         usecase.addPlaceSuccess
-            .subscribe(onNext: { bool in
-                if bool {
-                    WappleLog.debug("약속 추가 성공")
-                    self.coordinator.popViewController()
-                }
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.coordinator.popViewController()
             }).disposed(by: disposeBag)
         
         return output

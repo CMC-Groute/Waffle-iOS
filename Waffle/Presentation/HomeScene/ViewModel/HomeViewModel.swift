@@ -15,7 +15,6 @@ class HomeViewModel {
     var usecase: HomeUsecase!
     var cardInfo: [CardInfo]?
     var archiveId: Int = -1
-    var alarm: [String] = ["test, test, test test, test, testtest, test, testtest, test, test"]
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -72,7 +71,7 @@ class HomeViewModel {
     }
     
     func homeAlarm() {
-        coordinator.alarm(alarm: self.alarm)
+        coordinator.alarm()
     }
     
     

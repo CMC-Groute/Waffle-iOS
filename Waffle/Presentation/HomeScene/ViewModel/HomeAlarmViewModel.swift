@@ -45,11 +45,5 @@ final class HomeAlarmViewModel {
             }).disposed(by: disposeBag)
         
         return output
-        
-        
-    }
-    
-    func getDetailArchive(archiveId: Int) {
-        
     }
 }

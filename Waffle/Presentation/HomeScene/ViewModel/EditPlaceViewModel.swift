@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class EditPlaceViewModel {
+final class EditPlaceViewModel {
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
     private var disposeBag = DisposeBag()

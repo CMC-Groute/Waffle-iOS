@@ -16,7 +16,7 @@ enum LoadIndexPathType {
     case tableView
 }
 
-class DetailArchiveViewModel {
+final class DetailArchiveViewModel {
     
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
@@ -45,9 +45,7 @@ class DetailArchiveViewModel {
         var addPlaceButton: Observable<Void>
     }
     
-    struct Output {
-        
-    }
+    struct Output {}
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
@@ -75,9 +73,7 @@ class DetailArchiveViewModel {
                         guard let self = self else { return }
                     if let detailArchive = detailArchive {
                         WappleLog.debug("DetailArchiveViewModel detailArchive \(detailArchive)")
-                        self.detailArchive = detailArchive // 전체 약속 데이터
-                        // 기본은 확정 장소이나
-                        //self.placeInfo = detailArchive.placeInfo
+                        self.detailArchive = detailArchive
                         self.updateSelectedCategory(category: self.selectedCategory)
                         let category = detailArchive.category?.compactMap { category in
                             return PlaceCategory(id: category.id, name: CategoryType.init(rawValue: category.name)?.format() ?? "") }
@@ -124,9 +120,7 @@ class DetailArchiveViewModel {
             usecase.getPlaceByCategorySuccess
                 .subscribe(onNext: { [weak self] place in
                     guard let self = self else { return }
-                    guard let place = place else {
-                        return
-                    }
+                    guard let place = place else { return }
                     WappleLog.debug("getPlaceByCategorySuccess \(place)")
                     self.placeInfo = place
                     self.loadData.onNext(.tableView)
@@ -174,8 +168,6 @@ class DetailArchiveViewModel {
                     guard let archiveId = self?.archiveId else { return }
                     self?.usecase.getConfirmPlace(archiveId: archiveId) //확정 장소 가져오기
                 }).disposed(by: disposeBag)
-            
-            
         }
         
         return output

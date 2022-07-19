@@ -33,5 +33,3 @@ struct AddCategoryResponse: Codable {
     var status: Int
     var data: [PlaceCategory]?
 }
-        
-        

@@ -11,7 +11,7 @@ protocol CategoruDetailArchiveDelegate: AnyObject {
     func showNotDeleteCategoryToastMessage()
 }
 
-class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
+final class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     static let identifier = "CategoryDefailArchiveCollectionViewCell"
     @IBOutlet private weak var collectionView: UICollectionView!
 
@@ -37,7 +37,7 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
         configureCollectionView()
     }
     
-    func configureGesture() {
+    private func configureGesture() {
         let editGesture = UILongPressGestureRecognizer(target: self, action: #selector(didTapEditingMode))
         editGesture.minimumPressDuration = 1
         editGesture.delaysTouchesBegan = true
@@ -53,7 +53,7 @@ class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsSelection = true
