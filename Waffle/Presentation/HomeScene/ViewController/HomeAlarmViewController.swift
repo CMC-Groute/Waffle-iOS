@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 import RxSwift
 
-class HomeAlarmViewController: UIViewController {
+final class HomeAlarmViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     var viewModel: HomeAlarmViewModel?
+    private var disposeBag = DisposeBag()
     
     var noSearchResultView: UIView = {
         let view = UIView()
@@ -79,13 +80,20 @@ class HomeAlarmViewController: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 50
+        tableView.estimatedRowHeight = 30
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "HomeAlarmTableViewCell", bundle: nil), forCellReuseIdentifier: HomeAlarmTableViewCell.identifier)
     }
     
     private func bindViewModel(){
         let input =  HomeAlarmViewModel.Input(viewDidLoadEvent: Observable.just(()))
+        let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        
+        output?.loadData
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.tableView.reloadData()
+            }).disposed(by: disposeBag)
     }
 }
 

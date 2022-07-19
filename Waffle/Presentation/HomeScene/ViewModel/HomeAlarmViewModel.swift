@@ -7,12 +7,14 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 final class HomeAlarmViewModel {
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
     private var disposeBag = DisposeBag()
     var alarmData: [Alarm] = []
+    var detailArchive: DetailArhive?
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -24,7 +26,7 @@ final class HomeAlarmViewModel {
     }
     
     struct Output {
-        
+        var loadData = PublishSubject<Bool>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -37,11 +39,17 @@ final class HomeAlarmViewModel {
         
         usecase.getAlarmSuccess
             .subscribe(onNext: { alarm in
+                WappleLog.debug("alarm \(alarm)")
                 self.alarmData = alarm
+                output.loadData.onNext(true)
             }).disposed(by: disposeBag)
         
         return output
         
+        
+    }
+    
+    func getDetailArchive(archiveId: Int) {
         
     }
 }

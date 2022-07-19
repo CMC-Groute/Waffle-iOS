@@ -160,8 +160,8 @@ struct SendCategory {
 }
 
 enum AlarmType: String {
-    case ALARM_LIKES = "like"
-    case ALARM_JOIN = "join"
-    case ALARM_NOT_DECIDE = "undefined"
-    case ALARM_BEFORE_DAY = "beforeDay"
+    case likes = "ALARM_LIKES"
+    case join = "ALARM_JOIN"
+    case notDecided = "ALARM_NOT_DECIDE"
+    case beforeDay = "ALARM_BEFORE_DAY"
 }

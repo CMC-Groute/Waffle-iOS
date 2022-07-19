@@ -69,16 +69,12 @@ class AddArchiveViewModel {
             .bind(onNext: { name, date, time, memo, location in
                 var arhive = AddArchive(title: name)
                 let defaultText = "약속에 대한 간략한 정보나 토핑 멤버에게 보내고 싶은 메시지를 작성하면 좋아요"
-                if memo != defaultText {
-                    arhive.memo = memo
-                }
+                if memo != defaultText { arhive.memo = memo }
                 let dateString = date?.sendDataFormat()
                 let timeString = time?.sendTimeFormat()
                 arhive.date = dateString
                 arhive.time = timeString
                 arhive.location = location
-                WappleLog.debug("\(name) \(date) \(time) \(memo) \(location)")
-                WappleLog.debug("\(dateString) \(timeString)")
                  WappleLog.debug("inputData \(arhive)")
                 self.usecase.addArchive(archive: arhive)
             }).disposed(by: disposeBag)

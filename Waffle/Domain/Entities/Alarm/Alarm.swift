@@ -17,10 +17,13 @@ struct Alarm: Codable {
     var archiveTitle: String
     var nickName: String
     var pushType: String
+    var placeImage: String
+    var isRead: Bool
     
     enum CodingKeys: String, CodingKey {
         case archiveId = "invitationId"
         case archiveTitle = "invitationTitle"
-        case nickName, pushType
+        case placeImage = "invitationImageCategory"
+        case nickName, pushType, isRead = "read"
     }
 }

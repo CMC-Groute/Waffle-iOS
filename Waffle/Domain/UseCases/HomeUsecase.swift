@@ -73,8 +73,8 @@ class HomeUsecase: HomeUsecaseProtocol {
         }
     
     //MARK: 디테일 페이지 카드 조회
-    func getDetailArchiveInfo(placeId: Int) {
-        repository.getDetailArchiveInfo(id: placeId)
+    func getDetailArchiveInfo(archiveId: Int) {
+        repository.getDetailArchiveInfo(id: archiveId)
             .catch { error -> Observable<GetDetailArchive> in
                 WappleLog.error("getDetailArchiveInfo error \(error)")
                 let error = error as! URLSessionNetworkServiceError

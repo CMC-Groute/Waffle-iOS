@@ -55,7 +55,7 @@ class DetailArchiveViewModel {
         input.viewWillAppearEvent
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
+                self.usecase.getDetailArchiveInfo(archiveId: self.archiveId)
                 WappleLog.debug("detailArchiveVieModel archiveId \(self.archiveId)")
                 self.getArchiveCode()
             }).disposed(by: disposeBag)
@@ -118,7 +118,7 @@ class DetailArchiveViewModel {
                     guard let self = self else { return }
                     WappleLog.debug("DetailArchiveViewModel deleteCategory \(bool)")
                     self.idFromDelete = true
-                    self.usecase.getDetailArchiveInfo(placeId: self.archiveId)
+                    self.usecase.getDetailArchiveInfo(archiveId: self.archiveId)
                 }).disposed(by: disposeBag)
             
             usecase.getPlaceByCategorySuccess
