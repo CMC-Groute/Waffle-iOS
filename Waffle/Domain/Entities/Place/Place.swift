@@ -20,11 +20,14 @@ struct PlaceInfo: Codable {
     var roadNameAddress: String?
     var isConfirm: Bool
     var placeLike: PlaceLike
+    var longitude: String?
+    var latitude: String?
     
     enum CodingKeys: String, CodingKey {
         case placeId, title, seq
         case roadNameAddress, placeLike = "placeLikesDto"
         case isConfirm = "isDecision"
+        case longitude, latitude
     }
 }
 
@@ -37,13 +40,10 @@ struct DetailPlaceInfo: Codable {
     var link: String?
     var memo: String?
     var category: PlaceCategory
-    var longitude: String
-    var latitude: String
     
     enum CodingKeys: String, CodingKey {
         case link, memo = "comment"
         case category = "placeCategoryDto"
-        case longitude, latitude
     }
 }
 

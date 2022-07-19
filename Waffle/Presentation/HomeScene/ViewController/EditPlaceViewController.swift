@@ -198,8 +198,8 @@ class EditPlaceViewController: UIViewController {
         let roadAddress = placeSubtitleLabel.text ?? ""
         let memo = memoTextView.text == viewModel.defaultMemoText ? nil : memoTextView.text
         let link = linkTextView.text == viewModel.defaultLinkText ?  nil : linkTextView.text
-        let logitude = viewModel.detailPlace?.longitude
-        let latitude = viewModel.detailPlace?.latitude
+        let logitude = viewModel.place?.longitude
+        let latitude = viewModel.place?.latitude
         let editPlace = EditPlace(title: title, memo: memo, link: link, roadNameAddress: roadAddress, longitude: logitude, latitude: latitude, placeCategoryId: selectedCategory.id)
         viewModel.editPlaceButton(editPlace: editPlace)
     }
@@ -289,8 +289,8 @@ class EditPlaceViewController: UIViewController {
                         self.placeTitleLabel.text = getPlace.placeName
                         self.placeSubtitleLabel.text = getPlace.roadAddressName
                         self.linkTextView.text = getPlace.placeUrl
-                        self.viewModel?.detailPlace?.longitude = getPlace.longitude
-                        self.viewModel?.detailPlace?.latitude = getPlace.latitude
+                        self.viewModel?.place?.longitude = getPlace.longitude
+                        self.viewModel?.place?.latitude = getPlace.latitude
                     }
                     self.placeAddLayout()
                 }else {
