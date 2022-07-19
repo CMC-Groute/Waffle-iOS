@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         Messaging.messaging().isAutoInitEnabled = true
-        KakaoSDK.initSDK(appKey: "9d221cbc36f57f5d7e31879b43c6a546")
+        KakaoSDK.initSDK(appKey: NotificationKey.kakaoShareAPIAppKey)
         UNUserNotificationCenter.current().delegate = self
         //최초 한번 실행
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -37,12 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
+    
+//
+//    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+//        // Called when the user discards a scene session.
+//        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+//        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+//    }
 
 
 }
@@ -58,33 +59,32 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                  withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions)
                                    -> Void) {
        let userInfo = notification.request.content.userInfo
-
-       // With swizzling disabled you must let Messaging know about the message, for Analytics
-       // Messaging.messaging().appDidReceiveMessage(userInfo)
-
-        //let userInfo = response.notification.request.content.userInfo as? [AnyHashable: Any]
-        WappleLog.debug("willPresent \(userInfo)")
-        
-        for i in userInfo {
-            WappleLog.debug("willPresent \(i.key) -- \(i.value)")
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: userInfo[NotificationKey.aps])
+            let pushNofiticationInfo = try JSONDecoder().decode(PushNotification.self, from: jsonData)
+            let archiveId = pushNofiticationInfo.archiveId
+            configureDetailInfo(with: archiveId)
         }
-
-       // Change this to your preferred presentation option
+        catch {
+            print("pushNofiticationInfo \(error)")
+        }
+        
        completionHandler([[.alert, .sound]])
      }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                   didReceive response: UNNotificationResponse,
                                   withCompletionHandler completionHandler: @escaping () -> Void) {
-        let re = response.notification.request.content
-        WappleLog.debug("response \(re)")
         let userInfo = response.notification.request.content.userInfo
-        
-        WappleLog.debug("didReceive \(userInfo)")
-        
-        for i in userInfo {
-            WappleLog.debug("didReceive \(i.key) \(i.value)")
-        }
+         do {
+             let jsonData = try JSONSerialization.data(withJSONObject: userInfo[NotificationKey.aps])
+             let pushNofiticationInfo = try JSONDecoder().decode(PushNotification.self, from: jsonData)
+             let archiveId = pushNofiticationInfo.archiveId
+             configureDetailInfo(with: archiveId)
+         }
+         catch {
+             print("pushNofiticationInfo \(error)")
+         }
 
         completionHandler()
       }
@@ -93,21 +93,30 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
                        -> Void) {
-      // If you are receiving a notification message while your app is in the background,
-      // this callback will not be fired till the user taps on the notification launching the application.
-      // TODO: Handle data of notification
-
-      // With swizzling disabled you must let Messaging know about the message, for Analytics
-      // Messaging.messaging().appDidReceiveMessage(userInfo)
-
-      // Print message ID.
-//      if let messageID = userInfo[gcmMessageIDKey] {
-//        print("Message ID: \(messageID)")
-//      }
+         do {
+             let jsonData = try JSONSerialization.data(withJSONObject: userInfo[NotificationKey.aps])
+             let pushNofiticationInfo = try JSONDecoder().decode(PushNotification.self, from: jsonData)
+             let archiveId = pushNofiticationInfo.archiveId
+             configureDetailInfo(with: archiveId)
+         }
+         catch {
+             print("pushNofiticationInfo \(error)")
+         }
 
       // Print full message.
       WappleLog.debug("didReceiveRemoteNotification \(userInfo)")
       completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    private func configureDetailInfo(with archiveId: Int) {
+        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate,
+              let appCoordinator = sceneDelegate.appCoordinator,
+              let tabBarCoordinator = appCoordinator.findCoordinator(type: .tab) as? TabBarCoordinator,
+              let homeCoordinator = appCoordinator.findCoordinator(type: .home) as? HomeCoordinator else { return }
+              tabBarCoordinator.selectPage(.home)
+        guard (homeCoordinator.navigationController.viewControllers.last
+               is DetailArchiveViewController == false) else { return }
+        homeCoordinator.detailArchive(archiveId: archiveId)
     }
 }
 
