@@ -39,6 +39,8 @@ class HomeUsecase: HomeUsecaseProtocol {
     var getAlarmSuccess = PublishSubject<[Alarm]>() // 알림 데이터 가져오기
     var isReadAlarmSuccess = PublishSubject<Bool>() // 알림 읽었는지 확인
     var editPlaceSuccess = PublishSubject<Bool>() // 장소 수정
+    var likeSendSuccess = PublishSubject<Bool>() // 좋아요 전송
+    
     init(repository: HomeRepository){
         self.repository = repository
     }
@@ -143,6 +145,20 @@ class HomeUsecase: HomeUsecaseProtocol {
     //MARK: 좋아요 조르기
     func likeSend(archiveId: Int) {
         repository.likeSend(archiveId: archiveId)
+            .observe(on: MainScheduler.instance)
+            .catch { error -> Observable<DefaultResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("likeSend error \(error)")
+                return .just(DefaultResponse.errorResponse(code: error.rawValue))
+            }.subscribe(onNext: { [weak self] response in
+                guard let self = self else { return }
+                WappleLog.debug("likeSend \(response.status)")
+                if response.status == 200 {
+                    self.likeSendSuccess.onNext(true)
+                }else {
+                    self.likeSendSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
     //MARK: 약속 코드 조회

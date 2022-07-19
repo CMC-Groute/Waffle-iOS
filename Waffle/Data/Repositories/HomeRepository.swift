@@ -293,10 +293,18 @@ extension HomeRepository {
             })
     }
     
-    func likeSend(archiveId: Int) {
+    func likeSend(archiveId: Int) -> Observable<DefaultResponse> {
         let api = AlarmAPI.likeSend(archiveId: archiveId)
-        service.request(api)
-        WappleLog.debug("좋아요 전송")
+        return service.request(api)
+            .map({response -> DefaultResponse in
+                switch response {
+                case .success(let data):
+                    guard let data = JSON.decode(data: data, to: DefaultResponse.self) else { throw URLSessionNetworkServiceError.responseDecodingError }
+                    return data
+                case .failure(let error):
+                    throw error
+                }
+            })
     }
 
     

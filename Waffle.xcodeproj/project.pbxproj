@@ -21,10 +21,11 @@
 		13062E28287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */; };
 		13062E29287AE0BB003774A7 /* DetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */; };
 		132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */; };
+		13319AD7288617ED000649E7 /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13319AD6288617EC000649E7 /* AlarmAPI.swift */; };
 		133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D13284E0E88008E1185 /* UserDefaultKey.swift */; };
 		133D5438287446490068EA90 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
 		133D5439287446490068EA90 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2E284E2752008E1185 /* Config.swift */; };
-		133D543A287446490068EA90 /* Locatioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Locatioin.swift */; };
+		133D543A287446490068EA90 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135F6E7928576EA700F9F71E /* Location.swift */; };
 		133D543C287446490068EA90 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA03DC286DEF230087E79E /* Common.swift */; };
 		133D543D287446530068EA90 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D5C284F45A4008E1185 /* Assets.swift */; };
 		133D543E287446530068EA90 /* UINavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D54284E635C008E1185 /* UINavigationItem.swift */; };
@@ -207,6 +208,7 @@
 		13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
+		13319AD6288617EC000649E7 /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
 		134FC8DE2885B4BF0007036C /* HomeAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmViewModel.swift; sourceTree = "<group>"; };
 		135543932875DB9400F8CA0D /* EditArchiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditArchiveViewModel.swift; sourceTree = "<group>"; };
@@ -216,7 +218,7 @@
 		135B60582858507A0035AE4B /* TableAddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAddLocationViewController.swift; sourceTree = "<group>"; };
 		135B605A285898FF0035AE4B /* LocationLeftTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLeftTableviewCell.swift; sourceTree = "<group>"; };
 		135B605C285899250035AE4B /* LocationRightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRightTableViewCell.swift; sourceTree = "<group>"; };
-		135F6E7928576EA700F9F71E /* Locatioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locatioin.swift; sourceTree = "<group>"; };
+		135F6E7928576EA700F9F71E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		135F6E7C2857A5C300F9F71E /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		13712DD628733948008AD9FA /* ArchiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveAPI.swift; sourceTree = "<group>"; };
 		137844F72882F64300AC7E00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				13CA03DF2870173A0087E79E /* LoginSignAPI.swift */,
 				135543992877299800F8CA0D /* PlaceAPI.swift */,
 				13712DD628733948008AD9FA /* ArchiveAPI.swift */,
+				13319AD6288617EC000649E7 /* AlarmAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -703,7 +706,7 @@
 				F2125D13284E0E88008E1185 /* UserDefaultKey.swift */,
 				F2125D2A284E19AD008E1185 /* TapBarPage.swift */,
 				F2125D2E284E2752008E1185 /* Config.swift */,
-				135F6E7928576EA700F9F71E /* Locatioin.swift */,
+				135F6E7928576EA700F9F71E /* Location.swift */,
 				13CA03DC286DEF230087E79E /* Common.swift */,
 			);
 			path = Constant;
@@ -837,13 +840,6 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		F2125D3E284E5437008E1185 /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interfaces;
-			sourceTree = "<group>";
-		};
 		F2125D40284E550B008E1185 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -965,7 +961,6 @@
 		F21972C8284B8BAF0086E56B /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				F2125D3E284E5437008E1185 /* Interfaces */,
 				F21972CE284B8C730086E56B /* Repositories */,
 			);
 			path = Data;
@@ -1640,6 +1635,7 @@
 				133D55C228744BDD0068EA90 /* HomeCoordinatorProtocol.swift in Sources */,
 				133D55C328744BDD0068EA90 /* HomeCoordinator.swift in Sources */,
 				137853382875A86F00B11E5E /* SubDetailArchiveCollectionViewCell.swift in Sources */,
+				13319AD7288617ED000649E7 /* AlarmAPI.swift in Sources */,
 				13062E122879576A003774A7 /* HomeAlarmViewController.swift in Sources */,
 				133D55C428744BDD0068EA90 /* SettingCoordinatorProtocol.swift in Sources */,
 				133D558B28744BBA0068EA90 /* LoginSignUsecaseProtocol.swift in Sources */,
@@ -1688,7 +1684,7 @@
 				133D5448287446530068EA90 /* Encodable.swift in Sources */,
 				133D5438287446490068EA90 /* TapBarPage.swift in Sources */,
 				133D5439287446490068EA90 /* Config.swift in Sources */,
-				133D543A287446490068EA90 /* Locatioin.swift in Sources */,
+				133D543A287446490068EA90 /* Location.swift in Sources */,
 				133D543C287446490068EA90 /* Common.swift in Sources */,
 				133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */,
 			);

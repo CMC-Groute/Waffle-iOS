@@ -11,7 +11,6 @@ import RxSwift
 
 class HomeAlarmViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    var alarm: [String] = ["알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림알림 알림 알림알림 알림 알림 알림 알림 알림알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림 알림"]
     var viewModel: HomeAlarmViewModel?
     
     var noSearchResultView: UIView = {
@@ -97,7 +96,8 @@ extension HomeAlarmViewController: UITableViewDelegate {
 
 extension HomeAlarmViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if alarm.count == 0 { // 검색 중인데 데이터가 없을때
+        guard let viewModel  = viewModel else { return 0 }
+        if viewModel.alarmData.count == 0 { // 검색 중인데 데이터가 없을때
             tableView.backgroundView  = noSearchResultView
             tableView.separatorStyle  = .none
        }else {
@@ -105,12 +105,13 @@ extension HomeAlarmViewController: UITableViewDataSource {
            tableView.backgroundView = nil
         }
         
-        return alarm.count
+        return viewModel.alarmData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeAlarmTableViewCell.identifier) as! HomeAlarmTableViewCell
-        cell.configureCell(test: alarm[indexPath.row])
+        guard let viewModel  = viewModel else { return cell }
+        cell.configureCell(alarm: viewModel.alarmData[indexPath.row])
         return cell
     }
     

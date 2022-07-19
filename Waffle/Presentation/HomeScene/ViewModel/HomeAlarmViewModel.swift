@@ -8,10 +8,11 @@
 import Foundation
 import RxSwift
 
-class HomeAlarmViewModel {
+final class HomeAlarmViewModel {
     var coordinator: HomeCoordinator!
     var usecase: HomeUsecase!
     private var disposeBag = DisposeBag()
+    var alarmData: [Alarm] = []
     
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
@@ -34,7 +35,12 @@ class HomeAlarmViewModel {
                 self.usecase.getAlarms()
             }).disposed(by: disposeBag)
         
+        usecase.getAlarmSuccess
+            .subscribe(onNext: { alarm in
+                self.alarmData = alarm
+            }).disposed(by: disposeBag)
         
+        return output
         
         
     }

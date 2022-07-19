@@ -27,7 +27,7 @@ class HomeAlarmTableViewCell: UITableViewCell {
         alrchiveImageView.makeCircleShape()
     }
     
-    func configureCell(test: String) {
-        alarmText.text = test
+    func configureCell(alarm: Alarm) {
+        alarmText.text = alarm.archiveTitle
     }
 }

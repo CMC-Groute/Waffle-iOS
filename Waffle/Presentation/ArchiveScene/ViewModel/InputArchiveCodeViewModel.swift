@@ -71,6 +71,8 @@ class InputArchiveCodeViewModel {
                     self.coordinator.detailArchive(archiveId: archiveId)
                 case .already:
                     output.inValidCodeMessage.accept((.already, true))
+                case .error:
+                    output.inValidCodeMessage.accept((.inValid, true))
                 }
             }).disposed(by: disposeBag)
         

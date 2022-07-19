@@ -13,6 +13,7 @@ enum JoinArchiveStatus {
     case success
     case inValid
     case already
+    case error
 }
 
 class ArchiveUsecase: ArchiveUsecaseProtocol {
@@ -88,12 +89,14 @@ class ArchiveUsecase: ArchiveUsecaseProtocol {
                 return .just(DefaultIntResponse.errorResponse(code: error.rawValue))
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { response in
-                WappleLog.debug("joinArchive \(response)")
+                WappleLog.debug("joinArchive \(code) \(response)")
                 if response.status == 400 { // 이미 참여
                     self.joinArhicveSuccess.accept((.already, response.data))
                 }else if response.status == 404 {
                     self.joinArhicveSuccess.accept((.inValid, response.data))
-                }else {
+                }else if response.status == 500 {
+                    self.joinArhicveSuccess.accept((.error, response.data))
+                }else{
                     self.addArchiveId(archiveId: response.data)
                     self.joinArhicveSuccess.accept((.success, response.data))
                 }

@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         Messaging.messaging().apnsToken = deviceToken
     }
@@ -61,10 +62,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
        // With swizzling disabled you must let Messaging know about the message, for Analytics
        // Messaging.messaging().appDidReceiveMessage(userInfo)
 
-       // ...
-
-       // Print full message.
+        //let userInfo = response.notification.request.content.userInfo as? [AnyHashable: Any]
         WappleLog.debug("willPresent \(userInfo)")
+        
+        for i in userInfo {
+            WappleLog.debug("willPresent \(i.key) -- \(i.value)")
+        }
 
        // Change this to your preferred presentation option
        completionHandler([[.alert, .sound]])
@@ -73,13 +76,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                   didReceive response: UNNotificationResponse,
                                   withCompletionHandler completionHandler: @escaping () -> Void) {
+        let re = response.notification.request.content
+        WappleLog.debug("response \(re)")
         let userInfo = response.notification.request.content.userInfo
-
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-
-        // Print full message.
+        
         WappleLog.debug("didReceive \(userInfo)")
+        
+        for i in userInfo {
+            WappleLog.debug("didReceive \(i.key) \(i.value)")
+        }
 
         completionHandler()
       }
