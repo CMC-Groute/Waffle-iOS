@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct NotificationKey {
+    static var kakaoShareAPIAppKey = "9d221cbc36f57f5d7e31879b43c6a546"
+    static var aps = "aps"
+    static var archiveId = "archiveId"
+    static var archiveCode = "archiveCode"
+}

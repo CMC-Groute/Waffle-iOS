@@ -21,6 +21,8 @@
 		13062E28287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13062E26287AE0BA003774A7 /* DetailArchiveCollectionViewCell.swift */; };
 		13062E29287AE0BB003774A7 /* DetailArchiveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */; };
 		132731CD286D3B3100BAE8ED /* ParticipantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */; };
+		132CA9F62886342F00FE9570 /* NotificationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132CA9F52886342F00FE9570 /* NotificationKey.swift */; };
+		132CA9F8288634DB00FE9570 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132CA9F7288634DB00FE9570 /* PushNotification.swift */; };
 		13319AD7288617ED000649E7 /* AlarmAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13319AD6288617EC000649E7 /* AlarmAPI.swift */; };
 		133D54372874461D0068EA90 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D13284E0E88008E1185 /* UserDefaultKey.swift */; };
 		133D5438287446490068EA90 /* TapBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2125D2A284E19AD008E1185 /* TapBarPage.swift */; };
@@ -208,6 +210,8 @@
 		13062E27287AE0BA003774A7 /* DetailArchiveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailArchiveCollectionViewCell.xib; sourceTree = "<group>"; };
 		132731CA286D3B3100BAE8ED /* ParticipantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsTableViewCell.swift; sourceTree = "<group>"; };
 		132731CB286D3B3100BAE8ED /* ParticipantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantsTableViewCell.xib; sourceTree = "<group>"; };
+		132CA9F52886342F00FE9570 /* NotificationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKey.swift; sourceTree = "<group>"; };
+		132CA9F7288634DB00FE9570 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		13319AD6288617EC000649E7 /* AlarmAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPI.swift; sourceTree = "<group>"; };
 		133D55E4287472320068EA90 /* WappleLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappleLog.swift; sourceTree = "<group>"; };
 		134FC8DE2885B4BF0007036C /* HomeAlarmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAlarmViewModel.swift; sourceTree = "<group>"; };
@@ -486,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				138464822884111400F401F9 /* Alarm.swift */,
+				132CA9F7288634DB00FE9570 /* PushNotification.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -708,6 +713,7 @@
 				F2125D2E284E2752008E1185 /* Config.swift */,
 				135F6E7928576EA700F9F71E /* Location.swift */,
 				13CA03DC286DEF230087E79E /* Common.swift */,
+				132CA9F52886342F00FE9570 /* NotificationKey.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1551,6 +1557,7 @@
 				135543962875DBB100F8CA0D /* EditArchiveViewController.swift in Sources */,
 				133D55D928744C4C0068EA90 /* EditSettingViewModel.swift in Sources */,
 				133D55DA28744C4C0068EA90 /* ChangePWViewModel.swift in Sources */,
+				132CA9F8288634DB00FE9570 /* PushNotification.swift in Sources */,
 				138464832884111400F401F9 /* Alarm.swift in Sources */,
 				13062E21287A891E003774A7 /* DefaultResponse.swift in Sources */,
 				133D55DB28744C4C0068EA90 /* SettingViewController.swift in Sources */,
@@ -1603,6 +1610,7 @@
 				133D55A628744BDD0068EA90 /* ConfirmCategoryCollectionViewCell.swift in Sources */,
 				133D55A728744BDD0068EA90 /* DetailPlaceTableViewCell.swift in Sources */,
 				133D55A828744BDD0068EA90 /* HomeCategoryCollectionViewCell.swift in Sources */,
+				132CA9F62886342F00FE9570 /* NotificationKey.swift in Sources */,
 				133D55A928744BDD0068EA90 /* ParticipantsTableViewCell.swift in Sources */,
 				135543942875DB9400F8CA0D /* EditArchiveViewModel.swift in Sources */,
 				133D55AA28744BDD0068EA90 /* EmptyCardView.swift in Sources */,
