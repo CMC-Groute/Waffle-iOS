@@ -34,23 +34,27 @@ final class EditSettingViewController: UIViewController {
         profileImage.makeCircleShape()
         doneButton.makeRounded(corner: 26)
         doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        doneButton.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
         nickNameTextField.makeRounded(corner: 10)
         nickNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
-        
         func setNavigationBar() {
             let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
             let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
             navigationItem.leftBarButtonItem = backButton
             self.navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
             self.navigationItem.title = "프로필 편집"
-
-            
         }
         setNavigationBar()
     }
     
     @objc func didTapBackButton() {
         viewModel?.back()
+    }
+    
+    @objc func didTapDoneButton() {
+        guard let viewModel = viewModel else { return }
+        let selectedIndex = viewModel.updateIndex ?? viewModel.selectedIndex
+        viewModel.updateUserInfo(nickName: nickNameTextField.text!, selectedIndex: selectedIndex)
     }
     
     func resignForKeyboardNotification() {
@@ -95,29 +99,38 @@ final class EditSettingViewController: UIViewController {
     func collectionviewSetUp() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.identifier)
         collectionView.allowsMultipleSelection = false
+        collectionView.register(ProfileImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfileImageCollectionViewCell.identifier)
     }
     
     private func bindViewModel(){
-        let input = EditSettingViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), doneButton: self.doneButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd), selectedCell: self.collectionView.rx.itemSelected.asObservable())
-        nickNameTextField.text = viewModel?.nickName
+        let input = EditSettingViewModel.Input(doneButton: self.doneButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd),nickNameTextFieldEditing: self.nickNameTextField.rx.controlEvent(.editingChanged), selectedCell: self.collectionView.rx.itemSelected.asObservable())
+        
         input.nickNameTextFieldDidTapEvent
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.nickNameTextField.focusingBorder(color: Asset.Colors.orange.name)
-            }).disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
         
         input.nickNameTextFieldDidEndEvent
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
                 self.nickNameTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.nickNameTextFieldEditing
+            .subscribe(onNext: {
+                self.validating()
             }).disposed(by: disposeBag)
       
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
+        nickNameTextField.text = viewModel?.nickName
         
-        input.selectedCell
-            .subscribe(onNext: { indexpath in
-            }).disposed(by: disposeBag)
+        output?.nickNameTextField
+            .bind(to: nickNameTextField.rx.text)
+            .disposed(by: disposeBag)
         
+
         output?.nickNameInvalidMessage
             .subscribe(onNext: { bool in
                 self.nickNameTextField.errorBorder(bool: bool)
@@ -152,10 +165,9 @@ extension EditSettingViewController: UICollectionViewDelegate, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.identifier, for: indexPath) as! ProfileImageCollectionViewCell
         cell.makeCircleShape()
         cell.imageview.image = UIImage(named: "wapple-\(indexPath.row)")
-        if indexPath.row == 0 {
+        if indexPath.row  == viewModel?.selectedIndex {
             cell.isSelected = true
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-            
             self.profileImage.image = UIImage(named: "wapple-\(indexPath.row)")
         }
         
@@ -163,8 +175,9 @@ extension EditSettingViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.viewModel?.selectedIndex = indexPath.row
+        self.viewModel?.updateIndex = indexPath.row
         self.profileImage.image = UIImage(named: "wapple-\(indexPath.row)")
+        validating()
     }
 }
 
@@ -179,7 +192,32 @@ extension EditSettingViewController: UICollectionViewDelegateFlowLayout {
         let numberOfCells = floor(view.frame.size.width / cellWidth)
         return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
     }
-    
-    
-    
+}
+
+extension EditSettingViewController: UITextFieldDelegate {
+    func validating() {
+        if nickNameTextField.text == "" {
+            doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        }
+        WappleLog.debug("\(nickNameTextField.text) \(viewModel?.updateIndex)")
+        WappleLog.debug("\(viewModel?.nickName) \(viewModel?.selectedIndex)")
+        if nickNameTextField.text == viewModel?.nickName {
+            if viewModel?.updateIndex == nil || (viewModel?.selectedIndex == viewModel?.updateIndex) {
+                doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+            }else {
+                doneButton.setEnabled(color: Asset.Colors.black.name)
+            }
+        }else {
+            doneButton.setEnabled(color: Asset.Colors.black.name)
+        }
+
+//        if viewModel?.updateNickName == nil && viewModel?.updateIndex == nil {
+//            doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+//        }else if (viewModel?.updateNickName == viewModel?.nickName) && (viewModel?.selectedIndex == viewModel?.updateIndex) {
+//            doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+//        }else {
+//            doneButton.setEnabled(color: Asset.Colors.black.name)
+//        }
+    }
+
 }

@@ -52,9 +52,10 @@ final class SettingViewModel {
             .disposed(by: disposeBag)
         
         input.editButton
-            .withLatestFrom(output.userNickName)
-            .subscribe(onNext: { [weak self] nickName in
-                self?.coordinator.editProfile(nickName: nickName)
+            .withLatestFrom(Observable.combineLatest(output.userNickName, output.userImage))
+            .subscribe(onNext: { [weak self] nickName, image in
+                guard let selectedIndex = WappleType(rawValue: image)?.wappleProfileIndex() else { return }
+                self?.coordinator.editProfile(nickName: nickName, selectedIndex: selectedIndex)
             }).disposed(by: disposeBag)
         
         input.chagePWButton

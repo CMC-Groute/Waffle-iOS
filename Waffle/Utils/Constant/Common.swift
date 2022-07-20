@@ -63,6 +63,17 @@ enum WappleType: String, CaseIterable {
         }
     }
     
+    func wappleProfileIndex() -> Int { // 프로파일 편집
+        switch self {
+        case .wapple: return 0
+        case .choco: return 1
+        case .blueberry: return 2
+        case .vanilla: return 3
+        case .strawberry: return 4
+        case .malcha: return 5
+        }
+    }
+    
     func wappleLink() -> String {
         switch self {
         case .blueberry:

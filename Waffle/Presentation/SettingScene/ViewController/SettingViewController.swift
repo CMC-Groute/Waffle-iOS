@@ -158,7 +158,9 @@ final class SettingViewController: UIViewController {
         
         output?.userImage
             .subscribe(onNext: { imageName in
-                let index = WappleType.init(rawValue: imageName)?.wappleIndex() ?? 0
+                guard let index = WappleType.init(rawValue: imageName)?.wappleProfileIndex() else { return }
+                WappleLog.debug("index \(imageName)")
+                WappleLog.debug("index \(index)")
                 self.profileImage.image = UIImage(named: "wapple-\(index)") ?? nil
             }).disposed(by: disposeBag)
         
