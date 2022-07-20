@@ -22,7 +22,7 @@ final class HomeAlarmViewModel {
     }
     
     struct Input {
-        var viewDidLoadEvent: Observable<Void>
+        var viewWillAppearEvent: Observable<Void>
     }
     
     struct Output {
@@ -32,7 +32,7 @@ final class HomeAlarmViewModel {
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
-        input.viewDidLoadEvent
+        input.viewWillAppearEvent
             .subscribe(onNext: {
                 self.usecase.getAlarms()
             }).disposed(by: disposeBag)
@@ -45,5 +45,13 @@ final class HomeAlarmViewModel {
             }).disposed(by: disposeBag)
         
         return output
+    }
+    
+    func detailArchive(archiveId: Int) {
+        coordinator.detailArchive(archiveId: archiveId)
+    }
+    
+    func isRead(alarmId: Int) {
+        usecase.isReadAlarm(alarmId: alarmId)
     }
 }

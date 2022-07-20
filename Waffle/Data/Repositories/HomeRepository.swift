@@ -324,8 +324,8 @@ extension HomeRepository {
     }
     
     //MARK: 알람 읽었는지 값 변경
-    func isReadAlarm(alarmId: Int, isRead: Bool) -> Observable<DefaultIntResponse> {
-        let api = AlarmAPI.isReadAlarm(alarmId: alarmId, isRead: isRead)
+    func isReadAlarm(alarmId: Int) -> Observable<DefaultIntResponse> {
+        let api = AlarmAPI.isReadAlarm(alarmId: alarmId)
         return service.request(api)
             .map({response -> DefaultIntResponse in
                 switch response {

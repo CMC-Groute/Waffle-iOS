@@ -10,7 +10,7 @@ import Foundation
 enum AlarmAPI: NetworkRequestBuilder {
     case likeSend(archiveId: Int)
     case getAlarm
-    case isReadAlarm(alarmId: Int, isRead: Bool)
+    case isReadAlarm(alarmId: Int)
 }
 
 extension AlarmAPI {
@@ -39,14 +39,14 @@ extension AlarmAPI {
             return .post
         case .getAlarm:
             return .get
-        case .isReadAlarm(_, _):
+        case .isReadAlarm(_):
             return .patch
         }
     }
     
     var body: [String : Any]? {
         switch self {
-        case .likeSend(_), .getAlarm, .isReadAlarm(_, _):
+        case .likeSend(_), .getAlarm, .isReadAlarm(_):
             return nil
         }
     }

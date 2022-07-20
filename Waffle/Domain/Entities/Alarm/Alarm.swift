@@ -13,6 +13,7 @@ struct GetAlarm: Codable {
 }
 
 struct Alarm: Codable {
+    var id: Int
     var archiveId: Int
     var archiveTitle: String
     var nickName: String
@@ -22,6 +23,7 @@ struct Alarm: Codable {
     var isRead: Bool
     
     enum CodingKeys: String, CodingKey {
+        case id
         case archiveId = "invitationId"
         case archiveTitle = "invitationTitle"
         case placeImage = "invitationImageCategory"

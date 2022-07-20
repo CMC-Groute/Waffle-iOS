@@ -423,8 +423,8 @@ extension HomeUsecase {
             }).disposed(by: disposeBag)
     }
     
-    func isReadAlarm(alarmId: Int, isRead: Bool) {
-        repository.isReadAlarm(alarmId: alarmId, isRead: isRead)
+    func isReadAlarm(alarmId: Int) {
+        repository.isReadAlarm(alarmId: alarmId)
             .observe(on: MainScheduler.instance)
             .catch { error -> Observable<DefaultIntResponse> in
                 let error = error as! URLSessionNetworkServiceError

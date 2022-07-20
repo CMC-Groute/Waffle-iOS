@@ -21,7 +21,6 @@ final class HomeAlarmTableViewCell: UITableViewCell {
     }
     
     private func setUp() {
-        dotButton.isHidden = true
         dotButton.tintColor = Asset.Colors.red.color
         archiveImageView.makeCircleShape()
     }
@@ -45,7 +44,7 @@ final class HomeAlarmTableViewCell: UITableViewCell {
         archiveImageView.image = UIImage(named: "detailWapple-\(wappleIndex)")
         alarmText.text = alarmString
         let beforeDay = Date().beforeDayText(time: alarm.date)
-        if beforeDay == "오늘" { dotButton.isHidden = false }
+        if alarm.isRead { dotButton.isHidden = true }
         dateText.text = beforeDay
         alarmText.asColor(targetList: [alarm.nickName, alarm.archiveTitle], color: Asset.Colors.orange.color)
     }

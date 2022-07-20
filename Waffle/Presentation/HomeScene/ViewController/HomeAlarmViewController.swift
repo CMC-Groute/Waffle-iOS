@@ -86,7 +86,7 @@ final class HomeAlarmViewController: UIViewController {
     }
     
     private func bindViewModel(){
-        let input =  HomeAlarmViewModel.Input(viewDidLoadEvent: Observable.just(()))
+        let input =  HomeAlarmViewModel.Input(viewWillAppearEvent: self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in })
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         output?.loadData
@@ -99,7 +99,13 @@ final class HomeAlarmViewController: UIViewController {
 
 extension HomeAlarmViewController: UITableViewDelegate {
     // 선택시
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedArchiveId = viewModel?.alarmData[indexPath.row].archiveId else { return }
+        guard let alarmId = viewModel?.alarmData[indexPath.row].id else { return }
+        viewModel?.detailArchive(archiveId: selectedArchiveId)
+        viewModel?.isRead(alarmId: alarmId)
+        
+    }
 }
 
 extension HomeAlarmViewController: UITableViewDataSource {
