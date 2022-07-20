@@ -190,7 +190,7 @@ class SignUpViewController: UIViewController {
                         default:
                             self.emailTextField.errorBorder(bool: true)
                         }
-                    }else {
+                    }else { //초기 셋팅
                         self.emailTextField.errorBorder(bool: true)
                         self.emailTextField.focusingBorder(color: Asset.Colors.orange.name)
                         self.emailInValidText.isHidden = true
@@ -213,13 +213,13 @@ class SignUpViewController: UIViewController {
             .subscribe(onNext: { bool in
                 DispatchQueue.main.async {
                     self.authenInValidText.isHidden = bool
-                    self.authenTextField.errorBorder(bool: bool)
                     self.codeAuthenButton.setDisabled(with: bool, color: Asset.Colors.orange.name)
                     if bool {
                         self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                         self.emailAuthenButton.setDisabled(with: true, color: Asset.Colors.orange.name)
                         self.codeAuthenButton.setTitle("확인 완료", for: .normal)
                     }else {
+                        self.authenTextField.errorBorder(bool: false)
                         self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                         self.codeAuthenButton.setTitle("확인", for: .normal)
                     }
@@ -228,18 +228,21 @@ class SignUpViewController: UIViewController {
         
         output?.ispasswordInvalid
             .subscribe(onNext: { bool in
+                WappleLog.debug("bool \(bool)")
                 if let bool = bool {
                     self.pwInValidText.isHidden = bool
-                    self.pwTextField.errorBorder(bool: bool)
                     if bool {
+                        self.pwTextField.layer.borderColor = .none
+                        self.pwTextField.layer.borderWidth = 0
+                        self.pwTextField.rightViewMode = .always
                         self.pwTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
-                        
+                        self.pwTextField.errorBorder(bool: false)
                         self.pwTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.pwInValidText.isHidden = true
-                    self.pwTextField.errorBorder(bool: true)
+//                    self.pwTextField.errorBorder(bool: true)
                     self.pwTextField.focusingBorder(color: Asset.Colors.orange.name)
                 }
                
@@ -249,15 +252,18 @@ class SignUpViewController: UIViewController {
             .subscribe(onNext: { bool in
                 if let bool = bool {
                     self.pwReInValidText.isHidden = bool
-                    self.pwReTextField.errorBorder(bool: bool)
                     if bool {
+                        self.pwReTextField.layer.borderColor = .none
+                        self.pwReTextField.layer.borderWidth = 0
+                        self.pwReTextField.rightViewMode = .always
                         self.pwReTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
+                        self.pwReTextField.errorBorder(bool: false)
                         self.pwReTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
                     self.pwReInValidText.isHidden = true
-                    self.pwReTextField.errorBorder(bool: true)
+//                    self.pwReTextField.errorBorder(bool: true)
                     self.pwReTextField.focusingBorder(color: Asset.Colors.orange.name)
                 }
                

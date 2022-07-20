@@ -121,6 +121,7 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
                 if response.status == 200 {
                     self.sendEmailSuccess.onNext(.sendEmail)
                 }else {
+                    //WappleLog.debug("response.status \(response.status)")
                     self.sendEmailSuccess.onNext(.already)
                 }
             }).disposed(by: disposeBag)

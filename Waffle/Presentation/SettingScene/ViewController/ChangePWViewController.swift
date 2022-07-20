@@ -193,7 +193,6 @@ final class ChangePWViewController: UIViewController {
                     if bool {
                         self.newRePWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
-                        
                         self.newRePWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {

@@ -15,6 +15,8 @@ final class EditSettingViewModel {
     var updateNickName: String?
     var updateIndex: Int?
     
+    var nickNameInvalidMessage = PublishRelay<Bool>()
+    
     struct Input {
         var doneButton: Observable<Void>
         var nickNameTextFieldDidTapEvent: ControlEvent<Void>
@@ -25,7 +27,7 @@ final class EditSettingViewModel {
     
     struct Output {
         var nickNameTextField = PublishRelay<String>()
-        var nickNameInvalidMessage = PublishRelay<Bool>()
+        
         var startButtonEnabled = BehaviorRelay<Bool>(value: false)
     }
     
@@ -36,6 +38,12 @@ final class EditSettingViewModel {
     init(coordinator: SettingCoordinator, usecase: UserUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
+    }
+    
+    func checkNickNameValid(nickName: String) -> Bool { //특수문자 제외 6글자 이하
+        let nickNameReg = "^[ㄱ-ㅎㅏ-ㅣ가-힣a-zA-Z0-9\\s]{0,6}$"
+        let nickNameTest = NSPredicate(format: "SELF MATCHES %@", nickNameReg)
+        return nickNameTest.evaluate(with: nickName)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {

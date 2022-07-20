@@ -126,17 +126,14 @@ final class EditSettingViewController: UIViewController {
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         nickNameTextField.text = viewModel?.nickName
         
-        output?.nickNameTextField
-            .bind(to: nickNameTextField.rx.text)
-            .disposed(by: disposeBag)
-        
 
-        output?.nickNameInvalidMessage
+        viewModel?.nickNameInvalidMessage
             .subscribe(onNext: { bool in
-                self.nickNameTextField.errorBorder(bool: bool)
+                WappleLog.debug("nickNameInvalidMessage \(bool)")
                 self.nickNameInValidText.isHidden = bool
+                self.nickNameTextField.errorBorder(bool: bool)
                 if bool {
-                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
+                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 }else {
                     self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 }
@@ -196,13 +193,18 @@ extension EditSettingViewController: UICollectionViewDelegateFlowLayout {
 
 extension EditSettingViewController: UITextFieldDelegate {
     func validating() {
+        guard let viewModel = viewModel else { return }
         if nickNameTextField.text == "" {
             doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        }else if !viewModel.checkNickNameValid(nickName: nickNameTextField.text!) { // 유효 x
+            viewModel.nickNameInvalidMessage.accept(false)
+        }else {
+            viewModel.nickNameInvalidMessage.accept(true)
         }
-        WappleLog.debug("\(nickNameTextField.text) \(viewModel?.updateIndex)")
-        WappleLog.debug("\(viewModel?.nickName) \(viewModel?.selectedIndex)")
-        if nickNameTextField.text == viewModel?.nickName {
-            if viewModel?.updateIndex == nil || (viewModel?.selectedIndex == viewModel?.updateIndex) {
+        WappleLog.debug("\(nickNameTextField.text) \(viewModel.updateIndex)")
+        WappleLog.debug("\(viewModel.nickName) \(viewModel.selectedIndex)")
+        if nickNameTextField.text == viewModel.nickName {
+            if viewModel.updateIndex == nil || (viewModel.selectedIndex == viewModel.updateIndex) {
                 doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
             }else {
                 doneButton.setEnabled(color: Asset.Colors.black.name)
