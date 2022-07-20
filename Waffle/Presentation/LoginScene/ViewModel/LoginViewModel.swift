@@ -43,7 +43,7 @@ final class LoginViewModel {
         let output = Output()
         
         Observable.combineLatest(input.emailTextField, input.passwordTextField)
-            .map{ $0.0.count > 0 && $0.1.count > 8 }
+            .map{ $0.0.count > 0 && $0.1.count >= 8 }
             .bind(to: output.loginButtonEnabled)
             .disposed(by: disposeBag)
         
@@ -58,14 +58,12 @@ final class LoginViewModel {
         usecase.loginSuccess
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { status in
-                WappleLog.debug("status \(status)")
-                //403 존재하지 않는 비밀번호 입니다.
-                //404 존재하지 않는 사용자입니다.
+                WappleLog.debug("loginSuccess status \(status)")
                 if status == .login {
                     self.coordinator.finish()
-                }else if status == .invalidPW {
+                }else if status == .invalidPW {  //403 존재하지 않는 비밀번호 입니다.
                     output.passwordInvalidMessage.accept(true)
-                }else if status == .invalidEmail {
+                }else if status == .invalidEmail {  //404 존재하지 않는 사용자입니다.
                     output.emailInvalidMessage.accept(true)
                 }
             }).disposed(by: disposeBag)

@@ -57,7 +57,7 @@ class AddDetailPlaceViewController: UIViewController {
         textField.backgroundColor = Asset.Colors.gray2.color
         textField.changePlaceHolderColor()
         textField.makeRounded(corner: 10)
-        textField.padding(value: 9)
+        textField.padding(value: 17)
         return textField
     }()
 
