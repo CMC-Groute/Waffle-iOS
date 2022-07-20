@@ -37,5 +37,18 @@ extension Date {
         timeFormatter.pmSymbol = "오후"
         return timeFormatter.string(from: self)
     }
-
+    
+    func beforeDayText(time: String) -> String   //2022-07월-19 00:31:10
+    {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM월-dd hh:mm:ss"
+        guard let timeDate = dateFormatter.date(from: time) else { return "" }
+        guard let distanceDay = Calendar.current.dateComponents([.day], from: timeDate, to: date).day else { return "" }
+        if distanceDay == 0 {
+            return "오늘"
+        }else {
+            return "\(distanceDay)일 전"
+        }
+    }
 }

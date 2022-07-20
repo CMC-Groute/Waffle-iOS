@@ -19,28 +19,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wapple-0" translatesAutoresizingMaskIntoConstraints="NO" id="YAS-gV-KSL">
-                        <rect key="frame" x="16" y="16" width="48" height="48"/>
+                        <rect key="frame" x="16" y="24.5" width="48" height="48"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="Ygo-bu-Xrb"/>
                             <constraint firstAttribute="width" constant="48" id="gwP-8K-yCK"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOs-Pw-p0G">
-                        <rect key="frame" x="80" y="23" width="355" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOs-Pw-p0G">
+                        <rect key="frame" x="80" y="23" width="355" height="30.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                         <color key="textColor" name="Black"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gce-nF-MCD">
-                        <rect key="frame" x="80" y="46" width="27" height="14.5"/>
+                        <rect key="frame" x="80" y="59.5" width="27" height="14.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="12"/>
                         <color key="textColor" name="Gray5"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH3-wO-At5">
-                        <rect key="frame" x="110" y="46" width="5" height="5"/>
+                        <rect key="frame" x="110" y="59.5" width="5" height="5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="4Ky-OA-UAM"/>
                             <constraint firstAttribute="width" constant="5" id="abO-Ko-xul"/>
@@ -52,9 +52,8 @@
                 <constraints>
                     <constraint firstItem="ZH3-wO-At5" firstAttribute="top" secondItem="QOs-Pw-p0G" secondAttribute="bottom" constant="6" id="2ls-ra-n9J"/>
                     <constraint firstItem="YAS-gV-KSL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5ho-UV-iZj"/>
+                    <constraint firstItem="YAS-gV-KSL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FxJ-Hf-EUN"/>
                     <constraint firstItem="QOs-Pw-p0G" firstAttribute="leading" secondItem="YAS-gV-KSL" secondAttribute="trailing" constant="16" id="Guo-fz-JGS"/>
-                    <constraint firstItem="YAS-gV-KSL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="I2s-7T-lup"/>
-                    <constraint firstAttribute="bottom" secondItem="YAS-gV-KSL" secondAttribute="bottom" constant="16" id="Ldu-5R-FzV"/>
                     <constraint firstAttribute="bottom" secondItem="ZH3-wO-At5" secondAttribute="bottom" constant="32.5" id="ViO-vi-MYw"/>
                     <constraint firstItem="gce-nF-MCD" firstAttribute="top" secondItem="ZH3-wO-At5" secondAttribute="top" id="WCr-aC-Aq7"/>
                     <constraint firstAttribute="bottom" secondItem="gce-nF-MCD" secondAttribute="bottom" constant="23" id="cYM-Oi-GNF"/>
