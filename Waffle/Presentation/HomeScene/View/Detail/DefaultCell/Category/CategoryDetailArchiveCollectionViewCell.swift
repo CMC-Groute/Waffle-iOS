@@ -39,7 +39,7 @@ final class CategoryDetailArchiveCollectionViewCell: UICollectionViewCell {
     
     private func configureGesture() {
         let editGesture = UILongPressGestureRecognizer(target: self, action: #selector(didTapEditingMode))
-        editGesture.minimumPressDuration = 1
+        editGesture.minimumPressDuration = 0.5
         editGesture.delaysTouchesBegan = true
         collectionView.addGestureRecognizer(editGesture)
     }
