@@ -176,9 +176,10 @@ class AddDetailPlaceViewController: UIViewController {
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap
-            .subscribe(onNext: {
-                self.originLinkText()
-                self.linkTextView.focusingBorder(color: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.originLinkText()
+                self?.linkTextView.focusingBorder(color: nil)
+                self?.linkDeleteButton.isHidden = true
             }).disposed(by: disposeBag)
         
         input.linkTextViewDidTapEvent
@@ -191,7 +192,7 @@ class AddDetailPlaceViewController: UIViewController {
                     self.linkTextView.text = nil
                     self.linkTextView.textColor = Asset.Colors.black.color
                 }else if !self.linkTextView.text.isEmpty {
-                    self.linkDeleteButton.isHidden = false // 데이터 있을때 보여주기
+                    self.linkDeleteButton.isHidden = true
                 }
                 self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
             }).disposed(by: disposeBag)
@@ -203,16 +204,7 @@ class AddDetailPlaceViewController: UIViewController {
                     self.originLinkText()
                     self.linkDeleteButton.isHidden = true // 비어있다면 보여주지 않기
                 }else { //비어있지 않을때
-                    self.linkTextView.isEditable = false
-                    self.linkTextView.dataDetectorTypes = []
-                    guard let text = self.linkTextView.text else { return }
-                    WappleLog.debug(text)
-                    let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
-                    let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
-                    attributedString.linked(text: text, url: text)
-                    self.linkTextView.attributedText = attributedString
-                    self.linkTextView.resignFirstResponder()
-                    self.linkDeleteButton.isHidden = true
+                    self.makeLinkText()
                 }
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
@@ -272,12 +264,12 @@ class AddDetailPlaceViewController: UIViewController {
                     self.placeTitleLabel.text = self.viewModel?.getPlace?.placeName ?? ""
                     self.placeSubtitleLabel.text = self.viewModel?.getPlace?.roadAddressName ?? ""
                     output?.linkTextView.accept(self.viewModel?.getPlace?.placeUrl ?? "")
-                    self.linkDeleteButton.isHidden = true
-                    //self.linkTextView.text = self.viewModel?.getPlace?.placeUrl ?? ""
+                    self.linkDeleteButton.isHidden = false
                     self.placeAddLayout()
                     output?.linkTextView
                         .bind(to: self.linkTextView.rx.text)
                         .disposed(by: self.disposeBag)
+                    self.makeLinkText()
                 }else {
                     self.placeInputTextFieldLayout()
                 }
@@ -299,6 +291,18 @@ class AddDetailPlaceViewController: UIViewController {
         let attributedString = NSMutableAttributedString(string: "장소와 관련된 링크 주소를 입력해요", attributes: myAttribute)
         linkTextView.attributedText = attributedString
         linkTextView.dataDetectorTypes = []
+    }
+    
+    func makeLinkText() {
+        self.linkTextView.isEditable = false
+        self.linkTextView.dataDetectorTypes = []
+        guard let text = self.linkTextView.text else { return }
+        let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
+        let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
+        attributedString.linked(text: text, url: text)
+        self.linkTextView.attributedText = attributedString
+        self.linkTextView.resignFirstResponder()
+        self.linkDeleteButton.isHidden = false
     }
 
 }
@@ -398,7 +402,7 @@ extension AddDetailPlaceViewController: UITextViewDelegate {
         textView.focusingBorder(color: Asset.Colors.orange.name)
     }
 
-    func textViewDidChange(_ textView: UITextView) {
-        linkDeleteButton.isHidden = false
-    }
+//    func textViewDidChange(_ textView: UITextView) {
+//        linkDeleteButton.isHidden = false
+//    }
 }

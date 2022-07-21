@@ -67,7 +67,7 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func configureUI() {
-        linkDeleteButton.isHidden = true
+        linkDeleteButton.isHidden = false
         editButton.makeRounded(corner: 26)
         linkTextView.makeRounded(width: nil, color: nil, value: 10)
         linkTextView.isEditable = false
@@ -215,7 +215,7 @@ class EditPlaceViewController: UIViewController {
                 if text == viewModel.defaultLinkText {
                     self.linkTextView.text = nil
                 }else if !self.linkTextView.text.isEmpty {
-                    self.linkDeleteButton.isHidden = false // 데이터 있을때 보여주기
+                    self.linkDeleteButton.isHidden = true // 올라오면 히든
                 }
                 self.linkTextView.textColor = Asset.Colors.black.color
                 self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
@@ -227,16 +227,9 @@ class EditPlaceViewController: UIViewController {
                 if self.linkTextView.text.isEmpty || self.linkTextView.text == nil {
                     self.originLinkText()
                 }else { //비어있지 않을때
-                    self.linkTextView.isEditable = false
-                    self.linkTextView.dataDetectorTypes = []
-                    guard let text = self.linkTextView.text else { return }
-                    let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
-                    let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
-                    attributedString.linked(text: text, url: text)
-                    self.linkTextView.attributedText = attributedString
-                    self.linkTextView.resignFirstResponder()
+                    self.makeLinkText()
                 }
-                self.linkDeleteButton.isHidden = true
+                self.linkDeleteButton.isHidden = false
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
@@ -283,9 +276,10 @@ class EditPlaceViewController: UIViewController {
         let _ = viewModel.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap
-            .subscribe(onNext: {
-                self.originLinkText()
-                self.linkTextView.focusingBorder(color: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.originLinkText()
+                self?.linkTextView.focusingBorder(color: nil)
+                self?.linkDeleteButton.isHidden = true
             }).disposed(by: disposeBag)
         
         viewModel.placeViewEnabled
@@ -295,8 +289,10 @@ class EditPlaceViewController: UIViewController {
                         self.placeTitleLabel.text = getPlace.placeName
                         self.placeSubtitleLabel.text = getPlace.roadAddressName
                         self.linkTextView.text = getPlace.placeUrl
+                        self.makeLinkText()
                         self.viewModel?.place?.longitude = getPlace.longitude
                         self.viewModel?.place?.latitude = getPlace.latitude
+                        self.linkDeleteButton.isHidden = false
                     }
                     self.placeAddLayout()
                 }else {
@@ -311,6 +307,17 @@ class EditPlaceViewController: UIViewController {
         let attributedString = NSMutableAttributedString(string: viewModel.defaultLinkText, attributes: myAttribute)
         linkTextView.attributedText = attributedString
         linkTextView.dataDetectorTypes = []
+    }
+    
+    func makeLinkText() {
+        self.linkTextView.isEditable = false
+        self.linkTextView.dataDetectorTypes = []
+        guard let text = self.linkTextView.text else { return }
+        let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
+        let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
+        attributedString.linked(text: text, url: text)
+        self.linkTextView.attributedText = attributedString
+        self.linkTextView.resignFirstResponder()
     }
 
 }
