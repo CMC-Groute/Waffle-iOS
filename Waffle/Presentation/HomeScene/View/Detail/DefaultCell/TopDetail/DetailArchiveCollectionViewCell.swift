@@ -40,7 +40,11 @@ class DetailArchiveCollectionViewCell: UICollectionViewCell {
         toppingImageView.image = UIImage(named: "detailWapple-\(wappleIndex)")
         let cardColor = WappleType.init(rawValue: cardInfo.placeImage)?.wappleColor().colorName() ?? "lightPurple"
         frameView.backgroundColor = UIColor(named: cardColor)
-        whenLabel.text = cardInfo.date ?? DefaultDetailCardInfo.when.rawValue
+        if let date = cardInfo.date, let time = cardInfo.time {
+            whenLabel.text = "\(Date().detailDateString(date: date)) \(time.amPmChangeFormat())"
+        }else {
+            whenLabel.text = DefaultDetailCardInfo.when.rawValue
+        }
         whereLabel.text = cardInfo.place ?? DefaultDetailCardInfo.where.rawValue
         memoLabel.text = cardInfo.memo ?? DefaultDetailCardInfo.archiveMemo.rawValue
     }
