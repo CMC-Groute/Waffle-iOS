@@ -536,7 +536,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIx-ay-lXQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="688"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="공백 포함 10자 이하" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KOZ-Ui-wwk">
                                                 <rect key="frame" x="16" y="47.5" width="382" height="44"/>
@@ -651,31 +651,6 @@
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-zt-edf" userLabel="ButtonView">
-                                                <rect key="frame" x="0.0" y="624" width="414" height="64"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukX-xV-jv7">
-                                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
-                                                        <color key="backgroundColor" name="Black"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="52" id="MiS-on-1qc"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
-                                                        <color key="tintColor" name="White"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="편집 완료">
-                                                            <color key="titleColor" name="White"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="ukX-xV-jv7" firstAttribute="leading" secondItem="lLk-zt-edf" secondAttribute="leading" constant="16" id="FEl-xn-lAe"/>
-                                                    <constraint firstItem="ukX-xV-jv7" firstAttribute="top" secondItem="lLk-zt-edf" secondAttribute="top" constant="6" id="V6G-13-GqL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ukX-xV-jv7" secondAttribute="bottom" constant="6" id="Yos-K5-VYl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ukX-xV-jv7" secondAttribute="trailing" constant="16" id="dQX-VS-IEL"/>
-                                                </constraints>
-                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxZ-XH-zC6">
                                                 <rect key="frame" x="258" y="222" width="140" height="30"/>
                                                 <constraints>
@@ -706,11 +681,11 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Vx7-Zk-YgQ" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="16" id="078-VQ-vyW"/>
-                                            <constraint firstAttribute="bottom" secondItem="lLk-zt-edf" secondAttribute="bottom" id="0O2-lS-kdx"/>
                                             <constraint firstItem="fgV-As-uzA" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="18" id="8Od-2t-RkF"/>
                                             <constraint firstItem="Vx7-Zk-YgQ" firstAttribute="top" secondItem="PC8-d5-lZc" secondAttribute="bottom" constant="12" id="BNQ-lt-x8i"/>
                                             <constraint firstItem="gMb-56-GiY" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="16" id="CMU-sh-k1p"/>
                                             <constraint firstAttribute="trailing" secondItem="gxZ-XH-zC6" secondAttribute="trailing" constant="16" id="Gcp-7C-3KM"/>
+                                            <constraint firstAttribute="bottom" secondItem="gMb-56-GiY" secondAttribute="bottom" constant="103" id="HGf-bi-TJT"/>
                                             <constraint firstItem="16Q-XG-mZL" firstAttribute="top" secondItem="Vx7-Zk-YgQ" secondAttribute="bottom" constant="15" id="Kmd-5r-VtU"/>
                                             <constraint firstItem="gxZ-XH-zC6" firstAttribute="top" secondItem="JJT-um-RLx" secondAttribute="bottom" constant="15" id="LGC-Uc-QVC"/>
                                             <constraint firstItem="QOF-2K-zqt" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="18" id="LYX-Ul-P7Y"/>
@@ -718,7 +693,6 @@
                                             <constraint firstAttribute="trailing" secondItem="16Q-XG-mZL" secondAttribute="trailing" constant="16" id="TC5-wT-KHk"/>
                                             <constraint firstItem="fgV-As-uzA" firstAttribute="top" secondItem="KOZ-Ui-wwk" secondAttribute="bottom" constant="40" id="V0l-8I-HfF"/>
                                             <constraint firstItem="gMb-56-GiY" firstAttribute="top" secondItem="QOF-2K-zqt" secondAttribute="bottom" constant="12" id="aSr-qn-xRr"/>
-                                            <constraint firstAttribute="trailing" secondItem="lLk-zt-edf" secondAttribute="trailing" id="dJ8-tb-thf"/>
                                             <constraint firstAttribute="trailing" secondItem="gMb-56-GiY" secondAttribute="trailing" constant="16" id="ekm-pd-XMD"/>
                                             <constraint firstItem="eUh-vl-E6H" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="18" id="ev6-jg-VzI"/>
                                             <constraint firstItem="JJT-um-RLx" firstAttribute="top" secondItem="fgV-As-uzA" secondAttribute="bottom" constant="12" id="iPG-d5-IFf"/>
@@ -726,13 +700,11 @@
                                             <constraint firstItem="eUh-vl-E6H" firstAttribute="top" secondItem="ZIx-ay-lXQ" secondAttribute="top" constant="16" id="llM-Mu-7Yx"/>
                                             <constraint firstAttribute="trailing" secondItem="Vx7-Zk-YgQ" secondAttribute="trailing" constant="16" id="ns7-eK-Xx0"/>
                                             <constraint firstItem="KOZ-Ui-wwk" firstAttribute="top" secondItem="eUh-vl-E6H" secondAttribute="bottom" constant="12" id="nz9-wA-OsV"/>
-                                            <constraint firstItem="lLk-zt-edf" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" id="ot9-cS-UuV"/>
                                             <constraint firstItem="JJT-um-RLx" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="16" id="pTq-v5-ogR"/>
                                             <constraint firstAttribute="trailing" secondItem="JJT-um-RLx" secondAttribute="trailing" constant="16" id="r5K-Wf-xuV"/>
                                             <constraint firstItem="KOZ-Ui-wwk" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="16" id="s97-5s-8Nw"/>
                                             <constraint firstItem="QOF-2K-zqt" firstAttribute="top" secondItem="Vx7-Zk-YgQ" secondAttribute="bottom" constant="72" id="ud2-TX-c0V"/>
                                             <constraint firstItem="PC8-d5-lZc" firstAttribute="leading" secondItem="ZIx-ay-lXQ" secondAttribute="leading" constant="18" id="ypE-Jh-R6z"/>
-                                            <constraint firstItem="lLk-zt-edf" firstAttribute="top" secondItem="gMb-56-GiY" secondAttribute="bottom" constant="14" id="ysY-Ie-cTS"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -746,6 +718,31 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="dyQ-FH-nVe"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="yii-Ff-GNr"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLk-zt-edf" userLabel="ButtonView">
+                                <rect key="frame" x="0.0" y="798" width="414" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukX-xV-jv7">
+                                        <rect key="frame" x="16" y="6" width="382" height="52"/>
+                                        <color key="backgroundColor" name="Black"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="MiS-on-1qc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="16"/>
+                                        <color key="tintColor" name="White"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="편집 완료">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ukX-xV-jv7" firstAttribute="leading" secondItem="lLk-zt-edf" secondAttribute="leading" constant="16" id="FEl-xn-lAe"/>
+                                    <constraint firstItem="ukX-xV-jv7" firstAttribute="top" secondItem="lLk-zt-edf" secondAttribute="top" constant="6" id="V6G-13-GqL"/>
+                                    <constraint firstAttribute="bottom" secondItem="ukX-xV-jv7" secondAttribute="bottom" constant="6" id="Yos-K5-VYl"/>
+                                    <constraint firstAttribute="trailing" secondItem="ukX-xV-jv7" secondAttribute="trailing" constant="16" id="dQX-VS-IEL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mom-Rt-YtT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -753,6 +750,9 @@
                             <constraint firstItem="ihl-Hd-NJK" firstAttribute="trailing" secondItem="Mom-Rt-YtT" secondAttribute="trailing" id="2IB-Kk-O3B"/>
                             <constraint firstItem="ihl-Hd-NJK" firstAttribute="leading" secondItem="Mom-Rt-YtT" secondAttribute="leading" id="B1J-hZ-x6v"/>
                             <constraint firstItem="ihl-Hd-NJK" firstAttribute="bottom" secondItem="Mom-Rt-YtT" secondAttribute="bottom" id="Es8-xt-Bqi"/>
+                            <constraint firstItem="lLk-zt-edf" firstAttribute="trailing" secondItem="Mom-Rt-YtT" secondAttribute="trailing" id="Rlw-Sv-RXN"/>
+                            <constraint firstItem="lLk-zt-edf" firstAttribute="leading" secondItem="Mom-Rt-YtT" secondAttribute="leading" id="S0n-h1-Tsv"/>
+                            <constraint firstItem="Mom-Rt-YtT" firstAttribute="bottom" secondItem="lLk-zt-edf" secondAttribute="bottom" id="cY2-fE-ljC"/>
                             <constraint firstItem="ihl-Hd-NJK" firstAttribute="top" secondItem="Mom-Rt-YtT" secondAttribute="top" id="hFZ-hg-6A9"/>
                         </constraints>
                     </view>

@@ -321,12 +321,7 @@ final class EditArchiveViewController: UIViewController {
                 let estimatedSize = self.archiveMemoTextView.sizeThatFits(size)
                 self.archiveMemoTextView.translatesAutoresizingMaskIntoConstraints = false
                 self.archiveMemoTextView.constraints.forEach { (constraint) in
-                        
-                  /// 360 이하일때는 더 이상 줄어들지 않게하기
-                    if estimatedSize.height <= 360 {
-                    
-                    }
-                    else {
+                    if estimatedSize.height >= 152 {
                         if constraint.firstAttribute == .height {
                             constraint.constant = estimatedSize.height
                             self.textViewScrollToBottom()
