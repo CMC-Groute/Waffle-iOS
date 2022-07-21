@@ -51,4 +51,14 @@ extension Date {
             return "\(distanceDay)일 전"
         }
     }
+    
+    func detailDateString(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        
+        let parsingFormatter = DateFormatter()
+        parsingFormatter.dateFormat = "M월 d일"
+        guard let dateString = dateFormatter.date(from: date) else { return "" }
+        return parsingFormatter.string(from: dateString)
+    }
 }
