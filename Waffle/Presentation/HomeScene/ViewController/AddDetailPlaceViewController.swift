@@ -172,7 +172,7 @@ class AddDetailPlaceViewController: UIViewController {
     
 
     func bindViewModel() {
-        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, memoTextView: memoTextView.rx.text.orEmpty.asObservable(), memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
+        let input = AddDetailPlaceViewModel.Input(categorySelectedItem: collectionView.rx.itemSelected.map { $0.row }, placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, linkTextViewEditing: linkTextView.rx.didChange, memoTextView: memoTextView.rx.text.orEmpty.asObservable(), memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing, memoTextViewEditing: memoTextView.rx.didChange, addButton: addButton.rx.tap.asObservable())
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         linkDeleteButton.rx.tap
@@ -190,6 +190,8 @@ class AddDetailPlaceViewController: UIViewController {
                 """ {
                     self.linkTextView.text = nil
                     self.linkTextView.textColor = Asset.Colors.black.color
+                }else if !self.linkTextView.text.isEmpty {
+                    self.linkDeleteButton.isHidden = false // 데이터 있을때 보여주기
                 }
                 self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
             }).disposed(by: disposeBag)
@@ -199,6 +201,7 @@ class AddDetailPlaceViewController: UIViewController {
                 guard let self = self else { return }
                 if self.linkTextView.text.isEmpty || self.linkTextView.text == nil {
                     self.originLinkText()
+                    self.linkDeleteButton.isHidden = true // 비어있다면 보여주지 않기
                 }else { //비어있지 않을때
                     self.linkTextView.isEditable = false
                     self.linkTextView.dataDetectorTypes = []
@@ -214,12 +217,16 @@ class AddDetailPlaceViewController: UIViewController {
                 self.linkTextView.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
+        input.linkTextViewEditing
+            .subscribe(onNext: { [weak self] in
+                WappleLog.debug("editing")
+                self?.linkDeleteButton.isHidden = true
+            }).disposed(by: disposeBag)
+        
         input.memoTextViewDidTapEvent
             .subscribe(onNext: { _ in
                 guard let text = self.memoTextView.text else { return }
-                if text == """
-                장소에 대한 간략한 정보나 가고 싶은 이유, 추천하는 이유 등을 자유롭게 작성하면 좋아요
-                """ {
+                if text == self.viewModel?.defaultText {
                     self.memoTextView.text = nil
                     self.memoTextView.textColor = Asset.Colors.black.color
                 }
@@ -265,6 +272,7 @@ class AddDetailPlaceViewController: UIViewController {
                     self.placeTitleLabel.text = self.viewModel?.getPlace?.placeName ?? ""
                     self.placeSubtitleLabel.text = self.viewModel?.getPlace?.roadAddressName ?? ""
                     output?.linkTextView.accept(self.viewModel?.getPlace?.placeUrl ?? "")
+                    self.linkDeleteButton.isHidden = true
                     //self.linkTextView.text = self.viewModel?.getPlace?.placeUrl ?? ""
                     self.placeAddLayout()
                     output?.linkTextView

@@ -20,7 +20,7 @@ final class AddDetailPlaceViewModel {
     var getPlace: PlaceSearch?
     var archiveId: Int?
     
-    private let defaultText = "장소에 대한 간략한 정보나 가고 싶은 이유, 추천하는 이유 등을 자유롭게 작성하면 좋아요"
+    let defaultText = "장소에 대한 간략한 정보나 가고 싶은 이유, 추천하는 이유 등을 자유롭게 작성하면 좋아요"
     init(coordinator: HomeCoordinator, usecase: HomeUsecase) {
         self.coordinator = coordinator
         self.usecase = usecase
@@ -33,6 +33,7 @@ final class AddDetailPlaceViewModel {
         var placeViewDeleteButton: Observable<Void>
         var linkTextViewDidTapEvent: ControlEvent<Void>
         var linkTextViewDidEndEvent: ControlEvent<Void>
+        var linkTextViewEditing: ControlEvent<Void>
         
         let memoTextView: Observable<String>
         var memoTextViewDidTapEvent: ControlEvent<Void>

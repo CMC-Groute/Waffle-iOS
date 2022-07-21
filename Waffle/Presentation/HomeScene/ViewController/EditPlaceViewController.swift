@@ -205,7 +205,7 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func bindViewModels() {
-        let input = EditPlaceViewModel.Input(placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewEditing: memoTextView.rx.didChange, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing)
+        let input = EditPlaceViewModel.Input(placeViewDeleteButton: placeDeleteButton.rx.tap.asObservable(), placeTextFieldTapEvent: placeTextField.rx.controlEvent(.editingDidBegin), linkTextViewDidTapEvent: linkTextView.rx.didBeginEditing, linkTextViewDidEndEvent: linkTextView.rx.didEndEditing, linkTextViewEditing: linkTextView.rx.didChange, memoTextViewDidTapEvent: memoTextView.rx.didBeginEditing, memoTextViewEditing: memoTextView.rx.didChange, memoTextViewDidEndEvent: memoTextView.rx.didEndEditing)
         guard let viewModel = viewModel else { return }
 
         input.linkTextViewDidTapEvent
@@ -214,6 +214,8 @@ class EditPlaceViewController: UIViewController {
                 guard let text = self.linkTextView.text else { return }
                 if text == viewModel.defaultLinkText {
                     self.linkTextView.text = nil
+                }else if !self.linkTextView.text.isEmpty {
+                    self.linkDeleteButton.isHidden = false // 데이터 있을때 보여주기
                 }
                 self.linkTextView.textColor = Asset.Colors.black.color
                 self.linkTextView.focusingBorder(color: Asset.Colors.orange.name)
@@ -228,15 +230,19 @@ class EditPlaceViewController: UIViewController {
                     self.linkTextView.isEditable = false
                     self.linkTextView.dataDetectorTypes = []
                     guard let text = self.linkTextView.text else { return }
-                    WappleLog.debug(text)
                     let myAttribute = [NSAttributedString.Key.font: UIFont.fontWithName(type: .regular, size: 15),  NSAttributedString.Key.foregroundColor: Asset.Colors.blue.color ]
                     let attributedString = NSMutableAttributedString(string: text, attributes: myAttribute)
                     attributedString.linked(text: text, url: text)
                     self.linkTextView.attributedText = attributedString
                     self.linkTextView.resignFirstResponder()
-                    self.linkDeleteButton.isHidden = true
                 }
+                self.linkDeleteButton.isHidden = true
                 self.linkTextView.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.linkTextViewEditing
+            .subscribe(onNext: { [weak self] in
+                self?.linkDeleteButton.isHidden = true
             }).disposed(by: disposeBag)
         
         input.memoTextViewDidTapEvent
@@ -384,9 +390,9 @@ extension EditPlaceViewController: UITextViewDelegate {
        }
     }
 
-    func textViewDidChange(_ textView: UITextView) {
-        linkDeleteButton.isHidden = false
-    }
+//    func textViewDidChange(_ textView: UITextView) {
+//        linkDeleteButton.isHidden = false
+//    }
 }
 
 extension EditPlaceViewController: UICollectionViewDelegateFlowLayout {

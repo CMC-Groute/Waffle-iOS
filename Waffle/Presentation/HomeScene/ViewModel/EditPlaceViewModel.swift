@@ -37,6 +37,7 @@ final class EditPlaceViewModel {
         var placeTextFieldTapEvent: ControlEvent<Void>
         var linkTextViewDidTapEvent: ControlEvent<Void>
         var linkTextViewDidEndEvent: ControlEvent<Void>
+        var linkTextViewEditing: ControlEvent<Void>
         
         var memoTextViewDidTapEvent: ControlEvent<Void>
         var memoTextViewEditing: ControlEvent<Void>
