@@ -64,7 +64,7 @@ final class SettingViewController: UIViewController {
         let alertOption = SettingOptions(cell: alertCell)
 
         let versionCell = SettingTableViewCell(style: .detail)
-        versionCell.title = "앱버전"
+        versionCell.title = "앱 버전"
         versionCell.detailText = versionLabel.text
         let appVersionOption = SettingOptions(cell: versionCell)
         
@@ -73,16 +73,16 @@ final class SettingViewController: UIViewController {
         contributorCell.detailText = wappleOfficialEamil
         let contributorsOption = SettingOptions(cell: contributorCell)
         
-        let feedbackCell = SettingTableViewCell(style: .plain)
+        let feedbackCell = SettingTableViewCell(style: .detail)
         feedbackCell.title = "피드백 남기기"
         
         let feedbackOption = SettingOptions(cell: feedbackCell)
 
-        let privacyCell = SettingTableViewCell(style: .plain)
-        privacyCell.title = "개인 정보 처리 방침"
+        let privacyCell = SettingTableViewCell(style: .detail)
+        privacyCell.title = "개인정보 처리방침"
         let privacyOption = SettingOptions(cell: privacyCell)
         
-        let logoutCell = SettingTableViewCell(style: .plain)
+        let logoutCell = SettingTableViewCell(style: .detail)
         logoutCell.title = "로그아웃"
         let logoutOption = SettingOptions(cell: logoutCell)
 

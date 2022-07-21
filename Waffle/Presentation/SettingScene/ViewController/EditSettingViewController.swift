@@ -128,13 +128,17 @@ final class EditSettingViewController: UIViewController {
         
 
         viewModel?.nickNameInvalidMessage
-            .subscribe(onNext: { bool in
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
                 WappleLog.debug("nickNameInvalidMessage \(bool)")
                 self.nickNameInValidText.isHidden = bool
-                self.nickNameTextField.errorBorder(bool: bool)
                 if bool {
-                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
+                    self.nickNameTextField.layer.borderColor = .none
+                    self.nickNameTextField.layer.borderWidth = 0
+                    self.nickNameTextField.rightViewMode = .always
+                    self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                 }else {
+                    self.nickNameTextField.errorBorder(bool: false)
                     self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 }
             }).disposed(by: disposeBag)
@@ -194,7 +198,8 @@ extension EditSettingViewController: UICollectionViewDelegateFlowLayout {
 extension EditSettingViewController: UITextFieldDelegate {
     func validating() {
         guard let viewModel = viewModel else { return }
-        if nickNameTextField.text == "" {
+        if nickNameTextField.text == "" { // 비어 있을때
+            nickNameTextField.rightView = nil
             doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
         }else if !viewModel.checkNickNameValid(nickName: nickNameTextField.text!) { // 유효 x
             viewModel.nickNameInvalidMessage.accept(false)
