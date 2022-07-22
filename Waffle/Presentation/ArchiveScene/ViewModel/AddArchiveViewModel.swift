@@ -90,7 +90,7 @@ class AddArchiveViewModel {
         
         //done button 활성화
         Observable.combineLatest(input.nameTextField, input.dateTextField, input.timeTextField, output.dateTimeLaterButtonEnabled, self.locationTextField, output.locationLaterButtonEnabled)
-            .map{ !$0.0.isEmpty && ((!$0.1.isEmpty && !$0.2.isEmpty) || $0.3 == false) && (!($0.4 == nil) || $0.5 == false) } //false = 토핑이 원하는 위치로
+            .map{ !$0.0.isEmpty && ((!$0.1.isEmpty && !$0.2.isEmpty) || $0.3 == true) && (!($0.4 == nil) || $0.5 == true) } //false = 토핑이 원하는 위치로
             .bind(to: output.doneButtonEnabled)
             .disposed(by: disposeBag)
         
