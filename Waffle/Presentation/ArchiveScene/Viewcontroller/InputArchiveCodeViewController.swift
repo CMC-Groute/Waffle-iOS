@@ -20,21 +20,20 @@ class InputArchiveCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        resignForKeyboardNotification()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+        bindViewModel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        resignForKeyboardNotification()
-        configureUI()
-        bindViewModel()
-      
     }
     
     func resignForKeyboardNotification() {

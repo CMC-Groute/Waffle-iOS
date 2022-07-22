@@ -400,32 +400,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 코드를 받았나요?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6A8-7a-6tZ">
-                                <rect key="frame" x="24" y="60" width="374" height="29"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haveToppingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-IE-Nhy">
-                                <rect key="frame" x="0.0" y="97" width="414" height="202"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haveToppingPicture" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-IE-Nhy">
+                                <rect key="frame" x="0.0" y="44" width="414" height="232"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="vnc-IE-Nhy" secondAttribute="height" multiplier="375:183" id="bVo-n1-5RP"/>
+                                    <constraint firstAttribute="height" constant="232" id="VSd-0h-S1i"/>
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="존재하지 않는 약속 코드예요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCE-6w-YEp">
-                                <rect key="frame" x="25" y="390" width="373" height="14.5"/>
+                                <rect key="frame" x="25" y="367" width="373" height="14.5"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
                                 <color key="textColor" name="red"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약속 코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-W5-1t3">
-                                <rect key="frame" x="25" y="314" width="373" height="17"/>
+                                <rect key="frame" x="25" y="291" width="373" height="17"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="14"/>
                                 <color key="textColor" name="Gray5"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="약속 코드를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P5x-UU-eaS">
-                                <rect key="frame" x="16" y="341" width="382" height="44"/>
+                                <rect key="frame" x="16" y="318" width="382" height="44"/>
                                 <color key="backgroundColor" name="Gray2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CxZ-Ab-E1H"/>
@@ -466,13 +460,10 @@
                             <constraint firstItem="mWe-W5-1t3" firstAttribute="leading" secondItem="lGX-LH-lH4" secondAttribute="leading" constant="25" id="0fF-KZ-bf5"/>
                             <constraint firstItem="lGX-LH-lH4" firstAttribute="trailing" secondItem="0N2-dy-4IQ" secondAttribute="trailing" id="0mt-cL-A5X"/>
                             <constraint firstItem="lGX-LH-lH4" firstAttribute="bottom" secondItem="0N2-dy-4IQ" secondAttribute="bottom" id="A4Y-Zi-yZQ"/>
-                            <constraint firstItem="6A8-7a-6tZ" firstAttribute="leading" secondItem="lGX-LH-lH4" secondAttribute="leading" constant="24" id="Fv1-I2-ZOD"/>
-                            <constraint firstItem="lGX-LH-lH4" firstAttribute="trailing" secondItem="6A8-7a-6tZ" secondAttribute="trailing" constant="16" id="GUo-or-Dsq"/>
                             <constraint firstItem="dCE-6w-YEp" firstAttribute="leading" secondItem="lGX-LH-lH4" secondAttribute="leading" constant="25" id="HNh-oz-Uf6"/>
-                            <constraint firstItem="6A8-7a-6tZ" firstAttribute="top" secondItem="lGX-LH-lH4" secondAttribute="top" constant="16" id="Jsl-aq-FXv"/>
-                            <constraint firstItem="vnc-IE-Nhy" firstAttribute="top" secondItem="6A8-7a-6tZ" secondAttribute="bottom" constant="8" id="RNe-VW-6QZ"/>
                             <constraint firstItem="vnc-IE-Nhy" firstAttribute="leading" secondItem="lGX-LH-lH4" secondAttribute="leading" id="WMj-Mv-9wQ"/>
                             <constraint firstItem="dCE-6w-YEp" firstAttribute="top" secondItem="P5x-UU-eaS" secondAttribute="bottom" constant="5" id="btw-2e-mWb"/>
+                            <constraint firstItem="vnc-IE-Nhy" firstAttribute="top" secondItem="lGX-LH-lH4" secondAttribute="top" id="i8j-hv-vHA"/>
                             <constraint firstItem="P5x-UU-eaS" firstAttribute="top" secondItem="mWe-W5-1t3" secondAttribute="bottom" constant="10" id="kHN-tW-cQQ"/>
                             <constraint firstItem="lGX-LH-lH4" firstAttribute="trailing" secondItem="dCE-6w-YEp" secondAttribute="trailing" constant="16" id="qoc-TC-dG6"/>
                             <constraint firstItem="mWe-W5-1t3" firstAttribute="top" secondItem="vnc-IE-Nhy" secondAttribute="bottom" constant="15" id="rPA-et-IIy"/>
@@ -775,7 +766,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="haveToppingPicture" width="392.5" height="232"/>
+        <image name="haveToppingPicture" width="375" height="232"/>
         <image name="unCheck" width="30" height="30"/>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
