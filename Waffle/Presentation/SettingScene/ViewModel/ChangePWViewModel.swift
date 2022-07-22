@@ -109,6 +109,7 @@ class ChangePWViewModel {
                     self.coordinator.popToRootViewController(with: "새 비밀번호로 변경되었어요", width: 172, height: 34)
                 }else {
                     WappleLog.debug("can't not go to setting")
+                    output.passwordInValid.accept(false)
                 }
             }).disposed(by: disposeBag)
         return output

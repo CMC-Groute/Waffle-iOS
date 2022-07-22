@@ -170,11 +170,12 @@ final class ChangePWViewController: UIViewController {
             .subscribe(onNext: { bool in
                 if let bool = bool {
                     self.newPWTextInValidText.isHidden = bool
-                    self.newPWTextField.errorBorder(bool: bool)
                     if bool {
+                        self.newPWTextField.layer.borderColor = .none
+                        self.newPWTextField.layer.borderWidth = 0
                         self.newPWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
-                        
+                        self.newPWTextField.errorBorder(bool: false)
                         self.newPWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
@@ -189,10 +190,12 @@ final class ChangePWViewController: UIViewController {
             .subscribe(onNext: { bool in
                 if let bool = bool {
                     self.newRePWTextInValidText.isHidden = bool
-                    self.newRePWTextField.errorBorder(bool: bool)
                     if bool {
+                        self.newRePWTextField.layer.borderColor = .none
+                        self.newRePWTextField.layer.borderWidth = 0
                         self.newRePWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
+                        self.newRePWTextField.errorBorder(bool: false)
                         self.newRePWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
