@@ -13,7 +13,7 @@ protocol LoginSignUsecaseProtocol {
     func checkEmailValid(email: String) -> Bool
     func checkNickNameValid(nickName: String) -> Bool
     
-    func getTempPassword(email: String) -> Observable<Bool>
+    func getTempPassword(email: String)
     
     func checkEmailCode(email: String, code: String)
     func sendEmail(email: String) 

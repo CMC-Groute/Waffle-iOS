@@ -12,6 +12,7 @@ import RxCocoa
 enum SendEmailStatus {
     case already
     case sendEmail
+    case undefined
 }
 
 enum LoginStatus {
@@ -28,7 +29,8 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     
     let sendEmailSuccess = PublishSubject<SendEmailStatus>()
     let loginSuccess = PublishSubject<LoginStatus>()
-    let checkEmailCode = PublishSubject<Bool>()
+    let checkEmailCodeSuccess = PublishSubject<Bool>()
+    let getPasswordSuccess = PublishSubject<Bool>()
     
     init(repository: LoginSignRepository) {
         self.repository = repository
@@ -88,9 +90,21 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     }
     
     //임시 비밀번호 발급
-    func getTempPassword(email: String) -> Observable<Bool> {
+    func getTempPassword(email: String) {
         return repository.getTempPassword(email: email)
-            .map { $0.status == 200 }
+            .catch { error -> Observable<DefaultResponse> in
+                let error = error as! URLSessionNetworkServiceError
+                WappleLog.error("error \(error)")
+                return .just(DefaultResponse.errorResponse(code: error.rawValue))
+            }.observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                WappleLog.debug("getTempPassword \(response.status)")
+                if response.status == 200 {
+                    self.getPasswordSuccess.onNext(true)
+                }else if response.status == 403  || response.status == 400 {
+                    self.getPasswordSuccess.onNext(false)
+                }
+            }).disposed(by: disposeBag)
     }
     
     func checkEmailCode(email: String, code: String) {
@@ -103,9 +117,9 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             .subscribe(onNext: { response in
                 WappleLog.debug("checkEmailCode \(response.status)")
                 if response.status == 200 {
-                    self.checkEmailCode.onNext(true)
+                    self.checkEmailCodeSuccess.onNext(true)
                 }else if response.status == 403  || response.status == 400 {
-                    self.checkEmailCode.onNext(false)
+                    self.checkEmailCodeSuccess.onNext(false)
                 }
             }).disposed(by: disposeBag)
     }
@@ -120,9 +134,10 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             .subscribe(onNext: { response in
                 if response.status == 200 {
                     self.sendEmailSuccess.onNext(.sendEmail)
-                }else {
-                    //WappleLog.debug("response.status \(response.status)")
+                }else if response.status == 400 {
                     self.sendEmailSuccess.onNext(.already)
+                }else {
+                    self.sendEmailSuccess.onNext(.undefined)
                 }
             }).disposed(by: disposeBag)
     }
