@@ -32,6 +32,7 @@ class AddCategoryCollectionViewCell: UICollectionViewCell {
     }
     
     func setUp() {
+        contentView.backgroundColor = Asset.Colors.white.color
         contentView.addSubview(addButton)
         contentView.makeRounded(width: nil, color: nil, value: 17)
         addButton.makeRounded(corner: 17)
