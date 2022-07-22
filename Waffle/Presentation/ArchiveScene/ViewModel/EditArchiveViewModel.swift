@@ -36,6 +36,8 @@ class EditArchiveViewModel {
         
         var nameTextFieldDidEndEvent: ControlEvent<Void>
         var memoTextViewDidEndEvent: ControlEvent<Void>
+        var nameTextFieldEditing: ControlEvent<Void>
+        
         var memoTextViewEditing: ControlEvent<Void>
         
         var dateTimeLaterButton: Observable<Void>

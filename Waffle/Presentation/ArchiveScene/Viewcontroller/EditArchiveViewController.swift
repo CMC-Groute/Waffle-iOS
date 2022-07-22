@@ -27,6 +27,10 @@ final class EditArchiveViewController: UIViewController {
     private var disposeBag = DisposeBag()
     let style = NSMutableParagraphStyle()
     
+    //For validation
+    private var isArchiveTimeDateLaterButton: Bool = false
+    private var isArchiveLocationDateLaterButton: Bool = false
+    
     let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.minimumDate = Date()
@@ -134,6 +138,18 @@ final class EditArchiveViewController: UIViewController {
         }
     }
     
+    func validation() {
+        let name = archiveNameTextField.text ?? ""
+        let date = archiveDateTextField.text ?? ""
+        let time = archiveTimeTextField.text ?? ""
+        let location = archiveLocationTextField.text ?? ""
+        if !name.isEmpty && ((!date.isEmpty && !time.isEmpty) || isArchiveTimeDateLaterButton == true) && (!location.isEmpty || isArchiveLocationDateLaterButton == true) {
+            addArchiveButton.setEnabled(color: Asset.Colors.black.name)
+        }else {
+            addArchiveButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        }
+    }
+    
     
     func resignForKeyboardNotification() {
         hideKeyboardWhenTappedAround()
@@ -188,15 +204,20 @@ final class EditArchiveViewController: UIViewController {
             self.archiveLocationLaterButton.setAttributedTitle(unSelectedString, for: .normal)
             self.archiveLocationTextField.placeholder = "클릭하면 지역을 선택할 수 있어요"
             self.archiveLocationTextField.isEnabled = true
+            self.isArchiveLocationDateLaterButton = false
             //viewModel?.locationLaterButtonEnabled.accept(true)
         }else {
             self.archiveLocationLaterButton.setImage(Asset.Assets.check.image.withRenderingMode(.alwaysOriginal), for: .normal)
             self.archiveLocationLaterButton.setAttributedTitle(selectedString, for: .normal)
             self.archiveLocationTextField.text?.removeAll()
             self.archiveLocationTextField.placeholder = "토핑이 원하는 위치로"
+            self.archiveLocationTextField.leftView = nil
+            self.archiveLocationTextField.padding(value: 9)
             self.archiveLocationTextField.isEnabled = false
+            self.isArchiveLocationDateLaterButton = true
             //viewModel?.locationLaterButtonEnabled.accept(false)
         }
+        self.validation()
     }
     
     func tapDateTimeLaterButton() {
@@ -211,6 +232,7 @@ final class EditArchiveViewController: UIViewController {
             self.placeHolderText(defaultValue: true)
             self.archiveTimeTextField.isEnabled = true
             self.archiveDateTextField.isEnabled = true
+            self.isArchiveTimeDateLaterButton = false
             //viewModel?.dateTimeLaterButtonEnabled.accept(true)
         }else {
             self.archiveTimeDateLaterButton.setImage(Asset.Assets.check.image.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -220,8 +242,10 @@ final class EditArchiveViewController: UIViewController {
             self.archiveDateTextField.text?.removeAll()
             self.archiveTimeTextField.isEnabled = false
             self.archiveDateTextField.isEnabled = false
+            self.isArchiveTimeDateLaterButton = true
             //viewModel?.dateTimeLaterButtonEnabled.accept(false)
         }
+        self.validation()
     }
     
 
@@ -232,18 +256,22 @@ final class EditArchiveViewController: UIViewController {
         guard let viewModel = viewModel else { return }
         guard let detailArchive = viewModel.detailArchive else { return }
         
-        self.archiveNameTextField.text = detailArchive.title
+        archiveNameTextField.text = detailArchive.title
         if let dateString = detailArchive.date, let timeString = detailArchive.time {
             self.archiveDateTextField.text = dateString
             self.archiveTimeTextField.text = timeString.amPmChangeFormat()
+            self.isArchiveTimeDateLaterButton = false
         }else {
             tapDateTimeLaterButton() // 나중에 선택하기 버튼 활성화
+            self.isArchiveTimeDateLaterButton = true
         }
         if let location = detailArchive.place {
             self.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
             self.archiveLocationTextField.text = location
+            self.isArchiveLocationDateLaterButton = false
         }else {
             tapLocationLaterButton()
+            self.isArchiveLocationDateLaterButton = true
         }
         if let memo = detailArchive.memo {
             archiveMemoTextView.text = memo
@@ -256,7 +284,7 @@ final class EditArchiveViewController: UIViewController {
 
     
     private func bindViewsModel() {
-        let input = EditArchiveViewModel.Input(nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), editArchiveButton: self.addArchiveButton.rx.tap.asObservable())
+        let input = EditArchiveViewModel.Input(nameTextFieldDidTapEvent: self.archiveNameTextField.rx.controlEvent(.editingDidBegin), memoTextViewDidTapEvent: self.archiveMemoTextView.rx.didBeginEditing, nameTextFieldDidEndEvent: self.archiveNameTextField.rx.controlEvent(.editingDidEnd), memoTextViewDidEndEvent: self.archiveMemoTextView.rx.didEndEditing, nameTextFieldEditing: archiveNameTextField.rx.controlEvent(.editingChanged), memoTextViewEditing: self.archiveMemoTextView.rx.didChange, dateTimeLaterButton: self.archiveTimeDateLaterButton.rx.tap.asObservable(), locationTextFieldTapEvent: self.archiveLocationTextField.rx.controlEvent(.editingDidBegin), locationLaterButton: self.archiveLocationLaterButton.rx.tap.asObservable(), editArchiveButton: self.addArchiveButton.rx.tap.asObservable())
 
         let _ = viewModel?.transform(from: input, disposeBag: disposeBag)
         guard let viewModel = viewModel else {
@@ -283,6 +311,12 @@ final class EditArchiveViewController: UIViewController {
         input.nameTextFieldDidEndEvent
             .subscribe(onNext: { _ in
                 self.archiveNameTextField.focusingBorder(color: nil)
+            }).disposed(by: disposeBag)
+        
+        input.nameTextFieldEditing
+            .subscribe(onNext: { _ in
+                WappleLog.debug("nameTextFieldEditing")
+                self.validation()
             }).disposed(by: disposeBag)
         
         input.dateTimeLaterButton
@@ -385,16 +419,19 @@ final class EditArchiveViewController: UIViewController {
     @objc func dDonePressed(_ sender: UIDatePicker) {
         //viewModel?.datePickerDate.accept(datePicker.date)
         archiveDateTextField.text = datePicker.date.addArchiveDateToString()
+        self.validation()
         view.endEditing(true)
     }
     
     @objc func tDonePressed(_ sender: UIDatePicker) {
         //viewModel?.timePickerTime.accept(timePicker.date)
         archiveTimeTextField.text = timePicker.date.addArhiveTimeToString()
+        self.validation()
         view.endEditing(true)
     }
     
     @objc func cancelPressed(_ sender: UIDatePicker) {
+        self.validation()
         view.endEditing(true)
     }
 }

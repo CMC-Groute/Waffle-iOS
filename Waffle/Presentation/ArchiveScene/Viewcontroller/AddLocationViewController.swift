@@ -110,6 +110,7 @@ class AddLocationViewController: UIViewController {
                 }else if let editVC = self.navigationController?.topViewController as? EditArchiveViewController {
                     editVC.archiveLocationTextField.addIconLeft(value: 9, icon: UIImage(named: "flagOrange")!, width: 15, height: 17)
                     editVC.archiveLocationTextField.text = self.selectedText
+                    editVC.validation()
                 }
             }).disposed(by: disposeBag)
     }

@@ -73,8 +73,8 @@ class AddArchiveViewController: UIViewController {
         archiveLocationTextField.makeRounded(corner: 10)
         
         archiveNameTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
-        archiveDateTextField.padding(value: 9, icon: "")
-        archiveTimeTextField.padding(value: 9, icon: "")
+        archiveDateTextField.padding(value: 9)
+        archiveTimeTextField.padding(value: 9)
         archiveLocationTextField.padding(value: 9)
         archiveMemoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
         archiveMemoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
@@ -277,6 +277,8 @@ class AddArchiveViewController: UIViewController {
                     self.archiveLocationLaterButton.setImage(Asset.Assets.check.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     self.archiveLocationLaterButton.setAttributedTitle(selectedString, for: .normal)
                     self.archiveLocationTextField.text?.removeAll()
+                    self.archiveLocationTextField.leftView = nil
+                    self.archiveLocationTextField.padding(value: 9)
                     self.archiveLocationTextField.placeholder = "토핑이 원하는 위치로"
                     self.archiveLocationTextField.isEnabled = false
                     output!.locationLaterButtonEnabled.accept(false)
