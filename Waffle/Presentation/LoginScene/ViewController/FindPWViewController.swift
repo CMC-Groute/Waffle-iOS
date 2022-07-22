@@ -19,12 +19,15 @@ final class FindPWViewController: UIViewController {
     private var disposeBag = DisposeBag()
     var viewModel: FindPWViewModel?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resignForKeyboardNotification()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
         configureUI()
-        resignForKeyboardNotification()
-
     }
     
     private func configureUI() {

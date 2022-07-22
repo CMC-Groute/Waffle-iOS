@@ -30,11 +30,15 @@ final class ChangePWViewController: UIViewController {
     
     var viewModel: ChangePWViewModel?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resignForKeyboardNotification()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         bindViewModel()
-        resignForKeyboardNotification()
     }
 
 

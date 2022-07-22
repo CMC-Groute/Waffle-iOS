@@ -20,13 +20,17 @@ final class EditSettingViewController: UIViewController {
     @IBOutlet private weak var nickNameTextField: UITextField!
     @IBOutlet private weak var nickNameInValidText: UILabel!
     @IBOutlet private weak var bottonConstraint: NSLayoutConstraint!
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resignForKeyboardNotification()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         bindViewModel()
         collectionviewSetUp()
-        resignForKeyboardNotification()
     }
     
     private func configureUI() {

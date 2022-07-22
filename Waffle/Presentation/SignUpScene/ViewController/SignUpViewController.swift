@@ -32,13 +32,16 @@ class SignUpViewController: UIViewController {
     let disposeBag = DisposeBag()
     var textFields: [UITextField] = []
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resignForKeyboardNotification()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textFields = [self.emailTextField, self.authenTextField, self.pwTextField, self.pwReTextField]
         configureUI()
-        resignForKeyboardNotification()
         bindViewModel()
-        
     }
     
     private func configureUI(){

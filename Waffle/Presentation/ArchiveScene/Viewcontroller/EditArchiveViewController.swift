@@ -46,13 +46,13 @@ final class EditArchiveViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        resignForKeyboardNotification()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        resignForKeyboardNotification()
         bindViewModel()
     }
     

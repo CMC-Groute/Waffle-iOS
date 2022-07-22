@@ -24,6 +24,7 @@ class AddLocationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        resignForKeyboardNotification()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -33,8 +34,6 @@ class AddLocationViewController: UIViewController {
         self.tableView.isHidden = true
         self.buttonView.isHidden = false
         bindUI()
-        resignForKeyboardNotification()
-
     }
     
     func resignForKeyboardNotification() {

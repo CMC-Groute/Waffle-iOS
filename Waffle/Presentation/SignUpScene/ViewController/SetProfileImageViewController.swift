@@ -20,12 +20,16 @@ final class SetProfileImageViewController: UIViewController {
     var viewModel: SetProfileImageViewModel?
     private var disposeBag = DisposeBag()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resignForKeyboardNotification()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         bindViewModel()
         collectionviewSetUp()
-        resignForKeyboardNotification()
     }
     
     func configureUI() {

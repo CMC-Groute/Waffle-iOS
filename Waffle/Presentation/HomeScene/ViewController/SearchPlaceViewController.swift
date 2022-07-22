@@ -38,6 +38,11 @@ class SearchPlaceViewController: UIViewController {
         let imageView = UIImageView(image: searchImage)
         return imageView
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resignForKeyboardNotification()
+    }
 
     
     override func viewDidLoad() {
@@ -45,7 +50,6 @@ class SearchPlaceViewController: UIViewController {
         configureUI()
         tableViewSetup()
         bindViewModel()
-        resignForKeyboardNotification()
     }
     
     func resignForKeyboardNotification() {
