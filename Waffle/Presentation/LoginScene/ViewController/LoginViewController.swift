@@ -28,12 +28,12 @@ final class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        resignForKeyboardNotification()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resignForKeyboardNotification()
         bindViewModel()
         configureUI()
     }
@@ -52,24 +52,20 @@ final class LoginViewController: UIViewController {
     @objc private func keyboardWillShow(notification: NSNotification) {
           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
               let keyboardReactangle = keyboardFrame.cgRectValue
-              let keyboardHeight = keyboardReactangle.height
-              UIView.animate(
-                  withDuration: 0.3
-                  , animations: { //6, 20
-                      self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight + self.view.safeAreaInsets.bottom)
-                  }
-              )
+              let keyboardHeight = keyboardReactangle.height //6 20
+              WappleLog.debug("keyboardHeight \(keyboardHeight)")
+              WappleLog.debug("y : \(self.view.safeAreaInsets.bottom)")
+              var bottomMargin = -keyboardHeight
+              if view.safeAreaInsets.bottom == .zero {
+                  bottomMargin += 20
+              }
+              self.view.transform = CGAffineTransform(translationX: 0, y: bottomMargin)
         }
 
       }
       
       @objc private func keyboardWillHide(notification: NSNotification) {
-          UIView.animate(
-              withDuration: 0.3
-              , animations: {
-                  self.view.transform = CGAffineTransform(translationX: 0, y: 0)
-              }
-          )
+          self.view.transform = CGAffineTransform(translationX: 0, y: 0)
       }
     
     private func configureUI() {
