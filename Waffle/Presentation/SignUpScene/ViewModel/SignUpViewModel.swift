@@ -111,14 +111,17 @@ final class SignUpViewModel {
                 case .checkEmail:
                     message = "이메일에서 인증번호를 확인해 주세요."
                     color = .green
+                case .none:
+                    color = .red
+                    //message = "알수 없는 에러가 발생했습니다."
                 default:
                     break
-                    
                 }
                 output.emailInvalidMessage.accept((message ?? nil, color ?? nil))
             }).disposed(by: disposeBag)
         
         input.emailAuthenButton
+            .throttle(.seconds(3), scheduler: MainScheduler.instance)
             .withLatestFrom(input.emailTextField)
             .bind(onNext: { [weak self] email in
                 guard let self = self else { return }
@@ -183,10 +186,12 @@ final class SignUpViewModel {
                     WappleLog.debug("sendEmailSuccess \(status)")
                 case .already:
                     output.isEmailInvalid.accept(.aready)
+                case .undefined:
+                    output.isEmailInvalid.accept(.none)
                 }
             }).disposed(by: disposeBag)
         
-        usecase.checkEmailCode
+        usecase.checkEmailCodeSuccess
             .subscribe(onNext: { bool in
                 WappleLog.debug("checkCodeSuccess \(bool)")
                     output.isAuthenCodeInValid.accept(bool)
