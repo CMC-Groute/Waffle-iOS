@@ -93,8 +93,10 @@ class DetailPlaceTableViewCell: UITableViewCell {
         placeLabel.text = placeInfo.roadNameAddress
         if placeInfo.isConfirm {
             confirmButton.isSelected = true
+            confirmButton.setTitle("확정됨", for: .normal)
         }else {
             confirmButton.isSelected = false
+            confirmButton.setTitle("확정하기", for: .normal)
         }
         
         if placeInfo.placeLike.isPlaceLike {
@@ -102,6 +104,7 @@ class DetailPlaceTableViewCell: UITableViewCell {
         }else {
             likeButton.isSelected = false
         }
+        
         updatedLikeCount = placeInfo.placeLike.likeCount
         likeButton.setTitle("좋아요 \(updatedLikeCount)", for: .normal)
     }
