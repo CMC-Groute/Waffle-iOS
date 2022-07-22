@@ -75,7 +75,6 @@ final class SignUpViewModel {
                 let signUpInfo = SignUp(email: email, password: password, nickname: "", profileImage: "", isAgreedMarketing: false)
                 self.coordinator.termsStep(signUpInfo: signUpInfo)
             }).disposed(by: disposeBag)
-            
         
         input.emailTextField
             .distinctUntilChanged()
@@ -125,8 +124,9 @@ final class SignUpViewModel {
             .withLatestFrom(input.emailTextField)
             .bind(onNext: { [weak self] email in
                 guard let self = self else { return }
-                //email send
+                //MARK: email send
                 self.usecase.sendEmail(email: email)
+                output.isEmailInvalid.accept(.checkEmail)
             }).disposed(by: disposeBag)
         
         //MARK: - authenTextField
@@ -182,7 +182,6 @@ final class SignUpViewModel {
             .subscribe(onNext: { status in
                 switch status {
                 case .sendEmail:
-                    output.isEmailInvalid.accept(.checkEmail)
                     WappleLog.debug("sendEmailSuccess \(status)")
                 case .already:
                     output.isEmailInvalid.accept(.aready)
