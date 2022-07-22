@@ -19,6 +19,7 @@ class EditPlaceViewController: UIViewController {
     @IBOutlet weak var linkDeleteButton: UIButton!
     
     let disposeBag = DisposeBag()
+    private var isLoadedPlace: Bool = false
     
     lazy var placeFramView: UIView = {
         let view = UIView()
@@ -93,13 +94,20 @@ class EditPlaceViewController: UIViewController {
         viewModel?.deletePlace()
     }
     
+    func validation() {
+        if viewModel?.selectedCategory != nil && isLoadedPlace == true {
+            editButton.setEnabled(color: Asset.Colors.black.name)
+        }else {
+            editButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        }
+    }
+    
     func configureNavigationBar() {
         let backImage = Asset.Assets._24pxBtn.image.withRenderingMode(.alwaysOriginal)
         let backButton = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         navigationItem.leftBarButtonItem = backButton
         navigationController?.navigationBar.titleTextAttributes =  Common.navigationBarTitle()
         navigationItem.title = "장소 수정하기"
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: Asset.Assets.trash.name)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapTrashButton))
     }
     
@@ -120,6 +128,7 @@ class EditPlaceViewController: UIViewController {
     }
     
     private func placeAddLayout() {
+        isLoadedPlace = true
         placeTextField.removeFromSuperview()
         
         view.addSubview(placeFramView)
@@ -152,10 +161,12 @@ class EditPlaceViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-8)
             $0.width.height.equalTo(40)
         }
+        self.validation()
         
     }
     
     private func placeInputTextFieldLayout() {
+        isLoadedPlace = false
         for subView in placeFramView.subviews {
             subView.removeFromSuperview()
         }
@@ -168,12 +179,14 @@ class EditPlaceViewController: UIViewController {
             $0.height.equalTo(50)
         }
         placeFramView.removeFromSuperview()
+        self.validation()
     }
     
     private func bindViewModel() { //rx 없이 연결
         guard let viewModel = viewModel, let place = viewModel.place else { return }
         placeTitleLabel.text = place.title
         placeSubtitleLabel.text = place.roadNameAddress
+        isLoadedPlace = true
         if let link = viewModel.detailPlace?.link {
             linkTextView.text = link
         }else { //placeHolder

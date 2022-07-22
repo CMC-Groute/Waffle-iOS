@@ -25,6 +25,7 @@ class TableDetailArchiveCollectionViewCell: UICollectionViewCell {
     
     var noPlaceView: UIView = {
         let view = UIView()
+        view.backgroundColor = Asset.Colors.gray1.color
         return view
     }()
 
