@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
         }
         cardCountButton.makeRounded(width: 1, color: Asset.Colors.gray3.name, value: 16)
         cardCountButton.setTitleColor(Asset.Colors.gray4.color, for: .normal)
+        
         setNavigationBar()
     }
     
@@ -87,12 +88,17 @@ class HomeViewController: UIViewController {
     func hideEmptyView() {
         emptyView.isHidden = true
         collectionView.isHidden = false
+        cardCountButton.isHidden = false
         updateButtonCount()
     }
     
     func updateButtonCount() {
         guard let cardInfo = viewModel?.cardInfo else { return }
-        cardCountButton.setTitle("1/\(cardInfo.count)", for: .normal)
+        let firstLoadCount = "1"
+        let countText = "\(firstLoadCount)/\(cardInfo.count)"
+        let mutableString = NSMutableAttributedString(string: countText)
+        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: Asset.Colors.gray5.color, range: (countText as NSString).range(of: firstLoadCount))
+        cardCountButton.setAttributedTitle(mutableString, for: .normal)
     }
     
     
@@ -118,7 +124,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         behavior.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
         guard let cardInfo = viewModel?.cardInfo else { return }
-        self.cardCountButton.setTitle("\(self.behavior.currentIndex + 1)/\(cardInfo.count)", for: .normal)
+        let countText = "\(self.behavior.currentIndex + 1)/\(cardInfo.count)"
+        let mutableString = NSMutableAttributedString(string: countText)
+        mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: Asset.Colors.gray5.color, range: (countText as NSString).range(of: "\(self.behavior.currentIndex + 1)"))
+        self.cardCountButton.setAttributedTitle(mutableString, for: .normal)
     }
     
 
