@@ -72,7 +72,10 @@ final class SetProfileImageViewModel {
             .distinctUntilChanged()
             .skip(1)
             .subscribe(onNext: { text in
-                if text.count == 0 {  output.startButtonEnabled.accept(false) }
+                if text.count == 0 {
+                    output.startButtonEnabled.accept(false)
+                    output.nickNameInvalidMessage.accept(true)
+                }
                 else {
                     if !self.usecase.checkNickNameValid(nickName: text) {
                         output.nickNameInvalidMessage.accept(false)

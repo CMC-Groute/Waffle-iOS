@@ -122,12 +122,21 @@ final class SetProfileImageViewController: UIViewController {
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
         
         output?.nickNameInvalidMessage
-            .subscribe(onNext: { bool in
-                self.nickNameTextField.errorBorder(bool: bool)
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
+                
                 self.nickNameInValidText.isHidden = bool
+                let nickName = self.nickNameTextField.text ?? ""
                 if bool {
+                    self.nickNameTextField.layer.borderColor = .none
+                    self.nickNameTextField.layer.borderWidth = 0
                     self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
+                    if nickName.isEmpty {
+                        WappleLog.debug("nickNameTextField here")
+                        self.nickNameTextField.rightView = nil
+                    }
                 }else {
+                    self.nickNameTextField.errorBorder(bool: false)
                     self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 }
             }).disposed(by: disposeBag)
