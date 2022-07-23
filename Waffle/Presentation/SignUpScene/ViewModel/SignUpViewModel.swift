@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 enum EmailValidType {
-    case none, notValid, needValid, aready, checkEmail, valid
+    case none, notValid, needValid, aready, checkEmail, valid, loadFalse
 }
 
 enum EmailValidColor: String {
@@ -64,7 +64,7 @@ final class SignUpViewModel {
         let output = Output()
         //nextButton 활성화
         Observable.combineLatest(output.isEmailInvalid, output.isAuthenCodeInValid, output.ispasswordInvalid, output.isRepasswordInvalid, input.passwordTextField, input.rePasswordTextField)
-            .map{ $0.0 == .checkEmail && $0.1 == true && $0.2 == true && $0.3 == true &&  ($0.4 == $0.5) } //유효 메세지 없다면, 비밀번호가 일치한다면
+            .map{ ($0.0 == .checkEmail || $0.0 == .loadFalse) && $0.1 == true && $0.2 == true && $0.3 == true &&  ($0.4 == $0.5) } //유효 메세지 없다면, 비밀번호가 일치한다면
             .bind(to: output.nextButtonEnabled)
             .disposed(by: disposeBag)
         
@@ -186,7 +186,8 @@ final class SignUpViewModel {
                 case .already:
                     output.isEmailInvalid.accept(.aready)
                 case .undefined:
-                    output.isEmailInvalid.accept(.none)
+                    WappleLog.debug("sendEmailSuccess undefined \(status)")
+                    output.isEmailInvalid.accept(.loadFalse)
                 }
             }).disposed(by: disposeBag)
         
