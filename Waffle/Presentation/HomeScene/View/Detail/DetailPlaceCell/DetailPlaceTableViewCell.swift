@@ -62,11 +62,11 @@ class DetailPlaceTableViewCell: UITableViewCell {
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longGesture))
         longGesture.minimumPressDuration = 0.5
         canEditingButton.addGestureRecognizer(longGesture)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLabel(recognizer:)))
+        let tapGestureTitle = UITapGestureRecognizer(target: self, action: #selector(didTapLabel(recognizer:)))
+        let tapGestureAddress = UITapGestureRecognizer(target: self, action: #selector(didTapLabel(recognizer:)))
             
-        titleLabel.addGestureRecognizer(tapGesture)
-        placeLabel.addGestureRecognizer(tapGesture)
+        titleLabel.addGestureRecognizer(tapGestureTitle)
+        placeLabel.addGestureRecognizer(tapGestureAddress)
     }
     
     @objc func longGesture() {
