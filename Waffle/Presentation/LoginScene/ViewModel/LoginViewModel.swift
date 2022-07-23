@@ -65,6 +65,8 @@ final class LoginViewModel {
                     output.passwordInvalidMessage.accept(true)
                 }else if status == .invalidEmail {  //404 존재하지 않는 사용자입니다.
                     output.emailInvalidMessage.accept(true)
+                }else if status == .unDefined {
+                    output.alertMessage.accept("네트워크 연결을 확인해주세요.")
                 }
             }).disposed(by: disposeBag)
         

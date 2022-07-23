@@ -69,6 +69,11 @@ class HomeViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
+        output?.networkErrorMessage
+            .subscribe(onNext: { str in
+                self.presentAlert(withTitle: "연결 실패", message: str)
+            }).disposed(by: disposeBag)
+        
         
         
     }

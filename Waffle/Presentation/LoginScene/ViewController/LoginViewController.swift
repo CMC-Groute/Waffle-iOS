@@ -134,6 +134,11 @@ final class LoginViewController: UIViewController {
                 self.passwordTextField.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
         
+        output?.alertMessage
+            .subscribe(onNext: { str in
+                self.presentAlert(withTitle: "연결 실패", message: str)
+            }).disposed(by: disposeBag)
+        
         output?.loginButtonEnabled
             .subscribe(onNext: { bool in
                 switch bool {

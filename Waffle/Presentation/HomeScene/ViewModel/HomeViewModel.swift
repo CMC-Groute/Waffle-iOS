@@ -28,7 +28,7 @@ class HomeViewModel {
     
     struct Output {
         let isHiddenView = BehaviorRelay<Bool>(value: false)
-        var networkErrorMessage = BehaviorRelay<Bool>(value: false)
+        var networkErrorMessage = BehaviorRelay<String>(value: "네트워크 연결을 확인해주세요.")
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -60,7 +60,7 @@ class HomeViewModel {
         usecase.networkError
             .filter { $0 == true }
             .subscribe(onNext: { _ in 
-                output.networkErrorMessage.accept(true)
+                output.networkErrorMessage.accept("네트워크 연결을 확인해주세요.")
             }).disposed(by: disposeBag)
         
         return output
