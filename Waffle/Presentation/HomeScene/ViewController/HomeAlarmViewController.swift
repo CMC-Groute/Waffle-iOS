@@ -102,8 +102,8 @@ extension HomeAlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedArchiveId = viewModel?.alarmData[indexPath.row].archiveId else { return }
         guard let alarmId = viewModel?.alarmData[indexPath.row].id else { return }
-        viewModel?.detailArchive(archiveId: selectedArchiveId)
         viewModel?.isRead(alarmId: alarmId)
+        viewModel?.detailArchive(archiveId: selectedArchiveId)
         
     }
 }
