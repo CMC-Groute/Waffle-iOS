@@ -74,13 +74,11 @@ class URLSessionNetworkService {
                     return
                 }
                 guard 200...299 ~= httpResponse.statusCode else {
-                    print("httpResponse.statusCode \(httpResponse.statusCode)")
                     emitter.onError(self.configureHTTPError(errorCode: httpResponse.statusCode))
                     return
                 }
                 
                 guard let data = data else {
-                    print("httpResponse. emptyDataError")
                     emitter.onNext(.failure(.emptyDataError))
                     return
                 }
@@ -94,32 +92,7 @@ class URLSessionNetworkService {
             }
         }
     }
-    
-//    func request<T: Decodable>(_ urlRequest: NetworkRequestBuilder, responseType: T.Type) -> AnyPublisher<T, Error> {
-//        return request(urlRequest)
-//            .decode(type: T.self, decoder: decoder)
-//            .eraseToAnyPublisher()
-//    }
-//
-//    func defaultRequest(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<DefaultResponse, Error> {
-//        print("urlSession defaultRequest")
-//        return request(urlRequest)
-//            .decode(type: DefaultResponse.self, decoder: decoder)
-//            .eraseToAnyPublisher()
-//    }
-//
-//    func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<[[String: Any]], Error> {
-//        return request(urlRequest)
-//            .tryCompactMap { return try JSONSerialization.jsonObject(with: $0, options: []) as? [[String: Any]] }
-//            .eraseToAnyPublisher()
-//    }
-//
-//    func request(_ urlRequest: NetworkRequestBuilder) -> AnyPublisher<[String: Any], Error> {
-//        return request(urlRequest)
-//            .tryCompactMap { return try JSONSerialization.jsonObject(with: $0, options: []) as? [String: Any] }
-//            .eraseToAnyPublisher()
-//    }
-    
+
     private func configureHTTPError(errorCode: Int) -> Error {
         return URLSessionNetworkServiceError(rawValue: errorCode)
         ?? URLSessionNetworkServiceError.unknownError

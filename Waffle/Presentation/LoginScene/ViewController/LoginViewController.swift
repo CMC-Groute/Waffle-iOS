@@ -60,8 +60,10 @@ final class LoginViewController: UIViewController {
               if self.view.frame.origin.y == 0 {
                   //self.view.safeAreaInsets.bottom notch가 없을때 0
                   var bottomMargin = -keyboardHeight + 14
+                  WappleLog.debug("Keyboard \(keyboardHeight)")
+                  WappleLog.debug("view.safeAreaInsets.bottom \(view.safeAreaInsets.bottom)")
                   if view.safeAreaInsets.bottom == .zero {
-                      bottomMargin -= 28
+                      bottomMargin -= 14
                   }
                   self.view.frame.origin.y = bottomMargin
               }
@@ -79,6 +81,8 @@ final class LoginViewController: UIViewController {
         loginButton.makeRounded(corner: 26)
         emailTextField.changePlaceHolderColor()
         emailTextField.makeRounded(corner: 10)
+        emailTextField.textContentType = .oneTimeCode
+        passwordTextField.textContentType = .oneTimeCode
         emailTextField.padding(value: 9, icon: Asset.Assets.errorCircleRounded.name)
         passwordTextField.changePlaceHolderColor()
         passwordTextField.makeRounded(corner: 10)

@@ -59,7 +59,8 @@ class HomeViewModel {
         
         usecase.networkError
             .filter { $0 == true }
-            .subscribe(onNext: { _ in 
+            .subscribe(onNext: { _ in
+                WappleLog.debug("networkError from usecase")
                 output.networkErrorMessage.accept("네트워크 연결을 확인해주세요.")
             }).disposed(by: disposeBag)
         

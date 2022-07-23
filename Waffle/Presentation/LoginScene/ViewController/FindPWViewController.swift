@@ -67,6 +67,7 @@ final class FindPWViewController: UIViewController {
               UIView.animate(
                   withDuration: 0.3
                   , animations: {
+                      WappleLog.debug("Keyboard \(keyboardHeight)")
                       self.bottonConstraint.constant = keyboardHeight - self.view.safeAreaInsets.bottom + 4
                   }
               )

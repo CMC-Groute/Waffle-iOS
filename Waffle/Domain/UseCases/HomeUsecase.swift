@@ -61,7 +61,8 @@ class HomeUsecase: HomeUsecaseProtocol {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                if response.status == 500 {
+                WappleLog.debug("getCardInfo response \(response.status)")
+                if response.status == URLSessionNetworkServiceError.unknownError.rawValue {
                     //network 연결 x
                     self.networkError.onNext(true)
                 }else {
