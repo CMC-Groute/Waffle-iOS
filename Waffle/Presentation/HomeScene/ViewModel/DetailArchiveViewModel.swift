@@ -30,6 +30,7 @@ final class DetailArchiveViewModel {
     var archiveId: Int = 0
     var archiveCode: String?
     var currentPlace: PlaceInfo?
+    var isCategoryEditing: Bool = false
     
     var loadData = PublishSubject<LoadIndexPathType>()
     var idFromDelete: Bool = false

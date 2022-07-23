@@ -19,6 +19,11 @@ class HomeViewController: UIViewController {
     var disposeBag = DisposeBag()
     var behavior = MSCollectionViewPeekingBehavior(cellSpacing: 16)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()

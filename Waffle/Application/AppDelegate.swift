@@ -113,7 +113,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
               let appCoordinator = sceneDelegate.appCoordinator,
               let tabBarCoordinator = appCoordinator.findCoordinator(type: .tab) as? TabBarCoordinator,
               let homeCoordinator = appCoordinator.findCoordinator(type: .home) as? HomeCoordinator else { return }
-              tabBarCoordinator.selectPage(.home)
+        tabBarCoordinator.selectPage(.home)
         guard (homeCoordinator.navigationController.viewControllers.last
                is DetailArchiveViewController == false) else { return }
         homeCoordinator.detailArchive(archiveId: archiveId)

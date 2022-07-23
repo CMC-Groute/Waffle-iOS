@@ -106,6 +106,7 @@ extension CategoryDetailArchiveCollectionViewCell: UICollectionViewDelegate {
             if indexPath.row == viewModel.category.count { //마지막 셀 클릭 시
                 if isCategoryEditing {
                     isCategoryEditing = false
+                    viewModel.isCategoryEditing = false // 상위 뷰 카테고리 false 만들어줌
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.collectionView.reloadData()

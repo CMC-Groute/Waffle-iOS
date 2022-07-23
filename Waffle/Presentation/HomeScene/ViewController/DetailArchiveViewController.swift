@@ -15,7 +15,6 @@ class DetailArchiveViewController: UIViewController {
 
     var viewModel: DetailArchiveViewModel?
     private var disposeBag = DisposeBag()
-    private var isCategoryEditing: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,10 +73,10 @@ class DetailArchiveViewController: UIViewController {
                     case .all:
                         self.collectionView.reloadData()
                     case .deleteCategory:
-                        self.isCategoryEditing = true
+                        self.viewModel?.isCategoryEditing = true
                         self.collectionView.reloadSections(.init(integer: 2))
                     case .addCategory:
-                        self.isCategoryEditing = false
+                        self.viewModel?.isCategoryEditing = false
                         self.collectionView.reloadSections(.init(integer: 2))
                     case .tableView:
                         self.collectionView.reloadSections(.init(integer: 3))
@@ -130,7 +129,7 @@ extension DetailArchiveViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryDetailArchiveCollectionViewCell.identifier, for: indexPath) as! CategoryDetailArchiveCollectionViewCell
             cell.viewModel = viewModel
             cell.delegate = self
-            cell.isCategoryEditing = isCategoryEditing
+            cell.isCategoryEditing = viewModel.isCategoryEditing
             return cell
         }else if indexPath.section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TableDetailArchiveCollectionViewCell.identifier, for: indexPath) as! TableDetailArchiveCollectionViewCell

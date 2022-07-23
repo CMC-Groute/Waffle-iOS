@@ -116,6 +116,7 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func popViewController() {
+        self.navigationController.setNavigationBarHidden(false, animated: true)
         self.navigationController.popViewController(animated: true)
     }
     

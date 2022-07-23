@@ -83,7 +83,6 @@ class InputArchiveCodeViewController: UIViewController {
     }
     
     @objc func didTapBackButton() {
-        //self.navigationController?.setNavigationBarHidden(true, animated: true)
         viewModel?.back()
     }
     
