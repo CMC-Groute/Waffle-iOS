@@ -652,12 +652,12 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WOE-oi-I14">
-                                                <rect key="frame" x="12" y="46.5" width="390" height="39"/>
+                                                <rect key="frame" x="16" y="46.5" width="382" height="39"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="39" id="VWq-yY-bZw"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="kPO-lP-U2z">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kPO-lP-U2z">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -709,7 +709,7 @@
                                             <constraint firstItem="kya-BQ-C1q" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="20" id="XLn-45-cRT"/>
                                             <constraint firstItem="3BA-P4-8AY" firstAttribute="top" secondItem="EkH-37-1JJ" secondAttribute="top" constant="5" id="aIX-xf-FnW"/>
                                             <constraint firstItem="EkH-37-1JJ" firstAttribute="bottom" secondItem="3BA-P4-8AY" secondAttribute="bottom" constant="5" id="b7D-be-uQ9"/>
-                                            <constraint firstAttribute="trailing" secondItem="WOE-oi-I14" secondAttribute="trailing" constant="12" id="bHt-aT-gby"/>
+                                            <constraint firstAttribute="trailing" secondItem="WOE-oi-I14" secondAttribute="trailing" constant="16" id="bHt-aT-gby"/>
                                             <constraint firstItem="oCG-84-YbC" firstAttribute="top" secondItem="M0N-8v-ezH" secondAttribute="top" constant="17" id="flS-bG-wif"/>
                                             <constraint firstAttribute="trailing" secondItem="vYO-DS-Sj8" secondAttribute="trailing" constant="16" id="grF-OH-8KV"/>
                                             <constraint firstItem="1UB-Ut-et1" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="18" id="h2Y-ZJ-cQJ"/>
@@ -717,7 +717,7 @@
                                             <constraint firstItem="EkH-37-1JJ" firstAttribute="top" secondItem="PI0-Ll-GD4" secondAttribute="bottom" constant="11" id="lKX-Km-Z8B"/>
                                             <constraint firstItem="PI0-Ll-GD4" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="18" id="qtj-sU-8bi"/>
                                             <constraint firstItem="vYO-DS-Sj8" firstAttribute="top" secondItem="1UB-Ut-et1" secondAttribute="bottom" constant="12" id="vfo-Y3-0Ce"/>
-                                            <constraint firstItem="WOE-oi-I14" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="12" id="xcz-Go-yss"/>
+                                            <constraint firstItem="WOE-oi-I14" firstAttribute="leading" secondItem="M0N-8v-ezH" secondAttribute="leading" constant="16" id="xcz-Go-yss"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1343,6 +1343,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PAw-Xk-uMr">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="sectionIndexBackgroundColor" name="Gray1"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hD4-IA-VDg"/>
@@ -1529,12 +1530,12 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DwL-oK-ULg">
-                                                <rect key="frame" x="12" y="46.5" width="390" height="39"/>
+                                                <rect key="frame" x="16" y="46.5" width="382" height="39"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="39" id="at1-4s-6VW"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="kB2-H8-bAy">
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kB2-H8-bAy">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1588,11 +1589,11 @@
                                             <constraint firstItem="ngR-JW-qxs" firstAttribute="top" secondItem="nEd-Xs-Q4o" secondAttribute="bottom" constant="12" id="9CM-lN-2rP"/>
                                             <constraint firstItem="x9c-ni-vBM" firstAttribute="bottom" secondItem="Ftm-HX-DrB" secondAttribute="bottom" constant="5" id="Dwg-Ar-h2g"/>
                                             <constraint firstItem="nEd-Xs-Q4o" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="18" id="FjG-Mh-ZBR"/>
-                                            <constraint firstItem="DwL-oK-ULg" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="12" id="GRl-me-kBT"/>
+                                            <constraint firstItem="DwL-oK-ULg" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="16" id="GRl-me-kBT"/>
                                             <constraint firstItem="DwL-oK-ULg" firstAttribute="top" secondItem="pXP-JI-1rX" secondAttribute="bottom" constant="10" id="IeQ-No-NuC"/>
                                             <constraint firstAttribute="trailing" secondItem="x9c-ni-vBM" secondAttribute="trailing" constant="16" id="N8M-Ou-dKg"/>
                                             <constraint firstItem="XoJ-JW-whA" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="20" id="NaE-TO-xYS"/>
-                                            <constraint firstAttribute="trailing" secondItem="DwL-oK-ULg" secondAttribute="trailing" constant="12" id="Pp5-Rn-u4p"/>
+                                            <constraint firstAttribute="trailing" secondItem="DwL-oK-ULg" secondAttribute="trailing" constant="16" id="Pp5-Rn-u4p"/>
                                             <constraint firstItem="pXP-JI-1rX" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="20" id="QJJ-x5-tv8"/>
                                             <constraint firstItem="x9c-ni-vBM" firstAttribute="trailing" secondItem="Ftm-HX-DrB" secondAttribute="trailing" constant="8" id="Uxf-Vt-Kw4"/>
                                             <constraint firstItem="x9c-ni-vBM" firstAttribute="leading" secondItem="Uie-kg-NDT" secondAttribute="leading" constant="16" id="bKS-c5-aIh"/>
@@ -1760,6 +1761,9 @@
         <image name="text" width="18" height="20"/>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray1">
+            <color red="0.97254901960784312" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray2">
             <color red="0.94509803921568625" green="0.94509803921568625" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

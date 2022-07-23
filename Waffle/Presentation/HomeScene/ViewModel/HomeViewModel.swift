@@ -28,7 +28,7 @@ class HomeViewModel {
     
     struct Output {
         let isHiddenView = BehaviorRelay<Bool>(value: false)
-        var networkErrorMessage = BehaviorRelay<String>(value: "네트워크 연결을 확인해주세요.")
+        var networkErrorMessage = PublishRelay<String>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {

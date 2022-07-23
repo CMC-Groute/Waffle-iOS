@@ -335,6 +335,11 @@ extension AddDetailPlaceViewController: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: cellWidth, height: 33)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(8)
+    }
+    
 //
 //
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

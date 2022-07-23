@@ -18,9 +18,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Pme-kT-NnX">
-                        <rect key="frame" x="12" y="0.0" width="338" height="139"/>
+                        <rect key="frame" x="16" y="0.0" width="330" height="139"/>
                         <color key="backgroundColor" name="Gray1"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="0N2-Je-cqi">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0N2-Je-cqi">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -29,11 +29,12 @@
                     </collectionView>
                 </subviews>
             </view>
+            <color key="backgroundColor" name="Gray1"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Pme-kT-NnX" secondAttribute="bottom" id="Ijl-Lv-Ne4"/>
                 <constraint firstItem="Pme-kT-NnX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Shb-sd-hv4"/>
-                <constraint firstAttribute="trailing" secondItem="Pme-kT-NnX" secondAttribute="trailing" constant="12" id="ndJ-V3-TCa"/>
-                <constraint firstItem="Pme-kT-NnX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="vKi-0s-kJq"/>
+                <constraint firstAttribute="trailing" secondItem="Pme-kT-NnX" secondAttribute="trailing" constant="16" id="ndJ-V3-TCa"/>
+                <constraint firstItem="Pme-kT-NnX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="vKi-0s-kJq"/>
             </constraints>
             <size key="customSize" width="362" height="139"/>
             <connections>
