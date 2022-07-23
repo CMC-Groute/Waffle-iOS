@@ -151,15 +151,22 @@ final class ChangePWViewController: UIViewController {
                 }
             }).disposed(by: disposeBag)
         
+        output?.passwordInValidMessage
+            .subscribe(onNext: {[weak self] message in
+                guard let self = self else { return }
+                self.PWTextInValidText.text = message
+            }).disposed(by: disposeBag)
+        
         output?.passwordInValid
             .subscribe(onNext: { bool in
                 if let bool = bool {
                     self.PWTextInValidText.isHidden = bool
-                    self.PWTextField.errorBorder(bool: bool)
                     if bool {
+                        self.PWTextField.layer.borderColor = .none
+                        self.PWTextField.layer.borderWidth = 0
                         self.PWTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     }else {
-                        
+                        self.PWTextField.errorBorder(bool: false)
                         self.PWTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                     }
                 }else {
@@ -167,7 +174,6 @@ final class ChangePWViewController: UIViewController {
                     self.PWTextField.errorBorder(bool: true)
                     self.PWTextField.focusingBorder(color: Asset.Colors.orange.name)
                 }
-               
             }).disposed(by: disposeBag)
         
         output?.newPasswordInValid

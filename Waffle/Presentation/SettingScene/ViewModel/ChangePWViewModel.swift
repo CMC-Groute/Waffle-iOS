@@ -32,6 +32,7 @@ class ChangePWViewModel {
     struct Output {
         let doneButtonEnabled = BehaviorRelay<Bool>(value: false)
         let passwordInValid = PublishRelay<Bool?>()
+        let passwordInValidMessage = PublishRelay<String>()
         let newPasswordInValid = PublishRelay<Bool?>()
         let newRePasswordInValid = PublishRelay<Bool?>()
     }
@@ -68,6 +69,7 @@ class ChangePWViewModel {
                     output.passwordInValid.accept(nil)
                 }else {
                     if !self.usecase.checkPasswordValid(password: text) {
+                        output.passwordInValidMessage.accept("비밀번호 형식이 올바르지 않아요. *영문, 숫자 조합 8자 이상")
                         output.passwordInValid.accept(false)
                     }else {
                         output.passwordInValid.accept(true)
@@ -109,6 +111,7 @@ class ChangePWViewModel {
                     self.coordinator.popToRootViewController(with: "새 비밀번호로 변경되었어요", width: 172, height: 34)
                 }else {
                     WappleLog.debug("can't not go to setting")
+                    output.passwordInValidMessage.accept("비밀번호가 올바르지 않아요.")
                     output.passwordInValid.accept(false)
                 }
             }).disposed(by: disposeBag)
