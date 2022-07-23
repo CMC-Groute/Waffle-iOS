@@ -58,11 +58,10 @@ final class LoginViewController: UIViewController {
               let keyboardReactangle = keyboardFrame.cgRectValue
               let keyboardHeight = keyboardReactangle.height //6 20
               if self.view.frame.origin.y == 0 {
-                  WappleLog.debug("keyboardHeight \(keyboardHeight)")
-                  WappleLog.debug("y : \(self.view.safeAreaInsets.bottom)")
+                  //self.view.safeAreaInsets.bottom notch가 없을때 0
                   var bottomMargin = -keyboardHeight + 14
                   if view.safeAreaInsets.bottom == .zero {
-                      bottomMargin += 40
+                      bottomMargin -= 28
                   }
                   self.view.frame.origin.y = bottomMargin
               }
@@ -73,7 +72,6 @@ final class LoginViewController: UIViewController {
       
       @objc private func keyboardWillHide(notification: NSNotification) {
           self.view.frame.origin.y = 0
-          //self.view.transform = CGAffineTransform(translationX: 0, y: 0)
       }
     
     private func configureUI() {
