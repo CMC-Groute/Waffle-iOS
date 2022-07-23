@@ -110,6 +110,7 @@ final class TermsViewController: UIViewController {
                 guard let self = self else { return }
                 self.serviceAgreeButton.setTitle(.none, for: .normal)
                 if self.serviceAgreeButton.image(for: .normal) == self.selectedImage {
+                    self.allCheckButton.setImage(self.unSelectedImage, for: .normal)
                     self.serviceAgreeButton.setImage(self.unSelectedImage, for: .normal)
                 }else {
                     self.serviceAgreeButton.setImage(self.selectedImage, for: .normal)
@@ -122,6 +123,7 @@ final class TermsViewController: UIViewController {
                 guard let self = self else { return }
                 self.privacyCollectAgreeButton.setTitle(.none, for: .normal)
                 if self.privacyCollectAgreeButton.image(for: .normal) == self.selectedImage {
+                    self.allCheckButton.setImage(self.unSelectedImage, for: .normal)
                     self.privacyCollectAgreeButton.setImage(self.unSelectedImage, for: .normal)
                 }else {
                     self.privacyCollectAgreeButton.setImage(self.selectedImage, for: .normal)
@@ -134,6 +136,7 @@ final class TermsViewController: UIViewController {
                 guard let self = self else { return }
                 self.useForMaketingAgreeButton.setTitle(.none, for: .normal)
                 if self.useForMaketingAgreeButton.image(for: .normal) == self.selectedImage {
+                    self.allCheckButton.setImage(self.unSelectedImage, for: .normal)
                     self.useForMaketingAgreeButton.setImage(self.unSelectedImage, for: .normal)
                     self.isMarketingAgree = false
                 }else {
