@@ -30,6 +30,8 @@ final class LoginViewController: UIViewController {
         super.viewWillAppear(true)
         resignForKeyboardNotification()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     override func viewDidLoad() {
@@ -47,25 +49,31 @@ final class LoginViewController: UIViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
               let keyboardReactangle = keyboardFrame.cgRectValue
               let keyboardHeight = keyboardReactangle.height //6 20
-              WappleLog.debug("keyboardHeight \(keyboardHeight)")
-              WappleLog.debug("y : \(self.view.safeAreaInsets.bottom)")
-              var bottomMargin = -keyboardHeight
-              if view.safeAreaInsets.bottom == .zero {
-                  bottomMargin += 20
+              if self.view.frame.origin.y == 0 {
+                  WappleLog.debug("keyboardHeight \(keyboardHeight)")
+                  WappleLog.debug("y : \(self.view.safeAreaInsets.bottom)")
+                  var bottomMargin = -keyboardHeight + 14
+                  if view.safeAreaInsets.bottom == .zero {
+                      bottomMargin += 40
+                  }
+                  self.view.frame.origin.y = bottomMargin
               }
-              self.view.transform = CGAffineTransform(translationX: 0, y: bottomMargin)
+              //self.view.transform = CGAffineTransform(translationX: 0, y: bottomMargin)
         }
 
       }
       
       @objc private func keyboardWillHide(notification: NSNotification) {
-          self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+          self.view.frame.origin.y = 0
+          //self.view.transform = CGAffineTransform(translationX: 0, y: 0)
       }
     
     private func configureUI() {
