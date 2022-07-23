@@ -49,8 +49,8 @@ class EditArchiveViewModel {
     }
     
     struct Output {
-////        var title = PublishRelay<String>()
-////        var memo = BehaviorRelay<String?>(value: nil)
+//        var title = PublishRelay<String>()
+//        var memo = BehaviorRelay<String?>(value: nil)
 //        let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
 //       let locationLaterButtonEnabled = BehaviorRelay<Bool>(value: false)
 //        let doneButtonEnabled = BehaviorRelay<Bool>(value: false)
@@ -73,6 +73,7 @@ class EditArchiveViewModel {
                     WappleLog.error("약속을 만드는데 실패하였습니다.")
                 }
             }).disposed(by: disposeBag)
+        
 //        guard let detailArchive = detailArchive else { return output }
 //        if let date = detailArchive.date?.toDate(), let time = detailArchive.time?.toTime() {
 //            WappleLog.debug("date \(date) time \(time)")

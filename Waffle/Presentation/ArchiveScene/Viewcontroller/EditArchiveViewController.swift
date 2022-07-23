@@ -315,7 +315,9 @@ final class EditArchiveViewController: UIViewController {
         
         input.nameTextFieldEditing
             .subscribe(onNext: { _ in
-                WappleLog.debug("nameTextFieldEditing")
+                let text = self.archiveNameTextField.text ?? ""
+                let restrictedStr = self.viewModel?.maxInputRestricted(length: 10, s: text)
+                self.archiveNameTextField.text = restrictedStr
                 self.validation()
             }).disposed(by: disposeBag)
         

@@ -56,7 +56,7 @@ class AddArchiveViewModel {
     }
     
     func maxInputRestricted(length: Int, s: String) -> String {
-        return self.usecase.maximumTextLength(length: length, s: s)
+        return usecase.maximumTextLength(length: length, s: s)
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -75,7 +75,7 @@ class AddArchiveViewModel {
                 arhive.date = dateString
                 arhive.time = timeString
                 arhive.location = location
-                 WappleLog.debug("inputData \(arhive)")
+                //WappleLog.debug("inputData \(arhive)")
                 self.usecase.addArchive(archive: arhive)
             }).disposed(by: disposeBag)
 
