@@ -64,7 +64,7 @@ final class CardView: UIView {
         }
         let wapple = item.topping.filter { $0.userId == item.wappleId }.first
         let topping = item.topping.filter { $0.userId != item.wappleId }
-        wappleLabel.text = wapple?.nickName
+        wappleLabel.text = wapple?.nickName ?? DefaultDetailCardInfo.noTopping.rawValue
         if item.topping.isEmpty {
             toppingLabel.text = DefaultDetailCardInfo.noTopping.rawValue
         }else {
