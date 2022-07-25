@@ -50,8 +50,8 @@ class AddArchiveViewModel {
     struct Output {
         var navigationTitle = BehaviorRelay<String>(value: "약속 만들기")
         var editModeEnabled = BehaviorRelay<Bool>(value: false)
-        let dateTimeLaterButtonEnabled = PublishRelay<Bool>()
-        let locationLaterButtonEnabled = PublishRelay<Bool>()
+        let dateTimeLaterButtonEnabled = BehaviorRelay<Bool>(value: true)
+        let locationLaterButtonEnabled = BehaviorRelay<Bool>(value: true)
         let doneButtonEnabled = BehaviorRelay<Bool>(value: false)
     }
     
