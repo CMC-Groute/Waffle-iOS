@@ -90,9 +90,15 @@ extension ParticiPopUpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ParticipantsTableViewCell.identifier, for: indexPath) as! ParticipantsTableViewCell
         guard let toppingInfo = detailArchive?.member else { return cell }
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { // 한명일때 
             let wapple = toppingInfo.filter { $0.userId == detailArchive?.wappleId }
-            cell.configureCell(info: wapple[0], type: .wapple)
+            if !wapple.isEmpty {
+                cell.configureCell(info: wapple[0], type: .wapple)
+            }else {
+                var topping = toppingInfo.filter { $0.userId == detailArchive?.wappleId }
+                topping += toppingInfo.filter { $0.userId != detailArchive?.wappleId }
+                cell.configureCell(info: topping[indexPath.row], type: .topping)
+            }
         }else {
             var topping = toppingInfo.filter { $0.userId == detailArchive?.wappleId }
             topping += toppingInfo.filter { $0.userId != detailArchive?.wappleId }
