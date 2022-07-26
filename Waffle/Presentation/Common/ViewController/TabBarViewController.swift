@@ -11,9 +11,9 @@ class TabBarViewController: UITabBarController {
     var coordinator: HomeCoordinator!
     var popUpView = ArchivePopUpView()
     
-    var didTapLastItem: Bool = false
+    var didTapPopUpItem: Bool = false
     let lastItemIndex = 1
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.popUpView.snp.makeConstraints {
@@ -25,6 +25,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
+        self.delegate = self
         popUpView.isHidden = true
         view.addSubview(popUpView)
     }
@@ -49,26 +50,36 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
         popUpView.isHidden = true
     }
     
+    func didTapFrameView() {
+        popUpViewHidden()
+    }
+    
+    func popUpViewHidden() {
+        guard let tabBarItems = self.tabBar.items else { return }
+        if tabBarItems[lastItemIndex].image == Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal) {
+            tabBarItems[lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
+            popUpView.isHidden = true
+        }else {
+            tabBarItems[lastItemIndex].image =  Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal)
+            popUpView.isHidden = false
+        }
+
+        self.didTapPopUpItem = true
+    }
+    
     
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.tag == lastItemIndex {
-            popUpView.isHidden.toggle()
-            if self.tabBar.items![item.tag].image == Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal) {
-                self.tabBar.items![item.tag].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
-            }else {
-                self.tabBar.items![item.tag].image =  Asset.Assets.archiveSelected.image.withRenderingMode(.alwaysOriginal)
-            }
-
-            self.didTapLastItem = true
+            popUpViewHidden()
         } else {
-            self.didTapLastItem = false
+            self.didTapPopUpItem = false
         }
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return !didTapLastItem
+        return !didTapPopUpItem
     }
 }

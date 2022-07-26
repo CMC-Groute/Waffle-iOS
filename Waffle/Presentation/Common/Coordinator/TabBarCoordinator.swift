@@ -37,6 +37,8 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
 
         self.tabBarController.view.backgroundColor = .none
         self.tabBarController.tabBar.backgroundColor = .none
+        self.tabBarController.tabBar.layer.borderColor = Asset.Colors.gray2.color.cgColor
+        self.tabBarController.tabBar.layer.borderWidth = 1
         self.tabBarController.tabBar.tintColor = .black
     }
     

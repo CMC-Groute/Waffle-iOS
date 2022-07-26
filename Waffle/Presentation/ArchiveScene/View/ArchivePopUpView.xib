@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArchivePopUpView" customModule="Waffle" customModuleProvider="target">
             <connections>
                 <outlet property="addArhiveView" destination="vzl-7k-tYZ" id="xQB-b2-EEF"/>
+                <outlet property="frameView" destination="iN0-l3-epB" id="DwW-fD-6Ab"/>
                 <outlet property="inputArhiveView" destination="RnX-EX-XzK" id="bdm-oJ-zEp"/>
             </connections>
         </placeholder>
