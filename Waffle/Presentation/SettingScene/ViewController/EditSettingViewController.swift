@@ -209,10 +209,9 @@ extension EditSettingViewController: UITextFieldDelegate {
         }else {
             viewModel.nickNameInvalidMessage.accept(true)
         }
-        WappleLog.debug("\(nickNameTextField.text) \(viewModel.updateIndex)")
-        WappleLog.debug("\(viewModel.nickName) \(viewModel.selectedIndex)")
         if nickNameTextField.text == viewModel.nickName {
             if viewModel.updateIndex == nil || (viewModel.selectedIndex == viewModel.updateIndex) {
+                nickNameTextField.rightView = nil
                 doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
             }else {
                 doneButton.setEnabled(color: Asset.Colors.black.name)
@@ -220,14 +219,6 @@ extension EditSettingViewController: UITextFieldDelegate {
         }else {
             doneButton.setEnabled(color: Asset.Colors.black.name)
         }
-
-//        if viewModel?.updateNickName == nil && viewModel?.updateIndex == nil {
-//            doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
-//        }else if (viewModel?.updateNickName == viewModel?.nickName) && (viewModel?.selectedIndex == viewModel?.updateIndex) {
-//            doneButton.setUnEnabled(color: Asset.Colors.gray4.name)
-//        }else {
-//            doneButton.setEnabled(color: Asset.Colors.black.name)
-//        }
     }
 
 }
