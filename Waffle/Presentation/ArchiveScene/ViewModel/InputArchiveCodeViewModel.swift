@@ -36,7 +36,6 @@ class InputArchiveCodeViewModel {
     struct Output {
         let inValidCodeMessage = PublishRelay<(CodeInvalidType, Bool)>()
         let joinButtonEnabled = BehaviorRelay<Bool>(value: false)
-        //let
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {

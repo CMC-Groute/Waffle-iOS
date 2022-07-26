@@ -118,12 +118,19 @@ class InputArchiveCodeViewController: UIViewController {
                 switch status {
                 case .already:
                     self.inValidCodeMessageText.text = "이미 참여하고 있는 약속이에요."
+                    output?.joinButtonEnabled.accept(false)
+                    self.codeTextField.errorBorder(bool: false)
+                    self.codeTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 case .inValid:
                     self.inValidCodeMessageText.text = "존재하지 않는 약속 코드예요."
+                    output?.joinButtonEnabled.accept(false)
+                    self.codeTextField.errorBorder(bool: false)
+                    self.codeTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                 case .success:
-                    break
+                    self.codeTextField.focusingBorder(color: Asset.Colors.orange.name)
+                    self.codeTextField.rightView = nil
                 }
-                self.codeTextField.errorBorder(bool: !bool)
+    
             }).disposed(by: disposeBag)
         
         
