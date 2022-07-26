@@ -76,7 +76,7 @@ class AddArchiveViewController: UIViewController {
         archiveDateTextField.padding(value: 9)
         archiveTimeTextField.padding(value: 9)
         archiveLocationTextField.padding(value: 9)
-        archiveMemoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
+        archiveMemoTextView.makeRounded(width: 2, borderColor: Asset.Colors.gray2.name, value: 10)
         archiveMemoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         archiveMemoTextView.attributedText = archiveMemoTextView.text.setLineHeight(24)
         addArchiveButton.makeRounded(corner: 26)

@@ -42,7 +42,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     
     private func configureUI() {
         closeButton.setImage(Asset.Assets.delete.image.withRenderingMode(.alwaysOriginal), for: .normal)
-        frameView.makeRounded(width: nil, color: nil, value: 20)
+        frameView.makeRounded(width: nil, borderColor: nil, value: 20)
         addButton.makeRounded(corner: 24)
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
     }

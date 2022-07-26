@@ -22,7 +22,7 @@ class AddDetailPlaceViewController: UIViewController {
     
     lazy var placeFramView: UIView = {
         let view = UIView()
-        view.makeRounded(width: 1, color: Asset.Colors.gray2.name, value: 10)
+        view.makeRounded(width: 1, borderColor: Asset.Colors.gray2.name, value: 10)
         view.backgroundColor = Asset.Colors.white.color
         return view
     }()
@@ -75,12 +75,12 @@ class AddDetailPlaceViewController: UIViewController {
         
         addButton.makeRounded(corner: 26)
 
-        memoTextView.makeRounded(width: 2, color: Asset.Colors.gray2.name, value: 10)
+        memoTextView.makeRounded(width: 2, borderColor: Asset.Colors.gray2.name, value: 10)
         memoTextView.dataDetectorTypes = .link
         memoTextView.attributedText = memoTextView.text.setLineHeight(24)
         memoTextView.textContainerInset = UIEdgeInsets(top: 16, left: 14, bottom: 16, right: 14)
         
-        linkTextView.makeRounded(width: nil, color: nil, value: 10)
+        linkTextView.makeRounded(width: nil, borderColor: nil, value: 10)
         linkTextView.isEditable = false
         linkTextView.isSelectable = true
         linkTextView.delegate = self

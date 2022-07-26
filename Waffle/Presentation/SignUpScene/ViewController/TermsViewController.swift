@@ -58,7 +58,7 @@ final class TermsViewController: UIViewController {
     func configureUI() {
         nextButton.makeRounded(corner: 26)
         nextButton.setUnEnabled(color: Asset.Colors.gray4.name)
-        boxView.makeRounded(width: 3, color: Asset.Colors.gray4.name, value: 10)
+        boxView.makeRounded(width: 3, borderColor: Asset.Colors.gray4.name, value: 10)
         serviceAgreeTextButton.setAttributedTitle(TermsLink.serviceAgreeText.rawValue.underBarLine(length: TermsLink.serviceAgreeText.rawValue.count - 4), for: .normal)
         privacyCollectTextButton.setAttributedTitle(TermsLink.privacyCollectText.rawValue.underBarLine(length: TermsLink.privacyCollectText.rawValue.count - 4), for: .normal)
         useForMarketingAgreeTextButton.setAttributedTitle(TermsLink.useForMarketingAgreeText.rawValue.underBarLine(length: TermsLink.useForMarketingAgreeText.rawValue.count - 4), for: .normal)

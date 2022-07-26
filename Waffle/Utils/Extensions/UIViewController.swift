@@ -46,11 +46,11 @@ extension UIViewController {
 }
 
 extension UIView {
-    func makeRounded(width: CGFloat?, color: String?, value: CGFloat) {
+    func makeRounded(width: CGFloat?, borderColor: String?, value: CGFloat) {
         if let width = width {
             self.layer.borderWidth = width
         }
-        if let color = color {
+        if let color = borderColor {
             self.layer.borderColor = UIColor(named: color)?.cgColor
         }
         self.layer.cornerRadius = value

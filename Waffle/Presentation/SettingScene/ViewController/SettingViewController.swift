@@ -120,6 +120,7 @@ final class SettingViewController: UIViewController {
     }
     
     private func configureUI() {
+        profileView.makeRounded(width: nil, borderColor: nil, value: 20)
         profileImage.makeCircleShape()
         changePWButton.makeRounded(corner: 20)
         changePWButton.layer.borderColor = UIColor(named: Asset.Colors.gray5.name)?.cgColor
@@ -194,7 +195,7 @@ extension SettingViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(48)
+        return CGFloat(53)
     }
     
 }

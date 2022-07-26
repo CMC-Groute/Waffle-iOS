@@ -78,11 +78,16 @@ final class SettingTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 2.5, left: 0, bottom: 2.5, right: 0))
+    }
+    
     private func configureUI() {
         self.backgroundColor = .clear
         switchControl.isOn = UserDefaults.standard.bool(forKey: UserDefaultKey.isOnAlarm)
         switchControl.addTarget(self, action: #selector(didTapSwitch), for: .touchUpInside)
-        self.contentView.addSubview(self.stackView)
+        self.contentView.addSubview(stackView)
         self.stackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(11)
             make.bottom.equalToSuperview().offset(-11)

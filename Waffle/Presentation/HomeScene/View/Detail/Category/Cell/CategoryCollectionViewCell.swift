@@ -54,7 +54,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(categoryLabel)
         contentView.addSubview(deleteButton)
         contentView.backgroundColor = Asset.Colors.white.color
-        contentView.makeRounded(width: nil, color: nil, value: 17)
+        contentView.makeRounded(width: nil, borderColor: nil, value: 17)
         contentView.layer.borderColor = Asset.Colors.gray4.color.cgColor
         contentView.layer.borderWidth = 1
         defaultLayout()

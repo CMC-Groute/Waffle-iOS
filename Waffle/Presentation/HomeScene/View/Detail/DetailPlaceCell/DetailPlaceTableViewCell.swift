@@ -46,7 +46,7 @@ class DetailPlaceTableViewCell: UITableViewCell {
     }
     
     func setUp() {
-        contentView.makeRounded(width: nil, color: nil, value: 20)
+        contentView.makeRounded(width: nil, borderColor: nil, value: 20)
         self.backgroundColor = Asset.Colors.gray1.color
         contentView.backgroundColor = Asset.Colors.white.color
         canEditingButton.isHidden = false

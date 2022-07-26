@@ -50,7 +50,7 @@ class MemoPopUpViewController: UIViewController {
     }
     
     private func configureUI() {
-        frameView.makeRounded(width: nil, color: nil, value: 20)
+        frameView.makeRounded(width: nil, borderColor: nil, value: 20)
         textView.isScrollEnabled = false
         textView.isEditable = false
         guard let wappleName = wappleName else { return }

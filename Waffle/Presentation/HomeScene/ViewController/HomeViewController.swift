@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
             let bellButton = UIBarButtonItem(image: Asset.Assets.bell.image.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(didTapBellButton))
             self.navigationController?.navigationBar.topItem?.rightBarButtonItem = bellButton
         }
-        cardCountButton.makeRounded(width: 1, color: Asset.Colors.gray3.name, value: 16)
+        cardCountButton.makeRounded(width: 1, borderColor: Asset.Colors.gray3.name, value: 16)
         cardCountButton.setTitleColor(Asset.Colors.gray4.color, for: .normal)
         
         setNavigationBar()

@@ -16,14 +16,6 @@ class TabBarCoordinator: TabBarCoordinatorProtocol {
     var childCoordinators: [Coordinator] = []
     var type: CoordinatorType { .tab }
     
-    private var archibeButton: UIButton {
-        let button = UIButton()
-        button.backgroundColor = .red
-        button.setImage(Asset.Assets.archiveSelected.image, for: .selected)
-        button.setImage(Asset.Assets.archive.image, for: .normal)
-        return button
-    }
-    
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.setNavigationBarHidden(true, animated: true)

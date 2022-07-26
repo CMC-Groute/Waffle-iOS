@@ -39,7 +39,7 @@ class ParticiPopUpViewController: UIViewController {
     
     private func configureUI() {
         countLabel.text = "\((detailArchive?.member.count ?? 0))명"
-        frameView.makeRounded(width: nil, color: nil, value: 20)
+        frameView.makeRounded(width: nil, borderColor: nil, value: 20)
         tableView.separatorColor = Asset.Colors.gray1.color
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.dataSource = self

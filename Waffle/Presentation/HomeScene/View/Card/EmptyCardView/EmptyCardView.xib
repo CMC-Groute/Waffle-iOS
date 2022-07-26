@@ -34,11 +34,11 @@
                         <constraint firstAttribute="height" constant="40" id="8wA-dB-M6v"/>
                         <constraint firstAttribute="width" constant="150" id="fR5-Ip-aP5"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="약속 만들어보기">
-                        <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
-                        <color key="baseForegroundColor" name="orange"/>
-                    </buttonConfiguration>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="약속 만들어보기">
+                        <color key="titleColor" name="orange"/>
+                    </state>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

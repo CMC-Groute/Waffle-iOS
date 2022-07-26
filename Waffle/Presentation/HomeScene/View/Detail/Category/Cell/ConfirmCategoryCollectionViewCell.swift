@@ -39,7 +39,7 @@ class ConfirmCategoryCollectionViewCell: UICollectionViewCell {
     
     func setUp() {
         contentView.addSubview(categoryButton)
-        contentView.makeRounded(width: nil, color: nil, value: 17)
+        contentView.makeRounded(width: nil, borderColor: nil, value: 17)
         categoryButton.makeRounded(corner: 17)
         categoryButton.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()

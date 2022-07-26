@@ -13,9 +13,6 @@ class TabBarViewController: UITabBarController {
     
     var didTapLastItem: Bool = false
     let lastItemIndex = 1
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,7 +25,6 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         popUpView.delegate = self
-        self.delegate = self
         popUpView.isHidden = true
         view.addSubview(popUpView)
     }
@@ -36,7 +32,6 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: ArchivePopUpViewDelegate {
     func didTapAddArchiveView() {
-        print("didTapAddArchiveView \(coordinator)")
         self.tabBar.items![lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
         if self.selectedIndex == 2 {
             self.selectedIndex = 0
@@ -46,7 +41,6 @@ extension TabBarViewController: ArchivePopUpViewDelegate {
     }
     
     func didTapInputArchiveView() {
-        print("didTapInputArchiveView \(coordinator)")
         self.tabBar.items![lastItemIndex].image = Asset.Assets.archive.image.withRenderingMode(.alwaysOriginal)
         if self.selectedIndex == 2 {
             self.selectedIndex = 0

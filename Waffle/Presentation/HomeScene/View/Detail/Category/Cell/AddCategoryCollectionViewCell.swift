@@ -34,7 +34,7 @@ class AddCategoryCollectionViewCell: UICollectionViewCell {
     func setUp() {
         contentView.backgroundColor = Asset.Colors.white.color
         contentView.addSubview(addButton)
-        contentView.makeRounded(width: nil, color: nil, value: 17)
+        contentView.makeRounded(width: nil, borderColor: nil, value: 17)
         addButton.makeRounded(corner: 17)
         addButton.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()

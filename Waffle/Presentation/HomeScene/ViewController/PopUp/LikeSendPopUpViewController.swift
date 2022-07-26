@@ -30,7 +30,7 @@ final class LikeSendPopUpViewController: UIViewController {
     }
     
     private func configureUI(){
-        framwView.makeRounded(width: 0, color: "", value: 20)
+        framwView.makeRounded(width: 0, borderColor: "", value: 20)
         cancelButton.makeRounded(corner: 24)
         sendButton.makeRounded(corner: 24)
     }
