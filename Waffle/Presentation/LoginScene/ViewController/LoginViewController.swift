@@ -77,7 +77,8 @@ final class LoginViewController: UIViewController {
       }
     
     private func configureUI() {
-        UITextField.appearance().tintColor = UIColor(named: Asset.Colors.orange.name)
+        UITextField.appearance().tintColor = Asset.Colors.orange.color
+        UITextView.appearance().tintColor = Asset.Colors.orange.color
         loginButton.makeRounded(corner: 26)
         emailTextField.changePlaceHolderColor()
         emailTextField.makeRounded(corner: 10)

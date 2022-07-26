@@ -23,7 +23,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     var deleteCategory = PublishSubject<Bool>()
     var networkError = BehaviorSubject<Bool>(value: false)
     
-    var addPlaceSuccess = PublishSubject<Bool>()
+    var addPlaceSuccess = PublishSubject<(Bool, PlaceCategory)>()
     var setComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정
     var cancelComfirmPlaceSuccess = PublishSubject<Bool>() // 장소 확정 취소
     
@@ -38,7 +38,7 @@ class HomeUsecase: HomeUsecaseProtocol {
     
     var getAlarmSuccess = PublishSubject<[Alarm]>() // 알림 데이터 가져오기
     var isReadAlarmSuccess = PublishSubject<Bool>() // 알림 읽었는지 확인
-    var editPlaceSuccess = PublishSubject<Bool>() // 장소 수정
+    var editPlaceSuccess = PublishSubject<(Bool, PlaceCategory)>() // 장소 수정
     var likeSendSuccess = PublishSubject<Bool>() // 좋아요 전송
     
     init(repository: HomeRepository){
@@ -181,7 +181,7 @@ class HomeUsecase: HomeUsecaseProtocol {
 //MARK: Place API
 extension HomeUsecase {
     //MARK: 장소 추가
-    func addPlace(archiveId: Int, categoryId: Int, addPlace: AddPlace) {
+    func addPlace(archiveId: Int, categoryId: Int, addPlace: AddPlace, category: PlaceCategory) {
         repository.addPlace(archiveId: archiveId, categoryId: categoryId, placeInfo: addPlace)
             .observe(on: MainScheduler.instance)
             .catch { error -> Observable<DefaultIntResponse> in
@@ -191,9 +191,9 @@ extension HomeUsecase {
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
                 if response.status == 200 {
-                    self.addPlaceSuccess.onNext(true)
+                    self.addPlaceSuccess.onNext((true, category))
                 }else {
-                    self.addPlaceSuccess.onNext(false)
+                    self.addPlaceSuccess.onNext((false, category))
                 }
             }).disposed(by: disposeBag)
     }
@@ -292,7 +292,7 @@ extension HomeUsecase {
     }
     
     //MARK: 장소 수정하기
-    func editPlace(archiveId: Int, placeId: Int, editPlace: EditPlace) {
+    func editPlace(archiveId: Int, placeId: Int, editPlace: EditPlace, category: PlaceCategory) {
         WappleLog.debug("editPlace \(editPlace)")
         repository.editPlace(archiveId: archiveId, placeId: placeId, editPlace: editPlace)
             .observe(on: MainScheduler.instance)
@@ -303,9 +303,9 @@ extension HomeUsecase {
             }.subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
                 if response.status == 200 {
-                    self.editPlaceSuccess.onNext(true)
+                    self.editPlaceSuccess.onNext((true, category))
                 }else {
-                    self.editPlaceSuccess.onNext(false)
+                    self.editPlaceSuccess.onNext((false, category))
                 }
             }).disposed(by: disposeBag)
     }

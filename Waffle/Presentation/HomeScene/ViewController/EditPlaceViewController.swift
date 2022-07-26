@@ -214,7 +214,7 @@ class EditPlaceViewController: UIViewController {
         let logitude = viewModel.place?.longitude
         let latitude = viewModel.place?.latitude
         let editPlace = EditPlace(title: title, memo: memo, link: link, roadNameAddress: roadAddress, longitude: logitude, latitude: latitude, placeCategoryId: selectedCategory.id)
-        viewModel.editPlaceButton(editPlace: editPlace)
+        viewModel.editPlaceButton(editPlace: editPlace, category: selectedCategory)
     }
     
     private func bindViewModels() {

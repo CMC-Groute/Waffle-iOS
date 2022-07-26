@@ -120,6 +120,14 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.popViewController(animated: true)
     }
     
+    func popViewController(category: PlaceCategory) {
+        self.navigationController.setNavigationBarHidden(false, animated: true)
+        self.navigationController.popViewController(animated: true)
+        if let topViewController = navigationController.topViewController as? DetailArchiveViewController {
+            topViewController.viewModel?.selectedCategory = category
+        }
+    }
+    
     func selectPlace(place: PlaceSearch) { // 장소 검색 후 돌아오기
         self.navigationController.popViewController(animated: true)
         if let topViewController = navigationController.topViewController as? AddDetailPlaceViewController  {

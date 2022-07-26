@@ -83,7 +83,7 @@ final class TermsViewController: UIViewController {
     
     func bindUI(){
         allCheckButton.setTitle(.none, for: .normal)
-        self.buttons = [allCheckButton, serviceAgreeButton, privacyCollectAgreeButton, useForMaketingAgreeButton]
+        buttons = [allCheckButton, serviceAgreeButton, privacyCollectAgreeButton, useForMaketingAgreeButton]
         
         allCheckButton.rx.tap
             .subscribe(onNext: { [weak self] _ in

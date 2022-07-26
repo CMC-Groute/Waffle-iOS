@@ -74,19 +74,21 @@ final class AddDetailPlaceViewModel {
             .bind(onNext: { [weak self] categoryIndex, memo, link in
                 guard let self = self else { return }
                 guard let categoryIndex = categoryIndex, let archiveId = self.archiveId else { return }
+                let category = self.categoryInfo[categoryIndex]
                 let categoryId = self.categoryInfo[categoryIndex].id
                 guard let getPlace = self.getPlace else { return }
 
                 var addPlaceInfo = AddPlace(title: getPlace.placeName, roadNameAddress: getPlace.roadAddressName, longitude: getPlace.longitude, latitude: getPlace.latitude )
                 if memo != self.defaultText { addPlaceInfo.memo = memo }
                 addPlaceInfo.link = link
-                self.usecase.addPlace(archiveId: archiveId, categoryId: categoryId, addPlace: addPlaceInfo)
+                self.usecase.addPlace(archiveId: archiveId, categoryId: categoryId, addPlace: addPlaceInfo, category: category)
             }).disposed(by: disposeBag)
         
         usecase.addPlaceSuccess
-            .filter { $0 }
-            .subscribe(onNext: { [weak self] _ in
-                self?.coordinator.popViewController()
+            .subscribe(onNext: { [weak self] bool, category in
+                if bool {
+                    self?.coordinator.popViewController(category: category)
+                }
             }).disposed(by: disposeBag)
         
         return output
