@@ -120,14 +120,13 @@
                         <constraint firstAttribute="trailing" secondItem="QfG-5q-Xj3" secondAttribute="trailing" constant="22" id="r0s-Vl-N0r"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card1" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-Ve-M31">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card-0" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-Ve-M31">
                     <rect key="frame" x="0.0" y="120" width="480" height="273"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="EZ2-J6-q6n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="3DF-o5-xFc"/>
-                <constraint firstItem="9gQ-Ve-M31" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="4DV-Xs-fgY"/>
                 <constraint firstAttribute="trailing" secondItem="MPo-dU-BRK" secondAttribute="trailing" id="6dn-ar-x4k"/>
                 <constraint firstAttribute="bottom" secondItem="MPo-dU-BRK" secondAttribute="bottom" id="KtI-6S-LZq"/>
                 <constraint firstItem="MPo-dU-BRK" firstAttribute="top" secondItem="EZ2-J6-q6n" secondAttribute="bottom" id="PJA-xP-Uoo"/>
@@ -137,13 +136,14 @@
                 <constraint firstAttribute="bottom" secondItem="9gQ-Ve-M31" secondAttribute="bottom" constant="143" id="gpz-S4-plX"/>
                 <constraint firstItem="9gQ-Ve-M31" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r1f-ft-GCL"/>
                 <constraint firstItem="MPo-dU-BRK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="umR-c3-fgU"/>
+                <constraint firstItem="9gQ-Ve-M31" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="wCq-fD-gOk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="185.50724637681162" y="-48.883928571428569"/>
         </view>
     </objects>
     <resources>
-        <image name="card1" width="311" height="273"/>
+        <image name="card-0" width="311" height="273"/>
         <image name="topping-etc" width="20" height="20"/>
         <image name="wapple-etc" width="20" height="20"/>
         <namedColor name="Gray2">

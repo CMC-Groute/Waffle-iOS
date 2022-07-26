@@ -25,9 +25,10 @@
                     <rect key="frame" x="32" y="525" width="209" height="47"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="makeArchive" translatesAutoresizingMaskIntoConstraints="NO" id="uI9-Pk-YGH">
-                            <rect key="frame" x="14" y="13" width="24" height="21"/>
+                            <rect key="frame" x="14" y="11.5" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="7Mo-6z-G22"/>
+                                <constraint firstAttribute="height" constant="24" id="Dxn-Ie-a5b"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 약속을 만들래요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxB-QT-hqh">
@@ -43,10 +44,8 @@
                         <constraint firstAttribute="trailing" secondItem="bxB-QT-hqh" secondAttribute="trailing" constant="16" id="Gbv-dP-f76"/>
                         <constraint firstAttribute="height" constant="47" id="ObT-8Y-jJn"/>
                         <constraint firstAttribute="bottom" secondItem="bxB-QT-hqh" secondAttribute="bottom" constant="10" id="bhD-c2-Hhi"/>
-                        <constraint firstItem="uI9-Pk-YGH" firstAttribute="top" secondItem="vzl-7k-tYZ" secondAttribute="top" constant="13" id="ebj-u8-CPT"/>
                         <constraint firstItem="bxB-QT-hqh" firstAttribute="centerY" secondItem="uI9-Pk-YGH" secondAttribute="centerY" id="kwi-ZV-abZ"/>
                         <constraint firstItem="bxB-QT-hqh" firstAttribute="leading" secondItem="uI9-Pk-YGH" secondAttribute="trailing" constant="8" id="m2g-nc-O1s"/>
-                        <constraint firstAttribute="bottom" secondItem="uI9-Pk-YGH" secondAttribute="bottom" constant="13" id="nIF-27-7bi"/>
                         <constraint firstItem="uI9-Pk-YGH" firstAttribute="leading" secondItem="vzl-7k-tYZ" secondAttribute="leading" constant="14" id="sX2-Ma-ENp"/>
                     </constraints>
                 </view>
