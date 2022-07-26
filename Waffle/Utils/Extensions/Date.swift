@@ -58,7 +58,7 @@ extension Date {
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         
         let parsingFormatter = DateFormatter()
-        parsingFormatter.dateFormat = "M월 d일"
+        parsingFormatter.dateFormat = "MM월 dd일"
         guard let dateString = dateFormatter.date(from: date) else { return "" }
         return parsingFormatter.string(from: dateString)
     }

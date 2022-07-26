@@ -41,7 +41,7 @@ final class HomeAlarmTableViewCell: UITableViewCell {
                 alarmString = ""
         }
         let wappleIndex = WappleType.init(rawValue: alarm.placeImage)?.wappleIndex() ?? 0
-        archiveImageView.image = UIImage(named: "detailWapple-\(wappleIndex)")
+        archiveImageView.image = UIImage(named: "wapple-\(wappleIndex)")
         alarmText.text = alarmString
         let beforeDay = Date().beforeDayText(time: alarm.date)
         if alarm.isRead { dotButton.isHidden = true }

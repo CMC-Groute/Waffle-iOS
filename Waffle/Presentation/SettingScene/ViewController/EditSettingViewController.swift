@@ -100,7 +100,7 @@ final class EditSettingViewController: UIViewController {
     }
 
     
-    func collectionviewSetUp() {
+    private func collectionviewSetUp() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = false
@@ -134,7 +134,6 @@ final class EditSettingViewController: UIViewController {
         viewModel?.nickNameInvalidMessage
             .subscribe(onNext: { [weak self] bool in
                 guard let self = self else { return }
-                WappleLog.debug("nickNameInvalidMessage \(bool)")
                 self.nickNameInValidText.isHidden = bool
                 if bool {
                     self.nickNameTextField.layer.borderColor = .none
