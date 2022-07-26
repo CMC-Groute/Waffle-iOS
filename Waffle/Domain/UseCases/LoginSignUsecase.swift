@@ -55,7 +55,6 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
     }
     
     func login(email: String, password: String) {
-        print("LoginSignUsecase")
         guard let deviceToken = UserDefaults.standard.string(forKey: UserDefaultKey.deviceToken) else { return }
         let loginInfo = Login(email: email, password: password, deviceToken: deviceToken)
         repository.login(loginInfo: loginInfo)
@@ -66,7 +65,6 @@ class LoginSignUsecase: LoginSignUsecaseProtocol {
             }.observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self else { return }
-                print(response.status)
                 if response.status == 200 {
                     self.loginSuccess.onNext(.login)
                     self.storeUserInfo(user: response.data!)

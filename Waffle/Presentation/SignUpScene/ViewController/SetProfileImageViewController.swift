@@ -94,7 +94,7 @@ final class SetProfileImageViewController: UIViewController {
       }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     func collectionviewSetUp() {
@@ -105,18 +105,18 @@ final class SetProfileImageViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        let input = SetProfileImageViewModel.Input(nickNameTextField: self.nickNameTextField.rx.text.orEmpty.asObservable(), startButton: self.startButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: self.nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: self.nickNameTextField.rx.controlEvent(.editingDidEnd))
+        let input = SetProfileImageViewModel.Input(nickNameTextField: nickNameTextField.rx.text.orEmpty.asObservable(), startButton: startButton.rx.tap.asObservable(), nickNameTextFieldDidTapEvent: nickNameTextField.rx.controlEvent(.editingDidBegin), nickNameTextFieldDidEndEvent: nickNameTextField.rx.controlEvent(.editingDidEnd))
         
         
         
         input.nickNameTextFieldDidTapEvent
-            .subscribe(onNext: {
-                self.nickNameTextField.focusingBorder(color: Asset.Colors.orange.name)
+            .subscribe(onNext: { [weak self] in
+                self?.nickNameTextField.focusingBorder(color: Asset.Colors.orange.name)
             }).disposed(by: self.disposeBag)
         
         input.nickNameTextFieldDidEndEvent
-            .subscribe(onNext: {
-                self.nickNameTextField.focusingBorder(color: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.nickNameTextField.focusingBorder(color: nil)
             }).disposed(by: disposeBag)
       
         let output = viewModel?.transform(from: input, disposeBag: disposeBag)
@@ -128,11 +128,9 @@ final class SetProfileImageViewController: UIViewController {
                 self.nickNameInValidText.isHidden = bool
                 let nickName = self.nickNameTextField.text ?? ""
                 if bool {
-                    self.nickNameTextField.layer.borderColor = .none
-                    self.nickNameTextField.layer.borderWidth = 0
+                    self.nickNameTextField.focusingBorder(color: Asset.Colors.orange.name)
                     self.nickNameTextField.changeIcon(value: 9, icon: Asset.Assets.checkCircle.name)
                     if nickName.isEmpty {
-                        WappleLog.debug("nickNameTextField here")
                         self.nickNameTextField.rightView = nil
                     }
                 }else {
@@ -153,7 +151,6 @@ final class SetProfileImageViewController: UIViewController {
         output?.alertMessage
             .filter { !$0.isEmpty }
             .subscribe(onNext: { alert in
-                print("alert message \(alert)")
                 self.presentAlert(withTitle: "회원가입 실패", message: alert)
             }).disposed(by: disposeBag)
         

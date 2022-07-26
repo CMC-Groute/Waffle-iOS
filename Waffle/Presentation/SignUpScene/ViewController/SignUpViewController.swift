@@ -213,8 +213,10 @@ class SignUpViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         output?.isAuthenCodeInValid
-            .subscribe(onNext: { bool in
-                DispatchQueue.main.async {
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
+                
+                if let bool = bool {
                     self.authenInValidText.isHidden = bool
                     self.codeAuthenButton.setDisabled(with: bool, color: Asset.Colors.orange.name)
                     if bool {
@@ -226,12 +228,16 @@ class SignUpViewController: UIViewController {
                         self.authenTextField.changeIcon(value: 9, icon: Asset.Assets.errorCircleRounded.name)
                         self.codeAuthenButton.setTitle("확인", for: .normal)
                     }
+                }else {
+                    self.authenInValidText.isHidden = true
+                    self.authenTextField.rightView = nil
+                    self.authenTextField.focusingBorder(color: Asset.Colors.orange.name)
                 }
             }).disposed(by: disposeBag)
         
         output?.ispasswordInvalid
-            .subscribe(onNext: { bool in
-                WappleLog.debug("bool \(bool)")
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
                 if let bool = bool {
                     self.pwInValidText.isHidden = bool
                     if bool {
@@ -245,14 +251,15 @@ class SignUpViewController: UIViewController {
                     }
                 }else {
                     self.pwInValidText.isHidden = true
-//                    self.pwTextField.errorBorder(bool: true)
+                    self.pwTextField.rightView = nil
                     self.pwTextField.focusingBorder(color: Asset.Colors.orange.name)
                 }
                
             }).disposed(by: disposeBag)
         
         output?.isRepasswordInvalid
-            .subscribe(onNext: { bool in
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
                 if let bool = bool {
                     self.pwReInValidText.isHidden = bool
                     if bool {
@@ -266,14 +273,15 @@ class SignUpViewController: UIViewController {
                     }
                 }else {
                     self.pwReInValidText.isHidden = true
-//                    self.pwReTextField.errorBorder(bool: true)
+                    self.pwReTextField.rightView = nil
                     self.pwReTextField.focusingBorder(color: Asset.Colors.orange.name)
                 }
                
             }).disposed(by: disposeBag)
                 
         output?.nextButtonEnabled
-            .subscribe(onNext: { bool in
+            .subscribe(onNext: { [weak self] bool in
+                guard let self = self else { return }
                 if bool {
                     self.nextButton.setEnabled(color: Asset.Colors.black.name)
                 }else {

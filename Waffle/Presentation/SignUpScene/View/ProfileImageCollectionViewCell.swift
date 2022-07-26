@@ -20,7 +20,6 @@ final class ProfileImageCollectionViewCell: UICollectionViewCell {
     
     lazy var imageview: UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = .red
         return image
     }()
     

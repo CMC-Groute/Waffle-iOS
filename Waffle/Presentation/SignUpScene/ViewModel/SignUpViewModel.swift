@@ -46,7 +46,7 @@ final class SignUpViewModel {
         var nextButtonEnabled = BehaviorRelay<Bool>(value: false)
         var isEmailInvalid = PublishRelay<EmailValidType>()
         var emailInvalidMessage = PublishRelay<(String?, EmailValidColor?)>()
-        var isAuthenCodeInValid = PublishRelay<Bool>()
+        var isAuthenCodeInValid = PublishRelay<Bool?>()
         var ispasswordInvalid = PublishRelay<Bool?>()
         var isRepasswordInvalid = PublishRelay<Bool?>()
     }
@@ -132,6 +132,9 @@ final class SignUpViewModel {
         //MARK: - authenTextField
         input.authenCodeTextField
             .subscribe(onNext: { text in
+                if text.count == 0 {
+                    output.isAuthenCodeInValid.accept(nil)
+                }
                 if text.count >= 6 {
                     output.authenCodeButtonEnabled.accept(true)
                 }else {
@@ -193,7 +196,6 @@ final class SignUpViewModel {
         
         usecase.checkEmailCodeSuccess
             .subscribe(onNext: { bool in
-                WappleLog.debug("checkCodeSuccess \(bool)")
                     output.isAuthenCodeInValid.accept(bool)
             }).disposed(by: disposeBag)
         
