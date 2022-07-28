@@ -100,6 +100,11 @@ class ParticiPopUpViewController: UIViewController {
 extension ParticiPopUpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let topping = detailArchive?.member else { return 0 }
+        if topping.count == 1 {
+            tableView.separatorStyle = .none
+        }else {
+            tableView.separatorStyle = .singleLine
+        }
         return topping.count
     }
     
