@@ -12,4 +12,5 @@ struct NotificationKey {
     static var aps = "aps"
     static var archiveId = "archiveId"
     static var archiveCode = "archiveCode"
+    static var didSignUpNotification = "didSignUpNotification"
 }

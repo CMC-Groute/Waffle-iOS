@@ -55,7 +55,7 @@ final class SetProfileImageViewModel {
                     }.observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
                         if response.status == 200 { // 회원가입 성공시에만 finish
-                            NotificationCenter.default.post(name: Notification.Name("DidSignUpNotification"), object: nil)
+                            NotificationCenter.default.post(name: Notification.Name(NotificationKey.didSignUpNotification), object: nil)
                             self.coordinator.finish()
                         }else if response.status == 403 {
                             print("error occured")

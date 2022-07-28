@@ -30,7 +30,7 @@ final class LoginViewController: UIViewController {
         super.viewWillAppear(true)
         resignForKeyboardNotification()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSignUp), name: Notification.Name("DidSignUpNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSignUp), name: Notification.Name(NotificationKey.didSignUpNotification), object: nil)
     
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -55,7 +55,7 @@ final class LoginViewController: UIViewController {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.removeObserver(Notification.Name("DidSignUpNotification"))
+        NotificationCenter.default.removeObserver(Notification.Name(NotificationKey.didSignUpNotification))
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
     }
@@ -74,7 +74,6 @@ final class LoginViewController: UIViewController {
                   }
                   self.view.frame.origin.y = bottomMargin
               }
-              //self.view.transform = CGAffineTransform(translationX: 0, y: bottomMargin)
         }
 
       }
