@@ -19,6 +19,7 @@ class ArchiveDetailPopUpViewController: UIViewController {
     
     var coordinator: HomeCoordinator!
     var disposeBag = DisposeBag()
+    var usecase: HomeUsecase?
     var detailArchive: DetailArhive?
     var archiveId: Int?
     
@@ -75,9 +76,15 @@ class ArchiveDetailPopUpViewController: UIViewController {
         likeArchiceButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                guard let archiveId = self.archiveId else { return }
-                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                self.coordinator.likeSend(archiveId: archiveId)
+                guard let archiveId = self.archiveId, let usecase = self.usecase else { return }
+                if UserDefaults.standard.bool(forKey: UserDefaultKey.isFirstLikeSendPopUpShow) == true {
+                    usecase.likeSend(archiveId: archiveId)
+                    self.coordinator.popToViewController(with: "좋아요 조르기 알림이 발송되었어요", width: 210, height: 34, corner: 17)
+                }else {
+                    self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+                    self.coordinator.likeSend(archiveId: archiveId)
+                    UserDefaults.standard.set(true, forKey: UserDefaultKey.isFirstLikeSendPopUpShow)
+                }
             }).disposed(by: disposeBag)
         
         

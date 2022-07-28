@@ -57,11 +57,11 @@ final class LikeSendPopUpViewController: UIViewController {
         
         sendButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                WappleLog.debug("좋아요 조르기 archiveId \(self?.archiveId)")
                 guard let archiveId = self?.archiveId else {
                     return
                 }
                 self?.usecase.likeSend(archiveId: archiveId)
+                self?.coordinator.popToViewController(with: "좋아요 조르기 알림이 발송되었어요", width: 210, height: 34, corner: 17)
             }).disposed(by: disposeBag)
         
         usecase.likeSendSuccess

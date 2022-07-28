@@ -15,4 +15,5 @@ enum UserDefaultKey {
     static let deviceToken = "deviceToken"
     static let joinArchiveId = "joinArchiveId"
     static let isOnAlarm = "isOnAlarm"
+    static let isFirstLikeSendPopUpShow = "isFirstLikeSendPopUpShow"
 }

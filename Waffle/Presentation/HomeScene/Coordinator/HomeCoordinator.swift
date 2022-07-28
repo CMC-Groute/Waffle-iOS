@@ -108,10 +108,10 @@ final class HomeCoordinator: HomeCoordinatorProtocol {
         self.navigationController.present(deletePlacePopUpView, animated: false)
     }
     
-    func popToViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?) {
+    func popToViewController(with toastMessage: String?, width: CGFloat?, height: CGFloat?, corner: CGFloat = 17) {
         self.navigationController.dismiss(animated: true)
         if let toastMessage = toastMessage, let width = width, let height = height {
-            self.navigationController.topViewController?.showToast(message: toastMessage, width: width, height: height)
+            self.navigationController.topViewController?.showToast(message: toastMessage, width: width, height: height, corner: corner)
         }
     }
     
@@ -152,6 +152,7 @@ extension HomeCoordinator {
     func detailArchiveBottomSheet(detailArchive: DetailArhive?, archiveId: Int) {
         let detailArchiveBottomSheetView  = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "ArchiveDetailPopUpViewController") as! ArchiveDetailPopUpViewController
         detailArchiveBottomSheetView.coordinator = self
+        detailArchiveBottomSheetView.usecase = HomeUsecase(repository: HomeRepository(networkService: URLSessionNetworkService()))
         detailArchiveBottomSheetView.archiveId = archiveId
         detailArchiveBottomSheetView.detailArchive = detailArchive
         detailArchiveBottomSheetView.modalPresentationStyle = .overFullScreen
