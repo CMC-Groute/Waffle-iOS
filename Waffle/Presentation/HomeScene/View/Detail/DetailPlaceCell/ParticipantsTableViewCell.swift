@@ -28,9 +28,10 @@ class ParticipantsTableViewCell: UITableViewCell {
     }
     
     func configureCell(info: Participants, type: ParticipantsType) {
-        if let imageIndex = WappleType.init(rawValue: info.profileImage)?.wappleIndex() {
+        if let imageIndex = WappleType.init(rawValue: info.profileImage)?.wappleProfileIndex() {
             wappleImageView.image = UIImage(named: "wapple-\(imageIndex)")
         }
+        
         nickNameLabel.text = info.nickName
         typeImageView.image = UIImage(named: "\(type.rawValue)-caption")
     }

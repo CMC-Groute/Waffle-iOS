@@ -227,7 +227,6 @@ final class DetailArchiveViewModel {
     func loadMemo(memo: String) {
         guard let detailArchive = detailArchive else { return }        
         let cardImageIndex = WappleType.init(rawValue: detailArchive.placeImage)?.wappleIndex() ?? 0
-        WappleLog.debug("cardImageIndex \(cardImageIndex)")
         coordinator.loadMemo(memo: memo, wapple: "memoWapple-\(cardImageIndex)")
     }
     

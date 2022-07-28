@@ -40,7 +40,7 @@ final class HomeAlarmTableViewCell: UITableViewCell {
             case .none:
                 alarmString = ""
         }
-        let wappleIndex = WappleType.init(rawValue: alarm.placeImage)?.wappleIndex() ?? 0
+        let wappleIndex = WappleType.init(rawValue: alarm.placeImage)?.wappleProfileIndex() ?? 0
         archiveImageView.image = UIImage(named: "wapple-\(wappleIndex)")
         alarmText.text = alarmString
         let beforeDay = Date().beforeDayText(time: alarm.date)
