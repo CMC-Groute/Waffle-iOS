@@ -103,7 +103,7 @@ internal enum Asset {
     internal static let map = ImageAsset(name: "map")
     internal static let settingSelected = ImageAsset(name: "setting-selected")
     internal static let setting = ImageAsset(name: "setting")
-    internal static let myPage = ImageAsset(name: "myPage")
+    internal static let tabname = ImageAsset(name: "tabname")
     internal static let wapple = ImageAsset(name: "wapple")
     internal static let haveToppingPicture = ImageAsset(name: "haveToppingPicture")
     internal static let loginPicture = ImageAsset(name: "loginPicture")

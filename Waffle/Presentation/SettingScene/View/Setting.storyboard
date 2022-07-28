@@ -98,8 +98,8 @@
                                     <constraint firstAttribute="height" priority="250" constant="20" id="vab-6p-Gn8"/>
                                 </constraints>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="myPage" translatesAutoresizingMaskIntoConstraints="NO" id="nRn-K0-FGE">
-                                <rect key="frame" x="16" y="63" width="102.5" height="25"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="tabname" translatesAutoresizingMaskIntoConstraints="NO" id="nRn-K0-FGE">
+                                <rect key="frame" x="16" y="63" width="108" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="cYC-4y-oCS"/>
                                 </constraints>
@@ -628,7 +628,7 @@
     </scenes>
     <resources>
         <image name="etc" width="30" height="30"/>
-        <image name="myPage" width="102.5" height="23.5"/>
+        <image name="tabname" width="108" height="25"/>
         <namedColor name="Black">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
