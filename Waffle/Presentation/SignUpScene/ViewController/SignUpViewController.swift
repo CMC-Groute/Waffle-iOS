@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
     
     var viewModel: SignUpViewModel?
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     var textFields: [UITextField] = []
     
     override func viewWillAppear(_ animated: Bool) {

@@ -55,13 +55,11 @@ final class SetProfileImageViewModel {
                     }.observe(on: MainScheduler.instance)
                     .subscribe(onNext: { response in
                         if response.status == 200 { // 회원가입 성공시에만 finish
+                            NotificationCenter.default.post(name: Notification.Name("DidSignUpNotification"), object: nil)
                             self.coordinator.finish()
                         }else if response.status == 403 {
                             print("error occured")
                         }else {
-                            //400 중복회원입니다.
-                            print("error occured occured")
-                            //TO DO 하드코딩 변경하기
                             output.alertMessage.accept("중복 회원입니다.")
                         }
                     }).disposed(by: disposeBag)

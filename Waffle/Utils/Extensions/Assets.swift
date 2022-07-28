@@ -75,7 +75,6 @@ internal enum Asset {
     internal static let whenCaption = ImageAsset(name: "when-caption")
     internal static let whereCaption = ImageAsset(name: "where-caption")
     internal static let bar = ImageAsset(name: "bar")
-    internal static let mapComingSoon = ImageAsset(name: "mapComingSoon")
     internal static let _24pxBtn = ImageAsset(name: "_24pxBtn")
     internal static let bell = ImageAsset(name: "bell")
     internal static let btn = ImageAsset(name: "btn")
