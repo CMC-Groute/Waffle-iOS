@@ -17,7 +17,7 @@ class AddCategoryCollectionViewCell: UICollectionViewCell {
         button.makeRounded(corner: 20)
         button.layer.borderColor = Asset.Colors.gray4.color.cgColor
         button.isUserInteractionEnabled = false
-        button.layer.borderWidth = 1.5
+        button.layer.borderWidth = 1
         return button
     }()
     
