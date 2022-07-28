@@ -23,6 +23,7 @@ class HomeCategoryPopUpViewController: UIViewController {
     private var disposeBag = DisposeBag()
     
     @IBOutlet private weak var frameView: UIView!
+    @IBOutlet private weak var frameBackgroundView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var addButton: UIButton!
@@ -45,27 +46,34 @@ class HomeCategoryPopUpViewController: UIViewController {
         frameView.makeRounded(width: nil, borderColor: nil, value: 20)
         addButton.makeRounded(corner: 24)
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
-    
-//    private func filterEnabledCategory() {
-//        print("get selectedCategoryList \(selectedCategoryList)")
-//        for i in selectedCategoryList {
-//            enableCategoryList[i.index].isSelected = true
-//        }
-//    }
+
+    @objc func didTapView(gesture: UITapGestureRecognizer) {
+            switch gesture.view {
+            case frameBackgroundView:
+                self.dismiss()
+             default:
+                 break
+             }
+        }
     
     private func collectionViewSetup() {
-        //filterEnabledCategory()
         collectionView.register(HomeCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
     }
     
+    private func dismiss() {
+        self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+    }
+    
     private func bindUI() {
         closeButton.rx.tap
-            .subscribe(onNext: {
-                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss()
             }).disposed(by: disposeBag)
         
         addButton.rx.tap
@@ -80,7 +88,7 @@ class HomeCategoryPopUpViewController: UIViewController {
             
             let name = items.map { $0.name }
                 .map { SendCategory.dictionary[$0] ?? "" }
-            self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            self.dismiss()
             self.delegate?.selectedCategory(archiveId: archiveId, categoryName: name)
         }).disposed(by: disposeBag)
     }
@@ -112,14 +120,12 @@ extension HomeCategoryPopUpViewController: UICollectionViewDataSource {
         let cell = collectionView.cellForItem(at: indexPath) as! HomeCategoryCollectionViewCell
         cell.selectedUI()
         checkItem()
-        //collectionView.reloadItems(at: [indexPath])
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) { // 선택 해제
         let cell = collectionView.cellForItem(at: indexPath) as! HomeCategoryCollectionViewCell
         cell.unSelectedUI()
         checkItem()
-        //collectionView.reloadItems(at: [indexPath])
     }
     
     

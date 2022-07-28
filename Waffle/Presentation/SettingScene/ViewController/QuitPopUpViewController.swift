@@ -9,7 +9,9 @@ import UIKit
 import RxSwift
 
 final class QuitPopUpViewController: UIViewController {
+    
     @IBOutlet weak var framwView: UIView!
+    @IBOutlet weak var frameBackgroundView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var OKButton: UIButton!
     
@@ -34,7 +36,18 @@ final class QuitPopUpViewController: UIViewController {
         self.framwView.makeRounded(width: 0, borderColor: "", value: 20)
         self.cancelButton.makeRounded(corner: 24)
         self.OKButton.makeRounded(corner: 24)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
+    
+    @objc private func didTapView(gesture: UITapGestureRecognizer) {
+           switch gesture.view {
+           case frameBackgroundView:
+               self.coordinator.dismissViewController(with: nil)
+            default:
+                break
+            }
+       }
     
     private func bindUI(){
         cancelButton.rx.tap

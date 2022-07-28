@@ -517,6 +517,7 @@
                     <connections>
                         <outlet property="OKButton" destination="Um1-Gk-wpP" id="MkG-IS-ulK"/>
                         <outlet property="cancelButton" destination="aF5-R2-UPt" id="AyM-0K-LXv"/>
+                        <outlet property="frameBackgroundView" destination="GI8-It-czO" id="gw5-66-sNT"/>
                         <outlet property="framwView" destination="1eF-Ly-3Oh" id="efY-H3-5NI"/>
                     </connections>
                 </viewController>
@@ -616,6 +617,7 @@
                     <connections>
                         <outlet property="OKButton" destination="WQQ-YM-V12" id="OrK-eb-Xqk"/>
                         <outlet property="cancelButton" destination="soI-qb-jSR" id="V35-MZ-tBn"/>
+                        <outlet property="frameBackgroundView" destination="jMN-eS-cg4" id="CYe-nF-JpG"/>
                         <outlet property="framwView" destination="Rhg-0e-QzW" id="b8J-1N-Lme"/>
                     </connections>
                 </viewController>

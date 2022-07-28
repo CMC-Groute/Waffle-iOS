@@ -11,6 +11,7 @@ import RxSwift
 final class DeletePlacePopUpViewController: UIViewController {
     
     @IBOutlet private weak var framwView: UIView!
+    @IBOutlet private weak var framwBackgroundView: UIView!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var deleteButton: UIButton!
     private var disposBag = DisposeBag()
@@ -36,7 +37,18 @@ final class DeletePlacePopUpViewController: UIViewController {
         self.framwView.makeRounded(width: 0, borderColor: "", value: 20)
         self.cancelButton.makeRounded(corner: 24)
         self.deleteButton.makeRounded(corner: 24)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        framwBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
+    
+    @objc func didTapView(gesture: UITapGestureRecognizer) {
+           switch gesture.view {
+           case framwBackgroundView:
+               self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            default:
+                break
+            }
+       }
     
 
     private func bindUI(){

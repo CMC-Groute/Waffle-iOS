@@ -22,6 +22,7 @@ final class DetailPlacePopUpViewController: UIViewController {
         case normal
     }
     
+    @IBOutlet private weak var frameBackgroundView: UIView!
     @IBOutlet private weak var bottomSheetView: UIView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
@@ -179,7 +180,18 @@ final class DetailPlacePopUpViewController: UIViewController {
         viewPan.delaysTouchesBegan = false
         viewPan.delaysTouchesEnded = false
         bottomSheetView.addGestureRecognizer(viewPan)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
+    
+    @objc func didTapView(gesture: UITapGestureRecognizer) {
+           switch gesture.view {
+           case frameBackgroundView:
+               hideBottomSheet()
+            default:
+                break
+            }
+       }
     
     @objc private func viewPanned(_ panGestureRecognizer: UIPanGestureRecognizer) {
         let translation = panGestureRecognizer.translation(in: self.view)

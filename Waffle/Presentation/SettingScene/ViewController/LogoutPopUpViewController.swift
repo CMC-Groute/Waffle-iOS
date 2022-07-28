@@ -9,7 +9,9 @@ import UIKit
 import RxSwift
 
 final class LogoutPopUpViewController: UIViewController {
+    
     @IBOutlet weak var framwView: UIView!
+    @IBOutlet weak var frameBackgroundView: UIView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var OKButton: UIButton!
     
@@ -32,13 +34,24 @@ final class LogoutPopUpViewController: UIViewController {
         self.framwView.makeRounded(width: 0, borderColor: "", value: 20)
         self.cancelButton.makeRounded(corner: 24)
         self.OKButton.makeRounded(corner: 24)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
+    
+    @objc private func didTapView(gesture: UITapGestureRecognizer) {
+           switch gesture.view {
+           case frameBackgroundView:
+               self.coordinator.dismissViewController(with: nil)
+            default:
+                break
+            }
+       }
     
 
     private func bindUI(){
         cancelButton.rx.tap
-            .subscribe(onNext: {
-                self.coordinator.dismissViewController(with: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator.dismissViewController(with: nil)
             }).disposed(by: disposBag)
         
         OKButton.rx.tap

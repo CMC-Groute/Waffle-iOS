@@ -15,6 +15,7 @@ import KakaoSDKCommon
 class InvitationBottomSheetViewController: UIViewController {
     
     @IBOutlet weak var frameView: UIView!
+    @IBOutlet weak var frameBackgroundView: UIView!
     @IBOutlet private weak var shareWithKakaoTalkButton: UIButton!
     @IBOutlet weak var copyCodeButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -39,7 +40,18 @@ class InvitationBottomSheetViewController: UIViewController {
     private func configureUI() {
         frameView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         cancelButton.makeRounded(width: 1, borderColor: Asset.Colors.gray5.name, value: 26)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
+    
+    @objc func didTapView(gesture: UITapGestureRecognizer) {
+          switch gesture.view {
+          case frameBackgroundView:
+              self.dismiss(animated: true)
+           default:
+               break
+           }
+      }
     
     private func bindUI() {
         shareWithKakaoTalkButton.rx.tap
@@ -63,12 +75,8 @@ class InvitationBottomSheetViewController: UIViewController {
     
     private func sendLink() {
         guard let detailArchive = detailArchive else { return }
-
-//        let link = Link(webUrl: URL(string:"https://developers.kakao.com"),
-//                        mobileWebUrl: URL(string:"https://developers.kakao.com"))
         guard let archiveId = archiveId, let archiveCode = archiveCode else { return }
-        let appLink = Link(androidExecutionParams: ["promiseId": "\(archiveId)", "promiseCode" : "\(archiveCode)"],
-                            iosExecutionParams: ["archiveId": "\(archiveId)", "archiveCode" : "\(archiveCode)"])
+        let appLink = Link(androidExecutionParams: ["promiseId": "\(archiveId)", "promiseCode" : "\(archiveCode)"], iosExecutionParams: ["archiveId": "\(archiveId)", "archiveCode" : "\(archiveCode)"])
         
         let button = Button(title: "약속에 참여하기", link: appLink)
         let title = "\(detailArchive.title)에 초대를 받았어요"

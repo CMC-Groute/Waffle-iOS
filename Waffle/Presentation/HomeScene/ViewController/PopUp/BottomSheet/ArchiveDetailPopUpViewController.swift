@@ -11,6 +11,7 @@ import RxSwift
 class ArchiveDetailPopUpViewController: UIViewController {
     
     @IBOutlet weak var frameView: UIView!
+    @IBOutlet weak var frameBackgroundView: UIView!
     @IBOutlet weak var editArchiveButton: UIButton!
     @IBOutlet weak var deleteArchiveButton: UIButton!
     @IBOutlet weak var likeArchiceButton: UIButton!
@@ -36,6 +37,17 @@ class ArchiveDetailPopUpViewController: UIViewController {
     private func configureUI() {
         frameView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         cancelButton.makeRounded(width: 1, borderColor: Asset.Colors.gray5.name, value: 26)
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
+    }
+    
+    @objc func didTapView(gesture: UITapGestureRecognizer) {
+           switch gesture.view {
+           case frameBackgroundView:
+               self.dismiss(animated: true)
+           default:
+               break
+           }
     }
     
     private func bindUI() {

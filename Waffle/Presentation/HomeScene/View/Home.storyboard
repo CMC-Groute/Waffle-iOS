@@ -192,6 +192,7 @@
                         <outlet property="addButton" destination="9VA-DP-L7J" id="txb-5t-zzS"/>
                         <outlet property="closeButton" destination="aXH-TJ-V8o" id="RtV-7e-2J3"/>
                         <outlet property="collectionView" destination="MOV-TQ-3mF" id="Emw-8v-KJU"/>
+                        <outlet property="frameBackgroundView" destination="wjM-50-EaQ" id="Ote-7G-r36"/>
                         <outlet property="frameView" destination="kgH-TG-ZZg" id="6sh-E6-zJu"/>
                     </connections>
                 </viewController>
@@ -263,6 +264,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Jov-n1-Zul" id="bJ5-rh-57U"/>
+                        <outlet property="frameBackgroundView" destination="FTg-eg-vEG" id="Tcx-61-Wcd"/>
                         <outlet property="frameView" destination="4oD-9l-aM5" id="Ege-Gd-R5W"/>
                         <outlet property="heightConstraint" destination="gpI-Jd-f3R" id="GZF-uY-PV4"/>
                         <outlet property="textView" destination="QaV-Tq-a1X" id="QTb-sH-31k"/>
@@ -466,6 +468,7 @@
                         <outlet property="confirmButton" destination="TxR-8v-D7u" id="faq-94-xZT"/>
                         <outlet property="draggingView" destination="3cG-FO-y61" id="btW-7J-DPB"/>
                         <outlet property="editButton" destination="vrE-H7-Ep9" id="C1y-8D-ubq"/>
+                        <outlet property="frameBackgroundView" destination="wGc-JD-qqY" id="oGp-t7-YJe"/>
                         <outlet property="likeCountButton" destination="JLF-lO-tHW" id="DRl-F6-A2v"/>
                         <outlet property="linkButton" destination="Dcp-79-7bu" id="qjw-6Y-aJn"/>
                         <outlet property="memoTextView" destination="6Sn-bC-b3b" id="W1b-oS-beh"/>
@@ -567,6 +570,7 @@
                     <connections>
                         <outlet property="closeButton" destination="FxZ-T4-ey1" id="Uf1-tR-sYl"/>
                         <outlet property="countLabel" destination="knP-ho-hhV" id="irO-1i-oyB"/>
+                        <outlet property="frameBackgroundView" destination="q8G-Qc-AuJ" id="4Gq-D4-jEh"/>
                         <outlet property="frameView" destination="dEP-3c-XQD" id="pTy-gu-2Ws"/>
                         <outlet property="heightConstraint" destination="0Li-Ey-xbV" id="0wp-Rg-nGh"/>
                         <outlet property="tableView" destination="D1P-pm-DwO" id="yjG-wU-4KG"/>
@@ -945,6 +949,7 @@
                     <connections>
                         <outlet property="OKButton" destination="gLC-Lu-JoA" id="fkk-gr-7Xw"/>
                         <outlet property="cancelButton" destination="g3Y-QW-0it" id="cpx-lr-ZxP"/>
+                        <outlet property="frameBackgroundView" destination="4y8-cQ-apg" id="uWK-G3-Kj5"/>
                         <outlet property="framwView" destination="C98-EL-fc0" id="qrb-KS-GhM"/>
                         <outlet property="titleText" destination="ORG-PX-GXr" id="6uj-of-GMK"/>
                     </connections>
@@ -1045,6 +1050,7 @@
                     <connections>
                         <outlet property="OKButton" destination="JBV-MR-5wE" id="oDI-Cc-vj4"/>
                         <outlet property="cancelButton" destination="G3n-VE-FWZ" id="wjx-Zt-p31"/>
+                        <outlet property="frameBackgroundView" destination="Uhr-zO-M7E" id="fdU-5o-zgR"/>
                         <outlet property="framwView" destination="FTX-jC-0rm" id="VQz-NJ-aiR"/>
                     </connections>
                 </viewController>
@@ -1137,6 +1143,7 @@
                     </view>
                     <connections>
                         <outlet property="cancelButton" destination="QsK-OE-gYk" id="3r8-d0-O2y"/>
+                        <outlet property="framwBackgroundView" destination="5jt-yE-aeb" id="fR1-UH-F0f"/>
                         <outlet property="framwView" destination="Iv8-jf-5M5" id="gfl-Yh-lwk"/>
                         <outlet property="sendButton" destination="Xav-Uc-1jZ" id="VK1-QQ-qn6"/>
                     </connections>
@@ -1226,6 +1233,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="eng-R6-gXw" id="zIh-s3-yUE"/>
                         <outlet property="copyCodeButton" destination="210-V1-xX2" id="hC7-Q6-Egp"/>
+                        <outlet property="frameBackgroundView" destination="bGI-2J-9GO" id="5SS-1h-DqV"/>
                         <outlet property="frameView" destination="AVO-hJ-Gyb" id="0a7-X4-yzR"/>
                         <outlet property="shareWithKakaoTalkButton" destination="GWn-Zu-SPn" id="JdX-gd-82N"/>
                     </connections>
@@ -1324,6 +1332,7 @@
                         <outlet property="cancelButton" destination="7bY-Ja-m3o" id="vEa-Pm-Zdd"/>
                         <outlet property="deleteArchiveButton" destination="4RM-PI-oc5" id="EJE-he-dRT"/>
                         <outlet property="editArchiveButton" destination="h4z-SL-BQT" id="oWC-pW-2oa"/>
+                        <outlet property="frameBackgroundView" destination="kpE-TW-9Qu" id="lM8-2N-4Bj"/>
                         <outlet property="frameView" destination="KFG-fz-jZP" id="IQ3-eD-cD4"/>
                         <outlet property="likeArchiceButton" destination="T07-Ej-ZYy" id="X85-xy-DjC"/>
                     </connections>
@@ -1447,6 +1456,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="Aca-fP-9zk" id="Jc7-CF-ClU"/>
                         <outlet property="deleteButton" destination="MBz-cc-btp" id="KL8-6F-H76"/>
+                        <outlet property="framwBackgroundView" destination="HLV-83-grA" id="wuY-Qn-8Z1"/>
                         <outlet property="framwView" destination="H0k-DZ-q6X" id="nQY-Gr-GdT"/>
                     </connections>
                 </viewController>

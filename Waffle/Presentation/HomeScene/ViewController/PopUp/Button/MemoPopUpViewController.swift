@@ -23,6 +23,7 @@ class MemoPopUpViewController: UIViewController {
     }
     
     @IBOutlet private weak var frameView: UIView!
+    @IBOutlet private weak var frameBackgroundView: UIView!
     @IBOutlet private weak var wappleImageView: UIImageView!
     @IBOutlet private weak var textView: UITextView!
     @IBOutlet private weak var closeButton: UIButton!
@@ -55,8 +56,23 @@ class MemoPopUpViewController: UIViewController {
         textView.isEditable = false
         guard let wappleName = wappleName else { return }
         wappleImageView.image = UIImage(named: wappleName)
+        configureGesture()
         configureHeight()
     }
+    
+    private func configureGesture() {
+        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
+        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
+    }
+    
+    @objc private func didTapView(gesture: UITapGestureRecognizer) {
+           switch gesture.view {
+           case frameBackgroundView:
+               self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            default:
+                break
+            }
+       }
     
     private func configureHeight() {
         textView.text = memoText ?? DefaultDetailCardInfo.archiveMemo.rawValue
@@ -84,8 +100,8 @@ class MemoPopUpViewController: UIViewController {
     
     private func bindUI() {
         closeButton.rx.tap
-            .subscribe(onNext: {
-                self.coordinator.popToViewController(with: nil, width: nil, height: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.coordinator.popToViewController(with: nil, width: nil, height: nil)
             }).disposed(by: disposBag)
     }
 
