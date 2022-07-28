@@ -15,7 +15,7 @@ enum CodeInvalidType: String {
     case success = ""
 }
 
-class InputArchiveCodeViewModel {
+final class InputArchiveCodeViewModel {
     var usecase: ArchiveUsecase!
     var coordinator: HomeCoordinator!
     

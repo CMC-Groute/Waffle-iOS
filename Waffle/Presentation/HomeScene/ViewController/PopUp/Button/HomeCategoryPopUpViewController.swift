@@ -46,18 +46,8 @@ class HomeCategoryPopUpViewController: UIViewController {
         frameView.makeRounded(width: nil, borderColor: nil, value: 20)
         addButton.makeRounded(corner: 24)
         addButton.setUnEnabled(color: Asset.Colors.gray4.name)
-        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
 
-    @objc func didTapView(gesture: UITapGestureRecognizer) {
-            switch gesture.view {
-            case frameBackgroundView:
-                self.dismiss()
-             default:
-                 break
-             }
-        }
     
     private func collectionViewSetup() {
         collectionView.register(HomeCategoryCollectionViewCell.self, forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)

@@ -47,22 +47,7 @@ class ParticiPopUpViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.delegate = self
         tableView.register(UINib(nibName: ParticipantsTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ParticipantsTableViewCell.identifier)
-        configureGesture()
         configureHeight()
-    }
-    
-    private func configureGesture() {
-        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
-    }
-    
-    @objc func didTapView(gesture: UITapGestureRecognizer) {
-            switch gesture.view {
-                case frameBackgroundView:
-                    self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-                default:
-                    break
-            }
     }
     
     private func configureHeight() {

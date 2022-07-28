@@ -37,20 +37,8 @@ final class DeletePlacePopUpViewController: UIViewController {
         self.framwView.makeRounded(width: 0, borderColor: "", value: 20)
         self.cancelButton.makeRounded(corner: 24)
         self.deleteButton.makeRounded(corner: 24)
-        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        framwBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
     
-    @objc func didTapView(gesture: UITapGestureRecognizer) {
-           switch gesture.view {
-           case framwBackgroundView:
-               self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-            default:
-                break
-            }
-       }
-    
-
     private func bindUI(){
         cancelButton.rx.tap
             .subscribe(onNext: { [weak self] in

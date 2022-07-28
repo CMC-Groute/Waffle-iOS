@@ -56,23 +56,8 @@ class MemoPopUpViewController: UIViewController {
         textView.isEditable = false
         guard let wappleName = wappleName else { return }
         wappleImageView.image = UIImage(named: wappleName)
-        configureGesture()
         configureHeight()
     }
-    
-    private func configureGesture() {
-        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
-    }
-    
-    @objc private func didTapView(gesture: UITapGestureRecognizer) {
-           switch gesture.view {
-           case frameBackgroundView:
-               self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-            default:
-                break
-            }
-       }
     
     private func configureHeight() {
         textView.text = memoText ?? DefaultDetailCardInfo.archiveMemo.rawValue

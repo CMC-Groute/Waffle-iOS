@@ -38,17 +38,6 @@ class ArchiveDetailPopUpViewController: UIViewController {
     private func configureUI() {
         frameView.roundCorners(value: 20, maskedCorners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         cancelButton.makeRounded(width: 1, borderColor: Asset.Colors.gray5.name, value: 26)
-        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        frameBackgroundView.addGestureRecognizer(frameGestureRecognizer)
-    }
-    
-    @objc func didTapView(gesture: UITapGestureRecognizer) {
-           switch gesture.view {
-           case frameBackgroundView:
-               self.dismiss(animated: true)
-           default:
-               break
-           }
     }
     
     private func bindUI() {

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class AddArchiveViewModel {
+final class AddArchiveViewModel {
     var usecase: ArchiveUsecase!
     var coordinator: HomeCoordinator!
     

@@ -35,19 +35,7 @@ final class LikeSendPopUpViewController: UIViewController {
         framwView.makeRounded(width: 0, borderColor: "", value: 20)
         cancelButton.makeRounded(corner: 24)
         sendButton.makeRounded(corner: 24)
-        let frameGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:)))
-        framwBackgroundView.addGestureRecognizer(frameGestureRecognizer)
     }
-    
-    @objc private func didTapView(gesture: UITapGestureRecognizer) {
-           switch gesture.view {
-           case framwBackgroundView:
-               self.coordinator.popToViewController(with: nil, width: nil, height: nil)
-            default:
-                break
-            }
-       }
-    
 
     private func bindUI(){
         cancelButton.rx.tap
